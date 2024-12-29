@@ -1,0 +1,55 @@
+/* Docs Section Styles */
+.docs-container {
+    padding: 1rem 0.5rem;
+}
+.docs-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.docs-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+.docs-container h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.6rem;
+}
+.docs-container p {
+    margin-bottom: 1rem;
+    color: darkgrey;
+    margin: 0.8rem 0;
+}
+.docs-container span {
+    color: rgb(40, 79, 156);
+}
+.docs-container ul {
+    margin-bottom: 1rem;
+    color: rgb(180, 183, 189);
+    list-style-type: '✦';
+}
+.docs-container li {
+    margin-bottom: 0.3rem;
+    padding-left: 0.2rem;
+}
+.docs-container table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    text-align: left;
+    font-size: 0.9rem;
+}
+  
+.docs-container th, td {
+    padding: 12px 15px;
+    border: 0.5px solid #ddd;
+}
+.docs-container td:nth-child(2) {
+    color: #999898;
+}
+.docs-container th {
+    color: white;
+}
+.docs-container caption {
+    font-weight: bold;
+    margin: 10px 0;
+}
+  
