@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { AiOutlineHome } from "react-icons/ai";
-import { MdOutlineDocumentScanner } from "react-icons/md";
+import { FaLaptopCode } from "react-icons/fa6";
 
 const NavLink = ({ href, children, onClick }) => (
   <Link href={href} className="rounded-full" onClick={onClick}>
@@ -16,7 +16,7 @@ const Navbar = () => {
 
   const navLinks = [
     { href: "/", label: "Home", icon: <AiOutlineHome /> },
-    { href: "/beRich", label: "beRich.Hub", icon: <MdOutlineDocumentScanner /> },
+    { href: "/beRich", label: "beRich.Hub", icon: <FaLaptopCode /> },
   ];
 
   return (
