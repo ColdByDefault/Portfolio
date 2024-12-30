@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import navItems from '@lib/SidebarNav';
+import navItems from '@data/SidebarNav';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { SiReadthedocs } from "react-icons/si";

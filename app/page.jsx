@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import LoadingScreen from "@components/LoadingScreen";
 import Hero from "@components/main/Hero";
+import Timeline from "@components/main/Timeline";
 
 
 export default function Home() {
@@ -22,9 +23,14 @@ export default function Home() {
           text="ColdByDefault" />
         </div>
       )}
-        <main className="relative flex justify-center items-center h-screen">
-          <Hero />
-        </main>
+        <div>
+          <div>
+            <Hero /> 
+          </div>
+          <div>
+            <Timeline />
+          </div>
+        </div>
     </>
   );
 }

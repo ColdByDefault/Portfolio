@@ -1,72 +1,90 @@
 import React from 'react'
+import { FaTree } from "react-icons/fa"
+import Image from 'next/image'
+import Link from 'next/link'
 import { Spotlight } from '@components/ui/Spotlight'
-import { FaTree } from "react-icons/fa";
-import { RxGithubLogo } from "react-icons/rx";
-import Image from 'next/image';
-import Link from 'next/link';
+import '@styles/globals.css'
 
 const Hero = () => {
   return (
-    <section>
+    <section className="relative min-h-screen">
       <div>
         <Spotlight className="absolute top-0 left-0"/>
       </div>
-        <div className="relativ">
-          {/* Background Image for Large Screens */}
-          <div className="hidden lg:block absolute inset-0 w-full h-full z-0">
-            <Image src="/m123.jpg" alt="ProfilePicture"
-            fill className="object-cover" sizes="(min-width: 1024px) 100vw"/>
-          </div>
-          {/* Background Image for Medium and Small Screens */}
-          <div className="block lg:hidden absolute inset-0 w-full h-full z-0">
-          <Image src="/m12345.jpg" alt="ProfilePicture"
-            fill className="object-cover" sizes="(max-width: 1024px) 100vw"/>
-          </div>
-          {/* Profile Section */}
-          <div className="absolute lg:top-48 lg:left-12 left-0 z-20 p-6 flex flex-col rounded-2xl 
-          md:p-6 md:flex-row md:flex-wrap items-center
-          md:justify-between w-full max-w-screen-2xl mx-auto
-          bottom-32">
-            <div className="md:mb-0 md:w-[50%] lg:w-auto flex flex-col justify-center 
-            items-start text-white px-6">
-              {/* Name Section */}
-              <h1 className="text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                Yazan Abo<span className="text-cyan-400">-</span>Ayash
-              </h1>
-              {/* Paragraph Section */}
-              <p className="text-sm sm:text-base md:text-lg max-w-lg mb-6 text-white">
-              Hi, I am currently learning to become a software developer, 
-              focusing on Python and Machine Learning, with a passion for 
-              building and exploring new technologies.
-              This website is Next.Js project, 
-              showcasing my journey into Fullstack development.
-              Check out my other projects and the source code for this website on my
-              <Link href='https://github.com/ColdByDefault/coldbydefault.github.io' target='_blank' 
-              rel='noopener noreferrer' class='text-cyan-400'>GitHub</Link>.
-              </p>
-              {/* Links */}
-              <div className="flex justify-center md:justify-start flex-wrap gap-6">
-                <Link href="https://linktr.ee/ColdByDefault"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  className="font-medium text-gray-300 hover:text-green-500 hover:scale-95 duration-200 
-                  focus:outline-none 
-                  focus:text-green-500 flex items-center gap-2">Link
-                  <FaTree />
-                </Link>
-                <Link href="https://github.com/ColdByDefault"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  className="font-medium text-gray-300 hover:text-blue-500 hover:scale-95 duration-200 
-                  focus:outline-none 
-                  focus:text-green-500 flex items-center gap-2"><RxGithubLogo />
-                </Link>
-              </div>
-            </div>
+      {/* Container for background images */}
+      <div className="fixed inset-0 -z-10">
+        {/* Large screen background */}
+        <div className="hidden lg:block w-full h-full">
+          <Image 
+            src="/m123.jpg" 
+            alt="Background" 
+            className="object-cover"
+            quality={100}
+            priority
+            fill
+            sizes="100vw"/>
+        </div>
+        {/* Small/Medium screen background */}
+        <div className="block lg:hidden w-full h-full">
+          <Image 
+            src="/m12345.jpg" 
+            alt="Background" 
+            className="object-cover"
+            quality={100}
+            priority
+            fill
+            sizes="100vw"/>
+        </div>
+      </div>
+      {/* Content Container */}
+      <div className="container mx-auto px-6 py-12 min-h-screen flex items-center">
+        <div className="w-full md:max-w-2xl lg:max-w-3xl space-y-8">
+          {/* Name Section */}
+          <h1 className="text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-bold text-white">
+            Yazan Abo<span className="text-blue-500">-</span>Ayash
+          </h1>
+          {/* Description */}
+          <p className="text-sm sm:text-base md:text-lg text-gray-300">
+            Hi, I am currently learning to become a software developer, 
+            focusing on Python and Machine Learning, with a passion for 
+            building and exploring new technologies.
+            This website is Next.Js project, 
+            showcasing my journey into Fullstack development.
+            Check out my other projects and the source code for this website on my
+            <Link  href='https://github.com/ColdByDefault/coldbydefault.github.io' 
+              target='_blank' 
+              rel='noopener noreferrer' 
+              className='text-blue-500 hover:text-blue-200 transition-colors ml-1'>
+              GitHub
+            </Link>.
+          </p>
+          {/* Social Links */}
+          <div className="flex gap-6">
+            <Link 
+              href="https://linktr.ee/ColdByDefault"
+              rel="noopener noreferrer"
+              target="_blank"
+              className="flex items-center gap-2 text-gray-300 hover:text-green-500 transition-colors">
+              <span>Link</span>
+              <FaTree className="w-5 h-5" />
+            </Link>
+            <a href="#timeline" className="inline-flex h-12 animate-hero-btn items-center justify-center hero-btn transition-all scroll-smooth
+            rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] 
+            bg-[length:200%_100%] px-6 font-medium text-slate-400 focus:outline-none focus:ring-2 
+            focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+            View Journy
+            </a>
           </div>
         </div>
+      </div>
     </section>
   )
 }
 
 export default Hero
+
+
+
+
+
+      
