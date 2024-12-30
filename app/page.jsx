@@ -50,12 +50,14 @@ export default function Home() {
           text="ColdByDefault" />
         </div>
       )}
-        <div>
+        <div className="overflow-hidden">
           <div>
             <Hero /> 
           </div>
-          <div className="flex items-center justify-evenly">
-            <Timeline/>
+          <div className="flex flex-col lg:flex-row 
+          items-center justify-evenly gap-4 
+          lg:my-0 my-8">
+            <Timeline />            
             <FocusCards cards={cards}/>
           </div>
         </div>
