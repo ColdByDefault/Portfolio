@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { AiOutlineHome } from "react-icons/ai";
 import { MdOutlineDocumentScanner } from "react-icons/md";
 
