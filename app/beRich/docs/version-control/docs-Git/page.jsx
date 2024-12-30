@@ -1,5 +1,5 @@
 import React from 'react'
-import Breadcrumb from '@components/breadcrumb';
+import Breadcrumb from '../../components/breadcrumb';
 
 
 const page = () => {

@@ -1,7 +1,7 @@
 'use client';
-import Breadcrumb from '@components/breadcrumb';
 import React, { useState } from 'react';
-import { Step, StepItem } from '@/components/Step';
+import {Step, StepItem} from '../../components/Step';
+import Breadcrumb from '../../components/breadcrumb';
 import Link from 'next/link';
 
 const CodeBlock = ({ code, language }) => {

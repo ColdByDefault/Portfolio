@@ -1,5 +1,5 @@
 import React from 'react'
-import Breadcrumb from '@components/breadcrumb';
+import Breadcrumb from '../../components/breadcrumb';
 import Link from 'next/link';
 
 export default function AlgorithmsStartUp() {
