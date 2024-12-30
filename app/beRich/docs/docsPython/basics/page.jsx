@@ -1,8 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import {Step, StepItem} from '../../components/Step';
-import Breadcrumb from '../../components/breadcrumb';
+import {Step, StepItem} from '@components/ui/Step';
+import Breadcrumb from '@components/ui/breadcrumb';
 
 const CodeBlock = ({ code, language }) => {
   const [copied, setCopied] = useState(false);

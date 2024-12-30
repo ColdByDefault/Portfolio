@@ -1,7 +1,7 @@
-import Breadcrumb from '../../components/breadcrumb';
+import Breadcrumb from '@components/ui/breadcrumb';
 import KatexSpan  from '@utils/LaTexRender';
 import Link from 'next/link';
-import RightSidebarNav from '../../components/RightSidebarNav';
+import RightSidebarNav from '@components/ui/RightSidebarNav';
 
 
 

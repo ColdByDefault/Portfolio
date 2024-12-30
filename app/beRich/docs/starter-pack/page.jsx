@@ -1,7 +1,6 @@
 import React from 'react'
-import Breadcrumb from '../../components/breadcrumb';
-
-import RightSidebarNav from '../../components/RightSidebarNav';
+import Breadcrumb from '@components/ui/breadcrumb';
+import RightSidebarNav from '@components/ui/RightSidebarNav';
 
 
 const topics = [

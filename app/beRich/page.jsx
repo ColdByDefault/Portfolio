@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from "react";
-import Intro from './components/Intro';
+import Intro from '@components/ui/IntroBeRich';
 import LoadingScreen from "@components/LoadingScreen";
 
 

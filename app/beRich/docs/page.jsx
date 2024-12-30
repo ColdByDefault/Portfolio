@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import '@styles/docs.css';
-
+import Breadcrumb from '@components/ui/breadcrumb';
 
 
 
 export default function Page() {
   return (
     <div>
-      {/* <Breadcrumb /> */}
+      <Breadcrumb />
     <div  className='docs-container'>
         <main>
           {/* Introduction Section */}
