@@ -1,8 +1,8 @@
 'use client';
-
 import { useState, useEffect } from "react";
 import LoadingScreen from "@components/LoadingScreen";
 import Hero from "@components/main/Hero";
+
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,9 +22,9 @@ export default function Home() {
           text="ColdByDefault" />
         </div>
       )}
-      <main className="relative flex justify-center items-center h-screen">
-        <Hero />
-      </main>
+        <main className="relative flex justify-center items-center h-screen">
+          <Hero />
+        </main>
     </>
   );
 }
