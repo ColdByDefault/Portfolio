@@ -42,7 +42,13 @@ const Intro = () => {
               beRich.History
             </a>
           </div> */}
-          <a href="/beRich/docs">Docs</a>
+          <a href="/beRich/docs"
+              className="bg-black border border-black font-semibold text-gray-500 py-4 px-1
+              lg:px-6 lg:text-lg text-sm rounded-lg hover:bg-black 
+              hover:text-white transition"
+              style={{ transform: "translateZ(30px)" }}>
+              View All Docs
+            </a>
         </div>
       </div>
     </section>

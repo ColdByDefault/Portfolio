@@ -3,10 +3,37 @@ import { useState, useEffect } from "react";
 import LoadingScreen from "@components/LoadingScreen";
 import Hero from "@components/main/Hero";
 import Timeline from "@components/main/Timeline";
-
+import {FocusCards} from "@components/ui/focus-cards";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+
+  const cards = [
+    {
+      title: "Forest Adventure",
+      src: "/assets/tailwind.png",
+    },
+    {
+      title: "Valley of life",
+      src: "/assets/tailwind.png",
+    },
+    {
+      title: "Sala behta hi jayega",
+      src: "/assets/tailwind.png",
+    },
+    {
+      title: "Camping is for pros",
+      src: "/assets/tailwind.png",
+    },
+    {
+      title: "The road not taken",
+      src: "/assets/tailwind.png",
+    },
+    {
+      title: "The First Rule",
+      src: "/assets/tailwind.png",
+    },
+  ];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,8 +54,9 @@ export default function Home() {
           <div>
             <Hero /> 
           </div>
-          <div>
-            <Timeline />
+          <div className="flex items-center justify-evenly">
+            <Timeline/>
+            <FocusCards cards={cards}/>
           </div>
         </div>
     </>
