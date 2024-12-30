@@ -4,9 +4,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { AiOutlineHome } from "react-icons/ai";
 import { FaLaptopCode } from "react-icons/fa6";
+import { FiMenu, FiX } from "react-icons/fi";
 
-const NavLink = ({ href, children, onClick }) => (
-  <Link href={href} className="rounded-full" onClick={onClick}>
+const NavLink = ({ href, children, onClick, className = "" }) => (
+  <Link
+    href={href}
+    className={`block px-4 py-2 text-gray-300 hover:text-white transition-all ${className}`}
+    onClick={onClick}>
     {children}
   </Link>
 );
@@ -20,40 +24,51 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="relative
-    bg-black backdrop-filter backdrop-blur-lg bg-opacity-30
-    shadow-lg z-50 p-3 ">
-      <div className="flex justify-between items-center max-w-6xl mx-auto">
-        <Link href="/" className="flex items-center z-10">
-          <span className="text-white">Cold</span><span className="text-blue-500">ByDefault</span>
+    <nav className="fixed z-50 w-full lg:w-1/2 mx-auto right-0 left-0
+    lg:mt-2 lg:rounded-full
+    bg-black/20 backdrop-blur-md text-white border-b border-black/20">
+      <div className="flex justify-between items-center max-w-7xl mx-auto px-6 py-2">
+        <Link href="/" className="flex items-center font-bold">
+          <span className="text-white">Cold</span>
+          <span className="text-blue-500">ByDefault</span>
         </Link>
-        <div className="hidden sm:flex items-center gap-3 md:gap-5 z-10">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <NavLink key={link.href} href={link.href}>
-              <div className="flex items-center space-x-2 text-white hover:text-gray-300">
-                {link.icon}
-                <span>{link.label}</span>
-              </div>
+            <NavLink key={link.href} href={link.href} className="flex items-center space-x-2">
+              {link.icon}
+              <span>{link.label}</span>
             </NavLink>
           ))}
         </div>
-        <button className="sm:hidden z-10 bg-white rounded-md px-3 py-2"
-          onClick={() => setShowMobileMenu(!showMobileMenu)}
-          aria-label="Toggle mobile menu">
-          ☰
+        {/* Burger Menu Button */}
+        <button
+          className="md:hidden flex items-center justify-center w-10 h-10 rounded-full 
+          bg-gray-800 hover:bg-gray-700 text-white focus:outline-none focus:ring-2 
+          focus:ring-blue-500"
+          onClick={() => setShowMobileMenu((prev) => !prev)}
+          aria-label="Toggle menu">
+          {showMobileMenu ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
       </div>
+
+      {/* Mobile Navigation */}
       {showMobileMenu && (
-        <div className="sm:hidden absolute top-full left-0 right-0 bg-black/90 text-white
-        backdrop-blur-md shadow-lg p-4 z-20 flex flex-col gap-3">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.href}
-              href={link.href}
-              onClick={() => setShowMobileMenu(false)}>
-              {link.label}
-            </NavLink>
-          ))}
+        <div className="realtive w-full text-white z-40">
+          <div className="flex flex-col items-start p-4 space-y-4 ">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.href}
+                href={link.href}
+                onClick={() => setShowMobileMenu(false)}
+                className="text-lg w-full">
+                <div className="flex items-center space-x-3">
+                  {link.icon}
+                  <span>{link.label}</span>
+                </div>
+              </NavLink>
+            ))}
+          </div>
         </div>
       )}
     </nav>

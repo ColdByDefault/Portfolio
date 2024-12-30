@@ -25,7 +25,7 @@ const Timeline = () => {
 
     return (
         <div id="timeline" className="relative flex flex-col items-center h-screen
-        justify-center mt-24 backdrop-blur-md bg-white/30">
+        justify-center">
             <h2 className="text-3xl font-bold mb-6 text-cyan-400 sm:pl-16">My Journey</h2>
             <div className="border-r-2 border-gray-200 dark:border-gray-700 relative">
                 {events.map((event, index) => (
