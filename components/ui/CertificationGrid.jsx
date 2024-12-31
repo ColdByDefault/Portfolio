@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const CertificationCard = ({ title, image, issuer, date, description }) => {
     return (
-      <div className="bg-white rounded-lg flex flex-col
+      <div className="bg-white rounded-lg flex flex-col  z-40
       shadow-md overflow-hidden transition-transform duration-300 hover:scale-105">
         <Image 
             src={image} alt={title}
@@ -21,7 +21,7 @@ const CertificationCard = ({ title, image, issuer, date, description }) => {
 
 const CertificationGrid = ({ certifications }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6  z-40">
       {certifications.map((cert) => (
         <CertificationCard
           key={cert.id}
