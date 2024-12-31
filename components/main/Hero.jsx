@@ -1,91 +1,71 @@
-{/* NEED TO PROVIDE CORRECT LINK FOR GITHUB */}
-import React from 'react'
-import { FaTree } from "react-icons/fa"
-import Image from 'next/image'
-import Link from 'next/link'
-import { Spotlight } from '@components/ui/Spotlight'
-import DynamicBtn from '@components/ui/DynamicBtn'
-import '@styles/globals.css'
+import React from 'react';
+import { FaTree } from "react-icons/fa";
+import Image from 'next/image';
+import Link from 'next/link';
+import { Spotlight } from '@components/ui/Spotlight';
+import DynamicBtn from '@components/ui/DynamicBtn';
+import '@styles/globals.css';
 import { FaFly } from "react-icons/fa";
-
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen">
-      <div className='hidden lg:block'>
-        <Spotlight className="absolute top-0 left-0 h-scree z-5" fill="#2c2cc471"/>
-        <Spotlight className="absolute top-24 left-48 h-scree z-5" fill="#5c106b54"/>
-        <Spotlight className="absolute left-12 h-[90vh] z-5" fill="#2c2cc471"/>
+    <section className="relative min-h-screen w-full">
+      <div>
+          <Spotlight className="absolute top-0 left-0 z-10 h-[30vh] lg:h-[80vh]" fill="#2c2cc471"/>
+          <Spotlight className="absolute top-12 left-20 z-10 h-[30vh] lg:h-auto" fill="#5c106b54"/>
+          <Spotlight className="absolute left-12 h-[30vh] lg:h-[90vh] z-10 lg:left-48" fill="#2c2cc471"/>
       </div>
-      {/* Container for background images */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10">
-        {/* Large screen background */}
-        <div className="hidden lg:block w-full h-full">
-          <Image 
-            src="/m123.jpg" 
-            alt="Background" 
-            className="object-cover"
-            quality={100}
-            priority
-            fill
-            sizes="100vw"/>
-        </div>
-        {/* Small/Medium screen background */}
-        <div className="block lg:hidden w-full h-full">
-          <Image 
-            src="/m12345.jpg" 
-            alt="Background" 
-            className="object-cover"
-            quality={100}
-            priority
-            fill
-            sizes="100vw"/>
-        </div>
+      {/* Background Image Container */}
+      <div className="realtive inset-0 z-0 mt-12 md:mt-4 lg:mt-0">
+        <Image 
+          src="/m123.jpg" 
+          alt="Background" 
+          className="object-scale-down object-top lg:object-cover lg:object-center"
+          quality={100}
+          priority
+          fill
+          sizes="100vw"/>
       </div>
       {/* Content Container */}
-      <div className="absolute top-32 left-2 lg:left-24 mx-auto px-6 py-12 min-h-screen flex items-center z-10">
-        <div className="w-full md:max-w-2xl lg:max-w-3xl space-y-8">
+      <div className="relative z-10 flex min-h-screen items-center sm:justify-evenly px-6 lg:px-8">
+        <div className="max-w-4xl p-4">
           {/* Name Section */}
-          <h1 className="text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-bold text-white">
-            Yazan Abo<span className="text-blue-500">-</span>Ayash
+          <h1 className="mb-6 text-left font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            Yazan <br className='block lg:hidden'/>Abo<span className="text-blue-400">-</span>Ayash
           </h1>
           {/* Description */}
-          <p className="text-sm sm:text-base md:text-lg text-gray-300">
+          <p className="mb-8 max-w-2xl text-left text-sm text-slate-300 sm:text-base md:text-lg lg:text-xl">
             Hi, I am currently learning to become a software developer, 
             focusing on Python and Machine Learning, with a passion for 
-            building and exploring new technologies.
-            This website is Next.Js project, 
-            showcasing my journey into Fullstack development.
-            Check out my other projects and the source code for this website on my
-            <Link  href='https://github.com/ColdByDefault/coldbydefault.github.io' 
+            building and exploring new technologies. This website is a Next.js project, 
+            showcasing my journey into Fullstack development. Check out my other projects and the source code for this website on my
+            {' '}
+            <Link href='https://github.com/ColdByDefault/Almighty' 
               target='_blank' 
               rel='noopener noreferrer' 
-              className='text-blue-500 hover:text-blue-200 transition-colors ml-1'>
+              className='text-white underline decoration-blue-400 underline-offset-2 transition-colors hover:text-gray-600'>
               GitHub
             </Link>.
           </p>
           {/* Social Links */}
-          <div className="flex gap-6">
-            <Link 
-              href="https://linktr.ee/ColdByDefault"
+          <div className="flex items-start gap-4 sm:gap-6">
+            <Link href="https://linktr.ee/ColdByDefault"
               rel="noopener noreferrer"
               target="_blank"
-              className="flex items-center gap-2 text-gray-300 hover:text-green-500 transition-colors">
+              className="inline-flex h-12 items-center justify-center rounded-md 
+              border border-slate-600 bg-black/20 px-6 font-medium text-slate-300 
+              backdrop-blur-sm transition-all hover:bg-black/30 hover:text-white 
+              focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
               <span>Link</span>
-              <FaTree className="w-5 h-5" />
+              <FaTree className="ml-2 h-5 w-5" />
             </Link>
-            <DynamicBtn title="View Journy" icon={FaFly} targetId="timeline" />
+            <DynamicBtn title="View Journey" icon={FaFly} targetId="timeline" />
           </div>
         </div>
+        <div className="hidden lg:block lg:max-w-4xl lg:ml-12"></div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
-
-
-
-
-
-      
+export default Hero;

@@ -29,15 +29,13 @@ const Timeline = () => {
             <h2 className="text-3xl font-bold mb-6 text-blue-400 sm:pl-16">My Journey</h2>
             <div className="border-r-2 border-gray-200 dark:border-gray-700 relative">
                 {events.map((event, index) => (
-                    <div
-                        key={index}
+                    <div key={index}
                         className="timeline-event mb-10 mr-12 opacity-0 
                         transform translate-x-20 transition-all duration-700 ease-out group relative">
-                        <div
-                            className="absolute w-3 h-3 bg-blue-400 rounded-full 
+                        <div className="absolute w-3 h-3 bg-blue-400 rounded-full 
                             -right-[14.5px] border border-gray-200 dark:border-gray-700 
-                            scale-75 transition-transform duration-500"></div>
-
+                            scale-75 transition-transform duration-500">
+                        </div>
                         {/* Event details */}
                         <div className="flex flex-col gap-2 text-right">
                             <time className="text-blue-400 dark:text-stone-100 text-sm">
@@ -51,9 +49,8 @@ const Timeline = () => {
                                 {event.description2}
                             </p>
                         </div>
-                        <div
-                            className="hidden lg:group-hover:flex absolute -right-[200px] 
-                            top-0 w-[150px] p-4 bg-new-bg-second backdrop-blur-lg
+                        <div className="hidden lg:group-hover:flex absolute -right-[200px] 
+                            top-0 w-[150px] p-4 bg-black/20 backdrop-blur-lg
                             text-white rounded-lg shadow-lg transition-all duration-500 
                             ease-in-out z-10 opacity-0 
                             group-hover:opacity-100 group-hover:translate-x-4">

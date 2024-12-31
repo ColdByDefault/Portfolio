@@ -10,28 +10,28 @@ export default function Home() {
 
   const cards = [
     {
-      title: "Forest Adventure",
+      title: "NEXT.JS",
+      src: "/assets/nextJs.png",
+    },
+    {
+      title: "React",
+      src: "/assets/react.png",
+    },
+    {
+      title: "python",
+      src: "/assets/python2.png",
+    },
+    {
+      title: "Javascript",
+      src: "/assets/js.png",
+    },
+    {
+      title: "Tailwindcss",
       src: "/assets/tailwind.png",
     },
     {
-      title: "Valley of life",
-      src: "/assets/tailwind.png",
-    },
-    {
-      title: "Sala behta hi jayega",
-      src: "/assets/tailwind.png",
-    },
-    {
-      title: "Camping is for pros",
-      src: "/assets/tailwind.png",
-    },
-    {
-      title: "The road not taken",
-      src: "/assets/tailwind.png",
-    },
-    {
-      title: "The First Rule",
-      src: "/assets/tailwind.png",
+      title: "Machine Learning",
+      src: "/assets/pyTorch.png",
     },
   ];
 
@@ -54,11 +54,13 @@ export default function Home() {
           <div>
             <Hero /> 
           </div>
-          <div className="flex flex-col lg:flex-row 
-          items-center justify-evenly gap-4 
-          lg:my-0 my-8">
-            <Timeline />            
-            <FocusCards cards={cards}/>
+           <div className="flex flex-col gap-12 items-center justify-center lg:flex-row my-4">
+            <div className="w-full">
+              <Timeline />
+            </div>  
+            <div className="w-full">
+              <FocusCards cards={cards}/>
+            </div>          
           </div>
         </div>
     </>
