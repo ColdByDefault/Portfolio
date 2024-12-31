@@ -2,11 +2,10 @@
 import { useState, useEffect } from "react";
 import LoadingScreen from "@components/LoadingScreen";
 import Hero from "@components/main/Hero";
-import Timeline from "@components/main/Timeline";
-import { FocusCards } from "@components/ui/focus-cards";
-import { cards } from "@data/skillsList";
 import CertificationShowcase from "@components/main/CertificationShowCase";
 import ScrollToTopButton from "@components/ui/ScrollTop";
+import { Timeline2 } from "@components/ui/timeline";
+import timelineData from "@data/timelineObj";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,12 +29,9 @@ export default function Home() {
           <Hero />
         </div>
         <div className="flex flex-col gap-12 items-center justify-center lg:flex-row my-4">
-          <div className="w-full">
-            <Timeline />
-          </div>
-          <div className="w-full">
-            <FocusCards cards={cards} />
-          </div>
+        </div>
+        <div id="timeline" className="w-full">
+          <Timeline2 data={timelineData} />
         </div>
         <div className="mt-12">
           <CertificationShowcase />
