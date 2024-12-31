@@ -6,7 +6,7 @@ import { SiLinktree, SiWakatime } from "react-icons/si";
 
 function Footer() {
     return (
-        <footer className="bg-black backdrop-filter backdrop-blur-lg bg-opacity-30 border-t border-black shadow-lg">
+        <footer className="bg-black backdrop-filter backdrop-blur-lg bg-opacity-30 border-t border-black shadow-lg z-0">
             <div className="mx-auto w-full max-w-screen-xl p-4 py-2 sm:py-4 lg:py-6">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
@@ -81,7 +81,7 @@ function Footer() {
                                 </li>
                                 <li>
                                     <Link
-                                        href="https://www.coldbydefault.com"
+                                        href="https://github.com/ColdByDefault"
                                         rel="noopener noreferrer"
                                         target="_blank"
                                         className="hover:underline"
