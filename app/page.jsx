@@ -30,7 +30,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-12 items-center justify-center lg:flex-row my-4">
         </div>
-        <div id="timeline" className="w-full">
+        <div id="timeline" className="w-full  h-full">
           <Timeline2 data={timelineData} />
         </div>
         <div className="mt-12">
