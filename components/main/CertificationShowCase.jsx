@@ -8,7 +8,7 @@ const certifications = [
       image: '/assets/cer1.png',
       issuer: 'Python Institute',
       description: 'Earned the PCEP (Python Certified Entry-Level Programmer) certification, demonstrating foundational knowledge of Python programming.',
-      date: 'May 2023',
+      date: 'Oct 2024',
     },
     {
       id: 2,
@@ -16,15 +16,15 @@ const certifications = [
       image: '/assets/cer2.png',
       issuer: 'Udemy',
       description: 'Completed the "100 Days of Code - The Complete Python Pro Bootcamp," mastering Python from beginner to advanced levels.',
-      date: 'July 2023',
+      date: 'Sep 2024',
     },
     {
       id: 3,
       title: 'Meta Frontend Development',
       image: '/assets/cer3.png',
       issuer: 'Meta (via Coursera)',
-      description: 'Completed the "Introduction to Frontend Development" course, gaining foundational skills in HTML, CSS, and JavaScript.',
-      date: 'July 2023',
+      description: 'Completed the "Introduction to Frontend Development" course, gaining foundational skills in HTML, CSS.',
+      date: 'July 2022',
     },
   ];
   
