@@ -3,8 +3,8 @@ import FeatureCard from '@components/ui/feature-card';
 
 export default function LibraryComponent() {
   return (
-    <div className="h-screen mx-auto p-4 sm:p-8">
-      <main>
+    <div className="flex flex-col flex-grow mx-auto p-4 sm:p-8">
+      <main className="flex-1">
         {/* Introduction Section */}
         <section className="mb-8">
           <h1 className="text-3xl font-bold mb-4">Introduction</h1>

@@ -1,5 +1,5 @@
 import React from 'react';
-import CertificationGrid from '@components/ui/CertificationGrid';
+import CertificationGrid from '@components/main/CertificationGrid';
 
 const certifications = [
     {

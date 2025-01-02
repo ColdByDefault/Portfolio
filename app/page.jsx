@@ -4,8 +4,8 @@ import LoadingScreen from "@components/LoadingScreen";
 import Hero from "@components/main/Hero";
 import CertificationShowcase from "@components/main/CertificationShowCase";
 import ScrollToTopButton from "@components/ui/ScrollTop";
-import { Timeline2 } from "@components/ui/timeline";
-import timelineData from "@data/timelineObj";
+import { Timeline2 } from "@components/main/timeline";
+import timelineData from "@components/main/timelineObj";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);

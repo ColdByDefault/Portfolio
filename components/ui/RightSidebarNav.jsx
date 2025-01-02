@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Sidebar = ({ topics }) => {
   return (
-    <aside className="w-52 border-l border-gray-300 p-6 h-72">
+    <aside className="hidden lg:block w-52 border-l border-gray-300 p-2 h-72">
       <h2 className="text-lg font-bold mb-4">Topics</h2>
       <ul className="space-y-2">
         {topics.map((topic) => (

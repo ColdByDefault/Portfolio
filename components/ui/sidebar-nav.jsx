@@ -44,7 +44,7 @@ export default function SidebarNav() {
             </div>
           </Link>
         </div>
-        <div className="space-y-6">
+        <div className="z-50 space-y-6">
           {navItems.map((section, sectionIndex) => (
             <div key={`section-${sectionIndex}`}>
               <h2 className="mb-4 mt-2 pb-2 text-lg font-semibold text-white border-b border-gray-800">
