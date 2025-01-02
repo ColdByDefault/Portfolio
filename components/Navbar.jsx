@@ -28,10 +28,19 @@ const Navbar = () => {
     lg:mt-2 lg:rounded-full
     bg-black/20 backdrop-blur-md text-white border-b border-black/20">
       <div className="flex justify-between items-center max-w-7xl mx-auto px-6 py-2">
-        <Link href="/" className="flex items-center font-bold">
+      <Link
+      href="/"
+      className="flex items-center font-bold text-center w-full justify-center sm:justify-start sm:w-auto">
+        <div className="text-white block sm:hidden">
           <span className="text-white">Cold</span>
           <span className="text-blue-500">ByDefault</span>
-        </Link>
+        </div>
+        <div className="hidden sm:block">
+          <span className="text-white">Cold</span>
+          <span className="text-blue-500">ByDefault</span>
+        </div>
+      </Link>
+
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
@@ -44,7 +53,7 @@ const Navbar = () => {
         {/* Burger Menu Button */}
         <button
           className="md:hidden flex items-center justify-center w-10 h-10 rounded-full 
-          bg-gray-800 hover:bg-gray-700 text-white focus:outline-none focus:ring-2 
+          text-white focus:outline-none focus:ring-2 
           focus:ring-blue-500"
           onClick={() => setShowMobileMenu((prev) => !prev)}
           aria-label="Toggle menu">

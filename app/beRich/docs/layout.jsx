@@ -7,7 +7,7 @@ export default function DocsLayout({ children }) {
     <div className="h-screen bg-transparent text-white">
       <div className="flex">
         <SidebarNav />
-        <main className="flex-1 p-8 overflow-y-auto h-screen scroll-smooth">
+        <main className="flex-1 p-8 overflow-y-auto h-screen scroll-smooth pt-24">
           {children}
         </main>
       </div>
