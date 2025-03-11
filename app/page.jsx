@@ -4,8 +4,7 @@ import LoadingScreen from "@components/LoadingScreen";
 import Hero from "@components/main/Hero";
 import CertificationShowcase from "@components/main/CertificationShowCase";
 import ScrollToTopButton from "@components/ui/ScrollTop";
-import { Timeline2 } from "@components/main/timeline";
-import timelineData from "@components/main/timelineObj";
+import Timeline from "@components/main/timeline";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,9 +29,9 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-12 items-center justify-center lg:flex-row my-4">
         </div>
-        <div id="timeline" className="w-full  h-full">
-          <Timeline2 data={timelineData} />
-        </div>
+{/*         <div id="timeline" className="w-full  h-full">
+          <Timeline/>
+        </div>  */}
         <div className="mt-12">
           <CertificationShowcase />
         </div>

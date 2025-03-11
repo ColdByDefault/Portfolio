@@ -35,10 +35,8 @@ const Hero = () => {
           </h1>
           {/* Description */}
           <p className="mb-8 max-w-2xl text-left text-sm text-slate-300 sm:text-base md:text-lg lg:text-xl">
-            Hi, I am currently learning to become a software developer, 
-            focusing on Python and Machine Learning, with a passion for 
-            building and exploring new technologies. This website is a Next.js project, 
-            showcasing my journey into Fullstack development. Check out my other projects and the source code for this website on my
+            I am currently learning to become a software developer, with a passion for building web apps and exploring new technologies. 
+            I'm also deeply interested in Python and Machine Learning.<br />Check out my other projects and the source code for this Next.js portfolio on my
             {' '}
             <Link href='https://github.com/ColdByDefault/Almighty' 
               target='_blank' 

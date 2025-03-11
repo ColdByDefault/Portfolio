@@ -33,11 +33,11 @@ const Navbar = () => {
       className="flex items-center font-bold text-center w-full justify-center sm:justify-start sm:w-auto">
         <div className="text-white block sm:hidden">
           <span className="text-white">Cold</span>
-          <span className="text-blue-500">ByDefault</span>
+          <span className="text-blue-200">ByDefault</span>
         </div>
         <div className="hidden sm:block">
           <span className="text-white">Cold</span>
-          <span className="text-blue-500">ByDefault</span>
+          <span className="text-blue-200">ByDefault</span>
         </div>
       </Link>
 

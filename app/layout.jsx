@@ -3,8 +3,7 @@
 // COPYRIGHT 2024 - ColdByDefault
 // All Rights Reserved - No part of this website or any of its contents may be reproduced, copied, modified or adapted, 
 // without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
-// Updated At: 2024-12-31 23:00:00
-// Layout for the entire website
+
 
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
