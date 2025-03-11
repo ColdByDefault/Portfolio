@@ -29,7 +29,7 @@ const certifications = [
     {
       id: 4,
       title: "Udemy HTML and CSS for Beginners - Build a Website & Launch Online",
-      image: "/assets/HTMLC.png",
+      image: "/assets/htmlC.png",
       issuer: "Udemy",
       description: "Completed the course, learning the fundamentals of HTML and CSS to build and deploy a website.",
       date: "2025"
