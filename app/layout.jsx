@@ -34,6 +34,20 @@ export default function RootLayout({ children }) {
         <meta name="twitter:description" content="Portfolio and beRich.Hub" />
         <meta name="twitter:image" content="/logo.png" />
         <link rel="icon" href="/favicon.ico" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "ColdByDefault",
+              "url": "https://www.coldbydefault.com",
+              "logo": "https://www.coldbydefault.com/logo.png",
+              "sameAs": [
+                "https://github.com/ColdByDefault",
+              ]
+            }
+          `}
+        </script>
         <title>ColdByDefault</title>
       </head>
       <body>
