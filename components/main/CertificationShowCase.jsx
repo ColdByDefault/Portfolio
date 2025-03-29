@@ -41,6 +41,14 @@ const certifications = [
       issuer: "Udemy",
       description: "Completed a comprehensive Git and GitHub course, covering version control, branching, and collaboration workflows.",
       date: "2025"
+    },
+    {
+      id: 6,
+      title: "Full-Stack Web-Development",
+      image: "/assets/nodecer.jpg",
+      issuer: "Udemy",
+      description: "Frontend and Backend Web Development course, covering HTML, CSS, JavaScript, Node.js, and React.",
+      date: "2025"
     }    
   ];
   
