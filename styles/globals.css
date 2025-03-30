@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 
 *{
@@ -10,7 +8,6 @@
 body {
   background: #0D0C0F;
 }
-
 
 /* Customize the scrollbar */
 ::-webkit-scrollbar {
@@ -31,7 +28,6 @@ body {
   background: rgb(36, 35, 35); 
 }
 
-
 @keyframes hero-btn {
   from {
     background-position: 0 0;
@@ -50,9 +46,9 @@ body {
   animation: hero-btn 2s linear infinite;
 }
 
-
 .pattern {
   background-image: url("/pattern.png");
   background-size: cover;
-  
+
 }
+

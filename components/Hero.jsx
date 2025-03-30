@@ -7,6 +7,8 @@ import DynamicBtn from '@components/ui/DynamicBtn';
 import '@styles/globals.css';
 import { FaFly } from "react-icons/fa";
 
+
+
 const Hero = () => {
   return (
     <section className="relative min-h-screen w-full">
@@ -45,6 +47,9 @@ const Hero = () => {
               GitHub↗
             </Link>.
           </p>
+
+
+
           {/* Social Links */}
           <div className="flex items-start gap-4 sm:gap-6">
             <Link href="https://linktr.ee/ColdByDefault"
