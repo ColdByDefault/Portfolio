@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { AiOutlineHome } from "react-icons/ai";
-import { FaLaptopCode } from "react-icons/fa6";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const NavLink = ({ href, children, onClick, className = "" }) => (
@@ -20,7 +19,6 @@ const Navbar = () => {
 
   const navLinks = [
     { href: "/", label: "Home", icon: <AiOutlineHome /> },
-    { href: "/beRich", label: "beRich.Hub", icon: <FaLaptopCode /> },
   ];
 
   return (
