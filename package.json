@@ -1,6 +1,6 @@
 {
-  "name": "portfolio_v_2_0",
-  "version": "0.1.0",
+  "name": "portfolio",
+  "version": "2.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",

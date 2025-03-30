@@ -45,53 +45,39 @@ export default function Technologies() {
 
   return (
     <section className="py-12 px-4 max-w-6xl mx-auto">
-      <motion.h2 
-        initial={{ opacity: 0, y: 20 }}
+      <motion.h2  initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-4xl font-light text-gray-200 mb-12 text-center"
-      >
+        className="text-4xl font-light text-gray-200 mb-12 text-center">
         Technologies I Use
       </motion.h2>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {techGroups.map((group, index) => (
-          <motion.div
-            key={group.category}
+          <motion.div key={group.category}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-zinc-900/50 backdrop-blur-sm rounded-xl p-6 border border-zinc-800"
-          >
+            className="bg-zinc-900/20 backdrop-blur-sm rounded-xl p-6 border border-zinc-800">
             <h3 className="text-xl font-semibold text-amber-100 mb-4">
               {group.category}
             </h3>
-            
             <div className="grid grid-cols-3 gap-4">
               {group.items.map((tech) => (
-                <motion.div
-                  key={tech.name}
+                <motion.div key={tech.name}
                   onMouseEnter={() => setHoveredTech(tech.name)}
                   onMouseLeave={() => setHoveredTech(null)}
                   className="flex flex-col items-center p-3 rounded-lg relative"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <div className="w-16 h-16 mb-2 relative">
-                    <img
-                      src={tech.iconSrc}
+                  whileHover={{ scale: 1.05 }}>
+                  <div className="w-10 h-10 mb-2 relative">
+                    <img src={tech.iconSrc}
                       alt=""
                       className="w-full h-full object-contain"
-                      aria-hidden="true"
-                    />
-                    
+                      aria-hidden="true"/>
                     {hoveredTech === tech.name && (
-                      <motion.div
-                        className="absolute inset-0 bg-amber-400/10 rounded-lg"
+                      <motion.div className="absolute inset-0 rounded-lg"
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                      />
+                        animate={{ opacity: 1 }}/>
                     )}
                   </div>
-
                   <span className="text-center text-sm text-zinc-300 font-medium">
                     {tech.name}
                   </span>
@@ -101,13 +87,11 @@ export default function Technologies() {
           </motion.div>
         ))}
       </div>
-
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="text-center mt-8 text-zinc-400"
-      >
-        ...and many more technologies in my toolkit
+        className="text-center mt-8 text-zinc-400">
+        <p className="">...and many more technologies in my toolkit</p>
       </motion.div>
     </section>
   );

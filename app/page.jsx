@@ -29,10 +29,10 @@ export default function Home() {
         <div>
           <Hero />
         </div>
-        <div className="flex flex-col gap-12 items-center justify-center lg:flex-row my-4" id="timeline">
+        <div className="flex flex-col gap-12 items-center justify-center lg:flex-row my-4 pattern" id="timeline">
           <Technologies />
         </div>
-        <div className="mt-12">
+        <div className="mt-12 pattern">
           <CertificationShowcase />
         </div>
         <div>
