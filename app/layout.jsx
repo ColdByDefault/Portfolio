@@ -10,15 +10,24 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import "@styles/globals.css";
 import Navbar from "@components/Navbar";
 import Footer from "@components/Footer";
+import { Red_Hat_Display } from 'next/font/google'
 
 export const metadata = {
   title: "ColdByDefault",
   description: "Portfolio and beRich.Hub",
 };
 
+ 
+export const redHatDisplay = Red_Hat_Display({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
 export default function RootLayout({ children }) {
+  const defaultLang = 'en'; 
+  const alternateLang = 'de';
   return (
-    <html lang="en">
+    <html lang={defaultLang} className={redHatDisplay.className}>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,6 +43,7 @@ export default function RootLayout({ children }) {
         <meta name="twitter:description" content="Portfolio and beRich.Hub" />
         <meta name="twitter:image" content="/logo.png" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="alternate" hrefLang={alternateLang} href="https://www.coldbydefault.com/de" /> 
         <script type="application/ld+json">
           {`
             {

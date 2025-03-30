@@ -1,5 +1,5 @@
 import React from 'react';
-import CertificationGrid from '@components/main/CertificationGrid';
+import CertificationGrid from '@components/ui/CertificationGrid';
 
 const certifications = [
     {
@@ -55,9 +55,9 @@ const certifications = [
 
 const CertificationShowcase = () => {
   return (
-    <section className="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <section className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl text-center mb-8">
+        <h2 className="text-3xl font-extrabold text-gray-200 sm:text-4xl text-center mb-8">
           My Certifications
         </h2>
         <CertificationGrid certifications={certifications} />

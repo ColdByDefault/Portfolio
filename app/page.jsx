@@ -1,9 +1,11 @@
 'use client';
 import { useState, useEffect } from "react";
 import LoadingScreen from "@components/LoadingScreen";
-import Hero from "@components/main/Hero";
-import CertificationShowcase from "@components/main/CertificationShowCase";
+import Hero from "@components/Hero";
+import CertificationShowcase from "@components/CertificationShowCase";
 import ScrollToTopButton from "@components/ui/ScrollTop";
+import Technologies from "@components/Technologies";
+
 
 
 export default function Home() {
@@ -27,7 +29,8 @@ export default function Home() {
         <div>
           <Hero />
         </div>
-        <div className="flex flex-col gap-12 items-center justify-center lg:flex-row my-4">
+        <div className="flex flex-col gap-12 items-center justify-center lg:flex-row my-4" id="timeline">
+          <Technologies />
         </div>
         <div className="mt-12">
           <CertificationShowcase />
