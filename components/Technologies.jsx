@@ -56,7 +56,7 @@ export default function Technologies() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-zinc-900/20 backdrop-blur-sm rounded-xl p-6 border border-zinc-800">
+            className="bg-zinc-900/30 backdrop-blur-sm rounded-xl p-6 border border-zinc-800">
             <h3 className="text-xl font-semibold text-amber-100 mb-4">
               {group.category}
             </h3>

@@ -5,6 +5,7 @@ import Hero from "@components/Hero";
 import CertificationShowcase from "@components/CertificationShowCase";
 import ScrollToTopButton from "@components/ui/ScrollTop";
 import Technologies from "@components/Technologies";
+import Projects from "@components/Projects"
 
 
 
@@ -31,6 +32,9 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-12 items-center justify-center lg:flex-row my-4 pattern" id="timeline">
           <Technologies />
+        </div>
+        <div className="flex flex-col gap-12 items-center justify-center lg:flex-row my-4 pattern" id="timeline">
+          {/* <Projects /> */}
         </div>
         <div className="mt-12 pattern">
           <CertificationShowcase />
