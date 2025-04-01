@@ -62,7 +62,7 @@ const Hero = () => {
               <span>Link</span>
               <FaTree className="ml-2 h-5 w-5" />
             </Link>
-            <DynamicBtn title="Explore" icon={FaFly} targetId="timeline" />
+            <DynamicBtn title="Explore" icon={FaFly} targetId="projects-sect" />
           </div>
         </div>
         <div className="hidden lg:block lg:max-w-4xl lg:ml-12"></div>

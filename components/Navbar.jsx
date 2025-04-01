@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { AiOutlineHome } from "react-icons/ai";
 import { FiMenu, FiX } from "react-icons/fi";
+import { BiCertification } from "react-icons/bi";
+import { GoFileCode } from "react-icons/go";
 
 const NavLink = ({ href, children, onClick, className = "" }) => (
   <Link
@@ -19,6 +21,8 @@ const Navbar = () => {
 
   const navLinks = [
     { href: "/", label: "Home", icon: <AiOutlineHome /> },
+    { href: "#projects-sect", label: "Projects", icon: <GoFileCode /> },
+    { href: "#cer", label: "Certifications", icon: <BiCertification /> },
   ];
 
   return (
