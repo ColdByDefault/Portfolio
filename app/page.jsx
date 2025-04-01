@@ -46,14 +46,14 @@ export default function Home() {
         <div>
           <Hero />
         </div>
-        <div className="flex flex-col w-full gap-12 items-center justify-center lg:flex-row my-4 pattern py-12" id="projects-sect">
+        <div className="flex flex-col w-full items-center justify-center lg:flex-row pattern" id="projects-sect">
 {/*           <BlogSection posts={posts}/>
           <BlogSection posts={posts}/> */}
         </div>
-        <div className="flex flex-col gap-12 items-center justify-center lg:flex-row my-4 pattern" id="projects-sect">
+        <div className="flex flex-col items-center justify-center lg:flex-row pattern" id="projects-sect">
           <Technologies />
         </div>
-        <div className="flex flex-col gap-12 items-center justify-center lg:flex-row my-4 pattern" id="timeline">
+        <div className="flex flex-col items-center justify-center lg:flex-row pattern" id="timeline">
           {/* <Projects /> */}
         </div>
         <div className="mt-12 pattern" id="cer">

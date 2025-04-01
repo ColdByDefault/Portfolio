@@ -11,7 +11,7 @@ import { FaFly } from "react-icons/fa";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen w-full">
+    <section className="relative  w-full">
       <div>
           <Spotlight className="absolute top-0 left-0 z-10 h-[30vh] lg:h-[80vh]" fill="#2c2cc471"/>
           <Spotlight className="absolute top-12 left-20 z-10 h-[30vh] lg:h-auto" fill="#5c106b54"/>
@@ -51,17 +51,7 @@ const Hero = () => {
 
 
           {/* Social Links */}
-          <div className="flex items-start gap-4 sm:gap-6">
-            <Link href="https://linktr.ee/ColdByDefault"
-              rel="noopener noreferrer"
-              target="_blank"
-              className="inline-flex h-12 items-center justify-center rounded-md 
-              border border-slate-600 bg-black/20 px-6 font-medium text-slate-300 
-              backdrop-blur-sm transition-all hover:bg-black/30 hover:text-white 
-              focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
-              <span>Link</span>
-              <FaTree className="ml-2 h-5 w-5" />
-            </Link>
+          <div className="flex items-start gap-4">
             <DynamicBtn title="Explore" icon={FaFly} targetId="projects-sect" />
           </div>
         </div>
@@ -72,3 +62,16 @@ const Hero = () => {
 };
 
 export default Hero;
+
+
+
+{/* <Link href="https://linktr.ee/ColdByDefault"
+rel="noopener noreferrer"
+target="_blank"
+className="inline-flex h-12 items-center justify-center rounded-md 
+border border-slate-600 bg-black/20 px-6 font-medium text-slate-300 
+backdrop-blur-sm transition-all hover:bg-black/30 hover:text-white 
+focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+<span>Link</span>
+<FaTree className="ml-2 h-5 w-5" />
+</Link> */}

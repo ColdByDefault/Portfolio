@@ -1,10 +1,14 @@
 import React from 'react';
 
-const HeroButton = ({ title, icon: Icon, targetId }) => {
+const HeroButton = ({ title, icon: Icon, targetId, onClick }) => {
   const handleClick = () => {
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
+    if (onClick) {
+      onClick();
+    } else if (targetId) {
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 

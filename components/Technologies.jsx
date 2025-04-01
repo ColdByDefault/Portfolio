@@ -44,7 +44,7 @@ export default function Technologies() {
   const [hoveredTech, setHoveredTech] = useState(null);
 
   return (
-    <section className="py-12 px-4 max-w-6xl mx-auto">
+    <section className="px-4 max-w-6xl mx-auto">
       <motion.h2  initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-4xl font-light text-gray-200 mb-12 text-center">
