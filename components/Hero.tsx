@@ -16,7 +16,8 @@ import {
 } from "@/components/ui/Drawer"
 
 import SocialLinks from "@/components/ui/SocialLinks";
-
+import { faGithub, faInstagram, faXTwitter } from '@fortawesome/free-brands-svg-icons'; 
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 
 function Hero() {
@@ -66,42 +67,39 @@ function Hero() {
             md:w-28 md:text-sm
             sm:w-24 sm:pr-2">
             <Drawer>
-              <DrawerTrigger>Collaborate</DrawerTrigger>
+              <DrawerTrigger>Get in Touch</DrawerTrigger>
               <DrawerContent>
                 <DrawerHeader>
                   <DrawerTitle></DrawerTitle>
                   <DrawerDescription>
                   </DrawerDescription>
                   <div className="flex justify-center gap-8 items-center w-full mt-2">
-                    <SocialLinks
-                      href="https://github.com/ColdByDefault"
-                      iconSrc="/assets/icons/githubContact.png"
-                      altText="GitHub Account"
-                      label="GitHub"/>
-                    <SocialLinks
+                  <SocialLinks
+                      href="https://github.com/coldbydefault"
+                      altText="GitHub Profile"
+                      label=""
+                      icon={faGithub}/>
+                  <SocialLinks
                       href="mailto:abo.ayash.yazan@gmail.com?subject=Hello&body=Hi there!"
-                      iconSrc="/assets/icons/mail.png"
-                      altText="Email Contact"
-                      label="Email"
-                      isMail={true}/>
-                    <SocialLinks
-                      href='https://www.instagram.com/cold.by.default/'
-                      iconSrc="/assets/icons/instagram.png"
-                      altText="Email Contact"
-                      label="IG"
-                      isMail={true}/>
-                    <SocialLinks
-                      href='https://www.x.com/ccoldbydefault/' 
-                      iconSrc="/assets/icons/twitter.png"
-                      altText="Email Contact"
-                      label="X"
-                      isMail={true}/>
+                      altText="GMAIL"
+                      label=""
+                      icon={faPaperPlane}/>
+                  <SocialLinks
+                      href="https://instagram.com/cold.by.default"
+                      altText="IG"
+                      label=""
+                      icon={faInstagram}/>
+                  <SocialLinks
+                      href="https://x.com/ccoldbydefault"
+                      altText="X"
+                      label=""
+                      icon={faXTwitter}/>
                   </div>
                 </DrawerHeader>
                 <DrawerFooter>
                   <DrawerClose> 
                     <div className='w-full flex justify-center items-center'>
-                      <div className='rounded-full text-center p-2 text-white
+                      <div className='rounded-full text-center p-2 text-white cursor-pointer
                     bg-zinc-900 backdrop-blur-sm border border-zinc-400'>Close</div> 
                     </div>
                   </DrawerClose>
@@ -120,46 +118,3 @@ function Hero() {
 };
 
 export default Hero;
-
-
-
-/* <div className="flex flex-col items-center gap-2">
-                      <Image src={"/assets/icons/githubContact.png"} alt="GitHub" width={30} height={30} />
-                      <Link 
-                        href='https://github.com/ColdByDefault' 
-                        aria-label="GitHub Account"
-                        target='_blank' 
-                        rel='noopener noreferrer' 
-                        className='font-bold border-b-1 shadow-[0px_5px_5px_rgba(5,5,5,0.5)] border-black px-2 rounded-full'>GitHub
-                      </Link>
-                    </div>                  
-                    <div className="flex flex-col items-center gap-2">
-                      <Image src={"/assets/icons/instagram.png"} alt="IG" width={30} height={30} />
-                      <Link 
-                        href='https://www.instagram.com/cold.by.default/' 
-                        aria-label="Instagram Account"
-                        target='_blank' 
-                        rel='noopener noreferrer' 
-                        className='font-bold border-b-2 px-2 rounded-full'>Instagram
-                      </Link>
-                    </div>                  
-                    <div className="flex flex-col items-center gap-2">
-                      <Image src={"/assets/icons/twitter.png"} alt="X" width={30} height={30} />
-                      <Link 
-                        href='https://www.x.com/ccoldbydefault/' 
-                        aria-label="X Account"
-                        target='_blank' 
-                        rel='noopener noreferrer' 
-                        className='font-bold border-b-2 px-2 rounded-full'>X
-                      </Link>
-                    </div>                  
-                    <div className="flex flex-col items-center gap-2">
-                      <Image src={"/assets/icons/mail.png"} alt="G-Mail" width={30} height={30} />
-                      <Link 
-                        href='mailto:abo.ayash.yazan@gmail.com?subject=Hello&body=Hi%20there!' 
-                        aria-label="email"
-                        target='_blank' 
-                        rel='noopener noreferrer' 
-                        className='font-bold border-b-2 px-2 rounded-full'>Email
-                      </Link>
-                    </div>                   */
