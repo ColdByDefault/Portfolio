@@ -6,6 +6,7 @@ import { Spotlight } from '@components/ui/Spotlight';
 import DynamicBtn from '@components/ui/DynamicBtn';
 import '@styles/globals.css';
 import { FaFly } from "react-icons/fa";
+import BottomDrawer from '@components/ui/Drawer';
 
 
 
@@ -47,11 +48,9 @@ const Hero = () => {
               GitHub↗
             </Link>.
           </p>
-
-
-
           {/* Social Links */}
           <div className="flex items-start gap-4">
+            <BottomDrawer/>
             <DynamicBtn title="Explore" icon={FaFly} targetId="projects-sect" />
           </div>
         </div>
