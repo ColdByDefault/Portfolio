@@ -4,6 +4,21 @@ import Link from 'next/link';
 import '@/styles/globals.css';
 
 
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/Drawer"
+
+
+
+
+
 function Hero() {
   return (
     <section className="relative w-full">
@@ -45,6 +60,45 @@ function Hero() {
               GitHub↗
             </Link>.
           </p>
+          <div className="bg-white rounded-full text-center p-2
+            w-28 text-md
+            lg:w-32 lg:text-lg
+            md:w-28 md:text-sm
+            sm:w-24 sm:pr-2">
+            <Drawer>
+              <DrawerTrigger>Collaborate</DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader>
+                  <DrawerTitle>Get in touch</DrawerTitle>
+                  <DrawerDescription>
+                  </DrawerDescription>
+                  <div className="flex justify-evenly items-center w-full">
+                    <Link 
+                      href='https://github.com/ColdByDefault' 
+                      aria-label="GitHub Repository"
+                      target='_blank' 
+                      rel='noopener noreferrer' 
+                      className='text-black underline underline-offset-2 '>
+                      GitHub
+                    </Link>
+                    <Link 
+                      href='' 
+                      aria-label="IG"
+                      target='_blank' 
+                      rel='noopener noreferrer' 
+                      className='text-black underline underline-offset-2 '>
+                      GitHub
+                    </Link>
+                  </div>
+                </DrawerHeader>
+                <DrawerFooter>
+                  <DrawerClose> 
+                    close   
+                  </DrawerClose>
+                </DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+          </div>
           {/* Social Links */}
           <div className="flex items-start gap-4">
           </div>

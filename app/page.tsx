@@ -5,8 +5,8 @@ import Hero from "@/components/Hero";
 import CertificationShowcase from "@/components/CertificationShowCase";
 import ScrollToTopButton from "@/components/ui/ScrollTop";
 import Technologies from "@/components/Technologies";
-import Projects from "@/components/Projects";
-import BlogSection from "@/components/Blog";
+
+
 
 interface Post {
   id: string;
@@ -54,8 +54,8 @@ export default function Home() {
           <Hero />
         </div>
         <div className="flex flex-col w-full items-center justify-center lg:flex-row pattern" id="projects-sect">
-          {/* <BlogSection posts={posts}/> */}
-          {/* <BlogSection posts={posts}/> */}
+
+          
         </div>
         <div className="flex flex-col items-center justify-center lg:flex-row pattern" id="projects-sect">
           <Technologies />

@@ -1,5 +1,5 @@
-# ColdByDefault Portfolio (Version 2.0.0):
-
+# ColdByDefault Portfolio (Version 3.1.0):
+### UPGRADE TO TYPESCRIPT
 Welcome to my portfolio! This project is built with Next.js Fullstack and is hosted on Vercel. It serves as a personal website showcasing my portfolio and **SOON** my own beRich.Hub for documentation and learning materials.
 
 ---
