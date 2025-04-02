@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
 @custom-variant dark (&:is(.dark *));
 
 *{
@@ -9,6 +10,15 @@
 
 body {
   background: #0D0C0F;
+}
+
+.logo-text {
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.logo-text span{
+  color: #70adfd;
 }
 
 /* Customize the scrollbar */

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { AiOutlineHome } from "react-icons/ai";
 import { FiMenu, FiX } from "react-icons/fi";
 import { BiCertification } from "react-icons/bi";
@@ -18,8 +19,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, onClick, className = 
   <Link
     href={href}
     className={`block px-4 py-2 text-gray-300 hover:text-white transition-all ${className}`}
-    onClick={onClick}
-  >
+    onClick={onClick}>
     {children}
   </Link>
 );
@@ -40,25 +40,12 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav
-      className="fixed z-50 w-full lg:w-1/2 mx-auto right-0 left-0
+    <nav className="fixed z-50 w-full lg:w-1/2 mx-auto right-0 left-0
       lg:mt-2 lg:rounded-full
-      bg-black/20 backdrop-blur-md text-white border-b border-black/20"
-    >
+      bg-black/20 backdrop-blur-md text-white border-b border-black/20">
       <div className="flex justify-between items-center max-w-7xl mx-auto px-6 py-2">
-        <Link
-          href="/"
-          className="flex items-center font-bold text-center w-full justify-center sm:justify-start sm:w-auto"
-        >
-          <div className="text-white block sm:hidden">
-            <span className="text-white">Cold</span>
-            <span className="text-blue-200">ByDefault</span>
-          </div>
-          <div className="hidden sm:block">
-            <span className="text-white">Cold</span>
-            <span className="text-blue-200">ByDefault</span>
-          </div>
-        </Link>
+        {/* LOGO */}
+        <h1 style={{ fontFamily: 'var(--font-orbitron)' }} className="logo-text">Cold<span>By</span>Default</h1>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">

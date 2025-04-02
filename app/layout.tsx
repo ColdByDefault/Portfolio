@@ -10,6 +10,7 @@ import "@/styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Red_Hat_Display } from 'next/font/google';
+import { Orbitron } from 'next/font/google';
 import React from 'react';
 
 export const metadata = {
@@ -21,6 +22,11 @@ export const redHatDisplay = Red_Hat_Display({
   subsets: ['latin'],
   display: 'swap',
 });
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-orbitron', 
+});
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -30,7 +36,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   const defaultLang = 'en'; 
   const alternateLang = 'de';
   return (
-    <html lang={defaultLang} className={redHatDisplay.className}>
+    <html lang={defaultLang} className={`${redHatDisplay.className} ${orbitron.variable}`}>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
