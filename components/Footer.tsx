@@ -4,7 +4,11 @@ import { FaInstagram } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import { SiLinktree, SiWakatime } from "react-icons/si";
 
+
+
 function Footer() {
+    const currentYear = new Date().getFullYear();
+
     return (
         <footer className="bg-black backdrop-filter backdrop-blur-lg bg-opacity-30 border-t border-black shadow-lg z-0">
             <div className="mx-auto w-full max-w-screen-xl p-4 py-2 sm:py-4 lg:py-6">
@@ -95,7 +99,7 @@ function Footer() {
                 <hr className="my-4 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-6" />
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-                        {new Date().getFullYear()}{" "}
+                        {currentYear}{" "}
                         <Link
                             href="https://coldbydefault.com/"
                             rel="noopener noreferrer"
@@ -111,6 +115,7 @@ function Footer() {
                             rel="noopener noreferrer"
                             target="_blank"
                             className="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                            aria-label="Instagram"
                         >
                             <FaInstagram className="w-6 h-6" />
                         </Link>
@@ -119,6 +124,7 @@ function Footer() {
                             rel="noopener noreferrer"
                             target="_blank"
                             className="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                            aria-label="Twitter/X"
                         >
                             <BsTwitterX className="w-6 h-6" />
                         </Link>
@@ -127,6 +133,7 @@ function Footer() {
                             rel="noopener noreferrer"
                             target="_blank"
                             className="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                            aria-label="Linktree"
                         >
                             <SiLinktree className="w-6 h-6" />
                         </Link>
@@ -135,7 +142,8 @@ function Footer() {
                             rel="noopener noreferrer"
                             target="_blank"
                             className="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
->
+                            aria-label="WakaTime"
+                        >
                             <SiWakatime className="w-6 h-6" />
                         </Link>
                     </div>
@@ -143,6 +151,6 @@ function Footer() {
             </div>
         </footer>
     );
-}
+};
 
 export default Footer;

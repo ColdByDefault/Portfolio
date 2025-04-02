@@ -1,9 +1,17 @@
-
 import React from 'react';
 import Image from 'next/image';
 
+interface Certification {
+  id: number;
+  title: string;
+  image: string;
+  issuer: string;
+  description: string;
+  date: string;
+}
+
 const CertificationShowcase = () => {
-  const certifications = [
+  const certifications: Certification[] = [
     {
       id: 1,
       title: 'Python PCEP',
@@ -67,9 +75,10 @@ const CertificationShowcase = () => {
                 <Image 
                   src={cert.image} 
                   alt={cert.title}
-                  width={300} 
-                  height={300} 
+                  width={300}
+                  height={280} 
                   className="object-cover" 
+                  priority={cert.id <= 3} // Only prioritize first 3 images
                 />
               </div>
               <div className="row-span-1 p-4">

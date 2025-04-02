@@ -54,7 +54,7 @@ body {
 
 
 @theme inline {
-  --animate-spotlight: spotlight 2s ease 2s 1 forwards;
+  --animate-spotlight: all 2s ease 2s 1 forwards;
 }
  
 @keyframes spotlight {

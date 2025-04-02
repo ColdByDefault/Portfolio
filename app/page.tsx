@@ -1,18 +1,25 @@
 'use client';
 import { useState, useEffect } from "react";
-import LoadingScreen from "@components/LoadingScreen";
-import Hero from "@components/Hero";
-import CertificationShowcase from "@components/CertificationShowCase";
-import ScrollToTopButton from "@components/ui/ScrollTop";
-import Technologies from "@components/Technologies";
-import Projects from "@components/Projects"
-import BlogSection from "@components/Blog";
+import LoadingScreen from "@/components/LoadingScreen";
+import Hero from "@/components/Hero";
+import CertificationShowcase from "@/components/CertificationShowCase";
+import ScrollToTopButton from "@/components/ui/ScrollTop";
+import Technologies from "@/components/Technologies";
+import Projects from "@/components/Projects";
+import BlogSection from "@/components/Blog";
 
-
+interface Post {
+  id: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  slug: string;
+  // Add other post properties as needed
+}
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -47,8 +54,8 @@ export default function Home() {
           <Hero />
         </div>
         <div className="flex flex-col w-full items-center justify-center lg:flex-row pattern" id="projects-sect">
-{/*           <BlogSection posts={posts}/>
-          <BlogSection posts={posts}/> */}
+          {/* <BlogSection posts={posts}/> */}
+          {/* <BlogSection posts={posts}/> */}
         </div>
         <div className="flex flex-col items-center justify-center lg:flex-row pattern" id="projects-sect">
           <Technologies />
@@ -66,4 +73,3 @@ export default function Home() {
     </>
   );
 }
-

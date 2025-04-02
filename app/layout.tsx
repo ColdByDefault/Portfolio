@@ -4,26 +4,29 @@
 // All Rights Reserved - No part of this website or any of its contents may be reproduced, copied, modified or adapted, 
 // without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 
-
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import "@styles/globals.css";
-import Navbar from "@components/Navbar";
-import Footer from "@components/Footer";
-import { Red_Hat_Display } from 'next/font/google'
+import "@/styles/globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Red_Hat_Display } from 'next/font/google';
+import React from 'react';
 
 export const metadata = {
   title: "ColdByDefault",
   description: "Portfolio and beRich.Hub",
 };
 
- 
 export const redHatDisplay = Red_Hat_Display({
   subsets: ['latin'],
   display: 'swap',
-})
+});
 
-export default function RootLayout({ children }) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   const defaultLang = 'en'; 
   const alternateLang = 'de';
   return (
@@ -53,7 +56,7 @@ export default function RootLayout({ children }) {
               "url": "https://www.coldbydefault.com",
               "logo": "https://www.coldbydefault.com/logo.png",
               "sameAs": [
-                "https://github.com/ColdByDefault",
+                "https://github.com/ColdByDefault"
               ]
             }
           `}

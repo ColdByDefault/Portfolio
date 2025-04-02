@@ -1,10 +1,22 @@
-"use client";
+'use client';
 
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
+import React from "react";
 
-const projects = [
+
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  link: string;
+  github: string;
+}
+
+const projects: Project[] = [
   {
     id: 1,
     title: "E-commerce Platform",
@@ -62,21 +74,21 @@ const projects = [
 ];
 
 export default function Projects() {
-  const [hoveredProject, setHoveredProject] = useState(null);
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   return (
     <section className="py-12 px-4 max-w-6xl mx-auto">
-      <motion.h2 
+      <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-4xl font-light text-gray-200 mb-12 text-center"
       >
         My Projects
       </motion.h2>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, index) => (
-          <motion.div 
+          <motion.div
             key={project.id}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -97,28 +109,28 @@ export default function Projects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/80 to-transparent" />
             </div>
-            
+
             <div className="p-6">
-              <motion.h3 
+              <motion.h3
                 className="text-xl font-semibold text-amber-100 mb-2"
                 whileHover={{ color: "#f59e0b" }}
               >
                 {project.title}
               </motion.h3>
-              
+
               <p className="text-zinc-300 mb-4">{project.description}</p>
-              
+
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map(tag => (
-                  <span 
-                    key={tag} 
+                  <span
+                    key={tag}
                     className="px-2 py-1 bg-zinc-800 text-zinc-300 text-xs rounded-md"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-              
+
               <div className="flex gap-3">
                 <motion.a
                   href={project.link}
@@ -139,7 +151,7 @@ export default function Projects() {
           </motion.div>
         ))}
       </div>
-      
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

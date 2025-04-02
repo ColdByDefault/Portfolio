@@ -1,21 +1,19 @@
 "use client";
-
+import React from "react";
+import { FaTree, FaFly } from "react-icons/fa";
 import { useState } from "react";
-import HeroButton from "@components/ui/DynamicBtn"; 
+
 
 export default function BottomDrawer() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const toggleDrawer = () => {
+  const toggleDrawer = (): void => {
     setIsOpen(!isOpen);
   };
 
   return (
     <div className="fixed inset-x-0 bottom-0 p-4">
-      <HeroButton
-        title={"Explore"}
-        onClick={toggleDrawer}
-      />
+      <button onClick={toggleDrawer}/>
 
       {isOpen && (
         <div className="mt-4 bg-white rounded-t-2xl shadow-lg p-6 max-h-64 overflow-y-auto">

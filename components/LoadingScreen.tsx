@@ -1,20 +1,25 @@
 // Desc: Loading screen component
 // On refresh or when the page is loaded, the loading screen will be displayed for 2.2 seconds
 import React, { useEffect, useState } from "react";
-import "@styles/glitchEffect.css";
+import "@/styles/glitchEffect.css";
 
 const chars = "-sd_sdf~`gdf!@#dfg$g%gh^&qwe*fdg()+sdf=[]{fg}|sad;:,.<>?";
 
-const TextEncrypted = ({ text, interval = 50 }) => {
-  const [outputText, setOutputText] = useState("");
-  const [isMounted, setIsMounted] = useState(false);
+interface TextEncryptedProps {
+  text: string;
+  interval?: number;
+}
+
+const TextEncrypted: React.FC<TextEncryptedProps> = ({ text, interval = 50 }) => {
+  const [outputText, setOutputText] = useState<string>("");
+  const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   useEffect(() => {
-    let timer;
+    let timer: NodeJS.Timeout;
 
     if (outputText !== text) {
       timer = setInterval(() => {
@@ -51,8 +56,13 @@ const TextEncrypted = ({ text, interval = 50 }) => {
   );
 };
 
-function LoadingScreen({ onComplete, text = "Loading..." }) { // Accept text as a prop
-  const [isFading, setIsFading] = useState(false);
+interface LoadingScreenProps {
+  onComplete: () => void;
+  text?: string;
+}
+
+const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete, text = "Loading..." }) => {
+  const [isFading, setIsFading] = useState<boolean>(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -71,10 +81,10 @@ function LoadingScreen({ onComplete, text = "Loading..." }) { // Accept text as 
         isFading ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}>
       <h1 className="text-xl mb-8 font-bold drop-shadow-black">
-        <TextEncrypted text={text} interval={120} /> {/* Pass the text prop */}
+        <TextEncrypted text={text} interval={120} />
       </h1>
     </div>
   );
-}
+};
 
 export default LoadingScreen;

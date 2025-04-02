@@ -1,12 +1,13 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { IoIosArrowDropup } from "react-icons/io";
+import React from "react";
 
-const ScrollToTopButton = () => {
-  const [isVisible, setIsVisible] = useState(false);
+function ScrollToTopButton() {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
-    const toggleVisibility = () => {
+    const toggleVisibility = (): void => {
       if (window.pageYOffset > 300) {
         setIsVisible(true);
       } else {
@@ -19,7 +20,7 @@ const ScrollToTopButton = () => {
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
-  const scrollToTop = () => {
+  const scrollToTop = (): void => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
@@ -34,8 +35,10 @@ const ScrollToTopButton = () => {
           className="hidden lg:flex fixed bottom-24 right-10 z-10 text-white rounded-full w-15
           bg-zinc-900/30 backdrop-blur-sm border border-zinc-800
           p-2 h-15 items-center justify-center"
-          aria-label="Scroll to top">
-          <IoIosArrowDropup  size={25} />Top
+          aria-label="Scroll to top"
+        >
+          <IoIosArrowDropup size={25} />
+          <span>Top</span>
         </button>
       )}
     </>
@@ -43,4 +46,3 @@ const ScrollToTopButton = () => {
 };
 
 export default ScrollToTopButton;
-
