@@ -6,6 +6,9 @@ import CertificationShowcase from "@/components/CertificationShowCase";
 import ScrollToTopButton from "@/components/ui/ScrollTop";
 import Technologies from "@/components/Technologies";
 
+import {CarouselPlugin} from "@/components/CertiSliderSM"
+
+
 
 
 interface Post {
@@ -53,18 +56,19 @@ export default function Home() {
         <div>
           <Hero />
         </div>
-        <div className="flex flex-col w-full items-center justify-center lg:flex-row pattern" id="projects-sect">
-
-          
-        </div>
         <div className="flex flex-col items-center justify-center lg:flex-row pattern" id="projects-sect">
           <Technologies />
         </div>
         <div className="flex flex-col items-center justify-center lg:flex-row pattern" id="timeline">
-          {/* <Projects /> */}
+        {/* <Projects /> */}
         </div>
         <div className="mt-12 pattern" id="cer">
-          <CertificationShowcase />
+          <div className="hidden lg:block">
+            <CertificationShowcase />
+          </div>
+          <div className="lg:hidden flex w-full h-full pattern z-50 translate-x-7" id="projects-sect">
+            <CarouselPlugin autoPlayDelay={2000} maxWidth="max-w-xs"/>
+          </div>
         </div>
         <div>
           <ScrollToTopButton />
