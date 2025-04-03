@@ -63,10 +63,14 @@ export default function Home() {
         {/* <Projects /> */}
         </div>
         <div className="mt-12 pattern" id="cer">
-          <div className="hidden lg:block">
+          <div className="hidden lg:block md:block">
             <CertificationShowcase />
           </div>
-          <div className="lg:hidden flex w-full h-full pattern z-50 translate-x-7" id="projects-sect">
+          <div className="lg:hidden md:hidden flex flex-col w-full h-full justify-center items-center 
+          mt-24 pattern z-50" id="projects-sect">
+            <h2 className="text-3xl font-extrabold text-gray-200 sm:text-4xl text-center mb-8">
+              My Certifications
+            </h2>
             <CarouselPlugin autoPlayDelay={2000} maxWidth="max-w-xs"/>
           </div>
         </div>

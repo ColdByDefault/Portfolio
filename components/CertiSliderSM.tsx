@@ -5,6 +5,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselPrevious, 
+  CarouselNext, 
 } from "@/components/ui/carousel"
 
 import Image from "next/image"
@@ -75,6 +77,8 @@ export function CarouselPlugin({
           </CarouselItem>
         ))}
       </CarouselContent>
+      <CarouselPrevious className="bg-transparent" />
+      <CarouselNext className="bg-transparent"/>
     </Carousel>
   )
 }
