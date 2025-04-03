@@ -5,8 +5,8 @@ import Hero from "@/components/Hero";
 import CertificationShowcase from "@/components/CertificationShowCase";
 import ScrollToTopButton from "@/components/ui/ScrollTop";
 import Technologies from "@/components/Technologies";
-
 import {CarouselPlugin} from "@/components/CertiSliderSM"
+import ZoomScrollTitle from "@/components/ui/ZoomScrollTitle";
 
 
 
@@ -55,6 +55,9 @@ export default function Home() {
       <div className="overflow-hidden relative">
         <div>
           <Hero />
+        </div>
+        <div className="hidden lg:block">
+          <ZoomScrollTitle />
         </div>
         <div className="flex flex-col items-center justify-center lg:flex-row pattern" id="projects-sect">
           <Technologies />
