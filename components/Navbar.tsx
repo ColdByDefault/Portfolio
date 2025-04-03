@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { AiOutlineHome } from "react-icons/ai";
 import { FiMenu, FiX } from "react-icons/fi";
 import { BiCertification } from "react-icons/bi";
 import { GoFileCode } from "react-icons/go";
+
 
 interface NavLinkProps {
   href: string;
@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
       bg-black/20 backdrop-blur-md text-white border-b border-black/20">
       <div className="flex justify-between items-center max-w-7xl mx-auto px-6 py-2">
         {/* LOGO */}
-        <h1 style={{ fontFamily: 'var(--font-orbitron)' }} className="logo-text">Cold<span>By</span>Default</h1>
+        <h1 style={{ fontFamily: 'var(--font-orbitron)' }} className="logo-text sm:text-sm">Cold<span>By</span>Default</h1>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
@@ -63,8 +63,7 @@ const Navbar: React.FC = () => {
           text-white focus:outline-none focus:ring-2 
           focus:ring-blue-500"
           onClick={() => setShowMobileMenu((prev) => !prev)}
-          aria-label="Toggle menu"
-        >
+          aria-label="Toggle menu">
           {showMobileMenu ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
       </div>

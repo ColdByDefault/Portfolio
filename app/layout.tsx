@@ -13,6 +13,7 @@ import { Red_Hat_Display } from 'next/font/google';
 import { Orbitron } from 'next/font/google';
 import React from 'react';
 
+
 export const metadata = {
   title: "ColdByDefault",
   description: "Portfolio and beRich.Hub",
@@ -70,11 +71,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <title>ColdByDefault</title>
       </head>
       <body>
-        <Navbar />
-          {children}
-          <Analytics />
-          <SpeedInsights />
-        <Footer />
+          <Navbar />
+            {children}
+            <Analytics />
+            <SpeedInsights />
+          <Footer />
       </body>
     </html>
   );
