@@ -6,7 +6,7 @@ import CertificationShowcase from "@/components/CertificationShowCase";
 import ScrollToTopButton from "@/components/ui/ScrollTop";
 import Technologies from "@/components/Technologies";
 import {CarouselPlugin} from "@/components/CertiSliderSM"
-import AboutSection from "@/components/AboutSection"
+import ProjectSection from "@/components/ProjectSection"
 import { ParallaxProvider } from "react-scroll-parallax"
 
 
@@ -56,11 +56,11 @@ export default function Home() {
       )}
       <ParallaxProvider>
       <div className="overflow-hidden relative">
-        <div className="h-[20vh] sm:min-h-[20vh]">
+        <div className="">
           <Hero />
         </div>
-        <div className="block h-[80vh]"  id="projects-sect">
-          {/* <AboutSection /> */} {/* parallax effect */}
+        <div className="block min-h-screen"  id="projects-sect">
+          <ProjectSection /> {/* parallax effect */}
         </div>
         <div className="flex flex-col items-center justify-center lg:flex-row pattern">
           <Technologies />
@@ -74,7 +74,7 @@ export default function Home() {
           </div>
           <div className="lg:hidden md:hidden flex flex-col w-full h-full justify-center items-center 
           mt-24 pattern z-50" id="projects-sect">
-            <h2 className="text-3xl font-extrabold text-gray-200 sm:text-4xl text-center mb-8">
+            <h2 className="text-3xl font-light text-gray-200 sm:text-4xl text-center mb-8 mt-8">
               My Certifications
             </h2>
             <CarouselPlugin autoPlayDelay={2000} maxWidth="max-w-xs"/>

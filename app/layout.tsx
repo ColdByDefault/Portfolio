@@ -9,7 +9,6 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import "@/styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Red_Hat_Display } from 'next/font/google';
 import { Orbitron } from 'next/font/google';
 import React from 'react';
 
@@ -19,10 +18,7 @@ export const metadata = {
   description: "Portfolio and beRich.Hub",
 };
 
-export const redHatDisplay = Red_Hat_Display({
-  subsets: ['latin'],
-  display: 'swap',
-});
+
 const orbitron = Orbitron({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
@@ -37,7 +33,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   const defaultLang = 'en'; 
   const alternateLang = 'de';
   return (
-    <html lang={defaultLang} className={`${redHatDisplay.className} ${orbitron.variable}`}>
+    <html lang={defaultLang} className={`${orbitron.variable}`}>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

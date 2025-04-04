@@ -30,10 +30,6 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 function Hero() {
   return (
     <section className="relative w-full">
-       <div>
-        {/* SPOTLIGHTS */}
-      </div>
-      
       {/* Background Image Container */}
       <div className="inset-0 z-0 mt-12 md:mt-4 lg:mt-0">
         <Image 
@@ -46,7 +42,7 @@ function Hero() {
           sizes="100vw"/>
       </div>
       {/* Content Container */}
-      <div className="relative z-10 flex min-h-screen items-center sm:justify-evenly px-6 lg:px-8">
+      <div className="relative z-10 flex min-h-[80vh] items-center sm:justify-evenly px-6 lg:px-8 sm:min-h-screen">
         <div className="max-w-4xl p-4">
           {/* Name Section */}
           <h1 className="mb-6 text-left text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
@@ -122,9 +118,6 @@ function Hero() {
                 </DrawerFooter>
               </DrawerContent>
             </Drawer>
-          </div>
-          {/* Social Links */}
-          <div className="flex items-start gap-4">
           </div>
         </div>
         <div className="hidden lg:block lg:max-w-4xl lg:ml-12"></div>

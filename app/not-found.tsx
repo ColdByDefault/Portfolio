@@ -10,7 +10,7 @@ const NotFound = () => {
                     <span>Page Not Found</span>
                 </div>
                 <h2 className="text-xl font-semibold mt-2 text-gray-600">
-                    The page you are looking for <span className="text-green-600">may exist</span>
+                    The page you are looking for <span className="text-green-600">may exist </span>
                     or <span className="text-red-500">maybe it does not!</span>
                 </h2>
                 <p className="text-gray-600 mt-4">
