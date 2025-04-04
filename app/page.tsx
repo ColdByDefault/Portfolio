@@ -6,7 +6,9 @@ import CertificationShowcase from "@/components/CertificationShowCase";
 import ScrollToTopButton from "@/components/ui/ScrollTop";
 import Technologies from "@/components/Technologies";
 import {CarouselPlugin} from "@/components/CertiSliderSM"
-import ZoomScrollTitle from "@/components/ui/ZoomScrollTitle";
+import AboutSection from "@/components/AboutSection"
+import { ParallaxProvider } from "react-scroll-parallax"
+
 
 
 
@@ -52,14 +54,15 @@ export default function Home() {
           <LoadingScreen onComplete={() => setIsLoading(false)} text="ColdByDefault" />
         </div>
       )}
+      <ParallaxProvider>
       <div className="overflow-hidden relative">
-        <div>
+        <div className="h-[20vh] sm:min-h-[20vh]">
           <Hero />
         </div>
-        <div className="hidden lg:block">
-          <ZoomScrollTitle />
+        <div className="block h-[80vh]"  id="projects-sect">
+          {/* <AboutSection /> */} {/* parallax effect */}
         </div>
-        <div className="flex flex-col items-center justify-center lg:flex-row pattern" id="projects-sect">
+        <div className="flex flex-col items-center justify-center lg:flex-row pattern">
           <Technologies />
         </div>
         <div className="flex flex-col items-center justify-center lg:flex-row pattern" id="timeline">
@@ -81,6 +84,7 @@ export default function Home() {
           <ScrollToTopButton />
         </div>
       </div>
+      </ParallaxProvider>
     </>
   );
 }

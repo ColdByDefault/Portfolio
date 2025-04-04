@@ -15,6 +15,13 @@ import {
   DrawerTrigger,
 } from "@/components/ui/Drawer"
 
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
+
+
 import SocialLinks from "@/components/ui/SocialLinks";
 import { faGithub, faInstagram, faXTwitter } from '@fortawesome/free-brands-svg-icons'; 
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
@@ -47,8 +54,17 @@ function Hero() {
           </h1>
           {/* Description */}
           <p className="mb-8 max-w-2xl text-left text-sm text-slate-300 sm:text-base md:text-lg lg:text-xl">
-            Aspiring software developer building modern web apps and exploring cutting-edge technologies. 
-            Passionate about Python, Machine Learning, and crafting full-stack applications.<br />Check out my other projects and the source code for this portfolio<br />&#40;built with Next.js&#41; on my
+            I'm a full-stack junior developer and entrepreneur, building web apps, and digital solutions. Check out my other projects and the source code for this portfolio<br />&#40;built with 
+            <span className='text-blue-400 cursor-pointer font-semibold'>
+              <HoverCard>
+                <HoverCardTrigger>{' '}Next.Js</HoverCardTrigger>
+                <HoverCardContent>
+                  React Framework.<br />
+                  Deployment on @vercel.
+                </HoverCardContent>
+              </HoverCard>
+            </span>
+            &#41; on my
             {' '}
             <Link 
               href='https://github.com/ColdByDefault/Almighty' 
