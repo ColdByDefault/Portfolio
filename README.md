@@ -2,6 +2,18 @@
 ### UPGRADE TO TYPESCRIPT
 Welcome to my portfolio! This project is built with Next.js Fullstack and is hosted on Vercel. It serves as a personal website showcasing my portfolio and **SOON** my own beRich.Hub for documentation and learning materials.
 
+**V.1.**
+
+[![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/8021aafa-030b-41b9-9c31-71b1906659cd.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/8021aafa-030b-41b9-9c31-71b1906659cd)
+
+**V.2.**
+
+[![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/79c9876c-acce-48e7-b661-264f4bf514a5.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/79c9876c-acce-48e7-b661-264f4bf514a5)
+
+**V.3.**
+
+[![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/beb9337a-f033-4377-9e03-26f96c36a41a.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/beb9337a-f033-4377-9e03-26f96c36a41a)
+
 ---
 ## 🌐 Live Site
 
