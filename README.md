@@ -42,7 +42,7 @@ For any inquiries, feel free to connect with me through **[linktree](https://lin
 
 ## License
 
-**Copyright © 2024 ColdByDefault. All rights reserved.**
+**Copyright © 2025 ColdByDefault. All rights reserved.**
 
 This project and its contents (including code, design, and assets) are the property of **ColdByDefault**.
 
