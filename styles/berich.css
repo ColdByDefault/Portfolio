@@ -8,17 +8,8 @@
 }
 
 body {
-  background: #0D0C0F;
-}
+  background: #fcfcfc;
 
-.logo-text {
-  font-size: .7rem;
-  color: #fff;
-  letter-spacing: 1px;
-  padding-top: 5px;
-}
-.logo-text span{
-  color: #70adfd;
 }
 
 /* Customize the scrollbar */
@@ -39,11 +30,3 @@ body {
 ::-webkit-scrollbar-track {
   background: rgb(36, 35, 35); 
 }
-
-.pattern {
-  background-image: url("/pattern.png");
-  background-size: cover;
-
-}
-
-

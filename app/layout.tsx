@@ -7,11 +7,10 @@
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import "@/styles/globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/main/Navbar";
+import Footer from "@/components/main/Footer";
 import { Orbitron } from 'next/font/google';
 import React from 'react';
-
 
 export const metadata = {
   title: "ColdByDefault",
@@ -32,6 +31,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   const defaultLang = 'en'; 
   const alternateLang = 'de';
+
   return (
     <html lang={defaultLang} className={`${orbitron.variable}`}>
       <head>
@@ -67,7 +67,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <title>ColdByDefault</title>
       </head>
       <body>
-          <Navbar />
+        <Navbar />
             {children}
             <Analytics />
             <SpeedInsights />

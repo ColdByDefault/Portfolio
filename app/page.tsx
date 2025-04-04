@@ -1,12 +1,12 @@
 'use client';
 import { useState, useEffect } from "react";
-import LoadingScreen from "@/components/LoadingScreen";
-import Hero from "@/components/Hero";
-import CertificationShowcase from "@/components/CertificationShowCase";
+import LoadingScreen from "@/components/main/LoadingScreen";
+import Hero from "@/components/main/Hero";
+import CertificationShowcase from "@/components/main/CertificationShowCase";
 import ScrollToTopButton from "@/components/ui/ScrollTop";
-import Technologies from "@/components/Technologies";
-import {CarouselPlugin} from "@/components/CertiSliderSM"
-import ProjectSection from "@/components/ProjectSection"
+import Technologies from "@/components/main/Technologies";
+import {CarouselPlugin} from "@/components/main/CertiSliderSM"
+import ProjectSection from "@/components/main/ProjectSection"
 import { ParallaxProvider } from "react-scroll-parallax"
 
 

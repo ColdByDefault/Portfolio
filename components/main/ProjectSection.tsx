@@ -56,7 +56,7 @@ export default function ProjectSection() {
             <Card className="w-full max-w-md mx-auto p-4 z-50">
               <CardHeader>
                 <CardTitle>
-                  <Link href={"/page"} className="text-blue-400"
+                  <Link href={"/berich"} className="text-blue-400"
                   aria-label="beRich.Hub"
                   target='_blank' 
                   rel='noopener noreferrer' >beRich.Hub</Link>

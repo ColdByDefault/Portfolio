@@ -6,6 +6,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { FiMenu, FiX } from "react-icons/fi";
 import { BiCertification } from "react-icons/bi";
 import { GoFileCode } from "react-icons/go";
+import { usePathname } from "next/navigation"
 
 
 interface NavLinkProps {
@@ -31,6 +32,10 @@ interface NavLinkItem {
 }
 
 const Navbar: React.FC = () => {
+  const pathname = usePathname()
+  if (pathname.startsWith("/berich")) {
+    return null
+  }
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
 
   const navLinks: NavLinkItem[] = [
