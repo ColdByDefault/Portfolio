@@ -19,58 +19,13 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-commerce Platform",
-    description: "A full-stack e-commerce solution with React, Node.js, and PostgreSQL",
-    image: "/assets/logo44.png",
-    tags: ["React", "Node.js", "PostgreSQL", "TailwindCSS"],
+    title: "",
+    description: "",
+    image: "",
+    tags: [""],
     link: "#",
     github: "#"
   },
-  {
-    id: 2,
-    title: "Portfolio Website",
-    description: "A modern portfolio built with Next.js and Framer Motion",
-    image: "/assets/logo44.png",
-    tags: ["Next.js", "Framer Motion", "TailwindCSS"],
-    link: "#",
-    github: "#"
-  },
-  {
-    id: 3,
-    title: "Task Management App",
-    description: "A productivity app with drag-and-drop functionality",
-    image: "/assets/logo44.png",
-    tags: ["React", "Firebase", "Dnd Kit"],
-    link: "#",
-    github: "#"
-  },
-  {
-    id: 4,
-    title: "Weather Dashboard",
-    description: "Real-time weather data visualization",
-    image: "/assets/logo44.png",
-    tags: ["JavaScript", "API Integration", "Chart.js"],
-    link: "#",
-    github: "#"
-  },
-  {
-    id: 5,
-    title: "Social Media Analytics",
-    description: "Dashboard for tracking social media metrics",
-    image: "/assets/logo44.png",
-    tags: ["Python", "Flask", "D3.js"],
-    link: "#",
-    github: "#"
-  },
-  {
-    id: 6,
-    title: "AI Image Generator",
-    description: "Web interface for Stable Diffusion models",
-    image: "/assets/logo44.png",
-    tags: ["Python", "FastAPI", "React"],
-    link: "#",
-    github: "#"
-  }
 ];
 
 export default function Projects() {
