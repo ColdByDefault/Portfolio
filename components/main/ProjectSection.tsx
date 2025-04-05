@@ -1,6 +1,6 @@
 "use client"
 
-import { Parallax } from "react-scroll-parallax" // Importing Parallax from react-scroll-parallax for scroll animations
+import { Parallax } from "react-scroll-parallax"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -10,8 +10,10 @@ import {
   CardDescription,
   CardContent,
   CardFooter
-} from "@/components/ui/card" // Importing Card components for displaying project information
+} from "@/components/ui/card" 
 import { orbitron } from '@/lib/fonts'
+import { LiaExternalLinkAltSolid } from "react-icons/lia";
+
 
 export default function ProjectSection() {
   return (
@@ -41,10 +43,10 @@ export default function ProjectSection() {
             <Card className="w-full max-w-md mx-auto p-4 z-50">
               <CardHeader>
                 <CardTitle>
-                  <Link href={"/berich"} className="text-blue-400"
+                  <Link href={"/berich"} className="text-blue-400 flex gap-2 font-semibold hover:text-zinc-400 hover:underline"
                   aria-label="beRich.Hub"
                   target='_blank' 
-                  rel='noopener noreferrer'>beRich.Hub</Link>
+                  rel='noopener noreferrer'>beRich.Hub<LiaExternalLinkAltSolid /></Link>
                 </CardTitle>
                 <CardDescription>The Ultimate Hub for developers</CardDescription>
               </CardHeader>
@@ -61,10 +63,10 @@ export default function ProjectSection() {
             <Card className="w-full max-w-md mx-auto p-4 z-50">
               <CardHeader>
                 <CardTitle>
-                  <Link href={"/berich"} className="text-blue-400"
+                  <Link href={"/berich"} className="text-blue-400 flex gap-2 font-semibold hover:text-zinc-400 hover:underline"
                   aria-label="beRich.Hub"
                   target='_blank' 
-                  rel='noopener noreferrer'>beRich.Hub</Link>
+                  rel='noopener noreferrer'>beRich.Hub<LiaExternalLinkAltSolid /></Link>
                   </CardTitle>
               </CardHeader>
               <CardContent>

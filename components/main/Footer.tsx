@@ -1,14 +1,17 @@
+'use client'
 import React from "react";
 import Link from "next/link";
-import { FaInstagram } from "react-icons/fa6";
-import { BsTwitterX } from "react-icons/bs";
-import { SiLinktree, SiWakatime } from "react-icons/si";
+import { usePathname } from "next/navigation";
+
 
 
 
 function Footer() {
     const currentYear = new Date().getFullYear();
-
+    const pathname = usePathname()
+    if (pathname.startsWith("/berich")) {
+    return null
+    }
     return (
         <footer className="bg-black backdrop-filter backdrop-blur-lg bg-opacity-30 border-t border-black shadow-lg z-0">
             <div className="mx-auto w-full max-w-screen-xl p-4 py-2 sm:py-4 lg:py-6">
