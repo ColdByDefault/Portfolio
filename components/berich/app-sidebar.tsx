@@ -54,8 +54,7 @@ export function AppSidebar() {
                       alt="beRich Logo"
                       width={32}
                       height={32}
-                      className="h-8 w-8 bg-white"
-                    />
+                      className="h-8 w-8 bg-white"/>
                   </div>
                   <div className="flex flex-col gap-0.5 leading-none">
                     <span className="font-semibold">beRich.Hub</span>

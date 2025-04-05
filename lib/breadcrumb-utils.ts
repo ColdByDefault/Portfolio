@@ -1,3 +1,27 @@
+
+/**
+ * Generates an array of breadcrumb items based on the provided path.
+ *
+ * @ param path - The URL path from which to generate breadcrumbs. 
+ *               Query parameters will be ignored.
+ * 
+ * @ returns An array of `BreadcrumbItem` objects, where each object represents
+ *          a segment of the path. Each breadcrumb item includes:
+ *          - `label`: A formatted string for display (capitalized and with hyphens replaced by spaces).
+ *          - `href`: The URL path up to the corresponding segment.
+ *          - `isCurrentPage`: A boolean indicating if the segment is the current page.
+ *
+ * @ example
+ * ```typescript
+ * const breadcrumbs = generateBreadcrumbs("/home/products/electronics");
+ * // Output:
+ * // [
+ * //   { label: "Home", href: "/home", isCurrentPage: false },
+ * //   { label: "Products", href: "/home/products", isCurrentPage: false },
+ * //   { label: "Electronics", href: "/home/products/electronics", isCurrentPage: true }
+ * // ]
+ * ```
+ */
 import type { BreadcrumbItem } from "@/components/berich/dynamic-breadcrumb"
 
 export function generateBreadcrumbs(path: string): BreadcrumbItem[] {

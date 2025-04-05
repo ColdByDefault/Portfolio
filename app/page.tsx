@@ -1,3 +1,23 @@
+/**
+ * The `Home` component serves as the main entry point for the Portfolio.
+ * It includes various sections such as the hero section, project showcase,
+ * technologies, certifications, and a scroll-to-top button. The component
+ * also handles loading state and fetches posts from an API.
+ * typedef {Object} Post
+ * property {string} id - The unique identifier for the post.
+ * property {string} title - The title of the post.
+ * property {string} excerpt - A short excerpt or summary of the post.
+ * property {string} date - The publication date of the post.
+ * property {string} slug - The slug used for the post's URL.
+ *
+ * @ returns {JSX.Element} The rendered `Home` component.
+ *
+ * remarks
+ * - The `isLoading` state is used to display a loading screen for 2.2 seconds
+ *   when the component is first mounted.
+ * - Posts are fetched from the `/api/posts` endpoint and stored in the `posts` state.
+ * - The component uses the `ParallaxProvider` to enable parallax effects in child components.
+ */
 'use client';
 import { useState, useEffect } from "react";
 import LoadingScreen from "@/components/main/LoadingScreen";

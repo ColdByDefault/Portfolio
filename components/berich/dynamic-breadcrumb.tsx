@@ -35,7 +35,7 @@ export function DynamicBreadcrumb({
           <>
             <UIBreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link href="/">
+                <Link href="/berich">
                   <Home className="h-4 w-4" />
                   <span className="sr-only">Home</span>
                 </Link>

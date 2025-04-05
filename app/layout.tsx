@@ -1,6 +1,24 @@
-// Created At: 2024-12-31 23:00:00
-// Designed By: ColdByDefault
-// COPYRIGHT 2024 - ColdByDefault
+/**
+ * RootLayout component serves as the main layout wrapper for the application.
+ * It includes global metadata, styles, and shared components such as Navbar and Footer.
+ * 
+ * @ file /app/layout.tsx
+ * @ created 2024-12-31 23:00:00
+ * @ author ColdByDefault
+ * @ copyright 2024 ColdByDefault. All Rights Reserved.
+ * 
+ * @ remarks
+ * This layout component sets up the HTML structure, including the `<head>` section
+ * with metadata for SEO and social sharing, and the `<body>` section with shared UI components.
+ * It also integrates Vercel Analytics and Speed Insights for performance monitoring.
+ * 
+ * @ see {@ link https://www.coldbydefault.com} for the live website.
+ * 
+ * @ param {RootLayoutProps} props - The props object containing the children to be rendered.
+ * @ param {React.ReactNode} props.children - The child components to be rendered within the layout.
+ * 
+ * @ returns {JSX.Element} The RootLayout component.
+ */
 // All Rights Reserved - No part of this website or any of its contents may be reproduced, copied, modified or adapted, 
 // without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 

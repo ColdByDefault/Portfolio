@@ -1,3 +1,32 @@
+
+/**
+ * BeRichHome Component
+ *
+ * This component represents the home page for the "beRich.Hub" platform.
+ * It is a client-side rendered component that utilizes the `useTheme` hook
+ * from `next-themes` to dynamically adjust its appearance based on the current theme.
+ *
+ * @ component
+ * @ returns {JSX.Element} The rendered BeRichHome component.
+ *
+ * @ description
+ * The BeRichHome component is structured into several sections:
+ * - **Introduction Section**: Displays a heading introducing the page.
+ * - **Cube Icon and Documents Section**: Shows a themed image (dark/light) and a motivational quote.
+ * - **Description Section**: Provides an overview of the "beRich.Hub" platform, highlighting its technologies.
+ * - **Why This Digital Library Section**: Explains the purpose of the digital library and lists its key features.
+ *
+ * @ remarks
+ * - The component uses Tailwind CSS for styling.
+ * - The `theme` variable determines whether the dark or light theme is applied.
+ * - Images are conditionally rendered based on the current theme.
+ *
+ * @ dependencies
+ * - `next-themes`: For theme management.
+ * - `next/image`: For optimized image rendering.
+ * - `react`: For building the component.
+ * ```
+ */
 'use client'
 import React from "react"
 import { useTheme } from "next-themes"
@@ -7,37 +36,31 @@ export default function BeRichHome() {
   const { theme } = useTheme()
 
   return (
-    <div className={`flex flex-col flex-grow mx-auto p-4 sm:p-8 ${theme === "dark" ? "dark" : "light"}`}>
-      <main className="flex-1">
+    <div className={`flex flex-col flex-grow w-full p-4 ${theme === "dark" ? "dark" : "light"}`}>
+      <main className="flex flex-col">
         {/* Introduction Section */}
         <section className="mb-8">
           <h1 className="text-3xl font-bold mb-4">Introduction</h1>
-          <p className="text-lg">
-            This section provides an overview of the Library.
-          </p>
         </section>
-
         {/* Cube Icon and Documents Section */}
         <section className="mb-8">
           <div className="bg-opacity-30 backdrop-blur-md shadow-lg rounded-lg p-6 flex flex-col items-center">
             <div className="h-52 w-full flex justify-center items-center mb-4">
               {theme === "dark" ? <Image src="/library2.png" width={200} height={200} alt="Folder Icon" /> : 
               <Image src="/library.png" width={200} height={200} alt="Folder Icon" />}
-              
             </div>
             <h4 className="text-sm text-center">
-              "You can do anything you set your mind to"
+              "You can do anything you set your mind to."
             </h4>
           </div>
         </section>
-
         {/* Description Section */}
         <section className="text-center mb-8">
           <p className="text-lg">
-            Welcome to <span className="font-bold">beRich.Library</span>, a powerful and flexible Next.js documentation page.
+            Welcome to <span className="font-bold">beRich.Hub</span>, a powerful and flexible Next.js learning platform.
           </p>
           <p className=" text-md">
-            Built with <span className="font-semibold">React</span>, <span className="font-semibold">Tailwind CSS</span>, and <span className="font-bold">JavaScript</span>.
+            Built with <span className="font-semibold">React</span>, <span className="font-semibold">Tailwind CSS</span>, and <span className="font-bold">TypeScript</span>.
           </p>
         </section>
         {/* Why This Digital Library Section */}
@@ -53,45 +76,6 @@ export default function BeRichHome() {
             <li>Tools for Growth: Find the most effective tools and software for productivity and skill-building.</li>
             <li>Curated Links: Access a well-organized collection of websites and platforms to enhance your journey.</li>
           </ul>
-        </section>
-
-        {/* Key Features Table */}
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Key Features</h2>
-          <table className="table-auto w-full text-left ">
-            <thead className="">
-              <tr>
-                <th className="px-4 py-2">Feature</th>
-                <th className="px-4 py-2">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="border px-4 py-2">Structured Resources</td>
-                <td className="border px-4 py-2">Organized categories for easy navigation.</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2">Curated Tools</td>
-                <td className="border px-4 py-2">Handpicked software for productivity.</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2">Interactive Content</td>
-                <td className="border px-4 py-2">Engaging tools and links for learning.</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2">Multilingual Support</td>
-                <td className="border px-4 py-2">Available in English, Arabic, and German.</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2">Open Collaboration</td>
-                <td className="border px-4 py-2">Welcomes contributions to improve content.</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2">Updated Regularly</td>
-                <td className="border px-4 py-2">Ensures up-to-date resources are available.</td>
-              </tr>
-            </tbody>
-          </table>
         </section>
       </main>
     </div>
