@@ -23,6 +23,7 @@ import {
 
 const navItems = [
   { title: "Getting Started", url: "/berich/getting-started" },
+  { title: "Next.Js Docs", url: "/berich/next-docs" },
 ]
 
 export function AppSidebar() {
