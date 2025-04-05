@@ -51,10 +51,11 @@ export default function ProjectSection() {
                 <CardDescription>The Ultimate Hub for developers</CardDescription>
               </CardHeader>
               <CardContent>
-                <p>Web-App  web application for developers</p>
+                <p className="text-gray-400">Web Application for developers</p>
+                <p className="text-gray-700 text-sm">Temporary on Desktop Devices only</p> 
               </CardContent>
               <CardFooter>
-                <p className="text-sm text-muted-foreground">Last update: 03.2025</p>
+                <p className="text-sm text-gray-400">Last update: 03.2025</p>
               </CardFooter>
             </Card>
           </Parallax>
@@ -70,7 +71,7 @@ export default function ProjectSection() {
                   </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-400">For developers to share their knowledge and experience with others. It is a platform where developers can connect, collaborate, 
+                <p className="text-gray-300">For developers to share their knowledge and experience with others. It is a platform where developers can connect, collaborate, 
                   and learn from each other. The app allows users to create and share content, ask questions, and provide answers to others in the community.
                 </p>
               </CardContent>
