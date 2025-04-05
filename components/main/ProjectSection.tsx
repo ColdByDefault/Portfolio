@@ -40,7 +40,12 @@ export default function ProjectSection() {
             {/* Bottom Card */}
             <Card className="w-full max-w-md mx-auto p-4 z-50">
               <CardHeader>
-                <CardTitle>beRich.Hub</CardTitle>
+                <CardTitle>
+                  <Link href={"/berich"} className="text-blue-400"
+                  aria-label="beRich.Hub"
+                  target='_blank' 
+                  rel='noopener noreferrer'>beRich.Hub</Link>
+                </CardTitle>
                 <CardDescription>The Ultimate Hub for developers</CardDescription>
               </CardHeader>
               <CardContent>
@@ -59,16 +64,16 @@ export default function ProjectSection() {
                   <Link href={"/berich"} className="text-blue-400"
                   aria-label="beRich.Hub"
                   target='_blank' 
-                  rel='noopener noreferrer' >beRich.Hub</Link>
+                  rel='noopener noreferrer'>beRich.Hub</Link>
                   </CardTitle>
               </CardHeader>
               <CardContent>
-                <p>For developers to share their knowledge and experience with others. It is a platform where developers can connect, collaborate, 
+                <p className="text-gray-400">For developers to share their knowledge and experience with others. It is a platform where developers can connect, collaborate, 
                   and learn from each other. The app allows users to create and share content, ask questions, and provide answers to others in the community.
                 </p>
               </CardContent>
               <CardFooter>
-                <p className="text-sm text-muted-foreground">Next.Js 15 - React 19 - Tailwindcss v4</p>
+                <p className="text-sm text-gray-500">Next.Js 15 - React 19 - Tailwindcss v4</p>
               </CardFooter>
             </Card>
           </Parallax>

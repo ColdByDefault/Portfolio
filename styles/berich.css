@@ -1,16 +1,18 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 
-
-*{
-  scroll-behavior: smooth;
-}
 
 body {
-  background: #fcfcfc;
-
+  background-color: white;
+  color: black;
 }
+
+html.dark body {
+  background-color: #09090b; /* example dark */
+  color: white;
+}
+
+
 
 /* Customize the scrollbar */
 ::-webkit-scrollbar {

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { GalleryVerticalEnd, Search } from "lucide-react"
 
 import { Input } from "@/components/berich/ui/input"
+import { ThemeToggle } from "@/components/berich/ui/theme-toggle"
 
 import {
   Sidebar,
@@ -17,6 +18,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  SidebarFooter,
 } from "@/components/berich/sidebar"
 
 const navItems = [
@@ -69,6 +71,12 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <div className="flex items-center justify-between px-4 py-2">
+          <span className="text-sm text-muted-foreground">© 2025 Docs</span>
+          <ThemeToggle />
+        </div>
+      </SidebarFooter>
     </Sidebar>
   )
 }
