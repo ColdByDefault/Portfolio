@@ -1,4 +1,3 @@
-
 /**
  * BeRichHome Component
  *
@@ -31,24 +30,23 @@
 import React from "react"
 import { useTheme } from "next-themes"
 import Image from "next/image"
-import Link from "next/link"
+import { CookieBanner } from "@/components/main/cookie-banner"
 
 export default function BeRichHome() {
   const { theme } = useTheme()
 
   return (
-    <div className={`flex flex-col flex-grow w-full p-4 ${theme === "dark" ? "dark" : "light"}`}>
-      
+    <div className={`flex flex-col flex-grow p-4 overflowx-x-none ${theme === "dark" ? "dark" : "light"}`}>
+      <CookieBanner />
       <main className="flex flex-col">
-        
         {/* Introduction Section */}
-        <section className="mb-8">
-          <h1 className="text-3xl font-bold mb-4">Introduction</h1>
-        </section>
+        <div className="mb-4 lg:mb-8">
+          <h1 className="text-sm lg:text-3xl font-bold mb-4">Introduction</h1>
+        </div>
         {/* Cube Icon and Documents Section */}
         <section className="mb-8">
           <div className="bg-opacity-30 backdrop-blur-md shadow-lg rounded-lg p-6 flex flex-col items-center">
-            <div className="h-52 w-full flex justify-center items-center mb-4">
+            <div className="h-48 w-full flex justify-center items-center mb-4">
               {theme === "dark" ? <Image src="/library2.png" width={200} height={200} alt="Folder Icon" /> : 
               <Image src="/library.png" width={200} height={200} alt="Folder Icon" />}
             </div>
@@ -56,14 +54,13 @@ export default function BeRichHome() {
               "You can do anything you set your mind to."
             </h4>
           </div>
-
         </section>
         {/* Description Section */}
         <section className="text-center mb-8">
-          <p className="text-lg">
-            Welcome to <span className="font-bold">beRich.Hub</span>, a powerful and flexible Next.js learning platform.
+          <p className="text-sm lg:text-lg">
+            Welcome to <span className="font-semibold">beRich.Hub</span>, a powerful and flexible Next.js learning platform.
           </p>
-          <p className=" text-md">
+          <p className=" text-sm lg:text-md">
             Built with <span className="font-semibold">React</span>, <span className="font-semibold">Tailwind CSS</span>, and <span className="font-bold">TypeScript</span>.
           </p>
         </section>

@@ -2,16 +2,17 @@
 import React from 'react';
 import Link from 'next/link';
 import { useTheme } from "next-themes"
+import CodeBlock from '@/components/ui/code-block'
+
 
 export default function GettingStarted() {
   const { theme } = useTheme()
   /* "container mx-auto px-4 py-8 max-w-4xl" */
   return (
-    <main className={`getting-started-spec w-full mx-auto px-4 py-8 ${theme === "dark" ? "dark" : "light"}`}>
-      <h1 className="text-4xl font-bold mb-8">Next.js 15 Getting Started Guide</h1>
-
+    <main className={`flex flex-col flex-grow p-4 ${theme === "dark" ? "dark" : "light"}`}>
+      <h1 className="text-md lg:text-4xl font-bold mb-8">Next.js 15 Getting Started Guide</h1>
       <section className="mb-12">
-        <h2 id="install-nodejs" className="text-2xl font-semibold mb-4">
+        <h2 id="install-nodejs" className="text-md lg:text-2xl font-semibold mb-4">
           1. How to Install Node.js
         </h2>
         <div className="prose max-w-none">
@@ -27,9 +28,7 @@ export default function GettingStarted() {
             <li>Run the installer and follow the installation wizard</li>
             <li>
               Verify installation by opening a terminal/command prompt and running:
-              <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-                <code>node --version</code>
-              </pre>
+              <CodeBlock code="node --version" language="bash" showLineNumbers={true}/>
             </li>
           </ol>
           <p className="mt-4">
@@ -38,19 +37,15 @@ export default function GettingStarted() {
           </p>
         </div>
       </section>
-
       <section className="mb-12">
         <h2 id="install-nextjs" className="text-2xl font-semibold mb-4">
           2. How to Install Next.js 15.2, React 19, and Tailwind v4
         </h2>
         <div className="prose max-w-none">
           <p>Create a new Next.js project with the latest features using the following command:</p>
-          <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-            <code>npx create-next-app@latest</code>
-          </pre>
+          <CodeBlock code="npx create-next-app@latest" language="bash" showLineNumbers={true}/>
           <p className="mt-4">You'll be prompted with several options:</p>
-          <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-            <code>{`What is your project named? my-app
+          <CodeBlock code={`What is your project named? my-app
 Would you like to use TypeScript? Yes
 Would you like to use ESLint? Yes
 Would you like to use Tailwind CSS? Yes
@@ -58,30 +53,23 @@ Would you like your code inside a \`src/\` directory? No
 Would you like to use App Router? (recommended) Yes
 Would you like to use Turbopack for \`next dev\`? Yes
 Would you like to customize the import alias (@/* by default)? Yes
-What import alias would you like configured? @/*`}</code>
-          </pre>
+What import alias would you like configured? @/*`} language="bash" showLineNumbers={true}/>
           <p className="mt-4">After the installation completes, navigate to your project directory:</p>
-          <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-            <code>cd my-app</code>
-          </pre>
+          <CodeBlock code="cd my-app" language="bash" showLineNumbers={true}/>
           <p className="mt-2">Start the development server:</p>
-          <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-            <code>npm run dev</code>
-          </pre>
+          <CodeBlock code="npm run dev" language="bash" showLineNumbers={true}/>
           <p className="mt-4">
             Your Next.js application will be running at <code>http://localhost:3000</code>.
           </p>
         </div>
       </section>
-
       <section className="mb-12">
         <h2 id="app-structure" className="text-2xl font-semibold mb-4">
           3. App Folder Structure Explanation
         </h2>
         <div className="prose max-w-none">
           <p>The App Router in Next.js 15 uses a folder-based routing system. Here's the basic structure:</p>
-          <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-            <code>{`my-app/
+          <CodeBlock code={`my-app/
 ├── app/
 │   ├── favicon.ico
 │   ├── globals.css
@@ -94,8 +82,7 @@ What import alias would you like configured? @/*`}</code>
 ├── next.config.mjs     # Next.js configuration
 ├── package.json        # Project dependencies
 ├── tailwind.config.ts  # Tailwind CSS configuration
-└── tsconfig.json       # TypeScript configuration`}</code>
-          </pre>
+└── tsconfig.json       # TypeScript configuration`} language="Folder Structure" showLineNumbers={true}/>
           <p className="mt-4">Key directories and files:</p>
           <ul className="list-disc pl-6 space-y-2">
             <li>
@@ -113,7 +100,6 @@ What import alias would you like configured? @/*`}</code>
           </ul>
         </div>
       </section>
-
       <section className="mb-12">
         <h2 id="start-editing" className="text-2xl font-semibold mb-4">
           4. Where to Start Editing
@@ -133,19 +119,18 @@ What import alias would you like configured? @/*`}</code>
           </p>
         </div>
       </section>
-
       <section className="mb-12">
         <h2 id="page-layout" className="text-2xl font-semibold mb-4">
           5. Explanation of page.tsx and layout.tsx
         </h2>
         <div className="prose max-w-none">
           <h3 className="text-xl font-medium mt-4 mb-2">page.tsx</h3>
-          <p>
-            A <code>page.tsx</code> file defines the unique content for a route. It's the primary UI component for a
+          <p>This file defines the unique content for a route. It's the primary UI component for a
             specific route.
           </p>
-          <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-            <code>{`// app/page.tsx
+          <CodeBlock code="page.tsx" language="bash" showLineNumbers={true}/>
+          <div className="mt-2 h-4"></div>
+          <CodeBlock code={`// app/page.tsx
 export default function Home() {
   return (
     <main>
@@ -153,16 +138,14 @@ export default function Home() {
       <p>This is the home page</p>
     </main>
   )
-}`}</code>
-          </pre>
-
+}`} language="typescript" showLineNumbers={true}/>
           <h3 className="text-xl font-medium mt-6 mb-2">layout.tsx</h3>
-          <p>
-            A <code>layout.tsx</code> file defines shared UI for a segment and its children. Layouts don't re-render
+          <p>This file defines shared UI for a segment and its children. Layouts don't re-render
             when navigating between pages that share the layout.
           </p>
-          <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-            <code>{`// app/layout.tsx
+          <CodeBlock code="layout.tsx" language="bash" showLineNumbers={true}/>
+          <div className="mt-2 h-4"></div>
+          <CodeBlock code={`// app/layout.tsx
 export default function RootLayout({
   children,
 }: {
@@ -177,8 +160,7 @@ export default function RootLayout({
       </body>
     </html>
   )
-}`}</code>
-          </pre>
+}`} language="typescript" showLineNumbers={true}/>
           <p className="mt-4">
             The <code>children</code> prop represents the page content or nested layouts. The root layout must contain{" "}
             <code>html</code> and <code>body</code> tags.
@@ -191,15 +173,17 @@ export default function RootLayout({
           6. What is globals.css
         </h2>
         <div className="prose max-w-none">
-          <p>
-            <code>globals.css</code> is a stylesheet that applies to all routes in your application. It's imported in
+          <p>globals.css is a stylesheet that applies to all routes in your application. It's imported in
             the root layout.
           </p>
-          <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-            <code>{`/* app/globals.css */
+          <CodeBlock code={`/* app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* @import "tailwindcss"; */
+/* for Tailwind v4+ */
+
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -211,23 +195,20 @@ body {
   background: rgb(var(--background-rgb));
 }
 
-/* Add your global styles here */`}</code>
-          </pre>
+/* Add your global styles here */`} language="css" showLineNumbers={true}/>
           <p className="mt-4">
             With Tailwind CSS, the file includes the necessary Tailwind directives. You can add custom global styles
             here that should apply throughout your application.
           </p>
         </div>
       </section>
-
       <section className="mb-12">
         <h2 id="create-component" className="text-2xl font-semibold mb-4">
           7. Example of Creating and Importing a Component
         </h2>
         <div className="prose max-w-none">
           <p>Create a new file in the components directory:</p>
-          <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-            <code>{`// components/button.tsx
+          <CodeBlock code={`// components/button.tsx
 interface ButtonProps {
   text: string;
   onClick?: () => void;
@@ -242,12 +223,9 @@ export default function Button({ text, onClick }: ButtonProps) {
       {text}
     </button>
   );
-}`}</code>
-          </pre>
-
+}`} language="bash" showLineNumbers={true}/>
           <p className="mt-4">Import and use the component in a page:</p>
-          <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-            <code>{`// app/page.tsx
+          <CodeBlock code={`// app/page.tsx
 import Button from '@/components/button';
 
 export default function Home() {
@@ -257,14 +235,12 @@ export default function Home() {
       <Button text="Click me" />
     </main>
   );
-}`}</code>
-          </pre>
+}`} language="bash" showLineNumbers={true}/>
           <p className="mt-4">
             The <code>@/</code> alias points to the root of your project, making imports cleaner and more consistent.
           </p>
         </div>
       </section>
-
       <section className="mb-12">
         <h2 id="routing" className="text-2xl font-semibold mb-4">
           8. Routing and Pages with Example
@@ -278,21 +254,16 @@ export default function Home() {
             </li>
             <li>Nested folders create nested routes</li>
           </ul>
-
           <h3 className="text-xl font-medium mt-6 mb-2">Example:</h3>
           <p>To create a blog section with individual post pages:</p>
-          <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-            <code>{`app/
+          <CodeBlock code={`app/
 ├── page.tsx         # Home page (/)
 └── blog/
     ├── page.tsx     # Blog index page (/blog)
     └── [slug]/      # Dynamic route segment
-        └── page.tsx # Individual blog post page (/blog/post-1)`}</code>
-          </pre>
-
+        └── page.tsx # Individual blog post page (/blog/post-1)`} language="bash" showLineNumbers={true}/>
           <p className="mt-4">Blog index page:</p>
-          <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-            <code>{`// app/blog/page.tsx
+          <CodeBlock code={`// app/blog/page.tsx
 import Link from 'next/link';
 
 export default function BlogPage() {
@@ -318,12 +289,9 @@ export default function BlogPage() {
       </ul>
     </div>
   );
-}`}</code>
-          </pre>
-
+}`} language="bash" showLineNumbers={true}/>
           <p className="mt-4">Individual blog post page (dynamic route):</p>
-          <pre className={`p-3 rounded-md mt-2 overflow-x-auto ${theme === "dark" ? "dark" : "light"}`}>
-            <code>{`// app/blog/[slug]/page.tsx
+          <CodeBlock code={`// app/blog/[slug]/page.tsx
 export default function BlogPost({ params }: { params: { slug: string } }) {
   return (
     <article className="p-8 max-w-2xl mx-auto">
@@ -331,17 +299,15 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
       <p>This is the content of the blog post with slug: {params.slug}</p>
     </article>
   );
-}`}</code>
-          </pre>
+}`} language="bash" showLineNumbers={true}/>
           <p className="mt-4">
-            The <code>[slug]</code> folder creates a dynamic route segment that captures any value in that position of
-            the URL and passes it as the <code>params.slug</code> prop to the page component.
+            The [slug] folder creates a dynamic route segment that captures any value in that position of
+            the URL and passes it as the params.slug prop to the page component.
           </p>
         </div>
       </section>
-
       <div className="mt-8 pt-6 border-t border-gray-200">
-        <Link href="/berich" className="text-blue-600 hover:underline">
+        <Link href="/berich" className="text-blue-600">
           ← Back to Home
         </Link>
       </div>

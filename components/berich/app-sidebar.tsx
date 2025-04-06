@@ -28,7 +28,6 @@ import { generateBreadcrumbs } from "@/lib/breadcrumb-utils"
 
 const navItems = [
   { title: "Getting Started with Next.js 15", url: "/berich/getting-started" },
-  { title: "test", url: "/berich/test" },
 ]
 
 export function AppSidebar() {
@@ -39,7 +38,7 @@ export function AppSidebar() {
 
   return (
     <div>
-      <div className="absolute top-5 left-1/2">
+      <div className="absolute left-1/3 top-5 lg:left-1/2">
         <DynamicBreadcrumb items={breadcrumbs} />
       </div>
       <Sidebar>

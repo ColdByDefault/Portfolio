@@ -21,6 +21,8 @@ import { SidebarProvider, SidebarTrigger } from "@/components/berich/sidebar"
 import { AppSidebar } from "@/components/berich/app-sidebar"
 import { ThemeProvider } from "@/components/berich/theme-provide"
 import "@/styles/berich.css"
+import { CookieBanner } from "@/components/main/cookie-banner"
+
 
 
 
@@ -32,10 +34,11 @@ export default function BeRichLayout({
 }) {
   return (
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+        <CookieBanner />
         <SidebarProvider>
           <AppSidebar />
           <SidebarTrigger className="mt-3" />
-          <main className="flex-1 overflow-auto pl-2 pt-16">{children}</main>
+          <main className="flex-1 overflow-auto pt-16">{children}</main>
         </SidebarProvider>
       </ThemeProvider>
   )
