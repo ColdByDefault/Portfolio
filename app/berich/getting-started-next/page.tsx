@@ -9,13 +9,14 @@ export default function GettingStartedNext() {
   const { theme } = useTheme()
   /* "container mx-auto px-4 py-8 max-w-4xl" */
   return (
-    <main className={`flex flex-col flex-grow p-4 ${theme === "dark" ? "dark" : "light"}`}>
+    <div className={`flex flex-col justify-center items-center flex-grow p-4 ${theme === "dark" ? "dark" : "light"}`}>
+      <main className="flex flex-col">
       <h1 className="text-md lg:text-4xl font-bold mb-8">Next.js Getting Started Guide</h1>
       <section className="mb-12">
         <h2 id="install-nodejs" className="text-md lg:text-2xl font-semibold mb-4">
           1. How to Install Node.js
         </h2>
-        <div className="prose max-w-none">
+        <div className="prose">
           <p className='pb-1'>Node.js is required to run Next.js applications. Follow these steps to install Node.js:</p>
           <ol className="list-decimal pl-6 space-y-2">
             <li>
@@ -41,7 +42,7 @@ export default function GettingStartedNext() {
         <h2 id="install-nextjs" className="text-2xl font-semibold mb-4">
           2. How to Install Next.js 15.2, React 19, and Tailwind v4
         </h2>
-        <div className="prose max-w-none">
+        <div className="prose">
           <p>Create a new Next.js project with the latest features using the following command:</p>
           <CodeBlock code="npx create-next-app@latest" language="bash" showLineNumbers={true}/>
           <p className="mt-4">You'll be prompted with several options:</p>
@@ -67,7 +68,7 @@ What import alias would you like configured? @/*`} language="bash" showLineNumbe
         <h2 id="app-structure" className="text-2xl font-semibold mb-4">
           3. App Folder Structure Explanation
         </h2>
-        <div className="prose max-w-none">
+        <div className="prose">
           <p>The App Router in Next.js 15 uses a folder-based routing system. Here's the basic structure:</p>
           <CodeBlock code={`my-app/
 ├── app/
@@ -104,7 +105,7 @@ What import alias would you like configured? @/*`} language="bash" showLineNumbe
         <h2 id="start-editing" className="text-2xl font-semibold mb-4">
           4. Where to Start Editing
         </h2>
-        <div className="prose max-w-none">
+        <div className="prose">
           <p>To start editing your Next.js application:</p>
           <ol className="list-decimal pl-6 space-y-2">
             <li>Open the project in your favorite code editor (VS Code recommended)</li>
@@ -123,7 +124,7 @@ What import alias would you like configured? @/*`} language="bash" showLineNumbe
         <h2 id="page-layout" className="text-2xl font-semibold mb-4">
           5. Explanation of page.tsx and layout.tsx
         </h2>
-        <div className="prose max-w-none">
+        <div className="prose">
           <h3 className="text-xl font-medium mt-4 mb-2">page.tsx</h3>
           <p>This file defines the unique content for a route. It's the primary UI component for a
             specific route.
@@ -172,7 +173,7 @@ export default function RootLayout({
         <h2 id="global-css" className="text-2xl font-semibold mb-4">
           6. What is globals.css
         </h2>
-        <div className="prose max-w-none">
+        <div className="prose">
           <p>globals.css is a stylesheet that applies to all routes in your application. It's imported in
             the root layout.
           </p>
@@ -206,7 +207,7 @@ body {
         <h2 id="create-component" className="text-2xl font-semibold mb-4">
           7. Example of Creating and Importing a Component
         </h2>
-        <div className="prose max-w-none">
+        <div className="prose">
           <p>Create a new file in the components directory:</p>
           <CodeBlock code={`// components/button.tsx
 interface ButtonProps {
@@ -245,7 +246,7 @@ export default function Home() {
         <h2 id="routing" className="text-2xl font-semibold mb-4">
           8. Routing and Pages with Example
         </h2>
-        <div className="prose max-w-none">
+        <div className="prose">
           <p>Next.js App Router uses a file-system based routing mechanism where:</p>
           <ul className="list-disc pl-6 space-y-2">
             <li>Folders define routes</li>
@@ -311,7 +312,8 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           ← Back to Home
         </Link>
       </div>
-    </main>
+      </main>
+    </div>
   )
 }
 

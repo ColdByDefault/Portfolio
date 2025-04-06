@@ -30,14 +30,12 @@
 import React from "react"
 import { useTheme } from "next-themes"
 import Image from "next/image"
-import { CookieBanner } from "@/components/main/cookie-banner"
 
 export default function BeRichHome() {
   const { theme } = useTheme()
 
   return (
     <div className={`flex flex-col flex-grow p-4 ${theme === "dark" ? "dark" : "light"}`}>
-      <CookieBanner />
       <main className="flex flex-col">
         {/* Introduction Section */}
         <div className="mb-4 lg:mb-8">

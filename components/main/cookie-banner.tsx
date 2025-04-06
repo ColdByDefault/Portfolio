@@ -9,13 +9,19 @@ export function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false)
 
   useEffect(() => {
-    // Show banner after 10 seconds
-    const timer = setTimeout(() => {
-      setShowBanner(true)
-    }, 1000)
-
-    return () => clearTimeout(timer)
+    const dismissed = localStorage.getItem("cookieBannerDismissed")
+    if (!dismissed) {
+      const timer = setTimeout(() => {
+        setShowBanner(true)
+      }, 1000)
+      return () => clearTimeout(timer)
+    }
   }, [])
+
+  const handleDismiss = () => {
+    localStorage.setItem("cookieBannerDismissed", "true")
+    setShowBanner(false)
+  }
 
   if (!showBanner) return null
 
@@ -25,13 +31,16 @@ export function CookieBanner() {
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex-1">
             <p className="text-sm text-gray-700">
-            I bake my own cookies, I don't collect any personal data of yours. Hosting provider (Vercel) may collect anonymous speed & location info for performance purposes. [OK]
+              I bake my own cookies, I don't collect any personal data of yours.
+              Hosting provider (Vercel) may collect anonymous speed & location info for performance purposes. [OK]
             </p>
-            <div className="text-blue-600"><Link href="/berich/policy">..see more</Link></div>
+            <div className="text-blue-600">
+              <Link href="/berich/policy">..see more</Link>
+            </div>
           </div>
           <div>
             <button
-              onClick={() => setShowBanner(false)}
+              onClick={handleDismiss}
               aria-label="Close">
               <X className="h-4 w-4 text-black" />
             </button>
@@ -41,4 +50,3 @@ export function CookieBanner() {
     </div>
   )
 }
-

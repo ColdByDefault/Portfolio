@@ -9,7 +9,7 @@ export default function GettingStartedReact() {
   const { theme } = useTheme()
   /* "container mx-auto px-4 py-8 max-w-4xl" */
   return (
-    <main className={`flex flex-col flex-grow p-4 ${theme === "dark" ? "dark" : "light"}`}>
+    <main className={`flex flex-col justify-center items-center flex-grow p-4 ${theme === "dark" ? "dark" : "light"}`}>
       <h1 className="text-md lg:text-4xl font-bold mb-8">React Getting Started Guide with Vite</h1>
       <section className="mb-12">
         <h2 id="install-react" className="text-md lg:text-2xl font-semibold mb-4">
@@ -96,28 +96,10 @@ export default function GettingStartedReact() {
           </ul>
         </div>
       </section>
+      
       <section className="mb-12">
-        <h2 id="start-editing" className="text-2xl font-semibold mb-4">
-          4. Where to Start Editing
-        </h2>
-        <div className="prose max-w-none">
-          <p>To start editing React application:</p>
-          <ol className="list-decimal pl-6 space-y-2">
-            <li>Open the project in your favorite code editor (VS Code recommended)</li>
-            <li>
-              Navigate to <code>app/App.jsx</code> - this is your root
-            </li>
-            <li>Make changes to the file and save - the browser will automatically update</li>
-          </ol>
-          <p className="mt-4">
-            The development server provides hot module replacement, so you'll see your changes immediately without
-            refreshing the page.
-          </p>
-        </div>
-      </section>
-      <section className="mb-12">
-        <h2 id="page-layout" className="text-2xl font-semibold mb-4">
-          5. Creating and Using Components
+        <h2 id="" className="text-2xl font-semibold mb-4">
+          4. Creating and Using Components
         </h2>
         <div className="prose max-w-none">
           <h3 className="text-xl font-medium mt-4 mb-2">stc/components/ directory</h3>

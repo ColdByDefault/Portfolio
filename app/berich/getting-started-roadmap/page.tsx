@@ -20,8 +20,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 export default function GettingStartedRoadmap() {
     const { theme } = useTheme()
   return (
-    <div className={`flex flex-col flex-grow p-4 ${theme === "dark" ? "dark" : "light"}`}>
-      <main className="flex-1">
+    <div className={`flex flex-col justify-center items-center flex-grow p-4 ${theme === "dark" ? "dark" : "light"}`}>
+      <main className="flex flex-col">
         <section id="roadmap" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
