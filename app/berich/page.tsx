@@ -31,13 +31,16 @@
 import React from "react"
 import { useTheme } from "next-themes"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function BeRichHome() {
   const { theme } = useTheme()
 
   return (
     <div className={`flex flex-col flex-grow w-full p-4 ${theme === "dark" ? "dark" : "light"}`}>
+      
       <main className="flex flex-col">
+        
         {/* Introduction Section */}
         <section className="mb-8">
           <h1 className="text-3xl font-bold mb-4">Introduction</h1>
@@ -53,6 +56,7 @@ export default function BeRichHome() {
               "You can do anything you set your mind to."
             </h4>
           </div>
+
         </section>
         {/* Description Section */}
         <section className="text-center mb-8">
