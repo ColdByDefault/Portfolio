@@ -27,7 +27,7 @@ import { generateBreadcrumbs } from "@/lib/breadcrumb-utils"
 
 
 const navItems = [
-  { title: "Getting Started", url: "/berich/getting-started" },
+  { title: "Getting Started with Next.js 15", url: "/berich/getting-started" },
   { title: "test", url: "/berich/test" },
 ]
 

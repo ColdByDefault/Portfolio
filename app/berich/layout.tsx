@@ -31,7 +31,7 @@ export default function BeRichLayout({
   children: React.ReactNode
 }) {
   return (
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
         <SidebarProvider>
           <AppSidebar />
           <SidebarTrigger className="mt-3" />

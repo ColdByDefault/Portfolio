@@ -18,8 +18,7 @@ export default function FeatureCard({ title, description, link, linkText }: Feat
         <a 
           href={link}
           className="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity"
-          aria-label={linkText || 'Learn more'}
-        >
+          aria-label={linkText || 'Learn more'}>
           <ArrowUpRight className="w-4 h-4 text-white" />
         </a>
       )}

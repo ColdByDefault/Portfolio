@@ -17,12 +17,21 @@ html.dark body {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.1) 0px 1px 3px; /* Optional light shadow */
 }
 
+.light li {
+  color: rgb(10, 10, 10);
+}
+
 /* Dark mode */
 .dark {
   background-color: #09090b; /* dark background */
   color: white;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 6px, rgba(0, 0, 0, 0.1) 0px 1px 3px; /* Optional dark shadow */
+  box-shadow: rgba(37, 37, 37, 0.4) 0px 4px 6px, rgba(228, 226, 226, 0.1) 0px 1px 3px; /* Optional dark shadow */
 }
+.dark .getting-started-spec li {
+  color: rgb(198, 220, 233);
+  padding-top: 0.5rem;
+}
+
 
 
 /* Customize the scrollbar */

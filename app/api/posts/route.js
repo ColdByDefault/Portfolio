@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs';
+/* import { promises as fs } from 'fs';
 import path from 'path';
 
 export async function GET() {
@@ -24,4 +24,4 @@ export async function GET() {
     console.error("Error reading posts:", error);
     return new Response("Failed to load posts", { status: 500 });
   }
-}
+} */
