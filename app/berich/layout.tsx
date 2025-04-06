@@ -38,7 +38,7 @@ export default function BeRichLayout({
         <SidebarProvider>
           <AppSidebar />
           <SidebarTrigger className="mt-3" />
-          <main className="flex-1 overflow-auto pt-16">{children}</main>
+          <main className="flex-1 overflow-auto pt-16 lg:mr-2">{children}</main>
         </SidebarProvider>
       </ThemeProvider>
   )

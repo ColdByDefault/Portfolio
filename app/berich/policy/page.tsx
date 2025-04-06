@@ -18,15 +18,12 @@ const PrivacyPolicy = () => {
         </p>
         <p className="mb-4">
             However, since this site is hosted on{' '}
-            <a
-            href="https://vercel.com/"
+            <a href="https://vercel.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 underline"
-            >
+            className="text-blue-600 underline">
             Vercel
-            </a>
-            , <strong>Vercel may collect anonymous usage data</strong> to help analyze and improve website performance.
+            </a>,<strong>Vercel may collect anonymous usage data</strong> to help analyze and improve website performance.
             This may include:
         </p>
 
@@ -39,7 +36,6 @@ const PrivacyPolicy = () => {
         <p className="mb-4">
             🔒 No personal identifiers are collected. All data is anonymous and used purely for technical analytics.
         </p>
-
         <p>If you have questions, feel free to get in touch!</p>
       </div>
     </div>

@@ -7,6 +7,7 @@ import { Search } from "lucide-react"
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { Code2 } from "lucide-react"
 
 import {
   Sidebar,
@@ -27,7 +28,9 @@ import { generateBreadcrumbs } from "@/lib/breadcrumb-utils"
 
 
 const navItems = [
-  { title: "Getting Started with Next.js 15", url: "/berich/getting-started" },
+  { title: "Getting Started Roadmap", url: "/berich/getting-started-roadmap" },
+  { title: "Getting Started with Next.js", url: "/berich/getting-started-next" },
+  { title: "Getting Started with React", url: "/berich/getting-started-react" },
 ]
 
 export function AppSidebar() {
@@ -90,6 +93,7 @@ export function AppSidebar() {
         </SidebarContent>
         <SidebarFooter>
           <div className="flex items-center justify-between px-4 py-2">
+            <Code2 className="h-6 w-6" />
             <span className="text-sm text-muted-foreground">© {currentYear} Docs</span>
             <ThemeToggle />
           </div>

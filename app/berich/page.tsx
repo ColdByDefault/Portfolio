@@ -36,7 +36,7 @@ export default function BeRichHome() {
   const { theme } = useTheme()
 
   return (
-    <div className={`flex flex-col flex-grow p-4 overflowx-x-none ${theme === "dark" ? "dark" : "light"}`}>
+    <div className={`flex flex-col flex-grow p-4 ${theme === "dark" ? "dark" : "light"}`}>
       <CookieBanner />
       <main className="flex flex-col">
         {/* Introduction Section */}

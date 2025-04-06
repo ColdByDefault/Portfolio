@@ -5,12 +5,12 @@ import { useTheme } from "next-themes"
 import CodeBlock from '@/components/ui/code-block'
 
 
-export default function GettingStarted() {
+export default function GettingStartedNext() {
   const { theme } = useTheme()
   /* "container mx-auto px-4 py-8 max-w-4xl" */
   return (
     <main className={`flex flex-col flex-grow p-4 ${theme === "dark" ? "dark" : "light"}`}>
-      <h1 className="text-md lg:text-4xl font-bold mb-8">Next.js 15 Getting Started Guide</h1>
+      <h1 className="text-md lg:text-4xl font-bold mb-8">Next.js Getting Started Guide</h1>
       <section className="mb-12">
         <h2 id="install-nodejs" className="text-md lg:text-2xl font-semibold mb-4">
           1. How to Install Node.js
