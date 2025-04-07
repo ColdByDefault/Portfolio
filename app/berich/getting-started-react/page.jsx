@@ -9,8 +9,8 @@ export default function GettingStartedReact() {
   const { theme } = useTheme()
   /* "container mx-auto px-4 py-8 max-w-4xl" */
   return (
-    <main className={`flex flex-col justify-center items-center flex-grow p-4 ${theme === "dark" ? "dark" : "light"}`}>
-      <h1 className="text-md lg:text-4xl font-bold mb-8">React Getting Started Guide with Vite</h1>
+    <main className={`flex flex-col justify-center items-center flex-grow pt-24 p-4 ${theme === "dark" ? "dark" : "light"}`}>
+      <h1 className="text-lg lg:text-4xl font-bold mb-8">React Getting Started Guide with Vite</h1>
       <section className="mb-12">
         <h2 id="install-react" className="text-md lg:text-2xl font-semibold mb-4">
           1. How to Install Node.js

@@ -24,8 +24,7 @@ export default function Home() {
   const { theme } = useTheme()
   return (
     <div
-      className={`flex flex-col justify-center items-center flex-grow p-2 sm:p-4 md:p-6 lg:p-8 ${theme === "dark" ? "dark" : "light"}`}
-    >
+      className={`flex flex-col justify-center items-center flex-grow p-2 sm:p-4 md:p-6 lg:p-8 ${theme === "dark" ? "dark" : "light"}`}>
       <main className="flex-1">
         <section id="hardware" className="py-4 sm:py-8 md:py-16 lg:py-32">
           <div className="container px-2 sm:px-4 md:px-6">
