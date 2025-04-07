@@ -1,3 +1,7 @@
+// All Rights Reserved - No part of this website or any of its contents may be reproduced, copied, modified or adapted, 
+// without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
+// <!-- Leve Palestina -->
+// <!-- Free Palestine -->
 /**
  * RootLayout component serves as the main layout wrapper for the application.
  * It includes global metadata, styles, and shared components such as Navbar and Footer.
@@ -19,9 +23,6 @@
  * 
  * @ returns {JSX.Element} The RootLayout component.
  */
-// All Rights Reserved - No part of this website or any of its contents may be reproduced, copied, modified or adapted, 
-// without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
-
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import "@/styles/globals.css";
