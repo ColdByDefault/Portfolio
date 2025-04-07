@@ -179,11 +179,6 @@ export default Button;
 `} language="JavaScript" showLineNumbers={true}/>
         </div>
       </section>
-      <div className="mt-8 pt-6 border-t border-gray-200">
-        <Link href="/berich" className="text-blue-600">
-          ← Back to Home
-        </Link>
-      </div>
     </main>
   )
 }

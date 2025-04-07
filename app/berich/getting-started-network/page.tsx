@@ -25,19 +25,19 @@ export default function NetworkingDocs() {
 
         <Tabs defaultValue="basics" className="w-full">
           <TabsList className="grid w-full auto-cols-max grid-flow-col overflow-auto">
-            <TabsTrigger value="basics"className="border font-semibold shadow-sm shadow-zinc-600 mx-1
+            <TabsTrigger value="basics" className="border font-semibold shadow-sm shadow-zinc-600 mx-1
                 cursor-pointer focus:border-gray-500">Basics</TabsTrigger>
-            <TabsTrigger value="ip"className="border font-semibold shadow-sm shadow-zinc-600 mx-1
+            <TabsTrigger value="ip" className="border font-semibold shadow-sm shadow-zinc-600 mx-1
                 cursor-pointer focus:border-gray-500">IP Addressing</TabsTrigger>
-            <TabsTrigger value="dns"className="border font-semibold shadow-sm shadow-zinc-600 mx-1
+            <TabsTrigger value="dns" className="border font-semibold shadow-sm shadow-zinc-600 mx-1
                 cursor-pointer focus:border-gray-500">DNS</TabsTrigger>
-            <TabsTrigger value="protocols"className="border font-semibold shadow-sm shadow-zinc-600 mx-1
+            <TabsTrigger value="protocols" className="border font-semibold shadow-sm shadow-zinc-600 mx-1
                 cursor-pointer focus:border-gray-500">Protocols</TabsTrigger>
-            <TabsTrigger value="osi"className="border font-semibold shadow-sm shadow-zinc-600 mx-1
+            <TabsTrigger value="osi" className="border font-semibold shadow-sm shadow-zinc-600 mx-1
                 cursor-pointer focus:border-gray-500">OSI Model</TabsTrigger>
-            <TabsTrigger value="architecture"className="border font-semibold shadow-sm shadow-zinc-600 mx-1
+            <TabsTrigger value="architecture" className="border font-semibold shadow-sm shadow-zinc-600 mx-1
                 cursor-pointer focus:border-gray-500">Architecture</TabsTrigger>
-            <TabsTrigger value="security"className="border font-semibold shadow-sm shadow-zinc-600 mx-1
+            <TabsTrigger value="security" className="border font-semibold shadow-sm shadow-zinc-600 mx-1
                 cursor-pointer focus:border-gray-500">Security</TabsTrigger>
           </TabsList>
 

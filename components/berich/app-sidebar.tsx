@@ -23,6 +23,8 @@ import {
 } from "@/components/berich/sidebar"
 import { DynamicBreadcrumb } from "@/components/berich/dynamic-breadcrumb"
 import { generateBreadcrumbs } from "@/lib/breadcrumb-utils"
+import { useTheme } from "next-themes"
+
 
 
 
@@ -33,6 +35,7 @@ const navItems = [
   { title: "Getting Started Networking", url: "/berich/getting-started-network" },
   { title: "Getting Started Python 1", url: "/berich/getting-started-python-1" },
   { title: "Getting Started Python 2", url: "/berich/getting-started-python-2" },
+  { title: "Getting Started Git & GitHub", url: "/berich/getting-started-git" },
   { title: "Getting Started with React", url: "/berich/getting-started-react" },
   { title: "Getting Started with Next.js", url: "/berich/getting-started-next" },
 ]
@@ -40,6 +43,8 @@ const navItems = [
 export function AppSidebar() {
   const pathname = usePathname()
   const currentYear = new Date().getFullYear();
+
+  
 
   const breadcrumbs = generateBreadcrumbs(pathname)
 
