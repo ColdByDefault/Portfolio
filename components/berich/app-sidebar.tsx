@@ -30,6 +30,9 @@ import { generateBreadcrumbs } from "@/lib/breadcrumb-utils"
 const navItems = [
   { title: "Getting Started Roadmap", url: "/berich/getting-started-roadmap" },
   { title: "Getting Started PC", url: "/berich/getting-started-pc" },
+  { title: "Getting Started Networking", url: "/berich/getting-started-network" },
+  { title: "Getting Started Python 1", url: "/berich/getting-started-python-1" },
+  { title: "Getting Started Python 2", url: "/berich/getting-started-python-2" },
   { title: "Getting Started with React", url: "/berich/getting-started-react" },
   { title: "Getting Started with Next.js", url: "/berich/getting-started-next" },
 ]
