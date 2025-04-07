@@ -2,7 +2,7 @@
 
 body {
   background-color: white;
-  color: black;
+  color: #09090b;
 }
 
 html.dark body {
@@ -25,7 +25,7 @@ html.dark body {
 .dark {
   background-color: #09090b; /* dark background */
   color: white;
-  box-shadow: rgba(37, 37, 37, 0.4) 0px 4px 6px, rgba(228, 226, 226, 0.1) 0px 1px 3px; /* Optional dark shadow */
+  box-shadow: #25252566 0px 4px 6px, #0000001a 0px 1px 3px;
 }
 .dark .getting-started-spec li {
   color: rgb(198, 220, 233);

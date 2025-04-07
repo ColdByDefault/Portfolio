@@ -79,14 +79,11 @@ export default function Home() {
         <div className="">
           <Hero />
         </div>
-        <div className="block min-h-screen"  id="projects-sect">
+        <div className=""  id="projects-sect">
           <ProjectSection /> {/* parallax effect */}
         </div>
-        <div className="flex flex-col items-center justify-center lg:flex-row pattern">
+        <div className="flex flex-col items-center justify-center lg:flex-row pattern mt-6">
           <Technologies />
-        </div>
-        <div className="flex flex-col items-center justify-center lg:flex-row pattern" id="timeline">
-        {/* <Projects /> */}
         </div>
         <div className="mt-12 pattern" id="cer">
           <div className="hidden lg:block md:block">

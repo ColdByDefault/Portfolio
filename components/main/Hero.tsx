@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import '@/styles/globals.css';
-
+import HoursCounterBadge from "@/components/ui/HoursCounterBadg";
 
 import {
   Drawer,
@@ -49,7 +49,7 @@ function Hero() {
             Yazan <br className='block lg:hidden'/>Abo<span className="text-blue-400">- </span>Ayash
           </h1>
           {/* Description */}
-          <p className="mb-8 max-w-2xl text-left text-sm text-slate-300 sm:text-base md:text-lg lg:text-xl">
+          <div className="mb-8 max-w-2xl text-left text-sm text-slate-300 sm:text-base md:text-lg lg:text-xl">
             I'm a full-stack junior developer and entrepreneur, building web apps, and digital solutions. Check out my other projects and the source code for this portfolio<br />&#40;built with 
             <span className='text-blue-400 cursor-pointer font-semibold'>
               <HoverCard>
@@ -71,53 +71,59 @@ function Hero() {
               transition-colors hover:text-gray-600'>
               GitHub
             </Link>.
-          </p>
-          <div className="rounded-full text-center p-2 text-white
-          bg-zinc-900/30 backdrop-blur-sm border border-zinc-400
-            w-28 text-md
-            lg:w-32 lg:text-lg
-            md:w-28 md:text-sm
-            sm:w-24 sm:pr-2">
-            <Drawer>
-              <DrawerTrigger>Get in Touch</DrawerTrigger>
-              <DrawerContent>
-                <DrawerHeader>
-                  <DrawerTitle></DrawerTitle>
-                  <DrawerDescription>
-                  </DrawerDescription>
-                  <div className="flex justify-center gap-8 items-center w-full mt-2">
-                  <SocialLinks
-                      href="https://github.com/coldbydefault"
-                      altText="GitHub Profile"
-                      label=""
-                      icon={faGithub}/>
-                  <SocialLinks
-                      href="mailto:abo.ayash.yazan@gmail.com?subject=Hello&body=Hi there!"
-                      altText="GMAIL"
-                      label=""
-                      icon={faPaperPlane}/>
-                  <SocialLinks
-                      href="https://instagram.com/cold.by.default"
-                      altText="IG"
-                      label=""
-                      icon={faInstagram}/>
-                  <SocialLinks
-                      href="https://x.com/ccoldbydefault"
-                      altText="X"
-                      label=""
-                      icon={faXTwitter}/>
-                  </div>
-                </DrawerHeader>
-                <DrawerFooter>
-                  <DrawerClose> 
-                    <div className='w-full flex justify-center items-center'>
-                      <div className='rounded-full text-center p-2 text-white cursor-pointer
-                    bg-zinc-900 backdrop-blur-sm border border-zinc-400'>Close</div> 
+          </div>
+          <div className="flex gap-6">
+            <div className="rounded-full text-center p-2 text-white
+            bg-zinc-900/30 backdrop-blur-sm border-b border-zinc-400
+              w-28 text-md
+              lg:w-32 lg:text-lg
+              md:w-28 md:text-sm
+              sm:w-24 sm:pr-2">
+              <Drawer>
+                <DrawerTrigger>Get in Touch</DrawerTrigger>
+                <DrawerContent>
+                  <DrawerHeader>
+                    <DrawerTitle></DrawerTitle>
+                    <DrawerDescription>
+                    </DrawerDescription>
+                    <div className="flex justify-center gap-8 items-center w-full mt-2">
+                    <SocialLinks
+                        href="https://github.com/coldbydefault"
+                        altText="GitHub Profile"
+                        label=""
+                        icon={faGithub}/>
+                    <SocialLinks
+                        href="mailto:abo.ayash.yazan@gmail.com?subject=Hello&body=Hi there!"
+                        altText="GMAIL"
+                        label=""
+                        icon={faPaperPlane}/>
+                    <SocialLinks
+                        href="https://instagram.com/cold.by.default"
+                        altText="IG"
+                        label=""
+                        icon={faInstagram}/>
+                    <SocialLinks
+                        href="https://x.com/ccoldbydefault"
+                        altText="X"
+                        label=""
+                        icon={faXTwitter}/>
                     </div>
-                  </DrawerClose>
-                </DrawerFooter>
-              </DrawerContent>
-            </Drawer>
+                  </DrawerHeader>
+                  <DrawerFooter>
+                    <DrawerClose> 
+                      <div className='w-full flex justify-center items-center'>
+                        <div className='rounded-full text-center p-2 text-white cursor-pointer
+                      bg-zinc-900 backdrop-blur-sm border border-zinc-400'>Close</div> 
+                      </div>
+                    </DrawerClose>
+                  </DrawerFooter>
+                </DrawerContent>
+              </Drawer>
+            </div>
+            <div className="block lg:hidden md:hidden rounded-full p-2 text-white max-w-12
+            bg-zinc-900/30 backdrop-blur-sm border-b border-zinc-400 font-semibold text-md">
+              <HoursCounterBadge/>
+            </div>
           </div>
         </div>
         <div className="hidden lg:block lg:max-w-4xl lg:ml-12"></div>

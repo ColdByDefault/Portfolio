@@ -43,10 +43,10 @@ export default function BeRichHome() {
         </div>
         {/* Cube Icon and Documents Section */}
         <section className="mb-8">
-          <div className="bg-opacity-30 backdrop-blur-md shadow-lg rounded-lg p-6 flex flex-col items-center">
+          <div className="bg-opacity-30 backdrop-blur-md shadow-lg shadow-[#25252566] rounded-lg p-6 flex flex-col items-center">
             <div className="h-48 w-full flex justify-center items-center mb-4">
-              {theme === "dark" ? <Image src="/library2.png" width={200} height={200} alt="Folder Icon" /> : 
-              <Image src="/library.png" width={200} height={200} alt="Folder Icon" />}
+              {theme === "dark" ? <Image src="/logo44.png" width={200} height={200} alt="Folder Icon" /> : 
+              <Image src="/logoBlack.png" width={200} height={200} alt="Folder Icon" />}
             </div>
             <h4 className="text-sm text-center">
               "You can do anything you set your mind to."

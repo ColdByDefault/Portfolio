@@ -18,7 +18,7 @@ import { LiaExternalLinkAltSolid } from "react-icons/lia";
 export default function ProjectSection() {
   return (
     /* py-20 relative overflow-hidden text-white */
-    <section className={`font-orbitron ${orbitron.variable} py-20 relative overflow-hidden text-white`}>
+    <section className={`font-orbitron ${orbitron.variable} py-4 relative overflow-hidden text-white`}>
       {/* Sectio Title */}
       <Parallax translateY={[10, -10]} className="mb-12 text-center">
         <h2 className="text-3xl md:text-4xl font-light mb-4">Projects</h2>
@@ -43,7 +43,7 @@ export default function ProjectSection() {
             <Card className="w-full max-w-md mx-auto p-4 z-50">
               <CardHeader>
                 <CardTitle>
-                  <Link href={"/berich"} className="text-blue-400 flex gap-2 font-semibold hover:text-zinc-400 hover:underline"
+                  <Link href={"/berichHub"} className="text-blue-400 flex gap-2 font-semibold hover:text-zinc-400 hover:underline"
                   aria-label="beRich.Hub"
                   target='_blank' 
                   rel='noopener noreferrer'>beRich.Hub<LiaExternalLinkAltSolid /></Link>
@@ -55,7 +55,7 @@ export default function ProjectSection() {
                 <p className="text-gray-700 text-sm">Temporary on Desktop Devices only</p> 
               </CardContent>
               <CardFooter>
-                <p className="text-sm text-gray-400">Last update: 03.2025</p>
+                <p className="text-sm text-gray-400">Last update: 04.2025</p>
               </CardFooter>
             </Card>
           </Parallax>
@@ -64,15 +64,16 @@ export default function ProjectSection() {
             <Card className="w-full max-w-md mx-auto p-4 z-50">
               <CardHeader>
                 <CardTitle>
-                  <Link href={"/berich"} className="text-blue-400 flex gap-2 font-semibold hover:text-zinc-400 hover:underline"
+                  <Link href={"/berichHub"} className="text-blue-400 flex gap-2 font-semibold hover:text-zinc-400 hover:underline"
                   aria-label="beRich.Hub"
                   target='_blank' 
                   rel='noopener noreferrer'>beRich.Hub<LiaExternalLinkAltSolid /></Link>
                   </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-300">For developers to share their knowledge and experience with others. It is a platform where developers can connect, collaborate, 
-                  and learn from each other. The app allows users to create and share content, ask questions, and provide answers to others in the community.
+                <p className="text-gray-300">
+                  A hub where I share my knowledge, learning journey, and development experiences. 
+                  It's a space for connecting with others, exchanging ideas, and growing together through shared insights, questions, and solutions.
                 </p>
               </CardContent>
               <CardFooter>

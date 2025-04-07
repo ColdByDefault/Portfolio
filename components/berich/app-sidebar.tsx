@@ -30,14 +30,14 @@ import { useTheme } from "next-themes"
 
 
 const navItems = [
-  { title: "Getting Started Roadmap", url: "/berich/getting-started-roadmap" },
-  { title: "Getting Started PC", url: "/berich/getting-started-pc" },
-  { title: "Getting Started Networking", url: "/berich/getting-started-network" },
-  { title: "Getting Started Python 1", url: "/berich/getting-started-python-1" },
-  { title: "Getting Started Python 2", url: "/berich/getting-started-python-2" },
-  { title: "Getting Started Git & GitHub", url: "/berich/getting-started-git" },
-  { title: "Getting Started with React", url: "/berich/getting-started-react" },
-  { title: "Getting Started with Next.js", url: "/berich/getting-started-next" },
+  { title: "Getting Started Roadmap", url: "/berichHub/getting-started-roadmap" },
+  { title: "Getting Started PC", url: "/berichHub/getting-started-pc" },
+  { title: "Getting Started Networking", url: "/berichHub/getting-started-network" },
+  { title: "Getting Started Python 1", url: "/berichHub/getting-started-python-1" },
+  { title: "Getting Started Python 2", url: "/berichHub/getting-started-python-2" },
+  { title: "Getting Started Git & GitHub", url: "/berichHub/getting-started-git" },
+  { title: "Getting Started with React", url: "/berichHub/getting-started-react" },
+  { title: "Getting Started with Next.js", url: "/berichHub/getting-started-next" },
 ]
 
 export function AppSidebar() {
@@ -58,7 +58,7 @@ export function AppSidebar() {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton size="lg" asChild>
-                <Link href="/berich">
+                <Link href="/berichHub">
                   <div className="bg-primary flex aspect-square size-8 items-center justify-center rounded-lg">
                     <Image
                       src="/logoBlack.png"
