@@ -6,7 +6,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { FiMenu, FiX } from "react-icons/fi";
 import { GoFileCode } from "react-icons/go";
 import { usePathname } from "next/navigation"
-import HoursCounterBadge from "@/components/ui/HoursCounterBadg";
+
 
 
 
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
 
   const navLinks: NavLinkItem[] = [
     { href: "/", label: "Home", icon: <AiOutlineHome /> },
-    { href: "/berichHub", label: "beRich.Hub", icon: <GoFileCode /> },
+    /* { href: "/berichHub", label: "beRich.Hub", icon: <GoFileCode /> }, */ // only with id
   ];
 
   return (
@@ -60,9 +60,6 @@ const Navbar: React.FC = () => {
               <span>{link.label}</span>
             </NavLink>
           ))}
-          <div className=" ">
-            <HoursCounterBadge/>
-          </div>
         </div>
 
         {/* Burger Menu Button */}

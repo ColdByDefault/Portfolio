@@ -31,26 +31,25 @@ function Hero() {
   return (
     <section className="relative w-full">
       {/* Background Image Container */}
-      <div className="inset-0 z-0 mt-12 md:mt-4 lg:mt-0">
-        <Image 
+      <div className="inset-0 z-0 mt-12 md:mt-4">
+          {/* Black And White Image */}
+          <Image 
           src="/m123.jpg" 
           alt="Background" 
-          className="object-scale-down object-top lg:object-cover lg:object-center"
+          className="object-scale-down object-top"
           quality={100}
           priority
           fill
           sizes="100vw"/>
       </div>
-      <div className="inset-0 z-0 mt-12 md:hidden lg:hidden">
-        <Image 
-          src="/profileColor.png" 
-          alt="Background" 
-          className="object-scale-down object-top lg:object-cover lg:object-center"
-          quality={100}
-          priority
-          fill
-          sizes="100vw"/>
-      </div>
+      {/* Color Reveal Mask */}
+
+
+
+
+
+
+      
       {/* Content Container */}
       <div className="relative z-10 flex min-h-[80vh] items-center sm:justify-evenly px-6 lg:px-8 sm:min-h-screen">
         <div className="max-w-4xl p-4">
