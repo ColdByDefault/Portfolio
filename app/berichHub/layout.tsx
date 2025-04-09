@@ -34,11 +34,11 @@ export default function BeRichLayout({
 }) {
   return (
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-        <CookieBanner />
+        <CookieBanner /> 
         <SidebarProvider>
           <AppSidebar />
-          <SidebarTrigger className="mt-3" />
-          <main className="flex-1 overflow-auto pt-16 lg:mr-2">{children}</main>
+          <SidebarTrigger className="absolute lg:relative left-3 top-1" />
+          <main className="max-w-screen lg:w-full mt-12">{children}</main>
         </SidebarProvider>
       </ThemeProvider>
   )

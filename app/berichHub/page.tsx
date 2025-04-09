@@ -35,13 +35,10 @@ export default function BeRichHome() {
   const { theme } = useTheme()
 
   return (
-    <div className={`flex flex-col flex-grow p-4 ${theme === "dark" ? "dark" : "light"}`}>
-      <main className="flex flex-col">
-        {/* Introduction Section */}
-        <div className="mb-4 lg:mb-8">
+    <div className={`flex flex-col flex-grow p-4 mt-12 ${theme === "dark" ? "dark" : "light"}`}>
+        <div className="mb-4 lg:mb-8 text-center">
           <h1 className="text-sm lg:text-3xl font-bold mb-4">Introduction</h1>
         </div>
-        {/* Cube Icon and Documents Section */}
         <section className="mb-8">
           <div className="bg-opacity-30 backdrop-blur-md shadow-lg shadow-[#25252566] rounded-lg p-6 flex flex-col items-center">
             <div className="h-48 w-full flex justify-center items-center mb-4">
@@ -53,7 +50,6 @@ export default function BeRichHome() {
             </h4>
           </div>
         </section>
-        {/* Description Section */}
         <section className="text-center mb-8">
           <p className="text-sm lg:text-lg">
             Welcome to <span className="font-semibold">beRich.Hub</span>, a powerful and flexible Next.js learning platform.
@@ -62,7 +58,6 @@ export default function BeRichHome() {
             Built with <span className="font-semibold">React</span>, <span className="font-semibold">Tailwind CSS</span>, and <span className="font-bold">TypeScript</span>.
           </p>
         </section>
-        {/* Why This Digital Library Section */}
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Why This Digital Library?</h2>
           <p className=" mb-4">
@@ -76,7 +71,6 @@ export default function BeRichHome() {
             <li>Curated Links: Access a well-organized collection of websites and platforms to enhance your journey.</li>
           </ul>
         </section>
-      </main>
     </div>
   )
 }
