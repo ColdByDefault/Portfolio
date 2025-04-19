@@ -36,6 +36,7 @@ const navItems = [
   { title: "Getting Started Python 1", url: "/berichHub/getting-started-python-1" },
   { title: "Getting Started Python 2", url: "/berichHub/getting-started-python-2" },
   { title: "Getting Started Git & GitHub", url: "/berichHub/getting-started-git" },
+  { title: "Getting Started javaScript", url: "/berichHub/getting-started-javascript" },
   { title: "Getting Started with React", url: "/berichHub/getting-started-react" },
   { title: "Getting Started with Next.js", url: "/berichHub/getting-started-next" },
 ]

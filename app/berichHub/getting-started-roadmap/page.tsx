@@ -136,7 +136,6 @@ export default function GettingStartedRoadmap() {
                       <li>Understand databases (SQL and NoSQL)</li>
                       <li>Create RESTful APIs</li>
                       <li>Implement authentication and authorization</li>
-                      <li>Learn about server deployment</li>
                     </ul>
                   </CardContent>
                 </Card>

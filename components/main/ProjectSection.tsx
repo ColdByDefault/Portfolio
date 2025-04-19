@@ -51,8 +51,7 @@ export default function ProjectSection() {
                 <CardDescription>The Ultimate Hub for developers</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-400">Web Application for developers</p>
-                <p className="text-gray-700 text-sm">Temporary on Desktop Devices only</p> 
+                <p className="text-gray-400">Web Application for developers</p> 
               </CardContent>
               <CardFooter>
                 <p className="text-sm text-gray-400">Last update: 04.2025</p>
@@ -84,6 +83,65 @@ export default function ProjectSection() {
           </div>
         </div>
       </div>
+
+
+
+
+      
+      {/* <div className="container flex flex-col gap-24 mx-auto px-4">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <Parallax translateX={[-20, 10]} opacity={[0.8, 1]}>
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-primary/20 to-zinc-500/20 blur-xl w-52 h-20"></div>
+              <Image
+                src="/"
+                alt="Profile"
+                width={300}
+                height={300}
+                className="rounded-xl relative"/>
+            </div>
+            <Card className="w-full max-w-md mx-auto p-4 z-50">
+              <CardHeader>
+                <CardTitle>
+                  <Link href={"/"} className="text-blue-400 flex gap-2 font-semibold hover:text-zinc-400 hover:underline"
+                  aria-label=""
+                  target='_blank' 
+                  rel='noopener noreferrer'><LiaExternalLinkAltSolid /></Link>
+                </CardTitle>
+                <CardDescription></CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-400"></p>
+                <p className="text-gray-700 text-sm"></p> 
+              </CardContent>
+              <CardFooter>
+                <p className="text-sm text-gray-400"></p>
+              </CardFooter>
+            </Card>
+          </Parallax>
+          <div className="lg:ml-32 lg:mt-32">
+          <Parallax translateX={[15, -40]} opacity={[0.8, 1]}>
+            <Card className="w-full max-w-md mx-auto p-4 z-50">
+              <CardHeader>
+                <CardTitle>
+                  <Link href={"/"} className="text-blue-400 flex gap-2 font-semibold hover:text-zinc-400 hover:underline"
+                  aria-label=""
+                  target='_blank' 
+                  rel='noopener noreferrer'><LiaExternalLinkAltSolid /></Link>
+                  </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-300">
+                </p>
+              </CardContent>
+              <CardFooter>
+                <p className="text-sm text-gray-500"></p>
+              </CardFooter>
+            </Card>
+          </Parallax>
+          </div>
+        </div>
+      </div> */}
     </section>
   )
 }
