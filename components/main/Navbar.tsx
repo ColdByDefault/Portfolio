@@ -34,7 +34,7 @@ interface NavLinkItem {
 
 const Navbar: React.FC = () => {
   const pathname = usePathname()
-  if (pathname.startsWith("/berichHub")) {
+  if (pathname.startsWith("/berichHub") || pathname.startsWith("/reeed")) {
     return null
   }
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);

@@ -33,11 +33,11 @@ export default function ProjectSection() {
             <div className="relative">
               <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-primary/20 to-zinc-500/20 blur-xl w-52 h-20"></div>
               <Image
-                src="/logo44.png"
+                src="/berich.png"
                 alt="Profile"
                 width={300}
                 height={300}
-                className="rounded-xl relative"/>
+                className="rounded-xl relative m-6"/>
             </div>
             {/* Bottom Card */}
             <Card className="w-full max-w-md mx-auto p-4 z-50">
@@ -84,34 +84,35 @@ export default function ProjectSection() {
         </div>
       </div>
 
-
-
-
-      
-      {/* <div className="container flex flex-col gap-24 mx-auto px-4">
+      {/* REEED */}
+      <div className="container flex flex-col gap-24 mx-auto px-4 mt-12 mb-12">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <Parallax translateX={[-20, 10]} opacity={[0.8, 1]}>
-            <div className="relative">
+            <div className="relative ">
               <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-primary/20 to-zinc-500/20 blur-xl w-52 h-20"></div>
-              <Image
-                src="/"
-                alt="Profile"
-                width={300}
-                height={300}
-                className="rounded-xl relative"/>
-            </div>
+                <Image
+                  src="/reeed.png"
+                  alt="Profile"
+                  width={300}
+                  height={300}
+                  className="rounded-xl relative m-6"/>
+              </div>
             <Card className="w-full max-w-md mx-auto p-4 z-50">
               <CardHeader>
                 <CardTitle>
-                  <Link href={"/"} className="text-blue-400 flex gap-2 font-semibold hover:text-zinc-400 hover:underline"
-                  aria-label=""
+                  <Link href={"/reeed"} className="text-blue-400 flex gap-2 font-semibold hover:text-zinc-400 hover:underline"
+                  aria-label="reeed"
                   target='_blank' 
-                  rel='noopener noreferrer'><LiaExternalLinkAltSolid /></Link>
+                  rel='noopener noreferrer'><LiaExternalLinkAltSolid /> reeed</Link>
                 </CardTitle>
-                <CardDescription></CardDescription>
+                <CardDescription>
+                  Markdown Editor - Online Markdown Viewer & Editor
+                </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-400"></p>
+                <p className="text-gray-400">
+                  Built with: Next.js 15, React 19, Tailwind CSS v4
+                </p>
                 <p className="text-gray-700 text-sm"></p> 
               </CardContent>
               <CardFooter>
@@ -124,14 +125,17 @@ export default function ProjectSection() {
             <Card className="w-full max-w-md mx-auto p-4 z-50">
               <CardHeader>
                 <CardTitle>
-                  <Link href={"/"} className="text-blue-400 flex gap-2 font-semibold hover:text-zinc-400 hover:underline"
-                  aria-label=""
-                  target='_blank' 
-                  rel='noopener noreferrer'><LiaExternalLinkAltSolid /></Link>
+                  <Link href={"/reeed"} className="text-blue-400 flex gap-2 font-semibold hover:text-zinc-400 hover:underline"
+                    aria-label="reeed"
+                    target='_blank' 
+                    rel='noopener noreferrer'><LiaExternalLinkAltSolid /> reeed</Link>
                   </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300">
+                  An elegant, fast, and responsive Markdown editor built with Next.js. It features real-time preview, GitHub-flavored Markdown support, 
+                  and seamless LaTeX rendering via KaTeX. The app is 
+                  designed for note-takers, developers, and writers who need a distraction-free interface to write, edit, and preview Markdown content instantly.
                 </p>
               </CardContent>
               <CardFooter>
@@ -141,7 +145,7 @@ export default function ProjectSection() {
           </Parallax>
           </div>
         </div>
-      </div> */}
+      </div>
     </section>
   )
 }
