@@ -16,7 +16,7 @@ export function ReeedNavbar() {
       <div className="container flex h-14 items-center">
         <div className="mr-4 flex">
           <Link href="/reeed" className="mr-6 flex items-center space-x-2">
-            <span className="hidden font-bold sm:inline-block p-4">reeed</span>
+            <span className="hidden font-bold sm:inline-block p-4">reeed v1.0.0</span>
           </Link>
           <Sheet>
             <SheetTrigger asChild>
