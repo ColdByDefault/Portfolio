@@ -4,7 +4,7 @@ Welcome to my portfolio! This project is built with Next.js Fullstack and is hos
 
 **V.0.** **Flask App**
 
-(beRich)[https://coldbydefault070.pythonanywhere.com/]
+[beRich](https://coldbydefault070.pythonanywhere.com/)
 
 **V.1.**
 
@@ -25,7 +25,9 @@ Welcome to my portfolio! This project is built with Next.js Fullstack and is hos
 
 [![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/54a8cd7c-b451-4676-8695-4e701a4bda69.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/54a8cd7c-b451-4676-8695-4e701a4bda69)
 
-**See Preview** (beRich.Hub)[https://berich-hub.vercel.app/]
+**See Preview** 
+
+[beRich.Hub](https://berich-hub.vercel.app/)
 ---
 ## 🌐 Live Site
 
