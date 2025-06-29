@@ -19,15 +19,10 @@
  * - The component uses the `ParallaxProvider` to enable parallax effects in child components.
  */
 'use client';
+import Hero from "@/components/Hero";
+import LoadingScreen from "@/components/LoadingScreen";
 import { useState, useEffect } from "react";
-import LoadingScreen from "@/components/main/LoadingScreen";
-import Hero from "@/components/main/Hero";
-import CertificationShowcase from "@/components/main/CertificationShowCase";
-import ScrollToTopButton from "@/components/ui/ScrollTop";
-import Technologies from "@/components/main/Technologies";
-import {CarouselPlugin} from "@/components/main/CertiSliderSM"
-import ProjectSection from "@/components/main/ProjectSection"
-import { ParallaxProvider } from "react-scroll-parallax"
+
 
 
 
@@ -49,38 +44,11 @@ export default function Home() {
   return (
     <>
       {isLoading && (
-        <div className="fixed top-0 left-0 w-full h-full z-50 bg-black">
+        <div className="fixed top-0 left-0 w-full h-full z-50">
           <LoadingScreen onComplete={() => setIsLoading(false)} text="ColdByDefault" />
         </div>
       )}
-      <ParallaxProvider>
-      <div className="overflow-hidden relative">
-        <div className="">
-          <Hero />
-        </div>
-        <div className=""  id="projects-sect">
-          <ProjectSection /> {/* parallax effect */}
-        </div>
-        <div className="flex flex-col items-center justify-center lg:flex-row pattern mt-6">
-          <Technologies />
-        </div>
-        <div className="mt-12 pattern" id="cer">
-          <div className="hidden lg:block md:block">
-            <CertificationShowcase />
-          </div>
-          <div className="lg:hidden md:hidden flex flex-col w-full h-full justify-center items-center 
-          mt-24 pattern z-50" id="projects-sect">
-            <h2 className="text-3xl font-light text-gray-200 sm:text-4xl text-center mb-8 mt-8">
-              My Certifications
-            </h2>
-            <CarouselPlugin autoPlayDelay={2000} maxWidth="max-w-xs"/>
-          </div>
-        </div>
-        <div>
-          <ScrollToTopButton />
-        </div>
-      </div>
-      </ParallaxProvider>
+      <Hero />
     </>
   );
 }
