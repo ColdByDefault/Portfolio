@@ -1,6 +1,10 @@
 # ColdByDefault Portfolio (Version 3.1.0):
-### UPGRADE TO TYPESCRIPT
-Welcome to my portfolio! This project is built with Next.js Fullstack and is hosted on Vercel. It serves as a personal website showcasing my portfolio and **SOON** my own beRich.Hub for documentation and learning materials.
+### NEW: [beRichHub-LLM-Agent](https://github.com/ColdByDefault/beRichHub-LLM-Agent)
+Welcome to my portfolio! This project is built with Next.js Fullstack and is hosted on Vercel. It serves as a personal website showcasing my portfolio.
+
+**V.0.** **Flask App**
+
+[beRich](https://coldbydefault070.pythonanywhere.com/)
 
 **V.1.**
 
@@ -14,6 +18,16 @@ Welcome to my portfolio! This project is built with Next.js Fullstack and is hos
 
 [![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/beb9337a-f033-4377-9e03-26f96c36a41a.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/beb9337a-f033-4377-9e03-26f96c36a41a)
 
+
+**V.4.** Removed
+
+**V.5. COMING SOON**
+
+[![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/54a8cd7c-b451-4676-8695-4e701a4bda69.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/54a8cd7c-b451-4676-8695-4e701a4bda69)
+
+**See Preview** 
+
+[beRich.Hub](https://berich-hub.vercel.app/)
 ---
 ## 🌐 Live Site
 
