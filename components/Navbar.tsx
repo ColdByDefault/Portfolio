@@ -3,13 +3,12 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Home, Building2, Menu, Sun, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Home, Building2, Menu } from "lucide-react";
 import { ModeToggle } from "./theme-toggle";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+
 
   const navItems = [
     {
