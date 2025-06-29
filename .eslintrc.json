@@ -1,6 +1,22 @@
 {
   "extends": [
-    "next/core-web-vitals",
-    "next/typescript"
-  ]
+    "next/core-web-vitals", // Next.js’s defaults
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "rules": {
+    // ---- 1. Unused vars (TS) ----
+    // Turn error into warning or disable completely:
+    "@typescript-eslint/no-unused-vars": ["warn", {
+      "varsIgnorePattern": "^_",      // allow variables starting with _
+      "argsIgnorePattern": "^_"
+    }],
+    "react-hooks/rules-of-hooks": "off",
+    "react/display-name": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 
 import { techGroups } from "@/data/tech";
@@ -9,7 +9,7 @@ import { techGroups } from "@/data/tech";
 
 
 export default function Technologies() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 
 
   return (

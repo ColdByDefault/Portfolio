@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { AiOutlineHome } from "react-icons/ai";
 import { FiMenu, FiX } from "react-icons/fi";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { GoFileCode } from "react-icons/go";
 import { usePathname } from "next/navigation"
 
@@ -41,7 +42,11 @@ const Navbar: React.FC = () => {
 
   const navLinks: NavLinkItem[] = [
     { href: "/", label: "Home", icon: <AiOutlineHome /> },
-    /* { href: "/berichHub", label: "beRich.Hub", icon: <GoFileCode /> }, */ // only with id
+    {
+      href: "https://berich-hub.vercel.app/",
+      label: "beRich.Hub",
+      icon: <GoFileCode />,
+    },
   ];
 
   return (
