@@ -4,14 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { certifications } from '@/data/certificationsData';
 
-interface Certification {
-  id: number;
-  title: string;
-  image: string;
-  issuer: string;
-  description: string;
-  date: string;
-}
+
 
 const CertificationShowcase = () => {
   return (

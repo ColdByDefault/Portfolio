@@ -12,14 +12,6 @@ import {
 import Image from "next/image"
 import { certifications } from '@/data/certificationsData';
 
-interface CarouselItemData {
-  id: number;
-  title: string;
-  image: string;
-  issuer?: string;
-  description?: string;
-  date?: string;
-}
 
 interface CarouselPluginProps {
   autoPlayDelay?: number;
@@ -27,14 +19,7 @@ interface CarouselPluginProps {
   maxWidth?: string;
 }
 
-interface Certification {
-  id: number;
-  title: string;
-  image: string;
-  issuer: string;
-  description: string;
-  date: string;
-}
+
 
 export function CarouselPlugin({ 
   autoPlayDelay = 2000, 

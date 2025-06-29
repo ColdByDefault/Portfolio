@@ -12,7 +12,7 @@ interface CodeBlockProps {
   className?: string
 }
 
-export default function CodeBlock({ code, language = "tsx", showLineNumbers = true, className }: CodeBlockProps) {
+export default function CodeBlock({ code, language = "tsx", showLineNumbers = true}: CodeBlockProps) {
   const [copied, setCopied] = useState(false)
   const { theme } = useTheme()
   const copyToClipboard = async () => {

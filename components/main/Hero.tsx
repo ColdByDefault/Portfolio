@@ -60,7 +60,7 @@ function Hero() {
           </h1>
           {/* Description */}
           <div className="mb-8 max-w-2xl text-left text-sm text-slate-300 sm:text-base md:text-lg lg:text-xl">
-            I'm a full-stack junior developer and entrepreneur, building web apps, and digital solutions. Check out my other projects and the source code for this portfolio<br />&#40;built with 
+            I&apos;m a full-stack junior developer and entrepreneur, building web apps, and digital solutions. Check out my other projects and the source code for this portfolio<br />&#40;built with 
             <span className='text-blue-400 cursor-pointer font-semibold'>
               <HoverCard>
                 <HoverCardTrigger>{' '}Next.Js</HoverCardTrigger>

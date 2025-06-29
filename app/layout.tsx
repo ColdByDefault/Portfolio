@@ -49,7 +49,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   const defaultLang = 'en'; 
-  const alternateLang = 'de';
+  const alternateLang = '';
 
   return (
     <html lang={defaultLang} className={`${orbitron.variable}`}>
@@ -68,12 +68,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <meta name="twitter:description" content="Portfolio and beRich.Hub" />
         <meta name="twitter:image" content="/logo.png" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="alternate" hrefLang={alternateLang} href="https://www.coldbydefault.com/de" /> 
+        <link rel="alternate" hrefLang={alternateLang} href="https://www.coldbydefault.com/" /> 
         <script type="application/ld+json">
           {`
             {
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "Individual",
               "name": "ColdByDefault",
               "url": "https://www.coldbydefault.com",
               "logo": "https://www.coldbydefault.com/logo.png",

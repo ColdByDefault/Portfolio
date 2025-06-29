@@ -33,18 +33,9 @@ import { ParallaxProvider } from "react-scroll-parallax"
 
 
 
-interface Post {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  slug: string;
-  // Add other post properties as needed
-}
-
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [posts, setPosts] = useState<Post[]>([]);
+  
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -53,19 +44,7 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    // Fetch posts from the API route
-    async function loadPosts() {
-      try {
-        const response = await fetch('/api/posts');
-        const data = await response.json();
-        setPosts(data);
-      } catch (error) {
-        console.error("Error loading posts:", error);
-      }
-    }
-    loadPosts();
-  }, []);
+
 
   return (
     <>
