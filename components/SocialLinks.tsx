@@ -1,37 +1,81 @@
+"use client";
+
+
+import { Card, CardContent } from "@/components/ui/card";
+
 import Link from "next/link";
-import React from "react";
+import { FaXTwitter, FaSquareInstagram } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaSpotify } from "react-icons/fa";
+import { IoLogoDiscord } from "react-icons/io5";
+
+export default function ContactBox() {
 
 
-interface SocialLinksProps {
-  href: string;
-  altText: string;
-  label: string;
-  isMail?: boolean;
-  className?: string;
-}
-
-const SocialLinks: React.FC<SocialLinksProps> = ({
-  href,
-  altText,
-  label,
-  isMail = false,
-  className = "",
-}) => {
   return (
-    <div
-      className={`flex flex-col items-center gap-2 border-b border-black/30 p-2 rounded-lg shadow-[0px_2px_5px_rgba(5,5,5,0.3)] w-14 ${className}`}
-    >
-      <Link
-        href={href}
-        aria-label={altText}
-        target={isMail ? undefined : "_blank"}
-        rel={isMail ? undefined : "noopener noreferrer"}
-        className="font-bold flex items-center justify-center"
-      >
-        {label}
-      </Link>
-    </div>
-  );
-};
+    <Card className="w-fit mx-auto max-w-md border-0 bg-transparent shadow-none">
+      <CardContent className="p-6 space-y-6">
+        {/* Social Media Links */}
+        <div>
+          <h3 className="text-sm font-medium text-slate-600 mb-3">
+            Get in touch
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href="https://instagram.com"
+              target="_blank"
+              className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+              title="Instagram"
+            >
+              <FaSquareInstagram className="h-5 w-5 text-pink-600" />
+            </Link>
 
-export default SocialLinks;
+            <Link
+              href="https://github.com"
+              target="_blank"
+              className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+              title="GitHub"
+            >
+              <FaGithub className="h-5 w-5 text-slate-700" />
+            </Link>
+
+            <Link
+              href="https://linkedin.com"
+              target="_blank"
+              className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+              title="LinkedIn"
+            >
+              <FaLinkedin className="h-5 w-5 text-blue-600" />
+            </Link>
+
+            <Link
+              href="https://x.com"
+              target="_blank"
+              className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+              title="X (Twitter)"
+            >
+              <FaXTwitter />
+            </Link>
+
+            <Link
+              href="https://discord.gg/yourserver"
+              target="_blank"
+              className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+              title="Discord"
+            >
+              <IoLogoDiscord className="h-5 w-5 text-indigo-600" />
+            </Link>
+
+            <Link
+              href="https://open.spotify.com/user/yourprofile"
+              target="_blank"
+              className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+              title="Spotify"
+            >
+              <FaSpotify className="h-5 w-5 text-green-600" />
+            </Link>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}

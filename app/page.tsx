@@ -23,6 +23,7 @@ import CertificationShowcase from "@/components/CertificationShowCase";
 import { CarouselPlugin } from "@/components/CertiSliderSM";
 import Hero from "@/components/Hero";
 import LoadingScreen from "@/components/LoadingScreen";
+import { Background } from "@/components/motion-background";
 import Technologies from "@/components/Technologies";
 import { useState, useEffect } from "react";
 
@@ -46,8 +47,9 @@ export default function Home() {
           />
         </div>
       )}
+      <Background />
       {/* Scroll Indicator */}
-      <div className="hidden lg:block lg:absolute lg:bottom-8 lg:left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="hidden lg:block lg:absolute lg:bottom-8 lg:left-1/6 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
           <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2"></div>
         </div>

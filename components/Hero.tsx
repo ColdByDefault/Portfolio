@@ -1,15 +1,14 @@
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Download, Mail, Github, Linkedin } from "lucide-react";
+
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import SocialLinks from "./SocialLinks";
 
 function Hero() {
   const { theme } = useTheme();
 
   return (
     <section className="w-full min-h-screen flex items-center justify-center py-12 md:py-12 lg:py-12">
-
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center space-y-8 text-center">
           {/* Profile Picture */}
@@ -17,7 +16,7 @@ function Hero() {
             <div className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden border-4 border-border shadow-2xl">
               <Image
                 src={
-                  theme === "dark" ? "/profileLight2.jpg" : "/profileLight2.jpg"
+                  theme === "dark" ? "/profileDark.jpg" : "/profileLight.jpg"
                 }
                 alt="Profile Picture"
                 width={400}
@@ -54,37 +53,7 @@ function Hero() {
               Specialized in modern web technologies with 2+ years of
               experience.
             </p>
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <Button size="lg" className="w-full sm:w-auto">
-                <Mail className="mr-2 h-4 w-4" />
-                Get In Touch
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto bg-transparent"
-              >
-                <Download className="mr-2 h-4 w-4" />
-                Download CV
-              </Button>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex justify-center space-x-6 pt-6">
-              <Button variant="ghost" size="icon" className="h-12 w-12">
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </Button>
-              <Button variant="ghost" size="icon" className="h-12 w-12">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </Button>
-              <Button variant="ghost" size="icon" className="h-12 w-12">
-                <Mail className="h-5 w-5" />
-                <span className="sr-only">Email</span>
-              </Button>
-            </div>
+            <SocialLinks />
           </div>
         </div>
       </div>

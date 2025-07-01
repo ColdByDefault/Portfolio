@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Technologies() {
   return (
-    <section className="px-4 max-w-7xl mx-auto flex flex-col space-y-8">
+    <section className="px-4 max-w-7xl mx-auto flex flex-col space-y-8" id="tech">
       <Card className="border-0 dark:bg-transparent">
         <CardHeader className="text-center pb-2">
           <CardTitle className="text-4xl font-light">

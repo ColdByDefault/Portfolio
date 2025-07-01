@@ -3,9 +3,18 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Home, Building2, Menu } from "lucide-react";
+import {
+  Home,
+  FolderGit2,
+  Menu,
+  Atom,
+  BookOpenCheck,
+  Telescope,
+} from "lucide-react";
 import { ModeToggle } from "./theme-toggle";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { FaGithub } from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,11 +27,24 @@ export default function Navbar() {
       icon: Home,
     },
     {
-      name: "BerichHub",
-      href: "https://berich-hub.vercel.app/",
-      icon: Building2,
+      name: "Technologies",
+      href: "#tech",
+      icon: Atom,
+    },
+    {
+      name: "Certifications",
+      href: "#cert",
+      icon: BookOpenCheck,
+    },
+    {
+      name: "Projects",
+      href: "#project",
+      icon: FolderGit2,
     },
   ];
+
+  const lightLink = "text-gray-500 hover:text-gray-900";
+  const darkLink = "dark:text-gray-600 dark:hover:text-gray-200";
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex justify-center">
@@ -40,22 +62,32 @@ export default function Navbar() {
               const Icon = item.icon;
               return (
                 <Link
-                  target="_blanck"
-                  rel="noopener noreferrer"
                   key={item.name}
                   href={item.href}
-                  className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-primary"
+                  className={`
+                  flex items-center space-x-2 text-sm font-medium transition-colors
+                  ${lightLink} ${darkLink}
+                `}
                 >
                   <Icon className="h-4 w-4" />
                   <span>{item.name}</span>
                 </Link>
               );
             })}
+            <Link target="_blanck" href="" rel="noreferrer">
+              <Badge>beRich.Hub</Badge>
+            </Link>
           </div>
 
           {/* Desktop Theme Toggle */}
-          <div className="hidden md:flex items-center">
-            <ModeToggle />
+          <div className="hidden md:flex items-center gap-2">
+            <div className="border-r-2 pr-2">
+              <ModeToggle />
+            </div>
+            <div>
+              <Link href="https://github.com/coldbydefault"><FaGithub className="h-5 w-5 text-slate-700" />
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -73,11 +105,14 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="flex flex-col space-y-4 mt-8">
-                <div className="text-lg font-semibold mb-4">Navigation</div>
+                <div className="text-lg font-semibold mb-4 pl-2">
+                  Navigation
+                </div>
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   return (
-                    <a
+                    <Link
+                      rel="noopener noreferrer"
                       key={item.name}
                       href={item.href}
                       onClick={() => setIsOpen(false)}
@@ -85,9 +120,18 @@ export default function Navbar() {
                     >
                       <Icon className="h-5 w-5" />
                       <span>{item.name}</span>
-                    </a>
+                    </Link>
                   );
                 })}
+                <Link
+                  target="_blanck"
+                  href=""
+                  rel="noreferrer"
+                  className="pl-2 flex gap-2 items-center"
+                >
+                  <Telescope />
+                  <Badge variant="secondary">beRich.Hub</Badge>
+                </Link>
               </div>
             </SheetContent>
           </Sheet>
