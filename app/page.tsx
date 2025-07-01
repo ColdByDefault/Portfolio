@@ -18,19 +18,16 @@
  * - Posts are fetched from the `/api/posts` endpoint and stored in the `posts` state.
  * - The component uses the `ParallaxProvider` to enable parallax effects in child components.
  */
-'use client';
+"use client";
+import CertificationShowcase from "@/components/CertificationShowCase";
+import { CarouselPlugin } from "@/components/CertiSliderSM";
 import Hero from "@/components/Hero";
 import LoadingScreen from "@/components/LoadingScreen";
+import Technologies from "@/components/Technologies";
 import { useState, useEffect } from "react";
-
-
-
-
-
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -39,16 +36,26 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-
-
   return (
-    <>
+    <div>
       {isLoading && (
         <div className="fixed top-0 left-0 w-full h-full z-50">
-          <LoadingScreen onComplete={() => setIsLoading(false)} text="ColdByDefault" />
+          <LoadingScreen
+            onComplete={() => setIsLoading(false)}
+            text="ColdByDefault"
+          />
         </div>
       )}
+      {/* Scroll Indicator */}
+      <div className="hidden lg:block lg:absolute lg:bottom-8 lg:left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2"></div>
+        </div>
+      </div>
       <Hero />
-    </>
+      <Technologies />
+      <CertificationShowcase className="hidden py-12 px-4 sm:px-6 lg:px-8 lg:block md:block" />
+      <CarouselPlugin className="block lg:hidden md:hidden" />
+    </div>
   );
 }

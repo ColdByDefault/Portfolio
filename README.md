@@ -1,33 +1,7 @@
 # ColdByDefault Portfolio (Version 3.1.0):
-### NEW: [beRichHub-LLM-Agent](https://github.com/ColdByDefault/beRichHub-LLM-Agent)
+
 Welcome to my portfolio! This project is built with Next.js Fullstack and is hosted on Vercel. It serves as a personal website showcasing my portfolio.
 
-**V.0.** **Flask App**
-
-[beRich](https://coldbydefault070.pythonanywhere.com/)
-
-**V.1.**
-
-[![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/8021aafa-030b-41b9-9c31-71b1906659cd.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/8021aafa-030b-41b9-9c31-71b1906659cd)
-
-**V.2.**
-
-[![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/79c9876c-acce-48e7-b661-264f4bf514a5.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/79c9876c-acce-48e7-b661-264f4bf514a5)
-
-**V.3.**
-
-[![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/beb9337a-f033-4377-9e03-26f96c36a41a.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/beb9337a-f033-4377-9e03-26f96c36a41a)
-
-
-**V.4.** Removed
-
-**V.5. COMING SOON**
-
-[![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/54a8cd7c-b451-4676-8695-4e701a4bda69.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/54a8cd7c-b451-4676-8695-4e701a4bda69)
-
-**See Preview** 
-
-[beRich.Hub](https://berich-hub.vercel.app/)
 ---
 ## 🌐 Live Site
 
@@ -40,7 +14,7 @@ Visit the live site here:
 
 ## 📚 About
 
-This Next.js app is designed to be a comprehensive, clean, and modern representation of my work. It includes a portfolio section and the beRich.Hub for educational resources and documentation, providing an aesthetically pleasing and functional user experience.
+This Next.js app is designed to be a comprehensive, clean, and modern representation of my work. It includes a portfolio section..
 
 ---
 
@@ -48,7 +22,7 @@ This Next.js app is designed to be a comprehensive, clean, and modern representa
 
 - **Next.js Fullstack**: For building the UI and backend components.
 - **CSS + Tailwind**: For styling and animations.
-- **UI Libraries**: For enhanced design and interactivity.
+- **shadcnUI**: For enhanced design and interactivity.
 - **Vercel**: For deployment and hosting.
 
 ---
