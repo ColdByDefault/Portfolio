@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Home, Building2, Menu } from "lucide-react";
 import { ModeToggle } from "./theme-toggle";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +29,7 @@ export default function Navbar() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
-            <a href="#" className="text-sm tracking-tight">
+            <a href="" className="text-sm tracking-tight">
               ColdByDefault
             </a>
           </div>
@@ -38,14 +39,16 @@ export default function Navbar() {
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
-                <a
+                <Link
+                  target="_blanck"
+                  rel="noopener noreferrer"
                   key={item.name}
                   href={item.href}
                   className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-primary"
                 >
                   <Icon className="h-4 w-4" />
                   <span>{item.name}</span>
-                </a>
+                </Link>
               );
             })}
           </div>
