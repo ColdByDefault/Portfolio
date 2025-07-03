@@ -10,6 +10,11 @@ export interface Project {
   liveUrl?: string;
   featured: boolean;
   category: string;
+  license?: {
+    type: "copyright" | "open-source" | "fully-open";
+    text: string;
+    variant?: "default" | "secondary" | "destructive" | "outline";
+  };
 }
 
 export const projects: Project[] = [
@@ -25,10 +30,15 @@ export const projects: Project[] = [
       "Framer Motion",
       "React Icons",
     ],
-    githubUrl: "https://github.com/coldbydefault/portfolio-v3",
+    githubUrl: "See GitHub for source code",
     liveUrl: "https://coldbydefault.com",
     featured: true,
     category: "Web Development",
+    license: {
+      type: "copyright",
+      text: "All Rights Reserved",
+      variant: "destructive",
+    },
   },
   {
     id: 2,
@@ -45,10 +55,15 @@ export const projects: Project[] = [
       "LangChain",
       "next-internationalization",
     ],
-    githubUrl: "https://github.com/coldbydefault/berichhub",
+    githubUrl: "git clone https://github.com/coldbydefault/berichhub.git",
     liveUrl: "https://berich-hub.vercel.app/",
     featured: true,
     category: "Full Stack",
+    license: {
+      type: "open-source",
+      text: "Modified MIT License",
+      variant: "secondary",
+    },
   },
   {
     id: 6,
@@ -63,9 +78,15 @@ export const projects: Project[] = [
       "PostgreSQL",
       "TypeScript",
     ],
-    githubUrl: "https://github.com/coldbydefault/simple-llm-agent",
+    githubUrl:
+      "git clone https://github.com/coldbydefault/simple-llm-agent.git",
     featured: false,
     category: "AI/ML",
+    license: {
+      type: "fully-open",
+      text: "Fully Open Source",
+      variant: "default",
+    },
   },
 ];
 

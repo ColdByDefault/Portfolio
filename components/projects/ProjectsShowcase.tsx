@@ -4,10 +4,17 @@ import React, { useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { projects, projectCategories, type Project } from "@/data/projectsData";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FiGithub, FiExternalLink, FiCopy, FiCheck } from "react-icons/fi";
+import Link from "next/link";
 
 interface ProjectsShowcaseProps {
   className?: string;
@@ -65,9 +72,39 @@ const ProjectCard = ({
         </CardHeader>
 
         <CardContent className="space-y-4">
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            {project.description}
-          </p>
+          <div className="h-24 overflow-hidden">
+            <p className="text-sm text-muted-foreground leading-relaxed line-clamp-5">
+              {project.description.length > 120 ? (
+                <>
+                  {project.description.substring(0, 190)}
+                  <span className="text-red-200"> see more on GitHub...</span>
+                </>
+              ) : (
+                project.description
+              )}
+            </p>
+          </div>
+
+          {/* License Badge */}
+          {project.license && (
+            <div className="flex justify-start">
+              <Badge
+                variant={project.license.variant || "default"}
+                className={`text-xs font-medium ${
+                  project.license.type === "fully-open"
+                    ? "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800"
+                    : ""
+                }`}
+              >
+                {project.license.type === "copyright"
+                  ? "©"
+                  : project.license.type === "fully-open"
+                  ? "🌟"
+                  : "🔓"}{" "}
+                {project.license.text}
+              </Badge>
+            </div>
+          )}
 
           {/* Technologies */}
           <div className="flex flex-wrap gap-2">
@@ -102,14 +139,15 @@ const ProjectCard = ({
               </Button>
             </div>
             <code className="text-xs bg-background px-2 py-1 rounded block break-all font-mono">
-              git clone {project.githubUrl}.git
+              {project.githubUrl}
             </code>
           </div>
-
+        </CardContent>
+        <CardFooter>
           {/* Action Buttons */}
-          <div className="flex gap-2 pt-2">
+          <div className="flex gap-2 pt-2 justify-between w-full">
             <Button variant="outline" size="sm" asChild className="flex-1">
-              <a
+              <Link
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -117,12 +155,12 @@ const ProjectCard = ({
               >
                 <FiGithub className="h-4 w-4" />
                 Code
-              </a>
+              </Link>
             </Button>
 
             {project.liveUrl && (
               <Button size="sm" asChild className="flex-1">
-                <a
+                <Link
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -130,11 +168,11 @@ const ProjectCard = ({
                 >
                   <FiExternalLink className="h-4 w-4" />
                   Live Demo
-                </a>
+                </Link>
               </Button>
             )}
           </div>
-        </CardContent>
+        </CardFooter>
       </Card>
     </motion.div>
   );
