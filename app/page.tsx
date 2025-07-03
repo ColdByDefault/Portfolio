@@ -19,18 +19,21 @@
  * - The component uses the `ParallaxProvider` to enable parallax effects in child components.
  */
 "use client";
-import CertificationShowcase from "@/components/CertificationShowCase";
-import { CarouselPlugin } from "@/components/CertiSliderSM";
-import Hero from "@/components/Hero";
-import LoadingScreen from "@/components/LoadingScreen";
-import { Background } from "@/components/motion-background";
-import Technologies from "@/components/Technologies";
+import CertificationShowcase from "@/components/cer/CertificationShowCase";
+import { CarouselPlugin } from "@/components/cer/CertiSliderSM";
+import Hero from "@/components/hero/Hero";
+import LoadingScreen from "@/components/visuals/LoadingScreen";
+import { Background } from "@/components/visuals/motion-background";
+import Technologies from "@/components/tech/Technologies";
+import { ProjectsShowcase } from "@/components/projects";
 import { useState, useEffect } from "react";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
+    setMounted(true);
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2200);
@@ -39,7 +42,7 @@ export default function Home() {
 
   return (
     <div>
-      {isLoading && (
+      {mounted && isLoading && (
         <div className="fixed top-0 left-0 w-full h-full z-50">
           <LoadingScreen
             onComplete={() => setIsLoading(false)}
@@ -55,6 +58,7 @@ export default function Home() {
         </div>
       </div>
       <Hero />
+      <ProjectsShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
       <Technologies />
       <CertificationShowcase className="hidden py-12 px-4 sm:px-6 lg:px-8 lg:block md:block" />
       <CarouselPlugin className="block lg:hidden md:hidden" />

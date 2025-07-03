@@ -1,11 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import SocialLinks from "./SocialLinks";
 
+
 function Hero() {
-  const { theme } = useTheme();
+
+
 
   return (
     <section className="w-full min-h-screen flex items-center justify-center py-12 md:py-12 lg:py-12">
@@ -15,9 +16,7 @@ function Hero() {
           <div className="relative">
             <div className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden border-4 border-border shadow-2xl">
               <Image
-                src={
-                  theme === "dark" ? "/profileDark.jpg" : "/profileLight.jpg"
-                }
+                src="/profileDark.jpg"
                 alt="Profile Picture"
                 width={400}
                 height={400}

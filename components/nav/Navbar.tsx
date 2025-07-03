@@ -11,14 +11,13 @@ import {
   BookOpenCheck,
   Telescope,
 } from "lucide-react";
-import { ModeToggle } from "./theme-toggle";
+import { ModeToggle } from "../theme/theme-toggle";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { FaGithub } from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
 
   const navItems = [
     {
@@ -38,7 +37,7 @@ export default function Navbar() {
     },
     {
       name: "Projects",
-      href: "#project",
+      href: "#projects",
       icon: FolderGit2,
     },
   ];
@@ -85,7 +84,8 @@ export default function Navbar() {
               <ModeToggle />
             </div>
             <div>
-              <Link href="https://github.com/coldbydefault"><FaGithub className="h-5 w-5 text-slate-700" />
+              <Link href="https://github.com/coldbydefault">
+                <FaGithub />
               </Link>
             </div>
           </div>

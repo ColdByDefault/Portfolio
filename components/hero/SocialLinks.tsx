@@ -21,7 +21,7 @@ export default function ContactBox() {
           </h3>
           <div className="flex flex-wrap gap-2">
             <Link
-              href="https://instagram.com"
+              href="https://instagram.com/cold.by.default"
               target="_blank"
               className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
               title="Instagram"
@@ -30,7 +30,7 @@ export default function ContactBox() {
             </Link>
 
             <Link
-              href="https://github.com"
+              href="https://github.com/coldbydefault"
               target="_blank"
               className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
               title="GitHub"
@@ -39,7 +39,7 @@ export default function ContactBox() {
             </Link>
 
             <Link
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/yazan-a-a-465b44312/"
               target="_blank"
               className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
               title="LinkedIn"
@@ -48,7 +48,7 @@ export default function ContactBox() {
             </Link>
 
             <Link
-              href="https://x.com"
+              href="https://x.com/ccoldbydefault"
               target="_blank"
               className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
               title="X (Twitter)"
@@ -57,7 +57,7 @@ export default function ContactBox() {
             </Link>
 
             <Link
-              href="https://discord.gg/yourserver"
+              href="https://discord.gg/coldbydefault"
               target="_blank"
               className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
               title="Discord"
@@ -66,7 +66,7 @@ export default function ContactBox() {
             </Link>
 
             <Link
-              href="https://open.spotify.com/user/yourprofile"
+              href="https://open.spotify.com/user/q7s1djy4b0ed0dp435mz2bfho"
               target="_blank"
               className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
               title="Spotify"

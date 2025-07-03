@@ -28,8 +28,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { Orbitron } from "next/font/google";
 import React from "react";
-import { ThemeProvider } from "@/components/theme-provider";
-import Navbar from "@/components/Navbar";
+import { ThemeProvider } from "@/components/theme/theme-provider";
+import Navbar from "@/components/nav/Navbar";
+import Footer from "@/components/footer/Footer";
+import { CookiesBanner } from "@/components/cookies/cookies-banner";
 
 export const metadata = {
   title: "ColdByDefault",
@@ -104,6 +106,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <Navbar />
           {children}
+          <Footer />
+          <CookiesBanner />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
