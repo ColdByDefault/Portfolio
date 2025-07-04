@@ -1,5 +1,3 @@
-// CertificationShowcase.js
-
 import React from "react";
 import Image from "next/image";
 import { certifications } from "@/data/certificationsData";
@@ -12,7 +10,7 @@ interface CertificationShowcaseProps {
 function CertificationShowcase({ className }: CertificationShowcaseProps) {
   return (
     <section className={className} id="cert">
-      <Card className="max-w-7xl mx-auto border-0 dark:bg-transparent">
+      <Card className="max-w-7xl mx-auto border-0 bg-transparent dark:bg-transparent">
         <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8">
           My Certifications
         </CardTitle>

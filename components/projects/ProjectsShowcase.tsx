@@ -112,7 +112,7 @@ const ProjectCard = ({
               <motion.div
                 key={tech}
                 whileHover={{ scale: 1.05 }}
-                className="px-2 py-1 bg-secondary/50 rounded text-xs font-medium"
+                className="px-2 py-1 bg-secondary/50 rounded text-xs font-medium  cursor-default"
               >
                 {tech}
               </motion.div>
@@ -129,7 +129,7 @@ const ProjectCard = ({
                 variant="ghost"
                 size="sm"
                 onClick={handleCopyCloneLink}
-                className="h-6 w-6 p-0"
+                className="h-6 w-6 p-0 cursor-pointer"
               >
                 {copied ? (
                   <FiCheck className="h-3 w-3 text-green-500" />
@@ -190,7 +190,7 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
 
   return (
     <section className={className} id="projects" ref={sectionRef}>
-      <Card className="max-w-7xl mx-auto border-0 dark:bg-transparent">
+      <Card className="max-w-7xl mx-auto border-0 bg-transparent dark:bg-transparent ">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}

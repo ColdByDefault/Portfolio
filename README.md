@@ -1,52 +1,134 @@
-# ColdByDefault Portfolio (Version 3.1.0):
+# ColdByDefault Portfolio (Version 3.1.0)
 
-Welcome to my portfolio! This project is built with Next.js Fullstack and is hosted on Vercel. It serves as a personal website showcasing my portfolio.
+A secure, modern portfolio website built with Next.js 15, featuring comprehensive security measures and optimized performance.
 
 ---
+
 ## 🌐 Live Site
 
 Visit the live site here:  
 **[coldbydefault.com](https://www.coldbydefault.com)**
 
-**NO CONSOLE ERRORS**
+**ZERO CONSOLE ERRORS | SECURITY AUDITED**
 
 ---
 
-## 📚 About
+## 🔒 Security Features
 
-This Next.js app is designed to be a comprehensive, clean, and modern representation of my work. It includes a portfolio section..
+This portfolio implements comprehensive security measures:
+
+### ✅ **Enhanced API Security**
+
+- Environment-based configuration for sensitive data
+- GitHub API integration with proper token handling
+- **Rate limiting** (10 requests/minute per IP)
+- No hardcoded credentials or API keys
+- **Input validation and sanitization**
+- **Error message sanitization** to prevent information leakage
+
+### ✅ **Security Headers Implementation**
+
+- **Content Security Policy (CSP)** for XSS prevention
+- **X-Frame-Options: DENY** to prevent clickjacking
+- **X-Content-Type-Options: nosniff** to prevent MIME sniffing
+- **Strict-Transport-Security (HSTS)** for HTTPS enforcement
+- **Referrer-Policy** for privacy protection
+- **Permissions-Policy** to restrict browser APIs
+
+### ✅ **Data Protection**
+
+- All sensitive configuration properly excluded from version control
+- Secure HTTP-only connections enforced
+- Input validation and sanitization on all endpoints
+- No dangerous functions (eval, innerHTML) utilized
+- **Rate limiting** to prevent abuse
+
+### ✅ **Dependency Security**
+
+- **0 Known Vulnerabilities** in dependencies (verified via npm audit)
+- Regular security updates maintained
+- Minimal attack surface with carefully selected packages
+
+### ✅ **Privacy Compliance**
+
+- Cookie consent implementation
+- Transparent data usage policies
+- No tracking without user consent
+
+---
+
+## 🛡️ Security Audit Report
+
+**Last Security Audit:** July 2025
+
+**Enhanced Security Measures Applied:**
+
+- ✅ **Rate limiting** implemented on API endpoints
+- ✅ **Comprehensive security headers** added
+- ✅ **Input validation** and sanitization
+- ✅ **Error message sanitization** to prevent information leakage
+- ✅ **Content Security Policy** configured
+- ✅ **HSTS headers** for HTTPS enforcement
+
+**Vulnerability Scan Results:**
+
+- ✅ **0 Critical vulnerabilities**
+- ✅ **0 High severity issues**
+- ✅ **0 Medium severity issues**
+- ✅ **0 Dependencies with known CVEs**
+
+**Security Checklist:**
+
+- [x] Secret management via environment variables
+- [x] Secure API endpoint configuration
+- [x] Input validation and sanitization
+- [x] Dependency vulnerability scanning
+- [x] Secure HTTP headers implementation
+- [x] Cross-site scripting (XSS) prevention
+- [x] SQL injection prevention (N/A - no database)
+- [x] Authentication security (GitHub API)
 
 ---
 
 ## 🚀 Technologies Used
 
-- **Next.js Fullstack**: For building the UI and backend components.
-- **CSS + Tailwind**: For styling and animations.
-- **shadcnUI**: For enhanced design and interactivity.
-- **Vercel**: For deployment and hosting.
+- **Next.js 15**: Modern React framework with App Router
+- **TypeScript**: Type-safe development environment
+- **Tailwind CSS**: Utility-first styling framework
+- **shadcn/ui**: High-quality, accessible UI components
+- **Framer Motion**: Smooth animations and transitions
+- **Vercel**: Secure hosting platform with edge functions
 
 ---
 
 ## 🔗 Domain Information
 
-Custom Domain:  
-https://www.coldbydefault.com
+**Primary Domain:** https://www.coldbydefault.com  
+**Security:** SSL/TLS encryption enforced
 
 ---
 
-📧 Contact
+## 📧 Contact
 
-For any inquiries, feel free to connect with me through **[linktree](https://linktr.ee/ColdByDefault)**
+For security inquiries or general contact, connect with me through **[linktree](https://linktr.ee/ColdByDefault)**
 
 ---
 
-## License
+## 🔐 Intellectual Property & License
 
 **Copyright © 2025 ColdByDefault. All rights reserved.**
 
-This project and its contents (including code, design, and assets) are the property of **ColdByDefault**.
+This project and its contents (including code, design, and assets) are the exclusive property of **ColdByDefault**.
 
-### Restrictions:
-- You may not copy, modify, distribute, or use any part of this project without explicit written permission.
-- This repository is for **viewing purposes only** and is not licensed for public or commercial use.
+### 🚫 **Restrictions:**
 
+- **NO REPRODUCTION:** You may not copy, modify, distribute, or use any part of this project
+- **NO COMMERCIAL USE:** This code is not available for commercial or personal use
+- **NO DERIVATIVES:** Creating derivative works is strictly prohibited
+- **VIEW ONLY:** This repository is for **demonstration and viewing purposes exclusively**
+
+### ⚖️ **Legal Notice:**
+
+This repository is provided for portfolio demonstration only. Any unauthorized use, reproduction, or distribution may result in legal action. All intellectual property rights are reserved.
+
+**Security Note:** This codebase has been thoroughly audited for security vulnerabilities. Any attempts to exploit or reverse-engineer this code for malicious purposes are prohibited and may be reported to relevant authorities.

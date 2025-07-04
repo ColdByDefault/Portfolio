@@ -7,6 +7,7 @@ import {
   Home,
   FolderGit2,
   Menu,
+  Antenna,
   Atom,
   BookOpenCheck,
   Telescope,
@@ -26,6 +27,16 @@ export default function Navbar() {
       icon: Home,
     },
     {
+      name: "Projects",
+      href: "#projects",
+      icon: FolderGit2,
+    },
+    {
+      name: "GitHub MCP",
+      href: "#github",
+      icon: Antenna,
+    },
+    {
       name: "Technologies",
       href: "#tech",
       icon: Atom,
@@ -34,11 +45,6 @@ export default function Navbar() {
       name: "Certifications",
       href: "#cert",
       icon: BookOpenCheck,
-    },
-    {
-      name: "Projects",
-      href: "#projects",
-      icon: FolderGit2,
     },
   ];
 
@@ -50,9 +56,9 @@ export default function Navbar() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
-            <a href="" className="text-sm tracking-tight">
+            <Link href="/" className="text-sm tracking-tight">
               ColdByDefault
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -73,8 +79,8 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <Link target="_blanck" href="" rel="noreferrer">
-              <Badge>beRich.Hub</Badge>
+            <Link target="_blanck" href="https://berich-hub.vercel.app" rel="noreferrer">
+              <Badge className="cursor-pointer">beRich.Hub</Badge>
             </Link>
           </div>
 
@@ -125,7 +131,7 @@ export default function Navbar() {
                 })}
                 <Link
                   target="_blanck"
-                  href=""
+                  href="https://berich-hub.vercel.app"
                   rel="noreferrer"
                   className="pl-2 flex gap-2 items-center"
                 >

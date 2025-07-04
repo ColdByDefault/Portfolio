@@ -67,6 +67,24 @@ export default function RootLayout({ children }: RootLayoutProps) {
           name="keywords"
           content="ColdByDefault, Portfolio, Next.Js, Web Development"
         />
+
+        {/* Security Headers */}
+        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+        <meta httpEquiv="X-Frame-Options" content="DENY" />
+        <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
+        <meta
+          httpEquiv="Referrer-Policy"
+          content="strict-origin-when-cross-origin"
+        />
+        <meta
+          httpEquiv="Permissions-Policy"
+          content="camera=(), microphone=(), geolocation=()"
+        />
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://api.github.com https://vitals.vercel-analytics.com;"
+        />
+
         <meta property="og:title" content="ColdByDefault" />
         <meta property="og:description" content="Portfolio" />
         <meta property="og:image" content="/logo.png" />

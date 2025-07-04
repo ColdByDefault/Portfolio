@@ -26,6 +26,7 @@ import LoadingScreen from "@/components/visuals/LoadingScreen";
 import { Background } from "@/components/visuals/motion-background";
 import Technologies from "@/components/tech/Technologies";
 import { ProjectsShowcase } from "@/components/projects";
+import { GitHubShowcase } from "@/components/github";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -59,6 +60,9 @@ export default function Home() {
       </div>
       <Hero />
       <ProjectsShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
+      <div className="py-12 px-4 sm:px-6 lg:px-8" id="github">
+        <GitHubShowcase />
+      </div>
       <Technologies />
       <CertificationShowcase className="hidden py-12 px-4 sm:px-6 lg:px-8 lg:block md:block" />
       <CarouselPlugin className="block lg:hidden md:hidden" />
