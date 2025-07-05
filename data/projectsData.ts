@@ -21,7 +21,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Portfolio Website v4",
+    title: "Portfolio Website v5",
     description:
       "A modern, responsive portfolio website built with Next.js 15, featuring dark/light theme toggle, smooth animations with Framer Motion, and optimized performance. Includes TypeScript for type safety and Tailwind CSS for styling.",
     technologies: [
