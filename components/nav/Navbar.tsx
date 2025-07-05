@@ -56,7 +56,7 @@ export default function Navbar() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
-            <Link href="/" className="text-sm tracking-tight">
+            <Link href="/" className="text-sm tracking-tight pl-4">
               ColdByDefault
             </Link>
           </div>
@@ -98,7 +98,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        <div className="flex md:hidden lg:hidden items-center space-x-2">
+        <div className="flex md:hidden lg:hidden items-center space-x-2 px-4">
           {/* Mobile Theme Toggle */}
           <ModeToggle />
           {/* Mobile Menu Trigger */}
