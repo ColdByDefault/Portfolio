@@ -29,6 +29,7 @@ import { Background } from "@/components/visuals/motion-background";
 import Technologies from "@/components/tech/Technologies";
 import { ProjectsShowcase } from "@/components/projects";
 import { GitHubShowcase } from "@/components/github";
+import { PageSpeedInsights } from "@/components/pagespeed";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -68,6 +69,17 @@ export default function Home() {
       <Technologies />
       <CertificationShowcase className="hidden py-12 px-4 sm:px-6 lg:px-8 lg:block md:block" />
       <CarouselPlugin className="block lg:hidden md:hidden" />
+      <div className="py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-light text-center mb-8">
+            Website Performance
+          </h2>
+          <PageSpeedInsights
+            url="https://www.coldbydefault.com"
+            strategy="mobile"
+          />
+        </div>
+      </div>
     </div>
   );
 }
