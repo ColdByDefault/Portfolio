@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-01-05",
+    "author": "Yazan Abo-Ayash",
+    "description": "Comprehensive about data structure for portfolio website"
+  },
+  "profile": {
+    "name": "Yazan Abo-Ayash",
+    "title": "Full Stack Junior Developer",
+    "currentRole": {
+      "position": "Software Development Intern",
+      "company": "Avarno GmbH",
+      "duration": "2025 - Present",
+      "responsibilities": [
+        "Built bespoke digital solutions and AI-powered applications",
+        "Implemented modern web technologies",
+        "Collaborated on scalable architecture projects"
+      ]
+    },
+    "experience": "3+ years",
+    "location": "Germany",
+    "availability": "Open for collaboration"
+  },
+  "skills": {
+    "frontend": [
+      {
+        "name": "Next.js",
+        "level": "Intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "React",
+        "level": "Intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "TypeScript",
+        "level": "Intermediate",
+        "yearsOfExperience": 1.5
+      },
+      {
+        "name": "JavaScript",
+        "level": "Intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "HTML/CSS",
+        "level": "Advanced",
+        "yearsOfExperience": 2.5
+      },
+      {
+        "name": "Tailwind CSS",
+        "level": "Advanced",
+        "yearsOfExperience": 2
+      }
+    ],
+    "backend": [
+      {
+        "name": "Node.js",
+        "level": "Intermediate",
+        "yearsOfExperience": 1.5
+      },
+      {
+        "name": "API Development",
+        "level": "Intermediate",
+        "yearsOfExperience": 1.5
+      }
+    ],
+    "tools": [
+      {
+        "name": "Git",
+        "level": "Advanced",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "GitHub",
+        "level": "Advanced",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "VS Code",
+        "level": "Expert",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Figma",
+        "level": "Basic",
+        "yearsOfExperience": 1
+      }
+    ]
+  },
+  "philosophy": {
+    "coreBeliefs": [
+      "Hard work and discipline always pay off",
+      "Code should be clean, maintainable, and accessible",
+      "Learning through documentation and experimentation",
+      "Contributing to a cleaner, more open web"
+    ],
+    "approach": "Dive straight into documentation and experiment until mastery is achieved",
+    "focus": "User-centered design and streamlined experiences"
+  },
+  "currentFocus": [
+    "Next.js advanced patterns and optimization",
+    "LLM integrations and AI-powered applications",
+    "End-to-end web application development",
+    "Modern React patterns and performance",
+    "TypeScript best practices",
+    "User experience and accessibility"
+  ],
+  "goals": {
+    "shortTerm": [
+      "Master LLM integrations",
+      "Advance TypeScript expertise",
+      "Improve accessibility knowledge"
+    ],
+    "longTerm": [
+      "Become a full-stack expert specializing in Next.js ecosystem",
+      "Build applications that prioritize user experience",
+      "Contribute significantly to open-source projects",
+      "Advance sustainable and accessible web development practices"
+    ]
+  },
+  "interests": [
+    "Open-source development",
+    "Web performance optimization",
+    "User experience design",
+    "AI and machine learning integration",
+    "Sustainable web practices",
+    "Developer tools and productivity"
+  ],
+  "socialLinks": {
+    "github": "https://github.com/coldbydefault",
+    "portfolio": "https://coldbydefault.com"
+  }
+}

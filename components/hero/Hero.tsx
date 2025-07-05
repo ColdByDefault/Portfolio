@@ -1,15 +1,13 @@
 // Copyright © [ColdByDefault] [AnotherProject]™.
 // All Rights Reserved.
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 import Image from "next/image";
+import Link from "next/link";
 import SocialLinks from "./SocialLinks";
 
-
 function Hero() {
-
-
-
   return (
     <section className="w-full min-h-screen flex items-center justify-center py-12 md:py-12 lg:py-12">
       <div className="container px-4 md:px-6">
@@ -51,10 +49,17 @@ function Hero() {
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Passionate about creating exceptional digital experiences through
               clean code, innovative solutions, and user-centered design.
-              Specialized in modern web technologies with 2+ years of
+              Specialized in modern web technologies with 3+ years of
               experience.
             </p>
-            <SocialLinks />
+            <Link href="/about">
+              <Button variant="outline" size="lg" className="gap-2">
+                Learn More About Me
+              </Button>
+            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 items-center">
+              <SocialLinks />
+            </div>
           </div>
         </div>
       </div>

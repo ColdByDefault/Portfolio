@@ -13,6 +13,7 @@ import {
   Atom,
   BookOpenCheck,
   Telescope,
+  User,
 } from "lucide-react";
 import { ModeToggle } from "../theme/theme-toggle";
 import Link from "next/link";
@@ -34,7 +35,7 @@ export default function Navbar() {
       icon: FolderGit2,
     },
     {
-      name: "GitHub MCP",
+      name: "MCP",
       href: "#github",
       icon: Antenna,
     },
@@ -81,7 +82,11 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <Link target="_blanck" href="https://berich-hub.vercel.app" rel="noreferrer">
+            <Link
+              target="_blanck"
+              href="https://berich-hub.vercel.app"
+              rel="noreferrer"
+            >
               <Badge className="cursor-pointer">beRich.Hub</Badge>
             </Link>
           </div>

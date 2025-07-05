@@ -3,7 +3,13 @@
 
 * {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+}
+
+/* Prevent horizontal overflow on mobile devices */
+@media (max-width: 768px) {
+  * {
+    overflow-x: hidden;
+  }
 }
 
 @custom-variant dark (&:is(.dark *));
