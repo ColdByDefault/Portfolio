@@ -43,7 +43,7 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: "beRich.Hub",
+    title: "beRich.Hub v5",
     description:
       "Full-stack digital learning platform with user authentication, Profile pages, and Blog features. AI integration for personalized learning. Completly free and open-source. 4 different languages supported: English, German, Spanish, Swedish.",
     technologies: [
