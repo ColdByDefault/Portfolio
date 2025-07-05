@@ -13,7 +13,6 @@ import {
   Atom,
   BookOpenCheck,
   Telescope,
-  User,
 } from "lucide-react";
 import { ModeToggle } from "../theme/theme-toggle";
 import Link from "next/link";

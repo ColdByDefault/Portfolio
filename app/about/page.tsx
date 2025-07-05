@@ -238,12 +238,12 @@ function AboutPage() {
               <Card className="border-2 border-primary/20">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-4">
-                    Let's Build Something Amazing
+                    Let&apos;s Build Something Amazing
                   </h3>
                   <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                    I'm always excited to collaborate on new projects and
+                    I&apos;m always excited to collaborate on new projects and
                     connect with fellow developers. Whether you have a project
-                    idea, want to discuss technology, or just say hello, I'd
+                    idea, want to discuss technology, or just say hello, I&apos;d
                     love to hear from you.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
