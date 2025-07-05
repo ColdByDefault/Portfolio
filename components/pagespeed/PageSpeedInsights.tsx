@@ -38,6 +38,7 @@ interface PageSpeedInsightsProps {
   showRefreshButton?: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getScoreBadgeVariant = (
   score: number
 ): "default" | "secondary" | "destructive" => {
