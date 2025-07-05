@@ -1,3 +1,5 @@
+// Copyright © [ColdByDefault] [AnotherProject]™.
+// All Rights Reserved.
 /**
  * The `Home` component serves as the main entry point for the Portfolio.
  * It includes various sections such as the hero section, project showcase,

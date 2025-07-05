@@ -1,3 +1,5 @@
+// Copyright © [ColdByDefault] [AnotherProject]™.
+// All Rights Reserved.
 import React from "react";
 import Image from "next/image";
 import { certifications } from "@/data/certificationsData";
@@ -50,6 +52,6 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
       </Card>
     </section>
   );
-};
+}
 
 export default CertificationShowcase;

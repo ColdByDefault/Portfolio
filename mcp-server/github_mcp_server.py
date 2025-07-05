@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """
+// Copyright © [ColdByDefault] [AnotherProject]™.
+// All Rights Reserved.
 GitHub MCP Server for Portfolio Integration
 Fetches GitHub profile data, repositories, and statistics
 """

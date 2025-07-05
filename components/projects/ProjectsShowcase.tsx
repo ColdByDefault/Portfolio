@@ -1,3 +1,5 @@
+// Copyright © [ColdByDefault] [AnotherProject]™.
+// All Rights Reserved.
 "use client";
 
 import React, { useState } from "react";

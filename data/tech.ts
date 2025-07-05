@@ -1,4 +1,5 @@
-// src/data/tech.ts
+// Copyright © [ColdByDefault] [AnotherProject]™.
+// All Rights Reserved.
 
 import {
   SiReact,

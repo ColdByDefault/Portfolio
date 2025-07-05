@@ -1,3 +1,5 @@
+// Copyright © [ColdByDefault] [AnotherProject]™.
+// All Rights Reserved.
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";

@@ -1,4 +1,5 @@
-// projectsData.ts
+// Copyright © [ColdByDefault] [AnotherProject]™.
+// All Rights Reserved.
 
 export interface Project {
   id: number;

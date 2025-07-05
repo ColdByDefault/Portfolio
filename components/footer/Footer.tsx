@@ -1,3 +1,5 @@
+// Copyright © [ColdByDefault] [AnotherProject]™.
+// All Rights Reserved.
 "use client";
 import Link from "next/link";
 import { FaGithub, FaSquareXTwitter } from "react-icons/fa6";

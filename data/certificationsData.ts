@@ -1,4 +1,5 @@
-// certificationsData.js
+// Copyright © [ColdByDefault] [AnotherProject]™.
+// All Rights Reserved.
 
 
 export const certifications = [

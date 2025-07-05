@@ -1,3 +1,5 @@
+// Copyright © [ColdByDefault] [AnotherProject]™.
+// All Rights Reserved.
 import { Badge } from "@/components/ui/badge";
 
 import Image from "next/image";

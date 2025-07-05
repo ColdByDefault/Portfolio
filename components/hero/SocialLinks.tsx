@@ -1,3 +1,5 @@
+// Copyright © [ColdByDefault] [AnotherProject]™.
+// All Rights Reserved.
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";

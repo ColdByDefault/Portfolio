@@ -1,3 +1,5 @@
+// Copyright © [ColdByDefault] [AnotherProject]™.  
+// All Rights Reserved.
 import { NextRequest, NextResponse } from "next/server";
 import {
   validateDataType,
