@@ -32,6 +32,7 @@ import { GitHubShowcase } from "@/components/github";
 import { PageSpeedInsights } from "@/components/pagespeed";
 import { useState, useEffect } from "react";
 
+
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [mounted, setMounted] = useState<boolean>(false);

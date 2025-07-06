@@ -2,9 +2,8 @@
 // All Rights Reserved.
 "use client";
 
-import React, { useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { projects, projectCategories, type Project } from "@/data/projectsData";
 import {
   Card,
@@ -45,6 +44,10 @@ const ProjectCard = ({
     }
   };
 
+  const [isHovered, setIsHovered] = useState(false);
+  ;
+
+
   return (
     <motion.div
       ref={cardRef}
@@ -53,8 +56,17 @@ const ProjectCard = ({
       className="group"
     >
       <Card
-        className="h-full overflow-hidden border flex flex-col justify-between relative
-      border-border/50 hover:border-border transition-all duration-300 hover:shadow-lg "
+        className={`
+                  relative overflow-hidden transition-all duration-500 ease-out cursor-pointer group
+                  ${isHovered ? "border-gray-500/50 bg-white shadow-2xl" : ""}
+                  ${
+                    isHovered
+                      ? "dark:bg-black dark:shadow-blue-500/20 bg-white shadow-blue-200/20"
+                      : ""
+                  }
+                  `}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         {project.featured && (
           <div className="absolute top-0 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium px-3 py-1 text-center">
@@ -175,6 +187,31 @@ const ProjectCard = ({
             )}
           </div>
         </CardFooter>
+        <div
+          className={`
+                    absolute inset-0 rounded-lg transition-opacity duration-500
+                    ${isHovered ? "opacity-100" : "opacity-0"}
+                  `}
+          style={{
+            background: `
+                      linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%),
+                      linear-gradient(-45deg, transparent 30%, rgba(147, 197, 253, 0.1) 50%, transparent 70%)
+                    `,
+            backgroundSize: "200% 200%",
+            animation: isHovered ? "gradient-shift 3s ease infinite" : "none",
+          }}
+        />
+        <style jsx>{`
+          @keyframes gradient-shift {
+            0%,
+            100% {
+              background-position: 0% 0%;
+            }
+            50% {
+              background-position: 100% 100%;
+            }
+          }
+        `}</style>
       </Card>
     </motion.div>
   );
