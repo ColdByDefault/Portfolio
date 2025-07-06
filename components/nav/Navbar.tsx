@@ -64,7 +64,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-6">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -91,7 +91,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Theme Toggle */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2">
             <div className="border-r-2 pr-2">
               <ModeToggle />
             </div>
@@ -104,7 +104,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        <div className="flex md:hidden lg:hidden items-center space-x-2 px-4">
+        <div className="flex lg:hidden items-center space-x-2 px-4">
           {/* Mobile Theme Toggle */}
           <ModeToggle />
           {/* Mobile Menu Trigger */}
