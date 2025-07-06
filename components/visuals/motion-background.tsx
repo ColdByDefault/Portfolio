@@ -27,6 +27,8 @@ export function Background() {
   const gridY = useSpring(mouseY, { stiffness: 50, damping: 20, mass: 0.5 });
 
   useEffect(() => {
+    if (!hasMounted) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
@@ -37,7 +39,7 @@ export function Background() {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, hasMounted]);
 
   if (!hasMounted) {
     return null;

@@ -257,7 +257,11 @@ export default function GitHubShowcase({ className }: { className?: string }) {
       {/* Last Updated Section */}
       <div className="text-center">
         <Badge variant="outline" className="text-xs">
-          Last updated: {formatDate(githubData.lastUpdated)}
+          Last updated: {formatDate(githubData.lastUpdated)}{" "}
+          {new Date(githubData.lastUpdated).toLocaleTimeString("en-US", {
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
         </Badge>
       </div>
     </section>

@@ -10,9 +10,13 @@ interface TextEncryptedProps {
   interval?: number;
 }
 
-const TextEncrypted: React.FC<TextEncryptedProps> = ({ text, interval = 50 }) => {
+const TextEncrypted: React.FC<TextEncryptedProps> = ({
+  text,
+  interval = 50,
+}) => {
   const [outputText, setOutputText] = useState<string>("");
   const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [randomChars, setRandomChars] = useState<string>("");
 
   useEffect(() => {
     setIsMounted(true);
@@ -25,7 +29,17 @@ const TextEncrypted: React.FC<TextEncryptedProps> = ({ text, interval = 50 }) =>
       timer = setInterval(() => {
         if (outputText.length < text.length) {
           setOutputText((prev) => prev + text[prev.length]);
+          // Generate random chars for the remainder on each update
+          const remainingLength = text.length - outputText.length - 1;
+          if (remainingLength > 0) {
+            const newRandomChars = Array.from(
+              { length: remainingLength },
+              () => chars[Math.floor(Math.random() * chars.length)]
+            ).join("");
+            setRandomChars(newRandomChars);
+          }
         } else {
+          setRandomChars("");
           clearInterval(timer);
         }
       }, interval);
@@ -34,24 +48,14 @@ const TextEncrypted: React.FC<TextEncryptedProps> = ({ text, interval = 50 }) =>
     return () => clearInterval(timer);
   }, [text, interval, outputText]);
 
-  const remainder =
-    outputText.length < text.length
-      ? text
-          .slice(outputText.length)
-          .split("")
-          .map(() => chars[Math.floor(Math.random() * chars.length)]).join("")
-      : "";
-
   if (!isMounted) {
     return <span> </span>;
   }
 
   return (
-    <span
-      className="glitch-effect"
-      data-text={`${outputText}${remainder}`}>
+    <span className="glitch-effect" data-text={`${outputText}${randomChars}`}>
       {outputText}
-      {remainder}
+      {randomChars}
     </span>
   );
 };
@@ -61,7 +65,10 @@ interface LoadingScreenProps {
   text?: string;
 }
 
-const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete, text = "Loading..." }) => {
+const LoadingScreen: React.FC<LoadingScreenProps> = ({
+  onComplete,
+  text = "Loading...",
+}) => {
   const [isFading, setIsFading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -79,7 +86,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete, text = "Loadi
       className={`fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center 
       transition-opacity duration-1000 ${
         isFading ? "opacity-0 pointer-events-none" : "opacity-100"
-      }`}>
+      }`}
+    >
       <h1 className="text-xl mb-8 font-bold drop-shadow-black">
         <TextEncrypted text={text} interval={120} />
       </h1>

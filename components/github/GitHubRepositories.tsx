@@ -8,6 +8,7 @@ import { FaStar } from "react-icons/fa";
 import { GoRepoForked } from "react-icons/go";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
 
 interface GitHubRepo {
   name: string;
@@ -69,85 +70,129 @@ export default function GitHubRepositories({
     });
   };
 
+  const [hoveredRepo, setHoveredRepo] = useState<string | null>(null);
+
   return (
     <div className="max-w-5xl mx-auto">
       <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-4 text-center">
         Recent Repositories
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-        {repositories.slice(0, 6).map((repo, index) => (
-          <motion.div
-            key={repo.name}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
-          >
-            <Card className="hover:shadow-lg transition-shadow h-full">
-              <CardContent className="p-4">
-                <div className="flex justify-between items-start mb-2">
-                  <Link
-                    href={repo.html_url}
-                    target="_blank"
-                    className="font-medium text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  >
-                    {repo.name}
-                  </Link>
-                  <div className="flex items-center gap-1">
-                    <Badge variant="secondary" className="text-xs">
-                      <FaStar className="mr-1 h-3 w-3" />
-                      {repo.stargazers_count}
-                    </Badge>
-                    <Badge variant="secondary" className="text-xs">
-                      <GoRepoForked className="mr-1 h-3 w-3" />
-                      {repo.forks_count}
-                    </Badge>
-                  </div>
-                </div>
-                {repo.description && (
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 line-clamp-2">
-                    {repo.description}
-                  </p>
-                )}
-                <div className="flex items-center justify-between mb-2">
-                  {repo.language && (
-                    <Badge variant="outline" className="text-xs">
-                      <div
-                        className="w-2 h-2 rounded-full mr-1"
-                        style={{
-                          backgroundColor:
-                            LanguageColors[repo.language] || "#64748b",
-                        }}
-                      />
-                      {repo.language}
-                    </Badge>
-                  )}
-                  <Badge variant="outline" className="text-xs">
-                    Updated {formatTimeAgo(repo.updated_at)}
-                  </Badge>
-                </div>
-                {repo.topics.length > 0 && (
-                  <div className="flex flex-wrap gap-1">
-                    {repo.topics.slice(0, 3).map((topic) => (
-                      <Badge
-                        key={topic}
-                        variant="secondary"
-                        className="text-xs"
-                      >
-                        {topic}
-                      </Badge>
-                    ))}
-                    {repo.topics.length > 3 && (
+        {repositories.slice(0, 6).map((repo, index) => {
+          const isHovered = hoveredRepo === repo.name;
+          return (
+            <motion.div
+              key={repo.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Card
+                className={`
+                  relative overflow-hidden transition-all duration-500 ease-out cursor-pointer group
+                  ${isHovered ? "border-gray-500/50 bg-white shadow-2xl" : ""}
+                  ${
+                    isHovered
+                      ? "dark:bg-black dark:shadow-blue-500/20 bg-white shadow-blue-200/20"
+                      : ""
+                  }
+                  `}
+                onMouseEnter={() => setHoveredRepo(repo.name)}
+                onMouseLeave={() => setHoveredRepo(null)}
+              >
+                <CardContent className="p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <Link
+                      href={repo.html_url}
+                      target="_blank"
+                      className="font-medium text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    >
+                      {repo.name}
+                    </Link>
+                    <div className="flex items-center gap-1">
                       <Badge variant="secondary" className="text-xs">
-                        +{repo.topics.length - 3}
+                        <FaStar className="mr-1 h-3 w-3" />
+                        {repo.stargazers_count}
+                      </Badge>
+                      <Badge variant="secondary" className="text-xs">
+                        <GoRepoForked className="mr-1 h-3 w-3" />
+                        {repo.forks_count}
+                      </Badge>
+                    </div>
+                  </div>
+                  {repo.description && (
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 line-clamp-2">
+                      {repo.description}
+                    </p>
+                  )}
+                  <div className="flex items-center justify-between mb-2">
+                    {repo.language && (
+                      <Badge variant="outline" className="text-xs">
+                        <div
+                          className="w-2 h-2 rounded-full mr-1"
+                          style={{
+                            backgroundColor:
+                              LanguageColors[repo.language] || "#64748b",
+                          }}
+                        />
+                        {repo.language}
                       </Badge>
                     )}
+                    <Badge variant="outline" className="text-xs">
+                      Updated {formatTimeAgo(repo.updated_at)}
+                    </Badge>
                   </div>
-                )}
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
+                  {repo.topics.length > 0 && (
+                    <div className="flex flex-wrap gap-1">
+                      {repo.topics.slice(0, 3).map((topic) => (
+                        <Badge
+                          key={topic}
+                          variant="secondary"
+                          className="text-xs"
+                        >
+                          {topic}
+                        </Badge>
+                      ))}
+                      {repo.topics.length > 3 && (
+                        <Badge variant="secondary" className="text-xs">
+                          +{repo.topics.length - 3}
+                        </Badge>
+                      )}
+                    </div>
+                  )}
+                </CardContent>
+                <div
+                  className={`
+                    absolute inset-0 rounded-lg transition-opacity duration-500
+                    ${isHovered ? "opacity-100" : "opacity-0"}
+                  `}
+                  style={{
+                    background: `
+                      linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%),
+                      linear-gradient(-45deg, transparent 30%, rgba(147, 197, 253, 0.1) 50%, transparent 70%)
+                    `,
+                    backgroundSize: "200% 200%",
+                    animation: isHovered
+                      ? "gradient-shift 3s ease infinite"
+                      : "none",
+                  }}
+                />
+                <style jsx>{`
+                  @keyframes gradient-shift {
+                    0%,
+                    100% {
+                      background-position: 0% 0%;
+                    }
+                    50% {
+                      background-position: 100% 100%;
+                    }
+                  }
+                `}</style>
+              </Card>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );

@@ -44,9 +44,12 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Prevent hydration mismatch by not rendering loading screen on server
+  const showLoadingScreen = mounted && isLoading;
+
   return (
     <div>
-      {mounted && isLoading && (
+      {showLoadingScreen && (
         <div className="fixed top-0 left-0 w-full h-full z-50">
           <LoadingScreen
             onComplete={() => setIsLoading(false)}
