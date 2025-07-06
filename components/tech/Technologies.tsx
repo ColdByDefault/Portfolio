@@ -1,3 +1,5 @@
+// Copyright © [ColdByDefault] [AnotherProject]™.
+// All Rights Reserved.
 "use client";
 
 import { motion } from "framer-motion";
@@ -22,12 +24,6 @@ export default function Technologies() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 z-10 p-6 h-full ">
             {techGroups.map((group) => {
-              // Determine if we're in dark mode (you can also use a theme context)
-              const isDarkMode =
-                typeof window !== "undefined" &&
-                window.matchMedia &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches;
-
               const isCurrentCardHovered = hoveredCard === group.category;
 
               return (

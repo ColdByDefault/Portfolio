@@ -115,7 +115,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </script>
         <title>ColdByDefault</title>
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -13,11 +13,17 @@ import { Button } from "@/components/ui/button";
 import { X, Cookie } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-
 export function CookiesBanner() {
   const [isVisible, setIsVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     // Check if user has already made a choice about cookies
     const cookieConsent = localStorage.getItem("cookie-consent");
     if (!cookieConsent) {
@@ -27,15 +33,19 @@ export function CookiesBanner() {
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [mounted]);
 
   const handleAccept = () => {
-    localStorage.setItem("cookie-consent", "accepted");
+    if (mounted) {
+      localStorage.setItem("cookie-consent", "accepted");
+    }
     setIsVisible(false);
   };
 
   const handleDecline = () => {
-    localStorage.setItem("cookie-consent", "declined");
+    if (mounted) {
+      localStorage.setItem("cookie-consent", "declined");
+    }
     setIsVisible(false);
   };
 
@@ -44,7 +54,7 @@ export function CookiesBanner() {
     setIsVisible(false);
   };
 
-  if (!isVisible) return null;
+  if (!mounted || !isVisible) return null;
 
   return (
     <div
@@ -77,8 +87,9 @@ export function CookiesBanner() {
                 </CardTitle>
                 <CardDescription className="text-xs text-gray-600 dark:text-gray-300 mt-1">
                   I bake my own cookies! However I MUST use your cookies for
-                  themes and performance. By clicking &ldquo;Accept All&rdquo;, you
-                  consent to the use of all cookies. Promise I won&apos;t eat them!
+                  themes and performance. By clicking &ldquo;Accept All&rdquo;,
+                  you consent to the use of all cookies. Promise I won&apos;t
+                  eat them!
                 </CardDescription>
               </div>
 
