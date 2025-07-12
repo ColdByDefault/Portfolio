@@ -1,4 +1,4 @@
-# ColdByDefault Portfolio (Version 3.1.0)
+# ColdByDefault Portfolio (Version 3)
 
 A secure, modern portfolio website built with Next.js 15, featuring comprehensive security measures and optimized performance.
 
