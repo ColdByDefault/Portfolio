@@ -2,6 +2,7 @@
 // All Rights Reserved.
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import ContactForm from "@/components/contact/contact-form";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -52,11 +53,14 @@ function Hero() {
               Specialized in modern web technologies with 3+ years of
               experience.
             </p>
-            <Link href="/about">
-              <Button variant="outline" size="lg" className="gap-2">
-                Learn More About Me
-              </Button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+              <Link href="/about">
+                <Button variant="outline" className="gap-2">
+                  Learn More About Me
+                </Button>
+              </Link>
+              <ContactForm />
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 items-center">
               <SocialLinks />
             </div>
