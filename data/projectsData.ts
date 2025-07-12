@@ -67,7 +67,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 6,
+    id: 3,
     title: "LLM AI Agent Chatbot",
     description:
       "Local ollama-based AI chatbot, customizable to use any LLM model, any Embed model, 2 Options for Vector DB; local postgres or DataStax Astra. Can read web pages, and answer questions based on the content. More coming soon.. Open source.",
@@ -83,6 +83,22 @@ export const projects: Project[] = [
       "git clone https://github.com/coldbydefault/simple-llm-agent.git",
     featured: false,
     category: "AI/ML",
+    license: {
+      type: "fully-open",
+      text: "Fully Open Source",
+      variant: "default",
+    },
+  },
+  {
+    id: 4,
+    title: "Subscription Management API",
+    description:
+      "API for managing user subscriptions, including features for billing, invoicing, and payment processing. Built with Next.js and integrated with Stripe for secure payments.",
+    technologies: ["Next.js", "PostgreSQL", "JavaScript", "Prisma"],
+    githubUrl:
+      "git clone https://github.com/ColdByDefault/subs-api-manager.git",
+    featured: false,
+    category: "Full Stack",
     license: {
       type: "fully-open",
       text: "Fully Open Source",

@@ -12,17 +12,17 @@ export default function Technologies() {
 
   return (
     <section
-      className="px-4 max-w-7xl mx-auto flex flex-col space-y-8"
+      className="px-4 max-w-7xl mx-auto flex flex-col space-y-4 sm:space-y-6 lg:space-y-8"
       id="tech"
     >
       <Card className="relative overflow-hidden bg-transparent border-0">
         <CardHeader className="text-center pb-2">
-          <CardTitle className="text-4xl font-light">
+          <CardTitle className="text-2xl sm:text-3xl lg:text-4xl font-light">
             Technologies I Use
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 z-10 p-6 h-full ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 z-10 p-4 sm:p-6 h-full ">
             {techGroups.map((group) => {
               const isCurrentCardHovered = hoveredCard === group.category;
 
@@ -45,22 +45,25 @@ export default function Technologies() {
                   onMouseEnter={() => setHoveredCard(group.category)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
-                  <CardHeader className="pb-4">
-                    <CardTitle className="text-xl font-semibold text-center">
+                  <CardHeader className="pb-3 sm:pb-4">
+                    <CardTitle className="text-lg sm:text-xl font-semibold text-center">
                       {group.category}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-3 justify-center">
+                  <CardContent className="px-3 sm:px-6">
+                    <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
                       {group.items.map(({ name, Icon }) => (
                         <motion.div
                           key={name}
-                          className="flex items-center gap-2 px-3 py-2 rounded-lg border hover:shadow-sm transition-all duration-200"
+                          className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border hover:shadow-sm transition-all duration-200"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          <Icon size={20} className="flex-shrink-0" />
-                          <span className="text-sm font-medium whitespace-nowrap cursor-default">
+                          <Icon
+                            size={16}
+                            className="flex-shrink-0 sm:w-5 sm:h-5"
+                          />
+                          <span className="text-xs sm:text-sm font-medium whitespace-nowrap cursor-default">
                             {name}
                           </span>
                         </motion.div>
@@ -101,12 +104,12 @@ export default function Technologies() {
         `}</style>
       </Card>
       <motion.div
-        className="text-center pt-4"
+        className="text-center pt-2 sm:pt-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 10, delay: 2 }}
       >
-        <p className="text-muted-foreground">
+        <p className="text-sm sm:text-base text-muted-foreground">
           ...and many more technologies in my toolkit
         </p>
       </motion.div>

@@ -30,7 +30,7 @@ export function CookiesBanner() {
       // Show banner after a short delay for better UX
       const timer = setTimeout(() => {
         setIsVisible(true);
-      }, 1000);
+      }, 3000);
       return () => clearTimeout(timer);
     }
   }, [mounted]);

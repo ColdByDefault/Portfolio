@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useTheme } from "next-themes";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 function useHasMounted() {
   const [hasMounted, setHasMounted] = useState(false);
@@ -12,10 +13,28 @@ function useHasMounted() {
   return hasMounted;
 }
 
+function useIsMediumScreen() {
+  const [isMediumScreen, setIsMediumScreen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: 1024px)`);
+    const onChange = () => {
+      setIsMediumScreen(window.innerWidth <= 1024);
+    };
+    mql.addEventListener("change", onChange);
+    setIsMediumScreen(window.innerWidth <= 1024);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+
+  return isMediumScreen;
+}
+
 export function Background() {
   const { theme, resolvedTheme } = useTheme();
 
   const hasMounted = useHasMounted();
+  const isMobile = useIsMobile();
+  const isMediumScreen = useIsMediumScreen();
 
   const isDarkTheme =
     hasMounted && (theme === "dark" || resolvedTheme === "dark");
@@ -29,6 +48,9 @@ export function Background() {
   useEffect(() => {
     if (!hasMounted) return;
 
+    // Disable mouse movements on mobile and medium screens
+    if (isMobile || isMediumScreen) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
@@ -39,7 +61,7 @@ export function Background() {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [mouseX, mouseY, hasMounted]);
+  }, [mouseX, mouseY, hasMounted, isMobile, isMediumScreen]);
 
   if (!hasMounted) {
     return null;
@@ -60,8 +82,9 @@ export function Background() {
         style={{
           backgroundImage: `linear-gradient(to right, ${gridColor} 1px, transparent 1px), linear-gradient(to bottom, ${gridColor} 1px, transparent 1px)`,
           backgroundSize: "clamp(20px, 4vw, 40px) clamp(20px, 4vw, 40px)",
-          x: gridX,
-          y: gridY,
+          // Disable movement on mobile and medium screens
+          x: isMobile || isMediumScreen ? 0 : gridX,
+          y: isMobile || isMediumScreen ? 0 : gridY,
         }}
       />
     </motion.div>
