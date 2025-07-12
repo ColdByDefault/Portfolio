@@ -22,7 +22,6 @@
  */
 "use client";
 import CertificationShowcase from "@/components/cer/CertificationShowCase";
-import { CarouselPlugin } from "@/components/cer/CertiSliderSM";
 import Hero from "@/components/hero/Hero";
 import LoadingScreen from "@/components/visuals/LoadingScreen";
 import { Background } from "@/components/visuals/motion-background";
@@ -57,7 +56,9 @@ export default function Home() {
           />
         </div>
       )}
-      <Background />
+      <div>
+        <Background />
+      </div>
       {/* Scroll Indicator */}
       <div className="hidden lg:block lg:absolute lg:bottom-8 lg:left-1/6 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
@@ -70,8 +71,7 @@ export default function Home() {
         <GitHubShowcase />
       </div>
       <Technologies />
-      <CertificationShowcase className="hidden py-12 px-4 sm:px-6 lg:px-8 lg:block md:block" />
-      <CarouselPlugin className="block lg:hidden md:hidden" />
+      <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
       <div className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-light text-center mb-8">

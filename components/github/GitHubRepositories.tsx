@@ -78,7 +78,7 @@ export default function GitHubRepositories({
         Recent Repositories
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-        {repositories.slice(0, 6).map((repo, index) => {
+        {repositories.slice(0, 3).map((repo, index) => {
           const isHovered = hoveredRepo === repo.name;
           return (
             <motion.div
