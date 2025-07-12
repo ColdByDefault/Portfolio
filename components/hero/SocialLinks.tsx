@@ -18,7 +18,7 @@ export default function ContactBox() {
         <CardContent className="p-6 space-y-6">
           <div>
             <h3 className="text-sm font-medium text-slate-600 mb-3">
-              Get in touch
+              More about me on
             </h3>
             <div className="flex flex-wrap gap-2">
               <Link
