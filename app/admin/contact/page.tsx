@@ -45,14 +45,24 @@ export default function AdminContactPage() {
   const [blockIP, setBlockIP] = useState("");
   const [blockEmail, setBlockEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [lastRefresh, setLastRefresh] = useState<Date | null>(null);
 
-  const authenticate = () => {
-    if (token === "IWILLALWYSBEYOURADMINTOKEN") {
-      setIsAuthenticated(true);
-      setMessage("Authenticated successfully");
-      loadData();
-    } else {
-      setMessage("Invalid token");
+  const authenticate = async () => {
+    try {
+      // Validate token against server
+      const response = await fetch("/api/admin/contact?action=stats", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (response.ok) {
+        setIsAuthenticated(true);
+        setMessage("Authenticated successfully");
+        loadData();
+      } else {
+        setMessage("Invalid token");
+      }
+    } catch (error) {
+      setMessage("Authentication failed" + error);
     }
   };
 
@@ -78,6 +88,9 @@ export default function AdminContactPage() {
         const suspiciousData = await suspiciousResponse.json();
         setSuspicious(suspiciousData);
       }
+
+      // Update last refresh time
+      setLastRefresh(new Date());
     } catch (error) {
       setMessage("Error loading data" + error);
     }
@@ -171,12 +184,19 @@ export default function AdminContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen p-6">
       <div className="max-w-7xl mx-auto space-y-6">
         <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-bold">
-            Contact Form Security Dashboard
-          </h1>
+          <div>
+            <h1 className="text-3xl font-bold">
+              Contact Form Security Dashboard
+            </h1>
+            {lastRefresh && (
+              <p className="text-sm text-muted-foreground mt-1">
+                Last refreshed: {lastRefresh.toLocaleString()}
+              </p>
+            )}
+          </div>
           <Button onClick={loadData} variant="outline">
             Refresh Data
           </Button>
@@ -195,62 +215,58 @@ export default function AdminContactPage() {
         )}
 
         {/* Stats Overview */}
-        {stats && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Total Submissions
-                </CardTitle>
-                <Mail className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">
-                  {stats.totalSubmissions}
-                </div>
-              </CardContent>
-            </Card>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">
+                Total Submissions
+              </CardTitle>
+              <Mail className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">
+                {stats?.totalSubmissions ?? 0}
+              </div>
+            </CardContent>
+          </Card>
 
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Last 24h</CardTitle>
-                <Globe className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{stats.last24h}</div>
-              </CardContent>
-            </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Last 24h</CardTitle>
+              <Globe className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{stats?.last24h ?? 0}</div>
+            </CardContent>
+          </Card>
 
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Suspicious
-                </CardTitle>
-                <AlertTriangle className="h-4 w-4 text-red-500" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-red-600">
-                  {stats.suspicious}
-                </div>
-              </CardContent>
-            </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Suspicious</CardTitle>
+              <AlertTriangle className="h-4 w-4 text-red-500" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-red-600">
+                {stats?.suspicious ?? 0}
+              </div>
+            </CardContent>
+          </Card>
 
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Blocked</CardTitle>
-                <Shield className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">
-                  {stats.blockedIPs + stats.blockedEmails}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  {stats.blockedIPs} IPs, {stats.blockedEmails} emails
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        )}
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Blocked</CardTitle>
+              <Shield className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">
+                {(stats?.blockedIPs ?? 0) + (stats?.blockedEmails ?? 0)}
+              </div>
+              <p className="text-xs text-muted-foreground">
+                {stats?.blockedIPs ?? 0} IPs, {stats?.blockedEmails ?? 0} emails
+              </p>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Block Controls */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
