@@ -1,5 +1,7 @@
-// Copyright © [ColdByDefault] [AnotherProject]™.
-// All Rights Reserved.
+/**
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ */
 import React, { useState } from "react";
 import Image from "next/image";
 import { certifications } from "@/data/certificationsData";
@@ -56,7 +58,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
       <Card
         key={cert.id}
         className={`
-          relative overflow-hidden transition-all duration-500 ease-out cursor-pointer group
+          relative overflow-hidden transition-all duration-500 ease-out cursor-pointer group px-3
           ${
             isCurrentCardHovered ? "border-gray-500/50 bg-white shadow-2xl" : ""
           }

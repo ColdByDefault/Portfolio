@@ -1,5 +1,7 @@
-// Copyright © [ColdByDefault] [AnotherProject]™.
-// All Rights Reserved.
+/**
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ */
 
 import {
   SiReact,
@@ -101,7 +103,7 @@ export const techGroups: TechGroup[] = [
   {
     category: "Automation & Workflow",
     items: [
-      { name: "n8n", Icon: SiN8N  },
+      { name: "n8n", Icon: SiN8N },
       { name: "GitHub Actions", Icon: SiGithubactions },
       { name: "Automations", Icon: FaRobot },
     ],

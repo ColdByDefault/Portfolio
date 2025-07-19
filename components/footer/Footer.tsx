@@ -1,13 +1,13 @@
-// Copyright © [ColdByDefault] [AnotherProject]™.
-// All Rights Reserved.
+/**
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ */
 "use client";
 import Link from "next/link";
 import { FaGithub, FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 
-
 export default function Footer() {
-
   return (
     <footer className="w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60  border-t">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,6 +23,17 @@ export default function Footer() {
                   className="text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
                 >
                   Impressum
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/admin/contact"
+                  className="text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+                >
+                  <span className="text-xs text-green-500 dark:text-gray-400">
+                    {" "}
+                    <code>&quot;/api/admin/contact?action=stats&quot;</code>
+                  </span>
                 </Link>
               </li>
             </ul>
@@ -84,7 +95,8 @@ export default function Footer() {
         <div className="border-t border-gray-200 dark:border-gray-800 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              {new Date().getFullYear()} ColdByDefault&#174;. All rights reserved.
+              {new Date().getFullYear()} ColdByDefault&#174;. All rights
+              reserved.
               <span className="text-xs text-gray-600">
                 {" "}
                 Dedicated to the one who sparked the journey - Stockholm, 2021.

@@ -1,5 +1,7 @@
-// Copyright © [ColdByDefault] [AnotherProject]™.
-// All Rights Reserved.
+/**
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ */
 
 import { NextResponse } from "next/server";
 import { aboutData } from "@/data/aboutData";

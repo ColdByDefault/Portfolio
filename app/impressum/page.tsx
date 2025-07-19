@@ -1,5 +1,7 @@
-// Copyright © [ColdByDefault] [AnotherProject]™.
-// All Rights Reserved.
+/**
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ */
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Shield, Info } from "lucide-react";

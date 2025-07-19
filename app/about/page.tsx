@@ -1,5 +1,7 @@
-// Copyright © [ColdByDefault] [AnotherProject]™.
-// All Rights Reserved.
+/**
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ */
 
 "use client";
 
@@ -243,8 +245,8 @@ function AboutPage() {
                   <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
                     I&apos;m always excited to collaborate on new projects and
                     connect with fellow developers. Whether you have a project
-                    idea, want to discuss technology, or just say hello, I&apos;d
-                    love to hear from you.
+                    idea, want to discuss technology, or just say hello,
+                    I&apos;d love to hear from you.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link href="/#home">

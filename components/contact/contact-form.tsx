@@ -1,7 +1,11 @@
+/**
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ */
 "use client";
 
 import { z } from "zod";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -32,7 +36,8 @@ const formSchema = z.object({
   name: z
     .string()
     .min(2, "Name must be at least 2 characters")
-    .max(50, "Name must be less than 50 characters"),
+    .max(50, "Name must be less than 50 characters")
+    .regex(/^[a-zA-Z\s]+$/, "Name should only contain letters and spaces"),
   email: z.string().email("Please enter a valid email address"),
   subject: z
     .string()
@@ -49,9 +54,11 @@ type FormData = z.infer<typeof formSchema>;
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
+    "idle" | "success" | "error" | "cooldown"
   >("idle");
   const [isOpen, setIsOpen] = useState(false);
+  const [formStartTime, setFormStartTime] = useState<number>(0);
+  const [cooldownTime, setCooldownTime] = useState<number>(0);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -63,7 +70,59 @@ export default function ContactForm() {
     },
   });
 
+  // Check for existing submission cooldown
+  useEffect(() => {
+    const lastSubmission = localStorage.getItem("lastContactSubmission");
+    if (lastSubmission) {
+      const timeSince = Date.now() - parseInt(lastSubmission);
+      const cooldownPeriod = 15 * 60 * 1000; // 15 minutes
+
+      if (timeSince < cooldownPeriod) {
+        setSubmitStatus("cooldown");
+        setCooldownTime(Math.ceil((cooldownPeriod - timeSince) / 1000 / 60));
+      }
+    }
+  }, []);
+
+  // Set form start time when dialog opens
+  useEffect(() => {
+    if (isOpen && formStartTime === 0) {
+      setFormStartTime(Date.now());
+    }
+  }, [isOpen, formStartTime]);
+
+  // Update cooldown timer
+  useEffect(() => {
+    if (submitStatus === "cooldown" && cooldownTime > 0) {
+      const timer = setInterval(() => {
+        setCooldownTime((prev) => {
+          if (prev <= 1) {
+            setSubmitStatus("idle");
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 60000); // Update every minute
+
+      return () => clearInterval(timer);
+    }
+  }, [submitStatus, cooldownTime]);
+
   const onSubmit = async (data: FormData) => {
+    // Check if still in cooldown
+    if (submitStatus === "cooldown") {
+      return;
+    }
+
+    // Check if form was filled too quickly (minimum 3 seconds)
+    const timeTaken = Date.now() - formStartTime;
+    if (timeTaken < 3000) {
+      form.setError("root", {
+        message: "Please take your time filling out the form.",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
@@ -73,25 +132,50 @@ export default function ContactForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          honeypot: "", // Honeypot field for bot detection
+          timestamp: formStartTime,
+        }),
       });
+
+      const responseData = await response.json();
 
       if (response.ok) {
         setSubmitStatus("success");
         form.reset();
-        // Close dialog after 2 seconds
+
+        // Set cooldown in localStorage
+        localStorage.setItem("lastContactSubmission", Date.now().toString());
+
+        // Close dialog after 3 seconds
         setTimeout(() => {
           setIsOpen(false);
-          setSubmitStatus("idle");
-        }, 2000);
+          setSubmitStatus("cooldown");
+          setCooldownTime(15); // 15 minutes cooldown
+        }, 3000);
       } else {
-        const errorData = await response.json();
-        console.error("Error:", errorData.error);
-        setSubmitStatus("error");
+        console.error("Error:", responseData.error);
+
+        // Handle specific error types
+        if (response.status === 429) {
+          setSubmitStatus("cooldown");
+          setCooldownTime(15);
+          localStorage.setItem("lastContactSubmission", Date.now().toString());
+        } else {
+          setSubmitStatus("error");
+        }
+
+        form.setError("root", {
+          message: responseData.error || "Failed to send message",
+        });
       }
     } catch (error) {
       console.error("Error sending message:", error);
       setSubmitStatus("error");
+      form.setError("root", {
+        message: "Network error. Please check your connection and try again.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -100,9 +184,15 @@ export default function ContactForm() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="gap-2">
+        <Button
+          variant="outline"
+          className="gap-2"
+          disabled={submitStatus === "cooldown"}
+        >
           <Mail className="h-4 w-4" />
-          Contact Me
+          {submitStatus === "cooldown"
+            ? `Wait ${cooldownTime}min`
+            : "Contact Me"}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px]">
@@ -126,9 +216,29 @@ export default function ContactForm() {
               Thank you for reaching out. I&apos;ll get back to you soon!
             </p>
           </div>
+        ) : submitStatus === "cooldown" ? (
+          <div className="text-center py-8">
+            <div className="text-orange-600 text-lg font-semibold mb-2">
+              Please wait before sending another message
+            </div>
+            <p className="text-muted-foreground">
+              You can send another message in {cooldownTime} minute
+              {cooldownTime !== 1 ? "s" : ""}.
+            </p>
+          </div>
         ) : (
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              {/* Honeypot field - hidden from users but visible to bots */}
+              <div style={{ display: "none" }}>
+                <input
+                  type="text"
+                  name="honeypot"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               <FormField
                 control={form.control}
                 name="name"
@@ -136,7 +246,11 @@ export default function ContactForm() {
                   <FormItem>
                     <FormLabel>Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Your full name" {...field} />
+                      <Input
+                        placeholder="Your full name"
+                        {...field}
+                        maxLength={50}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -168,7 +282,11 @@ export default function ContactForm() {
                   <FormItem>
                     <FormLabel>Subject</FormLabel>
                     <FormControl>
-                      <Input placeholder="What's this about?" {...field} />
+                      <Input
+                        placeholder="What's this about?"
+                        {...field}
+                        maxLength={100}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -185,6 +303,7 @@ export default function ContactForm() {
                       <Textarea
                         placeholder="Tell me more about your project, question, or how I can help you..."
                         className="min-h-[120px] resize-none"
+                        maxLength={1000}
                         {...field}
                       />
                     </FormControl>
@@ -196,17 +315,16 @@ export default function ContactForm() {
                 )}
               />
 
-              {submitStatus === "error" && (
+              {form.formState.errors.root && (
                 <div className="text-red-600 text-sm">
-                  Failed to send message. Please try again or contact me
-                  directly.
+                  {form.formState.errors.root.message}
                 </div>
               )}
 
               <Button
                 type="submit"
                 className="w-full gap-2"
-                disabled={isSubmitting}
+                disabled={isSubmitting || submitStatus !== "idle"}
               >
                 {isSubmitting ? (
                   <>

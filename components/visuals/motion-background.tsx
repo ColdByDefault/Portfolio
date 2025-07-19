@@ -1,3 +1,7 @@
+/**
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ */
 "use client";
 
 import React, { useState, useEffect } from "react";

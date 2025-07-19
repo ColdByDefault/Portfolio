@@ -1,5 +1,7 @@
-// Copyright © [ColdByDefault] [AnotherProject]™.
-// All Rights Reserved.
+/**
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ */
 "use client";
 
 import { useState } from "react";
@@ -25,27 +27,27 @@ export default function Navbar() {
   const navItems = [
     {
       name: "Home",
-      href: "#home",
+      href: "/#home",
       icon: Home,
     },
     {
       name: "Projects",
-      href: "#projects",
+      href: "/#projects",
       icon: FolderGit2,
     },
     {
       name: "MCP",
-      href: "#github",
+      href: "/#github",
       icon: Antenna,
     },
     {
       name: "Technologies",
-      href: "#tech",
+      href: "/#tech",
       icon: Atom,
     },
     {
       name: "Certifications",
-      href: "#cert",
+      href: "/#cert",
       icon: BookOpenCheck,
     },
   ];

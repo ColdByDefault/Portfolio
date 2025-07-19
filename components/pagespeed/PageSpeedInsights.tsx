@@ -1,9 +1,17 @@
-// Copyright © [ColdByDefault] [AnotherProject]™.
-// All Rights Reserved.
+/**
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ */
 "use client";
 
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -278,7 +286,7 @@ export default function PageSpeedInsights({
       </CardContent>
       <CardFooter className="text-xs">
         <p>Last updated: {new Date().toLocaleDateString()}</p>
-      </CardFooter>   
+      </CardFooter>
     </Card>
   );
 }
