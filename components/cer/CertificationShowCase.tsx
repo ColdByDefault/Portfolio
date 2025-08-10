@@ -58,7 +58,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
       <Card
         key={cert.id}
         className={`
-          relative overflow-hidden transition-all duration-500 ease-out cursor-pointer group px-3
+          relative overflow-hidden transition-all duration-500 ease-out group px-3
           ${
             isCurrentCardHovered ? "border-gray-500/50 bg-white shadow-2xl" : ""
           }
@@ -291,7 +291,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
 
   return (
     <section className={className} id="cert">
-      <Card className="max-w-7xl mx-auto border-0 bg-transparent dark:bg-transparent">
+      <Card className="max-w-7xl mx-auto bg-transparent dark:bg-transparent shadow-none !border-0">
         <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8">
           My Certifications
         </CardTitle>

@@ -44,7 +44,7 @@ export default function GitHubProfile({ profile, stats }: GitHubProfileProps) {
   return (
     <Card
       className={`
-                  relative overflow-hidden transition-all duration-500 ease-out cursor-pointer group
+                  relative overflow-hidden transition-all duration-500 ease-out group
                   ${isHovered ? "border-gray-500/50 bg-white shadow-2xl" : ""}
                   ${
                     isHovered
@@ -82,12 +82,22 @@ export default function GitHubProfile({ profile, stats }: GitHubProfileProps) {
               </p>
             )}
             <div className="flex justify-start gap-2">
-              <Link href={profile.html_url} target="_blank">
-                <Button variant="outline" size="sm">
-                  <FaGithub className="mr-2 h-4 w-4" />
+              <Button
+                variant="outline"
+                size="sm"
+                asChild
+                className="cursor-pointer hover:bg-primary/10"
+              >
+                <Link
+                  href={profile.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 cursor-pointer text-center w-full"
+                >
+                  <FaGithub className="h-4 w-4" />
                   View Profile
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
 
@@ -144,7 +154,7 @@ export default function GitHubProfile({ profile, stats }: GitHubProfileProps) {
       </CardContent>
       <div
         className={`
-                    absolute inset-0 rounded-lg transition-opacity duration-500
+                    absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none -z-10
                     ${isHovered ? "opacity-100" : "opacity-0"}
                   `}
         style={{

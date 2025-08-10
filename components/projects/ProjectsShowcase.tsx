@@ -126,7 +126,6 @@ const ProjectCard = ({
             {project.technologies.map((tech) => (
               <motion.div
                 key={tech}
-                whileHover={{ scale: 1.05 }}
                 className="px-2 py-1 bg-secondary/50 rounded text-xs font-medium  cursor-default"
               >
                 {tech}
@@ -239,7 +238,7 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
 
   return (
     <section className={className} id="projects" ref={sectionRef}>
-      <Card className="max-w-7xl mx-auto border-0 bg-transparent dark:bg-transparent ">
+      <Card className="max-w-7xl mx-auto !border-0 bg-transparent dark:bg-transparent shadow-none">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}

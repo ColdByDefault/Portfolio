@@ -56,11 +56,15 @@ function Hero() {
               experience.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-              <Link href="/about">
-                <Button variant="outline" className="gap-2 cursor-pointer">
+              <Button
+                variant="outline"
+                asChild
+                className="gap-2 cursor-pointer hover:bg-primary/10"
+              >
+                <Link href="/about" className="flex items-center gap-2">
                   Learn More About Me
-                </Button>
-              </Link>
+                </Link>
+              </Button>
               <ContactForm />
             </div>
             <div className="flex flex-col sm:flex-row gap-4 items-center">

@@ -92,7 +92,7 @@ export default function GitHubRepositories({
             >
               <Card
                 className={`
-                  relative overflow-hidden transition-all duration-500 ease-out cursor-pointer group
+                  relative overflow-hidden transition-all duration-500 ease-out group
                   ${isHovered ? "border-gray-500/50 bg-white shadow-2xl" : ""}
                   ${
                     isHovered
