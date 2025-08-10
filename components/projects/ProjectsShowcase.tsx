@@ -36,11 +36,13 @@ const ProjectCard = ({
   const isInView = useInView(cardRef, { once: true, margin: "-50px" });
 
   const handleCopyCloneLink = async () => {
+    console.log("Copy button clicked for project:", project.title);
     const cloneLink = `git clone ${project.githubUrl}.git`;
     try {
       await navigator.clipboard.writeText(cloneLink);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
+      console.log("Clone link copied successfully:", cloneLink);
     } catch (err) {
       console.error("Failed to copy: ", err);
     }
@@ -56,7 +58,7 @@ const ProjectCard = ({
     >
       <Card
         className={`
-                  relative overflow-hidden transition-all duration-500 ease-out cursor-pointer group
+                  relative overflow-hidden transition-all duration-500 ease-out group
                   ${isHovered ? "border-gray-500/50 bg-white shadow-2xl" : ""}
                   ${
                     isHovered
@@ -124,7 +126,6 @@ const ProjectCard = ({
             {project.technologies.map((tech) => (
               <motion.div
                 key={tech}
-                whileHover={{ scale: 1.05 }}
                 className="px-2 py-1 bg-secondary/50 rounded text-xs font-medium  cursor-default"
               >
                 {tech}
@@ -142,7 +143,7 @@ const ProjectCard = ({
                 variant="ghost"
                 size="sm"
                 onClick={handleCopyCloneLink}
-                className="h-6 w-6 p-0 cursor-pointer"
+                className="h-6 w-6 p-0 cursor-pointer hover:bg-muted relative z-10"
               >
                 {copied ? (
                   <FiCheck className="h-3 w-3 text-green-500" />
@@ -152,19 +153,24 @@ const ProjectCard = ({
               </Button>
             </div>
             <code className="text-xs bg-background px-2 py-1 rounded block break-all font-mono">
-              {project.githubUrl}
+              git clone {project.githubUrl}.git
             </code>
           </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="relative z-10">
           {/* Action Buttons */}
           <div className="flex gap-2 pt-2 justify-between w-full">
-            <Button variant="outline" size="sm" asChild className="flex-1">
+            <Button
+              variant="outline"
+              size="sm"
+              asChild
+              className="flex-1 cursor-pointer hover:bg-primary/10"
+            >
               <Link
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2"
+                className="flex items-center justify-center gap-2 cursor-pointer text-center w-full"
               >
                 <FiGithub className="h-4 w-4" />
                 Code
@@ -172,12 +178,16 @@ const ProjectCard = ({
             </Button>
 
             {project.liveUrl && (
-              <Button size="sm" asChild className="flex-1">
+              <Button
+                size="sm"
+                asChild
+                className="flex-1 cursor-pointer hover:bg-primary/90"
+              >
                 <Link
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2"
+                  className="flex items-center justify-center gap-2 cursor-pointer text-center w-full"
                 >
                   <FiExternalLink className="h-4 w-4" />
                   Live Demo
@@ -188,7 +198,7 @@ const ProjectCard = ({
         </CardFooter>
         <div
           className={`
-                    absolute inset-0 rounded-lg transition-opacity duration-500
+                    absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none -z-10
                     ${isHovered ? "opacity-100" : "opacity-0"}
                   `}
           style={{
@@ -228,7 +238,7 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
 
   return (
     <section className={className} id="projects" ref={sectionRef}>
-      <Card className="max-w-7xl mx-auto border-0 bg-transparent dark:bg-transparent ">
+      <Card className="max-w-7xl mx-auto !border-0 bg-transparent dark:bg-transparent shadow-none">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -251,8 +261,11 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
               key={category}
               variant={selectedCategory === category ? "default" : "outline"}
               size="sm"
-              onClick={() => setSelectedCategory(category)}
-              className="transition-all duration-200"
+              onClick={() => {
+                console.log("Category clicked:", category);
+                setSelectedCategory(category);
+              }}
+              className="transition-all duration-200 cursor-pointer hover:bg-primary/10"
             >
               {category}
             </Button>

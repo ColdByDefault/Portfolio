@@ -17,14 +17,14 @@ export default function Technologies() {
       className="px-4 max-w-7xl mx-auto flex flex-col space-y-4 sm:space-y-6 lg:space-y-8"
       id="tech"
     >
-      <Card className="relative overflow-hidden bg-transparent border-0">
+      <Card className="relative overflow-hidden bg-transparent !border-0 shadow-none">
         <CardHeader className="text-center pb-2">
           <CardTitle className="text-2xl sm:text-3xl lg:text-4xl font-light">
             Technologies I Use
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 z-10 p-4 sm:p-6 h-full ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 z-10 p-4 sm:p-6 h-full border-0">
             {techGroups.map((group) => {
               const isCurrentCardHovered = hoveredCard === group.category;
 
@@ -32,7 +32,7 @@ export default function Technologies() {
                 <Card
                   key={group.category}
                   className={`
-                  relative overflow-hidden transition-all duration-500 ease-out cursor-pointer group
+                  relative overflow-hidden transition-all duration-500 ease-out group
                   ${
                     isCurrentCardHovered
                       ? "border-gray-500/50 bg-white shadow-2xl"

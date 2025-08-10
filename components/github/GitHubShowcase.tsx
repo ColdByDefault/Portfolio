@@ -183,7 +183,11 @@ export default function GitHubShowcase({ className }: { className?: string }) {
         </h2>
         <Drawer>
           <DrawerTrigger asChild>
-            <Button variant="outline" size="sm" className="text-green-500">
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-green-500 cursor-pointer"
+            >
               <FaTerminal className="mr-2 h-4 w-4" />
               MCP Live
             </Button>
@@ -202,7 +206,7 @@ export default function GitHubShowcase({ className }: { className?: string }) {
                 <Button
                   onClick={simulateMCPCommunication}
                   disabled={isLoading}
-                  className="w-full"
+                  className="w-full cursor-pointer"
                 >
                   {isLoading
                     ? "🔄 Processing..."
@@ -239,7 +243,9 @@ export default function GitHubShowcase({ className }: { className?: string }) {
 
             <DrawerFooter>
               <DrawerClose asChild>
-                <Button variant="outline">Close</Button>
+                <Button variant="outline" className="cursor-pointer">
+                  Close
+                </Button>
               </DrawerClose>
             </DrawerFooter>
           </DrawerContent>

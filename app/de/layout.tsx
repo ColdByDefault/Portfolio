@@ -3,28 +3,36 @@
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import "../globals.css";
 import { Orbitron } from "next/font/google";
 import React from "react";
-import { ThemeProvider } from "@/components/theme/theme-provider";
-import Navbar from "@/components/nav/Navbar";
-import Footer from "@/components/footer/Footer";
-import { CookiesBanner } from "@/components/cookies/cookies-banner";
-import { seoConfigDE, generateStructuredData } from "@/lib/seo";
 
 export const metadata = {
   metadataBase: new URL("https://www.coldbydefault.com"),
   title: {
-    default: seoConfigDE.title,
-    template: `%s | ${seoConfigDE.siteName}`,
+    default:
+      "Yazan Abo-Ayash | Full Stack Entwickler Portfolio - ColdByDefault",
+    template: "%s | ColdByDefault Portfolio",
   },
-  description: seoConfigDE.description,
-  keywords: seoConfigDE.keywords,
-  authors: [{ name: seoConfigDE.author }],
-  creator: seoConfigDE.author,
-  publisher: seoConfigDE.author,
+  description:
+    "Full Stack Junior Entwickler & Informatik Student. Spezialisiert auf React, Next.js, Node.js, Python und moderne Webtechnologien. Erfahren in der Entwicklung responsiver Webanwendungen und RESTful APIs.",
+  keywords: [
+    "Full Stack Entwickler",
+    "React Entwickler",
+    "Next.js Entwickler",
+    "Node.js Entwickler",
+    "Python Entwickler",
+    "Web Entwickler",
+    "Informatik Student",
+    "ColdByDefault",
+    "Yazan Abo-Ayash",
+    "Portfolio",
+    "Deutschland",
+  ],
+  authors: [{ name: "Yazan Abo-Ayash (ColdByDefault)" }],
+  creator: "Yazan Abo-Ayash (ColdByDefault)",
+  publisher: "Yazan Abo-Ayash (ColdByDefault)",
   robots: {
     index: true,
     follow: true,
@@ -38,36 +46,37 @@ export const metadata = {
   },
   openGraph: {
     type: "website",
-    locale: seoConfigDE.locale,
-    url: `${seoConfigDE.siteUrl}/de`,
-    title: seoConfigDE.openGraph.title,
-    description: seoConfigDE.openGraph.description,
-    siteName: seoConfigDE.siteName,
+    locale: "de_DE",
+    url: "https://www.coldbydefault.com/de",
+    title: "Yazan Abo-Ayash | Full Stack Entwickler Portfolio",
+    description:
+      "Full Stack Junior Entwickler & Informatik Student spezialisiert auf moderne Webtechnologien",
+    siteName: "ColdByDefault Portfolio",
     images: [
       {
-        url: seoConfigDE.openGraph.image,
+        url: "/og-image-de.jpg",
         width: 1200,
         height: 630,
-        alt: seoConfigDE.openGraph.imageAlt,
+        alt: "ColdByDefault Portfolio - Full Stack Entwickler",
       },
     ],
   },
   twitter: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    card: seoConfigDE.twitter.cardType as any,
-    title: seoConfigDE.openGraph.title,
-    description: seoConfigDE.openGraph.description,
-    creator: seoConfigDE.twitter.handle,
-    images: [seoConfigDE.openGraph.image],
+    card: "summary_large_image",
+    title: "Yazan Abo-Ayash | Full Stack Entwickler Portfolio",
+    description:
+      "Full Stack Junior Entwickler & Informatik Student spezialisiert auf moderne Webtechnologien",
+    creator: "@ColdByDefault",
+    images: ["/og-image-de.jpg"],
   },
   alternates: {
-    canonical: `${seoConfigDE.siteUrl}/de`,
+    canonical: "https://www.coldbydefault.com/de",
     languages: {
-      "en-US": seoConfigDE.siteUrl,
-      en: seoConfigDE.siteUrl,
-      "de-DE": `${seoConfigDE.siteUrl}/de`,
-      de: `${seoConfigDE.siteUrl}/de`,
-      "x-default": seoConfigDE.siteUrl,
+      "en-US": "https://www.coldbydefault.com",
+      en: "https://www.coldbydefault.com",
+      "de-DE": "https://www.coldbydefault.com/de",
+      de: "https://www.coldbydefault.com/de",
+      "x-default": "https://www.coldbydefault.com",
     },
   },
 };
@@ -83,55 +92,5 @@ interface GermanLayoutProps {
 }
 
 export default function GermanLayout({ children }: GermanLayoutProps) {
-  const structuredData = generateStructuredData(seoConfigDE);
-
-  return (
-    <html lang="de" className={`${orbitron.variable}`} suppressHydrationWarning>
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content={seoConfigDE.author} />
-        <meta name="keywords" content={seoConfigDE.keywords.join(", ")} />
-
-        {/* Language and Canonical URLs */}
-        <link rel="canonical" href={`${seoConfigDE.siteUrl}/de`} />
-        <link rel="alternate" hrefLang="en-US" href={seoConfigDE.siteUrl} />
-        <link rel="alternate" hrefLang="en" href={seoConfigDE.siteUrl} />
-        <link
-          rel="alternate"
-          hrefLang="de-DE"
-          href={`${seoConfigDE.siteUrl}/de`}
-        />
-        <link
-          rel="alternate"
-          hrefLang="de"
-          href={`${seoConfigDE.siteUrl}/de`}
-        />
-        <link rel="alternate" hrefLang="x-default" href={seoConfigDE.siteUrl} />
-
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
-          }}
-        />
-      </head>
-      <body suppressHydrationWarning>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          {children}
-          <Footer />
-          <CookiesBanner />
-        </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
-      </body>
-    </html>
-  );
+  return <div className={orbitron.variable}>{children}</div>;
 }

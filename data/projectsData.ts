@@ -23,7 +23,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Portfolio Website v5",
+    title: "Portfolio Website v3",
     description:
       "A modern, responsive portfolio website built with Next.js 15, featuring dark/light theme toggle, smooth animations with Framer Motion, and optimized performance. Includes TypeScript for type safety and Tailwind CSS for styling.",
     technologies: [
@@ -33,7 +33,7 @@ export const projects: Project[] = [
       "Framer Motion",
       "React Icons",
     ],
-    githubUrl: "See GitHub for source code",
+    githubUrl: "https://github.com/ColdByDefault/portfolio",
     liveUrl: "https://coldbydefault.com",
     featured: true,
     category: "Web Development",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
       "LangChain",
       "next-internationalization",
     ],
-    githubUrl: "git clone https://github.com/coldbydefault/berichhub.git",
+    githubUrl: "https://github.com/coldbydefault/berichhub",
     liveUrl: "https://berich-hub.vercel.app/",
     featured: true,
     category: "Full Stack",
@@ -81,8 +81,7 @@ export const projects: Project[] = [
       "PostgreSQL",
       "TypeScript",
     ],
-    githubUrl:
-      "git clone https://github.com/coldbydefault/simple-llm-agent.git",
+    githubUrl: "https://github.com/coldbydefault/simple-llm-agent",
     featured: false,
     category: "AI/ML",
     license: {
@@ -97,8 +96,7 @@ export const projects: Project[] = [
     description:
       "API for managing user subscriptions, including features for billing, invoicing, and payment processing. Built with Next.js and integrated with Stripe for secure payments.",
     technologies: ["Next.js", "PostgreSQL", "JavaScript", "Prisma"],
-    githubUrl:
-      "git clone https://github.com/ColdByDefault/subs-api-manager.git",
+    githubUrl: "https://github.com/ColdByDefault/subs-api-manager",
     featured: false,
     category: "Full Stack",
     license: {

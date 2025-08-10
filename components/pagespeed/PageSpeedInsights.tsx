@@ -276,7 +276,7 @@ export default function PageSpeedInsights({
             <Button
               onClick={fetchPageSpeedData}
               variant="outline"
-              className="w-full"
+              className="w-full cursor-pointer"
               disabled={loading}
             >
               Refresh Data
