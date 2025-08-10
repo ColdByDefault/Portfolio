@@ -2,6 +2,9 @@
 
 A secure, modern portfolio website built with Next.js 15, featuring comprehensive security measures and optimized performance.
 
+<img width="974" height="170" alt="image" src="https://github.com/user-attachments/assets/226d0556-b09e-49a6-9499-2217b6fcfec5" />
+
+
 ---
 
 ## 🌐 Live Site
