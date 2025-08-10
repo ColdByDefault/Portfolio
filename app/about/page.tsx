@@ -8,268 +8,194 @@
 import { aboutData } from "@/data/aboutData";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { Card, CardContent } from "@/components/ui/card";
 import { Background } from "@/components/visuals/motion-background";
-import { AboutSection, AchievementCard, InfoCard } from "@/components/about";
+import { AchievementCard } from "@/components/about";
 import Image from "next/image";
-import Link from "next/link";
+import React from "react";
 import { motion } from "framer-motion";
-import {
-  CalendarDays,
-  Target,
-  Heart,
-  Lightbulb,
-  Code,
-  Rocket,
-  Home,
-  FolderGit2,
-} from "lucide-react";
 
+// Animation variants
 const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
 };
 
 const staggerChildren = {
-  animate: {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
     transition: {
       staggerChildren: 0.1,
     },
   },
 };
 
-function AboutPage() {
-  const {
-    personalInfo,
-    mainStory,
-    sections,
-    achievements,
-    currentFocus,
-    goals,
-    values,
-  } = aboutData;
-
+export default function AboutPage() {
   return (
-    <div className="min-h-screen relative w-full">
+    <div className="min-h-screen relative">
       <Background />
-
-      {/* Hero Section */}
-      <section className="w-full pt-24 pb-12 md:pt-32 md:pb-16 flex flex-col items-center justify-start">
-        <div className="container px-4 md:px-6">
-          <motion.div
-            className="flex flex-col items-center space-y-8 text-center max-w-4xl mx-auto"
-            initial="initial"
-            animate="animate"
-            variants={staggerChildren}
-          >
-            <motion.div variants={fadeInUp} className="relative">
-              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-border shadow-xl">
-                <Image
-                  src="/profileDark.jpg"
-                  alt="Yazan Abo-Ayash"
-                  width={160}
-                  height={160}
-                  className="w-full h-full object-cover"
-                  priority
-                />
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="space-y-4">
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                About Me
-              </h1>
-              <div className="flex flex-wrap gap-2 justify-center">
-                <Badge variant="secondary">{personalInfo.title}</Badge>
-                <Badge variant="outline">
-                  {personalInfo.currentPosition} at {personalInfo.company}
+      <div className="relative z-10">
+        {/* Hero Section */}
+        <section className="pt-32 pb-20 px-4 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <Badge variant="outline" className="w-fit">
+                  About Me
                 </Badge>
-                <Badge variant="outline">
-                  {personalInfo.experience} experience
-                </Badge>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+                  {aboutData.personalInfo.name}
+                </h1>
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  {aboutData.personalInfo.title}
+                </p>
+                <p className="text-lg leading-relaxed">{aboutData.mainStory}</p>
+                <div className="flex flex-wrap gap-3">
+                  {aboutData.currentFocus.slice(0, 3).map((focus, index) => (
+                    <Badge key={index} variant="secondary">
+                      {focus}
+                    </Badge>
+                  ))}
+                </div>
+                <div className="flex gap-4">
+                  <Button size="lg">Get In Touch</Button>
+                  <Button variant="outline" size="lg">
+                    Download CV
+                  </Button>
+                </div>
               </div>
-            </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg md:text-xl text-muted-foreground leading-relaxed"
-            >
-              {mainStory}
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="w-full py-12 flex flex-col items-center justify-start">
-        <div className="container px-4 md:px-6">
-          <div className="max-w-4xl mx-auto space-y-12">
-            {/* Story Sections */}
-            <motion.div
-              className="grid gap-8"
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              variants={staggerChildren}
-            >
-              {sections.map((section, index) => {
-                let icon = Lightbulb;
-                if (section.id === "journey") icon = Rocket;
-                if (section.id === "philosophy") icon = Lightbulb;
-                if (section.id === "current-work") icon = Code;
-                if (section.id === "open-source") icon = Heart;
-
-                return (
-                  <AboutSection
-                    key={section.id}
-                    id={section.id}
-                    title={section.title}
-                    content={section.content}
-                    icon={icon}
-                    delay={index * 0.1}
+              <div className="relative">
+                <div className="aspect-square max-w-md mx-auto relative rounded-2xl overflow-hidden">
+                  <Image
+                    src="/profileLight.jpg"
+                    alt={aboutData.personalInfo.name}
+                    fill
+                    className="object-cover"
                   />
-                );
-              })}
-            </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <Separator />
-
-            {/* Achievements Timeline */}
+        {/* Philosophy Section */}
+        <section className="py-20 px-4 lg:px-8">
+          <div className="max-w-4xl mx-auto">
             <motion.div
-              initial="initial"
-              whileInView="animate"
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
               variants={staggerChildren}
+              className="text-center space-y-6"
+            >
+              <Badge variant="outline" className="w-fit mx-auto">
+                Philosophy
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold">
+                My Development Philosophy
+              </h2>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                {aboutData.sections.find((s) => s.id === "philosophy")?.content}
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Current Focus Section */}
+        <section className="py-20 px-4 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerChildren}
+              className="space-y-12"
             >
               <motion.h2
                 variants={fadeInUp}
-                className="text-3xl font-bold mb-8 flex items-center gap-2"
+                className="text-3xl md:text-4xl font-bold text-center"
               >
-                <CalendarDays className="h-8 w-8" />
-                Key Achievements
+                Current Focus
               </motion.h2>
-              <div className="grid gap-4 md:gap-6">
-                {achievements.map((achievement, index) => (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {aboutData.currentFocus.map((focus, index) => (
+                  <Card key={index} className="p-6">
+                    <CardContent>
+                      <p className="text-center">{focus}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Values Section */}
+        <section className="py-20 px-4 lg:px-8 bg-muted/50">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              className="space-y-12"
+            >
+              <div className="text-center space-y-4">
+                <Badge variant="outline" className="w-fit mx-auto">
+                  Core Values
+                </Badge>
+                <h2 className="text-3xl md:text-4xl font-bold">
+                  What Drives Me
+                </h2>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {aboutData.values.map((value, index) => (
+                  <Card key={index} className="p-6">
+                    <CardContent>
+                      <p className="text-center">{value}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Achievements Section */}
+        <section className="py-20 px-4 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              className="space-y-12"
+            >
+              <div className="text-center space-y-4">
+                <Badge variant="outline" className="w-fit mx-auto">
+                  Achievements
+                </Badge>
+                <h2 className="text-3xl md:text-4xl font-bold">
+                  Milestones & Recognition
+                </h2>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {aboutData.achievements.map((achievement, index) => (
                   <AchievementCard
-                    key={achievement.id}
+                    key={index}
                     title={achievement.title}
                     description={achievement.description}
+                    icon={achievement.icon}
                     date={achievement.date}
                     category={achievement.category}
-                    icon={achievement.icon}
-                    delay={index * 0.1}
                   />
                 ))}
               </div>
             </motion.div>
-
-            <Separator />
-
-            {/* Current Focus & Goals */}
-            <div className="grid md:grid-cols-2 gap-8">
-              <InfoCard
-                title="Current Focus"
-                description="Technologies and concepts I'm actively learning and improving"
-                icon={Code}
-                items={currentFocus}
-                variant="badges"
-                delay={0}
-              />
-
-              <InfoCard
-                title="Future Goals"
-                description="Where I see myself heading in the near future"
-                icon={Target}
-                items={goals}
-                variant="list"
-                delay={0.1}
-              />
-            </div>
-
-            {/* Values */}
-            <motion.div
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              variants={fadeInUp}
-            >
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Heart className="h-6 w-6" />
-                    Core Values
-                  </CardTitle>
-                  <CardDescription>
-                    The principles that guide my work and development approach
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {values.map((value, index) => (
-                      <div
-                        key={index}
-                        className="flex items-start gap-3 p-3 rounded-lg bg-muted/50"
-                      >
-                        <span className="text-primary mt-1">✓</span>
-                        <span className="text-sm">{value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <Separator />
-
-            {/* Call to Action */}
-            <motion.div
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              variants={fadeInUp}
-              className="text-center"
-            >
-              <Card className="border-2 border-primary/20">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-4">
-                    Let&apos;s Build Something Amazing
-                  </h3>
-                  <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                    I&apos;m always excited to collaborate on new projects and
-                    connect with fellow developers. Whether you have a project
-                    idea, want to discuss technology, or just say hello,
-                    I&apos;d love to hear from you.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link href="/#home">
-                      <Button size="lg" className="gap-2">
-                        <Home className="h-4 w-4" />
-                        Back to Portfolio
-                      </Button>
-                    </Link>
-                    <Link href="/#projects">
-                      <Button variant="outline" size="lg" className="gap-2">
-                        <FolderGit2 className="h-4 w-4" />
-                        View My Projects
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }
-
-export default AboutPage;

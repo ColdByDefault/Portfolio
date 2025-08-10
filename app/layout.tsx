@@ -32,10 +32,67 @@ import { ThemeProvider } from "@/components/theme/theme-provider";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/footer/Footer";
 import { CookiesBanner } from "@/components/cookies/cookies-banner";
+import { seoConfigEN, generateStructuredData } from "@/lib/seo";
 
 export const metadata = {
-  title: "ColdByDefault",
-  description: "Portfolio",
+  metadataBase: new URL("https://www.coldbydefault.com"),
+  title: {
+    default: seoConfigEN.title,
+    template: `%s | ${seoConfigEN.siteName}`,
+  },
+  description: seoConfigEN.description,
+  keywords: seoConfigEN.keywords,
+  authors: [{ name: seoConfigEN.author }],
+  creator: seoConfigEN.author,
+  publisher: seoConfigEN.author,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: seoConfigEN.locale,
+    url: seoConfigEN.siteUrl,
+    title: seoConfigEN.openGraph.title,
+    description: seoConfigEN.openGraph.description,
+    siteName: seoConfigEN.siteName,
+    images: [
+      {
+        url: seoConfigEN.openGraph.image,
+        width: 1200,
+        height: 630,
+        alt: seoConfigEN.openGraph.imageAlt,
+      },
+    ],
+  },
+  twitter: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    card: seoConfigEN.twitter.cardType as any,
+    title: seoConfigEN.openGraph.title,
+    description: seoConfigEN.openGraph.description,
+    creator: seoConfigEN.twitter.handle,
+    images: [seoConfigEN.openGraph.image],
+  },
+  alternates: {
+    canonical: seoConfigEN.siteUrl,
+    languages: {
+      "en-US": seoConfigEN.siteUrl,
+      en: seoConfigEN.siteUrl,
+      "de-DE": `${seoConfigEN.siteUrl}/de`,
+      de: `${seoConfigEN.siteUrl}/de`,
+      "x-default": seoConfigEN.siteUrl,
+    },
+  },
+  verification: {
+    google: "your-google-verification-code",
+  },
 };
 
 const orbitron = Orbitron({
@@ -49,24 +106,15 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  const defaultLang = "en";
-  const alternateLang = "";
+  const structuredData = generateStructuredData(seoConfigEN);
 
   return (
-    <html
-      lang={defaultLang}
-      className={`${orbitron.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${orbitron.variable}`} suppressHydrationWarning>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Portfolio" />
-        <meta name="author" content="ColdByDefault" />
-        <meta
-          name="keywords"
-          content="ColdByDefault, Portfolio, Next.Js, Web Development"
-        />
+        <meta name="author" content={seoConfigEN.author} />
+        <meta name="keywords" content={seoConfigEN.keywords.join(", ")} />
 
         {/* Security Headers */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
@@ -85,35 +133,33 @@ export default function RootLayout({ children }: RootLayoutProps) {
           content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://api.github.com https://vitals.vercel-analytics.com;"
         />
 
-        <meta property="og:title" content="ColdByDefault" />
-        <meta property="og:description" content="Portfolio" />
-        <meta property="og:image" content="/logo.png" />
-        <meta property="og:url" content="https://www.coldbydefault.com" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="ColdByDefault" />
-        <meta name="twitter:description" content="Portfolio" />
-        <meta name="twitter:image" content="/logo.png" />
-        <link rel="icon" href="/favicon.ico" />
+        {/* Language and Canonical URLs */}
+        <link rel="canonical" href={seoConfigEN.siteUrl} />
+        <link rel="alternate" hrefLang="en-US" href={seoConfigEN.siteUrl} />
+        <link rel="alternate" hrefLang="en" href={seoConfigEN.siteUrl} />
         <link
           rel="alternate"
-          hrefLang={alternateLang}
-          href="https://www.coldbydefault.com/"
+          hrefLang="de-DE"
+          href={`${seoConfigEN.siteUrl}/de`}
         />
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "Individual",
-              "name": "ColdByDefault",
-              "url": "https://www.coldbydefault.com",
-              "logo": "https://www.coldbydefault.com/logo.png",
-              "sameAs": [
-                "https://github.com/ColdByDefault"
-              ]
-            }
-          `}
-        </script>
-        <title>ColdByDefault</title>
+        <link
+          rel="alternate"
+          hrefLang="de"
+          href={`${seoConfigEN.siteUrl}/de`}
+        />
+        <link rel="alternate" hrefLang="x-default" href={seoConfigEN.siteUrl} />
+
+        {/* Favicon and App Icons */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
+
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
       </head>
       <body suppressHydrationWarning>
         <ThemeProvider
