@@ -95,6 +95,9 @@ export const metadata = {
   },
 };
 
+// Generate structured data once to avoid hydration mismatches
+const structuredData = generateStructuredData(seoConfigEN);
+
 const orbitron = Orbitron({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -106,8 +109,6 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  const structuredData = generateStructuredData(seoConfigEN);
-
   return (
     <html lang="en" className={`${orbitron.variable}`} suppressHydrationWarning>
       <head>
