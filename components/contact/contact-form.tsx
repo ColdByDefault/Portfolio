@@ -186,7 +186,7 @@ export default function ContactForm() {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="gap-2"
+          className="gap-2 cursor-pointer"
           disabled={submitStatus === "cooldown"}
         >
           <Mail className="h-4 w-4" />

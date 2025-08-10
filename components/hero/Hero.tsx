@@ -57,7 +57,7 @@ function Hero() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
               <Link href="/about">
-                <Button variant="outline" className="gap-2">
+                <Button variant="outline" className="gap-2 cursor-pointer">
                   Learn More About Me
                 </Button>
               </Link>

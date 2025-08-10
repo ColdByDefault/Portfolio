@@ -32,7 +32,7 @@ export default function Footer() {
                 >
                   <span className="text-xs text-green-500 dark:text-gray-400">
                     {" "}
-                    <code>&quot;/api/admin/contact?action=stats&quot;</code>
+                    <code>Admin Dashboard</code>
                   </span>
                 </Link>
               </li>
@@ -99,7 +99,7 @@ export default function Footer() {
               reserved.
               <span className="text-xs text-gray-600">
                 {" "}
-                Dedicated to the one who sparked the journey - Stockholm, 2021.
+                The journey was sparked - Stockholm, 2021.
               </span>
             </p>
             <div className="flex space-x-6">
