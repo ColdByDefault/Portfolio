@@ -4,6 +4,7 @@
  */
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import he from "he";
 import {
   sanitizeInput,
   validateEmailSecurity,
@@ -222,7 +223,7 @@ export async function POST(request: NextRequest) {
           
           <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <p style="margin: 10px 0;"><strong>Name:</strong> ${sanitizedName}</p>
-            <p style="margin: 10px 0;"><strong>Email:</strong> ${sanitizedEmail}</p>
+            <p style="margin: 10px 0;"><strong>Email:</strong> ${he.encode(sanitizedEmail)}</p>
             <p style="margin: 10px 0;"><strong>Subject:</strong> ${sanitizedSubject}</p>
             <p style="margin: 10px 0;"><strong>IP Address:</strong> ${clientIP}</p>
             <p style="margin: 10px 0;"><strong>User Agent:</strong> ${userAgent}</p>
@@ -239,7 +240,7 @@ export async function POST(request: NextRequest) {
           
           <div style="margin-top: 20px; padding: 15px; background-color: #fef3c7; border-radius: 8px; border-left: 4px solid #f59e0b;">
             <p style="margin: 0; color: #92400e;">
-              <strong>Reply to:</strong> ${sanitizedEmail}
+              <strong>Reply to:</strong> ${he.encode(sanitizedEmail)}
             </p>
           </div>
         </div>
