@@ -3,6 +3,7 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 
+import sanitizeHtml from "sanitize-html";
 /**
  * Validates and sanitizes URL parameters
  */
@@ -69,7 +70,7 @@ export function sanitizeInput(input: string): string {
   if (!input) return "";
 
   // Remove HTML tags and script injections
-  const htmlStripped = input.replace(/<[^>]*>/g, "");
+  const htmlStripped = sanitizeHtml(input, { allowedTags: [], allowedAttributes: {} });
 
   // Remove common spam patterns
   const spamPatterns = [
