@@ -83,7 +83,7 @@ class GitHubDataFetcher {
 
   async fetchProfile(): Promise<GitHubProfile> {
     try {
-      console.log(`Fetching profile for user: ${this.username}`);
+      console.log("Fetching GitHub profile");
       const response = await fetch(`${this.baseUrl}/users/${this.username}`, {
         headers: this.headers,
         next: { revalidate: 3600 }, // Cache for 1 hour
