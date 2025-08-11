@@ -244,7 +244,7 @@ export async function POST(request: NextRequest) {
           });
         }
       } catch (error) {
-        console.error(`Error fetching PageSpeed for ${url}:`, error);
+        console.error("Error fetching PageSpeed for %s:", url, error);
       }
 
       // Add delay between requests to avoid rate limiting
