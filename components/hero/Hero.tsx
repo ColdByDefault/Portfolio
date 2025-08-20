@@ -4,7 +4,7 @@
  */
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import ContactForm from "@/components/contact/contact-form";
+//import ContactForm from "@/components/contact/contact-form";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -65,7 +65,7 @@ function Hero() {
                   Learn More About Me
                 </Link>
               </Button>
-              <ContactForm />
+              {/* <ContactForm /> */}
             </div>
             <div className="flex flex-col sm:flex-row gap-4 items-center">
               <SocialLinks />
