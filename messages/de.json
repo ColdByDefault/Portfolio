@@ -1,17 +1,17 @@
 {
   "Home": {
-    "WebsitePerformance": "Website-Leistung"
+    "WebsitePerformance": "Website-Performance"
   },
   "Hero": {
     "availableForCollaboration": "Verfügbar für Zusammenarbeit",
-    "fullStackDeveloper": "Full Stack Junior Entwickler",
+    "fullStackDeveloper": "Junior Full-Stack-Entwickler",
     "description": "Leidenschaftlich für die Schaffung außergewöhnlicher digitaler Erlebnisse durch sauberen Code, innovative Lösungen und benutzerzentriertes Design. Spezialisiert auf moderne Webtechnologien mit 3+ Jahren Erfahrung.",
     "learnMoreAboutMe": "Mehr über mich erfahren",
     "moreAboutMe": "Mehr über mich auf"
   },
   "Navigation": {
     "home": "Startseite",
-    "about": "Über uns",
+    "about": "Über mich",
     "projects": "Projekte",
     "mcp": "MCP",
     "technologies": "Technologien",
@@ -39,12 +39,12 @@
     "issuedBy": "Ausgestellt von:",
     "date": "Datum:",
     "descriptions": {
-      "pythonPcep": "Erworben die PCEP (Python Certified Entry-Level Programmer) Zertifizierung, die grundlegende Kenntnisse der Python-Programmierung demonstriert.",
-      "udemyPythonBootcamp": "Abgeschlossen das \"100 Days of Code - The Complete Python Pro Bootcamp,\" und Python von Anfänger- bis Fortgeschrittenenniveau gemeistert.",
-      "metaFrontend": "Abgeschlossen den \"Introduction to Frontend Development\" Kurs und grundlegende Fähigkeiten in HTML, CSS erworben.",
+      "pythonPcep": "Die PCEP (Python Certified Entry-Level Programmer) Zertifizierung erhalten, die grundlegende Kenntnisse der Python-Programmierung nachweist.",
+      "udemyPythonBootcamp": "Den Kurs \"100 Days of Code - The Complete Python Pro Bootcamp\" abgeschlossen und Python vom Anfänger- bis zum Fortgeschrittenenniveau gemeistert.",
+      "metaFrontend": "Den Kurs \"Introduction to Frontend Development\" abgeschlossen und grundlegende Fähigkeiten in HTML und CSS erworben.",
       "udemyHtmlCss": "Den Kurs abgeschlossen und die Grundlagen von HTML und CSS gelernt, um eine Website zu erstellen und zu veröffentlichen.",
-      "gitGithubBootcamp": "Einen umfassenden Git und GitHub Kurs abgeschlossen, der Versionskontrolle, Branching und Kollaborations-Workflows abdeckt.",
-      "fullStackWebDev": "Frontend und Backend Web Development Kurs, der HTML, CSS, JavaScript, Node.js und React abdeckt."
+      "gitGithubBootcamp": "Einen umfassenden Git- und GitHub-Kurs abgeschlossen, der Versionskontrolle, Branching und Kollaborations-Workflows abdeckt.",
+      "fullStackWebDev": "Frontend- und Backend-Webentwicklungskurs, der HTML, CSS, JavaScript, Node.js und React abdeckt."
     }
   },
   "Projects": {
@@ -56,12 +56,12 @@
       "aiMl": "KI/ML"
     },
     "descriptions": {
-      "portfolioWebsite": "Eine moderne, responsive Portfolio-Website, die mit Next.js 15 erstellt wurde und einen Dark/Light-Theme-Toggle, sanfte Animationen mit Framer Motion und optimierte Performance bietet. Enthält TypeScript für Typsicherheit und Tailwind CSS für das Styling.",
-      "berichHub": "Full-Stack digitale Lernplattform mit Benutzerauthentifizierung, Profilseiten und Blog-Features. KI-Integration für personalisiertes Lernen. Völlig kostenlos und Open-Source. 4 verschiedene Sprachen unterstützt: Englisch, Deutsch, Spanisch, Schwedisch.",
-      "llmAgent": "Lokaler ollama-basierter KI-Chatbot, anpassbar für jedes LLM-Modell, jedes Embed-Modell, 2 Optionen für Vector DB; lokales Postgres oder DataStax Astra. Kann Webseiten lesen und Fragen basierend auf dem Inhalt beantworten. Mehr kommt bald.. Open Source.",
-      "subsApi": "API für die Verwaltung von Benutzerabonnements, einschließlich Features für Abrechnung, Rechnungsstellung und Zahlungsabwicklung. Erstellt mit Next.js und integriert mit Stripe für sichere Zahlungen."
+      "portfolioWebsite": "Eine moderne, responsive Portfolio-Website, erstellt mit Next.js 15, mit Dark/Light-Theme-Umschalter, sanften Animationen durch Framer Motion und optimierter Performance. Enthält TypeScript für Typsicherheit und Tailwind CSS für das Styling.",
+      "berichHub": "Full-Stack-Lernplattform mit Benutzerauthentifizierung, Profilseiten und Blog-Funktionen. KI-Integration für personalisiertes Lernen. Völlig kostenlos und Open-Source. Unterstützt 4 verschiedene Sprachen: Englisch, Deutsch, Spanisch, Schwedisch.",
+      "llmAgent": "Lokaler ollama-basierter KI-Chatbot, anpassbar für jedes LLM-Modell, jedes Embed-Modell, mit 2 Optionen für Vector DB: lokales Postgres oder DataStax Astra. Kann Webseiten lesen und Fragen basierend auf deren Inhalt beantworten. Mehr kommt bald... Open Source.",
+      "subsApi": "API für die Verwaltung von Benutzerabonnements, einschließlich Funktionen für Abrechnung, Rechnungsstellung und Zahlungsabwicklung. Erstellt mit Next.js und integriert mit Stripe für sichere Zahlungen."
     },
-    "seeMoreOnGitHub": "mehr auf GitHub ansehen...",
+    "seeMoreOnGitHub": "Weitere Projekte auf GitHub...",
     "cloneRepository": "Repository klonen",
     "code": "Code",
     "liveDemo": "Live Demo",
@@ -97,18 +97,18 @@
     "milestonesRecognition": "Meilensteine & Anerkennung",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Full Stack Junior Entwickler",
+      "title": "Junior Full-Stack-Entwickler",
       "currentPosition": "Praktikant",
       "company": "Avarno GmbH",
       "location": "Deutschland",
       "experience": "3+ Jahre"
     },
-    "mainStory": "Ich bin derzeit Praktikant bei Avarno GmbH, wo ich alles von maßgeschneiderten digitalen Lösungen bis hin zu KI-gestützten Anwendungen entwickelt habe. Ich spezialisiere mich auf Next.js, React, JavaScript, HTML/CSS und pflege eine aktive Präsenz auf GitHub. Wenn ich neue Herausforderungen angehe, tauche ich direkt in die Dokumentation ein und experimentiere, bis ich die Tools beherrscht habe. Getrieben von der Leidenschaft für ein saubereres, offeneres Web trage ich zu Open-Source-Projekten bei und ziele darauf ab, Benutzererfahrungen ohne unnötige Werbung und Paywalls zu optimieren. Mein Ziel ist es, ein Full-Stack-Experte zu werden – insbesondere in Next.js, LLM-Integrationen und End-to-End-Webentwicklung. Ich glaube, dass harte Arbeit und Disziplin sich immer auszahlen, und ich bringe diesen Fokus in jedes Projekt ein, groß oder klein.",
+    "mainStory": "Ich bin derzeit Praktikant bei Avarno GmbH, wo ich alles von maßgeschneiderten digitalen Lösungen bis hin zu KI-gestützten Anwendungen entwickelt habe. Ich spezialisiere mich auf Next.js, React, JavaScript, HTML/CSS und pflege eine aktive Präsenz auf GitHub. Wenn ich neue Herausforderungen angehe, tauche ich direkt in die Dokumentation ein und experimentiere, bis ich die Tools beherrsche. Getrieben von der Leidenschaft für ein saubereres, offeneres Web trage ich zu Open-Source-Projekten bei und möchte Benutzererfahrungen ohne unnötige Werbung und Paywalls optimieren. Mein Ziel ist es, ein Full-Stack-Experte zu werden – insbesondere in Next.js, LLM-Integrationen und End-to-End-Webentwicklung. Ich glaube, dass harte Arbeit und Disziplin sich immer auszahlen, und ich bringe diesen Fokus in jedes Projekt ein, groß oder klein.",
     "sections": {
-      "philosophy": "Ich glaube daran, Code zu schreiben, der nicht nur funktioniert, sondern wartbar, skalierbar und zugänglich ist. Mein Ansatz kombiniert technische Exzellenz mit benutzerzentrierten Designprinzipien. Ich bin leidenschaftlich daran interessiert, Web-Erfahrungen zu schaffen, die schnell, intuitiv und frei von unnötiger Komplexität sind."
+      "philosophy": "Ich glaube daran, Code zu schreiben, der nicht nur funktioniert, sondern auch wartbar, skalierbar und zugänglich ist. Mein Ansatz kombiniert technische Exzellenz mit benutzerzentrierten Designprinzipien. Ich bin leidenschaftlich daran interessiert, Web-Erfahrungen zu schaffen, die schnell, intuitiv und frei von unnötiger Komplexität sind."
     },
     "currentFocusItems": [
-      "Next.js fortgeschrittene Muster und Optimierung",
+      "Fortgeschrittene Next.js-Muster und Optimierung",
       "LLM-Integrationen und KI-gestützte Anwendungen",
       "End-to-End-Webentwicklung",
       "Moderne React-Muster und Performance",
@@ -137,7 +137,7 @@
         "category": "project"
       },
       {
-        "title": "Aktiver GitHub-Contributor",
+        "title": "Aktiver Open-Source-Mitwirkender auf GitHub",
         "description": "Aufrechterhaltung einer aktiven Präsenz mit Open-Source-Beiträgen",
         "date": "Laufend",
         "category": "project"
