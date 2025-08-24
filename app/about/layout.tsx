@@ -3,7 +3,7 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Me | Yazan Abo-Ayash - Full Stack Developer",

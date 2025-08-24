@@ -125,7 +125,7 @@ export function validateEmailSecurity(email: string): {
   ];
 
   const domain = email.split("@")[1]?.toLowerCase();
-  if (disposableDomains.includes(domain)) {
+  if (domain && disposableDomains.includes(domain)) {
     return { valid: false, reason: "Disposable email addresses not allowed" };
   }
 

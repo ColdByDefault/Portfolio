@@ -2,58 +2,25 @@
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
-import { NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import {
   validateDataType,
   sanitizeErrorMessage,
   RateLimiter,
 } from "@/lib/security";
+import type {
+  GitHubRepository,
+  GitHubEvent,
+  GitHubProfile,
+  GitHubRepo,
+  GitHubStats,
+  GitHubActivity,
+  GitHubApiResponse,
+} from "@/types/github";
 
 // Rate limiter instance
 const rateLimiter = new RateLimiter(60000, 10); // 10 requests per minute
-
-interface GitHubProfile {
-  name: string;
-  login: string;
-  avatar_url: string;
-  bio: string;
-  location: string;
-  blog: string;
-  html_url: string;
-  public_repos: number;
-  followers: number;
-  following: number;
-  created_at: string;
-}
-
-interface GitHubRepo {
-  name: string;
-  description: string;
-  html_url: string;
-  language: string;
-  stargazers_count: number;
-  forks_count: number;
-  updated_at: string;
-  topics: string[];
-  homepage: string;
-}
-
-interface GitHubStats {
-  public_repos: number;
-  followers: number;
-  following: number;
-  total_stars: number;
-  total_forks: number;
-  most_used_language: string;
-  languages: Record<string, number>;
-}
-
-interface GitHubActivity {
-  type: string;
-  repo: string;
-  created_at: string;
-  action: string;
-}
 
 class GitHubDataFetcher {
   private username: string;
@@ -122,24 +89,24 @@ class GitHubDataFetcher {
       throw new Error(`Failed to fetch repositories: ${response.statusText}`);
     }
 
-    const repos = await response.json();
+    const repos: GitHubRepository[] = await response.json();
 
     // Filter out forks and format data
     const formattedRepos = repos
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .filter((repo: any) => !repo.fork)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .map((repo: any) => ({
-        name: repo.name,
-        description: repo.description || "",
-        html_url: repo.html_url,
-        language: repo.language || "",
-        stargazers_count: repo.stargazers_count || 0,
-        forks_count: repo.forks_count || 0,
-        updated_at: repo.updated_at,
-        topics: repo.topics || [],
-        homepage: repo.homepage || "",
-      }));
+      .filter((repo: GitHubRepository) => !repo.fork)
+      .map(
+        (repo: GitHubRepository): GitHubRepo => ({
+          name: repo.name,
+          description: repo.description || "",
+          html_url: repo.html_url,
+          language: repo.language || "",
+          stargazers_count: repo.stargazers_count || 0,
+          forks_count: repo.forks_count || 0,
+          updated_at: repo.updated_at,
+          topics: repo.topics || [],
+          homepage: repo.homepage || "",
+        })
+      );
 
     return formattedRepos.slice(0, limit);
   }
@@ -160,34 +127,33 @@ class GitHubDataFetcher {
       );
     }
 
-    const ownedRepos = await ownedReposResponse.json();
+    const ownedRepos: GitHubRepository[] = await ownedReposResponse.json();
     const profile = await this.fetchProfile();
 
     // Calculate statistics
     const totalStars = ownedRepos.reduce(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (sum: number, repo: any) => sum + (repo.stargazers_count || 0),
+      (sum: number, repo: GitHubRepository) =>
+        sum + (repo.stargazers_count || 0),
       0
     );
 
     const totalForks = ownedRepos.reduce(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (sum: number, repo: any) => sum + (repo.forks_count || 0),
+      (sum: number, repo: GitHubRepository) => sum + (repo.forks_count || 0),
       0
     );
 
     const languages: Record<string, number> = {};
     // Count languages from owned repositories
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ownedRepos.forEach((repo: any) => {
+    ownedRepos.forEach((repo: GitHubRepository) => {
       if (repo.language) {
         languages[repo.language] = (languages[repo.language] || 0) + 1;
       }
     });
 
+    const languageEntries = Object.entries(languages);
     const mostUsedLanguage =
-      Object.entries(languages).length > 0
-        ? Object.entries(languages).sort(([, a], [, b]) => b - a)[0][0]
+      languageEntries.length > 0
+        ? languageEntries.sort(([, a], [, b]) => b - a)[0]?.[0] || "Unknown"
         : "Unknown";
 
     return {
@@ -214,17 +180,18 @@ class GitHubDataFetcher {
       throw new Error(`Failed to fetch activity: ${response.statusText}`);
     }
 
-    const events = await response.json();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return events.slice(0, limit).map((event: any) => ({
-      type: event.type,
-      repo: event.repo?.name || "",
-      created_at: event.created_at,
-      action: this.formatEventAction(event),
-    }));
+    const events: GitHubEvent[] = await response.json();
+    return events.slice(0, limit).map(
+      (event: GitHubEvent): GitHubActivity => ({
+        type: event.type,
+        repo: event.repo?.name || "",
+        created_at: event.created_at,
+        action: this.formatEventAction(event),
+      })
+    );
   }
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private formatEventAction(event: any): string {
+
+  private formatEventAction(event: GitHubEvent): string {
     const eventType = event.type;
     const repoName = event.repo?.name?.split("/").pop() || "";
 
@@ -287,21 +254,20 @@ export async function GET(request: NextRequest) {
     console.log(`GitHub API request for type: ${dataType}`);
 
     const fetcher = new GitHubDataFetcher();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let data: any = {};
+    let data: GitHubApiResponse = {};
 
     switch (dataType) {
       case "profile":
-        data = await fetcher.fetchProfile();
+        data = { profile: await fetcher.fetchProfile() };
         break;
       case "repos":
-        data = await fetcher.fetchRepositories();
+        data = { repositories: await fetcher.fetchRepositories() };
         break;
       case "stats":
-        data = await fetcher.fetchStats();
+        data = { stats: await fetcher.fetchStats() };
         break;
       case "activity":
-        data = await fetcher.fetchRecentActivity();
+        data = { activity: await fetcher.fetchRecentActivity() };
         break;
       case "all":
       default:

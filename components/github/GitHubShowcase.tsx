@@ -120,7 +120,10 @@ export default function GitHubShowcase({ className }: { className?: string }) {
 
     for (let i = 0; i < logs.length; i++) {
       await new Promise((resolve) => setTimeout(resolve, 400));
-      setMcpLogs((prev) => [...prev, logs[i]]);
+      const logEntry = logs[i];
+      if (logEntry) {
+        setMcpLogs((prev) => [...prev, logEntry]);
+      }
     }
 
     setIsLoading(false);
