@@ -3,141 +3,141 @@
     "WebsitePerformance": "Rendimiento del sitio web"
   },
   "Hero": {
-    "availableForCollaboration": "Disponible para colaboración",
-    "fullStackDeveloper": "Desarrollador Full Stack Junior",
-    "description": "Apasionado por crear experiencias digitales excepcionales a través de código limpio, soluciones innovadoras y diseño centrado en el usuario. Especializado en tecnologías web modernas con más de 3 años de experiencia.",
-    "learnMoreAboutMe": "Aprende más sobre mí",
+    "availableForCollaboration": "Disponible para colaborar",
+    "fullStackDeveloper": "Desarrollador Junior Full Stack",
+    "description": "Apasionado por crear experiencias digitales excepcionales mediante código limpio, soluciones innovadoras y diseño centrado en el usuario. Especializado en tecnologías web modernas con más de 3 años de experiencia.",
+    "learnMoreAboutMe": "Conoce más sobre mí",
     "moreAboutMe": "Más sobre mí en"
   },
   "Navigation": {
     "home": "Inicio",
-    "about": "Acerca de",
+    "about": "Sobre mí",
     "projects": "Proyectos",
     "mcp": "MCP",
     "technologies": "Tecnologías",
     "certifications": "Certificaciones",
     "navigation": "Navegación",
-    "impressum": "Aviso Legal",
+    "impressum": "Aviso legal",
     "legal": "Legal"
   },
   "Technologies": {
-    "title": "Tecnologías que uso",
-    "manyMoreTechnologies": "...y muchas más tecnologías en mi arsenal",
+    "title": "Tecnologías que utilizo",
+    "manyMoreTechnologies": "...y muchas más tecnologías en mi caja de herramientas",
     "categories": {
       "uiFrontend": "UI & Frontend",
       "backendApis": "Backend & APIs",
-      "databasesStorage": "Bases de Datos & Almacenamiento",
+      "databasesStorage": "Bases de datos & Almacenamiento",
       "infrastructureDevops": "Infraestructura & DevOps",
       "aiLlm": "IA & LLM",
-      "automationWorkflow": "Automatización & Flujo de trabajo",
+      "automationWorkflow": "Automatización & Flujos de trabajo",
       "toolsProductivity": "Herramientas & Productividad",
       "architectureDiagrams": "Arquitectura & Diagramas"
     }
   },
   "Certifications": {
-    "title": "Mis Certificaciones",
-    "issuedBy": "Expedido por:",
+    "title": "Mis certificaciones",
+    "issuedBy": "Emitido por:",
     "date": "Fecha:",
     "descriptions": {
-      "pythonPcep": "Obtenido la certificación PCEP (Python Certified Entry-Level Programmer), demostrando conocimientos fundamentales de programación en Python.",
-      "udemyPythonBootcamp": "Completado el \"100 Days of Code - The Complete Python Pro Bootcamp,\" dominando Python desde nivel principiante hasta avanzado.",
-      "metaFrontend": "Completado el curso \"Introduction to Frontend Development\", adquiriendo habilidades fundamentales en HTML, CSS.",
-      "udemyHtmlCss": "Completado el curso, aprendiendo los fundamentos de HTML y CSS para construir y desplegar un sitio web.",
-      "gitGithubBootcamp": "Completado un curso integral de Git y GitHub, cubriendo control de versiones, ramificación y flujos de trabajo colaborativos.",
-      "fullStackWebDev": "Curso de Desarrollo Web Frontend y Backend, cubriendo HTML, CSS, JavaScript, Node.js y React."
+      "pythonPcep": "Obtuve la certificación PCEP (Python Certified Entry-Level Programmer), demostrando conocimientos fundamentales de programación en Python.",
+      "udemyPythonBootcamp": "Completé el curso \"100 Days of Code - The Complete Python Pro Bootcamp\", dominando Python desde nivel principiante hasta avanzado.",
+      "metaFrontend": "Completé el curso \"Introduction to Frontend Development\", adquiriendo habilidades fundamentales en HTML y CSS.",
+      "udemyHtmlCss": "Completé el curso, aprendiendo los fundamentos de HTML y CSS para construir y publicar un sitio web.",
+      "gitGithubBootcamp": "Completé un curso integral de Git y GitHub, cubriendo control de versiones, ramificación y flujos de trabajo colaborativos.",
+      "fullStackWebDev": "Curso de desarrollo web Frontend y Backend, cubriendo HTML, CSS, JavaScript, Node.js y React."
     }
   },
   "Projects": {
-    "title": "Mis Proyectos",
+    "title": "Mis proyectos",
     "categories": {
       "all": "Todos",
-      "webDevelopment": "Desarrollo Web",
+      "webDevelopment": "Desarrollo web",
       "fullStack": "Full Stack",
       "aiMl": "IA/ML"
     },
     "descriptions": {
-      "portfolioWebsite": "Un sitio web de portafolio moderno y responsivo construido con Next.js 15, con alternador de tema oscuro/claro, animaciones suaves con Framer Motion y rendimiento optimizado. Incluye TypeScript para seguridad de tipos y Tailwind CSS para el estilo.",
-      "berichHub": "Plataforma de aprendizaje digital full-stack con autenticación de usuarios, páginas de perfil y características de blog. Integración de IA para aprendizaje personalizado. Completamente gratuito y de código abierto. 4 idiomas diferentes soportados: Inglés, Alemán, Español, Sueco.",
-      "llmAgent": "Chatbot de IA basado en ollama local, personalizable para usar cualquier modelo LLM, cualquier modelo Embed, 2 opciones para Vector DB; postgres local o DataStax Astra. Puede leer páginas web y responder preguntas basadas en el contenido. Más próximamente.. Código abierto.",
-      "subsApi": "API para gestionar suscripciones de usuarios, incluyendo características para facturación, facturación y procesamiento de pagos. Construido con Next.js e integrado con Stripe para pagos seguros."
+      "portfolioWebsite": "Un portafolio moderno y responsivo construido con Next.js 15, con alternancia de tema oscuro/claro, animaciones fluidas con Framer Motion y rendimiento optimizado. Incluye TypeScript para seguridad de tipos y Tailwind CSS para estilos.",
+      "berichHub": "Plataforma de aprendizaje digital full-stack con autenticación de usuarios, páginas de perfil y funcionalidades de blog. Integración de IA para aprendizaje personalizado. Completamente gratuita y de código abierto. Soporta 4 idiomas: inglés, alemán, español y sueco.",
+      "llmAgent": "Chatbot de IA local basado en ollama, personalizable para usar cualquier modelo LLM y cualquier modelo de embeddings, con 2 opciones de base de datos vectorial: Postgres local o DataStax Astra. Puede leer páginas web y responder preguntas basadas en el contenido. Próximamente habrá más... Código abierto.",
+      "subsApi": "API para gestionar suscripciones de usuarios, incluyendo funciones de facturación, emisión de facturas y procesamiento de pagos. Construida con Next.js e integrada con Stripe para pagos seguros."
     },
     "seeMoreOnGitHub": "ver más en GitHub...",
-    "cloneRepository": "Clonar Repositorio",
+    "cloneRepository": "Clonar repositorio",
     "code": "Código",
-    "liveDemo": "Demo en Vivo",
-    "featuredProject": "Proyecto Destacado",
+    "liveDemo": "Demo en vivo",
+    "featuredProject": "Proyecto destacado",
     "noProjectsFound": "No se encontraron proyectos en esta categoría.",
     "licenses": {
-      "copyright": "Todos los Derechos Reservados",
-      "openSource": "Licencia MIT Modificada",
-      "fullyOpen": "Completamente Open Source"
+      "copyright": "Todos los derechos reservados",
+      "openSource": "Licencia MIT modificada",
+      "fullyOpen": "Completamente de código abierto"
     }
   },
   "Impressum": {
-    "title": "Aviso Legal",
-    "subtitle": "Información Legal y Aviso",
-    "legalStatus": "Estado Legal",
-    "projectInformation": "Información del Proyecto:",
-    "projectDescription": "Este sitio web es un Portafolio puramente privado y no comercial, que sirve exclusivamente para fines experimentales y de aprendizaje personal. No hay uso comercial ni intención de lucro.",
-    "legalBasis": "Base Legal:",
-    "legalBasisDescription": "Según el § 5 TMG, por lo tanto no existe obligación de proporcionar un aviso legal.",
-    "anotherProject": "Otro Proyecto",
+    "title": "Aviso legal",
+    "subtitle": "Información y aviso legal",
+    "legalStatus": "Estatus legal",
+    "projectInformation": "Información del proyecto:",
+    "projectDescription": "Este sitio web es un portafolio puramente privado y no comercial, que sirve exclusivamente para fines experimentales y de aprendizaje personal. No existe uso comercial ni intención de lucro.",
+    "legalBasis": "Base legal:",
+    "legalBasisDescription": "Según el § 5 TMG, no existe obligación de proporcionar un aviso legal.",
+    "anotherProject": "Otro proyecto",
     "lastUpdated": "Última actualización:"
   },
   "About": {
     "aboutMe": "Sobre mí",
-    "getInTouch": "Ponerse en contacto",
+    "getInTouch": "Contacto",
     "downloadCV": "Descargar CV",
     "philosophy": "Filosofía",
-    "myDevelopmentPhilosophy": "Mi Filosofía de Desarrollo",
-    "currentFocus": "Enfoque Actual",
-    "coreValues": "Valores Fundamentales",
-    "whatDrivesMe": "Lo que me motiva",
+    "myDevelopmentPhilosophy": "Mi filosofía de desarrollo",
+    "currentFocus": "Enfoque actual",
+    "coreValues": "Valores fundamentales",
+    "whatDrivesMe": "Lo que me impulsa",
     "achievementsTitle": "Logros",
-    "milestonesRecognition": "Hitos y Reconocimiento",
+    "milestonesRecognition": "Hitos y reconocimientos",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Desarrollador Full Stack Junior",
-      "currentPosition": "Interno",
+      "title": "Desarrollador Junior Full Stack",
+      "currentPosition": "Practicante",
       "company": "Avarno GmbH",
       "location": "Alemania",
       "experience": "3+ años"
     },
-    "mainStory": "Actualmente soy interno en Avarno GmbH, donde he desarrollado desde soluciones digitales a medida hasta aplicaciones impulsadas por IA. Me especializo en Next.js, React, JavaScript, HTML/CSS y mantengo una presencia activa en GitHub. Cuando abordo nuevos desafíos, me sumerjo directamente en la documentación y experimento hasta dominar las herramientas. Impulsado por la pasión por una web más limpia y abierta, contribuyo a proyectos de código abierto y busco optimizar experiencias de usuario libres de anuncios innecesarios y muros de pago. Mi objetivo es convertirme en un experto full-stack, especialmente en Next.js, integraciones LLM y desarrollo de aplicaciones web de extremo a extremo. Creo que el trabajo duro y la disciplina siempre dan frutos, y traigo ese enfoque a cada proyecto, grande o pequeño.",
+    "mainStory": "Actualmente soy practicante en Avarno GmbH, donde he desarrollado desde soluciones digitales a medida hasta aplicaciones impulsadas por IA. Me especializo en Next.js, React, JavaScript, HTML/CSS y mantengo una presencia activa en GitHub. Al enfrentar nuevos desafíos, me sumerjo directamente en la documentación y experimento hasta dominar las herramientas. Impulsado por la pasión por una web más limpia y abierta, contribuyo a proyectos de código abierto y busco optimizar experiencias de usuario libres de anuncios innecesarios y muros de pago. Mi objetivo es convertirme en un experto full-stack, especialmente en Next.js, integraciones con LLM y desarrollo de aplicaciones web de extremo a extremo. Creo que el trabajo duro y la disciplina siempre rinden frutos, y aplico ese enfoque en cada proyecto, grande o pequeño.",
     "sections": {
-      "philosophy": "Creo en escribir código que no solo funcione, sino que sea mantenible, escalable y accesible. Mi enfoque combina la excelencia técnica con principios de diseño centrados en el usuario. Me apasiona crear experiencias web que sean rápidas, intuitivas y libres de complejidad innecesaria."
+      "philosophy": "Creo en escribir código que no solo funcione, sino que también sea mantenible, escalable y accesible. Mi enfoque combina la excelencia técnica con principios de diseño centrados en el usuario. Me apasiona crear experiencias web rápidas, intuitivas y libres de complejidad innecesaria."
     },
     "currentFocusItems": [
       "Patrones avanzados y optimización de Next.js",
-      "Integraciones LLM y aplicaciones impulsadas por IA",
+      "Integraciones con LLM y aplicaciones impulsadas por IA",
       "Desarrollo de aplicaciones web de extremo a extremo",
       "Patrones modernos de React y rendimiento",
-      "Mejores prácticas de TypeScript",
+      "Mejores prácticas con TypeScript",
       "Experiencia de usuario y accesibilidad"
     ],
     "values": [
-      "El trabajo duro y la disciplina siempre dan frutos",
+      "El trabajo duro y la disciplina siempre rinden frutos",
       "El código debe ser limpio, mantenible y accesible",
-      "Aprender a través de documentación y experimentación",
+      "Aprender mediante documentación y experimentación",
       "Contribuir a una web más limpia y abierta",
       "Colaboración e intercambio de conocimiento",
       "Diseño y desarrollo centrado en el usuario"
     ],
     "achievements": [
       {
-        "title": "Interno de Desarrollo de Software",
-        "description": "Construyendo soluciones digitales a medida y aplicaciones impulsadas por IA en Avarno GmbH",
+        "title": "Practicante de Desarrollo de Software",
+        "description": "Desarrollo de soluciones digitales a medida y aplicaciones impulsadas por IA en Avarno GmbH",
         "date": "2024",
         "category": "work"
       },
       {
-        "title": "Sitio Web Portfolio v4",
-        "description": "Portfolio moderno y responsivo construido con Next.js 15 y TypeScript",
+        "title": "Portafolio Web v4",
+        "description": "Portafolio moderno y responsivo construido con Next.js 15 y TypeScript",
         "date": "2024",
         "category": "project"
       },
       {
-        "title": "Contribuidor Activo de GitHub",
+        "title": "Contribuidor activo en GitHub",
         "description": "Manteniendo una presencia activa con contribuciones de código abierto",
         "date": "En curso",
         "category": "project"
