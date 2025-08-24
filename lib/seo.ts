@@ -4,6 +4,8 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 
+import type { TwitterCardType } from "@/types/metadata";
+
 export interface SEOConfig {
   title: string;
   description: string;
@@ -22,7 +24,7 @@ export interface SEOConfig {
   };
   twitter: {
     handle: string;
-    cardType: string;
+    cardType: TwitterCardType;
   };
   structured: {
     name: string;

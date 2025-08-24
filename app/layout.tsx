@@ -75,8 +75,7 @@ export const metadata = {
     ],
   },
   twitter: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    card: seoConfigEN.twitter.cardType as any,
+    card: seoConfigEN.twitter.cardType,
     title: seoConfigEN.openGraph.title,
     description: seoConfigEN.openGraph.description,
     creator: seoConfigEN.twitter.handle,
@@ -105,8 +104,6 @@ const orbitron = Orbitron({
   weight: ["400", "500", "700"],
   variable: "--font-orbitron",
 });
-
-
 
 export default async function RootLayout({
   children,

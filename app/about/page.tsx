@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Background } from "@/components/visuals/motion-background";
 import { AchievementCard } from "@/components/about";
+import type { Achievement } from "@/types/i18n";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
@@ -188,10 +189,8 @@ export default function AboutPage() {
                 </h2>
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {t
-                  .raw("achievements")
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  .map((achievement: any, index: number) => (
+                {(t.raw("achievements") as Achievement[]).map(
+                  (achievement: Achievement, index: number) => (
                     <AchievementCard
                       key={index}
                       title={achievement.title}
@@ -200,7 +199,8 @@ export default function AboutPage() {
                       date={achievement.date}
                       category={achievement.category}
                     />
-                  ))}
+                  )
+                )}
               </div>
             </motion.div>
           </div>

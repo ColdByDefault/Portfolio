@@ -55,7 +55,7 @@ const LanguageSwitcher = () => {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="flex items-center w-12 h-10">
           <Languages />
-          <span className="ml-1">{languages[locale].flag}</span>
+          <span className="ml-1">{languages[locale]?.flag ?? "🌐"}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

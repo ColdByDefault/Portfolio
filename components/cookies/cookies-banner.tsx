@@ -35,6 +35,9 @@ export function CookiesBanner() {
       }, 3000);
       return () => clearTimeout(timer);
     }
+
+    // Explicitly return undefined when no cleanup is needed
+    return undefined;
   }, [mounted]);
 
   const handleAccept = () => {

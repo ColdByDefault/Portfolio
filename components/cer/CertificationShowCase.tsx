@@ -47,7 +47,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
     });
   };
 
-  type Certification = {
+  interface Certification {
     id: number;
     title: string;
     issuer: string;
@@ -55,7 +55,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
     description: string;
     descriptionKey: string;
     image: string;
-  };
+  }
 
   const renderDesktopCard = (cert: Certification) => {
     const isCurrentCardHovered = hoveredCard === cert.id;
