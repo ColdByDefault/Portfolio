@@ -106,9 +106,7 @@ const orbitron = Orbitron({
   variable: "--font-orbitron",
 });
 
-interface RootLayoutProps {
-  children: React.ReactNode;
-}
+
 
 export default async function RootLayout({
   children,
