@@ -11,6 +11,7 @@
   },
   "Navigation": {
     "home": "Startseite",
+    "about": "Über uns",
     "projects": "Projekte",
     "mcp": "MCP",
     "technologies": "Technologien",
@@ -82,5 +83,65 @@
     "legalBasisDescription": "Gemäß § 5 TMG besteht daher keine Verpflichtung zur Bereitstellung eines Impressums.",
     "anotherProject": "Ein weiteres Projekt",
     "lastUpdated": "Zuletzt aktualisiert:"
+  },
+  "About": {
+    "aboutMe": "Über mich",
+    "getInTouch": "Kontakt aufnehmen",
+    "downloadCV": "Lebenslauf herunterladen",
+    "philosophy": "Philosophie",
+    "myDevelopmentPhilosophy": "Meine Entwicklungsphilosophie",
+    "currentFocus": "Aktueller Fokus",
+    "coreValues": "Grundwerte",
+    "whatDrivesMe": "Was mich antreibt",
+    "achievementsTitle": "Erfolge",
+    "milestonesRecognition": "Meilensteine & Anerkennung",
+    "personalInfo": {
+      "name": "Yazan Abo-Ayash",
+      "title": "Full Stack Junior Entwickler",
+      "currentPosition": "Praktikant",
+      "company": "Avarno GmbH",
+      "location": "Deutschland",
+      "experience": "3+ Jahre"
+    },
+    "mainStory": "Ich bin derzeit Praktikant bei Avarno GmbH, wo ich alles von maßgeschneiderten digitalen Lösungen bis hin zu KI-gestützten Anwendungen entwickelt habe. Ich spezialisiere mich auf Next.js, React, JavaScript, HTML/CSS und pflege eine aktive Präsenz auf GitHub. Wenn ich neue Herausforderungen angehe, tauche ich direkt in die Dokumentation ein und experimentiere, bis ich die Tools beherrscht habe. Getrieben von der Leidenschaft für ein saubereres, offeneres Web trage ich zu Open-Source-Projekten bei und ziele darauf ab, Benutzererfahrungen ohne unnötige Werbung und Paywalls zu optimieren. Mein Ziel ist es, ein Full-Stack-Experte zu werden – insbesondere in Next.js, LLM-Integrationen und End-to-End-Webentwicklung. Ich glaube, dass harte Arbeit und Disziplin sich immer auszahlen, und ich bringe diesen Fokus in jedes Projekt ein, groß oder klein.",
+    "sections": {
+      "philosophy": "Ich glaube daran, Code zu schreiben, der nicht nur funktioniert, sondern wartbar, skalierbar und zugänglich ist. Mein Ansatz kombiniert technische Exzellenz mit benutzerzentrierten Designprinzipien. Ich bin leidenschaftlich daran interessiert, Web-Erfahrungen zu schaffen, die schnell, intuitiv und frei von unnötiger Komplexität sind."
+    },
+    "currentFocusItems": [
+      "Next.js fortgeschrittene Muster und Optimierung",
+      "LLM-Integrationen und KI-gestützte Anwendungen",
+      "End-to-End-Webentwicklung",
+      "Moderne React-Muster und Performance",
+      "TypeScript Best Practices",
+      "Benutzererfahrung und Barrierefreiheit"
+    ],
+    "values": [
+      "Harte Arbeit und Disziplin zahlen sich immer aus",
+      "Code sollte sauber, wartbar und zugänglich sein",
+      "Lernen durch Dokumentation und Experimentieren",
+      "Beitrag zu einem saubereren, offeneren Web",
+      "Zusammenarbeit und Wissensaustausch",
+      "Benutzerzentriertes Design und Entwicklung"
+    ],
+    "achievements": [
+      {
+        "title": "Software-Entwicklungspraktikant",
+        "description": "Entwicklung maßgeschneiderter digitaler Lösungen und KI-gestützter Anwendungen bei Avarno GmbH",
+        "date": "2024",
+        "category": "work"
+      },
+      {
+        "title": "Portfolio Website v4",
+        "description": "Modernes, responsives Portfolio erstellt mit Next.js 15 und TypeScript",
+        "date": "2024",
+        "category": "project"
+      },
+      {
+        "title": "Aktiver GitHub-Contributor",
+        "description": "Aufrechterhaltung einer aktiven Präsenz mit Open-Source-Beiträgen",
+        "date": "Laufend",
+        "category": "project"
+      }
+    ]
   }
 }

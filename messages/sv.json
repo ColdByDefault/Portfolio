@@ -11,6 +11,7 @@
   },
   "Navigation": {
     "home": "Hem",
+    "about": "Om oss",
     "projects": "Projekt",
     "mcp": "MCP",
     "technologies": "Teknologier",
@@ -82,5 +83,65 @@
     "legalBasisDescription": "Enligt § 5 TMG finns det därför ingen skyldighet att tillhandahålla ett rättsligt meddelande.",
     "anotherProject": "Ett Annat Projekt",
     "lastUpdated": "Senast uppdaterad:"
+  },
+  "About": {
+    "aboutMe": "Om mig",
+    "getInTouch": "Kontakta mig",
+    "downloadCV": "Ladda ner CV",
+    "philosophy": "Filosofi",
+    "myDevelopmentPhilosophy": "Min Utvecklingsfilosofi",
+    "currentFocus": "Nuvarande Fokus",
+    "coreValues": "Kärnvärden",
+    "whatDrivesMe": "Vad som driver mig",
+    "achievementsTitle": "Prestationer",
+    "milestonesRecognition": "Milstolpar & Erkännande",
+    "personalInfo": {
+      "name": "Yazan Abo-Ayash",
+      "title": "Full Stack Junior Utvecklare",
+      "currentPosition": "Praktikant",
+      "company": "Avarno GmbH",
+      "location": "Tyskland",
+      "experience": "3+ år"
+    },
+    "mainStory": "Jag är för närvarande praktikant på Avarno GmbH, där jag har byggt allt från skräddarsydda digitala lösningar till AI-drivna applikationer. Jag specialiserar mig på Next.js, React, JavaScript, HTML/CSS och upprätthåller en aktiv närvaro på GitHub. När jag tacklar nya utmaningar dyker jag direkt in i dokumentationen och experimenterar tills jag har bemästrat verktygen. Driven av passion för en renare, mer öppen webb bidrar jag till open source-projekt och strävar efter att effektivisera användarupplevelser fria från onödiga annonser och betalväggar. Mitt mål är att växa till en full-stack expert - särskilt inom Next.js, LLM-integrationer och end-to-end webbutveckling. Jag tror att hårt arbete och disciplin alltid lönar sig, och jag tar med det fokuset till varje projekt, stort som litet.",
+    "sections": {
+      "philosophy": "Jag tror på att skriva kod som inte bara fungerar utan som är underhållbar, skalbar och tillgänglig. Min approach kombinerar teknisk excellens med användarcentrerade designprinciper. Jag brinner för att skapa webbupplevelser som är snabba, intuitiva och fria från onödig komplexitet."
+    },
+    "currentFocusItems": [
+      "Next.js avancerade mönster och optimering",
+      "LLM-integrationer och AI-drivna applikationer",
+      "End-to-end webbutveckling",
+      "Moderna React-mönster och prestanda",
+      "TypeScript bästa praxis",
+      "Användarupplevelse och tillgänglighet"
+    ],
+    "values": [
+      "Hårt arbete och disciplin lönar sig alltid",
+      "Kod bör vara ren, underhållbar och tillgänglig",
+      "Lärande genom dokumentation och experimentering",
+      "Bidra till en renare, mer öppen webb",
+      "Samarbete och kunskapsdelning",
+      "Användarcentrerad design och utveckling"
+    ],
+    "achievements": [
+      {
+        "title": "Mjukvaruutvecklingspraktikant",
+        "description": "Bygger skräddarsydda digitala lösningar och AI-drivna applikationer på Avarno GmbH",
+        "date": "2024",
+        "category": "work"
+      },
+      {
+        "title": "Portfolio Webbplats v4",
+        "description": "Modern, responsiv portfölj byggd med Next.js 15 och TypeScript",
+        "date": "2024",
+        "category": "project"
+      },
+      {
+        "title": "Aktiv GitHub-bidragsgivare",
+        "description": "Upprätthåller en aktiv närvaro med open source-bidrag",
+        "date": "Pågående",
+        "category": "project"
+      }
+    ]
   }
 }

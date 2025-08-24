@@ -11,6 +11,7 @@
   },
   "Navigation": {
     "home": "Inicio",
+    "about": "Acerca de",
     "projects": "Proyectos",
     "mcp": "MCP",
     "technologies": "Tecnologías",
@@ -82,5 +83,65 @@
     "legalBasisDescription": "Según el § 5 TMG, por lo tanto no existe obligación de proporcionar un aviso legal.",
     "anotherProject": "Otro Proyecto",
     "lastUpdated": "Última actualización:"
+  },
+  "About": {
+    "aboutMe": "Sobre mí",
+    "getInTouch": "Ponerse en contacto",
+    "downloadCV": "Descargar CV",
+    "philosophy": "Filosofía",
+    "myDevelopmentPhilosophy": "Mi Filosofía de Desarrollo",
+    "currentFocus": "Enfoque Actual",
+    "coreValues": "Valores Fundamentales",
+    "whatDrivesMe": "Lo que me motiva",
+    "achievementsTitle": "Logros",
+    "milestonesRecognition": "Hitos y Reconocimiento",
+    "personalInfo": {
+      "name": "Yazan Abo-Ayash",
+      "title": "Desarrollador Full Stack Junior",
+      "currentPosition": "Interno",
+      "company": "Avarno GmbH",
+      "location": "Alemania",
+      "experience": "3+ años"
+    },
+    "mainStory": "Actualmente soy interno en Avarno GmbH, donde he desarrollado desde soluciones digitales a medida hasta aplicaciones impulsadas por IA. Me especializo en Next.js, React, JavaScript, HTML/CSS y mantengo una presencia activa en GitHub. Cuando abordo nuevos desafíos, me sumerjo directamente en la documentación y experimento hasta dominar las herramientas. Impulsado por la pasión por una web más limpia y abierta, contribuyo a proyectos de código abierto y busco optimizar experiencias de usuario libres de anuncios innecesarios y muros de pago. Mi objetivo es convertirme en un experto full-stack, especialmente en Next.js, integraciones LLM y desarrollo de aplicaciones web de extremo a extremo. Creo que el trabajo duro y la disciplina siempre dan frutos, y traigo ese enfoque a cada proyecto, grande o pequeño.",
+    "sections": {
+      "philosophy": "Creo en escribir código que no solo funcione, sino que sea mantenible, escalable y accesible. Mi enfoque combina la excelencia técnica con principios de diseño centrados en el usuario. Me apasiona crear experiencias web que sean rápidas, intuitivas y libres de complejidad innecesaria."
+    },
+    "currentFocusItems": [
+      "Patrones avanzados y optimización de Next.js",
+      "Integraciones LLM y aplicaciones impulsadas por IA",
+      "Desarrollo de aplicaciones web de extremo a extremo",
+      "Patrones modernos de React y rendimiento",
+      "Mejores prácticas de TypeScript",
+      "Experiencia de usuario y accesibilidad"
+    ],
+    "values": [
+      "El trabajo duro y la disciplina siempre dan frutos",
+      "El código debe ser limpio, mantenible y accesible",
+      "Aprender a través de documentación y experimentación",
+      "Contribuir a una web más limpia y abierta",
+      "Colaboración e intercambio de conocimiento",
+      "Diseño y desarrollo centrado en el usuario"
+    ],
+    "achievements": [
+      {
+        "title": "Interno de Desarrollo de Software",
+        "description": "Construyendo soluciones digitales a medida y aplicaciones impulsadas por IA en Avarno GmbH",
+        "date": "2024",
+        "category": "work"
+      },
+      {
+        "title": "Sitio Web Portfolio v4",
+        "description": "Portfolio moderno y responsivo construido con Next.js 15 y TypeScript",
+        "date": "2024",
+        "category": "project"
+      },
+      {
+        "title": "Contribuidor Activo de GitHub",
+        "description": "Manteniendo una presencia activa con contribuciones de código abierto",
+        "date": "En curso",
+        "category": "project"
+      }
+    ]
   }
 }
