@@ -5,7 +5,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { projects, projectCategories, type Project } from "@/data/projectsData";
 import {
   Card,
@@ -18,6 +18,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FiGithub, FiExternalLink, FiCopy, FiCheck } from "react-icons/fi";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 interface ProjectsShowcaseProps {
   className?: string;
@@ -32,8 +33,30 @@ const ProjectCard = ({
   index: number;
 }) => {
   const [copied, setCopied] = useState(false);
+  const [isTruncated, setIsTruncated] = useState(false);
   const cardRef = useRef(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
   const isInView = useInView(cardRef, { once: true, margin: "-50px" });
+
+  const t = useTranslations("Projects");
+  const tCategories = useTranslations("Projects.categories");
+  const tLicenses = useTranslations("Projects.licenses");
+  const tDescriptions = useTranslations("Projects.descriptions");
+
+  // Check if text is truncated
+  useEffect(() => {
+    const checkTruncation = () => {
+      if (descriptionRef.current) {
+        const element = descriptionRef.current;
+        setIsTruncated(element.scrollHeight > element.clientHeight);
+      }
+    };
+
+    checkTruncation();
+    window.addEventListener("resize", checkTruncation);
+
+    return () => window.removeEventListener("resize", checkTruncation);
+  }, [project.description]);
 
   const handleCopyCloneLink = async () => {
     console.log("Copy button clicked for project:", project.title);
@@ -70,32 +93,45 @@ const ProjectCard = ({
         onMouseLeave={() => setIsHovered(false)}
       >
         {project.featured && (
-          <div className="absolute top-0 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium px-3 py-1 text-center">
-            Featured Project
+          <div className="absolute top-0 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium px-3 py-1 text-center z-30">
+            {t("featuredProject")}
           </div>
         )}
 
-        <CardHeader className="py-4">
+        <CardHeader className="py-4 relative z-20">
           <div className="flex items-start justify-between">
             <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors">
               {project.title}
             </CardTitle>
             <Badge variant="secondary" className="text-xs">
-              {project.category}
+              {tCategories(project.category)}
             </Badge>
           </div>
         </CardHeader>
 
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 relative z-20">
           <div className="h-24 overflow-hidden">
-            <p className="text-sm text-muted-foreground leading-relaxed line-clamp-5">
-              {project.description.length > 120 ? (
-                <>
-                  {project.description.substring(0, 190)}
-                  <span className="text-red-200"> see more on GitHub...</span>
-                </>
-              ) : (
-                project.description
+            <p
+              ref={descriptionRef}
+              className="text-sm text-muted-foreground leading-relaxed line-clamp-4"
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: 4,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }}
+            >
+              {tDescriptions(project.description)}
+              {isTruncated && (
+                <Link
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:text-blue-400 ml-1 cursor-pointer underline"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {t("seeMoreOnGitHub")}
+                </Link>
               )}
             </p>
           </div>
@@ -116,7 +152,7 @@ const ProjectCard = ({
                   : project.license.type === "fully-open"
                   ? "🌟"
                   : "🔓"}{" "}
-                {project.license.text}
+                {tLicenses(project.license.text)}
               </Badge>
             </div>
           )}
@@ -137,7 +173,7 @@ const ProjectCard = ({
           <div className="bg-muted/50 rounded-lg p-3 border">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-medium text-muted-foreground">
-                Clone Repository
+                {t("cloneRepository")}
               </span>
               <Button
                 variant="ghost"
@@ -157,14 +193,14 @@ const ProjectCard = ({
             </code>
           </div>
         </CardContent>
-        <CardFooter className="relative z-10">
+        <CardFooter className="relative z-20">
           {/* Action Buttons */}
           <div className="flex gap-2 pt-2 justify-between w-full">
             <Button
               variant="outline"
               size="sm"
               asChild
-              className="flex-1 cursor-pointer hover:bg-primary/10"
+              className="flex-1 cursor-pointer hover:bg-primary/10 relative z-10"
             >
               <Link
                 href={project.githubUrl}
@@ -173,7 +209,7 @@ const ProjectCard = ({
                 className="flex items-center justify-center gap-2 cursor-pointer text-center w-full"
               >
                 <FiGithub className="h-4 w-4" />
-                Code
+                {t("code")}
               </Link>
             </Button>
 
@@ -181,7 +217,7 @@ const ProjectCard = ({
               <Button
                 size="sm"
                 asChild
-                className="flex-1 cursor-pointer hover:bg-primary/90"
+                className="flex-1 cursor-pointer hover:bg-primary/90 relative z-10"
               >
                 <Link
                   href={project.liveUrl}
@@ -190,7 +226,7 @@ const ProjectCard = ({
                   className="flex items-center justify-center gap-2 cursor-pointer text-center w-full"
                 >
                   <FiExternalLink className="h-4 w-4" />
-                  Live Demo
+                  {t("liveDemo")}
                 </Link>
               </Button>
             )}
@@ -198,42 +234,34 @@ const ProjectCard = ({
         </CardFooter>
         <div
           className={`
-                    absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none -z-10
+                    absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none
                     ${isHovered ? "opacity-100" : "opacity-0"}
                   `}
           style={{
-            background: `
-                      linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%),
-                      linear-gradient(-45deg, transparent 30%, rgba(147, 197, 253, 0.1) 50%, transparent 70%)
-                    `,
+            backgroundImage: isHovered
+              ? `linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%),
+                 linear-gradient(-45deg, transparent 30%, rgba(147, 197, 253, 0.1) 50%, transparent 70%)`
+              : "none",
             backgroundSize: "200% 200%",
             animation: isHovered ? "gradient-shift 3s ease infinite" : "none",
           }}
         />
-        <style jsx>{`
-          @keyframes gradient-shift {
-            0%,
-            100% {
-              background-position: 0% 0%;
-            }
-            50% {
-              background-position: 100% 100%;
-            }
-          }
-        `}</style>
       </Card>
     </motion.div>
   );
 };
 
 export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
+  const t = useTranslations("Projects");
+  const tCategories = useTranslations("Projects.categories");
+
   const filteredProjects = projects.filter(
     (project) =>
-      selectedCategory === "All" || project.category === selectedCategory
+      selectedCategory === "all" || project.category === selectedCategory
   );
 
   return (
@@ -245,7 +273,7 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
           transition={{ duration: 0.6 }}
         >
           <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8">
-            My Projects
+            {t("title")}
           </CardTitle>
         </motion.div>
 
@@ -267,7 +295,7 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
               }}
               className="transition-all duration-200 cursor-pointer hover:bg-primary/10"
             >
-              {category}
+              {tCategories(category)}
             </Button>
           ))}
         </motion.div>
@@ -291,12 +319,21 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
             animate={{ opacity: 1 }}
             className="text-center py-12"
           >
-            <p className="text-muted-foreground">
-              No projects found in this category.
-            </p>
+            <p className="text-muted-foreground">{t("noProjectsFound")}</p>
           </motion.div>
         )}
       </Card>
+      <style jsx>{`
+        @keyframes gradient-shift {
+          0%,
+          100% {
+            background-position: 0% 0%;
+          }
+          50% {
+            background-position: 100% 100%;
+          }
+        }
+      `}</style>
     </section>
   );
 }

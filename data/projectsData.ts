@@ -24,8 +24,7 @@ export const projects: Project[] = [
   {
     id: 1,
     title: "Portfolio Website v3",
-    description:
-      "A modern, responsive portfolio website built with Next.js 15, featuring dark/light theme toggle, smooth animations with Framer Motion, and optimized performance. Includes TypeScript for type safety and Tailwind CSS for styling.",
+    description: "portfolioWebsite",
     technologies: [
       "Next.js",
       "TypeScript",
@@ -36,18 +35,17 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/ColdByDefault/portfolio",
     liveUrl: "https://coldbydefault.com",
     featured: true,
-    category: "Web Development",
+    category: "webDevelopment",
     license: {
       type: "copyright",
-      text: "All Rights Reserved",
+      text: "copyright",
       variant: "destructive",
     },
   },
   {
     id: 2,
     title: "beRich.Hub v5",
-    description:
-      "Full-stack digital learning platform with user authentication, Profile pages, and Blog features. AI integration for personalized learning. Completly free and open-source. 4 different languages supported: English, German, Spanish, Swedish.",
+    description: "berichHub",
     technologies: [
       "Next.js",
       "React",
@@ -61,18 +59,17 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/coldbydefault/berichhub",
     liveUrl: "https://berich-hub.vercel.app/",
     featured: true,
-    category: "Full Stack",
+    category: "fullStack",
     license: {
       type: "open-source",
-      text: "Modified MIT License",
+      text: "openSource",
       variant: "secondary",
     },
   },
   {
     id: 3,
     title: "LLM AI Agent Chatbot",
-    description:
-      "Local ollama-based AI chatbot, customizable to use any LLM model, any Embed model, 2 Options for Vector DB; local postgres or DataStax Astra. Can read web pages, and answer questions based on the content. More coming soon.. Open source.",
+    description: "llmAgent",
     technologies: [
       "Next.js",
       "LangChain",
@@ -83,33 +80,27 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/coldbydefault/simple-llm-agent",
     featured: false,
-    category: "AI/ML",
+    category: "aiMl",
     license: {
       type: "fully-open",
-      text: "Fully Open Source",
+      text: "fullyOpen",
       variant: "default",
     },
   },
   {
     id: 4,
     title: "Subscription Management API",
-    description:
-      "API for managing user subscriptions, including features for billing, invoicing, and payment processing. Built with Next.js and integrated with Stripe for secure payments.",
+    description: "subsApi",
     technologies: ["Next.js", "PostgreSQL", "JavaScript", "Prisma"],
     githubUrl: "https://github.com/ColdByDefault/subs-api-manager",
     featured: false,
-    category: "Full Stack",
+    category: "fullStack",
     license: {
       type: "fully-open",
-      text: "Fully Open Source",
+      text: "fullyOpen",
       variant: "default",
     },
   },
 ];
 
-export const projectCategories = [
-  "All",
-  "Web Development",
-  "Full Stack",
-  "AI/ML",
-];
+export const projectCategories = ["all", "webDevelopment", "fullStack", "aiMl"];

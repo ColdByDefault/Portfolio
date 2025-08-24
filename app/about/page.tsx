@@ -5,7 +5,6 @@
 
 "use client";
 
-import { aboutData } from "@/data/aboutData";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -14,6 +13,7 @@ import { AchievementCard } from "@/components/about";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 // Animation variants
 const fadeInUp = {
@@ -32,6 +32,8 @@ const staggerChildren = {
 };
 
 export default function AboutPage() {
+  const t = useTranslations("About");
+
   return (
     <div className="min-h-screen relative">
       <Background />
@@ -42,26 +44,29 @@ export default function AboutPage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <Badge variant="outline" className="w-fit">
-                  About Me
+                  {t("aboutMe")}
                 </Badge>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                  {aboutData.personalInfo.name}
+                  {t("personalInfo.name")}
                 </h1>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  {aboutData.personalInfo.title}
+                  {t("personalInfo.title")}
                 </p>
-                <p className="text-lg leading-relaxed">{aboutData.mainStory}</p>
+                <p className="text-lg leading-relaxed">{t("mainStory")}</p>
                 <div className="flex flex-wrap gap-3">
-                  {aboutData.currentFocus.slice(0, 3).map((focus, index) => (
-                    <Badge key={index} variant="secondary">
-                      {focus}
-                    </Badge>
-                  ))}
+                  {t
+                    .raw("currentFocusItems")
+                    .slice(0, 3)
+                    .map((focus: string, index: number) => (
+                      <Badge key={index} variant="secondary">
+                        {focus}
+                      </Badge>
+                    ))}
                 </div>
                 <div className="flex gap-4">
-                  <Button size="lg">Get In Touch</Button>
+                  <Button size="lg">{t("getInTouch")}</Button>
                   <Button variant="outline" size="lg">
-                    Download CV
+                    {t("downloadCV")}
                   </Button>
                 </div>
               </div>
@@ -69,7 +74,7 @@ export default function AboutPage() {
                 <div className="aspect-square max-w-md mx-auto relative rounded-2xl overflow-hidden">
                   <Image
                     src="/profileLight.jpg"
-                    alt={aboutData.personalInfo.name}
+                    alt={t("personalInfo.name")}
                     fill
                     className="object-cover"
                   />
@@ -90,13 +95,13 @@ export default function AboutPage() {
               className="text-center space-y-6"
             >
               <Badge variant="outline" className="w-fit mx-auto">
-                Philosophy
+                {t("philosophy")}
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold">
-                My Development Philosophy
+                {t("myDevelopmentPhilosophy")}
               </h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                {aboutData.sections.find((s) => s.id === "philosophy")?.content}
+                {t("sections.philosophy")}
               </p>
             </motion.div>
           </div>
@@ -116,16 +121,18 @@ export default function AboutPage() {
                 variants={fadeInUp}
                 className="text-3xl md:text-4xl font-bold text-center"
               >
-                Current Focus
+                {t("currentFocus")}
               </motion.h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {aboutData.currentFocus.map((focus, index) => (
-                  <Card key={index} className="p-6">
-                    <CardContent>
-                      <p className="text-center">{focus}</p>
-                    </CardContent>
-                  </Card>
-                ))}
+                {t
+                  .raw("currentFocusItems")
+                  .map((focus: string, index: number) => (
+                    <Card key={index} className="p-6">
+                      <CardContent>
+                        <p className="text-center">{focus}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
               </div>
             </motion.div>
           </div>
@@ -143,14 +150,14 @@ export default function AboutPage() {
             >
               <div className="text-center space-y-4">
                 <Badge variant="outline" className="w-fit mx-auto">
-                  Core Values
+                  {t("coreValues")}
                 </Badge>
                 <h2 className="text-3xl md:text-4xl font-bold">
-                  What Drives Me
+                  {t("whatDrivesMe")}
                 </h2>
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {aboutData.values.map((value, index) => (
+                {t.raw("values").map((value: string, index: number) => (
                   <Card key={index} className="p-6">
                     <CardContent>
                       <p className="text-center">{value}</p>
@@ -174,23 +181,26 @@ export default function AboutPage() {
             >
               <div className="text-center space-y-4">
                 <Badge variant="outline" className="w-fit mx-auto">
-                  Achievements
+                  {t("achievementsTitle")}
                 </Badge>
                 <h2 className="text-3xl md:text-4xl font-bold">
-                  Milestones & Recognition
+                  {t("milestonesRecognition")}
                 </h2>
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {aboutData.achievements.map((achievement, index) => (
-                  <AchievementCard
-                    key={index}
-                    title={achievement.title}
-                    description={achievement.description}
-                    icon={achievement.icon}
-                    date={achievement.date}
-                    category={achievement.category}
-                  />
-                ))}
+                {t
+                  .raw("achievements")
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  .map((achievement: any, index: number) => (
+                    <AchievementCard
+                      key={index}
+                      title={achievement.title}
+                      description={achievement.description}
+                      icon="🚀"
+                      date={achievement.date}
+                      category={achievement.category}
+                    />
+                  ))}
               </div>
             </motion.div>
           </div>

@@ -11,11 +11,14 @@
   },
   "Navigation": {
     "home": "Home",
+    "about": "About",
     "projects": "Projects",
     "mcp": "MCP",
     "technologies": "Technologies",
     "certifications": "Certifications",
-    "navigation": "Navigation"
+    "navigation": "Navigation",
+    "impressum": "Impressum",
+    "legal": "Legal"
   },
   "Technologies": {
     "title": "Technologies I Use",
@@ -43,5 +46,102 @@
       "gitGithubBootcamp": "Completed a comprehensive Git and GitHub course, covering version control, branching, and collaboration workflows.",
       "fullStackWebDev": "Frontend and Backend Web Development course, covering HTML, CSS, JavaScript, Node.js, and React."
     }
+  },
+  "Projects": {
+    "title": "My Projects",
+    "categories": {
+      "all": "All",
+      "webDevelopment": "Web Development",
+      "fullStack": "Full Stack",
+      "aiMl": "AI/ML"
+    },
+    "descriptions": {
+      "portfolioWebsite": "A modern, responsive portfolio website built with Next.js 15, featuring dark/light theme toggle, smooth animations with Framer Motion, and optimized performance. Includes TypeScript for type safety and Tailwind CSS for styling.",
+      "berichHub": "Full-stack digital learning platform with user authentication, Profile pages, and Blog features. AI integration for personalized learning. Completely free and open-source. 4 different languages supported: English, German, Spanish, Swedish.",
+      "llmAgent": "Local ollama-based AI chatbot, customizable to use any LLM model, any Embed model, 2 Options for Vector DB; local postgres or DataStax Astra. Can read web pages, and answer questions based on the content. More coming soon.. Open source.",
+      "subsApi": "API for managing user subscriptions, including features for billing, invoicing, and payment processing. Built with Next.js and integrated with Stripe for secure payments."
+    },
+    "seeMoreOnGitHub": "see more on GitHub...",
+    "cloneRepository": "Clone Repository",
+    "code": "Code",
+    "liveDemo": "Live Demo",
+    "featuredProject": "Featured Project",
+    "noProjectsFound": "No projects found in this category.",
+    "licenses": {
+      "copyright": "All Rights Reserved",
+      "openSource": "Modified MIT License",
+      "fullyOpen": "Fully Open Source"
+    }
+  },
+  "Impressum": {
+    "title": "Impressum",
+    "subtitle": "Legal Notice and Information",
+    "legalStatus": "Legal Status",
+    "projectInformation": "Project Information:",
+    "projectDescription": "This website is a purely private, non-commercial Portfolio and serves exclusively for experimental and personal learning purposes. There is neither commercial use nor profit intention.",
+    "legalBasis": "Legal Basis:",
+    "legalBasisDescription": "According to § 5 TMG, there is therefore no obligation to provide an impressum.",
+    "anotherProject": "AnotherProject",
+    "lastUpdated": "Last updated:"
+  },
+  "About": {
+    "aboutMe": "About Me",
+    "getInTouch": "Get In Touch",
+    "downloadCV": "Download CV",
+    "philosophy": "Philosophy",
+    "myDevelopmentPhilosophy": "My Development Philosophy",
+    "currentFocus": "Current Focus",
+    "coreValues": "Core Values",
+    "whatDrivesMe": "What Drives Me",
+    "achievementsTitle": "Achievements",
+    "milestonesRecognition": "Milestones & Recognition",
+    "personalInfo": {
+      "name": "Yazan Abo-Ayash",
+      "title": "Full Stack Junior Developer",
+      "currentPosition": "Intern",
+      "company": "Avarno GmbH",
+      "location": "Germany",
+      "experience": "3+ years"
+    },
+    "mainStory": "I'm currently an intern at Avarno GmbH, where I've built everything from bespoke digital solutions to AI-powered applications. I specialize in Next.js, React, JavaScript, HTML/CSS and maintain an active presence on GitHub. When tackling new challenges, I dive straight into the docs and experiment until I've mastered the tools. Driven by a passion for a cleaner, more open web, I contribute to open-source projects and aim to streamline user experiences free of unnecessary ads and paywalls. My goal is to grow into a full-stack expert—particularly in Next.js, LLM integrations, and end-to-end web application development. I believe hard work and discipline always pay off, and I bring that focus to every project, big or small.",
+    "sections": {
+      "philosophy": "I believe in writing code that not only works but is maintainable, scalable, and accessible. My approach combines technical excellence with user-centered design principles. I'm passionate about creating web experiences that are fast, intuitive, and free from unnecessary complexity."
+    },
+    "currentFocusItems": [
+      "Next.js advanced patterns and optimization",
+      "LLM integrations and AI-powered applications",
+      "End-to-end web application development",
+      "Modern React patterns and performance",
+      "TypeScript best practices",
+      "User experience and accessibility"
+    ],
+    "values": [
+      "Hard work and discipline always pay off",
+      "Code should be clean, maintainable, and accessible",
+      "Learning through documentation and experimentation",
+      "Contributing to a cleaner, more open web",
+      "Collaboration and knowledge sharing",
+      "User-centered design and development"
+    ],
+    "achievements": [
+      {
+        "title": "Software Development Intern",
+        "description": "Building bespoke digital solutions and AI-powered applications at Avarno GmbH",
+        "date": "2024",
+        "category": "work"
+      },
+      {
+        "title": "Portfolio Website v4",
+        "description": "Modern, responsive portfolio built with Next.js 15 and TypeScript",
+        "date": "2024",
+        "category": "project"
+      },
+      {
+        "title": "Active GitHub Contributor",
+        "description": "Maintaining an active presence with open-source contributions",
+        "date": "Ongoing",
+        "category": "project"
+      }
+    ]
   }
 }
