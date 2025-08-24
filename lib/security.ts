@@ -69,7 +69,7 @@ export function sanitizeInput(input: string): string {
   if (!input) return "";
 
   // Remove HTML tags and script injections
-  const htmlStripped = input.replace(/<[^>]*>/g, "");
+  const htmlStripped = input.replace(/<|>/g, "");
 
   // Remove common spam patterns
   const spamPatterns = [
