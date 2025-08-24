@@ -190,6 +190,7 @@ export default function AboutPage() {
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {t
                   .raw("achievements")
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   .map((achievement: any, index: number) => (
                     <AchievementCard
                       key={index}
