@@ -11,6 +11,7 @@ export const certifications = [
     issuer: "Python Institute",
     description:
       "Earned the PCEP (Python Certified Entry-Level Programmer) certification, demonstrating foundational knowledge of Python programming.",
+    descriptionKey: "pythonPcep",
     date: "2024",
   },
   {
@@ -20,6 +21,7 @@ export const certifications = [
     issuer: "Udemy",
     description:
       'Completed the "100 Days of Code - The Complete Python Pro Bootcamp," mastering Python from beginner to advanced levels.',
+    descriptionKey: "udemyPythonBootcamp",
     date: "2024",
   },
   {
@@ -29,6 +31,7 @@ export const certifications = [
     issuer: "Meta (via Coursera)",
     description:
       'Completed the "Introduction to Frontend Development" course, gaining foundational skills in HTML, CSS.',
+    descriptionKey: "metaFrontend",
     date: "2022",
   },
   {
@@ -38,6 +41,7 @@ export const certifications = [
     issuer: "Udemy",
     description:
       "Completed the course, learning the fundamentals of HTML and CSS to build and deploy a website.",
+    descriptionKey: "udemyHtmlCss",
     date: "2025",
   },
   {
@@ -47,6 +51,7 @@ export const certifications = [
     issuer: "Udemy",
     description:
       "Completed a comprehensive Git and GitHub course, covering version control, branching, and collaboration workflows.",
+    descriptionKey: "gitGithubBootcamp",
     date: "2025",
   },
   {
@@ -56,6 +61,7 @@ export const certifications = [
     issuer: "Udemy",
     description:
       "Frontend and Backend Web Development course, covering HTML, CSS, JavaScript, Node.js, and React.",
+    descriptionKey: "fullStackWebDev",
     date: "2025",
   },
 ];

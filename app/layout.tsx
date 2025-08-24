@@ -33,6 +33,8 @@ import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/footer/Footer";
 import { CookiesBanner } from "@/components/cookies/cookies-banner";
 import { seoConfigEN, generateStructuredData } from "@/lib/seo";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 
 export const metadata = {
   metadataBase: new URL("https://www.coldbydefault.com"),
@@ -108,9 +110,17 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  const messages = await getMessages();
+  const locale = await getLocale();
   return (
-    <html lang="en" className={`${orbitron.variable}`} suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={`${orbitron.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -163,17 +173,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body suppressHydrationWarning>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          {children}
-          <Footer />
-          <CookiesBanner />
-        </ThemeProvider>
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar />
+            {children}
+            <Footer />
+            <CookiesBanner />
+          </ThemeProvider>
+        </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />
       </body>

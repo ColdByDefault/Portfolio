@@ -9,8 +9,11 @@ import Link from "next/link";
 import { FaXTwitter, FaSquareInstagram } from "react-icons/fa6";
 import { FaGithub, FaLinkedin, FaSpotify } from "react-icons/fa";
 import { IoLogoDiscord } from "react-icons/io5";
+import { useTranslations } from "next-intl";
 
 export default function ContactBox() {
+  const t = useTranslations("Hero");
+
   return (
     <div className="w-fit mx-auto max-w-md space-y-4">
       {/* GitHub Stats Card */}
@@ -20,7 +23,7 @@ export default function ContactBox() {
         <CardContent className="p-6 space-y-6">
           <div>
             <h3 className="text-sm font-medium text-slate-600 mb-3">
-              More about me on
+              {t("moreAboutMe")}
             </h3>
             <div className="flex flex-wrap gap-2">
               <Link

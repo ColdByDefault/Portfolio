@@ -30,10 +30,12 @@ import { ProjectsShowcase } from "@/components/projects";
 import { GitHubShowcase } from "@/components/github";
 import { PageSpeedInsights } from "@/components/pagespeed";
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [mounted, setMounted] = useState<boolean>(false);
+  const t = useTranslations("Home");
 
   useEffect(() => {
     setMounted(true);
@@ -75,7 +77,7 @@ export default function Home() {
       <div className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-light text-center mb-8">
-            Website Performance
+            {t("WebsitePerformance")}
           </h2>
           <PageSpeedInsights
             url="https://www.coldbydefault.com"

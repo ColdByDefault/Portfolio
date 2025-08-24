@@ -1,0 +1,47 @@
+{
+  "Home": {
+    "WebsitePerformance": "Website Performance"
+  },
+  "Hero": {
+    "availableForCollaboration": "Available for collaboration",
+    "fullStackDeveloper": "Full Stack Junior Developer",
+    "description": "Passionate about creating exceptional digital experiences through clean code, innovative solutions, and user-centered design. Specialized in modern web technologies with 3+ years of experience.",
+    "learnMoreAboutMe": "Learn More About Me",
+    "moreAboutMe": "More about me on"
+  },
+  "Navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "mcp": "MCP",
+    "technologies": "Technologies",
+    "certifications": "Certifications",
+    "navigation": "Navigation"
+  },
+  "Technologies": {
+    "title": "Technologies I Use",
+    "manyMoreTechnologies": "...and many more technologies in my toolkit",
+    "categories": {
+      "uiFrontend": "UI & Frontend",
+      "backendApis": "Backend & APIs",
+      "databasesStorage": "Databases & Storage",
+      "infrastructureDevops": "Infrastructure & DevOps",
+      "aiLlm": "AI & LLM",
+      "automationWorkflow": "Automation & Workflow",
+      "toolsProductivity": "Tools & Productivity",
+      "architectureDiagrams": "Architecture & Diagrams"
+    }
+  },
+  "Certifications": {
+    "title": "My Certifications",
+    "issuedBy": "Issued by:",
+    "date": "Date:",
+    "descriptions": {
+      "pythonPcep": "Earned the PCEP (Python Certified Entry-Level Programmer) certification, demonstrating foundational knowledge of Python programming.",
+      "udemyPythonBootcamp": "Completed the \"100 Days of Code - The Complete Python Pro Bootcamp,\" mastering Python from beginner to advanced levels.",
+      "metaFrontend": "Completed the \"Introduction to Frontend Development\" course, gaining foundational skills in HTML, CSS.",
+      "udemyHtmlCss": "Completed the course, learning the fundamentals of HTML and CSS to build and deploy a website.",
+      "gitGithubBootcamp": "Completed a comprehensive Git and GitHub course, covering version control, branching, and collaboration workflows.",
+      "fullStackWebDev": "Frontend and Backend Web Development course, covering HTML, CSS, JavaScript, Node.js, and React."
+    }
+  }
+}

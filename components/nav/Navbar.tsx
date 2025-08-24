@@ -20,33 +20,36 @@ import { ModeToggle } from "../theme/theme-toggle";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { FaGithub } from "react-icons/fa";
+import LanguageSwitcher from "@/components/languages/language-switcher";
+import { useTranslations } from "next-intl";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations("Navigation");
 
   const navItems = [
     {
-      name: "Home",
+      name: t("home"),
       href: "/#home",
       icon: Home,
     },
     {
-      name: "Projects",
+      name: t("projects"),
       href: "/#projects",
       icon: FolderGit2,
     },
     {
-      name: "MCP",
+      name: t("mcp"),
       href: "/#github",
       icon: Antenna,
     },
     {
-      name: "Technologies",
+      name: t("technologies"),
       href: "/#tech",
       icon: Atom,
     },
     {
-      name: "Certifications",
+      name: t("certifications"),
       href: "/#cert",
       icon: BookOpenCheck,
     },
@@ -97,6 +100,9 @@ export default function Navbar() {
             <div className="border-r-2 pr-2">
               <ModeToggle />
             </div>
+            <div className="border-r-2 pr-2">
+              <LanguageSwitcher />
+            </div>
             <div>
               <Link href="https://github.com/coldbydefault">
                 <FaGithub />
@@ -120,7 +126,7 @@ export default function Navbar() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="flex flex-col space-y-4 mt-8">
                 <div className="text-lg font-semibold mb-4 pl-2">
-                  Navigation
+                  {t("navigation")}
                 </div>
                 {navItems.map((item) => {
                   const Icon = item.icon;

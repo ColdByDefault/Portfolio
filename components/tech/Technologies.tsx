@@ -8,9 +8,12 @@ import { motion } from "framer-motion";
 import { techGroups } from "@/data/tech";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function Technologies() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const t = useTranslations("Technologies");
+  const tCategories = useTranslations("Technologies.categories");
 
   return (
     <section
@@ -20,7 +23,7 @@ export default function Technologies() {
       <Card className="relative overflow-hidden bg-transparent !border-0 shadow-none">
         <CardHeader className="text-center pb-2">
           <CardTitle className="text-2xl sm:text-3xl lg:text-4xl font-light">
-            Technologies I Use
+            {t("title")}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -49,7 +52,7 @@ export default function Technologies() {
                 >
                   <CardHeader className="pb-3 sm:pb-4">
                     <CardTitle className="text-lg sm:text-xl font-semibold text-center">
-                      {group.category}
+                      {tCategories(group.categoryKey)}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="px-3 sm:px-6">
@@ -112,7 +115,7 @@ export default function Technologies() {
         transition={{ duration: 10, delay: 2 }}
       >
         <p className="text-sm sm:text-base text-muted-foreground">
-          ...and many more technologies in my toolkit
+          {t("manyMoreTechnologies")}
         </p>
       </motion.div>
     </section>
