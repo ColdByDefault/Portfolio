@@ -2,6 +2,8 @@
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 //import ContactForm from "@/components/contact/contact-form";
@@ -9,8 +11,11 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import SocialLinks from "./SocialLinks";
+import { useTranslations } from "next-intl";
 
 function Hero() {
+  const t = useTranslations("Hero");
+
   return (
     <section className="w-full min-h-screen flex items-center justify-center py-12 md:py-12 lg:py-12">
       <div className="container px-4 md:px-6">
@@ -32,7 +37,7 @@ function Hero() {
                 variant="secondary"
                 className="px-3 py-1 text-sm font-medium"
               >
-                Available for collabration
+                {t("availableForCollaboration")}
               </Badge>
             </div>
           </div>
@@ -45,15 +50,12 @@ function Hero() {
               </h1>
               <div className="space-y-2">
                 <h2 className="text-xl md:text-2xl lg:text-3xl font-medium text-muted-foreground">
-                  Full Stack Junior Developer
+                  {t("fullStackDeveloper")}
                 </h2>
               </div>
             </div>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Passionate about creating exceptional digital experiences through
-              clean code, innovative solutions, and user-centered design.
-              Specialized in modern web technologies with 3+ years of
-              experience.
+              {t("description")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
               <Button
@@ -62,7 +64,7 @@ function Hero() {
                 className="gap-2 cursor-pointer hover:bg-primary/10"
               >
                 <Link href="/about" className="flex items-center gap-2">
-                  Learn More About Me
+                  {t("learnMoreAboutMe")}
                 </Link>
               </Button>
               {/* <ContactForm /> */}

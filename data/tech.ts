@@ -47,12 +47,14 @@ export interface TechItem {
 
 export interface TechGroup {
   category: string;
+  categoryKey: string;
   items: TechItem[];
 }
 
 export const techGroups: TechGroup[] = [
   {
     category: "UI & Frontend",
+    categoryKey: "uiFrontend",
     items: [
       { name: "React", Icon: SiReact },
       { name: "Next.js", Icon: SiNextdotjs },
@@ -65,6 +67,7 @@ export const techGroups: TechGroup[] = [
   },
   {
     category: "Backend & APIs",
+    categoryKey: "backendApis",
     items: [
       { name: "Node.js", Icon: SiNodedotjs },
       { name: "Python", Icon: SiPython },
@@ -76,6 +79,7 @@ export const techGroups: TechGroup[] = [
   },
   {
     category: "Databases & Storage",
+    categoryKey: "databasesStorage",
     items: [
       { name: "PostgreSQL", Icon: SiPostgresql },
       { name: "Supabase", Icon: SiSupabase },
@@ -84,6 +88,7 @@ export const techGroups: TechGroup[] = [
   },
   {
     category: "Infrastructure & DevOps",
+    categoryKey: "infrastructureDevops",
     items: [
       { name: "Docker", Icon: SiDocker },
       { name: "Google Cloud", Icon: SiGooglecloud },
@@ -94,6 +99,7 @@ export const techGroups: TechGroup[] = [
   },
   {
     category: "AI & LLM",
+    categoryKey: "aiLlm",
     items: [
       { name: "ChatGPT", Icon: RiOpenaiFill },
       { name: "LLM (generic)", Icon: FaBrain },
@@ -102,6 +108,7 @@ export const techGroups: TechGroup[] = [
   },
   {
     category: "Automation & Workflow",
+    categoryKey: "automationWorkflow",
     items: [
       { name: "n8n", Icon: SiN8N },
       { name: "GitHub Actions", Icon: SiGithubactions },
@@ -110,6 +117,7 @@ export const techGroups: TechGroup[] = [
   },
   {
     category: "Tools & Productivity",
+    categoryKey: "toolsProductivity",
     items: [
       { name: "Git", Icon: SiGit },
       { name: "GitHub", Icon: SiGithub },
@@ -124,6 +132,7 @@ export const techGroups: TechGroup[] = [
   },
   {
     category: "Architecture & Diagrams",
+    categoryKey: "architectureDiagrams",
     items: [
       { name: "Software Architecture", Icon: FiLayers },
       { name: "Diagrams & Flowcharts", Icon: RiFlowChart },

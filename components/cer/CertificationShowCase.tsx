@@ -2,12 +2,15 @@
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
+"use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
 import { certifications } from "@/data/certificationsData";
 import { Card, CardTitle } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface CertificationShowcaseProps {
   className?: string;
@@ -18,6 +21,8 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
   const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
   const [isTablet, setIsTablet] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const t = useTranslations("Certifications");
+  const tDescriptions = useTranslations("Certifications.descriptions");
 
   React.useEffect(() => {
     const checkIsTablet = () => {
@@ -48,6 +53,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
     issuer: string;
     date: string;
     description: string;
+    descriptionKey: string;
     image: string;
   };
 
@@ -85,12 +91,14 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
           />
         </div>
         <div className="">
-          <p className="text-sm mb-1">Issued by: {cert.issuer}</p>
+          <p className="text-sm mb-1">
+            {t("issuedBy")} {cert.issuer}
+          </p>
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            Date: {cert.date}
+            {t("date")} {cert.date}
           </p>
           <p className="text-sm text-gray-700 dark:text-gray-300">
-            {cert.description}
+            {tDescriptions(cert.descriptionKey)}
           </p>
         </div>
         <div
@@ -167,20 +175,20 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
               </div>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Issued by:</span>
+                  <span className="text-sm font-medium">{t("issuedBy")}</span>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     {cert.issuer}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Date:</span>
+                  <span className="text-sm font-medium">{t("date")}</span>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     {cert.date}
                   </span>
                 </div>
                 <div className="pt-2">
                   <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    {cert.description}
+                    {tDescriptions(cert.descriptionKey)}
                   </p>
                 </div>
               </div>
@@ -245,20 +253,20 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
               </div>
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Issued by:</span>
+                  <span className="text-sm font-medium">{t("issuedBy")}</span>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     {cert.issuer}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Date:</span>
+                  <span className="text-sm font-medium">{t("date")}</span>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     {cert.date}
                   </span>
                 </div>
                 <div className="pt-2">
                   <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    {cert.description}
+                    {tDescriptions(cert.descriptionKey)}
                   </p>
                 </div>
               </div>
@@ -293,7 +301,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
     <section className={className} id="cert">
       <Card className="max-w-7xl mx-auto bg-transparent dark:bg-transparent shadow-none !border-0">
         <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8">
-          My Certifications
+          {t("title")}
         </CardTitle>
         <div className={`z-40 ${getContainerClasses()}`}>
           {certifications.map((cert) => renderCard(cert))}

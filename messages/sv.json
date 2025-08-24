@@ -1,0 +1,47 @@
+{
+  "Home": {
+    "WebsitePerformance": "Webbplatsens prestanda"
+  },
+  "Hero": {
+    "availableForCollaboration": "Tillgänglig för samarbete",
+    "fullStackDeveloper": "Full Stack Junior Utvecklare",
+    "description": "Passionerad för att skapa exceptionella digitala upplevelser genom ren kod, innovativa lösningar och användarcentrerad design. Specialiserad på moderna webbteknologier med 3+ års erfarenhet.",
+    "learnMoreAboutMe": "Lär dig mer om mig",
+    "moreAboutMe": "Mer om mig på"
+  },
+  "Navigation": {
+    "home": "Hem",
+    "projects": "Projekt",
+    "mcp": "MCP",
+    "technologies": "Teknologier",
+    "certifications": "Certifieringar",
+    "navigation": "Navigation"
+  },
+  "Technologies": {
+    "title": "Teknologier jag använder",
+    "manyMoreTechnologies": "...och många fler teknologier i min verktygslåda",
+    "categories": {
+      "uiFrontend": "UI & Frontend",
+      "backendApis": "Backend & APIs",
+      "databasesStorage": "Databaser & Lagring",
+      "infrastructureDevops": "Infrastruktur & DevOps",
+      "aiLlm": "AI & LLM",
+      "automationWorkflow": "Automatisering & Arbetsflöde",
+      "toolsProductivity": "Verktyg & Produktivitet",
+      "architectureDiagrams": "Arkitektur & Diagram"
+    }
+  },
+  "Certifications": {
+    "title": "Mina Certifieringar",
+    "issuedBy": "Utfärdat av:",
+    "date": "Datum:",
+    "descriptions": {
+      "pythonPcep": "Erhållit PCEP (Python Certified Entry-Level Programmer) certifiering, som visar grundläggande kunskaper i Python-programmering.",
+      "udemyPythonBootcamp": "Genomfört \"100 Days of Code - The Complete Python Pro Bootcamp,\" och bemästrat Python från nybörjar- till avancerad nivå.",
+      "metaFrontend": "Genomfört kursen \"Introduction to Frontend Development\" och fått grundläggande färdigheter i HTML, CSS.",
+      "udemyHtmlCss": "Genomfört kursen och lärt sig grunderna i HTML och CSS för att bygga och lansera en webbplats.",
+      "gitGithubBootcamp": "Genomfört en omfattande Git och GitHub-kurs som täcker versionskontroll, branching och samarbetsarbetsflöden.",
+      "fullStackWebDev": "Frontend och Backend webbutvecklingskurs som täcker HTML, CSS, JavaScript, Node.js och React."
+    }
+  }
+}

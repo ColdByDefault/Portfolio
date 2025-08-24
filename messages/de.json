@@ -1,0 +1,47 @@
+{
+  "Home": {
+    "WebsitePerformance": "Website-Leistung"
+  },
+  "Hero": {
+    "availableForCollaboration": "Verfügbar für Zusammenarbeit",
+    "fullStackDeveloper": "Full Stack Junior Entwickler",
+    "description": "Leidenschaftlich für die Schaffung außergewöhnlicher digitaler Erlebnisse durch sauberen Code, innovative Lösungen und benutzerzentriertes Design. Spezialisiert auf moderne Webtechnologien mit 3+ Jahren Erfahrung.",
+    "learnMoreAboutMe": "Mehr über mich erfahren",
+    "moreAboutMe": "Mehr über mich auf"
+  },
+  "Navigation": {
+    "home": "Startseite",
+    "projects": "Projekte",
+    "mcp": "MCP",
+    "technologies": "Technologien",
+    "certifications": "Zertifikate",
+    "navigation": "Navigation"
+  },
+  "Technologies": {
+    "title": "Technologien, die ich verwende",
+    "manyMoreTechnologies": "...und viele weitere Technologien in meinem Toolkit",
+    "categories": {
+      "uiFrontend": "UI & Frontend",
+      "backendApis": "Backend & APIs",
+      "databasesStorage": "Datenbanken & Speicher",
+      "infrastructureDevops": "Infrastruktur & DevOps",
+      "aiLlm": "KI & LLM",
+      "automationWorkflow": "Automatisierung & Workflow",
+      "toolsProductivity": "Tools & Produktivität",
+      "architectureDiagrams": "Architektur & Diagramme"
+    }
+  },
+  "Certifications": {
+    "title": "Meine Zertifikate",
+    "issuedBy": "Ausgestellt von:",
+    "date": "Datum:",
+    "descriptions": {
+      "pythonPcep": "Erworben die PCEP (Python Certified Entry-Level Programmer) Zertifizierung, die grundlegende Kenntnisse der Python-Programmierung demonstriert.",
+      "udemyPythonBootcamp": "Abgeschlossen das \"100 Days of Code - The Complete Python Pro Bootcamp,\" und Python von Anfänger- bis Fortgeschrittenenniveau gemeistert.",
+      "metaFrontend": "Abgeschlossen den \"Introduction to Frontend Development\" Kurs und grundlegende Fähigkeiten in HTML, CSS erworben.",
+      "udemyHtmlCss": "Den Kurs abgeschlossen und die Grundlagen von HTML und CSS gelernt, um eine Website zu erstellen und zu veröffentlichen.",
+      "gitGithubBootcamp": "Einen umfassenden Git und GitHub Kurs abgeschlossen, der Versionskontrolle, Branching und Kollaborations-Workflows abdeckt.",
+      "fullStackWebDev": "Frontend und Backend Web Development Kurs, der HTML, CSS, JavaScript, Node.js und React abdeckt."
+    }
+  }
+}
