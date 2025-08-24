@@ -15,7 +15,9 @@
     "mcp": "MCP",
     "technologies": "Tecnologías",
     "certifications": "Certificaciones",
-    "navigation": "Navegación"
+    "navigation": "Navegación",
+    "impressum": "Aviso Legal",
+    "legal": "Legal"
   },
   "Technologies": {
     "title": "Tecnologías que uso",
@@ -43,5 +45,42 @@
       "gitGithubBootcamp": "Completado un curso integral de Git y GitHub, cubriendo control de versiones, ramificación y flujos de trabajo colaborativos.",
       "fullStackWebDev": "Curso de Desarrollo Web Frontend y Backend, cubriendo HTML, CSS, JavaScript, Node.js y React."
     }
+  },
+  "Projects": {
+    "title": "Mis Proyectos",
+    "categories": {
+      "all": "Todos",
+      "webDevelopment": "Desarrollo Web",
+      "fullStack": "Full Stack",
+      "aiMl": "IA/ML"
+    },
+    "descriptions": {
+      "portfolioWebsite": "Un sitio web de portafolio moderno y responsivo construido con Next.js 15, con alternador de tema oscuro/claro, animaciones suaves con Framer Motion y rendimiento optimizado. Incluye TypeScript para seguridad de tipos y Tailwind CSS para el estilo.",
+      "berichHub": "Plataforma de aprendizaje digital full-stack con autenticación de usuarios, páginas de perfil y características de blog. Integración de IA para aprendizaje personalizado. Completamente gratuito y de código abierto. 4 idiomas diferentes soportados: Inglés, Alemán, Español, Sueco.",
+      "llmAgent": "Chatbot de IA basado en ollama local, personalizable para usar cualquier modelo LLM, cualquier modelo Embed, 2 opciones para Vector DB; postgres local o DataStax Astra. Puede leer páginas web y responder preguntas basadas en el contenido. Más próximamente.. Código abierto.",
+      "subsApi": "API para gestionar suscripciones de usuarios, incluyendo características para facturación, facturación y procesamiento de pagos. Construido con Next.js e integrado con Stripe para pagos seguros."
+    },
+    "seeMoreOnGitHub": "ver más en GitHub...",
+    "cloneRepository": "Clonar Repositorio",
+    "code": "Código",
+    "liveDemo": "Demo en Vivo",
+    "featuredProject": "Proyecto Destacado",
+    "noProjectsFound": "No se encontraron proyectos en esta categoría.",
+    "licenses": {
+      "copyright": "Todos los Derechos Reservados",
+      "openSource": "Licencia MIT Modificada",
+      "fullyOpen": "Completamente Open Source"
+    }
+  },
+  "Impressum": {
+    "title": "Aviso Legal",
+    "subtitle": "Información Legal y Aviso",
+    "legalStatus": "Estado Legal",
+    "projectInformation": "Información del Proyecto:",
+    "projectDescription": "Este sitio web es un Portafolio puramente privado y no comercial, que sirve exclusivamente para fines experimentales y de aprendizaje personal. No hay uso comercial ni intención de lucro.",
+    "legalBasis": "Base Legal:",
+    "legalBasisDescription": "Según el § 5 TMG, por lo tanto no existe obligación de proporcionar un aviso legal.",
+    "anotherProject": "Otro Proyecto",
+    "lastUpdated": "Última actualización:"
   }
 }

@@ -55,7 +55,7 @@ export default function GitHubProfile({ profile, stats }: GitHubProfileProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <CardContent className="p-4">
+      <CardContent className="p-4 relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Left Side - Profile Info */}
           <div className="flex flex-col space-y-3">
@@ -86,7 +86,7 @@ export default function GitHubProfile({ profile, stats }: GitHubProfileProps) {
                 variant="outline"
                 size="sm"
                 asChild
-                className="cursor-pointer hover:bg-primary/10"
+                className="cursor-pointer hover:bg-primary/10 relative z-10"
               >
                 <Link
                   href={profile.html_url}
@@ -154,19 +154,19 @@ export default function GitHubProfile({ profile, stats }: GitHubProfileProps) {
       </CardContent>
       <div
         className={`
-                    absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none -z-10
+                    absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none
                     ${isHovered ? "opacity-100" : "opacity-0"}
                   `}
         style={{
-          background: `
-                      linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%),
-                      linear-gradient(-45deg, transparent 30%, rgba(147, 197, 253, 0.1) 50%, transparent 70%)
-                    `,
+          backgroundImage: isHovered
+            ? `linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%),
+               linear-gradient(-45deg, transparent 30%, rgba(147, 197, 253, 0.1) 50%, transparent 70%)`
+            : "none",
           backgroundSize: "200% 200%",
           animation: isHovered ? "gradient-shift 3s ease infinite" : "none",
         }}
       />
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes gradient-shift {
           0%,
           100% {

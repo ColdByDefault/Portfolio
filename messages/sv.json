@@ -15,7 +15,9 @@
     "mcp": "MCP",
     "technologies": "Teknologier",
     "certifications": "Certifieringar",
-    "navigation": "Navigation"
+    "navigation": "Navigation",
+    "impressum": "Rättsligt Meddelande",
+    "legal": "Juridiskt"
   },
   "Technologies": {
     "title": "Teknologier jag använder",
@@ -43,5 +45,42 @@
       "gitGithubBootcamp": "Genomfört en omfattande Git och GitHub-kurs som täcker versionskontroll, branching och samarbetsarbetsflöden.",
       "fullStackWebDev": "Frontend och Backend webbutvecklingskurs som täcker HTML, CSS, JavaScript, Node.js och React."
     }
+  },
+  "Projects": {
+    "title": "Mina Projekt",
+    "categories": {
+      "all": "Alla",
+      "webDevelopment": "Webbutveckling",
+      "fullStack": "Full Stack",
+      "aiMl": "AI/ML"
+    },
+    "descriptions": {
+      "portfolioWebsite": "En modern, responsiv portfoliowebbplats byggd med Next.js 15, med mörk/ljus tema-växlare, mjuka animationer med Framer Motion och optimerad prestanda. Inkluderar TypeScript för typsäkerhet och Tailwind CSS för styling.",
+      "berichHub": "Full-stack digital lärplattform med användarautentisering, profilsidor och bloggfunktioner. AI-integration för personaliserat lärande. Helt gratis och öppen källkod. 4 olika språk som stöds: Engelska, Tyska, Spanska, Svenska.",
+      "llmAgent": "Lokal ollama-baserad AI-chatbot, anpassningsbar för att använda vilken LLM-modell som helst, vilken Embed-modell som helst, 2 alternativ för Vector DB; lokal postgres eller DataStax Astra. Kan läsa webbsidor och svara på frågor baserat på innehållet. Mer kommer snart.. Öppen källkod.",
+      "subsApi": "API för att hantera användarprenumerationer, inklusive funktioner för fakturering, fakturering och betalningsbehandling. Byggd med Next.js och integrerad med Stripe för säkra betalningar."
+    },
+    "seeMoreOnGitHub": "se mer på GitHub...",
+    "cloneRepository": "Klona Repository",
+    "code": "Kod",
+    "liveDemo": "Live Demo",
+    "featuredProject": "Utvalt Projekt",
+    "noProjectsFound": "Inga projekt hittades i denna kategori.",
+    "licenses": {
+      "copyright": "Alla Rättigheter Förbehållna",
+      "openSource": "Modifierad MIT-licens",
+      "fullyOpen": "Helt Open Source"
+    }
+  },
+  "Impressum": {
+    "title": "Rättsligt Meddelande",
+    "subtitle": "Juridisk Information och Meddelande",
+    "legalStatus": "Rättslig Status",
+    "projectInformation": "Projektinformation:",
+    "projectDescription": "Denna webbplats är en rent privat, icke-kommersiell portfölj som uteslutande tjänar experimentella och personliga inlärningsändamål. Det finns varken kommersiell användning eller vinstintention.",
+    "legalBasis": "Rättslig Grund:",
+    "legalBasisDescription": "Enligt § 5 TMG finns det därför ingen skyldighet att tillhandahålla ett rättsligt meddelande.",
+    "anotherProject": "Ett Annat Projekt",
+    "lastUpdated": "Senast uppdaterad:"
   }
 }

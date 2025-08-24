@@ -15,7 +15,9 @@
     "mcp": "MCP",
     "technologies": "Technologies",
     "certifications": "Certifications",
-    "navigation": "Navigation"
+    "navigation": "Navigation",
+    "impressum": "Impressum",
+    "legal": "Legal"
   },
   "Technologies": {
     "title": "Technologies I Use",
@@ -43,5 +45,42 @@
       "gitGithubBootcamp": "Completed a comprehensive Git and GitHub course, covering version control, branching, and collaboration workflows.",
       "fullStackWebDev": "Frontend and Backend Web Development course, covering HTML, CSS, JavaScript, Node.js, and React."
     }
+  },
+  "Projects": {
+    "title": "My Projects",
+    "categories": {
+      "all": "All",
+      "webDevelopment": "Web Development",
+      "fullStack": "Full Stack",
+      "aiMl": "AI/ML"
+    },
+    "descriptions": {
+      "portfolioWebsite": "A modern, responsive portfolio website built with Next.js 15, featuring dark/light theme toggle, smooth animations with Framer Motion, and optimized performance. Includes TypeScript for type safety and Tailwind CSS for styling.",
+      "berichHub": "Full-stack digital learning platform with user authentication, Profile pages, and Blog features. AI integration for personalized learning. Completely free and open-source. 4 different languages supported: English, German, Spanish, Swedish.",
+      "llmAgent": "Local ollama-based AI chatbot, customizable to use any LLM model, any Embed model, 2 Options for Vector DB; local postgres or DataStax Astra. Can read web pages, and answer questions based on the content. More coming soon.. Open source.",
+      "subsApi": "API for managing user subscriptions, including features for billing, invoicing, and payment processing. Built with Next.js and integrated with Stripe for secure payments."
+    },
+    "seeMoreOnGitHub": "see more on GitHub...",
+    "cloneRepository": "Clone Repository",
+    "code": "Code",
+    "liveDemo": "Live Demo",
+    "featuredProject": "Featured Project",
+    "noProjectsFound": "No projects found in this category.",
+    "licenses": {
+      "copyright": "All Rights Reserved",
+      "openSource": "Modified MIT License",
+      "fullyOpen": "Fully Open Source"
+    }
+  },
+  "Impressum": {
+    "title": "Impressum",
+    "subtitle": "Legal Notice and Information",
+    "legalStatus": "Legal Status",
+    "projectInformation": "Project Information:",
+    "projectDescription": "This website is a purely private, non-commercial Portfolio and serves exclusively for experimental and personal learning purposes. There is neither commercial use nor profit intention.",
+    "legalBasis": "Legal Basis:",
+    "legalBasisDescription": "According to § 5 TMG, there is therefore no obligation to provide an impressum.",
+    "anotherProject": "AnotherProject",
+    "lastUpdated": "Last updated:"
   }
 }
