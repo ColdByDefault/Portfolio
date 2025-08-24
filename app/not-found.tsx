@@ -2,28 +2,40 @@
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
-import React from "react";
+"use client";
 
-const NotFound = () => {
+import Link from "next/link";
+import { Home } from "lucide-react";
+import { TbError404 } from "react-icons/tb";
+import { Button } from "@/components/ui/button";
+
+export default function NotFound() {
   return (
-    <div className="relative min-h-[70vh] flex items-center justify-center">
-      <div className="max-w-3xl text-center shadow-md rounded-lg p-8">
-        <div className="flex gap-4 justify-center text-4xl text-white">
-          <span>404</span>
-          <span>|</span>
-          <span>Page Not Found</span>
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="text-center space-y-6 max-w-md mx-auto">
+        <div className="space-y-2">
+          <div className="flex items-center text-6xl font-bold justify-center pr-3">
+            <TbError404 />
+          </div>
+          <h2 className="text-2xl font-semibold">Page Not Found</h2>
+          <p className="text-muted-foreground">
+            Sorry, we couldn&apos;t find the page you&apos;re looking for. It
+            might have been moved, deleted, or you entered the wrong URL.
+          </p>
         </div>
-        <h2 className="text-xl font-semibold mt-2 text-gray-600">
-          The page you are looking for{" "}
-          <span className="text-green-600">may exist </span>
-          or <span className="text-red-500">maybe it does not!</span>
-        </h2>
-        <p className="text-gray-600 mt-4">
-          Either way, you can always go back to the homepage.
-        </p>
+
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Button asChild>
+            <Link href="/">
+              <Home className="w-4 h-4 mr-2" />
+              Return Home
+            </Link>
+          </Button>
+          <Button variant="ghost" onClick={() => window.history.back()}>
+            Go Back
+          </Button>
+        </div>
       </div>
     </div>
   );
-};
-
-export default NotFound;
+}
