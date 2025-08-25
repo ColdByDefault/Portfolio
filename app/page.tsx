@@ -72,8 +72,8 @@ export default function Home() {
 
       {/* Main content section with sticky background */}
       <div className="relative">
-        {/* Sticky Background Image */}
-        <div className="sticky top-0 h-screen z-0">
+        {/* Sticky Background Image - Only in dark mode */}
+        <div className="dark:block hidden sticky top-0 h-screen z-0">
           <Image
             src="/bg.jpg"
             fill
@@ -116,7 +116,7 @@ export default function Home() {
         </div>
 
         {/* Content Container */}
-        <div className="relative z-10 -mt-[100vh]">
+        <div className="relative z-10 dark:-mt-[100vh]">
           <ProjectsShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
           <div className="py-12 px-4 sm:px-6 lg:px-8" id="github">
             <GitHubShowcase />
