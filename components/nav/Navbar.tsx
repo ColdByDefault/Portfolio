@@ -8,6 +8,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import {
   Home,
   FolderGit2,
   Menu,
@@ -25,7 +30,19 @@ import { useTranslations } from "next-intl";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [tooltipOpen, setTooltipOpen] = useState({
+    theme: false,
+    language: false,
+    github: false,
+    berich: false,
+    mobileTheme: false,
+    mobileBerich: false,
+  });
   const t = useTranslations("Navigation");
+
+  const closeTooltip = (key: keyof typeof tooltipOpen) => {
+    setTooltipOpen((prev) => ({ ...prev, [key]: false }));
+  };
 
   const navItems = [
     {
@@ -86,27 +103,83 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <Link
-              target="_blanck"
-              href="https://berich-hub.vercel.app"
-              rel="noreferrer"
+            <Tooltip
+              open={tooltipOpen.berich}
+              onOpenChange={(open) =>
+                setTooltipOpen((prev) => ({ ...prev, berich: open }))
+              }
             >
-              <Badge className="cursor-pointer">beRich.Hub</Badge>
-            </Link>
+              <TooltipTrigger asChild>
+                <Link
+                  target="_blanck"
+                  href="https://berich-hub.vercel.app"
+                  rel="noreferrer"
+                  onClick={() => closeTooltip("berich")}
+                >
+                  <Badge className="cursor-pointer">beRich.Hub</Badge>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Visit beRich.Hub - Digital Learning Platform</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
 
           {/* Desktop Theme Toggle */}
           <div className="hidden lg:flex items-center gap-2">
             <div className="border-r-2 pr-2">
-              <ModeToggle />
+              <Tooltip
+                open={tooltipOpen.theme}
+                onOpenChange={(open) =>
+                  setTooltipOpen((prev) => ({ ...prev, theme: open }))
+                }
+              >
+                <TooltipTrigger asChild>
+                  <div onClick={() => closeTooltip("theme")}>
+                    <ModeToggle />
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Toggle theme</p>
+                </TooltipContent>
+              </Tooltip>
             </div>
             <div className="border-r-2 pr-2">
-              <LanguageSwitcher />
+              <Tooltip
+                open={tooltipOpen.language}
+                onOpenChange={(open) =>
+                  setTooltipOpen((prev) => ({ ...prev, language: open }))
+                }
+              >
+                <TooltipTrigger asChild>
+                  <div onClick={() => closeTooltip("language")}>
+                    <LanguageSwitcher />
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Change language</p>
+                </TooltipContent>
+              </Tooltip>
             </div>
             <div>
-              <Link href="https://github.com/coldbydefault">
-                <FaGithub />
-              </Link>
+              <Tooltip
+                open={tooltipOpen.github}
+                onOpenChange={(open) =>
+                  setTooltipOpen((prev) => ({ ...prev, github: open }))
+                }
+              >
+                <TooltipTrigger asChild>
+                  <Link
+                    href="https://github.com/coldbydefault"
+                    onClick={() => closeTooltip("github")}
+                  >
+                    <FaGithub />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Visit my GitHub profile</p>
+                </TooltipContent>
+              </Tooltip>
             </div>
           </div>
         </div>
@@ -114,7 +187,24 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <div className="flex lg:hidden items-center space-x-2 px-4">
           {/* Mobile Theme Toggle */}
-          <ModeToggle />
+          <Tooltip
+            open={tooltipOpen.mobileTheme}
+            onOpenChange={(open) =>
+              setTooltipOpen((prev) => ({ ...prev, mobileTheme: open }))
+            }
+          >
+            <TooltipTrigger asChild>
+              <div onClick={() => closeTooltip("mobileTheme")}>
+                <ModeToggle />
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Toggle theme</p>
+            </TooltipContent>
+          </Tooltip>
+          <div>
+            <LanguageSwitcher />
+          </div>
           {/* Mobile Menu Trigger */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -143,15 +233,28 @@ export default function Navbar() {
                     </Link>
                   );
                 })}
-                <Link
-                  target="_blanck"
-                  href="https://berich-hub.vercel.app"
-                  rel="noreferrer"
-                  className="pl-2 flex gap-2 items-center"
+                <Tooltip
+                  open={tooltipOpen.mobileBerich}
+                  onOpenChange={(open) =>
+                    setTooltipOpen((prev) => ({ ...prev, mobileBerich: open }))
+                  }
                 >
-                  <Telescope />
-                  <Badge variant="secondary">beRich.Hub</Badge>
-                </Link>
+                  <TooltipTrigger asChild>
+                    <Link
+                      target="_blanck"
+                      href="https://berich-hub.vercel.app"
+                      rel="noreferrer"
+                      className="pl-2 flex gap-2 items-center"
+                      onClick={() => closeTooltip("mobileBerich")}
+                    >
+                      <Telescope />
+                      <Badge variant="secondary">beRich.Hub</Badge>
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Visit beRich.Hub - My Financial Platform</p>
+                  </TooltipContent>
+                </Tooltip>
               </div>
             </SheetContent>
           </Sheet>

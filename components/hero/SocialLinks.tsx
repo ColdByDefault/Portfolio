@@ -10,6 +10,11 @@ import { FaXTwitter, FaSquareInstagram } from "react-icons/fa6";
 import { FaGithub, FaLinkedin, FaSpotify } from "react-icons/fa";
 import { IoLogoDiscord } from "react-icons/io5";
 import { useTranslations } from "next-intl";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function ContactBox() {
   const t = useTranslations("Hero");
@@ -26,59 +31,95 @@ export default function ContactBox() {
               {t("moreAboutMe")}
             </h3>
             <div className="flex flex-wrap gap-2">
-              <Link
-                href="https://instagram.com/cold.by.default"
-                target="_blank"
-                className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
-                title="Instagram"
-              >
-                <FaSquareInstagram className="h-5 w-5 text-pink-600" />
-              </Link>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href="https://instagram.com/cold.by.default"
+                    target="_blank"
+                    className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                  >
+                    <FaSquareInstagram className="h-5 w-5 text-pink-600" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Instagram</p>
+                </TooltipContent>
+              </Tooltip>
 
-              <Link
-                href="https://github.com/coldbydefault"
-                target="_blank"
-                className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
-                title="GitHub"
-              >
-                <FaGithub className="h-5 w-5 text-slate-700" />
-              </Link>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href="https://github.com/coldbydefault"
+                    target="_blank"
+                    className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                  >
+                    <FaGithub className="h-5 w-5 text-slate-700" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>GitHub</p>
+                </TooltipContent>
+              </Tooltip>
 
-              <Link
-                href="https://www.linkedin.com/in/yazan-a-a-465b44312/"
-                target="_blank"
-                className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
-                title="LinkedIn"
-              >
-                <FaLinkedin className="h-5 w-5 text-blue-600" />
-              </Link>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href="https://www.linkedin.com/in/yazan-a-a-465b44312/"
+                    target="_blank"
+                    className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                  >
+                    <FaLinkedin className="h-5 w-5 text-blue-600" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>LinkedIn</p>
+                </TooltipContent>
+              </Tooltip>
 
-              <Link
-                href="https://x.com/ccoldbydefault"
-                target="_blank"
-                className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
-                title="X (Twitter)"
-              >
-                <FaXTwitter />
-              </Link>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href="https://x.com/ccoldbydefault"
+                    target="_blank"
+                    className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                  >
+                    <FaXTwitter className="h-5 w-5" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>X (Twitter)</p>
+                </TooltipContent>
+              </Tooltip>
 
-              <Link
-                href="https://discord.gg/coldbydefault"
-                target="_blank"
-                className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
-                title="Discord"
-              >
-                <IoLogoDiscord className="h-5 w-5 text-indigo-600" />
-              </Link>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href="https://discord.gg/coldbydefault"
+                    target="_blank"
+                    className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                  >
+                    <IoLogoDiscord className="h-5 w-5 text-indigo-600" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Discord</p>
+                </TooltipContent>
+              </Tooltip>
 
-              <Link
-                href="https://open.spotify.com/user/q7s1djy4b0ed0dp435mz2bfho"
-                target="_blank"
-                className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
-                title="Spotify"
-              >
-                <FaSpotify className="h-5 w-5 text-green-600" />
-              </Link>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href="https://open.spotify.com/user/q7s1djy4b0ed0dp435mz2bfho"
+                    target="_blank"
+                    className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                  >
+                    <FaSpotify className="h-5 w-5 text-green-600" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Spotify</p>
+                </TooltipContent>
+              </Tooltip>
             </div>
           </div>
         </CardContent>

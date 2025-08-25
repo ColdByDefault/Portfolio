@@ -6,8 +6,6 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-//import ContactForm from "@/components/contact/contact-form";
-
 import Image from "next/image";
 import Link from "next/link";
 import SocialLinks from "./SocialLinks";
