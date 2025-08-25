@@ -94,14 +94,16 @@ export default function Footer() {
         {/* <-- Add this closing div for the grid */}
         <div className="border-t border-gray-200 dark:border-gray-800 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              {new Date().getFullYear()} ColdByDefault&#174;. All rights
-              reserved.
-              <span className="text-xs text-gray-600">
-                {" "}
-                The journey was sparked - Stockholm, 2021.
-              </span>
-            </p>
+            <div className="text-sm text-gray-500 dark:text-gray-400">
+              <p>
+                {new Date().getFullYear()} ColdByDefault&#174;. All rights
+                reserved.
+                <span className="text-xs text-gray-600">
+                  {" "}
+                  The journey was sparked in Stockholm, 2021.
+                </span>
+              </p>
+            </div>
             <div className="flex space-x-6">
               <Link
                 href="https://x.com/ccoldbydefault"

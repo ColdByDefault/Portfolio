@@ -78,7 +78,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
         onMouseLeave={() => setHoveredCard(null)}
       >
         <CardTitle>
-          <h3 className="text-lg font-semibold text-center">{cert.title}</h3>
+          <h3 className="text-lg font-semibold text-center text-white dark:text-black">{cert.title}</h3>
         </CardTitle>
         <div className="flex w-full justify-center items-center pt-2">
           <Image
@@ -300,7 +300,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
   return (
     <section className={className} id="cert">
       <Card className="max-w-7xl mx-auto bg-transparent dark:bg-transparent shadow-none !border-0">
-        <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8">
+        <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8 text-white">
           {t("title")}
         </CardTitle>
         <div className={`z-40 ${getContainerClasses()}`}>

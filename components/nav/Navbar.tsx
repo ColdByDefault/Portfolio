@@ -21,7 +21,7 @@ import {
   BookOpenCheck,
   Telescope,
 } from "lucide-react";
-import { ModeToggle } from "../theme/theme-toggle";
+import { ModeToggle } from "@/components/theme/theme-toggle";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { FaGithub } from "react-icons/fa";

@@ -5,6 +5,7 @@
   scroll-behavior: smooth;
 }
 
+
 @custom-variant dark (&:is(.dark *));
 
 /* Customize the scrollbar */

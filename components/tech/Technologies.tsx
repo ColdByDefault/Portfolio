@@ -22,7 +22,7 @@ export default function Technologies() {
     >
       <Card className="relative overflow-hidden bg-transparent !border-0 shadow-none">
         <CardHeader className="text-center pb-2">
-          <CardTitle className="text-2xl sm:text-3xl lg:text-4xl font-light">
+          <CardTitle className="text-2xl sm:text-3xl lg:text-4xl font-light text-white">
             {t("title")}
           </CardTitle>
         </CardHeader>
@@ -114,7 +114,7 @@ export default function Technologies() {
         animate={{ opacity: 1 }}
         transition={{ duration: 10, delay: 2 }}
       >
-        <p className="text-sm sm:text-base text-muted-foreground">
+        <p className="text-sm sm:text-base text-white">
           {t("manyMoreTechnologies")}
         </p>
       </motion.div>
