@@ -272,7 +272,7 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
         >
-          <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8">
+          <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8 text-white">
             {t("title")}
           </CardTitle>
         </motion.div>

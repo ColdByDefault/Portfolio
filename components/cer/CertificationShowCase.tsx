@@ -300,7 +300,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
   return (
     <section className={className} id="cert">
       <Card className="max-w-7xl mx-auto bg-transparent dark:bg-transparent shadow-none !border-0">
-        <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8">
+        <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8 text-white">
           {t("title")}
         </CardTitle>
         <div className={`z-40 ${getContainerClasses()}`}>

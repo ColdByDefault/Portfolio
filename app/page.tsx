@@ -31,6 +31,7 @@ import { GitHubShowcase } from "@/components/github";
 import { PageSpeedInsights } from "@/components/pagespeed";
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -68,21 +69,71 @@ export default function Home() {
         </div>
       </div>
       <Hero />
-      <ProjectsShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
-      <div className="py-12 px-4 sm:px-6 lg:px-8" id="github">
-        <GitHubShowcase />
-      </div>
-      <Technologies />
-      <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
-      <div className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-light text-center mb-8">
-            {t("WebsitePerformance")}
-          </h2>
-          <PageSpeedInsights
-            url="https://www.coldbydefault.com"
-            strategy="mobile"
+
+      {/* Main content section with sticky background */}
+      <div className="relative">
+        {/* Sticky Background Image - Only in dark mode */}
+        <div className="dark:block hidden sticky top-0 h-screen z-0">
+          <Image
+            src="/bg.jpg"
+            fill
+            alt="background"
+            className="object-cover object-center"
+            priority
+            quality={100}
+            sizes="100vw"
+            style={{
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
           />
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
+
+          {/* Photo Credit */}
+          <div className="absolute bottom-4 right-4 text-xs text-white/70 hover:text-white/90 transition-colors duration-200">
+            <span>
+              Photo by{" "}
+              <a
+                href="https://unsplash.com/@birminghammuseumstrust"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-white"
+              >
+                Birmingham Museums Trust
+              </a>{" "}
+              on{" "}
+              <a
+                href="https://unsplash.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-white"
+              >
+                Unsplash
+              </a>
+            </span>
+          </div>
+        </div>
+
+        {/* Content Container */}
+        <div className="relative z-10 dark:-mt-[100vh]">
+          <ProjectsShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
+          <div className="py-12 px-4 sm:px-6 lg:px-8" id="github">
+            <GitHubShowcase />
+          </div>
+          <Technologies />
+          <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
+          <div className="py-12 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-light text-center mb-8 text-white">
+                {t("WebsitePerformance")}
+              </h2>
+              <PageSpeedInsights
+                url="https://www.coldbydefault.com"
+                strategy="mobile"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

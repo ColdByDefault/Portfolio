@@ -181,7 +181,7 @@ export default function GitHubShowcase({ className }: { className?: string }) {
     >
       {/* Section Header */}
       <div className="flex flex-col items-center space-y-2 text-center">
-        <h2 className="text-3xl font-light text-slate-900 dark:text-slate-100">
+        <h2 className="text-3xl font-light text-slate-100">
           GitHub Activity
         </h2>
         <Drawer>
@@ -267,7 +267,7 @@ export default function GitHubShowcase({ className }: { className?: string }) {
 
       {/* Last Updated Section */}
       <div className="text-center">
-        <Badge variant="outline" className="text-xs">
+        <Badge variant="outline" className="text-xs text-white">
           Last updated: {formatDate(githubData.lastUpdated)}{" "}
           {new Date(githubData.lastUpdated).toLocaleTimeString("en-US", {
             hour: "2-digit",
