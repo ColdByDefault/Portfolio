@@ -53,15 +53,30 @@ const LanguageSwitcher = () => {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="flex items-center w-12 h-10">
-          <Languages />
-          <span className="ml-1">{languages[locale]?.flag ?? "🌐"}</span>
+        <Button
+          variant="ghost"
+          className="flex items-center w-12 h-10"
+          aria-label={`Current language: ${
+            languages[locale]?.name ?? "English"
+          }. Click to change language`}
+        >
+          <Languages aria-hidden="true" />
+          <span className="ml-1" aria-hidden="true">
+            {languages[locale]?.flag ?? "🌐"}
+          </span>
+          <span className="sr-only">Change language</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" aria-label="Language selection menu">
         {Object.entries(languages).map(([key, { name, flag }]) => (
-          <DropdownMenuItem key={key} onClick={() => changeLocale(key)}>
-            <span className="mr-2">{flag}</span>
+          <DropdownMenuItem
+            key={key}
+            onClick={() => changeLocale(key)}
+            aria-label={`Switch to ${name}`}
+          >
+            <span className="mr-2" aria-hidden="true">
+              {flag}
+            </span>
             {name}
           </DropdownMenuItem>
         ))}

@@ -59,17 +59,25 @@ export default function Navbar() {
   const darkLink = "dark:text-gray-600 dark:hover:text-gray-200";
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex justify-center">
+    <nav
+      className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex justify-center"
+      role="navigation"
+      aria-label="Main navigation"
+    >
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
-            <Link href="/" className="text-sm tracking-tight pl-4">
+            <Link
+              href="/"
+              className="text-sm tracking-tight pl-4"
+              aria-label="ColdByDefault - Home"
+            >
               ColdByDefault
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-6" role="menubar">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -79,17 +87,21 @@ export default function Navbar() {
                   className={`
                   flex items-center space-x-2 text-sm font-medium transition-colors
                   ${lightLink} ${darkLink}
+                  focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md px-2 py-1
                 `}
+                  role="menuitem"
+                  aria-label={`Navigate to ${item.name} section`}
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-4 w-4" aria-hidden="true" />
                   <span>{item.name}</span>
                 </Link>
               );
             })}
             <Link
-              target="_blanck"
+              target="_blank"
               href="https://berich-hub.vercel.app"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              aria-label="Visit beRich.Hub project (opens in new tab)"
             >
               <Badge className="cursor-pointer">beRich.Hub</Badge>
             </Link>
@@ -104,8 +116,13 @@ export default function Navbar() {
               <LanguageSwitcher />
             </div>
             <div>
-              <Link href="https://github.com/coldbydefault">
-                <FaGithub />
+              <Link
+                href="https://github.com/coldbydefault"
+                aria-label="Visit ColdByDefault GitHub profile (opens in new tab)"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -121,12 +138,23 @@ export default function Navbar() {
           {/* Mobile Menu Trigger */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-4 w-4" />
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Open navigation menu"
+                aria-expanded={isOpen}
+                aria-controls="mobile-menu"
+              >
+                <Menu className="h-4 w-4" aria-hidden="true" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent
+              side="right"
+              className="w-[300px] sm:w-[400px]"
+              id="mobile-menu"
+              aria-label="Mobile navigation menu"
+            >
               <div className="flex flex-col space-y-4 mt-8">
                 <div className="text-lg font-semibold mb-4 pl-2">
                   {t("navigation")}
@@ -139,20 +167,22 @@ export default function Navbar() {
                       key={item.name}
                       href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className="flex items-center space-x-3 text-sm font-medium p-3 rounded-lg hover:bg-accent transition-colors"
+                      className="flex items-center space-x-3 text-sm font-medium p-3 rounded-lg hover:bg-accent transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+                      aria-label={`Navigate to ${item.name} section`}
                     >
-                      <Icon className="h-5 w-5" />
+                      <Icon className="h-5 w-5" aria-hidden="true" />
                       <span>{item.name}</span>
                     </Link>
                   );
                 })}
                 <Link
-                  target="_blanck"
+                  target="_blank"
                   href="https://berich-hub.vercel.app"
-                  rel="noreferrer"
-                  className="pl-2 flex gap-2 items-center"
+                  rel="noopener noreferrer"
+                  className="pl-2 flex gap-2 items-center focus:outline-none focus:ring-2 focus:ring-ring rounded-md"
+                  aria-label="Visit beRich.Hub project (opens in new tab)"
                 >
-                  <Telescope />
+                  <Telescope aria-hidden="true" />
                   <Badge variant="secondary">beRich.Hub</Badge>
                 </Link>
               </div>
