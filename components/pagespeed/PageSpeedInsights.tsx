@@ -95,12 +95,14 @@ export default function PageSpeedInsights({
             const errorData = await response.json();
             errorMessage = errorData.error || errorMessage;
           } catch (parseError) {
+            console.error("Error parsing error response JSON:", parseError);
             // If we can't parse the response as JSON, try to get the text
             try {
               const errorText = await response.text();
               errorMessage =
                 errorText || `HTTP ${response.status}: ${response.statusText}`;
             } catch (textError) {
+              console.error("Error reading error response text:", textError);
               errorMessage = `HTTP ${response.status}: ${response.statusText}`;
             }
           }
@@ -128,6 +130,7 @@ export default function PageSpeedInsights({
         try {
           result = await response.json();
         } catch (parseError) {
+          console.error("Error parsing API response JSON:", parseError);
           if (attempt < retries) {
             console.warn(`Parse error on attempt ${attempt + 1}, retrying...`);
             await new Promise((resolve) =>
@@ -304,7 +307,9 @@ export default function PageSpeedInsights({
           <CardTitle className="text-xl flex gap-2 items-center">
             <SiGooglecloud className="text-blue-600" />
             <span className="truncate">PageSpeed Insights</span>
-            <span className="text-xs text-muted-foreground">Powered by Google</span>
+            <span className="text-xs text-muted-foreground" role="note">
+              Powered by Google
+            </span>
           </CardTitle>
           {showBothStrategies && (
             <div className="flex items-center gap-1 bg-muted rounded-lg p-1 self-start sm:self-auto">

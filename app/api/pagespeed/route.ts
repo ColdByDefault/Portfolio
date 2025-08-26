@@ -75,6 +75,7 @@ export async function GET(request: NextRequest) {
         throw new Error("URL must use HTTP or HTTPS protocol");
       }
     } catch (urlError) {
+      console.error("Invalid URL provided:", urlError);
       return NextResponse.json(
         { error: "Invalid URL format provided" },
         { status: 400 }
@@ -119,6 +120,7 @@ export async function GET(request: NextRequest) {
         errorMessage =
           errorData.error?.message || errorData.message || errorMessage;
       } catch (parseError) {
+        console.error("Error parsing PageSpeed API response:", parseError);
         try {
           const errorText = await response.text();
           if (errorText && errorText.trim()) {
