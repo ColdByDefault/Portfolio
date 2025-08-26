@@ -90,8 +90,8 @@ export default function Home() {
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
 
-          {/* Photo Credit */}
-          <div className="absolute bottom-4 right-4 text-xs text-white/70 hover:text-white/90 transition-colors duration-200">
+          {/* Photo Credit - Hidden on small screens, visible on medium+ screens */}
+          <div className="hidden md:block absolute bottom-4 right-4 text-xs text-white/70 hover:text-white/90 transition-colors duration-200">
             <span>
               Photo by{" "}
               <a
@@ -128,10 +128,7 @@ export default function Home() {
               <h2 className="text-3xl font-light text-center mb-8 text-white">
                 {t("WebsitePerformance")}
               </h2>
-              <PageSpeedInsights
-                url="https://www.coldbydefault.com"
-                strategy="mobile"
-              />
+              <PageSpeedInsights url="https://www.coldbydefault.com" />
             </div>
           </div>
         </div>

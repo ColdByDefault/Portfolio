@@ -95,14 +95,39 @@ export default function Footer() {
         <div className="border-t border-gray-200 dark:border-gray-800 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="text-sm text-gray-500 dark:text-gray-400">
-              <p>
-                {new Date().getFullYear()} ColdByDefault&#174;. All rights
-                reserved.
+              <div className="flex flex-col">
+                <span>
+                  {new Date().getFullYear()} ColdByDefault&#174;. All rights
+                  reserved.
+                </span>
                 <span className="text-xs text-gray-600">
                   {" "}
                   The journey was sparked in Stockholm, 2021.
                 </span>
-              </p>
+              </div>
+              {/* Photo Credit for small screens only - hidden on md+ screens, only visible in dark mode */}
+              <div className="dark:block hidden md:dark:hidden text-xs text-gray-500 dark:text-gray-400 mt-2">
+                <span>
+                  Photo by{" "}
+                  <a
+                    href="https://unsplash.com/@birminghammuseumstrust"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200"
+                  >
+                    Birmingham Museums Trust
+                  </a>{" "}
+                  on{" "}
+                  <a
+                    href="https://unsplash.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200"
+                  >
+                    Unsplash
+                  </a>
+                </span>
+              </div>
             </div>
             <div className="flex space-x-6">
               <Link
