@@ -17,6 +17,8 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
 import { SiGooglecloud } from "react-icons/si";
+import { HiDesktopComputer } from "react-icons/hi";
+import { HiDevicePhoneMobile } from "react-icons/hi2";
 
 interface PageSpeedMetrics {
   performance: number;
@@ -42,18 +44,9 @@ interface PageSpeedResult {
 
 interface PageSpeedInsightsProps {
   url?: string;
-  strategy?: "mobile" | "desktop";
   showRefreshButton?: boolean;
+  showBothStrategies?: boolean;
 }
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getScoreBadgeVariant = (
-  score: number
-): "default" | "secondary" | "destructive" => {
-  if (score >= 90) return "default";
-  if (score >= 50) return "secondary";
-  return "destructive";
-};
 
 const getScoreBadgeColor = (score: number): string => {
   if (score >= 90) {
@@ -67,17 +60,18 @@ const getScoreBadgeColor = (score: number): string => {
 
 export default function PageSpeedInsights({
   url = "https://www.coldbydefault.com",
-  strategy = "mobile",
   showRefreshButton = true,
+  showBothStrategies = true,
 }: PageSpeedInsightsProps) {
-  const [data, setData] = useState<PageSpeedResult | null>(null);
+  const [mobileData, setMobileData] = useState<PageSpeedResult | null>(null);
+  const [desktopData, setDesktopData] = useState<PageSpeedResult | null>(null);
+  const [activeStrategy, setActiveStrategy] = useState<"mobile" | "desktop">(
+    "mobile"
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchPageSpeedData = async () => {
-    setLoading(true);
-    setError(null);
-
+  const fetchPageSpeedData = async (strategy: "mobile" | "desktop") => {
     try {
       const response = await fetch(
         `/api/pagespeed?url=${encodeURIComponent(url)}&strategy=${strategy}`,
@@ -94,51 +88,89 @@ export default function PageSpeedInsights({
       }
 
       const result = await response.json();
-      setData(result);
+      if (strategy === "mobile") {
+        setMobileData(result);
+      } else {
+        setDesktopData(result);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
+    }
+  };
+
+  const fetchAllData = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      if (showBothStrategies) {
+        // Fetch both mobile and desktop data
+        await Promise.all([
+          fetchPageSpeedData("mobile"),
+          fetchPageSpeedData("desktop"),
+        ]);
+      } else {
+        // Fetch only mobile data
+        await fetchPageSpeedData("mobile");
+      }
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchPageSpeedData();
-  }, [url, strategy]); // eslint-disable-line react-hooks/exhaustive-deps
+    fetchAllData();
+  }, [url]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const MetricSkeleton = () => (
-    <div className="flex items-center justify-between py-2">
-      <Skeleton className="h-4 w-24" />
-      <Skeleton className="h-6 w-12 rounded-full" />
-    </div>
-  );
+  const getCurrentData = () => {
+    return activeStrategy === "mobile" ? mobileData : desktopData;
+  };
+
+  const data = getCurrentData();
 
   const LoadingSkeleton = () => (
-    <Card>
-      <CardHeader>
+    <Card className="w-full">
+      <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-6 w-32" />
-          <Skeleton className="h-6 w-16" />
+          <div className="flex items-center gap-2">
+            <Skeleton className="h-6 w-6 rounded" />
+            <Skeleton className="h-6 w-40 rounded" />
+          </div>
+          <div className="flex items-center gap-1">
+            <Skeleton className="h-5 w-5 rounded" />
+            <Skeleton className="h-6 w-16 rounded-full" />
+          </div>
         </div>
-        <Skeleton className="h-4 w-48" />
+        <Skeleton className="h-4 w-64 rounded" />
       </CardHeader>
-      <CardContent className="space-y-4">
-        <MetricSkeleton />
-        <MetricSkeleton />
-        <MetricSkeleton />
-        <MetricSkeleton />
-        <Separator />
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <Skeleton className="h-4 w-20 mb-2" />
-            <Skeleton className="h-8 w-16" />
-          </div>
-          <div>
-            <Skeleton className="h-4 w-20 mb-2" />
-            <Skeleton className="h-8 w-16" />
+      <CardContent className="space-y-6">
+        <div className="space-y-4">
+          <Skeleton className="h-4 w-32 rounded" />
+          <div className="grid gap-3">
+            <div className="flex items-center justify-between py-3 px-3 rounded-lg bg-muted/30">
+              <Skeleton className="h-4 w-24 rounded" />
+              <Skeleton className="h-7 w-12 rounded-full" />
+            </div>
+            <div className="flex items-center justify-between py-3 px-3 rounded-lg bg-muted/30">
+              <Skeleton className="h-4 w-28 rounded" />
+              <Skeleton className="h-7 w-12 rounded-full" />
+            </div>
+            <div className="flex items-center justify-between py-3 px-3 rounded-lg bg-muted/30">
+              <Skeleton className="h-4 w-32 rounded" />
+              <Skeleton className="h-7 w-12 rounded-full" />
+            </div>
+            <div className="flex items-center justify-between py-3 px-3 rounded-lg bg-muted/30">
+              <Skeleton className="h-4 w-16 rounded" />
+              <Skeleton className="h-7 w-12 rounded-full" />
+            </div>
           </div>
         </div>
+        <Separator />
+        <Skeleton className="h-10 w-full rounded-md" />
       </CardContent>
+      <CardFooter className="pt-4">
+        <Skeleton className="h-4 w-48 rounded" />
+      </CardFooter>
     </Card>
   );
 
@@ -148,14 +180,20 @@ export default function PageSpeedInsights({
 
   if (error) {
     return (
-      <Card>
-        <CardContent className="flex flex-col items-center justify-center py-8">
-          <p className="text-red-500 mb-4">Error: {error}</p>
-          {showRefreshButton && (
-            <Button onClick={fetchPageSpeedData} variant="outline">
-              Try Again
-            </Button>
-          )}
+      <Card className="w-full">
+        <CardContent className="flex flex-col items-center justify-center py-12">
+          <div className="text-center space-y-4">
+            <div className="text-destructive text-lg">⚠️</div>
+            <p className="text-destructive font-medium">
+              Error loading PageSpeed data
+            </p>
+            <p className="text-sm text-muted-foreground">{error}</p>
+            {showRefreshButton && (
+              <Button onClick={fetchAllData} variant="outline" size="sm">
+                Try Again
+              </Button>
+            )}
+          </div>
         </CardContent>
       </Card>
     );
@@ -163,129 +201,109 @@ export default function PageSpeedInsights({
 
   if (!data) {
     return (
-      <Card>
-        <CardContent className="flex items-center justify-center py-8">
-          <p className="text-muted-foreground">No data available</p>
+      <Card className="w-full">
+        <CardContent className="flex items-center justify-center py-12">
+          <div className="text-center space-y-2">
+            <div className="text-muted-foreground text-lg">📊</div>
+            <p className="text-muted-foreground">No data available</p>
+          </div>
         </CardContent>
       </Card>
     );
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between">
+    <Card className="w-full">
+      <CardHeader className="pb-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <CardTitle className="text-xl flex gap-2 items-center">
-            <SiGooglecloud />
-            PageSpeed Insights
+            <SiGooglecloud className="text-blue-600" />
+            <span className="truncate">PageSpeed Insights</span>
           </CardTitle>
-        </div>
-        <p className="text-sm text-muted-foreground truncate">{data.url}</p>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {/* Core Metrics */}
-        <div className="space-y-3">
-          {Object.entries(data.metrics).map(([key, score]) => (
-            <div key={key} className="flex items-center justify-between">
-              <span className="text-sm font-medium capitalize">
-                {key === "bestPractices" ? "Best Practices" : key}
-              </span>
-              <Badge variant="outline" className={getScoreBadgeColor(score)}>
-                {score}
+          {showBothStrategies && (
+            <div className="flex items-center gap-1 bg-muted rounded-lg p-1 self-start sm:self-auto">
+              <Button
+                variant={activeStrategy === "mobile" ? "default" : "ghost"}
+                size="sm"
+                onClick={() => setActiveStrategy("mobile")}
+                className="h-8 px-2 sm:px-3 text-xs"
+              >
+                <HiDevicePhoneMobile className="h-4 w-4 sm:mr-1" />
+                <span className="hidden sm:inline">Mobile</span>
+              </Button>
+              <Button
+                variant={activeStrategy === "desktop" ? "default" : "ghost"}
+                size="sm"
+                onClick={() => setActiveStrategy("desktop")}
+                className="h-8 px-2 sm:px-3 text-xs"
+              >
+                <HiDesktopComputer className="h-4 w-4 sm:mr-1" />
+                <span className="hidden sm:inline">Desktop</span>
+              </Button>
+            </div>
+          )}
+          {!showBothStrategies && (
+            <div className="flex items-center gap-1 self-start sm:self-auto">
+              {data?.strategy === "desktop" ? (
+                <HiDesktopComputer className="h-5 w-5 text-muted-foreground" />
+              ) : (
+                <HiDevicePhoneMobile className="h-5 w-5 text-muted-foreground" />
+              )}
+              <Badge variant="outline" className="text-xs">
+                {data?.strategy}
               </Badge>
             </div>
-          ))}
+          )}
         </div>
-
-        <Separator />
-
-        {/* Core Web Vitals if available */}
-        {data.loadingExperience?.metrics ? (
-          <div>
-            <h4 className="text-sm font-semibold mb-3">
-              Core Web Vitals (Real User Data)
-            </h4>
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              {data.loadingExperience.metrics.LARGEST_CONTENTFUL_PAINT_MS && (
-                <div>
-                  <p className="text-muted-foreground">LCP</p>
-                  <p className="font-medium">
-                    {Math.round(
-                      data.loadingExperience.metrics.LARGEST_CONTENTFUL_PAINT_MS
-                        .percentile
-                    )}
-                    ms
-                  </p>
-                </div>
-              )}
-              {data.loadingExperience.metrics.FIRST_INPUT_DELAY_MS && (
-                <div>
-                  <p className="text-muted-foreground">FID</p>
-                  <p className="font-medium">
-                    {Math.round(
-                      data.loadingExperience.metrics.FIRST_INPUT_DELAY_MS
-                        .percentile
-                    )}
-                    ms
-                  </p>
-                </div>
-              )}
-              {data.loadingExperience.metrics.CUMULATIVE_LAYOUT_SHIFT_SCORE && (
-                <div>
-                  <p className="text-muted-foreground">CLS</p>
-                  <p className="font-medium">
-                    {(
-                      data.loadingExperience.metrics
-                        .CUMULATIVE_LAYOUT_SHIFT_SCORE.percentile / 100
-                    ).toFixed(3)}
-                  </p>
-                </div>
-              )}
-              {data.loadingExperience.metrics.FIRST_CONTENTFUL_PAINT_MS && (
-                <div>
-                  <p className="text-muted-foreground">FCP</p>
-                  <p className="font-medium">
-                    {Math.round(
-                      data.loadingExperience.metrics.FIRST_CONTENTFUL_PAINT_MS
-                        .percentile
-                    )}
-                    ms
-                  </p>
-                </div>
-              )}
-            </div>
+        <p className="text-sm text-muted-foreground truncate">{data?.url}</p>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        {/* Core Metrics */}
+        <div className="space-y-4">
+          <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
+            Performance Metrics
+          </h4>
+          <div className="grid gap-3">
+            {Object.entries(data?.metrics || {}).map(([key, score]) => (
+              <div
+                key={key}
+                className="flex items-center justify-between py-2 px-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors"
+              >
+                <span className="text-sm font-medium capitalize">
+                  {key === "bestPractices" ? "Best Practices" : key}
+                </span>
+                    score
+                  )} font-semibold`}
+                >
+                  {score}
+                </Badge>
+              </div>
+            ))}
           </div>
-        ) : (
-          <div>
-            <h4 className="text-sm font-semibold mb-3">Core Web Vitals</h4>
-            <div className="p-4 bg-muted/50 rounded-lg text-center">
-              <p className="text-sm text-muted-foreground mb-2">
-                📊 No real user data available
-              </p>
-              <p className="text-xs text-muted-foreground">
-                Core Web Vitals require sufficient traffic from Chrome users.
-                Data may take 28 days to appear for new sites.
-              </p>
-            </div>
-          </div>
-        )}
+        </div>
 
         {showRefreshButton && (
           <>
             <Separator />
             <Button
-              onClick={fetchPageSpeedData}
+              onClick={fetchAllData}
               variant="outline"
-              className="w-full cursor-pointer"
+              className="w-full"
               disabled={loading}
             >
-              Refresh Data
+              {loading ? "Refreshing..." : "Refresh Data"}
             </Button>
           </>
         )}
       </CardContent>
-      <CardFooter className="text-xs">
-        <p>Last updated: {new Date().toLocaleDateString()}</p>
+      <CardFooter className="pt-4">
+        <p className="text-xs text-muted-foreground">
+          Last updated: {new Date().toLocaleDateString()} at{" "}
+          {new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </p>
       </CardFooter>
     </Card>
   );
