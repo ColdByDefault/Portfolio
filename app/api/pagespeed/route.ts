@@ -60,9 +60,24 @@ export async function GET(request: NextRequest) {
       searchParams.get("category") ||
       "performance,accessibility,best-practices,seo";
 
-    if (!url || typeof url !== "string" || !url.startsWith("http")) {
+    // Validate URL more thoroughly
+    if (!url || typeof url !== "string") {
       return NextResponse.json(
-        { error: "Invalid URL provided" },
+        { error: "URL parameter is required" },
+        { status: 400 }
+      );
+    }
+
+    let validatedUrl: URL;
+    try {
+      validatedUrl = new URL(url);
+      if (!["http:", "https:"].includes(validatedUrl.protocol)) {
+        throw new Error("URL must use HTTP or HTTPS protocol");
+      }
+    } catch (urlError) {
+      console.error("Invalid URL provided:", urlError);
+      return NextResponse.json(
+        { error: "Invalid URL format provided" },
         { status: 400 }
       );
     }
@@ -94,38 +109,106 @@ export async function GET(request: NextRequest) {
         Referer: "https://www.coldbydefault.com",
         "User-Agent": "Mozilla/5.0 (compatible; Portfolio-PageSpeed/1.0)",
       },
+      // Add timeout
+      signal: AbortSignal.timeout(25000), // 25 second timeout
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error("PageSpeed API error:", errorText);
+      let errorMessage = `PageSpeed API error: ${response.status}`;
+      try {
+        const errorData = await response.json();
+        errorMessage =
+          errorData.error?.message || errorData.message || errorMessage;
+      } catch (parseError) {
+        console.error("Error parsing PageSpeed API response:", parseError);
+        try {
+          const errorText = await response.text();
+          if (errorText && errorText.trim()) {
+            errorMessage = `PageSpeed API error: ${errorText.substring(
+              0,
+              200
+            )}`;
+          }
+        } catch (textError) {
+          console.log(textError);
+        }
+      }
+
+      console.error("PageSpeed API error:", errorMessage);
       return NextResponse.json(
         {
-          error: sanitizeErrorMessage(
-            `PageSpeed API error: ${response.status}`
-          ),
+          error: sanitizeErrorMessage(errorMessage),
         },
-        { status: response.status }
+        { status: response.status >= 500 ? 500 : 400 }
       );
     }
 
-    const data = await response.json();
+    let data;
+    try {
+      data = await response.json();
+    } catch (parseError) {
+      console.error(
+        "Failed to parse PageSpeed API response as JSON:",
+        parseError
+      );
+      return NextResponse.json(
+        { error: "Invalid JSON response from PageSpeed API" },
+        { status: 500 }
+      );
+    }
+
+    // Validate the response structure
+    if (!data || typeof data !== "object") {
+      return NextResponse.json(
+        { error: "Invalid response format from PageSpeed API" },
+        { status: 500 }
+      );
+    }
+
+    // Check for API-level errors
+    if (data.error) {
+      const errorMessage =
+        data.error.message || "PageSpeed API returned an error";
+      console.error("PageSpeed API error:", data.error);
+      return NextResponse.json(
+        { error: sanitizeErrorMessage(errorMessage) },
+        { status: 400 }
+      );
+    }
 
     // Extract the scores from the PageSpeed response
     const lighthouseResult = data.lighthouseResult;
-    const categories = lighthouseResult?.categories || {};
+    if (!lighthouseResult || !lighthouseResult.categories) {
+      return NextResponse.json(
+        { error: "Missing lighthouse results in PageSpeed response" },
+        { status: 500 }
+      );
+    }
+
+    const categories = lighthouseResult.categories;
 
     const metrics: PageSpeedMetrics = {
-      performance: Math.round((categories.performance?.score || 0) * 100),
-      accessibility: Math.round((categories.accessibility?.score || 0) * 100),
-      bestPractices: Math.round(
-        (categories["best-practices"]?.score || 0) * 100
+      performance: Math.round(
+        Math.max(0, Math.min(100, (categories.performance?.score || 0) * 100))
       ),
-      seo: Math.round((categories.seo?.score || 0) * 100),
+      accessibility: Math.round(
+        Math.max(0, Math.min(100, (categories.accessibility?.score || 0) * 100))
+      ),
+      bestPractices: Math.round(
+        Math.max(
+          0,
+          Math.min(100, (categories["best-practices"]?.score || 0) * 100)
+        )
+      ),
+      seo: Math.round(
+        Math.max(0, Math.min(100, (categories.seo?.score || 0) * 100))
+      ),
     };
 
-    if (categories.pwa) {
-      metrics.pwa = Math.round((categories.pwa.score || 0) * 100);
+    if (categories.pwa && typeof categories.pwa.score === "number") {
+      metrics.pwa = Math.round(
+        Math.max(0, Math.min(100, categories.pwa.score * 100))
+      );
     }
 
     const result: PageSpeedResult = {

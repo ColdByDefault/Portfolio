@@ -263,14 +263,24 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
   );
 
   return (
-    <section className={className} id="projects" ref={sectionRef}>
+    <section
+      className={className}
+      id="projects"
+      ref={sectionRef}
+      aria-labelledby="projects-heading"
+    >
       <Card className="max-w-7xl mx-auto !border-0 bg-transparent dark:bg-transparent shadow-none">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
         >
-          <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8 text-white">
+          <CardTitle
+            id="projects-heading"
+            className="text-3xl font-light sm:text-4xl text-center mb-8 text-white"
+            role="heading"
+            aria-level={2}
+          >
             {t("title")}
           </CardTitle>
         </motion.div>

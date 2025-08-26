@@ -71,13 +71,13 @@ export default function Home() {
       <Hero />
 
       {/* Main content section with sticky background */}
-      <div className="relative">
+      <div className="relative" id="main-content">
         {/* Sticky Background Image - Only in dark mode */}
         <div className="dark:block hidden sticky top-0 h-screen z-0">
           <Image
             src="/bg.jpg"
             fill
-            alt="background"
+            alt="Background image of Birmingham Museums Trust"
             className="object-cover object-center"
             priority
             quality={100}

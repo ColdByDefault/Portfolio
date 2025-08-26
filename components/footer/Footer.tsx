@@ -132,40 +132,40 @@ export default function Footer() {
             <div className="flex space-x-6">
               <Link
                 href="https://x.com/ccoldbydefault"
-                target="_blanck"
+                target="_blank"
                 rel="noopener noreferrer"
-                aria-label="x"
-                className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors duration-200"
+                aria-label="Follow ColdByDefault on X (Twitter)"
+                className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md p-1"
               >
                 <span className="sr-only">X</span>
-                <FaSquareXTwitter />
+                <FaSquareXTwitter aria-hidden="true" />
               </Link>
               <Link
                 href="https://www.instagram.com/cold.by.default/#"
-                target="_blanck"
+                target="_blank"
                 rel="noopener noreferrer"
-                aria-label="instagram"
-                className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors duration-200"
+                aria-label="Follow ColdByDefault on Instagram"
+                className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md p-1"
               >
                 <span className="sr-only">Instagram</span>
-                <FaInstagramSquare />
+                <FaInstagramSquare aria-hidden="true" />
               </Link>
               <Link
                 href="https://github.com/ColdByDefault"
-                target="_blanck"
+                target="_blank"
                 rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors duration-200"
+                aria-label="Visit ColdByDefault GitHub profile"
+                className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md p-1"
               >
                 <span className="sr-only">GitHub</span>
-                <FaGithub />
+                <FaGithub aria-hidden="true" />
               </Link>
               <Link
                 href="https://www.linkedin.com/in/yazan-a-a-465b44312/"
-                target="_blanck"
+                target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors duration-200"
+                aria-label="Connect with ColdByDefault on LinkedIn"
+                className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md p-1"
               >
                 <span className="sr-only">LinkedIn</span>
                 <FaLinkedin />

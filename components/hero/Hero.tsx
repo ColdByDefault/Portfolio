@@ -15,7 +15,11 @@ function Hero() {
   const t = useTranslations("Hero");
 
   return (
-    <section className="w-full min-h-screen flex items-center justify-center py-12 md:py-12 lg:py-12">
+    <main
+      className="w-full min-h-screen flex items-center justify-center py-12 md:py-12 lg:py-12"
+      role="main"
+      aria-label="Hero section"
+    >
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center space-y-8 text-center">
           {/* Profile Picture */}
@@ -23,7 +27,7 @@ function Hero() {
             <div className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden border-4 border-border shadow-2xl">
               <Image
                 src="/profileDark.jpg"
-                alt="Profile Picture"
+                alt="Yazan Abo-Ayash - Full Stack Developer profile picture"
                 width={400}
                 height={400}
                 className="w-full h-full object-cover"
@@ -34,6 +38,8 @@ function Hero() {
               <Badge
                 variant="secondary"
                 className="px-3 py-1 text-sm font-medium"
+                role="status"
+                aria-label="Available for collaboration"
               >
                 {t("availableForCollaboration")}
               </Badge>
@@ -73,7 +79,7 @@ function Hero() {
           </div>
         </div>
       </div>
-    </section>
+    </main>
   );
 }
 
