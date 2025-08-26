@@ -11,6 +11,11 @@ import { GoRepoForked } from "react-icons/go";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import {
+  getCardHoverClasses,
+  getOverlayStyles,
+  gradientShiftCSS,
+} from "@/lib/card-animations";
 
 interface GitHubRepo {
   name: string;
@@ -91,15 +96,7 @@ export default function GitHubRepositories({
               viewport={{ once: true }}
             >
               <Card
-                className={`
-                  relative overflow-hidden transition-all duration-500 ease-out group
-                  ${isHovered ? "border-gray-500/50 bg-white shadow-2xl" : ""}
-                  ${
-                    isHovered
-                      ? "dark:bg-black dark:shadow-blue-500/20 bg-white shadow-blue-200/20"
-                      : ""
-                  }
-                  `}
+                className={getCardHoverClasses(isHovered)}
                 onMouseEnter={() => setHoveredRepo(repo.name)}
                 onMouseLeave={() => setHoveredRepo(null)}
               >
@@ -169,28 +166,17 @@ export default function GitHubRepositories({
                     absolute inset-0 rounded-lg transition-opacity duration-500
                     ${isHovered ? "opacity-100" : "opacity-0"}
                   `}
-                  style={{
-                    background: `
-                      linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%),
-                      linear-gradient(-45deg, transparent 30%, rgba(147, 197, 253, 0.1) 50%, transparent 70%)
-                    `,
-                    backgroundSize: "200% 200%",
-                    animation: isHovered
-                      ? "gradient-shift 3s ease infinite"
-                      : "none",
-                  }}
+                  style={getOverlayStyles(isHovered)}
                 />
-                <style jsx>{`
-                  @keyframes gradient-shift {
-                    0%,
-                    100% {
-                      background-position: 0% 0%;
-                    }
-                    50% {
-                      background-position: 100% 100%;
-                    }
-                  }
-                `}</style>
+                {/* Dark mode gradient overlay */}
+                <div
+                  className={`
+                    absolute inset-0 rounded-lg transition-opacity duration-500 dark:block hidden
+                    ${isHovered ? "opacity-100" : "opacity-0"}
+                  `}
+                  style={getOverlayStyles(isHovered, true)}
+                />
+                <style jsx>{gradientShiftCSS}</style>
               </Card>
             </motion.div>
           );

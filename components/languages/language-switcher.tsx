@@ -13,7 +13,7 @@ import {
 import { Languages } from "lucide-react";
 
 const languages: Record<string, { name: string; flag: string }> = {
-  en: { name: "English", flag: "🇺🇸" },
+  en: { name: "English", flag: "🇬🇧" },
   de: { name: "Deutsch", flag: "🇩🇪" },
   es: { name: "Español", flag: "🇪🇸" },
   sv: { name: "Svenska", flag: "🇸🇪" },

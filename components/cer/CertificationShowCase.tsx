@@ -11,6 +11,11 @@ import { Card, CardTitle } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useTranslations } from "next-intl";
+import {
+  getCardHoverClasses,
+  getOverlayStyles,
+  gradientShiftCSS,
+} from "@/lib/card-animations";
 
 interface CertificationShowcaseProps {
   className?: string;
@@ -63,17 +68,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
     return (
       <Card
         key={cert.id}
-        className={`
-          relative overflow-hidden transition-all duration-500 ease-out group px-3
-          ${
-            isCurrentCardHovered ? "border-gray-500/50 bg-white shadow-2xl" : ""
-          }
-          ${
-            isCurrentCardHovered
-              ? "dark:bg-black dark:shadow-blue-500/20 bg-white shadow-blue-200/20"
-              : ""
-          }
-        `}
+        className={`px-3 ${getCardHoverClasses(isCurrentCardHovered)}`}
         onMouseEnter={() => setHoveredCard(cert.id)}
         onMouseLeave={() => setHoveredCard(null)}
       >
@@ -106,16 +101,15 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
             absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none
             ${isCurrentCardHovered ? "opacity-100" : "opacity-0"}
           `}
-          style={{
-            backgroundImage: isCurrentCardHovered
-              ? `linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%),
-                 linear-gradient(-45deg, transparent 30%, rgba(147, 197, 253, 0.1) 50%, transparent 70%)`
-              : "none",
-            backgroundSize: "200% 200%",
-            animation: isCurrentCardHovered
-              ? "gradient-shift 3s ease infinite"
-              : "none",
-          }}
+          style={getOverlayStyles(isCurrentCardHovered)}
+        />
+        {/* Dark mode gradient overlay */}
+        <div
+          className={`
+            absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none dark:block hidden
+            ${isCurrentCardHovered ? "opacity-100" : "opacity-0"}
+          `}
+          style={getOverlayStyles(isCurrentCardHovered, true)}
         />
       </Card>
     );
@@ -306,17 +300,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
         <div className={`z-40 ${getContainerClasses()}`}>
           {certifications.map((cert) => renderCard(cert))}
         </div>
-        <style jsx>{`
-          @keyframes gradient-shift {
-            0%,
-            100% {
-              background-position: 0% 0%;
-            }
-            50% {
-              background-position: 100% 100%;
-            }
-          }
-        `}</style>
+        <style jsx>{gradientShiftCSS}</style>
       </Card>
     </section>
   );

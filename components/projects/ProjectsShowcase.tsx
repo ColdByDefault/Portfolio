@@ -19,6 +19,11 @@ import { Button } from "@/components/ui/button";
 import { FiGithub, FiExternalLink, FiCopy, FiCheck } from "react-icons/fi";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import {
+  getCardHoverClasses,
+  getOverlayStyles,
+  gradientShiftCSS,
+} from "@/lib/card-animations";
 
 interface ProjectsShowcaseProps {
   className?: string;
@@ -80,15 +85,7 @@ const ProjectCard = ({
       className="group"
     >
       <Card
-        className={`
-                  relative overflow-hidden transition-all duration-500 ease-out group
-                  ${isHovered ? "border-gray-500/50 bg-white shadow-2xl" : ""}
-                  ${
-                    isHovered
-                      ? "dark:bg-black dark:shadow-blue-500/20 bg-white shadow-blue-200/20"
-                      : ""
-                  }
-                  `}
+        className={getCardHoverClasses(isHovered)}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -237,14 +234,15 @@ const ProjectCard = ({
                     absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none
                     ${isHovered ? "opacity-100" : "opacity-0"}
                   `}
-          style={{
-            backgroundImage: isHovered
-              ? `linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%),
-                 linear-gradient(-45deg, transparent 30%, rgba(147, 197, 253, 0.1) 50%, transparent 70%)`
-              : "none",
-            backgroundSize: "200% 200%",
-            animation: isHovered ? "gradient-shift 3s ease infinite" : "none",
-          }}
+          style={getOverlayStyles(isHovered)}
+        />
+        {/* Dark mode gradient overlay */}
+        <div
+          className={`
+                    absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none dark:block hidden
+                    ${isHovered ? "opacity-100" : "opacity-0"}
+                  `}
+          style={getOverlayStyles(isHovered, true)}
         />
       </Card>
     </motion.div>
@@ -323,17 +321,7 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
           </motion.div>
         )}
       </Card>
-      <style jsx>{`
-        @keyframes gradient-shift {
-          0%,
-          100% {
-            background-position: 0% 0%;
-          }
-          50% {
-            background-position: 100% 100%;
-          }
-        }
-      `}</style>
+      <style jsx>{gradientShiftCSS}</style>
     </section>
   );
 }
