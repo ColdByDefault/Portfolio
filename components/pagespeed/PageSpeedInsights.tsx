@@ -272,10 +272,13 @@ export default function PageSpeedInsights({
                 <span className="text-sm font-medium capitalize">
                   {key === "bestPractices" ? "Best Practices" : key}
                 </span>
-                    score
+                <Badge
+                  variant="outline"
+                  className={`${getScoreBadgeColor(
+                    score as number
                   )} font-semibold`}
                 >
-                  {score}
+                  {score as number}
                 </Badge>
               </div>
             ))}
