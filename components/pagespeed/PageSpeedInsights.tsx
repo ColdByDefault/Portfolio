@@ -70,45 +70,120 @@ export default function PageSpeedInsights({
   );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
 
-  const fetchPageSpeedData = async (strategy: "mobile" | "desktop") => {
-    try {
-      const response = await fetch(
-        `/api/pagespeed?url=${encodeURIComponent(url)}&strategy=${strategy}`,
-        {
-          headers: {
-            "X-Client-ID": "pagespeed-component",
-          },
+  const fetchPageSpeedData = async (
+    strategy: "mobile" | "desktop",
+    retries = 2
+  ) => {
+    for (let attempt = 0; attempt <= retries; attempt++) {
+      try {
+        const response = await fetch(
+          `/api/pagespeed?url=${encodeURIComponent(url)}&strategy=${strategy}`,
+          {
+            headers: {
+              "X-Client-ID": "pagespeed-component",
+            },
+            // Add a timeout
+            signal: AbortSignal.timeout(30000), // 30 second timeout
+          }
+        );
+
+        if (!response.ok) {
+          let errorMessage = "Failed to fetch PageSpeed data";
+          try {
+            const errorData = await response.json();
+            errorMessage = errorData.error || errorMessage;
+          } catch (parseError) {
+            // If we can't parse the response as JSON, try to get the text
+            try {
+              const errorText = await response.text();
+              errorMessage =
+                errorText || `HTTP ${response.status}: ${response.statusText}`;
+            } catch (textError) {
+              errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+            }
+          }
+
+          // If it's a rate limit or server error, retry
+          if (
+            attempt < retries &&
+            (response.status === 429 || response.status >= 500)
+          ) {
+            console.warn(
+              `Attempt ${attempt + 1} failed, retrying in ${
+                (attempt + 1) * 2
+              } seconds...`
+            );
+            await new Promise((resolve) =>
+              setTimeout(resolve, (attempt + 1) * 2000)
+            );
+            continue;
+          }
+
+          throw new Error(errorMessage);
         }
-      );
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to fetch PageSpeed data");
-      }
+        let result;
+        try {
+          result = await response.json();
+        } catch (parseError) {
+          if (attempt < retries) {
+            console.warn(`Parse error on attempt ${attempt + 1}, retrying...`);
+            await new Promise((resolve) =>
+              setTimeout(resolve, (attempt + 1) * 1000)
+            );
+            continue;
+          }
+          throw new Error("Invalid response format from PageSpeed API");
+        }
 
-      const result = await response.json();
-      if (strategy === "mobile") {
-        setMobileData(result);
-      } else {
-        setDesktopData(result);
+        // Validate the result structure
+        if (!result || typeof result !== "object" || !result.metrics) {
+          if (attempt < retries) {
+            console.warn(
+              `Invalid result structure on attempt ${attempt + 1}, retrying...`
+            );
+            await new Promise((resolve) =>
+              setTimeout(resolve, (attempt + 1) * 1000)
+            );
+            continue;
+          }
+          throw new Error("Invalid data structure received from PageSpeed API");
+        }
+
+        if (strategy === "mobile") {
+          setMobileData(result);
+        } else {
+          setDesktopData(result);
+        }
+        return; // Success, exit the retry loop
+      } catch (err) {
+        if (attempt === retries) {
+          // Last attempt failed
+          console.error(
+            `PageSpeed fetch error (${strategy}) after ${
+              retries + 1
+            } attempts:`,
+            err
+          );
+          setError(err instanceof Error ? err.message : "An error occurred");
+        }
       }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
     }
   };
 
   const fetchAllData = async () => {
     setLoading(true);
     setError(null);
+    setRetryCount((prev) => prev + 1);
 
     try {
       if (showBothStrategies) {
-        // Fetch both mobile and desktop data
-        await Promise.all([
-          fetchPageSpeedData("mobile"),
-          fetchPageSpeedData("desktop"),
-        ]);
+        // Fetch both mobile and desktop data with some delay between requests
+        await fetchPageSpeedData("mobile");
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // 1 second delay
+        await fetchPageSpeedData("desktop");
       } else {
         // Fetch only mobile data
         await fetchPageSpeedData("mobile");
@@ -187,10 +262,20 @@ export default function PageSpeedInsights({
             <p className="text-destructive font-medium">
               Error loading PageSpeed data
             </p>
-            <p className="text-sm text-muted-foreground">{error}</p>
+            <p className="text-sm text-muted-foreground max-w-md">{error}</p>
+            {retryCount > 0 && (
+              <p className="text-xs text-muted-foreground">
+                Attempt #{retryCount}
+              </p>
+            )}
             {showRefreshButton && (
-              <Button onClick={fetchAllData} variant="outline" size="sm">
-                Try Again
+              <Button
+                onClick={fetchAllData}
+                variant="outline"
+                size="sm"
+                disabled={loading}
+              >
+                {loading ? "Retrying..." : "Try Again"}
               </Button>
             )}
           </div>
@@ -219,6 +304,7 @@ export default function PageSpeedInsights({
           <CardTitle className="text-xl flex gap-2 items-center">
             <SiGooglecloud className="text-blue-600" />
             <span className="truncate">PageSpeed Insights</span>
+            <span className="text-xs text-muted-foreground">Powered by Google</span>
           </CardTitle>
           {showBothStrategies && (
             <div className="flex items-center gap-1 bg-muted rounded-lg p-1 self-start sm:self-auto">
