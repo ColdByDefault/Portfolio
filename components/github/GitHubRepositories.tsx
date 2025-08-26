@@ -96,7 +96,7 @@ export default function GitHubRepositories({
                   ${isHovered ? "border-gray-500/50 bg-white shadow-2xl" : ""}
                   ${
                     isHovered
-                      ? "dark:bg-black dark:shadow-blue-500/20 bg-white shadow-blue-200/20"
+                      ? "dark:bg-black dark:shadow-yellow-500/20 dark:border-yellow-500/50 bg-white shadow-blue-200/20"
                       : ""
                   }
                   `}
@@ -173,6 +173,23 @@ export default function GitHubRepositories({
                     background: `
                       linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%),
                       linear-gradient(-45deg, transparent 30%, rgba(147, 197, 253, 0.1) 50%, transparent 70%)
+                    `,
+                    backgroundSize: "200% 200%",
+                    animation: isHovered
+                      ? "gradient-shift 3s ease infinite"
+                      : "none",
+                  }}
+                />
+                {/* Dark mode gradient overlay */}
+                <div
+                  className={`
+                    absolute inset-0 rounded-lg transition-opacity duration-500 dark:block hidden
+                    ${isHovered ? "opacity-100" : "opacity-0"}
+                  `}
+                  style={{
+                    background: `
+                      linear-gradient(45deg, transparent 30%, rgba(218, 165, 32, 0.09) 50%, transparent 70%),
+                      linear-gradient(-45deg, transparent 30%, rgba(255, 215, 0, 0.09) 50%, transparent 70%)
                     `,
                     backgroundSize: "200% 200%",
                     animation: isHovered
