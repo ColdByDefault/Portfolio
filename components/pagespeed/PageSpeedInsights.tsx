@@ -269,8 +269,8 @@ export default function PageSpeedInsights({
             <p className="text-sm text-muted-foreground max-w-md">{error}</p>
             {error.includes("rate limit") && (
               <p className="text-xs text-amber-600 bg-amber-50 px-3 py-1 rounded">
-                Please wait a moment before retrying. Google's PageSpeed API has
-                rate limits.
+                Please wait a moment before retrying. Google&apos;s PageSpeed
+                API has rate limits.
               </p>
             )}
             {error.includes("timeout") && (
