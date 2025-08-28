@@ -300,7 +300,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
         <div className={`z-40 ${getContainerClasses()}`}>
           {certifications.map((cert) => renderCard(cert))}
         </div>
-        <style jsx>{gradientShiftCSS}</style>
+        <style dangerouslySetInnerHTML={{ __html: gradientShiftCSS }} />
       </Card>
     </section>
   );

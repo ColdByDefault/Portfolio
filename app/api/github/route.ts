@@ -66,7 +66,7 @@ class GitHubDataFetcher {
         );
       }
 
-      const data = await response.json();
+      const data: GitHubProfile = (await response.json()) as GitHubProfile;
       console.log("Profile data fetched successfully");
       return data;
     } catch (error) {
@@ -89,7 +89,8 @@ class GitHubDataFetcher {
       throw new Error(`Failed to fetch repositories: ${response.statusText}`);
     }
 
-    const repos: GitHubRepository[] = await response.json();
+    const repos: GitHubRepository[] =
+      (await response.json()) as GitHubRepository[];
 
     // Filter out forks and format data
     const formattedRepos = repos
@@ -127,8 +128,9 @@ class GitHubDataFetcher {
       );
     }
 
-    const ownedRepos: GitHubRepository[] = await ownedReposResponse.json();
-    const profile = await this.fetchProfile();
+    const ownedRepos: GitHubRepository[] =
+      (await ownedReposResponse.json()) as GitHubRepository[];
+    const profile: GitHubProfile = await this.fetchProfile();
 
     // Calculate statistics
     const totalStars = ownedRepos.reduce(
@@ -180,7 +182,7 @@ class GitHubDataFetcher {
       throw new Error(`Failed to fetch activity: ${response.statusText}`);
     }
 
-    const events: GitHubEvent[] = await response.json();
+    const events: GitHubEvent[] = (await response.json()) as GitHubEvent[];
     return events.slice(0, limit).map(
       (event: GitHubEvent): GitHubActivity => ({
         type: event.type,
@@ -196,28 +198,32 @@ class GitHubDataFetcher {
     const repoName = event.repo?.name?.split("/").pop() || "";
 
     switch (eventType) {
-      case "PushEvent":
+      case "PushEvent": {
         const commits = event.payload?.commits?.length || 0;
         return `Pushed ${commits} commit${
           commits !== 1 ? "s" : ""
         } to ${repoName}`;
-      case "CreateEvent":
+      }
+      case "CreateEvent": {
         const refType = event.payload?.ref_type || "";
         return `Created ${refType} in ${repoName}`;
+      }
       case "ForkEvent":
         return `Forked ${repoName}`;
       case "WatchEvent":
         return `Starred ${repoName}`;
-      case "IssuesEvent":
+      case "IssuesEvent": {
         const issueAction = event.payload?.action || "";
         return `${
           issueAction.charAt(0).toUpperCase() + issueAction.slice(1)
         } issue in ${repoName}`;
-      case "PullRequestEvent":
+      }
+      case "PullRequestEvent": {
         const prAction = event.payload?.action || "";
         return `${
           prAction.charAt(0).toUpperCase() + prAction.slice(1)
         } pull request in ${repoName}`;
+      }
       default:
         return `${eventType.replace("Event", "")} in ${repoName}`;
     }
@@ -270,7 +276,7 @@ export async function GET(request: NextRequest) {
         data = { activity: await fetcher.fetchRecentActivity() };
         break;
       case "all":
-      default:
+      default: {
         const [profile, repos, stats, activity] = await Promise.all([
           fetcher.fetchProfile(),
           fetcher.fetchRepositories(),
@@ -286,6 +292,7 @@ export async function GET(request: NextRequest) {
           lastUpdated: new Date().toISOString(),
         };
         break;
+      }
     }
 
     return NextResponse.json(data, {

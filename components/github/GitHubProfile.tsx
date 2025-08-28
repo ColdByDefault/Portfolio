@@ -164,9 +164,7 @@ export default function GitHubProfile({ profile, stats }: GitHubProfileProps) {
                   `}
         style={getOverlayStyles(isHovered, true)}
       />
-      <style jsx global>
-        {gradientShiftCSS}
-      </style>
+      <style dangerouslySetInnerHTML={{ __html: gradientShiftCSS }} />
     </Card>
   );
 }

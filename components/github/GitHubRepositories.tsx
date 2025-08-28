@@ -176,7 +176,7 @@ export default function GitHubRepositories({
                   `}
                   style={getOverlayStyles(isHovered, true)}
                 />
-                <style jsx>{gradientShiftCSS}</style>
+                <style dangerouslySetInnerHTML={{ __html: gradientShiftCSS }} />
               </Card>
             </motion.div>
           );
