@@ -69,13 +69,39 @@ export default function PageSpeedInsights({
 
         if (!response.ok) {
           let errorMessage = "Failed to fetch PageSpeed data";
-          try {
-            const errorData = (await response.json()) as PageSpeedApiResponse;
-            errorMessage = errorData.error || errorMessage;
-          } catch (parseError) {
-            console.error("Error parsing error response JSON:", parseError);
-            errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+
+          // Handle specific HTTP status codes first
+          if (response.status === 504) {
+            errorMessage =
+              "PageSpeed analysis timed out. The website may be slow to load.";
+          } else if (response.status === 429) {
+            errorMessage =
+              "Too many requests. Please wait a moment and try again.";
+          } else if (response.status === 503) {
+            errorMessage =
+              "PageSpeed API is currently unavailable. Please try again later.";
+          } else {
+            // Only try to parse JSON for other error codes
+            try {
+              const contentType = response.headers.get("content-type");
+              if (contentType && contentType.includes("application/json")) {
+                const errorData =
+                  (await response.json()) as PageSpeedApiResponse;
+                errorMessage = errorData.error || errorMessage;
+              } else {
+                // Response is not JSON, use status text
+                errorMessage = `HTTP ${response.status}: ${
+                  response.statusText || "Unknown error"
+                }`;
+              }
+            } catch (parseError) {
+              console.error("Error parsing error response JSON:", parseError);
+              errorMessage = `HTTP ${response.status}: ${
+                response.statusText || "Unknown error"
+              }`;
+            }
           }
+
           throw new Error(errorMessage);
         }
 
@@ -149,12 +175,6 @@ export default function PageSpeedInsights({
     void fetchAllData();
   }, [fetchAllData]);
 
-  // Remove the second useEffect that's causing conflicts
-  // useEffect(() => {
-  //   fetchAllData();
-  // }, [url]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Cleanup interval on unmount
   useEffect(() => {
     return () => {
       if (progressInterval) {
@@ -250,16 +270,23 @@ export default function PageSpeedInsights({
               Error loading PageSpeed data
             </p>
             <p className="text-sm text-muted-foreground max-w-md">{error}</p>
-            {error.includes("rate limit") && (
-              <p className="text-xs text-amber-600 bg-amber-50 px-3 py-1 rounded">
+            {(error.includes("rate limit") ||
+              error.includes("Too many requests")) && (
+              <p className="text-xs text-amber-600 bg-amber-50 dark:bg-amber-900/20 dark:text-amber-400 px-3 py-1 rounded">
                 Please wait a moment before retrying. Google&apos;s PageSpeed
                 API has rate limits.
               </p>
             )}
-            {error.includes("timeout") && (
-              <p className="text-xs text-blue-600 bg-blue-50 px-3 py-1 rounded">
+            {(error.includes("timeout") || error.includes("timed out")) && (
+              <p className="text-xs text-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:text-blue-400 px-3 py-1 rounded">
                 The analysis is taking longer than usual. This may indicate slow
-                loading times.
+                loading times for the website.
+              </p>
+            )}
+            {error.includes("unavailable") && (
+              <p className="text-xs text-orange-600 bg-orange-50 dark:bg-orange-900/20 dark:text-orange-400 px-3 py-1 rounded">
+                The PageSpeed service is temporarily unavailable. Please try
+                again in a few minutes.
               </p>
             )}
             {retryCount > 0 && (
@@ -272,11 +299,16 @@ export default function PageSpeedInsights({
                 onClick={() => void fetchAllData()}
                 variant="outline"
                 size="sm"
-                disabled={loading || error.includes("rate limit")}
+                disabled={
+                  loading ||
+                  error.includes("rate limit") ||
+                  error.includes("Too many requests")
+                }
               >
                 {loading
                   ? "Retrying..."
-                  : error.includes("rate limit")
+                  : error.includes("rate limit") ||
+                    error.includes("Too many requests")
                   ? "Rate Limited"
                   : "Try Again"}
               </Button>

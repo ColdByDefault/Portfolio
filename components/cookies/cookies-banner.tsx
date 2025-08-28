@@ -91,10 +91,12 @@ export function CookiesBanner() {
                   We value your privacy
                 </CardTitle>
                 <CardDescription className="text-xs text-gray-600 dark:text-gray-300 mt-1">
-                  I bake my own cookies! However I MUST use your cookies for
-                  themes and performance. By clicking &ldquo;Accept All&rdquo;,
-                  you consent to the use of all cookies. Promise I won&apos;t
-                  eat them!
+                  I bake my own cookies! Theme preferences are stored locally in
+                  your browser. I use Vercel Analytics and Speed Insights to
+                  monitor performance, which are privacy-friendly and do not
+                  track personal data. By clicking &ldquo;Accept All&rdquo;, you
+                  consent to the use of all cookies. Promise I won&apos;t eat
+                  them!
                 </CardDescription>
               </div>
 
@@ -104,7 +106,7 @@ export function CookiesBanner() {
                   size="sm"
                   className="flex-1 text-xs"
                 >
-                  Accept All, otherwise themes will be boring
+                  Accept All
                 </Button>
                 <Button
                   onClick={handleDecline}
