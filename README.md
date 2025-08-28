@@ -4,7 +4,8 @@
 
 Modern, secure, high‑performance developer portfolio built with Next.js 15, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
-<img width="974" height="170" alt="Lighthouse Score Screenshot" src="https://github.com/user-attachments/assets/226d0556-b09e-49a6-9499-2217b6fcfec5" />
+<img width="966" height="174" alt="image" src="https://github.com/user-attachments/assets/de1d9284-c385-4e15-9956-2781e583d66a" />
+
 
 **Live:** https://www.coldbydefault.com • **Stack:** Next.js 15.5.1 · React 19 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.3.5 · ESLint 9.x · Vercel
 
