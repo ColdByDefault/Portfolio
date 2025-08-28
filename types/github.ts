@@ -39,6 +39,63 @@ export interface GitHubUser {
   updated_at: string;
 }
 
+export interface GitHubRepo {
+  name: string;
+  description: string;
+  html_url: string;
+  language: string;
+  stargazers_count: number;
+  forks_count: number;
+  updated_at: string;
+  topics: string[];
+  homepage: string;
+  pinned?: boolean;
+}
+
+export interface GitHubProfile {
+  name: string;
+  login: string;
+  avatar_url: string;
+  bio: string;
+  location: string;
+  blog: string;
+  html_url: string;
+}
+
+export interface GitHubStats {
+  public_repos: number;
+  followers: number;
+  following: number;
+  total_stars: number;
+  total_forks: number;
+  most_used_language: string;
+  languages: Record<string, number>;
+}
+
+export interface GitHubActivity {
+  type: string;
+  repo: string;
+  created_at: string;
+  action: string;
+}
+
+export interface GitHubData {
+  profile: GitHubProfile;
+  repositories: GitHubRepo[];
+  stats: GitHubStats;
+  activity: GitHubActivity[];
+  lastUpdated: string;
+}
+
+export interface GitHubApiResponse {
+  profile?: GitHubProfile;
+  repositories?: GitHubRepo[];
+  stats?: GitHubStats;
+  activity?: GitHubActivity[];
+  lastUpdated?: string;
+  error?: string;
+}
+
 export interface GitHubRepository {
   id: number;
   node_id: string;
