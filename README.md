@@ -1,6 +1,6 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V3.5.0
+# ColdByDefault Portfolio · V4.0.0
 
 Modern, secure, high‑performance developer portfolio built with Next.js 15, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
