@@ -4,13 +4,14 @@
  */
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FaGithub, FaTerminal } from "react-icons/fa";
 import GitHubProfile from "./GitHubProfile";
 import GitHubRepositories from "./GitHubRepositories";
+import type { GitHubData, GitHubApiResponse } from "@/types/github";
 import {
   Drawer,
   DrawerContent,
@@ -22,54 +23,6 @@ import {
   DrawerFooter,
 } from "@/components/ui/Drawer";
 
-interface GitHubRepo {
-  name: string;
-  description: string;
-  html_url: string;
-  language: string;
-  stargazers_count: number;
-  forks_count: number;
-  updated_at: string;
-  topics: string[];
-  homepage: string;
-  pinned?: boolean;
-}
-
-interface GitHubStats {
-  public_repos: number;
-  followers: number;
-  following: number;
-  total_stars: number;
-  total_forks: number;
-  most_used_language: string;
-  languages: Record<string, number>;
-}
-
-interface GitHubProfile {
-  name: string;
-  login: string;
-  avatar_url: string;
-  bio: string;
-  location: string;
-  blog: string;
-  html_url: string;
-}
-
-interface GitHubActivity {
-  type: string;
-  repo: string;
-  created_at: string;
-  action: string;
-}
-
-interface GitHubData {
-  profile: GitHubProfile;
-  repositories: GitHubRepo[];
-  stats: GitHubStats;
-  activity: GitHubActivity[];
-  lastUpdated: string;
-}
-
 export default function GitHubShowcase({ className }: { className?: string }) {
   const [githubData, setGithubData] = useState<GitHubData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -77,28 +30,46 @@ export default function GitHubShowcase({ className }: { className?: string }) {
   const [mcpLogs, setMcpLogs] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    fetchGitHubData();
-  }, []);
-
-  const fetchGitHubData = async () => {
+  const fetchGitHubData = useCallback(async (): Promise<void> => {
     try {
       setLoading(true);
       const response = await fetch("/api/github");
       if (!response.ok) {
         throw new Error("Failed to fetch GitHub data");
       }
-      const data = await response.json();
-      setGithubData(data);
-      setError(null);
+      const data = (await response.json()) as GitHubApiResponse;
+
+      if (
+        data.profile &&
+        data.repositories &&
+        data.stats &&
+        data.activity &&
+        data.lastUpdated
+      ) {
+        const validatedData: GitHubData = {
+          profile: data.profile,
+          repositories: data.repositories,
+          stats: data.stats,
+          activity: data.activity,
+          lastUpdated: data.lastUpdated,
+        };
+        setGithubData(validatedData);
+        setError(null);
+      } else {
+        throw new Error("Invalid data structure received");
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const simulateMCPCommunication = async () => {
+  useEffect(() => {
+    void fetchGitHubData();
+  }, [fetchGitHubData]);
+
+  const simulateMCPCommunication = useCallback(async (): Promise<void> => {
     setIsLoading(true);
     setMcpLogs([]);
 
@@ -127,7 +98,7 @@ export default function GitHubShowcase({ className }: { className?: string }) {
     }
 
     setIsLoading(false);
-  };
+  }, [githubData]);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -164,7 +135,7 @@ export default function GitHubShowcase({ className }: { className?: string }) {
               <p className="text-slate-600 dark:text-slate-400">
                 {error || "Failed to load GitHub data"}
               </p>
-              <Button onClick={fetchGitHubData} className="mt-4">
+              <Button onClick={() => void fetchGitHubData()} className="mt-4">
                 Try Again
               </Button>
             </div>
@@ -181,9 +152,7 @@ export default function GitHubShowcase({ className }: { className?: string }) {
     >
       {/* Section Header */}
       <div className="flex flex-col items-center space-y-2 text-center">
-        <h2 className="text-3xl font-light text-slate-100">
-          GitHub Activity
-        </h2>
+        <h2 className="text-3xl font-light text-slate-100">GitHub Activity</h2>
         <Drawer>
           <DrawerTrigger asChild>
             <Button
@@ -207,7 +176,7 @@ export default function GitHubShowcase({ className }: { className?: string }) {
             <div className="p-4 flex-1">
               <div className="mb-4">
                 <Button
-                  onClick={simulateMCPCommunication}
+                  onClick={() => void simulateMCPCommunication()}
                   disabled={isLoading}
                   className="w-full cursor-pointer"
                 >

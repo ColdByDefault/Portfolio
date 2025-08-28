@@ -175,7 +175,7 @@ const ProjectCard = ({
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={handleCopyCloneLink}
+                onClick={() => void handleCopyCloneLink()}
                 className="h-6 w-6 p-0 cursor-pointer hover:bg-muted relative z-10"
               >
                 {copied ? (
@@ -331,7 +331,11 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
           </motion.div>
         )}
       </Card>
-      <style jsx>{gradientShiftCSS}</style>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `<style>${gradientShiftCSS}</style>`,
+        }}
+      />
     </section>
   );
 }

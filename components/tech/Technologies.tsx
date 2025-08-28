@@ -88,7 +88,11 @@ export default function Technologies() {
             })}
           </div>
         </CardContent>
-        <style jsx>{gradientShiftCSS}</style>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `<style>${gradientShiftCSS}</style>`,
+          }}
+        />
       </Card>
       <motion.div
         className="text-center pt-2 sm:pt-4"
