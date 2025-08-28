@@ -1,12 +1,12 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V3.4.3
+# ColdByDefault Portfolio · V3.5.0
 
 Modern, secure, high‑performance developer portfolio built with Next.js 15, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
 <img width="974" height="170" alt="Lighthouse Score Screenshot" src="https://github.com/user-attachments/assets/226d0556-b09e-49a6-9499-2217b6fcfec5" />
 
-**Live:** https://www.coldbydefault.com • **Stack:** Next.js 15 · TypeScript · Tailwind · shadcn/ui · Framer Motion · next-intl · Vercel
+**Live:** https://www.coldbydefault.com • **Stack:** Next.js 15.5.1 · React 19 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.3.5 · ESLint 9.x · Vercel
 
 </div>
 
@@ -32,7 +32,6 @@ v3.2
 
 [![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/79c9876c-acce-48e7-b661-264f4bf514a5.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/79c9876c-acce-48e7-b661-264f4bf514a5)
 
-
 latest 3.4~
 
 [![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/76e31353-a33c-4db5-9263-8ede3103f951.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/76e31353-a33c-4db5-9263-8ede3103f951)
@@ -53,9 +52,10 @@ latest 3.4~
 10. Privacy & Data Handling
 11. Development (Local Setup)
 12. Quality & Tooling
-13. Roadmap
-14. License & Intellectual Property
-15. Contact
+13. Version 3.5.0 Updates
+14. Roadmap
+15. License & Intellectual Property
+16. Contact
 
 ---
 
@@ -69,13 +69,21 @@ This portfolio serves as a professional showcase of engineering capability: perf
 
 Core:
 
-- Next.js 15 (App Router, Server Components, Edge runtime where applicable)
-- TypeScript (strict mode)
-- Tailwind CSS + PostCSS
+- Next.js 15.5.1 (App Router, Server Components, Edge runtime where applicable)
+- React 19.1.1, TypeScript 5.x (strict mode)
+- Tailwind CSS 4.1.12 + PostCSS
 - shadcn/ui (accessible primitives)
-- Framer Motion (animation system)
-- next-intl (runtime + server i18n)
+- Embla Carousel 8.6.0 (modern carousel with autoplay)
+- Framer Motion 12.x (animation system)
+- next-intl 4.3.5 (runtime + server i18n)
 - Vercel Hosting & Edge Network
+
+Development & Quality:
+
+- ESLint 9.x (flat config system, TypeScript-ESLint integration)
+- Modern plugin architecture (React, Next.js, Import resolver)
+- Strict type checking with zero `any` tolerance
+- Enhanced import/export linting and validation
 
 Supporting & Utilities:
 
@@ -92,23 +100,29 @@ User Experience & UI:
 
 - Responsive, mobile‑first adaptive layout
 - Theme switching (light/dark) with persistence
+- Enhanced carousel showcases with autoplay (Embla Carousel 8.6.0)
 - Animated hero, project & certification showcases
 - Cookie consent banner & localized content (EN / DE / ES / SV)
+- Improved accessibility with ARIA support and keyboard navigation
 
 Content & Data:
 
 - Dynamic project, technology, and certification data modules
 - Real‑time GitHub MCP repository & profile fetch (sanitized & cached)
 - Google PageSpeed Insights integration for performance transparency
+- Enhanced type-safe API interfaces for all data endpoints
 
 Engineering & Quality:
 
 - Modular component architecture (segmented domains: hero, github, projects, tech, seo, ui primitives)
+- ESLint 9.x flat config with strict TypeScript integration
+- React 19 with enhanced type safety and performance optimizations
+- Zero-tolerance policy for `any` types across the codebase
 - Centralized & locale‑aware SEO handling (`SEOHead`, dynamic OG tags, canonical + `hreflang`)
 - Schema.org structured data generation (Person, Breadcrumbs)
 - 100/100 Lighthouse SEO score target (validated Aug 2025)
 - No hydration warnings / zero console errors goal
-- Expanded strict TypeScript coverage (SEO config types, i18n message surfaces, rate limiting utilities)
+- Comprehensive TypeScript coverage (SEO config types, i18n message surfaces, rate limiting utilities)
 
 Security & Privacy (summary):
 
@@ -261,7 +275,7 @@ Prerequisites: Node 20+ (LTS recommended), pnpm or npm.
 
 Install & Run:
 
-```
+```bash
 pnpm install
 pnpm dev
 ```
@@ -270,24 +284,109 @@ Open http://localhost:3000
 
 Build:
 
-```
+```bash
 pnpm build
 pnpm start
+```
+
+**Quality Assurance:**
+
+```bash
+# Run ESLint 9.x with flat config
+pnpm lint
+
+# Auto-fix linting issues
+pnpm lint:fix
+
+# Check for dependency updates
+pnpm test-dep
 ```
 
 ---
 
 ## 12. Quality & Tooling
 
-- TypeScript strict configuration (extended to SEO schema + locale discriminated unions)
-- Consistent component patterns (composition, no large monoliths)
-- Accessible focus states & ARIA where needed
-- Performance budget mindset (monitor bundle impact)
-- Pending: automated translation key lint & structured data validation tests
+**ESLint 9.x Migration & Enhanced Type Safety (3.5.0):**
+
+- Complete migration to ESLint flat config system (`eslint.config.mts`)
+- Upgraded to ESLint 9.x with modern plugin architecture
+- Comprehensive TypeScript-ESLint integration with strict type checking
+- Enhanced import resolution and React hooks linting
+- Custom rule configuration for UI components vs. application code
+- Zero-tolerance policy for `@typescript-eslint/no-explicit-any`
+
+**Type Safety Improvements:**
+
+- Upgraded to React 19 with enhanced type definitions
+- TypeScript 5.x with stricter configuration
+- Comprehensive type coverage for all API interfaces (`AdminStats`, `GitHubData`, `PageSpeedMetrics`)
+- Discriminated unions for locale handling and error states
+- Enhanced type safety in internationalization with proper message key inference
+
+**UI Component Architecture:**
+
+- New carousel component system using Embla Carousel with autoplay
+- Improved component composition patterns
+- Better separation of concerns (data vs presentation layers)
+- Enhanced accessibility focus states & ARIA coverage
+
+**Development Experience:**
+
+- Enhanced ESLint rules for consistent code patterns
+- Improved error boundaries and type-safe error handling
+- Better debugging capabilities with structured logging
+- Performance monitoring with enhanced PageSpeed integration
 
 ---
 
-## 13. Roadmap
+## 13. Version 3.5.0 Updates
+
+**Major ESLint Architecture Overhaul:**
+
+- **ESLint 9.x Migration**: Complete migration from legacy `.eslintrc` to modern flat config (`eslint.config.mts`)
+- **Enhanced Plugin Integration**: Updated to latest TypeScript-ESLint, React, and Next.js plugins with proper flat config support
+- **Strict Type Checking**: Implemented zero-tolerance policy for `@typescript-eslint/no-explicit-any` across the codebase
+- **Import Resolution**: Enhanced import/export linting with proper alias support and module resolution
+- **Component-Specific Rules**: Different ESLint configurations for UI components vs. application code
+
+**React 19 & TypeScript 5.x Upgrade:**
+
+- **React 19**: Full migration to React 19 with enhanced type definitions and improved performance
+- **TypeScript 5.x**: Upgraded to latest TypeScript with stricter configuration and better inference
+- **Type Safety**: Comprehensive type coverage for all API interfaces, including `AdminStats`, `GitHubData`, and `PageSpeedMetrics`
+- **Discriminated Unions**: Enhanced type safety for locale handling and error states
+
+**New Carousel System:**
+
+- **Embla Carousel Integration**: Added professional carousel component using Embla Carousel v8.6.0
+- **Autoplay Support**: Implemented smooth autoplay functionality with pause on hover
+- **Responsive Design**: Mobile-first carousel implementation with touch/swipe support
+- **Accessibility**: Full keyboard navigation and screen reader support
+
+**Enhanced Component Architecture:**
+
+- **Improved Separation**: Better distinction between data and presentation layers
+- **Composition Patterns**: Enhanced component composition with better prop interfaces
+- **Performance**: Optimized re-renders with proper memoization and state management
+- **Error Boundaries**: Type-safe error handling throughout the component tree
+
+**Development Experience Improvements:**
+
+- **Modern Tooling**: Updated all development dependencies to latest stable versions
+- **Build Performance**: Enhanced build pipeline with better caching strategies
+- **Type Coverage**: Improved TypeScript coverage across all modules
+- **Code Quality**: Stricter linting rules ensuring consistent code patterns
+
+**API & Backend Enhancements:**
+
+- **Type-Safe APIs**: All API routes now have comprehensive TypeScript interfaces
+- **Enhanced Error Handling**: Standardized error responses with proper type safety
+- **Better Validation**: Improved input validation using discriminated unions
+- **Performance**: Optimized API response caching and data fetching strategies
+
+---
+
+## 14. Roadmap
 
 - Expand localization (additional languages beyond 4; automated missing key detection)
 - Further edge caching tuning & RUM instrumentation (privacy‑preserving)
@@ -297,7 +396,7 @@ pnpm start
 
 ---
 
-## 14. License & Intellectual Property
+## 15. License & Intellectual Property
 
 Copyright © 2025 ColdByDefault. All rights reserved.
 
@@ -313,7 +412,7 @@ Refer to `LICENSE` & `COPYRIGHT` files for formal wording.
 
 ---
 
-## 15. Contact
+## 16. Contact
 
 Portfolio: https://www.coldbydefault.com  
 Linktree: https://linktr.ee/ColdByDefault  
