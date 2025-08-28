@@ -19,17 +19,39 @@ export interface SkillItem {
 }
 
 export interface AboutTranslations {
-  title: string;
-  subtitle: string;
-  mainDescription: string;
-  techStackTitle: string;
+  aboutMe: string;
+  getInTouch: string;
+  downloadCV: string;
+  philosophy: string;
+  myDevelopmentPhilosophy: string;
+  currentFocus: string;
+  coreValues: string;
+  whatDrivesMe: string;
   achievementsTitle: string;
   milestonesRecognition: string;
-  achievements: Achievement[];
-  skills: SkillItem[];
-  currentFocus: string[];
-  goals: string[];
+  personalInfo: {
+    name: string;
+    title: string;
+    currentPosition: string;
+    company: string;
+    location: string;
+    experience: string;
+  };
+  mainStory: string;
+  sections: {
+    philosophy: string;
+  };
+  currentFocusItems: string[];
   values: string[];
+  achievements: Achievement[];
+}
+
+export interface LocaleMessages {
+  [key: string]: unknown;
+}
+
+export interface LocaleModule {
+  default: LocaleMessages;
 }
 
 export interface Translations {
