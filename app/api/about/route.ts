@@ -7,7 +7,7 @@ import { NextResponse } from "next/server";
 import { aboutData } from "@/data/aboutData";
 import aboutProfile from "@/data/aboutProfile.json";
 
-export async function GET() {
+export function GET() {
   try {
     const combinedData = {
       ...aboutData,

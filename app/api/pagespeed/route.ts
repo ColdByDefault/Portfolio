@@ -4,20 +4,11 @@
  */
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-
-interface PageSpeedMetrics {
-  performance: number;
-  accessibility: number;
-  bestPractices: number;
-  seo: number;
-  pwa?: number;
-}
-
-interface PageSpeedResult {
-  url: string;
-  strategy: "mobile" | "desktop";
-  metrics: PageSpeedMetrics;
-}
+import type {
+  PageSpeedMetrics,
+  PageSpeedResult,
+  PageSpeedApiRawResponse,
+} from "@/types/pagespeed";
 
 export async function GET(request: NextRequest) {
   try {
@@ -94,7 +85,8 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const data = await response.json();
+    const data: PageSpeedApiRawResponse =
+      (await response.json()) as PageSpeedApiRawResponse;
 
     // Check if we have valid data
     if (!data?.lighthouseResult?.categories) {
@@ -108,21 +100,21 @@ export async function GET(request: NextRequest) {
 
     // Extract scores
     const metrics: PageSpeedMetrics = {
-      performance: Math.round((categories.performance?.score || 0) * 100),
-      accessibility: Math.round((categories.accessibility?.score || 0) * 100),
+      performance: Math.round((categories.performance?.score ?? 0) * 100),
+      accessibility: Math.round((categories.accessibility?.score ?? 0) * 100),
       bestPractices: Math.round(
-        (categories["best-practices"]?.score || 0) * 100
+        (categories["best-practices"]?.score ?? 0) * 100
       ),
-      seo: Math.round((categories.seo?.score || 0) * 100),
+      seo: Math.round((categories.seo?.score ?? 0) * 100),
     };
 
     // Add PWA score if available
-    if (categories.pwa?.score !== undefined) {
+    if (categories.pwa?.score !== undefined && categories.pwa?.score !== null) {
       metrics.pwa = Math.round(categories.pwa.score * 100);
     }
 
     const result: PageSpeedResult = {
-      url: data.id || url,
+      url: data.id ?? url,
       strategy,
       metrics,
     };

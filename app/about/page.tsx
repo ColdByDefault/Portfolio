@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Background } from "@/components/visuals/motion-background";
 import { AchievementCard } from "@/components/about";
-import type { Achievement } from "@/types/i18n";
+import type { Achievement, AboutTranslations } from "@/types/i18n";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
@@ -35,6 +35,19 @@ const staggerChildren = {
 export default function AboutPage() {
   const t = useTranslations("About");
 
+  // Type-safe accessors using the interface
+  const getCurrentFocusItems = (): AboutTranslations["currentFocusItems"] => {
+    return t.raw("currentFocusItems") as AboutTranslations["currentFocusItems"];
+  };
+
+  const getValues = (): AboutTranslations["values"] => {
+    return t.raw("values") as AboutTranslations["values"];
+  };
+
+  const getAchievements = (): AboutTranslations["achievements"] => {
+    return t.raw("achievements") as AboutTranslations["achievements"];
+  };
+
   return (
     <div className="min-h-screen relative">
       <Background />
@@ -55,8 +68,7 @@ export default function AboutPage() {
                 </p>
                 <p className="text-lg leading-relaxed">{t("mainStory")}</p>
                 <div className="flex flex-wrap gap-3">
-                  {t
-                    .raw("currentFocusItems")
+                  {getCurrentFocusItems()
                     .slice(0, 3)
                     .map((focus: string, index: number) => (
                       <Badge key={index} variant="secondary">
@@ -125,15 +137,13 @@ export default function AboutPage() {
                 {t("currentFocus")}
               </motion.h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {t
-                  .raw("currentFocusItems")
-                  .map((focus: string, index: number) => (
-                    <Card key={index} className="p-6">
-                      <CardContent>
-                        <p className="text-center">{focus}</p>
-                      </CardContent>
-                    </Card>
-                  ))}
+                {getCurrentFocusItems().map((focus: string, index: number) => (
+                  <Card key={index} className="p-6">
+                    <CardContent>
+                      <p className="text-center">{focus}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </motion.div>
           </div>
@@ -158,7 +168,7 @@ export default function AboutPage() {
                 </h2>
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {t.raw("values").map((value: string, index: number) => (
+                {getValues().map((value: string, index: number) => (
                   <Card key={index} className="p-6">
                     <CardContent>
                       <p className="text-center">{value}</p>
@@ -189,7 +199,7 @@ export default function AboutPage() {
                 </h2>
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {(t.raw("achievements") as Achievement[]).map(
+                {getAchievements().map(
                   (achievement: Achievement, index: number) => (
                     <AchievementCard
                       key={index}

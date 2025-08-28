@@ -4,7 +4,7 @@
  */
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -16,65 +16,64 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AlertTriangle, Shield, Mail, Globe } from "lucide-react";
-
-interface Stats {
-  totalSubmissions: number;
-  last24h: number;
-  suspicious: number;
-  blockedIPs: number;
-  blockedEmails: number;
-  topIPs: [string, number][];
-}
-
-interface SuspiciousSubmission {
-  ip: string;
-  email: string;
-  name: string;
-  subject: string;
-  message: string;
-  timestamp: number;
-  spamScore: number;
-  suspicious: boolean;
-}
+import type {
+  AdminStats,
+  SuspiciousSubmission,
+  AdminApiResponse,
+  ApiErrorResponse,
+  BlockAction,
+} from "@/types/admin";
 
 export default function AdminContactPage() {
-  const [token, setToken] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [stats, setStats] = useState<Stats | null>(null);
+  const [token, setToken] = useState<string>("");
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [stats, setStats] = useState<AdminStats | null>(null);
   const [suspicious, setSuspicious] = useState<SuspiciousSubmission[]>([]);
-  const [blockIP, setBlockIP] = useState("");
-  const [blockEmail, setBlockEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [blockIP, setBlockIP] = useState<string>("");
+  const [blockEmail, setBlockEmail] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const [lastRefresh, setLastRefresh] = useState<Date | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const authenticate = async () => {
-    try {
-      // Validate token against server
-      const response = await fetch("/api/admin/contact?action=stats", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+  const handleError = useCallback((error: unknown, context: string): void => {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    setMessage(`${context}: ${errorMessage}`);
+    console.error(`${context}:`, error);
+  }, []);
 
-      if (response.ok) {
-        setIsAuthenticated(true);
-        setMessage("Authenticated successfully");
-        loadData();
-      } else {
-        setMessage("Invalid token");
-      }
-    } catch (error) {
-      setMessage("Authentication failed" + error);
-    }
+  const isValidErrorResponse = (data: unknown): data is ApiErrorResponse => {
+    return (
+      typeof data === "object" &&
+      data !== null &&
+      ("message" in data || "error" in data)
+    );
   };
 
-  const loadData = async () => {
+  const getErrorMessage = useCallback(
+    (data: unknown, defaultMessage: string): string => {
+      if (isValidErrorResponse(data)) {
+        return String(data.message || data.error || defaultMessage);
+      }
+      return defaultMessage;
+    },
+    []
+  );
+
+  const loadData = useCallback(async (): Promise<void> => {
+    if (!isAuthenticated || !token) return;
+
+    setLoading(true);
     try {
       // Load stats
       const statsResponse = await fetch("/api/admin/contact?action=stats", {
         headers: { Authorization: `Bearer ${token}` },
       });
+
       if (statsResponse.ok) {
-        const statsData = await statsResponse.json();
-        setStats(statsData);
+        const statsData = (await statsResponse.json()) as AdminApiResponse;
+        if (statsData.success && statsData.data) {
+          setStats(statsData.data as AdminStats);
+        }
       }
 
       // Load suspicious activity
@@ -84,63 +83,134 @@ export default function AdminContactPage() {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+
       if (suspiciousResponse.ok) {
-        const suspiciousData = await suspiciousResponse.json();
-        setSuspicious(suspiciousData);
+        const suspiciousData =
+          (await suspiciousResponse.json()) as AdminApiResponse;
+        if (suspiciousData.success && suspiciousData.data) {
+          setSuspicious(suspiciousData.data as SuspiciousSubmission[]);
+        }
       }
 
       // Update last refresh time
       setLastRefresh(new Date());
     } catch (error) {
-      setMessage("Error loading data" + error);
+      handleError(error, "Error loading data");
+    } finally {
+      setLoading(false);
     }
-  };
+  }, [token, isAuthenticated, handleError]);
 
-  const handleBlockIP = async () => {
-    if (!blockIP) return;
+  const authenticate = useCallback(async (): Promise<void> => {
+    if (!token.trim()) {
+      setMessage("Please enter a valid token");
+      return;
+    }
 
+    setLoading(true);
     try {
+      const response = await fetch("/api/admin/contact?action=stats", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (response.ok) {
+        setIsAuthenticated(true);
+        setMessage("Authenticated successfully");
+        await loadData();
+      } else {
+        const errorData = (await response
+          .json()
+          .catch(() => ({ message: "Invalid token" }))) as unknown;
+        setMessage(getErrorMessage(errorData, "Invalid token"));
+      }
+    } catch (error) {
+      handleError(error, "Authentication failed");
+    } finally {
+      setLoading(false);
+    }
+  }, [token, handleError, loadData, getErrorMessage]);
+
+  const handleBlockIP = useCallback(async (): Promise<void> => {
+    if (!blockIP.trim()) {
+      setMessage("Please enter a valid IP address");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const blockAction: BlockAction = { action: "block_ip", ip: blockIP };
       const response = await fetch("/api/admin/contact", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ action: "block_ip", ip: blockIP }),
+        body: JSON.stringify(blockAction),
       });
 
       if (response.ok) {
         setMessage(`IP ${blockIP} blocked successfully`);
         setBlockIP("");
-        loadData();
+        await loadData();
+      } else {
+        const errorData = (await response
+          .json()
+          .catch(() => ({ message: "Error blocking IP" }))) as unknown;
+        setMessage(getErrorMessage(errorData, "Error blocking IP"));
       }
     } catch (error) {
-      setMessage("Error blocking IP" + error);
+      handleError(error, "Error blocking IP");
+    } finally {
+      setLoading(false);
     }
-  };
+  }, [blockIP, token, loadData, handleError, getErrorMessage]);
 
-  const handleBlockEmail = async () => {
-    if (!blockEmail) return;
+  const handleBlockEmail = useCallback(async (): Promise<void> => {
+    if (!blockEmail.trim()) {
+      setMessage("Please enter a valid email address");
+      return;
+    }
 
+    setLoading(true);
     try {
+      const blockAction: BlockAction = {
+        action: "block_email",
+        email: blockEmail,
+      };
       const response = await fetch("/api/admin/contact", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ action: "block_email", email: blockEmail }),
+        body: JSON.stringify(blockAction),
       });
 
       if (response.ok) {
         setMessage(`Email ${blockEmail} blocked successfully`);
         setBlockEmail("");
-        loadData();
+        await loadData();
+      } else {
+        const errorData = (await response
+          .json()
+          .catch(() => ({ message: "Error blocking email" }))) as unknown;
+        setMessage(getErrorMessage(errorData, "Error blocking email"));
       }
     } catch (error) {
-      setMessage("Error blocking email" + error);
+      handleError(error, "Error blocking email");
+    } finally {
+      setLoading(false);
     }
-  };
+  }, [blockEmail, token, loadData, handleError, getErrorMessage]);
+
+  const handleKeyPress = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>): void => {
+      if (event.key === "Enter" && !loading) {
+        void authenticate();
+      }
+    },
+    [authenticate, loading]
+  );
 
   if (!isAuthenticated) {
     return (
@@ -161,9 +231,13 @@ export default function AdminContactPage() {
               placeholder="Admin Token"
               value={token}
               onChange={(e) => setToken(e.target.value)}
-              onKeyPress={(e) => e.key === "Enter" && authenticate()}
+              onKeyPress={handleKeyPress}
             />
-            <Button onClick={authenticate} className="w-full">
+            <Button
+              onClick={() => void authenticate()}
+              className="w-full"
+              disabled={loading}
+            >
               Authenticate
             </Button>
             {message && (
@@ -197,7 +271,7 @@ export default function AdminContactPage() {
               </p>
             )}
           </div>
-          <Button onClick={loadData} variant="outline">
+          <Button onClick={() => void loadData()} variant="outline">
             Refresh Data
           </Button>
         </div>
@@ -283,7 +357,7 @@ export default function AdminContactPage() {
                 value={blockIP}
                 onChange={(e) => setBlockIP(e.target.value)}
               />
-              <Button onClick={handleBlockIP} className="w-full">
+              <Button onClick={() => void handleBlockIP()} className="w-full">
                 Block IP
               </Button>
             </CardContent>
@@ -302,7 +376,10 @@ export default function AdminContactPage() {
                 value={blockEmail}
                 onChange={(e) => setBlockEmail(e.target.value)}
               />
-              <Button onClick={handleBlockEmail} className="w-full">
+              <Button
+                onClick={() => void handleBlockEmail()}
+                className="w-full"
+              >
                 Block Email
               </Button>
             </CardContent>
@@ -317,7 +394,7 @@ export default function AdminContactPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
-                {stats.topIPs.map(([ip, count]) => (
+                {stats.topIPs.map(([ip, count]: [string, number]) => (
                   <div key={ip} className="flex justify-between items-center">
                     <span className="font-mono">{ip}</span>
                     <Badge variant="secondary">{count} submissions</Badge>

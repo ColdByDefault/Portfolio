@@ -4,6 +4,12 @@
  */
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import type {
+  ContactApiResponse,
+  BlockActionResponse,
+  ApiErrorResponse,
+  ContactAdminRequest,
+} from "@/types/api";
 import {
   getSuspiciousActivity,
   getStats,
@@ -19,7 +25,9 @@ function isAuthorized(request: NextRequest): boolean {
   return token === ADMIN_TOKEN;
 }
 
-export async function GET(request: NextRequest) {
+export function GET(
+  request: NextRequest
+): NextResponse<ContactApiResponse | ApiErrorResponse> {
   if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -29,12 +37,16 @@ export async function GET(request: NextRequest) {
 
   try {
     switch (action) {
-      case "stats":
-        return NextResponse.json(getStats());
+      case "stats": {
+        const stats = getStats();
+        return NextResponse.json({ success: true, data: stats });
+      }
 
-      case "suspicious":
-        const hours = parseInt(searchParams.get("hours") || "24");
-        return NextResponse.json(getSuspiciousActivity(hours));
+      case "suspicious": {
+        const hours = parseInt(searchParams.get("hours") || "24", 10);
+        const suspicious = getSuspiciousActivity(hours);
+        return NextResponse.json({ success: true, data: suspicious });
+      }
 
       default:
         return NextResponse.json({
@@ -54,17 +66,20 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(
+  request: NextRequest
+): Promise<NextResponse<BlockActionResponse | ApiErrorResponse>> {
   if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
-    const { action, ip, email } = await request.json();
+    const requestBody = (await request.json()) as ContactAdminRequest;
+    const { action, ip, email } = requestBody;
 
     switch (action) {
-      case "block_ip":
-        if (!ip) {
+      case "block_ip": {
+        if (!ip || typeof ip !== "string") {
           return NextResponse.json(
             { error: "IP address required" },
             { status: 400 }
@@ -72,9 +87,10 @@ export async function POST(request: NextRequest) {
         }
         blockIP(ip);
         return NextResponse.json({ message: `IP ${ip} blocked successfully` });
+      }
 
-      case "block_email":
-        if (!email) {
+      case "block_email": {
+        if (!email || typeof email !== "string") {
           return NextResponse.json(
             { error: "Email address required" },
             { status: 400 }
@@ -84,6 +100,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({
           message: `Email ${email} blocked successfully`,
         });
+      }
 
       default:
         return NextResponse.json({ error: "Invalid action" }, { status: 400 });

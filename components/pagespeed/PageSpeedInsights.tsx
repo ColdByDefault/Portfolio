@@ -4,7 +4,7 @@
  */
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   Card,
   CardContent,
@@ -20,34 +20,11 @@ import { Progress } from "@/components/ui/progress";
 import { SiGooglecloud } from "react-icons/si";
 import { HiDesktopComputer } from "react-icons/hi";
 import { HiDevicePhoneMobile } from "react-icons/hi2";
-
-interface PageSpeedMetrics {
-  performance: number;
-  accessibility: number;
-  bestPractices: number;
-  seo: number;
-  pwa?: number;
-}
-
-interface PageSpeedResult {
-  url: string;
-  strategy: "mobile" | "desktop";
-  metrics: PageSpeedMetrics;
-  loadingExperience?: {
-    metrics: {
-      FIRST_CONTENTFUL_PAINT_MS?: { percentile: number };
-      FIRST_INPUT_DELAY_MS?: { percentile: number };
-      LARGEST_CONTENTFUL_PAINT_MS?: { percentile: number };
-      CUMULATIVE_LAYOUT_SHIFT_SCORE?: { percentile: number };
-    };
-  };
-}
-
-interface PageSpeedInsightsProps {
-  url?: string;
-  showRefreshButton?: boolean;
-  showBothStrategies?: boolean;
-}
+import type {
+  PageSpeedResult,
+  PageSpeedInsightsProps,
+  PageSpeedApiResponse,
+} from "@/types/pagespeed";
 
 const getScoreBadgeColor = (score: number): string => {
   if (score >= 90) {
@@ -76,87 +53,88 @@ export default function PageSpeedInsights({
   const [progressInterval, setProgressInterval] =
     useState<NodeJS.Timeout | null>(null);
 
-  const fetchPageSpeedData = async (strategy: "mobile" | "desktop") => {
-    try {
-      const response = await fetch(
-        `/api/pagespeed?url=${encodeURIComponent(url)}&strategy=${strategy}`,
-        {
-          headers: {
-            "X-Client-ID": "pagespeed-component",
-          },
-          // Increase timeout to match API timeout
-          signal: AbortSignal.timeout(70000), // 70 second timeout (longer than API)
+  const fetchPageSpeedData = useCallback(
+    async (strategy: "mobile" | "desktop"): Promise<void> => {
+      try {
+        const response = await fetch(
+          `/api/pagespeed?url=${encodeURIComponent(url)}&strategy=${strategy}`,
+          {
+            headers: {
+              "X-Client-ID": "pagespeed-component",
+            },
+            // Increase timeout to match API timeout
+            signal: AbortSignal.timeout(70000), // 70 second timeout (longer than API)
+          }
+        );
+
+        if (!response.ok) {
+          let errorMessage = "Failed to fetch PageSpeed data";
+          try {
+            const errorData = (await response.json()) as PageSpeedApiResponse;
+            errorMessage = errorData.error || errorMessage;
+          } catch (parseError) {
+            console.error("Error parsing error response JSON:", parseError);
+            errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+          }
+          throw new Error(errorMessage);
         }
-      );
 
-      if (!response.ok) {
-        let errorMessage = "Failed to fetch PageSpeed data";
-        try {
-          const errorData = await response.json();
-          errorMessage = errorData.error || errorMessage;
-        } catch (parseError) {
-          console.error("Error parsing error response JSON:", parseError);
-          errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+        const result = (await response.json()) as PageSpeedApiResponse;
+
+        // Validate the result structure
+        if (!result || typeof result !== "object" || !result.metrics) {
+          throw new Error("Invalid data structure received from PageSpeed API");
         }
-        throw new Error(errorMessage);
+
+        const validatedResult: PageSpeedResult = {
+          url: result.url || url,
+          strategy: (result.strategy as "mobile" | "desktop") || strategy,
+          metrics: result.metrics,
+          ...(result.loadingExperience && {
+            loadingExperience: result.loadingExperience,
+          }),
+        };
+
+        if (strategy === "mobile") {
+          setMobileData(validatedResult);
+        } else {
+          setDesktopData(validatedResult);
+        }
+      } catch (err) {
+        console.error(`PageSpeed fetch error (${strategy}):`, err);
+        setError(err instanceof Error ? err.message : "An error occurred");
       }
+    },
+    [url]
+  );
 
-      const result = await response.json();
+  const fetchAllData = useCallback(async (): Promise<void> => {
+    if (!url) return;
 
-      // Validate the result structure
-      if (!result || typeof result !== "object" || !result.metrics) {
-        throw new Error("Invalid data structure received from PageSpeed API");
-      }
-
-      if (strategy === "mobile") {
-        setMobileData(result);
-      } else {
-        setDesktopData(result);
-      }
-    } catch (err) {
-      console.error(`PageSpeed fetch error (${strategy}):`, err);
-      setError(err instanceof Error ? err.message : "An error occurred");
-    }
-  };
-
-  const fetchAllData = async () => {
     setLoading(true);
-    setError(null);
+    setError("");
     setProgress(0);
-    setRetryCount((prev) => prev + 1);
+    setRetryCount(0);
 
-    // Clear any existing interval
-    if (progressInterval) {
-      clearInterval(progressInterval);
-    }
-
-    // Start progress animation
+    // Set up progress simulation
     const interval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 95) return prev; // Stop at 95% until actual completion
-        return prev + Math.random() * 3; // Increment by 0-3% randomly
+        if (prev >= 90) return prev;
+        return prev + Math.random() * 10;
       });
-    }, 1000);
+    }, 1500); // Update every 1.5 seconds
+
     setProgressInterval(interval);
 
     try {
-      if (showBothStrategies) {
-        setProgress(10);
-        // Fetch desktop first, then wait before mobile to avoid rate limits
-        await fetchPageSpeedData("desktop");
-        setProgress(50);
-        // Only fetch mobile if desktop was successful and no error occurred
-        if (!error) {
-          await new Promise((resolve) => setTimeout(resolve, 8000)); // 8 second delay
-          setProgress(75);
-          await fetchPageSpeedData("mobile");
-        }
-      } else {
-        setProgress(20);
-        // Fetch only desktop data by default
-        await fetchPageSpeedData("desktop");
-      }
+      await Promise.all([
+        fetchPageSpeedData("mobile"),
+        showBothStrategies ? fetchPageSpeedData("desktop") : Promise.resolve(),
+      ]);
       setProgress(100);
+    } catch (error) {
+      console.error("Failed to fetch PageSpeed data:", error);
+      setError(error instanceof Error ? error.message : "Failed to fetch data");
     } finally {
       if (interval) {
         clearInterval(interval);
@@ -165,11 +143,16 @@ export default function PageSpeedInsights({
       setLoading(false);
       setTimeout(() => setProgress(0), 500); // Reset progress after a short delay
     }
-  };
+  }, [url, showBothStrategies, fetchPageSpeedData]);
 
   useEffect(() => {
-    fetchAllData();
-  }, [url]); // eslint-disable-line react-hooks/exhaustive-deps
+    void fetchAllData();
+  }, [fetchAllData]);
+
+  // Remove the second useEffect that's causing conflicts
+  // useEffect(() => {
+  //   fetchAllData();
+  // }, [url]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Cleanup interval on unmount
   useEffect(() => {
@@ -286,7 +269,7 @@ export default function PageSpeedInsights({
             )}
             {showRefreshButton && (
               <Button
-                onClick={fetchAllData}
+                onClick={() => void fetchAllData()}
                 variant="outline"
                 size="sm"
                 disabled={loading || error.includes("rate limit")}
@@ -397,7 +380,7 @@ export default function PageSpeedInsights({
           <>
             <Separator />
             <Button
-              onClick={fetchAllData}
+              onClick={() => void fetchAllData()}
               variant="outline"
               className="w-full"
               disabled={loading}

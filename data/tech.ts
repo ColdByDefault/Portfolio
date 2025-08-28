@@ -31,7 +31,7 @@ import {
   SiNotion,
   SiMiro,
 } from "react-icons/si";
-import { FaBrain, FaHorse, FaRobot, FaFigma } from "react-icons/fa";
+import { FaBrain, FaRobot, FaFigma } from "react-icons/fa";
 import { RiOpenaiFill, RiFlowChart } from "react-icons/ri";
 import { BiLogoVisualStudio } from "react-icons/bi";
 import { DiScrum } from "react-icons/di";
