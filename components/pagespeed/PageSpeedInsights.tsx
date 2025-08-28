@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
+import { Progress } from "@/components/ui/progress";
 import { SiGooglecloud } from "react-icons/si";
 import { HiDesktopComputer } from "react-icons/hi";
 import { HiDevicePhoneMobile } from "react-icons/hi2";
@@ -66,139 +67,118 @@ export default function PageSpeedInsights({
   const [mobileData, setMobileData] = useState<PageSpeedResult | null>(null);
   const [desktopData, setDesktopData] = useState<PageSpeedResult | null>(null);
   const [activeStrategy, setActiveStrategy] = useState<"mobile" | "desktop">(
-    "mobile"
+    "desktop"
   );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [retryCount, setRetryCount] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [progressInterval, setProgressInterval] =
+    useState<NodeJS.Timeout | null>(null);
 
-  const fetchPageSpeedData = async (
-    strategy: "mobile" | "desktop",
-    retries = 2
-  ) => {
-    for (let attempt = 0; attempt <= retries; attempt++) {
-      try {
-        const response = await fetch(
-          `/api/pagespeed?url=${encodeURIComponent(url)}&strategy=${strategy}`,
-          {
-            headers: {
-              "X-Client-ID": "pagespeed-component",
-            },
-            // Add a timeout
-            signal: AbortSignal.timeout(30000), // 30 second timeout
-          }
-        );
-
-        if (!response.ok) {
-          let errorMessage = "Failed to fetch PageSpeed data";
-          try {
-            const errorData = await response.json();
-            errorMessage = errorData.error || errorMessage;
-          } catch (parseError) {
-            console.error("Error parsing error response JSON:", parseError);
-            // If we can't parse the response as JSON, try to get the text
-            try {
-              const errorText = await response.text();
-              errorMessage =
-                errorText || `HTTP ${response.status}: ${response.statusText}`;
-            } catch (textError) {
-              console.error("Error reading error response text:", textError);
-              errorMessage = `HTTP ${response.status}: ${response.statusText}`;
-            }
-          }
-
-          // If it's a rate limit or server error, retry
-          if (
-            attempt < retries &&
-            (response.status === 429 || response.status >= 500)
-          ) {
-            console.warn(
-              `Attempt ${attempt + 1} failed, retrying in ${
-                (attempt + 1) * 2
-              } seconds...`
-            );
-            await new Promise((resolve) =>
-              setTimeout(resolve, (attempt + 1) * 2000)
-            );
-            continue;
-          }
-
-          throw new Error(errorMessage);
+  const fetchPageSpeedData = async (strategy: "mobile" | "desktop") => {
+    try {
+      const response = await fetch(
+        `/api/pagespeed?url=${encodeURIComponent(url)}&strategy=${strategy}`,
+        {
+          headers: {
+            "X-Client-ID": "pagespeed-component",
+          },
+          // Increase timeout to match API timeout
+          signal: AbortSignal.timeout(70000), // 70 second timeout (longer than API)
         }
+      );
 
-        let result;
+      if (!response.ok) {
+        let errorMessage = "Failed to fetch PageSpeed data";
         try {
-          result = await response.json();
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
         } catch (parseError) {
-          console.error("Error parsing API response JSON:", parseError);
-          if (attempt < retries) {
-            console.warn(`Parse error on attempt ${attempt + 1}, retrying...`);
-            await new Promise((resolve) =>
-              setTimeout(resolve, (attempt + 1) * 1000)
-            );
-            continue;
-          }
-          throw new Error("Invalid response format from PageSpeed API");
+          console.error("Error parsing error response JSON:", parseError);
+          errorMessage = `HTTP ${response.status}: ${response.statusText}`;
         }
-
-        // Validate the result structure
-        if (!result || typeof result !== "object" || !result.metrics) {
-          if (attempt < retries) {
-            console.warn(
-              `Invalid result structure on attempt ${attempt + 1}, retrying...`
-            );
-            await new Promise((resolve) =>
-              setTimeout(resolve, (attempt + 1) * 1000)
-            );
-            continue;
-          }
-          throw new Error("Invalid data structure received from PageSpeed API");
-        }
-
-        if (strategy === "mobile") {
-          setMobileData(result);
-        } else {
-          setDesktopData(result);
-        }
-        return; // Success, exit the retry loop
-      } catch (err) {
-        if (attempt === retries) {
-          // Last attempt failed
-          console.error(
-            `PageSpeed fetch error (${strategy}) after ${
-              retries + 1
-            } attempts:`,
-            err
-          );
-          setError(err instanceof Error ? err.message : "An error occurred");
-        }
+        throw new Error(errorMessage);
       }
+
+      const result = await response.json();
+
+      // Validate the result structure
+      if (!result || typeof result !== "object" || !result.metrics) {
+        throw new Error("Invalid data structure received from PageSpeed API");
+      }
+
+      if (strategy === "mobile") {
+        setMobileData(result);
+      } else {
+        setDesktopData(result);
+      }
+    } catch (err) {
+      console.error(`PageSpeed fetch error (${strategy}):`, err);
+      setError(err instanceof Error ? err.message : "An error occurred");
     }
   };
 
   const fetchAllData = async () => {
     setLoading(true);
     setError(null);
+    setProgress(0);
     setRetryCount((prev) => prev + 1);
+
+    // Clear any existing interval
+    if (progressInterval) {
+      clearInterval(progressInterval);
+    }
+
+    // Start progress animation
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 95) return prev; // Stop at 95% until actual completion
+        return prev + Math.random() * 3; // Increment by 0-3% randomly
+      });
+    }, 1000);
+    setProgressInterval(interval);
 
     try {
       if (showBothStrategies) {
-        // Fetch both mobile and desktop data with some delay between requests
-        await fetchPageSpeedData("mobile");
-        await new Promise((resolve) => setTimeout(resolve, 1000)); // 1 second delay
+        setProgress(10);
+        // Fetch desktop first, then wait before mobile to avoid rate limits
         await fetchPageSpeedData("desktop");
+        setProgress(50);
+        // Only fetch mobile if desktop was successful and no error occurred
+        if (!error) {
+          await new Promise((resolve) => setTimeout(resolve, 8000)); // 8 second delay
+          setProgress(75);
+          await fetchPageSpeedData("mobile");
+        }
       } else {
-        // Fetch only mobile data
-        await fetchPageSpeedData("mobile");
+        setProgress(20);
+        // Fetch only desktop data by default
+        await fetchPageSpeedData("desktop");
       }
+      setProgress(100);
     } finally {
+      if (interval) {
+        clearInterval(interval);
+      }
+      setProgressInterval(null);
       setLoading(false);
+      setTimeout(() => setProgress(0), 500); // Reset progress after a short delay
     }
   };
 
   useEffect(() => {
     fetchAllData();
   }, [url]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Cleanup interval on unmount
+  useEffect(() => {
+    return () => {
+      if (progressInterval) {
+        clearInterval(progressInterval);
+      }
+    };
+  }, [progressInterval]);
 
   const getCurrentData = () => {
     return activeStrategy === "mobile" ? mobileData : desktopData;
@@ -220,6 +200,27 @@ export default function PageSpeedInsights({
           </div>
         </div>
         <Skeleton className="h-4 w-64 rounded" />
+        <div className="mt-4 space-y-3">
+          <div className="space-y-2">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-muted-foreground">
+                Analyzing performance...
+              </span>
+              <span className="text-xs text-muted-foreground">
+                {Math.round(progress)}%
+              </span>
+            </div>
+            <Progress value={progress} className="h-2" />
+          </div>
+          <div className="text-center space-y-1">
+            <p className="text-xs text-muted-foreground">
+              🔄 Running Google PageSpeed analysis
+            </p>
+            <p className="text-xs text-muted-foreground/80">
+              This typically takes 30-60 seconds
+            </p>
+          </div>
+        </div>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
@@ -266,6 +267,18 @@ export default function PageSpeedInsights({
               Error loading PageSpeed data
             </p>
             <p className="text-sm text-muted-foreground max-w-md">{error}</p>
+            {error.includes("rate limit") && (
+              <p className="text-xs text-amber-600 bg-amber-50 px-3 py-1 rounded">
+                Please wait a moment before retrying. Google's PageSpeed API has
+                rate limits.
+              </p>
+            )}
+            {error.includes("timeout") && (
+              <p className="text-xs text-blue-600 bg-blue-50 px-3 py-1 rounded">
+                The analysis is taking longer than usual. This may indicate slow
+                loading times.
+              </p>
+            )}
             {retryCount > 0 && (
               <p className="text-xs text-muted-foreground">
                 Attempt #{retryCount}
@@ -276,9 +289,13 @@ export default function PageSpeedInsights({
                 onClick={fetchAllData}
                 variant="outline"
                 size="sm"
-                disabled={loading}
+                disabled={loading || error.includes("rate limit")}
               >
-                {loading ? "Retrying..." : "Try Again"}
+                {loading
+                  ? "Retrying..."
+                  : error.includes("rate limit")
+                  ? "Rate Limited"
+                  : "Try Again"}
               </Button>
             )}
           </div>

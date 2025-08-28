@@ -128,7 +128,11 @@ export default function Home() {
               <h2 className="text-3xl font-light text-center mb-8 text-white">
                 {t("WebsitePerformance")}
               </h2>
-              <PageSpeedInsights url="https://www.coldbydefault.com" />
+              <PageSpeedInsights
+                url="https://www.coldbydefault.com"
+                showRefreshButton={true}
+                showBothStrategies={true}
+              />
             </div>
           </div>
         </div>
