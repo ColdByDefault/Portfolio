@@ -52,7 +52,7 @@ latest 3.4~
 10. Privacy & Data Handling
 11. Development (Local Setup)
 12. Quality & Tooling
-13. Version 3.5.0 Updates
+13. Version 4.0.0 Updates
 14. Roadmap
 15. License & Intellectual Property
 16. Contact
@@ -306,7 +306,7 @@ pnpm test-dep
 
 ## 12. Quality & Tooling
 
-**ESLint 9.x Migration & Enhanced Type Safety (3.5.0):**
+**ESLint 9.x Migration & Enhanced Type Safety (4.0.0):**
 
 - Complete migration to ESLint flat config system (`eslint.config.mts`)
 - Upgraded to ESLint 9.x with modern plugin architecture
@@ -339,7 +339,7 @@ pnpm test-dep
 
 ---
 
-## 13. Version 3.5.0 Updates
+## 13. Version 4.0.0 Updates
 
 **Major ESLint Architecture Overhaul:**
 
