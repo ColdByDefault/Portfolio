@@ -79,6 +79,13 @@ export async function GET(request: NextRequest) {
         );
       }
 
+      if (response.status === 504 || response.status >= 500) {
+        return NextResponse.json(
+          { error: "PageSpeed analysis timed out or service is unavailable" },
+          { status: 504 }
+        );
+      }
+
       return NextResponse.json(
         { error: "PageSpeed API is currently unavailable" },
         { status: 503 }
@@ -132,9 +139,21 @@ export async function GET(request: NextRequest) {
       if (error.name === "TimeoutError" || error.name === "AbortError") {
         return NextResponse.json(
           {
-            error: "Request timed out. PageSpeed analysis is taking too long.",
+            error:
+              "PageSpeed analysis timed out. The website may be slow to load.",
           },
           { status: 504 }
+        );
+      }
+
+      // Handle network errors
+      if (error.message.includes("fetch")) {
+        return NextResponse.json(
+          {
+            error:
+              "Unable to connect to PageSpeed API. Please try again later.",
+          },
+          { status: 503 }
         );
       }
     }

@@ -277,7 +277,7 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
         >
           <CardTitle
             id="projects-heading"
-            className="text-3xl font-light sm:text-4xl text-center mb-8 text-white"
+            className="text-3xl font-light sm:text-4xl text-center mb-8 text-black dark:text-white"
             role="heading"
             aria-level={2}
           >
