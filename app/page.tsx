@@ -74,44 +74,46 @@ export default function Home() {
       <div className="relative" id="main-content">
         {/* Sticky Background Image - Only in dark mode */}
         <div className="dark:block hidden sticky top-0 h-screen z-0">
-          <Image
-            src="/bg.jpg"
-            fill
-            alt="Background image of Birmingham Museums Trust"
-            className="object-cover object-center"
-            priority
-            quality={100}
-            sizes="100vw"
-            style={{
-              objectFit: "cover",
-              objectPosition: "center",
-            }}
-          />
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
+          <div className="relative w-full h-full">
+            <Image
+              src="/bg.jpg"
+              fill
+              alt="Background image of Birmingham Museums Trust"
+              className="object-cover object-center"
+              priority
+              quality={100}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+              style={{
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
+            />
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
 
-          {/* Photo Credit - Hidden on small screens, visible on medium+ screens */}
-          <div className="hidden md:block absolute bottom-4 right-4 text-xs text-white/70 hover:text-white/90 transition-colors duration-200">
-            <span>
-              Photo by{" "}
-              <a
-                href="https://unsplash.com/@birminghammuseumstrust"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-white"
-              >
-                Birmingham Museums Trust
-              </a>{" "}
-              on{" "}
-              <a
-                href="https://unsplash.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-white"
-              >
-                Unsplash
-              </a>
-            </span>
+            {/* Photo Credit - Hidden on small screens, visible on medium+ screens */}
+            <div className="hidden md:block absolute bottom-4 right-4 text-xs text-white/70 hover:text-white/90 transition-colors duration-200">
+              <span>
+                Photo by{" "}
+                <a
+                  href="https://unsplash.com/@birminghammuseumstrust"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-white"
+                >
+                  Birmingham Museums Trust
+                </a>{" "}
+                on{" "}
+                <a
+                  href="https://unsplash.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-white"
+                >
+                  Unsplash
+                </a>
+              </span>
+            </div>
           </div>
         </div>
 

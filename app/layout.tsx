@@ -26,7 +26,6 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
-import { Orbitron } from "next/font/google";
 import React from "react";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import Navbar from "@/components/nav/Navbar";
@@ -99,23 +98,13 @@ export const metadata = {
 // Generate structured data once to avoid hydration mismatches
 const structuredData = generateStructuredData(seoConfigEN);
 
-const orbitron = Orbitron({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-orbitron",
-});
-
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const messages = await getMessages();
   const locale = await getLocale();
   return (
-    <html
-      lang={locale}
-      className={`${orbitron.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -124,7 +113,6 @@ export default async function RootLayout({
 
         {/* Security Headers */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-        <meta httpEquiv="X-Frame-Options" content="DENY" />
         <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
         <meta
           httpEquiv="Referrer-Policy"

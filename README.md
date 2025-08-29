@@ -1,13 +1,12 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V4.0.0
+# ColdByDefault Portfolio · V4.0.1
 
 **RELEASE NOTE:** [Hot-Drop](https://github.com/ColdByDefault/Portfolio/releases/tag/4.0.0)
 
 Modern, secure, high‑performance developer portfolio built with Next.js 15, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
 <img width="966" height="174" alt="image" src="https://github.com/user-attachments/assets/de1d9284-c385-4e15-9956-2781e583d66a" />
-
 
 **Live:** https://www.coldbydefault.com • **Stack:** Next.js 15.5.1 · React 19 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.3.5 · ESLint 9.x · Vercel
 
@@ -52,13 +51,14 @@ latest 3.4~
 7. Architecture Overview
 8. API Surface
 9. Security & Hardening
-10. Privacy & Data Handling
-11. Development (Local Setup)
-12. Quality & Tooling
-13. Version 4.0.0 Updates
-14. Roadmap
-15. License & Intellectual Property
-16. Contact
+10. GitHub Actions & Automation
+11. Privacy & Data Handling
+12. Development (Local Setup)
+13. Quality & Tooling
+14. Version 4.0.0 Updates
+15. Roadmap
+16. License & Intellectual Property
+17. Contact
 
 ---
 
@@ -80,6 +80,7 @@ Core:
 - Framer Motion 12.x (animation system)
 - next-intl 4.3.5 (runtime + server i18n)
 - Vercel Hosting & Edge Network
+- Vercel CRON_Jobs (Automated Background Tasks & refresh Data)
 
 Development & Quality:
 
@@ -143,15 +144,8 @@ Runtime locale negotiation with graceful fallbacks:
 
 - Framework: `next-intl` (server aware, streaming compatible)
 - Supported locales: `en`, `de`, `es`, `sv`
-- Selection Order: Cookie (`PORTFOLIOVERSIONLATEST_LOCALE`) → Browser language (2‑char) → Default `en`
-- Client Switch: Dropdown triggers `router.refresh()` to re-render server components
+- Selection Order: Default `en`
 - Message Bundles: JSON under `messages/` (typed access enhancements on roadmap)
-
-Planned i18n Enhancements:
-
-- Static type inference for message keys (prevent drift)
-- CI lint to detect untranslated / orphaned keys
-- Locale‑segmented sitemap & RSS generation
 
 ---
 
@@ -159,19 +153,13 @@ Planned i18n Enhancements:
 
 Advanced multi‑locale SEO system delivering consistent structured metadata:
 
-- Config‑driven locale specific SEO objects (`seoConfigEN`, `seoConfigDE`, etc.)
+- Config‑driven locale specific SEO objects
 - Open Graph & Twitter card variants per locale (images, titles, descriptions)
 - JSON-LD generation for Person + BreadcrumbList
 - Canonical + alternate `hreflang` tags
 - Keyword curation & skill taxonomy powering `knowsAbout`
 - CSP‑compatible (no unsafe inline script proliferation)
 - Verified 100/100 Lighthouse SEO score (Aug 2025) & 100 PageSpeed Insights SEO metric
-
-Upcoming SEO Roadmap:
-
-- Project & Certification structured data
-- Automated keyword coverage tests
-- Locale‑partitioned dynamic sitemap
 
 ---
 
@@ -183,12 +171,6 @@ Focus Areas:
 - Efficient image delivery (static assets + modern formats where suitable)
 - Reduced JavaScript footprint (edge/server rendering bias)
 - Accessible semantic structure (landmarks, labels, focus states)
-
-Additional Optimizations:
-
-- Preconnect & DNS-prefetch where impactful
-- Tailwind purge for minimal CSS payload
-- Motion reduced gracefully for `prefers-reduced-motion`
 
 ---
 
@@ -207,7 +189,7 @@ Design Principles:
 
 - Separation of concerns (data vs presentation)
 - Minimal surface area for API routes
-- Immutable, typed content modules vs runtime DB dependency
+- Immutable, typed content modules
 
 ---
 
@@ -249,28 +231,45 @@ Security Posture Snapshot:
 - Medium: 0
 - Low/Informational: Monitored
 
-Checklist Summary:
+---
 
-- [x] CSP policy enforced
-- [x] Headers baseline hardened
-- [x] Input & output sanitation
-- [x] Secret isolation (no checked‑in secrets)
-- [x] Rate limit & abuse monitoring
-- [x] XSS & injection surface minimized (no SQL layer, no dynamic eval)
-- [x] Locale input constrained to explicit allow‑list
+## 10. GitHub Actions & Automation
+
+Automated security and quality workflows ensuring code integrity and vulnerability management:
+
+**CodeQL Advanced Security Scanning:**
+
+- **Triggers**: Push to main, pull requests, scheduled weekly
+- **Languages**: Actions, JavaScript/TypeScript, Python
+- **Purpose**: Static analysis for security vulnerabilities, code quality issues, and potential attack vectors
+- **Advanced Features**: Multi-language matrix analysis, configurable query packs, integration with GitHub Security tab
+
+**Dependency Review:**
+
+- **Triggers**: Pull requests to main branch
+- **Purpose**: Scans dependency changes for known vulnerabilities and license compliance
+- **Features**: Blocks PRs with vulnerable dependencies, provides detailed security reports in PR comments
+- **Integration**: Automated comments on pull requests with dependency security analysis
+
+**Vercel CRON Jobs:**
+
+- **PageSpeed Data Refresh**: Automated background refresh every 12 hours (`0 */12 * * *`)
+- **Endpoint**: `/api/pagespeed/refresh` with extended 5-minute execution timeout
+- **Purpose**: Keeps PageSpeed Insights data current without user-initiated requests
+- **Caching Strategy**: 12-hour cache with 24-hour stale-while-revalidate for optimal performance
+- **Integration**: Seamless background updates maintaining data freshness for performance transparency
 
 ---
 
-## 10. Privacy & Data Handling
+## 11. Privacy & Data Handling
 
 - No invasive tracking; minimal analytical surface.
 - Cookie consent banner gating non‑essential storage.
 - No third‑party ad or profiling scripts.
-- Contact submissions (if enabled) are transient and not persisted long‑term.
 
 ---
 
-## 11. Development (Local Setup)
+## 12. Development (Local Setup)
 
 Proprietary code; cloning allowed for personal viewing only (no reuse / redistribution).
 
@@ -307,7 +306,7 @@ pnpm test-dep
 
 ---
 
-## 12. Quality & Tooling
+## 13. Quality & Tooling
 
 **ESLint 9.x Migration & Enhanced Type Safety (4.0.0):**
 
@@ -342,7 +341,7 @@ pnpm test-dep
 
 ---
 
-## 13. Version 4.0.0 Updates
+## 14. Version 4.0.0 Updates
 
 **Major ESLint Architecture Overhaul:**
 
@@ -389,7 +388,7 @@ pnpm test-dep
 
 ---
 
-## 14. Roadmap
+## 15. Roadmap
 
 - Expand localization (additional languages beyond 4; automated missing key detection)
 - Further edge caching tuning & RUM instrumentation (privacy‑preserving)
@@ -399,7 +398,7 @@ pnpm test-dep
 
 ---
 
-## 15. License & Intellectual Property
+## 16. License & Intellectual Property
 
 Copyright © 2025 ColdByDefault. All rights reserved.
 
@@ -415,7 +414,7 @@ Refer to `LICENSE` & `COPYRIGHT` files for formal wording.
 
 ---
 
-## 16. Contact
+## 17. Contact
 
 Portfolio: https://www.coldbydefault.com  
 Linktree: https://linktr.ee/ColdByDefault  
