@@ -53,7 +53,13 @@ export default function PageSpeedInsights({
   const [progressInterval, setProgressInterval] =
     useState<NodeJS.Timeout | null>(null);
   const [cacheStatus, setCacheStatus] = useState<
-    "HIT" | "MISS" | "STALE" | "STALE-ERROR" | null
+    | "HIT"
+    | "MISS"
+    | "STALE"
+    | "STALE-ERROR"
+    | "STALE-DESKTOP"
+    | "CIRCUIT-BREAKER"
+    | null
   >(null);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
 
@@ -78,8 +84,8 @@ export default function PageSpeedInsights({
             headers: {
               "X-Client-ID": "pagespeed-component",
             },
-            // Increase timeout to match API timeout
-            signal: AbortSignal.timeout(70000), // 70 second timeout (longer than API)
+            // Shorter timeout to match API timeout
+            signal: AbortSignal.timeout(50000), // 50 second timeout (slightly longer than API)
           }
         );
 
@@ -87,21 +93,46 @@ export default function PageSpeedInsights({
         const xCache = response.headers.get("X-Cache");
         if (
           xCache &&
-          ["HIT", "MISS", "STALE", "STALE-ERROR"].includes(xCache)
+          [
+            "HIT",
+            "MISS",
+            "STALE",
+            "STALE-ERROR",
+            "STALE-DESKTOP",
+            "CIRCUIT-BREAKER",
+          ].includes(xCache)
         ) {
-          setCacheStatus(xCache as "HIT" | "MISS" | "STALE" | "STALE-ERROR");
+          setCacheStatus(
+            xCache as
+              | "HIT"
+              | "MISS"
+              | "STALE"
+              | "STALE-ERROR"
+              | "STALE-DESKTOP"
+              | "CIRCUIT-BREAKER"
+          );
         }
 
         if (!response.ok) {
           let errorMessage = "Failed to fetch PageSpeed data";
+          let retryAfter: number | null = null;
 
           // Handle specific HTTP status codes first
           if (response.status === 504) {
             errorMessage =
               "PageSpeed analysis timed out. The website may be slow to load.";
+            // Check for retry-after header
+            const retryAfterHeader = response.headers.get("retry-after");
+            if (retryAfterHeader) {
+              retryAfter = parseInt(retryAfterHeader, 10);
+            }
           } else if (response.status === 429) {
             errorMessage =
               "Too many requests. Please wait a moment and try again.";
+            const retryAfterHeader = response.headers.get("retry-after");
+            if (retryAfterHeader) {
+              retryAfter = parseInt(retryAfterHeader, 10);
+            }
           } else if (response.status === 503) {
             errorMessage =
               "PageSpeed API is currently unavailable. Please try again later.";
@@ -113,6 +144,9 @@ export default function PageSpeedInsights({
                 const errorData =
                   (await response.json()) as PageSpeedApiResponse;
                 errorMessage = errorData.error || errorMessage;
+                if (errorData.retryAfter) {
+                  retryAfter = errorData.retryAfter;
+                }
               } else {
                 // Response is not JSON, use status text
                 errorMessage = `HTTP ${response.status}: ${
@@ -125,6 +159,20 @@ export default function PageSpeedInsights({
                 response.statusText || "Unknown error"
               }`;
             }
+          }
+
+          // If this is a timeout and we haven't retried much, suggest automatic retry
+          if (response.status === 504 && retryCount < 2) {
+            console.log(
+              `PageSpeed timeout for ${strategy}, will retry in ${
+                retryAfter || 30
+              } seconds...`
+            );
+            setTimeout(() => {
+              setRetryCount((prev) => prev + 1);
+              void fetchPageSpeedData(strategy, forceRefresh);
+            }, (retryAfter || 30) * 1000);
+            return;
           }
 
           throw new Error(errorMessage);
@@ -158,7 +206,7 @@ export default function PageSpeedInsights({
         setError(err instanceof Error ? err.message : "An error occurred");
       }
     },
-    [url]
+    [url, retryCount]
   );
 
   const fetchAllData = useCallback(
@@ -168,7 +216,9 @@ export default function PageSpeedInsights({
       setLoading(true);
       setError("");
       setProgress(0);
-      setRetryCount(0);
+      if (forceRefresh) {
+        setRetryCount(0); // Reset retry count on manual refresh
+      }
       setCacheStatus(null);
 
       // Set up progress simulation
@@ -189,6 +239,7 @@ export default function PageSpeedInsights({
             : Promise.resolve(),
         ]);
         setProgress(100);
+        setRetryCount(0); // Reset retry count on success
       } catch (error) {
         console.error("Failed to fetch PageSpeed data:", error);
         setError(
@@ -313,14 +364,20 @@ export default function PageSpeedInsights({
               Error loading PageSpeed data
             </p>
             <p className="text-sm text-muted-foreground max-w-md">{error}</p>
-            {(error.includes("rate limit") ||
-              error.includes("Too many requests")) && (
+            {(error.includes("timeout") || error.includes("timed out")) && (
               <p className="text-xs text-amber-600 bg-amber-50 dark:bg-amber-900/20 dark:text-amber-400 px-3 py-1 rounded">
-                Please wait a moment before retrying. Google&apos;s PageSpeed
-                API has rate limits.
+                The analysis timed out. This might indicate the website takes a
+                long time to load.
+                {retryCount < 2 && " We'll retry automatically."}
               </p>
             )}
-            {(error.includes("timeout") || error.includes("timed out")) && (
+            {(error.includes("rate limit") ||
+              error.includes("Too many requests")) && (
+              <p className="text-xs text-orange-600 bg-orange-50 dark:bg-orange-900/20 dark:text-orange-400 px-3 py-1 rounded">
+                Rate limit reached. Please wait a moment before trying again.
+              </p>
+            )}
+            {error.includes("slow to load") && (
               <p className="text-xs text-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:text-blue-400 px-3 py-1 rounded">
                 The analysis is taking longer than usual. This may indicate slow
                 loading times for the website.
@@ -508,6 +565,16 @@ export default function PageSpeedInsights({
           {cacheStatus === "STALE" && (
             <p className="text-xs text-amber-600 dark:text-amber-400 font-medium">
               📡 Auto-refreshing in background
+            </p>
+          )}
+          {cacheStatus === "STALE-DESKTOP" && (
+            <p className="text-xs text-blue-600 dark:text-blue-400 font-medium">
+              💻 Desktop cache (refreshing soon)
+            </p>
+          )}
+          {cacheStatus === "CIRCUIT-BREAKER" && (
+            <p className="text-xs text-orange-600 dark:text-orange-400 font-medium">
+              ⚡ Service stabilizing
             </p>
           )}
         </div>
