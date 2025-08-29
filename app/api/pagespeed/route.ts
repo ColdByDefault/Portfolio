@@ -15,6 +15,7 @@ interface CacheEntry {
   data: PageSpeedResult;
   timestamp: number;
   isRefreshing?: boolean;
+  timeoutCount?: number; // Track consecutive timeout failures
 }
 
 class PageSpeedCache {
@@ -22,6 +23,7 @@ class PageSpeedCache {
   private cache = new Map<string, CacheEntry>();
   private readonly CACHE_DURATION = 12 * 60 * 60 * 1000; // 12 hours
   private readonly STALE_WHILE_REVALIDATE = 24 * 60 * 60 * 1000; // 24 hours
+  private readonly MAX_TIMEOUT_COUNT = 3; // Max consecutive timeouts before circuit breaker
 
   static getInstance(): PageSpeedCache {
     if (!PageSpeedCache.instance) {
@@ -58,7 +60,21 @@ class PageSpeedCache {
       data,
       timestamp: Date.now(),
       isRefreshing: false,
+      timeoutCount: 0, // Reset timeout count on successful fetch
     });
+  }
+
+  incrementTimeoutCount(url: string, strategy: string): void {
+    const key = this.getCacheKey(url, strategy);
+    const entry = this.cache.get(key);
+    if (entry) {
+      entry.timeoutCount = (entry.timeoutCount || 0) + 1;
+    }
+  }
+
+  shouldSkipFetch(url: string, strategy: string): boolean {
+    const entry = this.get(url, strategy);
+    return !!entry && (entry.timeoutCount || 0) >= this.MAX_TIMEOUT_COUNT;
   }
 
   isStale(url: string, strategy: string): boolean {
@@ -138,13 +154,17 @@ async function fetchPageSpeedData(
     url
   )}&key=${apiKey}&strategy=${strategy}&category=performance&category=accessibility&category=best-practices&category=seo`;
 
+  // Use conservative timeout to prevent Vercel function timeout
+  // Desktop analysis typically takes longer than mobile
+  const timeoutMs = process.env.NODE_ENV === "production" ? 40000 : 45000; // 40s for prod, 45s for dev
+
   const response = await fetch(pageSpeedUrl, {
     method: "GET",
     headers: {
       Accept: "application/json",
       "User-Agent": "Mozilla/5.0 (compatible; Portfolio/1.0)",
     },
-    signal: AbortSignal.timeout(45000), // 45 seconds for production
+    signal: AbortSignal.timeout(timeoutMs),
   });
 
   if (!response.ok) {
@@ -211,6 +231,12 @@ export async function GET(request: NextRequest) {
     const cachedEntry = cache.get(url, strategy);
     const isStale = cache.isStale(url, strategy);
 
+    // For desktop strategy, be more lenient with stale data due to frequent timeouts
+    const desktopStaleTolerance =
+      strategy === "desktop" &&
+      cachedEntry &&
+      Date.now() - cachedEntry.timestamp < 24 * 60 * 60 * 1000; // 24 hours for desktop
+
     // If we have fresh data, return it immediately
     if (cachedEntry && !isStale && !forceRefresh) {
       return NextResponse.json(cachedEntry.data, {
@@ -222,14 +248,32 @@ export async function GET(request: NextRequest) {
     }
 
     // If we have stale data and not force refreshing, return stale data and trigger background refresh
-    if (cachedEntry && !forceRefresh) {
-      // Trigger background refresh (fire and forget)
-      backgroundRefresh(url, strategy).catch(console.error);
+    // For desktop, be more aggressive about returning stale data
+    if (cachedEntry && (!forceRefresh || desktopStaleTolerance)) {
+      // Trigger background refresh (fire and forget) only if not too recent
+      if (isStale) {
+        backgroundRefresh(url, strategy).catch(console.error);
+      }
 
       return NextResponse.json(cachedEntry.data, {
         headers: {
           "Cache-Control": "public, max-age=300", // 5 minutes browser cache for stale data
-          "X-Cache": "STALE",
+          "X-Cache": desktopStaleTolerance ? "STALE-DESKTOP" : "STALE",
+        },
+      });
+    }
+
+    // Check if we should skip fetching due to circuit breaker
+    if (cache.shouldSkipFetch(url, strategy) && cachedEntry) {
+      console.log(
+        "Circuit breaker active for %s (%s), returning cached data",
+        url,
+        strategy
+      );
+      return NextResponse.json(cachedEntry.data, {
+        headers: {
+          "Cache-Control": "public, max-age=1800", // 30 minutes for circuit breaker
+          "X-Cache": "CIRCUIT-BREAKER",
         },
       });
     }
@@ -252,8 +296,26 @@ export async function GET(request: NextRequest) {
     } catch (error) {
       console.error("Fresh fetch failed:", error);
 
+      // Track timeout for circuit breaker
+      if (error instanceof Error) {
+        const isTimeout =
+          error.name === "TimeoutError" ||
+          error.name === "AbortError" ||
+          error.message.includes("timeout") ||
+          error.message.includes("timed out");
+
+        if (isTimeout) {
+          cache.incrementTimeoutCount(url, strategy);
+        }
+      }
+
       // If fresh fetch fails but we have stale data, return the stale data
       if (cachedEntry) {
+        console.log(
+          "Returning stale data due to fetch failure for %s (%s)",
+          url,
+          strategy
+        );
         return NextResponse.json(cachedEntry.data, {
           headers: {
             "Cache-Control": "public, max-age=300",
@@ -264,17 +326,43 @@ export async function GET(request: NextRequest) {
 
       // No cache and fetch failed
       if (error instanceof Error) {
-        if (error.name === "TimeoutError" || error.name === "AbortError") {
+        const isTimeout =
+          error.name === "TimeoutError" ||
+          error.name === "AbortError" ||
+          error.message.includes("timeout") ||
+          error.message.includes("timed out");
+
+        if (isTimeout) {
+          // Start background refresh for next time
+          backgroundRefresh(url, strategy).catch(console.error);
+
           return NextResponse.json(
-            { error: "PageSpeed analysis timed out. Please try again later." },
-            { status: 504 }
+            {
+              error:
+                "PageSpeed analysis timed out. The website may be slow to load. Try refreshing in a few minutes.",
+              retryAfter: 300, // Suggest retry after 5 minutes
+            },
+            {
+              status: 504,
+              headers: {
+                "Retry-After": "300",
+              },
+            }
           );
         }
 
         if (error.message.includes("Rate limit")) {
           return NextResponse.json(
-            { error: "Too many requests. Please wait before trying again." },
-            { status: 429 }
+            {
+              error: "Too many requests. Please wait before trying again.",
+              retryAfter: 60,
+            },
+            {
+              status: 429,
+              headers: {
+                "Retry-After": "60",
+              },
+            }
           );
         }
       }

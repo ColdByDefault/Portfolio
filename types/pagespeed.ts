@@ -32,6 +32,7 @@ export interface PageSpeedApiResponse {
   strategy?: string;
   metrics?: PageSpeedMetrics;
   loadingExperience?: PageSpeedResult["loadingExperience"];
+  retryAfter?: number;
 }
 
 export interface PageSpeedInsightsProps {
