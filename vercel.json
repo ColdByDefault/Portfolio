@@ -1,10 +1,4 @@
 {
-  "crons": [
-    {
-      "path": "/api/pagespeed/refresh",
-      "schedule": "0 */12 * * *"
-    }
-  ],
   "functions": {
     "app/api/pagespeed/route.ts": {
       "maxDuration": 60
