@@ -52,12 +52,28 @@ export default function PageSpeedInsights({
   const [progress, setProgress] = useState(0);
   const [progressInterval, setProgressInterval] =
     useState<NodeJS.Timeout | null>(null);
+  const [cacheStatus, setCacheStatus] = useState<
+    "HIT" | "MISS" | "STALE" | "STALE-ERROR" | null
+  >(null);
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
 
   const fetchPageSpeedData = useCallback(
-    async (strategy: "mobile" | "desktop"): Promise<void> => {
+    async (
+      strategy: "mobile" | "desktop",
+      forceRefresh = false
+    ): Promise<void> => {
       try {
+        const queryParams = new URLSearchParams({
+          url: url,
+          strategy: strategy,
+        });
+
+        if (forceRefresh) {
+          queryParams.append("refresh", "true");
+        }
+
         const response = await fetch(
-          `/api/pagespeed?url=${encodeURIComponent(url)}&strategy=${strategy}`,
+          `/api/pagespeed?${queryParams.toString()}`,
           {
             headers: {
               "X-Client-ID": "pagespeed-component",
@@ -66,6 +82,15 @@ export default function PageSpeedInsights({
             signal: AbortSignal.timeout(70000), // 70 second timeout (longer than API)
           }
         );
+
+        // Extract cache status from headers
+        const xCache = response.headers.get("X-Cache");
+        if (
+          xCache &&
+          ["HIT", "MISS", "STALE", "STALE-ERROR"].includes(xCache)
+        ) {
+          setCacheStatus(xCache as "HIT" | "MISS" | "STALE" | "STALE-ERROR");
+        }
 
         if (!response.ok) {
           let errorMessage = "Failed to fetch PageSpeed data";
@@ -126,53 +151,71 @@ export default function PageSpeedInsights({
         } else {
           setDesktopData(validatedResult);
         }
+
+        setLastUpdated(new Date().toISOString());
       } catch (err) {
-        console.error(`PageSpeed fetch error (${strategy}):`, err);
+        console.error("PageSpeed fetch error (%s):", strategy, err);
         setError(err instanceof Error ? err.message : "An error occurred");
       }
     },
     [url]
   );
 
-  const fetchAllData = useCallback(async (): Promise<void> => {
-    if (!url) return;
+  const fetchAllData = useCallback(
+    async (forceRefresh = false): Promise<void> => {
+      if (!url) return;
 
-    setLoading(true);
-    setError("");
-    setProgress(0);
-    setRetryCount(0);
+      setLoading(true);
+      setError("");
+      setProgress(0);
+      setRetryCount(0);
+      setCacheStatus(null);
 
-    // Set up progress simulation
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 90) return prev;
-        return prev + Math.random() * 10;
-      });
-    }, 1500); // Update every 1.5 seconds
+      // Set up progress simulation
+      const interval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev >= 90) return prev;
+          return prev + Math.random() * 10;
+        });
+      }, 1500); // Update every 1.5 seconds
 
-    setProgressInterval(interval);
+      setProgressInterval(interval);
 
-    try {
-      await Promise.all([
-        fetchPageSpeedData("mobile"),
-        showBothStrategies ? fetchPageSpeedData("desktop") : Promise.resolve(),
-      ]);
-      setProgress(100);
-    } catch (error) {
-      console.error("Failed to fetch PageSpeed data:", error);
-      setError(error instanceof Error ? error.message : "Failed to fetch data");
-    } finally {
-      if (interval) {
-        clearInterval(interval);
+      try {
+        await Promise.all([
+          fetchPageSpeedData("mobile", forceRefresh),
+          showBothStrategies
+            ? fetchPageSpeedData("desktop", forceRefresh)
+            : Promise.resolve(),
+        ]);
+        setProgress(100);
+      } catch (error) {
+        console.error("Failed to fetch PageSpeed data:", error);
+        setError(
+          error instanceof Error ? error.message : "Failed to fetch data"
+        );
+      } finally {
+        if (interval) {
+          clearInterval(interval);
+        }
+        setProgressInterval(null);
+        setLoading(false);
+        setTimeout(() => setProgress(0), 500); // Reset progress after a short delay
       }
-      setProgressInterval(null);
-      setLoading(false);
-      setTimeout(() => setProgress(0), 500); // Reset progress after a short delay
-    }
-  }, [url, showBothStrategies, fetchPageSpeedData]);
+    },
+    [url, showBothStrategies, fetchPageSpeedData]
+  );
+
+  const handleRefresh = useCallback(async () => {
+    await fetchAllData(true); // Force refresh
+  }, [fetchAllData]);
+
+  const handleRefreshClick = useCallback(() => {
+    void handleRefresh();
+  }, [handleRefresh]);
 
   useEffect(() => {
-    void fetchAllData();
+    void fetchAllData(false); // Initial load without force refresh
   }, [fetchAllData]);
 
   useEffect(() => {
@@ -411,25 +454,63 @@ export default function PageSpeedInsights({
         {showRefreshButton && (
           <>
             <Separator />
-            <Button
-              onClick={() => void fetchAllData()}
-              variant="outline"
-              className="w-full"
-              disabled={loading}
-            >
-              {loading ? "Refreshing..." : "Refresh Data"}
-            </Button>
+            <div className="space-y-3">
+              {cacheStatus && (
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-muted-foreground">Cache Status:</span>
+                  <Badge
+                    variant="outline"
+                    className={
+                      cacheStatus === "HIT"
+                        ? "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-400"
+                        : cacheStatus === "STALE"
+                        ? "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/20 dark:text-amber-400"
+                        : "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400"
+                    }
+                  >
+                    {cacheStatus === "HIT"
+                      ? "Fresh"
+                      : cacheStatus === "STALE"
+                      ? "Refreshing"
+                      : cacheStatus === "STALE-ERROR"
+                      ? "Cached"
+                      : "Updated"}
+                  </Badge>
+                </div>
+              )}
+              <Button
+                onClick={handleRefreshClick}
+                variant="outline"
+                className="w-full"
+                disabled={loading}
+              >
+                {loading ? "Refreshing..." : "Force Refresh"}
+              </Button>
+            </div>
           </>
         )}
       </CardContent>
       <CardFooter className="pt-4">
-        <p className="text-xs text-muted-foreground">
-          Last updated: {new Date().toLocaleDateString()} at{" "}
-          {new Date().toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}
-        </p>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-2">
+          <p className="text-xs text-muted-foreground">
+            {lastUpdated ? (
+              <>
+                Last updated: {new Date(lastUpdated).toLocaleDateString()} at{" "}
+                {new Date(lastUpdated).toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </>
+            ) : (
+              "Loading..."
+            )}
+          </p>
+          {cacheStatus === "STALE" && (
+            <p className="text-xs text-amber-600 dark:text-amber-400 font-medium">
+              📡 Auto-refreshing in background
+            </p>
+          )}
+        </div>
       </CardFooter>
     </Card>
   );

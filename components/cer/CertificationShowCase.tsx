@@ -82,6 +82,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
             width={300}
             height={280}
             className="object-cover rounded-md"
+            style={{ width: "auto", height: "auto" }}
             priority={cert.id <= 3}
           />
         </div>
@@ -135,6 +136,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
                 width={80}
                 height={80}
                 className="object-cover rounded-md"
+                style={{ width: "auto", height: "auto" }}
                 priority={cert.id <= 3}
               />
             </div>
@@ -164,6 +166,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
                   width={280}
                   height={240}
                   className="object-cover rounded-md"
+                  style={{ width: "auto", height: "auto" }}
                   priority={cert.id <= 3}
                 />
               </div>
@@ -213,6 +216,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
                 width={60}
                 height={60}
                 className="object-cover rounded-md"
+                style={{ width: "auto", height: "auto" }}
                 priority={cert.id <= 3}
               />
             </div>
@@ -242,6 +246,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
                   width={240}
                   height={200}
                   className="object-cover rounded-md"
+                  style={{ width: "auto", height: "auto" }}
                   priority={cert.id <= 3}
                 />
               </div>

@@ -257,7 +257,7 @@ export async function GET(request: NextRequest) {
   const dataType = validateDataType(searchParams.get("type"));
 
   try {
-    console.log(`GitHub API request for type: ${dataType}`);
+    console.log("GitHub API request for type: %s", dataType);
 
     const fetcher = new GitHubDataFetcher();
     let data: GitHubApiResponse = {};

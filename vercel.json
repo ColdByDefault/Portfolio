@@ -1,0 +1,21 @@
+{
+  "functions": {
+    "app/api/pagespeed/route.ts": {
+      "maxDuration": 60
+    },
+    "app/api/pagespeed/refresh/route.ts": {
+      "maxDuration": 300
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/pagespeed",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=43200, stale-while-revalidate=86400"
+        }
+      ]
+    }
+  ]
+}

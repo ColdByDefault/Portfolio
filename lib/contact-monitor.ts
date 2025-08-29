@@ -40,7 +40,7 @@ export function logSubmission(
   // Auto-block if very suspicious
   if (spamScore > 10) {
     blockedIPs.add(data.ip);
-    console.warn(`Auto-blocked suspicious IP: ${data.ip}`);
+    console.warn("Auto-blocked suspicious IP: %s", data.ip);
   }
 
   return submission;
