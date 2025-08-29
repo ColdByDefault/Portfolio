@@ -30,7 +30,10 @@ export async function POST(request: NextRequest) {
 
     console.log("Starting automated PageSpeed refresh...");
 
-    const baseUrl = new URL(request.url).origin;
+    // Use hardcoded base URL to prevent SSRF
+    const baseUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://www.coldbydefault.com";
     const strategies: ("mobile" | "desktop")[] = ["mobile", "desktop"];
 
     const refreshPromises: Promise<RefreshResult>[] = strategies.map(
@@ -58,7 +61,7 @@ export async function POST(request: NextRequest) {
             }
 
             const metrics: PageSpeedMetrics = data.metrics;
-            console.log(`✅ Refreshed ${strategy} data for ${MAIN_URL}:`, {
+            console.log("✅ Refreshed %s data for %s:", strategy, MAIN_URL, {
               performance: metrics.performance,
               accessibility: metrics.accessibility,
               bestPractices: metrics.bestPractices,
@@ -67,7 +70,8 @@ export async function POST(request: NextRequest) {
             return { strategy, success: true, data } satisfies RefreshResult;
           } else {
             console.error(
-              `❌ Failed to refresh ${strategy} data:`,
+              "❌ Failed to refresh %s data:",
+              strategy,
               response.status,
               response.statusText
             );
@@ -78,7 +82,7 @@ export async function POST(request: NextRequest) {
             } satisfies RefreshResult;
           }
         } catch (error) {
-          console.error(`❌ Error refreshing ${strategy} data:`, error);
+          console.error("❌ Error refreshing %s data:", strategy, error);
           return {
             strategy,
             success: false,

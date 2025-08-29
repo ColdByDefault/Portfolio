@@ -38,7 +38,7 @@ export default function AdminContactPage() {
   const handleError = useCallback((error: unknown, context: string): void => {
     const errorMessage = error instanceof Error ? error.message : String(error);
     setMessage(`${context}: ${errorMessage}`);
-    console.error(`${context}:`, error);
+    console.error("%s:", context, error);
   }, []);
 
   const isValidErrorResponse = (data: unknown): data is ApiErrorResponse => {

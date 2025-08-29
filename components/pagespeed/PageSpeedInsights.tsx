@@ -154,7 +154,7 @@ export default function PageSpeedInsights({
 
         setLastUpdated(new Date().toISOString());
       } catch (err) {
-        console.error(`PageSpeed fetch error (${strategy}):`, err);
+        console.error("PageSpeed fetch error (%s):", strategy, err);
         setError(err instanceof Error ? err.message : "An error occurred");
       }
     },

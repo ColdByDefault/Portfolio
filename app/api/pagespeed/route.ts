@@ -110,10 +110,15 @@ async function backgroundRefresh(
     const result = await fetchPageSpeedData(url, strategy);
     if (result) {
       cache.set(url, strategy, result);
-      console.log(`Background refresh completed for ${url} (${strategy})`);
+      console.log("Background refresh completed for %s (%s)", url, strategy);
     }
   } catch (error) {
-    console.error(`Background refresh failed for ${url} (${strategy}):`, error);
+    console.error(
+      "Background refresh failed for %s (%s):",
+      url,
+      strategy,
+      error
+    );
   } finally {
     cache.setRefreshing(url, strategy, false);
   }
@@ -231,7 +236,7 @@ export async function GET(request: NextRequest) {
 
     // If no cache or force refresh, fetch fresh data
     try {
-      console.log(`Fetching fresh PageSpeed data for ${url} (${strategy})`);
+      console.log("Fetching fresh PageSpeed data for %s (%s)", url, strategy);
       const result = await fetchPageSpeedData(url, strategy);
 
       if (result) {
