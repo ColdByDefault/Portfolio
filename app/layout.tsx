@@ -9,7 +9,7 @@
  * @ file /app/layout.tsx
  * @ created 2024-12-31 23:00:00
  * @ author ColdByDefault
- * @ copyright 2024 ColdByDefault. All Rights Reserved.
+ * @ copyright 2025 ColdByDefault. All Rights Reserved.
  *
  * @ remarks
  * This layout component sets up the HTML structure, including the `<head>` section
@@ -28,8 +28,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import React from "react";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import Navbar from "@/components/nav/Navbar";
-import Footer from "@/components/footer/Footer";
+import { Navbar } from "@/components/nav";
+import { Footer } from "@/components/footer";
 import { CookiesBanner } from "@/components/cookies";
 import { seoConfigEN, generateStructuredData } from "@/lib/seo";
 import { NextIntlClientProvider } from "next-intl";
