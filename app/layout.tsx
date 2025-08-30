@@ -30,7 +30,7 @@ import React from "react";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/footer/Footer";
-import { CookiesBanner } from "@/components/cookies/cookies-banner";
+import { CookiesBanner } from "@/components/cookies";
 import { seoConfigEN, generateStructuredData } from "@/lib/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";

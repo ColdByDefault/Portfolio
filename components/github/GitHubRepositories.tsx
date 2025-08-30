@@ -16,23 +16,7 @@ import {
   getOverlayStyles,
   gradientShiftCSS,
 } from "@/lib/card-animations";
-
-interface GitHubRepo {
-  name: string;
-  description: string;
-  html_url: string;
-  language: string;
-  stargazers_count: number;
-  forks_count: number;
-  updated_at: string;
-  topics: string[];
-  homepage: string;
-  pinned?: boolean;
-}
-
-interface GitHubRepositoriesProps {
-  repositories: GitHubRepo[];
-}
+import type { GitHubRepo, GitHubRepositoriesProps } from "@/types/github";
 
 const LanguageColors: Record<string, string> = {
   JavaScript: "#f1e05a",

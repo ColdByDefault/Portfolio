@@ -17,26 +17,7 @@ import {
   getOverlayStyles,
   gradientShiftCSS,
 } from "@/lib/card-animations";
-
-interface GitHubStats {
-  public_repos: number;
-  followers: number;
-  following: number;
-  total_stars: number;
-  total_forks: number;
-  most_used_language: string;
-  languages: Record<string, number>;
-}
-
-interface GitHubProfile {
-  name: string;
-  login: string;
-  avatar_url: string;
-  bio: string;
-  location: string;
-  blog: string;
-  html_url: string;
-}
+import type { GitHubProfile, GitHubStats } from "@/types/github";
 
 interface GitHubProfileProps {
   profile: GitHubProfile;
