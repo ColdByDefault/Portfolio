@@ -16,6 +16,7 @@ interface CompanyBannerProps {
   direction?: "left" | "right";
   pauseOnHover?: boolean;
   showTooltip?: boolean;
+  showCompanyNames?: boolean;
 }
 
 const speedMap = {
@@ -35,9 +36,10 @@ export function CompanyBanner({
   direction = "right",
   pauseOnHover = true,
   showTooltip = true,
+  showCompanyNames = true,
 }: CompanyBannerProps) {
-  // Duplicate the array to create seamless loop
-  const duplicatedLogos = [...companiesData, ...companiesData];
+  // Triple the array to ensure seamless infinite loop
+  const tripleLogos = [...companiesData, ...companiesData, ...companiesData];
 
   const animationClass = cn(
     speedMap[speed],
@@ -46,18 +48,19 @@ export function CompanyBanner({
   );
 
   return (
-    <div className={cn("w-full overflow-hidden bg-black/60 dark:bg-black/80", className)}>
-      <div
-        className={cn("flex whitespace-nowrap", animationClass)}
-        style={{
-          width: `${companiesData.length * 200}px`,
-        }}
-      >
-        {duplicatedLogos.map((company, index) => (
+    <div
+      className={cn(
+        "company-banner-container bg-black/60 dark:bg-black/80",
+        className
+      )}
+    >
+      <div className={cn("flex", animationClass)}>
+        {tripleLogos.map((company, index) => (
           <CompanyLogoItem
             key={`${company.id}-${index}`}
             company={company}
             showTooltip={showTooltip}
+            showCompanyName={showCompanyNames}
           />
         ))}
       </div>
@@ -68,30 +71,35 @@ export function CompanyBanner({
 interface CompanyLogoItemProps {
   company: CompanyLogo;
   showTooltip: boolean;
+  showCompanyName: boolean;
 }
 
-function CompanyLogoItem({ company, showTooltip }: CompanyLogoItemProps) {
+function CompanyLogoItem({
+  company,
+  showTooltip,
+  showCompanyName,
+}: CompanyLogoItemProps) {
   const hasLogo = company.logo && company.logo.trim() !== "";
 
   const logoElement = (
-    <div className="group relative mx-8 flex h-16 w-full items-center justify-center transition-all duration-300 hover:scale-110">
+    <div className="company-logo-item group relative transition-all duration-300">
       {hasLogo ? (
-        <div className="relative h-12 w-24 opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+        <div className="logo-container">
           <Image
             src={company.logo!}
             alt={`${company.name} logo`}
             fill
             className="object-contain"
-            sizes="(max-width: 768px) 80px, 96px"
+            sizes="40px"
           />
         </div>
       ) : (
-        <div className="flex h-12 w-24 items-center justify-center opacity-60 transition-all duration-300 group-hover:opacity-100">
-          <span className="text-sm font-semibold text-white group-hover:text-foreground">
-            {company.name}
-          </span>
+        <div className="text-logo">
+          <span>{company.name.slice(0, 2).toUpperCase()}</span>
         </div>
       )}
+
+      {showCompanyName && <span className="company-name">{company.name}</span>}
 
       {showTooltip && (
         <div className="absolute -top-12 left-1/2 z-10 -translate-x-1/2 transform opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -130,46 +138,42 @@ export function CompanyBannerMinimal({
   className,
   speed = "normal",
   direction = "left",
-}: Omit<CompanyBannerProps, "pauseOnHover" | "showTooltip">) {
-  const duplicatedLogos = [...companiesData, ...companiesData];
+  showCompanyNames = false,
+}: Omit<CompanyBannerProps, "pauseOnHover" | "showTooltip"> & {
+  showCompanyNames?: boolean;
+}) {
+  const tripleLogos = [...companiesData, ...companiesData, ...companiesData];
 
   const animationClass = cn(speedMap[speed], directionMap[direction]);
 
   return (
-    <div className={cn("w-full overflow-hidden", className)}>
+    <div className={cn("company-banner-container", className)}>
       <div
-        className={cn(
-          "flex whitespace-nowrap border-y border-border/20 py-4",
-          animationClass
-        )}
-        style={{
-          width: `${companiesData.length * 180}px`,
-        }}
+        className={cn("flex border-y border-border/20 py-4", animationClass)}
       >
-        {duplicatedLogos.map((company, index) => {
+        {tripleLogos.map((company, index) => {
           const hasLogo = company.logo && company.logo.trim() !== "";
 
           return (
-            <div
-              key={`${company.id}-${index}`}
-              className="mx-6 flex h-12 w-28 items-center justify-center"
-            >
+            <div key={`${company.id}-${index}`} className="company-logo-item">
               {hasLogo ? (
-                <div className="relative h-8 w-20 opacity-40 transition-opacity duration-300 hover:opacity-80">
+                <div className="logo-container">
                   <Image
                     src={company.logo!}
                     alt={`${company.name} logo`}
                     fill
                     className="object-contain"
-                    sizes="(max-width: 768px) 64px, 80px"
+                    sizes="40px"
                   />
                 </div>
               ) : (
-                <div className="flex h-8 w-20 items-center justify-center opacity-40 transition-opacity duration-300 hover:opacity-80">
-                  <span className="text-xs font-medium text-foreground">
-                    {company.name}
-                  </span>
+                <div className="text-logo">
+                  <span>{company.name.slice(0, 2).toUpperCase()}</span>
                 </div>
+              )}
+
+              {showCompanyNames && (
+                <span className="company-name text-xs">{company.name}</span>
               )}
             </div>
           );

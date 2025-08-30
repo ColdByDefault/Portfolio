@@ -26,6 +26,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
+import "@/styles/company-banner.css";
 import React from "react";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { Navbar } from "@/components/nav";
