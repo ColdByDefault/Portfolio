@@ -21,11 +21,11 @@
  * - The component uses the `ParallaxProvider` to enable parallax effects in child components.
  */
 "use client";
-import CertificationShowcase from "@/components/cer/CertificationShowCase";
-import Hero from "@/components/hero/Hero";
+import { CertificationShowcase } from "@/components/cer";
+import { Hero } from "@/components/hero";
 import LoadingScreen from "@/components/visuals/LoadingScreen";
 import { Background } from "@/components/visuals/motion-background";
-import Technologies from "@/components/tech/Technologies";
+import { Technologies } from "@/components/tech";
 import { ProjectsShowcase } from "@/components/projects";
 import { GitHubShowcase } from "@/components/github";
 import { PageSpeedInsights } from "@/components/pagespeed";

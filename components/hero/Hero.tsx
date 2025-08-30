@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import SocialLinks from "./SocialLinks";
+import { SocialLinks } from "@/components/hero";
 import { useTranslations } from "next-intl";
 
 function Hero() {

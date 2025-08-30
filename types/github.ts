@@ -96,6 +96,10 @@ export interface GitHubApiResponse {
   error?: string;
 }
 
+export interface GitHubRepositoriesProps {
+  repositories: GitHubRepo[];
+}
+
 export interface GitHubRepository {
   id: number;
   node_id: string;
