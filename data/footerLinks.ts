@@ -86,6 +86,14 @@ export const socialLinks: LinkItem[] = [
     isExternal: true,
     variant: "social" as const,
   },
+  {
+    href: "https://open.spotify.com/user/q7s1djy4b0ed0dp435mz2bfho",
+    label: "Spotify",
+    icon: "FaSpotify",
+    ariaLabel: "My Playlist on Spotify",
+    isExternal: true,
+    variant: "social" as const,
+  },
 ];
 
 export const creditLinks: LinkItem[] = [

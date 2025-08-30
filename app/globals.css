@@ -5,7 +5,6 @@
   scroll-behavior: smooth;
 }
 
-
 @custom-variant dark (&:is(.dark *));
 
 /* Customize the scrollbar */
@@ -158,4 +157,56 @@
   50% {
     background-position: 100% 100%;
   }
+}
+
+/* Company banner scroll animations */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-reverse {
+  0% {
+    transform: translateX(-30%);
+  }
+  100% {
+    transform: translateX(40%);
+  }
+}
+
+/* Animation classes */
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll-slow {
+  animation: scroll 45s linear infinite;
+}
+
+.animate-scroll-fast {
+  animation: scroll 15s linear infinite;
+}
+
+.animate-reverse {
+  animation: scroll-reverse 30s linear infinite;
+}
+
+.animate-scroll.animate-reverse {
+  animation: scroll-reverse 30s linear infinite;
+}
+
+.animate-scroll-slow.animate-reverse {
+  animation: scroll-reverse 45s linear infinite;
+}
+
+.animate-scroll-fast.animate-reverse {
+  animation: scroll-reverse 15s linear infinite;
+}
+
+.hover\:pause:hover {
+  animation-play-state: paused;
 }

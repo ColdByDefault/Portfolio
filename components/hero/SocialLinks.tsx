@@ -1,8 +1,9 @@
 /**
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @status Legacy 
  */
-"use client";
+/* "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
@@ -21,9 +22,7 @@ export default function ContactBox() {
 
   return (
     <div className="w-fit mx-auto max-w-md space-y-4">
-      {/* GitHub Stats Card */}
 
-      {/* Social Media Links */}
       <Card className="border-0 bg-transparent shadow-none">
         <CardContent className="p-6 space-y-6">
           <div>
@@ -127,3 +126,4 @@ export default function ContactBox() {
     </div>
   );
 }
+ */

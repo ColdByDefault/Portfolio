@@ -8,15 +8,15 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { SocialLinks } from "@/components/hero";
 import { useTranslations } from "next-intl";
+
 
 function Hero() {
   const t = useTranslations("Hero");
 
   return (
     <main
-      className="w-full min-h-screen flex items-center justify-center py-12 md:py-12 lg:py-20"
+      className="w-full flex items-center justify-center pt-12"
       role="main"
       aria-label="Hero section"
     >
@@ -74,7 +74,7 @@ function Hero() {
               {/* <ContactForm /> */}
             </div>
             <div className="flex flex-col sm:flex-row gap-4 items-center">
-              <SocialLinks />
+              {/* <SocialLinks /> */}
             </div>
           </div>
         </div>

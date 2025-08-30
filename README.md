@@ -106,7 +106,7 @@ User Experience & UI:
 - Theme switching (light/dark) with persistence
 - Enhanced carousel showcases with autoplay (Embla Carousel 8.6.0)
 - Animated hero, project & certification showcases
-- Cookie consent banner & localized content (EN / DE / ES / SV)
+- Cookie consent banner & localized content (EN / DE / ES / SV / FR)
 - Improved accessibility with ARIA support and keyboard navigation
 
 Content & Data:
@@ -143,7 +143,7 @@ Security & Privacy (summary):
 Runtime locale negotiation with graceful fallbacks:
 
 - Framework: `next-intl` (server aware, streaming compatible)
-- Supported locales: `en`, `de`, `es`, `sv`
+- Supported locales: `en`, `de`, `es`, `sv`, `fr`
 - Selection Order: Default `en`
 - Message Bundles: JSON under `messages/` (typed access enhancements on roadmap)
 
