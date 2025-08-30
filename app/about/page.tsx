@@ -86,7 +86,7 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="aspect-square max-w-md mx-auto relative rounded-2xl overflow-hidden">
                   <Image
-                    src="/profileLight.jpg"
+                    src="/aboutMe.jpg"
                     alt={t("personalInfo.name")}
                     fill
                     className="object-cover"

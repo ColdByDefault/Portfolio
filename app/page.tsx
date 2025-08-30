@@ -32,6 +32,7 @@ import { PageSpeedInsights } from "@/components/pagespeed";
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { CompanyBanner } from "@/components/companies";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -68,7 +69,14 @@ export default function Home() {
           <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2"></div>
         </div>
       </div>
-      <Hero />
+      <div className="min-h-screen flex flex-col justify-evenly" id="home">
+        <Hero />
+        {/* Company Banner */}
+        <span className="text-md font-light text-center mb-8 text-black dark:text-white">
+          {t("companiesContributing")}
+        </span>
+        <CompanyBanner />
+      </div>
 
       {/* Main content section with sticky background */}
       <div className="relative" id="main-content">

@@ -6,7 +6,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { FaGithub, FaSquareXTwitter } from "react-icons/fa6";
-import { FaLinkedin, FaInstagramSquare } from "react-icons/fa";
+import { FaLinkedin, FaInstagramSquare, FaSpotify } from "react-icons/fa";
 import type { LinkItem } from "@/data/footerLinks";
 
 interface LinksProps {
@@ -21,6 +21,7 @@ const iconMap = {
   FaInstagramSquare: <FaInstagramSquare aria-hidden="true" />,
   FaGithub: <FaGithub aria-hidden="true" />,
   FaLinkedin: <FaLinkedin aria-hidden="true" />,
+  FaSpotify: <FaSpotify aria-hidden="true" />,
 };
 
 export function Links({ links, className = "", linkClassName }: LinksProps) {

@@ -4,19 +4,19 @@
  */
 "use client";
 
-import { Badge } from "@/components/ui/badge";
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { SocialLinks } from "@/components/hero";
 import { useTranslations } from "next-intl";
+
 
 function Hero() {
   const t = useTranslations("Hero");
 
   return (
     <main
-      className="w-full min-h-screen flex items-center justify-center py-12 md:py-12 lg:py-12"
+      className="w-full flex items-center justify-center pt-12"
       role="main"
       aria-label="Hero section"
     >
@@ -34,7 +34,7 @@ function Hero() {
                 priority
               />
             </div>
-            <div className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4">
+            {/* <div className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4">
               <Badge
                 variant="secondary"
                 className="px-3 py-1 text-sm font-medium"
@@ -43,7 +43,7 @@ function Hero() {
               >
                 {t("availableForCollaboration")}
               </Badge>
-            </div>
+            </div> */}
           </div>
 
           {/* Content */}
@@ -74,7 +74,7 @@ function Hero() {
               {/* <ContactForm /> */}
             </div>
             <div className="flex flex-col sm:flex-row gap-4 items-center">
-              <SocialLinks />
+              {/* <SocialLinks /> */}
             </div>
           </div>
         </div>

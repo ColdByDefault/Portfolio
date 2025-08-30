@@ -26,6 +26,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
+import "@/styles/company-banner.css";
 import React from "react";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { Navbar } from "@/components/nav";
@@ -34,6 +35,14 @@ import { CookiesBanner } from "@/components/cookies";
 import { seoConfigEN, generateStructuredData } from "@/lib/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
+import { Urbanist } from "next/font/google";
+
+// Configure Urbanist Variable font
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  variable: "--font-urbanist",
+  display: "swap",
+});
 
 export const metadata = {
   metadataBase: new URL("https://www.coldbydefault.com"),
@@ -91,7 +100,7 @@ export const metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "",
   },
 };
 
@@ -155,7 +164,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body suppressHydrationWarning>
+      <body className={urbanist.variable} suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"

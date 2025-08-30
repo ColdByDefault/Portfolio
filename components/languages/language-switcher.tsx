@@ -16,6 +16,7 @@ const languages: Record<string, { name: string; flag: string }> = {
   en: { name: "English", flag: "🇬🇧" },
   de: { name: "Deutsch", flag: "🇩🇪" },
   es: { name: "Español", flag: "🇪🇸" },
+  fr: { name: "Français", flag: "🇫🇷" },
   sv: { name: "Svenska", flag: "🇸🇪" },
 };
 

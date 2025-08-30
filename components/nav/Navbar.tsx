@@ -97,14 +97,14 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <Link
+            {/* <Link
               target="_blank"
               href="https://berich-hub.vercel.app"
               rel="noopener noreferrer"
               aria-label="Visit beRich.Hub project (opens in new tab)"
             >
               <Badge className="cursor-pointer">beRich.Hub</Badge>
-            </Link>
+            </Link> */}
           </div>
 
           {/* Desktop Theme Toggle */}
