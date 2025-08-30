@@ -11,90 +11,141 @@ export default function Footer() {
   return (
     <footer className="w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60  border-t">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 py-6">
+          <div className="space-y-3">
+            <h3 className="text-xs font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
               Legal
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               <li>
                 <Link
                   href="/impressum"
-                  className="text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
                 >
                   Impressum
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/admin/contact"
-                  className="text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
-                >
-                  <span className="text-xs text-green-500 dark:text-gray-400">
-                    {" "}
-                    <code>Admin Dashboard</code>
-                  </span>
-                </Link>
-              </li>
             </ul>
           </div>
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
+          <div className="lg:col-span-3 space-y-3">
+            <h3 className="text-xs font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
               Resources
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <ul className="space-y-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              <ul className="space-y-2">
                 <li>
                   <Link
-                    target="_blanck"
+                    target="_blank"
                     rel="noopener noreferrer"
                     href="https://nextjs.org"
-                    className="text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white 
-                        transition-colors duration-200"
+                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
                   >
                     Next.js
                   </Link>
                 </li>
                 <li>
                   <Link
-                    target="_blanck"
+                    target="_blank"
                     rel="noopener noreferrer"
                     href="https://react.dev"
-                    className="text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
                   >
                     React
                   </Link>
                 </li>
-              </ul>
-              <ul className="space-y-3">
                 <li>
                   <Link
-                    target="_blanck"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.typescriptlang.org"
+                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+                  >
+                    TypeScript
+                  </Link>
+                </li>
+              </ul>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://tailwindcss.com"
+                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+                  >
+                    Tailwind CSS
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    target="_blank"
                     rel="noopener noreferrer"
                     href="https://ui.shadcn.com"
-                    className="text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
                   >
                     Shadcn-UI
                   </Link>
                 </li>
                 <li>
                   <Link
-                    target="_blanck"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.radix-ui.com"
+                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+                  >
+                    Radix UI
+                  </Link>
+                </li>
+              </ul>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://docs.github.com"
+                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+                  >
+                    GitHub Docs
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    target="_blank"
                     rel="noopener noreferrer"
                     href="https://vercel.com/"
-                    className="text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
                   >
                     Vercel
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://eslint.org"
+                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+                  >
+                    ESLint
+                  </Link>
+                </li>
+              </ul>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://modelcontextprotocol.io"
+                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+                  >
+                    MCP
                   </Link>
                 </li>
               </ul>
             </div>
           </div>
         </div>{" "}
-        {/* <-- Add this closing div for the grid */}
-        <div className="border-t border-gray-200 dark:border-gray-800 py-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <div className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="border-t border-gray-200 dark:border-gray-800 py-4">
+          <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0">
+            <div className="text-xs text-gray-500 dark:text-gray-400 sm:flex-1">
               <div className="flex flex-col">
                 <span>
                   {new Date().getFullYear()} ColdByDefault&#174;. All rights
@@ -129,7 +180,7 @@ export default function Footer() {
                 </span>
               </div>
             </div>
-            <div className="flex space-x-6">
+            <div className="flex space-x-6 sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2">
               <Link
                 href="https://x.com/ccoldbydefault"
                 target="_blank"
@@ -169,6 +220,16 @@ export default function Footer() {
               >
                 <span className="sr-only">LinkedIn</span>
                 <FaLinkedin />
+              </Link>
+            </div>
+            <div className="sm:flex-1 sm:flex sm:justify-end">
+              <Link
+                href="/admin/contact"
+                className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+              >
+                <span className="text-xs text-green-500 dark:text-gray-400">
+                  <code>Admin Dashboard</code>
+                </span>
               </Link>
             </div>
           </div>
