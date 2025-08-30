@@ -16,7 +16,7 @@ import {
   getOverlayStyles,
   gradientShiftCSS,
 } from "@/lib/card-animations";
-import type { GitHubRepo, GitHubRepositoriesProps } from "@/types/github";
+import type { GitHubRepositoriesProps } from "@/types/github";
 
 const LanguageColors: Record<string, string> = {
   JavaScript: "#f1e05a",
