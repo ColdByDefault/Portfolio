@@ -4,7 +4,7 @@
  */
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -75,7 +75,13 @@ const MetricsSkeleton = () => (
   </div>
 );
 
-const LoadingSkeleton = () => (
+const LoadingSkeleton = ({
+  progress,
+  progressLabel,
+}: {
+  progress: number;
+  progressLabel: string;
+}) => (
   <Card className="w-full">
     <CardHeader className="pb-4">
       <div className="flex items-center justify-between">
@@ -95,10 +101,10 @@ const LoadingSkeleton = () => (
       <Separator />
       <div className="space-y-3">
         <div className="flex items-center justify-between text-xs">
-          <span className="text-muted-foreground">Loading progress...</span>
-          <span className="text-muted-foreground">45%</span>
+          <span className="text-muted-foreground">{progressLabel}</span>
+          <span className="text-muted-foreground">{progress}%</span>
         </div>
-        <Progress value={45} className="w-full" />
+        <Progress value={progress} className="w-full" />
       </div>
       <Skeleton className="h-10 w-full rounded-md" />
     </CardContent>
@@ -165,6 +171,8 @@ export default function PageSpeedInsights({
   const [activeStrategy, setActiveStrategy] = useState<"mobile" | "desktop">(
     "desktop"
   );
+  const [progress, setProgress] = useState(0);
+  const [progressLabel, setProgressLabel] = useState("Initializing...");
 
   const {
     mobileData,
@@ -176,6 +184,34 @@ export default function PageSpeedInsights({
     refresh,
   } = usePageSpeedData({ url, showBothStrategies });
 
+  // Progress simulation based on loading state
+  useEffect(() => {
+    if (loading) {
+      // Start progress
+      setProgress(0);
+      setProgressLabel("Connecting to PageSpeed API...");
+
+      const progressTimer = setTimeout(() => {
+        setProgress(25);
+        setProgressLabel("Analyzing website performance...");
+
+        const midTimer = setTimeout(() => {
+          setProgress(60);
+          setProgressLabel("Processing metrics...");
+        }, 800);
+
+        return () => clearTimeout(midTimer);
+      }, 300);
+
+      return () => clearTimeout(progressTimer);
+    } else {
+      // Complete progress when data is loaded
+      setProgress(100);
+      setProgressLabel("Analysis complete!");
+      return undefined;
+    }
+  }, [loading]);
+
   const getCurrentData = () => {
     return activeStrategy === "mobile" ? mobileData : desktopData;
   };
@@ -183,7 +219,9 @@ export default function PageSpeedInsights({
   const data = getCurrentData();
 
   if (loading) {
-    return <LoadingSkeleton />;
+    return (
+      <LoadingSkeleton progress={progress} progressLabel={progressLabel} />
+    );
   }
 
   if (error) {
