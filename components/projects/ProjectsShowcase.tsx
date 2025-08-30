@@ -5,8 +5,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import { projects, projectCategories, type Project } from "@/data/projectsData";
+import { useRef, useState } from "react";
 import {
   Card,
   CardContent,
@@ -24,23 +23,20 @@ import {
   getOverlayStyles,
   gradientShiftCSS,
 } from "@/lib/card-animations";
+import type { ProjectsShowcaseProps, ProjectCardProps } from "@/types/projects";
+import {
+  useProjectLogic,
+  useProjectsFilter,
+  useTruncationDetection,
+  getAllCategories,
+  isFeaturedProject,
+  getLicenseBadgeClasses,
+  getLicenseEmoji,
+} from "./projects-showcase.utils";
 
-interface ProjectsShowcaseProps {
-  className?: string;
-}
-
-const ProjectCard = ({
-  project,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  index,
-}: {
-  project: Project;
-  index: number;
-}) => {
-  const [copied, setCopied] = useState(false);
-  const [isTruncated, setIsTruncated] = useState(false);
+const ProjectCard = ({ project, index: _index }: ProjectCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);
-  const descriptionRef = useRef<HTMLParagraphElement>(null);
   const isInView = useInView(cardRef, { once: true, margin: "-50px" });
 
   const t = useTranslations("Projects");
@@ -48,35 +44,19 @@ const ProjectCard = ({
   const tLicenses = useTranslations("Projects.licenses");
   const tDescriptions = useTranslations("Projects.descriptions");
 
-  // Check if text is truncated
-  useEffect(() => {
-    const checkTruncation = () => {
-      if (descriptionRef.current) {
-        const element = descriptionRef.current;
-        setIsTruncated(element.scrollHeight > element.clientHeight);
-      }
-    };
+  // Business logic hooks
+  const { handleCopyCloneLink, copied } = useProjectLogic();
+  const { isTruncated, descriptionRef } = useTruncationDetection(
+    project.description
+  );
 
-    checkTruncation();
-    window.addEventListener("resize", checkTruncation);
-
-    return () => window.removeEventListener("resize", checkTruncation);
-  }, [project.description]);
-
-  const handleCopyCloneLink = async () => {
-    console.log("Copy button clicked for project:", project.title);
-    const cloneLink = `git clone ${project.githubUrl}.git`;
-    try {
-      await navigator.clipboard.writeText(cloneLink);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-      console.log("Clone link copied successfully:", cloneLink);
-    } catch (err) {
-      console.error("Failed to copy: ", err);
-    }
+  // Event handlers (UI coordination only)
+  const onCopyClick = () => {
+    void handleCopyCloneLink(project.githubUrl);
   };
 
-  const [isHovered, setIsHovered] = useState(false);
+  const onMouseEnter = () => setIsHovered(true);
+  const onMouseLeave = () => setIsHovered(false);
   return (
     <motion.div
       ref={cardRef}
@@ -86,15 +66,14 @@ const ProjectCard = ({
     >
       <Card
         className={getCardHoverClasses(isHovered)}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
-        {project.featured && (
+        {isFeaturedProject(project) && (
           <div className="absolute top-0 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium px-3 py-1 text-center z-30">
             {t("featuredProject")}
           </div>
-        )}
-
+        )}{" "}
         <CardHeader className="py-4 relative z-20">
           <div className="flex items-start justify-between">
             <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors">
@@ -105,7 +84,6 @@ const ProjectCard = ({
             </Badge>
           </div>
         </CardHeader>
-
         <CardContent className="space-y-4 relative z-20">
           <div className="h-24 overflow-hidden">
             <p
@@ -138,17 +116,11 @@ const ProjectCard = ({
             <div className="flex justify-start">
               <Badge
                 variant={project.license.variant || "default"}
-                className={`text-xs font-medium ${
-                  project.license.type === "fully-open"
-                    ? "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800"
-                    : ""
-                }`}
+                className={`text-xs font-medium ${getLicenseBadgeClasses(
+                  project.license.type
+                )}`}
               >
-                {project.license.type === "copyright"
-                  ? "©"
-                  : project.license.type === "fully-open"
-                  ? "🌟"
-                  : "🔓"}{" "}
+                {getLicenseEmoji(project.license.type)}{" "}
                 {tLicenses(project.license.text)}
               </Badge>
             </div>
@@ -175,7 +147,7 @@ const ProjectCard = ({
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => void handleCopyCloneLink()}
+                onClick={onCopyClick}
                 className="h-6 w-6 p-0 cursor-pointer hover:bg-muted relative z-10"
               >
                 {copied ? (
@@ -250,17 +222,16 @@ const ProjectCard = ({
 };
 
 export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
-  const [selectedCategory, setSelectedCategory] = useState("all");
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const t = useTranslations("Projects");
   const tCategories = useTranslations("Projects.categories");
 
-  const filteredProjects = projects.filter(
-    (project) =>
-      selectedCategory === "all" || project.category === selectedCategory
-  );
+  // Business logic hooks
+  const { selectedCategory, setSelectedCategory, filteredProjects } =
+    useProjectsFilter();
+  const categories = getAllCategories();
 
   return (
     <section
@@ -292,15 +263,12 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-wrap justify-center gap-2 mb-8"
         >
-          {projectCategories.map((category) => (
+          {categories.map((category) => (
             <Button
               key={category}
               variant={selectedCategory === category ? "default" : "outline"}
               size="sm"
-              onClick={() => {
-                console.log("Category clicked:", category);
-                setSelectedCategory(category);
-              }}
+              onClick={() => setSelectedCategory(category)}
               className="transition-all duration-200 cursor-pointer hover:bg-primary/10"
             >
               {tCategories(category)}
