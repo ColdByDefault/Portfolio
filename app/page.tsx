@@ -34,7 +34,6 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { CompanyBanner } from "@/components/companies";
 
-
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [mounted, setMounted] = useState<boolean>(false);
@@ -72,6 +71,10 @@ export default function Home() {
       </div>
       <div className="min-h-screen flex flex-col justify-evenly" id="home">
         <Hero />
+        {/* Company Banner */}
+        <span className="text-md font-light text-center mb-8 text-black dark:text-white">
+          {t("companiesContributing")}
+        </span>
         <CompanyBanner />
       </div>
 
