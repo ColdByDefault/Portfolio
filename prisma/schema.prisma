@@ -48,6 +48,9 @@ model Blog {
   content       String        // Main blog content (Markdown/HTML)
   featuredImage String?       // URL to featured image
   
+  // Language support
+  language      String        @default("en") // ISO 639-1 language code (en, de, es, fr, sv, etc.)
+  
   // Metadata
   isPublished   Boolean       @default(false)
   isFeatured    Boolean       @default(false)
@@ -82,6 +85,8 @@ model Blog {
   @@index([isPublished])
   @@index([publishedAt])
   @@index([categoryId])
+  @@index([language])
+  @@index([language, isPublished])
 }
 
 // Separate model for external credits to keep Blog model clean

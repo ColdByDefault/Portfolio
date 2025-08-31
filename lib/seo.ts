@@ -5,6 +5,7 @@
  */
 
 import type { TwitterCardType } from "@/types/metadata";
+import type { Blog, BlogSEO, BlogStructuredData } from "@/types/blogs";
 
 export interface SEOConfig {
   title: string;
@@ -213,5 +214,183 @@ export function generateBreadcrumbData(
       name: item.name,
       item: item.url,
     })),
+  };
+}
+
+/**
+ * Generate SEO metadata for blog posts
+ */
+export function generateBlogSEO(blog: Blog, locale: string = "en"): BlogSEO {
+  const config = locale === "de" ? seoConfigDE : seoConfigEN;
+  const baseUrl = config.siteUrl;
+
+  // Create title with fallback
+  const blogTitle = blog.metaTitle || blog.title;
+  const fullTitle = `${blogTitle} | ${config.siteName}`;
+
+  // Create description with fallback
+  const description =
+    blog.metaDescription ||
+    blog.excerpt ||
+    `Read "${blog.title}" on ${config.siteName}. ${config.description}`;
+
+  // Generate keywords from tags and categories
+  const keywords = [
+    ...config.keywords,
+    ...(blog.tags?.map((tagRel) => tagRel.tag?.name).filter(Boolean) || []),
+    blog.category?.name,
+    blog.title.split(" ").slice(0, 3), // First 3 words of title
+  ].filter(Boolean) as string[];
+
+  // Canonical URL
+  const canonicalUrl = `${baseUrl}/blog/${blog.slug}`;
+
+  // Open Graph image with fallback
+  const ogImage = blog.featuredImage || `${baseUrl}/og-blog-default.jpg`;
+
+  return {
+    title: fullTitle,
+    description: description.slice(0, 160), // Meta description limit
+    keywords: [...new Set(keywords)], // Remove duplicates
+    canonicalUrl,
+    ogImage,
+    ogTitle: blogTitle,
+    ogDescription: description.slice(0, 200), // OG description can be longer
+    twitterTitle: blogTitle,
+    twitterDescription: description.slice(0, 120), // Twitter description limit
+    twitterImage: ogImage,
+    structuredData: generateBlogStructuredData(blog, config),
+  };
+}
+
+/**
+ * Generate structured data for blog posts
+ */
+export function generateBlogStructuredData(
+  blog: Blog,
+  config: SEOConfig
+): BlogStructuredData {
+  const baseUrl = config.siteUrl;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: blog.title,
+    description: blog.excerpt || blog.metaDescription || "",
+    image: blog.featuredImage ? `${baseUrl}${blog.featuredImage}` : undefined,
+    author: {
+      "@type": "Person",
+      name: config.structured.name,
+      url: config.structured.github,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: config.siteName,
+      logo: `${baseUrl}/logo.png`,
+    },
+    datePublished:
+      blog.publishedAt?.toISOString() || blog.createdAt.toISOString(),
+    dateModified: blog.updatedAt.toISOString(),
+    url: `${baseUrl}/blog/${blog.slug}`,
+    mainEntityOfPage: `${baseUrl}/blog/${blog.slug}`,
+    wordCount: blog.content.split(/\s+/).length,
+    timeRequired: blog.readingTime ? `PT${blog.readingTime}M` : undefined,
+    keywords: [
+      ...(blog.tags?.map((tagRel) => tagRel.tag?.name).filter(Boolean) || []),
+      blog.category?.name,
+    ].filter((keyword): keyword is string => Boolean(keyword)),
+    articleSection: blog.category?.name,
+    about: blog.category?.description,
+  };
+}
+
+/**
+ * Generate SEO metadata for blog list page
+ */
+export function generateBlogListSEO(
+  page: number = 1,
+  category?: string,
+  tag?: string,
+  search?: string,
+  locale: string = "en"
+): BlogSEO {
+  const config = locale === "de" ? seoConfigDE : seoConfigEN;
+  const baseUrl = config.siteUrl;
+
+  let title = locale === "de" ? "Blog" : "Blog";
+  let description =
+    locale === "de"
+      ? "Entdecken Sie Artikel über Webentwicklung, Programmierung und Technologie."
+      : "Discover articles about web development, programming, and technology.";
+
+  // Customize based on filters
+  if (category) {
+    title = `${category} ${locale === "de" ? "Artikel" : "Articles"}`;
+    description =
+      locale === "de"
+        ? `Alle Artikel in der Kategorie ${category}.`
+        : `All articles in the ${category} category.`;
+  }
+
+  if (tag) {
+    title = `${tag} ${locale === "de" ? "Artikel" : "Articles"}`;
+    description =
+      locale === "de"
+        ? `Artikel mit dem Tag ${tag}.`
+        : `Articles tagged with ${tag}.`;
+  }
+
+  if (search) {
+    title = `${locale === "de" ? "Suche" : "Search"}: ${search}`;
+    description =
+      locale === "de"
+        ? `Suchergebnisse für "${search}".`
+        : `Search results for "${search}".`;
+  }
+
+  if (page > 1) {
+    title += ` - ${locale === "de" ? "Seite" : "Page"} ${page}`;
+  }
+
+  const fullTitle = `${title} | ${config.siteName}`;
+  const canonicalUrl = `${baseUrl}/blog${page > 1 ? `?page=${page}` : ""}`;
+
+  return {
+    title: fullTitle,
+    description,
+    keywords: [
+      ...config.keywords,
+      "blog",
+      "articles",
+      "tutorials",
+      "web development",
+      "programming",
+    ],
+    canonicalUrl,
+    ogTitle: title,
+    ogDescription: description,
+    ogImage: `${baseUrl}/og-blog-list.jpg`,
+    twitterTitle: title,
+    twitterDescription: description,
+    twitterImage: `${baseUrl}/og-blog-list.jpg`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: title,
+      description,
+      url: canonicalUrl,
+      author: {
+        "@type": "Person",
+        name: config.structured.name,
+        url: config.structured.github,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: config.siteName,
+        logo: `${baseUrl}/logo.png`,
+      },
+      datePublished: new Date().toISOString(),
+      dateModified: new Date().toISOString(),
+    } as BlogStructuredData,
   };
 }
