@@ -42,7 +42,7 @@ export interface SEOConfig {
 export const seoConfigEN: SEOConfig = {
   title: "Yazan Abo-Ayash | Full Stack Developer Portfolio - ColdByDefault",
   description:
-    "Full Stack Junior Developer & Computer Science Student. Specialized in React, Next.js, Node.js, Python, and modern web technologies. Experienced in creating responsive web applications and RESTful APIs.",
+    "Full Stack Junior Developer Student. Specialized in React, Next.js, Node.js, Python, and modern web technologies. Experienced in creating responsive web applications and RESTful APIs.",
   keywords: [
     "Full Stack Developer",
     "React Developer",
@@ -71,7 +71,7 @@ export const seoConfigEN: SEOConfig = {
   openGraph: {
     title: "Yazan Abo-Ayash | Full Stack Developer Portfolio",
     description:
-      "Full Stack Junior Developer & Computer Science Student specializing in modern web technologies",
+      "Full Stack Junior Developer Student specializing in modern web technologies",
     type: "website",
     image: "/og-image-en.jpg",
     imageAlt: "ColdByDefault Portfolio - Full Stack Developer",

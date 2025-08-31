@@ -1,6 +1,6 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V4.0.1
+# ColdByDefault Portfolio · V4.1.0
 
 **RELEASE NOTE:** [Hot-Drop](https://github.com/ColdByDefault/Portfolio/releases/tag/4.0.0)
 
@@ -302,6 +302,27 @@ pnpm lint:fix
 
 # Check for dependency updates
 pnpm test-dep
+```
+
+**Database Setup (Prisma + Supabase):**
+
+```bash
+# 1. Use non-pooler DATABASE_URL in .env
+# Example: postgresql://user:pass@db.project.supabase.co:5432/postgres
+
+# 2. Push schema and run migrations
+npx prisma db push
+npx prisma migrate dev
+
+# 3. Run enable_rls.sql in Supabase SQL Editor
+# Copy content from prisma/migrations/enable_rls.sql
+
+# 4. Enable RLS on Prisma migrations table
+# Run in Supabase SQL Editor:
+# ALTER TABLE "public"."_prisma_migrations" ENABLE ROW LEVEL SECURITY;
+# CREATE POLICY "migrations_read_all" ON "public"."_prisma_migrations" FOR SELECT USING (true);
+
+# 5. Configure admin settings with service_role key for admin panel operations
 ```
 
 ---
