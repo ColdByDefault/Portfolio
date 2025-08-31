@@ -2,12 +2,11 @@
 
 # ColdByDefault Portfolio · V4.1.0
 
-
 Modern, secure, high‑performance developer portfolio built with Next.js 15, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
 <img width="966" height="174" alt="image" src="https://github.com/user-attachments/assets/de1d9284-c385-4e15-9956-2781e583d66a" />
 
-**Live:** https://www.coldbydefault.com • **Stack:** Next.js 15.5.1 · React 19 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.3.5 · ESLint 9.x · Vercel
+**Live:** https://www.coldbydefault.com • **Stack:** Next.js 15.5.1 · React 19 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.3.5 · Prisma ORM · Supabase PostgreSQL · Zod · ESLint 9.x · Vercel
 
 </div>
 
@@ -94,6 +93,9 @@ Supporting & Utilities:
 - CSP + HTTP security headers configuration
 - Lightweight internal rate limiting & request sanitation
 - Structured SEO config & JSON-LD generators
+- Zod schema validation for type-safe runtime validation
+- Prisma ORM for type-safe database operations
+- Supabase PostgreSQL for scalable data storage
 
 ---
 
@@ -114,6 +116,8 @@ Content & Data:
 - Real‑time GitHub MCP repository & profile fetch (sanitized & cached)
 - Google PageSpeed Insights integration for performance transparency
 - Enhanced type-safe API interfaces for all data endpoints
+- Blog system with dynamic content management and filtering
+- Prisma ORM integration for efficient database operations
 
 Engineering & Quality:
 
@@ -199,15 +203,18 @@ All endpoints are read-only and sanitized.
 | Endpoint         | Purpose                                      | Notes                |
 | ---------------- | -------------------------------------------- | -------------------- |
 | `/api/about`     | Returns profile / about metadata             | Static + typed       |
+| `/api/blog`      | Blog content management and retrieval        | Prisma + Zod         |
 | `/api/contact`   | Securely handles contact intent (anti‑abuse) | Rate limited         |
 | `/api/github`    | Fetches GitHub profile + repos (filtered)    | Tokenized (env)      |
 | `/api/pagespeed` | Surfaces PageSpeed metrics                   | External API wrapper |
+| `/api/admin`     | Administrative operations for content        | Secured endpoints    |
 
 Controls:
 
-- Input validation & schema constraints
+- Input validation & schema constraints with Zod
 - Standardized error envelopes (no internal leakage)
 - Rate limiting (per IP windowed)
+- Type-safe database operations via Prisma ORM
 
 ---
 
@@ -306,15 +313,16 @@ pnpm test-dep
 **Database Setup (Prisma + Supabase):**
 
 ```bash
-# 1. Use non-pooler DATABASE_URL in .env
+# 1. Setup environment variables for Supabase PostgreSQL
+# Use non-pooler DATABASE_URL in .env
 # Example: postgresql://user:pass@db.project.supabase.co:5432/postgres
 
-# 2. Push schema and run migrations
+# 2. Initialize Prisma schema and run migrations
 npx prisma db push
 npx prisma migrate dev
 
-# 3. Run enable_rls.sql in Supabase SQL Editor
-# Copy content from prisma/migrations/enable_rls.sql
+# 3. Setup Row Level Security (RLS) in Supabase
+# Copy content from prisma/migrations/enable_rls.sql and run in Supabase SQL Editor
 
 # 4. Enable RLS on Prisma migrations table
 # Run in Supabase SQL Editor:
@@ -323,6 +331,14 @@ npx prisma migrate dev
 
 # 5. Configure admin settings with service_role key for admin panel operations
 ```
+
+**Blog System & Content Management:**
+
+- Prisma ORM provides type-safe database operations with PostgreSQL
+- Zod schema validation ensures runtime type safety for all API inputs
+- Supabase PostgreSQL offers scalable, managed database infrastructure
+- Blog content is dynamically managed through secure admin APIs
+- Full CRUD operations with proper validation and error handling
 
 ---
 
