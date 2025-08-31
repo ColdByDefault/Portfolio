@@ -182,20 +182,31 @@ export async function POST(
           );
         }
 
-        // Prevent potential attacks by limiting input length
-        if (ip.length > 15) {
+        // Enhanced IP validation supporting both IPv4 and IPv6
+        if (ip.length > 45) {
+          // IPv6 can be up to 45 characters
           return NextResponse.json(
             { error: "IP address too long" },
             { status: 400 }
           );
         }
 
-        // Basic IP format validation
-        const ipRegex =
-          /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-        if (!ipRegex.test(ip)) {
+        // Robust IP format validation for both IPv4 and IPv6
+        const isValidIP = (address: string): boolean => {
+          // IPv4 regex pattern
+          const ipv4Regex =
+            /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+
+          // IPv6 regex pattern (handles full, compressed, and mixed notations)
+          const ipv6Regex =
+            /^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^::1$|^::$|^(?:[0-9a-fA-F]{1,4}:)*::(?:[0-9a-fA-F]{1,4}:)*[0-9a-fA-F]{1,4}$|^(?:[0-9a-fA-F]{1,4}:)*::(?:[0-9a-fA-F]{1,4}:)*(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+
+          return ipv4Regex.test(address) || ipv6Regex.test(address);
+        };
+
+        if (!isValidIP(ip)) {
           return NextResponse.json(
-            { error: "Invalid IP address format" },
+            { error: "Invalid IP address format (IPv4 or IPv6 supported)" },
             { status: 400 }
           );
         }
