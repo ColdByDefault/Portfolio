@@ -1,6 +1,5 @@
 {
   "buildCommand": "npm run build",
-  "installCommand": "npm ci && npx prisma generate",
   "functions": {
     "app/api/pagespeed/route.ts": {
       "maxDuration": 50
