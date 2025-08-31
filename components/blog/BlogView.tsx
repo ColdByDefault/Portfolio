@@ -8,8 +8,10 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Calendar, Clock, Eye } from "lucide-react";
+import { Calendar, Clock, Eye, Languages } from "lucide-react";
 import type { Blog } from "@/types/blogs";
+import { BLOG_LANGUAGE_NAMES } from "@/types/blogs";
+import { LanguageBadge } from "./LanguageBadge";
 import Image from "next/image";
 
 interface BlogViewProps {
@@ -42,18 +44,24 @@ export function BlogView({ blog, className }: BlogViewProps) {
             <Eye className="h-4 w-4" />
             {blog.readCount} views
           </div>
+          {blog.language && (
+            <div className="flex items-center gap-1">
+              <Languages className="h-4 w-4" />
+              {BLOG_LANGUAGE_NAMES[
+                blog.language as keyof typeof BLOG_LANGUAGE_NAMES
+              ] || blog.language.toUpperCase()}
+            </div>
+          )}
         </div>
 
         {/* Tags and Category */}
         <div className="flex flex-wrap gap-2 mb-6">
           {blog.isFeatured && <Badge variant="secondary">Featured</Badge>}
+          {blog.language && blog.language !== "en" && (
+            <LanguageBadge language={blog.language} showIcon={true} />
+          )}
           {blog.category && (
-            <Badge
-              variant="outline"
-              style={{ borderColor: blog.category.color }}
-            >
-              {blog.category.name}
-            </Badge>
+            <Badge variant="outline">{blog.category.name}</Badge>
           )}
           {blog.tags?.map((tagRelation) => (
             <Badge key={tagRelation.id} variant="outline">

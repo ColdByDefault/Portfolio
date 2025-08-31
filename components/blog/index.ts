@@ -5,3 +5,6 @@
 
 export { BlogsList } from "./BlogsList";
 export { BlogView } from "./BlogView";
+export { LanguageBadge } from "./LanguageBadge";
+export { LanguageFilter } from "./LanguageFilter";
+export { BlogPageClient } from "./BlogPageClient";

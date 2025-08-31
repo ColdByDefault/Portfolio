@@ -14,8 +14,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar, Clock, Languages } from "lucide-react";
 import type { Blog } from "@/types/blogs";
+import { BLOG_LANGUAGE_NAMES } from "@/types/blogs";
+import { LanguageBadge } from "./LanguageBadge";
 import Image from "next/image";
 
 interface BlogsListProps {
@@ -65,6 +67,16 @@ export function BlogsList({ blogs, className }: BlogsListProps) {
                     {blog.readingTime} min read
                   </>
                 )}
+                {blog.language && (
+                  <>
+                    <Languages className="h-4 w-4 ml-2" />
+                    <span className="text-xs font-medium">
+                      {BLOG_LANGUAGE_NAMES[
+                        blog.language as keyof typeof BLOG_LANGUAGE_NAMES
+                      ] || blog.language.toUpperCase()}
+                    </span>
+                  </>
+                )}
               </div>
               <CardTitle className="line-clamp-2">{blog.title}</CardTitle>
               {blog.excerpt && (
@@ -76,13 +88,11 @@ export function BlogsList({ blogs, className }: BlogsListProps) {
             <CardContent>
               <div className="flex flex-wrap gap-2">
                 {blog.isFeatured && <Badge variant="secondary">Featured</Badge>}
+                {blog.language && blog.language !== "en" && (
+                  <LanguageBadge language={blog.language} size="sm" />
+                )}
                 {blog.category && (
-                  <Badge
-                    variant="outline"
-                    style={{ borderColor: blog.category.color }}
-                  >
-                    {blog.category.name}
-                  </Badge>
+                  <Badge variant="outline">{blog.category.name}</Badge>
                 )}
                 {blog.tags?.slice(0, 2).map((tagRelation) => (
                   <Badge key={tagRelation.id} variant="outline">
