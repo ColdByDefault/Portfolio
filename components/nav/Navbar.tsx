@@ -20,6 +20,7 @@ import {
   Antenna,
   Atom,
   BookOpenCheck,
+  NotebookText,
 } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-toggle";
 import Link from "next/link";
@@ -57,14 +58,13 @@ export default function Navbar() {
       href: "/#cert",
       icon: BookOpenCheck,
     },
-  ];
-  /* 
-    NotebookText,
     {
       name: "Blogs",
       href: "/blog",
       icon: NotebookText,
-    }, */
+    },
+  ];
+
   const lightLink = "text-gray-500 hover:text-gray-900";
   const darkLink = "dark:text-gray-600 dark:hover:text-gray-200";
 

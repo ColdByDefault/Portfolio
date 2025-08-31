@@ -4,7 +4,7 @@
  */
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import {
   Card,
@@ -19,6 +19,93 @@ import type { Blog } from "@/types/blogs";
 import { BLOG_LANGUAGE_NAMES } from "@/types/blogs";
 import { LanguageBadge } from "./LanguageBadge";
 import Image from "next/image";
+
+interface BlogCardProps {
+  blog: Blog;
+}
+
+function BlogCard({ blog }: BlogCardProps) {
+  const [imageSrc, setImageSrc] = useState(
+    blog.featuredImage || "/assets/blogsFallback.png"
+  );
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    if (!imageError && imageSrc !== "/assets/blogsFallback.png") {
+      setImageError(true);
+      setImageSrc("/assets/blogsFallback.png");
+    }
+  };
+
+  return (
+    <Link href={`/blog/${blog.slug}`}>
+      <Card className="h-full hover:shadow-lg transition-shadow">
+        {(blog.featuredImage || imageSrc) && (
+          <div className="w-full h-48 bg-muted rounded-t-lg overflow-hidden">
+            <Image
+              src={imageSrc}
+              alt={blog.title}
+              width={500}
+              height={500}
+              className="w-full h-full object-cover"
+              onError={handleImageError}
+              priority={false}
+            />
+          </div>
+        )}
+        <CardHeader>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+            <Calendar className="h-4 w-4" />
+            {blog.publishedAt
+              ? new Date(blog.publishedAt).toLocaleDateString()
+              : "Draft"}
+            {blog.readingTime && (
+              <>
+                <Clock className="h-4 w-4 ml-2" />
+                {blog.readingTime} min read
+              </>
+            )}
+            {blog.language && (
+              <>
+                <Languages className="h-4 w-4 ml-2" />
+                <span className="text-xs font-medium">
+                  {BLOG_LANGUAGE_NAMES[
+                    blog.language as keyof typeof BLOG_LANGUAGE_NAMES
+                  ] || blog.language.toUpperCase()}
+                </span>
+              </>
+            )}
+          </div>
+          <CardTitle className="line-clamp-2">{blog.title}</CardTitle>
+          {blog.excerpt && (
+            <CardDescription className="line-clamp-3">
+              {blog.excerpt}
+            </CardDescription>
+          )}
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-wrap gap-2">
+            {blog.isFeatured && <Badge variant="secondary">Featured</Badge>}
+            {blog.language && blog.language !== "en" && (
+              <LanguageBadge language={blog.language} size="sm" />
+            )}
+            {blog.category && (
+              <Badge variant="outline">{blog.category.name}</Badge>
+            )}
+            {blog.tags?.slice(0, 2).map((tagRelation) => (
+              <Badge key={tagRelation.id} variant="outline">
+                {tagRelation.tag?.name}
+              </Badge>
+            ))}
+            {blog.tags && blog.tags.length > 2 && (
+              <Badge variant="outline">+{blog.tags.length - 2}</Badge>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
+  );
+}
 
 interface BlogsListProps {
   blogs: Blog[];
@@ -42,70 +129,7 @@ export function BlogsList({ blogs, className }: BlogsListProps) {
   return (
     <div className={`grid gap-6 md:grid-cols-2 lg:grid-cols-3 ${className}`}>
       {blogs.map((blog) => (
-        <Link key={blog.id} href={`/blog/${blog.slug}`}>
-          <Card className="h-full hover:shadow-lg transition-shadow">
-            {blog.featuredImage && (
-              <div className="w-full h-48 bg-muted rounded-t-lg overflow-hidden">
-                <Image
-                  src={blog.featuredImage}
-                  alt={blog.title}
-                  width={500}
-                  height={500}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            )}
-            <CardHeader>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                <Calendar className="h-4 w-4" />
-                {blog.publishedAt
-                  ? new Date(blog.publishedAt).toLocaleDateString()
-                  : "Draft"}
-                {blog.readingTime && (
-                  <>
-                    <Clock className="h-4 w-4 ml-2" />
-                    {blog.readingTime} min read
-                  </>
-                )}
-                {blog.language && (
-                  <>
-                    <Languages className="h-4 w-4 ml-2" />
-                    <span className="text-xs font-medium">
-                      {BLOG_LANGUAGE_NAMES[
-                        blog.language as keyof typeof BLOG_LANGUAGE_NAMES
-                      ] || blog.language.toUpperCase()}
-                    </span>
-                  </>
-                )}
-              </div>
-              <CardTitle className="line-clamp-2">{blog.title}</CardTitle>
-              {blog.excerpt && (
-                <CardDescription className="line-clamp-3">
-                  {blog.excerpt}
-                </CardDescription>
-              )}
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {blog.isFeatured && <Badge variant="secondary">Featured</Badge>}
-                {blog.language && blog.language !== "en" && (
-                  <LanguageBadge language={blog.language} size="sm" />
-                )}
-                {blog.category && (
-                  <Badge variant="outline">{blog.category.name}</Badge>
-                )}
-                {blog.tags?.slice(0, 2).map((tagRelation) => (
-                  <Badge key={tagRelation.id} variant="outline">
-                    {tagRelation.tag?.name}
-                  </Badge>
-                ))}
-                {blog.tags && blog.tags.length > 2 && (
-                  <Badge variant="outline">+{blog.tags.length - 2}</Badge>
-                )}
-              </div>
-            </CardContent>
-          </Card>
-        </Link>
+        <BlogCard key={blog.id} blog={blog} />
       ))}
     </div>
   );

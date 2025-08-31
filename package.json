@@ -33,10 +33,14 @@
     "postinstall": "prisma generate",
     "db:migrate": "prisma migrate deploy",
     "db:generate": "prisma generate",
-    "db:push": "prisma db push"
+    "db:push": "prisma db push",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:reset": "prisma db push --force-reset && npm run db:seed",
+    "db:test": "tsx test-blogs.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
+    "@neondatabase/serverless": "^1.0.1",
     "@prisma/client": "^6.15.0",
     "@radix-ui/react-alert-dialog": "^1.1.14",
     "@radix-ui/react-dialog": "^1.1.14",
@@ -89,8 +93,12 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "globals": "^16.3.0",
     "prisma": "^6.15.0",
+    "tsx": "^4.20.5",
     "tw-animate-css": "^1.3.6",
     "typescript": "^5",
     "typescript-eslint": "^8.41.0"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   }
 }
