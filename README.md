@@ -2,7 +2,6 @@
 
 # ColdByDefault Portfolio · V4.1.0
 
-**RELEASE NOTE:** [Hot-Drop](https://github.com/ColdByDefault/Portfolio/releases/tag/4.0.0)
 
 Modern, secure, high‑performance developer portfolio built with Next.js 15, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 

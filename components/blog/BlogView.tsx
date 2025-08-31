@@ -68,6 +68,8 @@ export function BlogView({ blog, className }: BlogViewProps) {
             <Image
               src={blog.featuredImage}
               alt={blog.title}
+              width={500}
+              height={500}
               className="w-full h-full object-cover"
             />
           </div>
