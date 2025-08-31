@@ -24,8 +24,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack --hostname 0.0.0.0",
-    "build": "prisma migrate deploy && next build",
+    "build": "next build",
     "start": "next start --hostname 0.0.0.0",
+    "deploy": "prisma migrate deploy && npm run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test-dep": "npx npm-check-updates --interactive",

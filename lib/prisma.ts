@@ -18,6 +18,14 @@ export const prisma =
   new PrismaClient({
     // Enhanced logging for security monitoring
     log: process.env.NODE_ENV === "production" ? ["error", "warn"] : [],
+    // Prevent connection during build time
+    datasources: {
+      db: {
+        url:
+          process.env.DATABASE_URL ||
+          "postgresql://dummy:dummy@localhost:5432/dummy?schema=public",
+      },
+    },
   });
 
 if (process.env.NODE_ENV !== "production") {
