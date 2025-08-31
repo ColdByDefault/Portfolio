@@ -58,13 +58,13 @@ export default function Navbar() {
       href: "/#cert",
       icon: BookOpenCheck,
     },
+  ];
+  /* 
     {
       name: "Blogs",
       href: "/blog",
       icon: NotebookText,
-    },
-  ];
-
+    }, */
   const lightLink = "text-gray-500 hover:text-gray-900";
   const darkLink = "dark:text-gray-600 dark:hover:text-gray-200";
 
