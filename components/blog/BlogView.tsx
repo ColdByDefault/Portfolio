@@ -4,7 +4,7 @@
  */
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -20,6 +20,17 @@ interface BlogViewProps {
 }
 
 export function BlogView({ blog, className }: BlogViewProps) {
+  const [imageSrc, setImageSrc] = useState(
+    blog.featuredImage || "/assets/blogsFallback.png"
+  );
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    if (!imageError && imageSrc !== "/assets/blogsFallback.png") {
+      setImageError(true);
+      setImageSrc("/assets/blogsFallback.png");
+    }
+  };
   return (
     <article className={`max-w-4xl mx-auto ${className}`}>
       {/* Header */}
@@ -71,14 +82,16 @@ export function BlogView({ blog, className }: BlogViewProps) {
         </div>
 
         {/* Featured Image */}
-        {blog.featuredImage && (
+        {(blog.featuredImage || imageSrc) && (
           <div className="w-full h-64 md:h-80 bg-muted rounded-lg overflow-hidden mb-6">
             <Image
-              src={blog.featuredImage}
+              src={imageSrc}
               alt={blog.title}
               width={500}
               height={500}
               className="w-full h-full object-cover"
+              onError={handleImageError}
+              priority={false}
             />
           </div>
         )}
