@@ -20,7 +20,6 @@ import {
   Antenna,
   Atom,
   BookOpenCheck,
-  Telescope,
   NotebookText,
 } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-toggle";
