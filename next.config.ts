@@ -42,7 +42,7 @@ const nextConfig: NextConfig = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; frame-src 'self' https://vercel.live; img-src 'self' data: https: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https:; font-src 'self' data:",
+              "default-src 'self'; frame-src 'self' https://vercel.live; img-src 'self' data: https: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://vercel.live https://*.vercel-scripts.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https: https://vitals.vercel-analytics.com https://vercel.live wss: blob:; font-src 'self' data:; worker-src 'self' blob:",
           },
         ],
       },

@@ -59,6 +59,11 @@ const blogListQuerySchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
+    // Add production debugging
+    if (process.env.NODE_ENV === "production") {
+      console.log("Blog API called in production");
+    }
+
     // Rate limiting check
     const clientIP =
       request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
@@ -110,6 +115,11 @@ export async function GET(request: NextRequest) {
     if (language) query.language = language as BlogLanguage;
 
     const result = await getBlogs(query);
+
+    // Add production debugging
+    if (process.env.NODE_ENV === "production") {
+      console.log(`Blog API returning ${result.blogs.length} blogs`);
+    }
 
     // Add SEO metadata to the response
     const locale = request.headers.get("accept-language")?.includes("de")

@@ -35,10 +35,28 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
           params.append("language", language);
         }
 
-        const response = await fetch(`/api/blog?${params.toString()}`);
+        const apiUrl = `/api/blog?${params.toString()}`;
+        console.log("Fetching blogs from:", apiUrl);
+
+        const response = await fetch(apiUrl);
+        console.log("Blog API response status:", response.status);
+
         if (response.ok) {
           const data = (await response.json()) as BlogApiResponse;
+          console.log("Blog API returned:", data.blogs.length, "blogs");
           setBlogs(data.blogs);
+        } else {
+          console.error(
+            "Blog API error:",
+            response.status,
+            response.statusText
+          );
+          // Fallback to client-side filtering
+          if (language === "all") {
+            setBlogs(initialBlogs);
+          } else {
+            setBlogs(initialBlogs.filter((blog) => blog.language === language));
+          }
         }
       } catch (error) {
         console.error("Error fetching blogs:", error);

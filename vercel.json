@@ -5,6 +5,12 @@
     },
     "app/api/pagespeed/refresh/route.ts": {
       "maxDuration": 300
+    },
+    "app/api/blog/route.ts": {
+      "maxDuration": 30
+    },
+    "app/api/blog/[slug]/route.ts": {
+      "maxDuration": 30
     }
   },
   "headers": [
@@ -18,6 +24,15 @@
         {
           "key": "CDN-Cache-Control",
           "value": "max-age=43200"
+        }
+      ]
+    },
+    {
+      "source": "/api/blog",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, stale-while-revalidate=600"
         }
       ]
     }
