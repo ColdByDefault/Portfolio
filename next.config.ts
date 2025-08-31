@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "X-Frame-Options",
-            value: "DENY",
+            value: "SAMEORIGIN", // Changed from DENY to allow Vercel Live
           },
           {
             key: "X-Content-Type-Options",
@@ -38,6 +38,11 @@ const nextConfig: NextConfig = {
           {
             key: "Strict-Transport-Security",
             value: "max-age=31536000; includeSubDomains; preload",
+          },
+          {
+            key: "Content-Security-Policy",
+            value:
+              "default-src 'self'; frame-src 'self' https://vercel.live; img-src 'self' data: https: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https:; font-src 'self' data:",
           },
         ],
       },

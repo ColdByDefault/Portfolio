@@ -7,9 +7,14 @@ import { BlogPageClient } from "@/components/blog";
 import { getBlogs } from "@/lib/blogs";
 
 export default async function BlogsPage() {
-  const { blogs } = await getBlogs();
-
-  return <BlogPageClient initialBlogs={blogs} />;
+  try {
+    const { blogs } = await getBlogs();
+    return <BlogPageClient initialBlogs={blogs} />;
+  } catch (error) {
+    console.error("Failed to load blogs:", error);
+    // Return empty blogs array as fallback
+    return <BlogPageClient initialBlogs={[]} />;
+  }
 }
 
 export const metadata = {

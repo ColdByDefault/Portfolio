@@ -70,12 +70,19 @@ export async function GET(
     const locale = request.headers.get("accept-language")?.includes("de")
       ? "de"
       : "en";
-    const seoData = generateBlogSEO(blog, locale);
+
+    let seoData;
+    try {
+      seoData = generateBlogSEO(blog, locale);
+    } catch (seoError) {
+      console.error("Error generating SEO data:", seoError);
+      seoData = null;
+    }
 
     return NextResponse.json(
       {
         blog,
-        seo: seoData,
+        ...(seoData && { seo: seoData }),
       },
       {
         headers: {

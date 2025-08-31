@@ -91,7 +91,23 @@ export async function getBlogs(
     };
   } catch (error) {
     console.error("Error fetching blogs:", error);
-    throw new Error("Failed to fetch blogs");
+
+    // Return empty result set on error instead of throwing
+    return {
+      blogs: [],
+      pagination: {
+        page,
+        limit,
+        total: 0,
+        totalPages: 0,
+        hasNextPage: false,
+        hasPrevPage: false,
+      },
+      filters: {
+        categories: [],
+        tags: [],
+      },
+    };
   }
 }
 
@@ -119,19 +135,25 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
 
     if (blog) {
       // Increment read count
-      await prisma.blog.update({
-        where: { id: blog.id },
-        data: { readCount: { increment: 1 } },
-      });
+      try {
+        await prisma.blog.update({
+          where: { id: blog.id },
+          data: { readCount: { increment: 1 } },
+        });
 
-      // Return the blog with incremented read count
-      return { ...blog, readCount: blog.readCount + 1 } as Blog;
+        // Return the blog with incremented read count
+        return { ...blog, readCount: blog.readCount + 1 } as Blog;
+      } catch (updateError) {
+        console.error("Error updating read count:", updateError);
+        // Still return the blog even if read count update fails
+        return blog as Blog;
+      }
     }
 
     return null;
   } catch (error) {
     console.error("Error fetching blog by slug:", error);
-    throw new Error("Failed to fetch blog");
+    return null; // Return null instead of throwing
   }
 }
 
