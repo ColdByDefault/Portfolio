@@ -115,18 +115,19 @@ export async function GET(request: NextRequest) {
     const locale = request.headers.get("accept-language")?.includes("de")
       ? "de"
       : "en";
-    const seoData = generateBlogListSEO(
-      page,
-      undefined,
-      undefined,
-      search,
-      locale
-    );
+
+    let seoData;
+    try {
+      seoData = generateBlogListSEO(page, undefined, undefined, search, locale);
+    } catch (seoError) {
+      console.error("Error generating SEO data:", seoError);
+      seoData = null;
+    }
 
     return NextResponse.json(
       {
         ...result,
-        seo: seoData,
+        ...(seoData && { seo: seoData }),
       },
       {
         headers: {

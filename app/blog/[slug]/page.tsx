@@ -14,37 +14,50 @@ interface BlogPageProps {
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  const { slug } = await params;
-  const blog = await getBlogBySlug(slug);
+  try {
+    const { slug } = await params;
+    const blog = await getBlogBySlug(slug);
 
-  if (!blog) {
+    if (!blog) {
+      notFound();
+    }
+
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <BlogView blog={blog} />
+      </div>
+    );
+  } catch (error) {
+    console.error("Failed to load blog:", error);
     notFound();
   }
-
-  return (
-    <div className="container mx-auto px-4 py-8">
-      <BlogView blog={blog} />
-    </div>
-  );
 }
 
 export async function generateMetadata({ params }: BlogPageProps) {
-  const { slug } = await params;
-  const blog = await getBlogBySlug(slug);
+  try {
+    const { slug } = await params;
+    const blog = await getBlogBySlug(slug);
 
-  if (!blog) {
+    if (!blog) {
+      return {
+        title: "Blog Not Found",
+      };
+    }
+
     return {
-      title: "Blog Not Found",
-    };
-  }
-
-  return {
-    title: blog.metaTitle || blog.title,
-    description: blog.metaDescription || blog.excerpt,
-    openGraph: {
       title: blog.metaTitle || blog.title,
       description: blog.metaDescription || blog.excerpt,
-      images: blog.featuredImage ? [blog.featuredImage] : undefined,
-    },
-  };
+      openGraph: {
+        title: blog.metaTitle || blog.title,
+        description: blog.metaDescription || blog.excerpt,
+        images: blog.featuredImage ? [blog.featuredImage] : undefined,
+      },
+    };
+  } catch (error) {
+    console.error("Failed to generate metadata:", error);
+    return {
+      title: "Blog",
+      description: "Blog content",
+    };
+  }
 }
