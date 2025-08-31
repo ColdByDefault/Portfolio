@@ -20,6 +20,7 @@ export async function getBlogs(
     published = true,
     featured,
     search,
+    language,
     sortBy = "publishedAt",
     sortOrder = "desc",
   } = query || {};
@@ -41,6 +42,10 @@ export async function getBlogs(
       { title: { contains: search, mode: "insensitive" } },
       { excerpt: { contains: search, mode: "insensitive" } },
     ];
+  }
+
+  if (language) {
+    where.language = language;
   }
 
   // Build orderBy clause

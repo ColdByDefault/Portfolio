@@ -13,6 +13,9 @@ export interface Blog {
   content: string;
   featuredImage?: string;
 
+  // Language support
+  language: string; // ISO 639-1 language code (en, de, es, fr, sv, etc.)
+
   // Metadata
   isPublished: boolean;
   isFeatured: boolean;
@@ -90,6 +93,7 @@ export interface CreateBlogRequest {
   excerpt?: string;
   content: string;
   featuredImage?: string;
+  language?: BlogLanguage; // Defaults to "en" if not provided
   categoryId?: string;
   tags?: string[]; // Array of tag IDs
   metaTitle?: string;
@@ -106,6 +110,7 @@ export interface UpdateBlogRequest {
   excerpt?: string;
   content?: string;
   featuredImage?: string;
+  language?: BlogLanguage;
   categoryId?: string;
   tags?: string[];
   metaTitle?: string;
@@ -123,6 +128,7 @@ export interface BlogListQuery {
   category?: string;
   tag?: string;
   search?: string;
+  language?: BlogLanguage;
   published?: boolean;
   featured?: boolean;
   sortBy?: "createdAt" | "updatedAt" | "publishedAt" | "readCount" | "title";
@@ -188,22 +194,26 @@ export interface BlogStructuredData {
   "@type": "BlogPosting" | "Article";
   headline: string;
   description: string;
-  image?: string;
+  image?: string | undefined;
   author: {
     "@type": "Person";
     name: string;
-    url?: string;
+    url?: string | undefined;
   };
   publisher: {
     "@type": "Organization";
     name: string;
-    logo?: string;
+    logo?: string | undefined;
   };
   datePublished: string;
   dateModified: string;
-  wordCount?: number;
-  articleSection?: string;
-  keywords?: string[];
+  url?: string | undefined;
+  mainEntityOfPage?: string | undefined;
+  wordCount?: number | undefined;
+  timeRequired?: string | undefined;
+  articleSection?: string | undefined;
+  about?: string | undefined;
+  keywords?: string[] | undefined;
 }
 
 // Utility Types
@@ -267,6 +277,25 @@ export interface BlogFormValidation {
   metaDescription: string[];
   [key: string]: string[];
 }
+
+// Blog Language Support
+export const SUPPORTED_BLOG_LANGUAGES = [
+  "en", // English
+  "de", // German
+  "es", // Spanish
+  "fr", // French
+  "sv", // Swedish
+] as const;
+
+export type BlogLanguage = (typeof SUPPORTED_BLOG_LANGUAGES)[number];
+
+export const BLOG_LANGUAGE_NAMES: Record<BlogLanguage, string> = {
+  en: "English",
+  de: "Deutsch",
+  es: "Español",
+  fr: "Français",
+  sv: "Svenska",
+} as const;
 
 // Constants
 export const BLOG_CONSTANTS = {
