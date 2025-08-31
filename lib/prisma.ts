@@ -6,9 +6,6 @@
 
 import { PrismaClient } from "@prisma/client";
 
-// Global is used here to maintain a single instance of Prisma Client across hot reloads in development.
-// This is needed because in development, the code is re-executed on every file change, which would normally
-// create a new instance of PrismaClient each time. This pattern ensures we reuse the same instance.
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
@@ -22,8 +19,7 @@ export const prisma =
     datasources: {
       db: {
         url:
-          process.env.DATABASE_URL ||
-          "postgresql://dummy:dummy@localhost:5432/dummy?schema=public",
+          process.env.DATABASE_URL!,
       },
     },
   });
