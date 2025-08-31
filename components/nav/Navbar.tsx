@@ -6,7 +6,13 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+  SheetHeader,
+} from "@/components/ui/sheet";
 import {
   Home,
   FolderGit2,
@@ -14,11 +20,10 @@ import {
   Antenna,
   Atom,
   BookOpenCheck,
-  Telescope,
+  NotebookText,
 } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-toggle";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { FaGithub } from "react-icons/fa";
 import LanguageSwitcher from "@/components/languages/language-switcher";
 import { useTranslations } from "next-intl";
@@ -53,6 +58,11 @@ export default function Navbar() {
       href: "/#cert",
       icon: BookOpenCheck,
     },
+    {
+      name: "Blogs",
+      href: "/blog",
+      icon: NotebookText,
+    },
   ];
 
   const lightLink = "text-gray-500 hover:text-gray-900";
@@ -78,8 +88,9 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-6" role="menubar">
-            {navItems.map((item) => {
+            {navItems.map((item, index) => {
               const Icon = item.icon;
+              const isLastItem = index === navItems.length - 1;
               return (
                 <Link
                   key={item.name}
@@ -87,7 +98,8 @@ export default function Navbar() {
                   className={`
                   flex items-center space-x-2 text-sm font-medium transition-colors
                   ${lightLink} ${darkLink}
-                  focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md px-2 py-1
+                  ${isLastItem ? "border-l pl-6 ml-2" : ""}
+                  focus:outline-none px-2 py-1
                 `}
                   role="menuitem"
                   aria-label={`Navigate to ${item.name} section`}
@@ -155,10 +167,12 @@ export default function Navbar() {
               id="mobile-menu"
               aria-label="Mobile navigation menu"
             >
-              <div className="flex flex-col space-y-4 mt-8">
-                <div className="text-lg font-semibold mb-4 pl-2">
+              <SheetHeader>
+                <SheetTitle className="text-lg font-semibold mb-4 pl-2">
                   {t("navigation")}
-                </div>
+                </SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col space-y-4 mt-4">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   return (
@@ -175,16 +189,6 @@ export default function Navbar() {
                     </Link>
                   );
                 })}
-                <Link
-                  target="_blank"
-                  href="https://berich-hub.vercel.app"
-                  rel="noopener noreferrer"
-                  className="pl-2 flex gap-2 items-center focus:outline-none focus:ring-2 focus:ring-ring rounded-md"
-                  aria-label="Visit beRich.Hub project (opens in new tab)"
-                >
-                  <Telescope aria-hidden="true" />
-                  <Badge variant="secondary">beRich.Hub</Badge>
-                </Link>
               </div>
             </SheetContent>
           </Sheet>

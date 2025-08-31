@@ -164,7 +164,10 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className={urbanist.variable} suppressHydrationWarning>
+      <body
+        className={`${urbanist.variable} flex flex-col min-h-screen`}
+        suppressHydrationWarning
+      >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
@@ -180,7 +183,9 @@ export default async function RootLayout({
               Skip to main content
             </a>
             <Navbar />
-            {children}
+            <main className="flex-1" id="main-content">
+              {children}
+            </main>
             <Footer />
             <CookiesBanner />
           </ThemeProvider>

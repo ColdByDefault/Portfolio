@@ -1,0 +1,125 @@
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Blog Models
+model BlogCategory {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  color       String?  @default("#3B82F6") // Default blue color for categories
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  blogs Blog[]
+
+  @@map("blog_categories")
+}
+
+model BlogTag {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  color     String?  @default("#6B7280") // Default gray color for tags
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  blogs BlogTagRelation[]
+
+  @@map("blog_tags")
+}
+
+model Blog {
+  id            String        @id @default(cuid())
+  title         String
+  slug          String        @unique
+  excerpt       String?       // Short description/summary
+  content       String        // Main blog content (Markdown/HTML)
+  featuredImage String?       // URL to featured image
+  
+  // Language support
+  language      String        @default("en") // ISO 639-1 language code (en, de, es, fr, sv, etc.)
+  
+  // Metadata
+  isPublished   Boolean       @default(false)
+  isFeatured    Boolean       @default(false)
+  isDraft       Boolean       @default(true)
+  
+  // SEO
+  metaTitle     String?
+  metaDescription String?
+  
+  // External Credits (if not written by you)
+  credits       BlogCredit?
+  
+  // Stats
+  readCount     Int           @default(0)
+  
+  // Reading time estimation (in minutes)
+  readingTime   Int?
+  
+  // Publication dates
+  publishedAt   DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  // Relations
+  categoryId    String?
+  category      BlogCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  
+  tags          BlogTagRelation[]
+
+  @@map("blogs")
+  @@index([slug])
+  @@index([isPublished])
+  @@index([publishedAt])
+  @@index([categoryId])
+  @@index([language])
+  @@index([language, isPublished])
+}
+
+// Separate model for external credits to keep Blog model clean
+model BlogCredit {
+  id              String  @id @default(cuid())
+  blogId          String  @unique
+  originalAuthor  String  // Name of the original author
+  originalSource  String? // Website, publication, etc.
+  sourceUrl       String? // Link to original source
+  licenseType     String? // e.g., "CC BY-SA", "MIT", "Fair Use", etc.
+  creditText      String? // Custom credit text
+  translatedFrom  String? // If translated, original language
+  adaptedFrom     String? // If adapted/modified from original
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  blog            Blog     @relation(fields: [blogId], references: [id], onDelete: Cascade)
+
+  @@map("blog_credits")
+}
+
+// Many-to-many relation between Blog and Tag
+model BlogTagRelation {
+  id     String @id @default(cuid())
+  blogId String
+  tagId  String
+
+  // Relations
+  blog   Blog    @relation(fields: [blogId], references: [id], onDelete: Cascade)
+  tag    BlogTag @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@unique([blogId, tagId])
+  @@map("blog_tag_relations")
+}

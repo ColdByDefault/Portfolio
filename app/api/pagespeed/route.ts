@@ -4,11 +4,60 @@
  */
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { z } from "zod";
 import type {
   PageSpeedMetrics,
   PageSpeedResult,
   PageSpeedApiRawResponse,
 } from "@/types/pagespeed";
+
+// Zod schema for SSRF protection
+const pageSpeedRequestSchema = z.object({
+  url: z
+    .string()
+    .url("Invalid URL format")
+    .refine((url) => {
+      try {
+        const parsed = new URL(url);
+
+        // Only allow HTTP/HTTPS protocols
+        if (!["http:", "https:"].includes(parsed.protocol)) {
+          return false;
+        }
+
+        // Block localhost and private IP ranges to prevent SSRF
+        const hostname = parsed.hostname.toLowerCase();
+
+        // Block localhost variants
+        if (["localhost", "127.0.0.1", "::1"].includes(hostname)) {
+          return false;
+        }
+
+        // Block private IP ranges (simplified check)
+        if (
+          hostname.match(/^10\.|^172\.(1[6-9]|2[0-9]|3[0-1])\.|^192\.168\./)
+        ) {
+          return false;
+        }
+
+        // Block link-local addresses
+        if (hostname.match(/^169\.254\.|^fe80:/)) {
+          return false;
+        }
+
+        // Block internal domains
+        if (hostname.includes(".local") || hostname.includes(".internal")) {
+          return false;
+        }
+
+        return true;
+      } catch {
+        return false;
+      }
+    }, "URL not allowed for security reasons"),
+  strategy: z.enum(["mobile", "desktop"]).default("mobile"),
+  refresh: z.boolean().default(false),
+});
 
 // In-memory cache with automatic expiration
 interface CacheEntry {
@@ -205,27 +254,25 @@ async function fetchPageSpeedData(
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const url = searchParams.get("url") || "https://www.coldbydefault.com";
-    const strategy =
-      (searchParams.get("strategy") as "mobile" | "desktop") || "mobile";
-    const forceRefresh = searchParams.get("refresh") === "true";
 
-    // Validate URL
-    if (!url || typeof url !== "string") {
+    // Parse and validate request parameters with Zod
+    const parseResult = pageSpeedRequestSchema.safeParse({
+      url: searchParams.get("url") || "https://www.coldbydefault.com",
+      strategy: searchParams.get("strategy") || "mobile",
+      refresh: searchParams.get("refresh") === "true",
+    });
+
+    if (!parseResult.success) {
       return NextResponse.json(
-        { error: "URL parameter is required" },
+        {
+          error: "Invalid request parameters",
+          details: parseResult.error.issues.map((issue) => issue.message),
+        },
         { status: 400 }
       );
     }
 
-    try {
-      new URL(url);
-    } catch {
-      return NextResponse.json(
-        { error: "Invalid URL format" },
-        { status: 400 }
-      );
-    }
+    const { url, strategy, refresh: forceRefresh } = parseResult.data;
 
     // Check cache first
     const cachedEntry = cache.get(url, strategy);
