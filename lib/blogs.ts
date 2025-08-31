@@ -17,20 +17,20 @@ export async function getBlogs(
   const {
     page = 1,
     limit = 12,
-    published = true,
+    published, // Remove default value, make it optional
     featured,
     search,
     language,
-    sortBy = "publishedAt",
+    sortBy = "createdAt", // Changed to createdAt for reliability
     sortOrder = "desc",
   } = query || {};
 
-  // Build where clause
+  // Build where clause - much more permissive
   const where: Prisma.BlogWhereInput = {};
 
-  if (published) {
+  // Only filter by published if explicitly requested
+  if (published === true) {
     where.isPublished = true;
-    where.publishedAt = { not: null };
   }
 
   if (featured !== undefined) {
@@ -41,6 +41,7 @@ export async function getBlogs(
     where.OR = [
       { title: { contains: search, mode: "insensitive" } },
       { excerpt: { contains: search, mode: "insensitive" } },
+      { content: { contains: search, mode: "insensitive" } },
     ];
   }
 
@@ -92,6 +93,13 @@ export async function getBlogs(
   } catch (error) {
     console.error("Error fetching blogs:", error);
 
+    // Add more detailed error logging
+    if (error instanceof Error) {
+      console.error("Error name:", error.name);
+      console.error("Error message:", error.message);
+      console.error("Error stack:", error.stack);
+    }
+
     // Return empty result set on error instead of throwing
     return {
       blogs: [],
@@ -119,8 +127,9 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
     const blog = await prisma.blog.findFirst({
       where: {
         slug,
-        isPublished: true,
-        publishedAt: { not: null },
+        // Remove published requirement for debugging
+        // isPublished: true,
+        // publishedAt: { not: null },
       },
       include: {
         category: true,
