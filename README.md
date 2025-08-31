@@ -4,7 +4,8 @@
 
 Modern, secure, high‑performance developer portfolio built with Next.js 15, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
-<img width="966" height="174" alt="image" src="https://github.com/user-attachments/assets/de1d9284-c385-4e15-9956-2781e583d66a" />
+<img width="990" height="174" alt="Screenshot 2025-08-31 111906" src="https://github.com/user-attachments/assets/2a863d38-e178-42ee-85a9-75010601fb2b" />
+
 
 **Live:** https://www.coldbydefault.com • **Stack:** Next.js 15.5.1 · React 19 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.3.5 · Prisma ORM · Supabase PostgreSQL · Zod · ESLint 9.x · Vercel
 
