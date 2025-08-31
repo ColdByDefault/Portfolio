@@ -132,7 +132,7 @@ export default function AdminContactPage() {
 
   const handleBlockIP = useCallback(async (): Promise<void> => {
     if (!blockIP.trim()) {
-      setMessage("Please enter a valid IP address");
+      setMessage("Please enter a valid IPv4 or IPv6 address");
       return;
     }
 
@@ -353,7 +353,7 @@ export default function AdminContactPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <Input
-                placeholder="192.168.1.100"
+                placeholder="192.168.1.100 or 2001:0db8:85a3::8a2e:0370:7334"
                 value={blockIP}
                 onChange={(e) => setBlockIP(e.target.value)}
               />
