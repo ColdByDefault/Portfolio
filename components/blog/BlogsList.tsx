@@ -26,8 +26,13 @@ interface BlogsListProps {
 export function BlogsList({ blogs, className }: BlogsListProps) {
   if (blogs.length === 0) {
     return (
-      <div className="text-center py-8">
-        <p className="text-muted-foreground">No blogs found.</p>
+      <div className="flex-1 flex items-center justify-center py-16">
+        <div className="text-center">
+          <p className="text-muted-foreground text-lg mb-4">No blogs found.</p>
+          <p className="text-sm text-muted-foreground">
+            Check back soon for new articles and insights.
+          </p>
+        </div>
       </div>
     );
   }

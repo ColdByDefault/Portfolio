@@ -100,7 +100,7 @@ export default function Navbar() {
                   flex items-center space-x-2 text-sm font-medium transition-colors
                   ${lightLink} ${darkLink}
                   ${isLastItem ? "border-l pl-6 ml-2" : ""}
-                  focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 px-2 py-1
+                  focus:outline-none px-2 py-1
                 `}
                   role="menuitem"
                   aria-label={`Navigate to ${item.name} section`}
