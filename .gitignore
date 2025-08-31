@@ -49,4 +49,9 @@ next-env.d.ts
 portfolio.latest.instructions.md
 /lib/generated/prisma
 
+# Vercel
 .vercel
+
+
+# Private Notes
+notes.txt

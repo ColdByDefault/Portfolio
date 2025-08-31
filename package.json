@@ -28,7 +28,8 @@
     "start": "next start --hostname 0.0.0.0",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test-dep": "npx npm-check-updates --interactive"
+    "test-dep": "npx npm-check-updates --interactive",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
