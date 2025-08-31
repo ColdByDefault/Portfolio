@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
+    "@prisma/client": "^6.15.0",
     "@radix-ui/react-alert-dialog": "^1.1.14",
     "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-hover-card": "^1.1.14",
@@ -79,6 +80,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "globals": "^16.3.0",
     "lucide-react": "^0.542.0",
+    "prisma": "^6.15.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "tailwindcss": "^4.1.12",
