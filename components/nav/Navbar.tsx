@@ -20,7 +20,6 @@ import {
   Antenna,
   Atom,
   BookOpenCheck,
-  NotebookText,
 } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-toggle";
 import Link from "next/link";
@@ -60,6 +59,7 @@ export default function Navbar() {
     },
   ];
   /* 
+    NotebookText,
     {
       name: "Blogs",
       href: "/blog",
