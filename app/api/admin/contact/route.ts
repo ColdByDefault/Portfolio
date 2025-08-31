@@ -17,18 +17,77 @@ import {
   blockEmail,
 } from "@/lib/contact-monitor";
 
-// Simple authentication - replace with proper auth in production
+// Enhanced authentication - replace with proper auth in production
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 
+function getClientIP(request: NextRequest): string {
+  // Check various headers in order of preference
+  const headers = [
+    "x-forwarded-for",
+    "x-real-ip",
+    "x-client-ip",
+    "x-forwarded",
+    "x-cluster-client-ip",
+    "forwarded-for",
+    "forwarded",
+  ];
+
+  for (const header of headers) {
+    const value = request.headers.get(header);
+    if (value) {
+      // x-forwarded-for can contain multiple IPs, take the first one
+      const ip = value.split(",")[0]?.trim();
+      if (ip && ip !== "unknown") {
+        return ip;
+      }
+    }
+  }
+
+  return "unknown";
+}
+
 function isAuthorized(request: NextRequest): boolean {
-  const token = request.headers.get("authorization")?.replace("Bearer ", "");
-  return token === ADMIN_TOKEN;
+  if (!ADMIN_TOKEN) {
+    console.error("ADMIN_TOKEN environment variable not set");
+    return false;
+  }
+
+  const authHeader = request.headers.get("authorization");
+  if (!authHeader) {
+    return false;
+  }
+
+  const token = authHeader.startsWith("Bearer ")
+    ? authHeader.substring(7)
+    : authHeader;
+
+  // Use constant-time comparison to prevent timing attacks
+  if (token.length !== ADMIN_TOKEN.length) {
+    return false;
+  }
+
+  let isEqual = true;
+  for (let i = 0; i < token.length; i++) {
+    if (token[i] !== ADMIN_TOKEN[i]) {
+      isEqual = false;
+    }
+  }
+
+  return isEqual;
 }
 
 export function GET(
   request: NextRequest
 ): NextResponse<ContactApiResponse | ApiErrorResponse> {
   if (!isAuthorized(request)) {
+    // Log unauthorized access attempt
+    const clientIP = getClientIP(request);
+    console.warn("Unauthorized admin access attempt", {
+      ip: clientIP,
+      userAgent: request.headers.get("user-agent"),
+      timestamp: new Date().toISOString(),
+    });
+
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -43,7 +102,10 @@ export function GET(
       }
 
       case "suspicious": {
-        const hours = parseInt(searchParams.get("hours") || "24", 10);
+        const hours = Math.min(
+          parseInt(searchParams.get("hours") || "24", 10),
+          168
+        ); // Max 7 days
         const suspicious = getSuspiciousActivity(hours);
         return NextResponse.json({ success: true, data: suspicious });
       }
@@ -70,12 +132,46 @@ export async function POST(
   request: NextRequest
 ): Promise<NextResponse<BlockActionResponse | ApiErrorResponse>> {
   if (!isAuthorized(request)) {
+    const clientIP = getClientIP(request);
+    console.warn("Unauthorized admin POST attempt", {
+      ip: clientIP,
+      userAgent: request.headers.get("user-agent"),
+      timestamp: new Date().toISOString(),
+    });
+
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
-    const requestBody = (await request.json()) as ContactAdminRequest;
+    // Validate content type
+    const contentType = request.headers.get("content-type");
+    if (!contentType?.includes("application/json")) {
+      return NextResponse.json(
+        { error: "Content-Type must be application/json" },
+        { status: 400 }
+      );
+    }
+
+    // Parse and validate request body
+    let requestBody: ContactAdminRequest;
+    try {
+      requestBody = (await request.json()) as ContactAdminRequest;
+    } catch {
+      return NextResponse.json(
+        { error: "Invalid JSON in request body" },
+        { status: 400 }
+      );
+    }
+
     const { action, ip, email } = requestBody;
+
+    // Validate action
+    if (!action || typeof action !== "string") {
+      return NextResponse.json(
+        { error: "Action is required and must be a string" },
+        { status: 400 }
+      );
+    }
 
     switch (action) {
       case "block_ip": {
@@ -85,7 +181,26 @@ export async function POST(
             { status: 400 }
           );
         }
+
+        // Basic IP format validation
+        const ipRegex =
+          /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+        if (!ipRegex.test(ip)) {
+          return NextResponse.json(
+            { error: "Invalid IP address format" },
+            { status: 400 }
+          );
+        }
+
         blockIP(ip);
+
+        // Log the blocking action
+        console.info("IP blocked by admin", {
+          blockedIP: ip,
+          adminIP: getClientIP(request),
+          timestamp: new Date().toISOString(),
+        });
+
         return NextResponse.json({ message: `IP ${ip} blocked successfully` });
       }
 
@@ -96,7 +211,25 @@ export async function POST(
             { status: 400 }
           );
         }
+
+        // Basic email format validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          return NextResponse.json(
+            { error: "Invalid email address format" },
+            { status: 400 }
+          );
+        }
+
         blockEmail(email);
+
+        // Log the blocking action
+        console.info("Email blocked by admin", {
+          blockedEmail: email,
+          adminIP: getClientIP(request),
+          timestamp: new Date().toISOString(),
+        });
+
         return NextResponse.json({
           message: `Email ${email} blocked successfully`,
         });
