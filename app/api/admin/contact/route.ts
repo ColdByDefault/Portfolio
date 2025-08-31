@@ -183,7 +183,8 @@ export async function POST(
         }
 
         // Enhanced IP validation supporting both IPv4 and IPv6
-        if (ip.length > 45) { // IPv6 can be up to 45 characters
+        if (ip.length > 45) {
+          // IPv6 can be up to 45 characters
           return NextResponse.json(
             { error: "IP address too long" },
             { status: 400 }
@@ -193,11 +194,13 @@ export async function POST(
         // Robust IP format validation for both IPv4 and IPv6
         const isValidIP = (address: string): boolean => {
           // IPv4 regex pattern
-          const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-          
+          const ipv4Regex =
+            /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+
           // IPv6 regex pattern (handles full, compressed, and mixed notations)
-          const ipv6Regex = /^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^::1$|^::$|^(?:[0-9a-fA-F]{1,4}:)*::(?:[0-9a-fA-F]{1,4}:)*[0-9a-fA-F]{1,4}$|^(?:[0-9a-fA-F]{1,4}:)*::(?:[0-9a-fA-F]{1,4}:)*(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-          
+          const ipv6Regex =
+            /^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^::1$|^::$|^(?:[0-9a-fA-F]{1,4}:)*::(?:[0-9a-fA-F]{1,4}:)*[0-9a-fA-F]{1,4}$|^(?:[0-9a-fA-F]{1,4}:)*::(?:[0-9a-fA-F]{1,4}:)*(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+
           return ipv4Regex.test(address) || ipv6Regex.test(address);
         };
 
