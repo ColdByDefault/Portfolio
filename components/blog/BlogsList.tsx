@@ -16,6 +16,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock } from "lucide-react";
 import type { Blog } from "@/types/blogs";
+import Image from "next/image";
 
 interface BlogsListProps {
   blogs: Blog[];
@@ -38,7 +39,7 @@ export function BlogsList({ blogs, className }: BlogsListProps) {
           <Card className="h-full hover:shadow-lg transition-shadow">
             {blog.featuredImage && (
               <div className="w-full h-48 bg-muted rounded-t-lg overflow-hidden">
-                <img
+                <Image
                   src={blog.featuredImage}
                   alt={blog.title}
                   className="w-full h-full object-cover"

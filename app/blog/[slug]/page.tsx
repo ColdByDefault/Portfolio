@@ -8,13 +8,14 @@ import { BlogView } from "@/components/blog";
 import { getBlogBySlug } from "@/lib/blogs";
 
 interface BlogPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  const blog = await getBlogBySlug(params.slug);
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     notFound();
@@ -28,7 +29,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
 }
 
 export async function generateMetadata({ params }: BlogPageProps) {
-  const blog = await getBlogBySlug(params.slug);
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     return {

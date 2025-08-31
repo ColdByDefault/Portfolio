@@ -3,8 +3,10 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 
-import { NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { getBlogs } from "@/lib/blogs";
+import type { BlogListQuery } from "@/types/blogs";
 
 export async function GET(request: NextRequest) {
   try {
@@ -14,7 +16,7 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get("search");
     const featuredParam = searchParams.get("featured");
 
-    const query: any = {
+    const query: BlogListQuery = {
       page,
       limit,
     };

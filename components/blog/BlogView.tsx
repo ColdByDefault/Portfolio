@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Calendar, Clock, Eye } from "lucide-react";
 import type { Blog } from "@/types/blogs";
+import Image from "next/image";
 
 interface BlogViewProps {
   blog: Blog;
@@ -64,7 +65,7 @@ export function BlogView({ blog, className }: BlogViewProps) {
         {/* Featured Image */}
         {blog.featuredImage && (
           <div className="w-full h-64 md:h-80 bg-muted rounded-lg overflow-hidden mb-6">
-            <img
+            <Image
               src={blog.featuredImage}
               alt={blog.title}
               className="w-full h-full object-cover"

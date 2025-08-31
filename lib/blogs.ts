@@ -156,7 +156,7 @@ export async function getBlogs(
   const endIndex = startIndex + limit;
   const paginatedBlogs = filteredBlogs.slice(startIndex, endIndex);
 
-  return {
+  return Promise.resolve({
     blogs: paginatedBlogs,
     pagination: {
       page,
@@ -170,7 +170,7 @@ export async function getBlogs(
       categories: [],
       tags: [],
     },
-  };
+  });
 }
 
 /**
@@ -185,7 +185,7 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
     blog.readCount += 1;
   }
 
-  return blog || null;
+  return Promise.resolve(blog || null);
 }
 
 /**
