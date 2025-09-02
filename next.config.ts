@@ -16,22 +16,42 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // Apply minimal security headers - much more relaxed
+        // Apply comprehensive security headers
         source: "/(.*)",
         headers: [
           {
             key: "X-Frame-Options",
-            value: "SAMEORIGIN",
+            value: "DENY", 
           },
           {
             key: "X-Content-Type-Options",
             value: "nosniff",
           },
-          // Removed CSP entirely for debugging
-          // {
-          //   key: "Content-Security-Policy",
-          //   value: "...",
-          // },
+          {
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
+          },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(), payment=()",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval'", 
+              "style-src 'self' 'unsafe-inline'", // Allow inline styles for Tailwind and components
+              "img-src 'self' data: blob: https://avatars.githubusercontent.com https://github.com",
+              "font-src 'self' data:",
+              "connect-src 'self' https://api.github.com https://www.googleapis.com",
+              "frame-src 'none'",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "frame-ancestors 'none'",
+              "upgrade-insecure-requests",
+            ].join("; "),
+          },
         ],
       },
     ];
