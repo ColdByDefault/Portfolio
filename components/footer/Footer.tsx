@@ -72,14 +72,24 @@ export default function Footer() {
               <Links links={socialLinks} className="flex space-x-6" />
             </div>
             <div className="sm:flex-1 sm:flex sm:justify-end">
-              <Link
-                href="/admin/contact"
-                className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
-              >
-                <span className="text-xs text-green-500 dark:text-gray-400">
-                  <code>Admin Dashboard</code>
-                </span>
-              </Link>
+              <div className="flex flex-col space-y-1">
+                <Link
+                  href="/admin/contact"
+                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+                >
+                  <span className="text-xs text-green-500 dark:text-gray-400">
+                    <code>Contact Admin</code>
+                  </span>
+                </Link>
+                <Link
+                  href="/admin/blog"
+                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
+                >
+                  <span className="text-xs text-green-500 dark:text-gray-400">
+                    <code>Blog Admin</code>
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
