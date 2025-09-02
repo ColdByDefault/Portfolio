@@ -61,3 +61,38 @@ export interface AdminState {
   error: AdminError | null;
   loading: boolean;
 }
+
+// Blog Admin Types
+export interface BlogAdminStats {
+  totalBlogs: number;
+  publishedBlogs: number;
+  draftBlogs: number;
+  featuredBlogs: number;
+  totalViews: number;
+  recentActivity: BlogActivityItem[];
+}
+
+export interface BlogActivityItem {
+  id: string;
+  action: "created" | "updated" | "published" | "unpublished" | "deleted";
+  blogTitle: string;
+  blogSlug: string;
+  timestamp: Date;
+}
+
+export interface BlogAdminAction {
+  action:
+    | "create"
+    | "update"
+    | "delete"
+    | "publish"
+    | "unpublish"
+    | "feature"
+    | "unfeature";
+  blogId?: string;
+  data?: unknown;
+}
+
+export interface BlogAdminResponse extends ApiResponse {
+  data?: unknown;
+}
