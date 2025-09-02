@@ -4,90 +4,92 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🌱 Starting database seed...');
+  console.log("🌱 Starting database seed...");
 
   // Create blog categories
-  console.log('📁 Creating blog categories...');
+  console.log("📁 Creating blog categories...");
   const techCategory = await prisma.blogCategory.upsert({
-    where: { slug: 'technology' },
+    where: { slug: "technology" },
     update: {},
     create: {
-      name: 'Technology',
-      slug: 'technology',
-      description: 'Articles about programming, web development, and tech trends',
-      color: '#3B82F6',
+      name: "Technology",
+      slug: "technology",
+      description:
+        "Articles about programming, web development, and tech trends",
+      color: "#3B82F6",
       isActive: true,
     },
   });
 
   const tutorialCategory = await prisma.blogCategory.upsert({
-    where: { slug: 'tutorials' },
+    where: { slug: "tutorials" },
     update: {},
     create: {
-      name: 'Tutorials',
-      slug: 'tutorials',
-      description: 'Step-by-step guides and how-to articles',
-      color: '#10B981',
+      name: "Tutorials",
+      slug: "tutorials",
+      description: "Step-by-step guides and how-to articles",
+      color: "#10B981",
       isActive: true,
     },
   });
 
   // Create blog tags
-  console.log('🏷️ Creating blog tags...');
+  console.log("🏷️ Creating blog tags...");
   const reactTag = await prisma.blogTag.upsert({
-    where: { slug: 'react' },
+    where: { slug: "react" },
     update: {},
     create: {
-      name: 'React',
-      slug: 'react',
-      color: '#61DAFB',
+      name: "React",
+      slug: "react",
+      color: "#61DAFB",
     },
   });
 
   const nextjsTag = await prisma.blogTag.upsert({
-    where: { slug: 'nextjs' },
+    where: { slug: "nextjs" },
     update: {},
     create: {
-      name: 'Next.js',
-      slug: 'nextjs',
-      color: '#000000',
+      name: "Next.js",
+      slug: "nextjs",
+      color: "#000000",
     },
   });
 
   const typescriptTag = await prisma.blogTag.upsert({
-    where: { slug: 'typescript' },
+    where: { slug: "typescript" },
     update: {},
     create: {
-      name: 'TypeScript',
-      slug: 'typescript',
-      color: '#3178C6',
+      name: "TypeScript",
+      slug: "typescript",
+      color: "#3178C6",
     },
   });
 
   const webdevTag = await prisma.blogTag.upsert({
-    where: { slug: 'web-development' },
+    where: { slug: "web-development" },
     update: {},
     create: {
-      name: 'Web Development',
-      slug: 'web-development',
-      color: '#F59E0B',
+      name: "Web Development",
+      slug: "web-development",
+      color: "#F59E0B",
     },
   });
 
   // Create test blog 1 (English)
-  console.log('📝 Creating English blog post...');
+  console.log("📝 Creating English blog post...");
   const englishBlog = await prisma.blog.upsert({
-    where: { slug: 'getting-started-with-nextjs-14' },
+    where: { slug: "getting-started-with-nextjs-14" },
     update: {},
     create: {
-      title: 'Getting Started with Next.js 14: A Complete Guide',
-      slug: 'getting-started-with-nextjs-14',
-      excerpt: 'Learn how to build modern web applications with Next.js 14, including the new App Router, Server Components, and more.',
+      title: "Getting Started with Next.js 14: A Complete Guide",
+      slug: "getting-started-with-nextjs-14",
+      excerpt:
+        "Learn how to build modern web applications with Next.js 14, including the new App Router, Server Components, and more.",
       content: `# Getting Started with Next.js 14: A Complete Guide
 
 Next.js 14 brings exciting new features and improvements to the React framework that makes building full-stack web applications easier than ever.
@@ -131,28 +133,30 @@ npm run dev
 Next.js 14 continues to push the boundaries of what's possible with React applications. Whether you're building a simple blog or a complex e-commerce platform, Next.js 14 provides the tools you need to succeed.
 
 Happy coding! 🚀`,
-      featuredImage: '/assets/nextjs-guide.jpg',
-      language: 'en',
+      featuredImage: "/assets/nextjs-guide.jpg",
+      language: "en",
       isPublished: true,
       isFeatured: true,
       isDraft: false,
-      metaTitle: 'Getting Started with Next.js 14 - Complete Guide',
-      metaDescription: 'Learn Next.js 14 with this comprehensive guide covering App Router, Server Components, Turbopack, and best practices.',
+      metaTitle: "Getting Started with Next.js 14 - Complete Guide",
+      metaDescription:
+        "Learn Next.js 14 with this comprehensive guide covering App Router, Server Components, Turbopack, and best practices.",
       readingTime: 8,
-      publishedAt: new Date('2025-01-15T10:00:00Z'),
+      publishedAt: new Date("2025-01-15T10:00:00Z"),
       categoryId: techCategory.id,
     },
   });
 
   // Create test blog 2 (German)
-  console.log('📝 Creating German blog post...');
+  console.log("📝 Creating German blog post...");
   const germanBlog = await prisma.blog.upsert({
-    where: { slug: 'react-hooks-tutorial-deutsch' },
+    where: { slug: "react-hooks-tutorial-deutsch" },
     update: {},
     create: {
-      title: 'React Hooks Tutorial: Von Beginner zu Pro',
-      slug: 'react-hooks-tutorial-deutsch',
-      excerpt: 'Lerne React Hooks von Grund auf - useState, useEffect, Custom Hooks und mehr. Ein umfassendes Tutorial auf Deutsch.',
+      title: "React Hooks Tutorial: Von Beginner zu Pro",
+      slug: "react-hooks-tutorial-deutsch",
+      excerpt:
+        "Lerne React Hooks von Grund auf - useState, useEffect, Custom Hooks und mehr. Ein umfassendes Tutorial auf Deutsch.",
       content: `# React Hooks Tutorial: Von Beginner zu Pro
 
 React Hooks haben die Art und Weise, wie wir React-Komponenten schreiben, revolutioniert. In diesem Tutorial lernst du alles, was du über Hooks wissen musst.
@@ -234,22 +238,23 @@ function useCounter(initialValue = 0) {
 React Hooks machen funktionale Komponenten kraftvoller und den Code sauberer. Mit der Zeit wirst du feststellen, dass Hooks die Entwicklung erheblich vereinfachen.
 
 Viel Erfolg beim Lernen! 🎯`,
-      featuredImage: '/assets/react-hooks-tutorial.jpg',
-      language: 'de',
+      featuredImage: "/assets/react-hooks-tutorial.jpg",
+      language: "de",
       isPublished: true,
       isFeatured: false,
       isDraft: false,
-      metaTitle: 'React Hooks Tutorial - Von Beginner zu Pro',
-      metaDescription: 'Umfassendes React Hooks Tutorial auf Deutsch. Lerne useState, useEffect, Custom Hooks und Best Practices.',
+      metaTitle: "React Hooks Tutorial - Von Beginner zu Pro",
+      metaDescription:
+        "Umfassendes React Hooks Tutorial auf Deutsch. Lerne useState, useEffect, Custom Hooks und Best Practices.",
       readingTime: 12,
-      publishedAt: new Date('2025-01-20T14:30:00Z'),
+      publishedAt: new Date("2025-01-20T14:30:00Z"),
       categoryId: tutorialCategory.id,
     },
   });
 
   // Create blog tag relations
-  console.log('🔗 Creating blog tag relations...');
-  
+  console.log("🔗 Creating blog tag relations...");
+
   // English blog tags
   await prisma.blogTagRelation.createMany({
     data: [
@@ -270,7 +275,7 @@ Viel Erfolg beim Lernen! 🎯`,
     skipDuplicates: true,
   });
 
-  console.log('✅ Database seeded successfully!');
+  console.log("✅ Database seeded successfully!");
   console.log(`📊 Created:`);
   console.log(`   - 2 blog categories`);
   console.log(`   - 4 blog tags`);
@@ -280,7 +285,7 @@ Viel Erfolg beim Lernen! 🎯`,
 
 main()
   .catch((e) => {
-    console.error('❌ Seed failed:', e);
+    console.error("❌ Seed failed:", e);
     process.exit(1);
   })
   .finally(() => {
