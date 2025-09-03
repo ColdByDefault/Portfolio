@@ -1,25 +1,18 @@
-// Copyright © [ColdByDefault] [AnotherProject]™.
-// All Rights Reserved.
 /**
- * The `Home` component serves as the main entry point for the Portfolio.
- * It includes various sections such as the hero section, project showcase,
- * technologies, certifications, and a scroll-to-top button. The component
- * also handles loading state and fetches posts from an API.
- * typedef {Object} Post
- * property {string} id - The unique identifier for the post.
- * property {string} title - The title of the post.
- * property {string} excerpt - A short excerpt or summary of the post.
- * property {string} date - The publication date of the post.
- * property {string} slug - The slug used for the post's URL.
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * 
+ * Renders the main client-side homepage for the portfolio, including loading screen,
+ * hero section, company banner, sticky background image (dark mode), project showcase,
+ * GitHub showcase, technologies, certifications, and website performance insights.
  *
- * @ returns {JSX.Element} The rendered `Home` component.
+ * Handles initial loading state with a timed loading screen and prevents hydration mismatch.
+ * Utilizes internationalization for text content.
  *
- * remarks
- * - The `isLoading` state is used to display a loading screen for 2.2 seconds
- *   when the component is first mounted.
- * - Posts are fetched from the `/api/posts` endpoint and stored in the `posts` state.
- * - The component uses the `ParallaxProvider` to enable parallax effects in child components.
+ * @component
+ * @returns {JSX.Element} The rendered homepage component.
  */
+
 "use client";
 import { CertificationShowcase } from "@/components/cer";
 import { Hero } from "@/components/hero";

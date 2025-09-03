@@ -1,27 +1,23 @@
-// All Rights Reserved - No part of this website or any of its contents may be reproduced, copied, modified or adapted,
-// without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
-// <!-- Leve Palestina -->
-// <!-- Free Palestine -->
+/** All Rights Reserved - No part of this website or any of its contents may be reproduced, copied, modified or adapted,
+without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
+<!-- @Leva_Palestina -->
+<!-- @Free_Palestine -->
+*/
 /**
  * RootLayout component serves as the main layout wrapper for the application.
  * It includes global metadata, styles, and shared components such as Navbar and Footer.
  *
- * @ file /app/layout.tsx
- * @ created 2024-12-31 23:00:00
- * @ author ColdByDefault
- * @ copyright 2025 ColdByDefault. All Rights Reserved.
+ * @file /app/layout.tsx
+ * @created 2024-12-31 23:00:00
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
  *
- * @ remarks
+ * @remarks
  * This layout component sets up the HTML structure, including the `<head>` section
  * with metadata for SEO and social sharing, and the `<body>` section with shared UI components.
  * It also integrates Vercel Analytics and Speed Insights for performance monitoring.
  *
- * @ see {@ link https://www.coldbydefault.com} for the live website.
- *
- * @ param {RootLayoutProps} props - The props object containing the children to be rendered.
- * @ param {React.ReactNode} props.children - The child components to be rendered within the layout.
- *
- * @ returns {JSX.Element} The RootLayout component.
+ * @see @link https://www.coldbydefault.com for the live website.
  */
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";

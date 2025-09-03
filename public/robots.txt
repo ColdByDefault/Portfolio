@@ -1,13 +1,27 @@
+#  In these times, it is hard to distinguish who is truly here!
+#  Are you a robot? Or are you a human? 
+#  If you are a human, what mask do you wear? Or are you just as afraid as the rest of them?
+#  Free Palastine
+
 User-agent: *
+
+# Block admin area
+Disallow: /admin/
+# Block API endpoints
+Disallow: /api/
+# Block blog admin
+Disallow: /admin/blog
+# Block private data
+Disallow: /private/
+# Explicitly allow public blog pages
+Allow: /blog
+# Allow everything else
 Allow: /
 
-# Sitemap
+# Sitemap reference
 Sitemap: https://www.coldbydefault.com/sitemap.xml
 
-# Block admin routes
-Disallow: /admin/
-
-# Allow common crawlers
+# Allow common crawlers explicitly
 User-agent: Googlebot
 Allow: /
 
