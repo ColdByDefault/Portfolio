@@ -50,13 +50,10 @@ class GitHubDataFetcher {
 
   async fetchProfile(): Promise<GitHubProfile> {
     try {
-      console.log("Fetching GitHub profile");
       const response = await fetch(`${this.baseUrl}/users/${this.username}`, {
         headers: this.headers,
         next: { revalidate: 3600 }, // Cache for 1 hour
       });
-
-      console.log("Profile response status:", response.status);
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -67,7 +64,6 @@ class GitHubDataFetcher {
       }
 
       const data: GitHubProfile = (await response.json()) as GitHubProfile;
-      console.log("Profile data fetched successfully");
       return data;
     } catch (error) {
       console.error("Profile fetch exception:", error);
@@ -257,8 +253,6 @@ export async function GET(request: NextRequest) {
   const dataType = validateDataType(searchParams.get("type"));
 
   try {
-    console.log("GitHub API request for type: %s", dataType);
-
     const fetcher = new GitHubDataFetcher();
     let data: GitHubApiResponse = {};
 

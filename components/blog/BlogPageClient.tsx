@@ -38,15 +38,9 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
         const apiUrl = `/api/blog?${params.toString()}`;
 
         const response = await fetch(apiUrl);
-        if (process.env.NODE_ENV !== "production") {
-          console.log("Blog API response status:", response.status);
-        }
 
         if (response.ok) {
           const data = (await response.json()) as BlogApiResponse;
-          if (process.env.NODE_ENV !== "production") {
-            console.log("Blog API returned:", data.blogs.length, "blogs");
-          }
           setBlogs(data.blogs);
         } else {
           console.error(

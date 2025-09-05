@@ -230,39 +230,15 @@ export default function AdminBlogPage() {
     if (!isAuthenticated || !token) return;
 
     try {
-      console.log("Loading categories...");
       const response = await fetch("/api/admin/blog?action=categories", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      console.log("Categories response status:", response.status);
-      console.log(
-        "Categories response headers:",
-        Object.fromEntries(response.headers.entries())
-      );
-
       if (response.ok) {
         const data = (await response.json()) as BlogAdminResponse;
-        console.log("Categories full response:", data);
         if (data.success && data.data) {
-          console.log("Setting categories:", data.data);
-          console.log("Categories data type:", typeof data.data);
-          console.log("Categories is array:", Array.isArray(data.data));
           setCategories(data.data as Array<{ id: string; name: string }>);
-        } else {
-          console.log(
-            "Categories request succeeded but no data or not success:",
-            {
-              success: data.success,
-              hasData: !!data.data,
-              data: data.data,
-            }
-          );
         }
-      } else {
-        console.log("Categories request failed:", response.statusText);
-        const errorText = await response.text();
-        console.log("Error response body:", errorText);
       }
     } catch (error) {
       console.error("Error loading categories:", error);
@@ -281,7 +257,6 @@ export default function AdminBlogPage() {
         const data = (await response.json()) as BlogAdminResponse;
         if (data.success && data.data) {
           // Tags loaded successfully but not used in current UI
-          console.log("Tags loaded:", data.data);
         }
       }
     } catch (error) {

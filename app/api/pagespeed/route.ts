@@ -175,7 +175,6 @@ async function backgroundRefresh(
     const result = await fetchPageSpeedData(url, strategy);
     if (result) {
       cache.set(url, strategy, result);
-      console.log("Background refresh completed for %s (%s)", url, strategy);
     }
   } catch (error) {
     console.error(
@@ -312,11 +311,6 @@ export async function GET(request: NextRequest) {
 
     // Check if we should skip fetching due to circuit breaker
     if (cache.shouldSkipFetch(url, strategy) && cachedEntry) {
-      console.log(
-        "Circuit breaker active for %s (%s), returning cached data",
-        url,
-        strategy
-      );
       return NextResponse.json(cachedEntry.data, {
         headers: {
           "Cache-Control": "public, max-age=1800", // 30 minutes for circuit breaker
@@ -327,7 +321,6 @@ export async function GET(request: NextRequest) {
 
     // If no cache or force refresh, fetch fresh data
     try {
-      console.log("Fetching fresh PageSpeed data for %s (%s)", url, strategy);
       const result = await fetchPageSpeedData(url, strategy);
 
       if (result) {
@@ -358,11 +351,6 @@ export async function GET(request: NextRequest) {
 
       // If fresh fetch fails but we have stale data, return the stale data
       if (cachedEntry) {
-        console.log(
-          "Returning stale data due to fetch failure for %s (%s)",
-          url,
-          strategy
-        );
         return NextResponse.json(cachedEntry.data, {
           headers: {
             "Cache-Control": "public, max-age=300",

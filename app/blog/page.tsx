@@ -8,16 +8,7 @@ import { getBlogs } from "@/lib/blogs";
 
 export default async function BlogsPage() {
   try {
-    // Add production debugging
-    if (process.env.NODE_ENV === "production") {
-      console.log("BlogsPage: Starting to fetch blogs");
-    }
-
     const { blogs } = await getBlogs();
-
-    if (process.env.NODE_ENV === "production") {
-      console.log(`BlogsPage: Fetched ${blogs.length} blogs`);
-    }
 
     return <BlogPageClient initialBlogs={blogs} />;
   } catch (error) {

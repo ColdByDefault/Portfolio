@@ -30,18 +30,6 @@ function BlogCard({ blog }: BlogCardProps) {
   );
   const [imageError, setImageError] = useState(false);
 
-  // Debug log to see if credits are being passed
-  React.useEffect(() => {
-    if (process.env.NODE_ENV !== "production") {
-      console.log("BlogCard received blog:", {
-        id: blog.id,
-        title: blog.title,
-        hasCredits: !!blog.credits,
-        licenseType: blog.credits?.licenseType,
-      });
-    }
-  }, [blog]);
-
   const handleImageError = () => {
     if (!imageError && imageSrc !== "/assets/blogsFallback.png") {
       setImageError(true);
