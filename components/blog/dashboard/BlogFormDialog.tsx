@@ -28,6 +28,7 @@ export interface BlogFormData {
   metaDescription: string;
   isPublished: boolean;
   isFeatured: boolean;
+  tags?: string[];
   credits?:
     | {
         originalAuthor: string;

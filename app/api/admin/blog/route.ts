@@ -179,13 +179,6 @@ export async function GET(
   request: NextRequest
 ): Promise<NextResponse<BlogAdminResponse | ApiErrorResponse>> {
   if (!isAuthorized(request)) {
-    const clientIP = getClientIP(request);
-    console.warn("Unauthorized blog admin access attempt", {
-      ip: clientIP,
-      userAgent: request.headers.get("user-agent"),
-      timestamp: new Date().toISOString(),
-    });
-
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -296,13 +289,6 @@ export async function POST(
   request: NextRequest
 ): Promise<NextResponse<BlogAdminResponse | ApiErrorResponse>> {
   if (!isAuthorized(request)) {
-    const clientIP = getClientIP(request);
-    console.warn("Unauthorized blog admin POST attempt", {
-      ip: clientIP,
-      userAgent: request.headers.get("user-agent"),
-      timestamp: new Date().toISOString(),
-    });
-
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -348,13 +334,6 @@ export async function POST(
 
         const blog = await createBlog(parseResult.data as CreateBlogRequest);
 
-        console.info("Blog created by admin", {
-          blogId: blog.id,
-          title: blog.title,
-          adminIP: clientIP,
-          timestamp: new Date().toISOString(),
-        });
-
         return NextResponse.json({
           success: true,
           data: blog,
@@ -372,12 +351,6 @@ export async function POST(
 
         const parseResult = updateBlogSchema.safeParse(data);
         if (!parseResult.success) {
-          console.error("Update validation failed:", {
-            data,
-            errors: parseResult.error.issues,
-            adminIP: clientIP,
-            timestamp: new Date().toISOString(),
-          });
           return NextResponse.json(
             {
               error: "Validation failed",
@@ -393,13 +366,6 @@ export async function POST(
           blogId,
           parseResult.data as UpdateBlogRequest
         );
-
-        console.info("Blog updated by admin", {
-          blogId: blog.id,
-          title: blog.title,
-          adminIP: clientIP,
-          timestamp: new Date().toISOString(),
-        });
 
         return NextResponse.json({
           success: true,
@@ -417,12 +383,6 @@ export async function POST(
         }
 
         await deleteBlog(blogId);
-
-        console.info("Blog deleted by admin", {
-          blogId,
-          adminIP: clientIP,
-          timestamp: new Date().toISOString(),
-        });
 
         return NextResponse.json({
           success: true,

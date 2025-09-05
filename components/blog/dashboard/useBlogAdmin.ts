@@ -25,6 +25,7 @@ const initialFormData: BlogFormData = {
   metaDescription: "",
   isPublished: false,
   isFeatured: false,
+  tags: [],
 };
 
 export function useBlogAdmin() {
@@ -357,7 +358,7 @@ export function useBlogAdmin() {
           body: JSON.stringify({
             action,
             ...(action === "update" && { blogId: editingBlog?.id }),
-            ...formData,
+            data: formData,
           }),
         });
 
@@ -488,6 +489,7 @@ export function useBlogAdmin() {
       metaDescription: blog.metaDescription || "",
       isPublished: blog.isPublished,
       isFeatured: blog.isFeatured,
+      tags: blog.tags?.map((tag) => tag.tagId) || [],
       credits: blog.credits
         ? {
             originalAuthor: blog.credits.originalAuthor || "",
