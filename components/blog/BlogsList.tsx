@@ -85,7 +85,11 @@ function BlogCard({ blog }: BlogCardProps) {
         </CardHeader>
         <CardContent>
           <div className="flex flex-wrap gap-2">
-            {blog.isFeatured && <Badge variant="secondary">Featured</Badge>}
+            {blog.isFeatured && (
+              <Badge style={{ backgroundColor: "#22c55e", color: "white" }}>
+                Featured
+              </Badge>
+            )}
             {blog.language && blog.language !== "en" && (
               <LanguageBadge language={blog.language} size="sm" />
             )}
@@ -99,6 +103,11 @@ function BlogCard({ blog }: BlogCardProps) {
             ))}
             {blog.tags && blog.tags.length > 2 && (
               <Badge variant="outline">+{blog.tags.length - 2}</Badge>
+            )}
+            {blog.credits?.licenseType && (
+              <Badge variant="secondary" className="text-xs">
+                {blog.credits.licenseType}
+              </Badge>
             )}
           </div>
         </CardContent>

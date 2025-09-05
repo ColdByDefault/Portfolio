@@ -8,3 +8,6 @@ export { BlogView } from "./BlogView";
 export { LanguageBadge } from "./LanguageBadge";
 export { LanguageFilter } from "./LanguageFilter";
 export { BlogPageClient } from "./BlogPageClient";
+
+// Dashboard Components
+export * from "./dashboard";

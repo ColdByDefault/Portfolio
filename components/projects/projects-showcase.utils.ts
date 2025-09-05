@@ -18,13 +18,11 @@ export function useProjectLogic(): UseProjectLogicReturn {
   const [copied, setCopied] = useState(false);
 
   const handleCopyCloneLink = useCallback(async (githubUrl: string) => {
-    console.log("Copy button clicked for URL:", githubUrl);
     const cloneLink = `git clone ${githubUrl}.git`;
     try {
       await navigator.clipboard.writeText(cloneLink);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-      console.log("Clone link copied successfully:", cloneLink);
     } catch (err) {
       console.error("Failed to copy: ", err);
     }
@@ -49,7 +47,6 @@ export function useProjectsFilter(): UseProjectsFilterReturn {
   );
 
   const handleCategoryChange = useCallback((category: string) => {
-    console.log("Category clicked:", category);
     setSelectedCategory(category);
   }, []);
 

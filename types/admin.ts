@@ -34,6 +34,7 @@ export interface ApiResponse<T = unknown> {
 export interface ApiErrorResponse {
   message?: string;
   error?: string;
+  details?: string[] | string;
 }
 
 export interface AdminApiResponse extends ApiResponse {

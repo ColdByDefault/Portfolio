@@ -67,10 +67,6 @@ export default function GlobalError({
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button
                   onClick={() => {
-                    console.log(
-                      "Attempting to reset from global error:",
-                      error
-                    );
                     reset();
                   }}
                   className="flex-1"

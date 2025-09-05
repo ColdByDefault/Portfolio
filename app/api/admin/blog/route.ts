@@ -25,6 +25,8 @@ import {
   deleteBlog,
   getAdminBlogById,
   checkAdminRateLimit,
+  getAdminCategories,
+  getAdminTags,
 } from "@/lib/blog-admin";
 
 // Enhanced authentication - same as contact admin
@@ -116,6 +118,17 @@ const createBlogSchema = z.object({
     .transform((val) => (val === "" ? undefined : val)),
   isPublished: z.boolean().optional(),
   isFeatured: z.boolean().optional(),
+  credits: z
+    .object({
+      originalAuthor: z.string().optional(),
+      originalSource: z.string().optional(),
+      sourceUrl: z.string().url().optional().or(z.literal("")),
+      licenseType: z.string().optional(),
+      creditText: z.string().optional(),
+      translatedFrom: z.string().optional(),
+      adaptedFrom: z.string().optional(),
+    })
+    .optional(),
 });
 
 const updateBlogSchema = z.object({
@@ -149,19 +162,23 @@ const updateBlogSchema = z.object({
     .transform((val) => (val === "" ? undefined : val)),
   isPublished: z.boolean().optional(),
   isFeatured: z.boolean().optional(),
+  credits: z
+    .object({
+      originalAuthor: z.string().optional(),
+      originalSource: z.string().optional(),
+      sourceUrl: z.string().url().optional().or(z.literal("")),
+      licenseType: z.string().optional(),
+      creditText: z.string().optional(),
+      translatedFrom: z.string().optional(),
+      adaptedFrom: z.string().optional(),
+    })
+    .optional(),
 });
 
 export async function GET(
   request: NextRequest
 ): Promise<NextResponse<BlogAdminResponse | ApiErrorResponse>> {
   if (!isAuthorized(request)) {
-    const clientIP = getClientIP(request);
-    console.warn("Unauthorized blog admin access attempt", {
-      ip: clientIP,
-      userAgent: request.headers.get("user-agent"),
-      timestamp: new Date().toISOString(),
-    });
-
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -238,6 +255,16 @@ export async function GET(
         return NextResponse.json({ success: true, data: blog });
       }
 
+      case "categories": {
+        const categories = await getAdminCategories();
+        return NextResponse.json({ success: true, data: categories });
+      }
+
+      case "tags": {
+        const tags = await getAdminTags();
+        return NextResponse.json({ success: true, data: tags });
+      }
+
       default:
         return NextResponse.json({
           message: "Blog Admin API",
@@ -245,6 +272,8 @@ export async function GET(
             stats: "/api/admin/blog?action=stats",
             list: "/api/admin/blog?action=list&page=1&limit=20",
             get: "/api/admin/blog?action=get&id={blogId}",
+            categories: "/api/admin/blog?action=categories",
+            tags: "/api/admin/blog?action=tags",
           },
         });
     }
@@ -260,13 +289,6 @@ export async function POST(
   request: NextRequest
 ): Promise<NextResponse<BlogAdminResponse | ApiErrorResponse>> {
   if (!isAuthorized(request)) {
-    const clientIP = getClientIP(request);
-    console.warn("Unauthorized blog admin POST attempt", {
-      ip: clientIP,
-      userAgent: request.headers.get("user-agent"),
-      timestamp: new Date().toISOString(),
-    });
-
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -312,13 +334,6 @@ export async function POST(
 
         const blog = await createBlog(parseResult.data as CreateBlogRequest);
 
-        console.info("Blog created by admin", {
-          blogId: blog.id,
-          title: blog.title,
-          adminIP: clientIP,
-          timestamp: new Date().toISOString(),
-        });
-
         return NextResponse.json({
           success: true,
           data: blog,
@@ -336,12 +351,6 @@ export async function POST(
 
         const parseResult = updateBlogSchema.safeParse(data);
         if (!parseResult.success) {
-          console.error("Update validation failed:", {
-            data,
-            errors: parseResult.error.issues,
-            adminIP: clientIP,
-            timestamp: new Date().toISOString(),
-          });
           return NextResponse.json(
             {
               error: "Validation failed",
@@ -357,13 +366,6 @@ export async function POST(
           blogId,
           parseResult.data as UpdateBlogRequest
         );
-
-        console.info("Blog updated by admin", {
-          blogId: blog.id,
-          title: blog.title,
-          adminIP: clientIP,
-          timestamp: new Date().toISOString(),
-        });
 
         return NextResponse.json({
           success: true,
@@ -381,12 +383,6 @@ export async function POST(
         }
 
         await deleteBlog(blogId);
-
-        console.info("Blog deleted by admin", {
-          blogId,
-          adminIP: clientIP,
-          timestamp: new Date().toISOString(),
-        });
 
         return NextResponse.json({
           success: true,
