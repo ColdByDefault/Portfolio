@@ -67,7 +67,7 @@ export default function AdminBlogPage() {
       <Authentication
         token={token}
         setToken={setToken}
-        onAuthenticate={() => void authenticate()}
+        onAuthenticate={authenticate}
         onKeyPress={handleKeyPress}
         loading={loading}
         message={message}
@@ -112,7 +112,7 @@ export default function AdminBlogPage() {
           setSelectedLanguage={setSelectedLanguage}
           filterPublished={filterPublished}
           setFilterPublished={setFilterPublished}
-          onRefresh={() => void loadData()}
+          onRefresh={loadData}
           loading={loading}
         />
 
@@ -123,11 +123,8 @@ export default function AdminBlogPage() {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           onEdit={openEditDialog}
-          onDelete={(blogId: string) => void deleteBlog(blogId)}
-          onToggleStatus={(
-            blogId: string,
-            action: "publish" | "unpublish" | "feature" | "unfeature"
-          ) => void toggleBlogStatus(blogId, action)}
+          onDelete={deleteBlog}
+          onToggleStatus={toggleBlogStatus}
           loading={loading}
         />
 
@@ -142,7 +139,7 @@ export default function AdminBlogPage() {
           loading={loading}
           onFormChange={handleFormChange}
           onCreditsChange={handleCreditsChange}
-          onSubmit={(action: "create" | "update") => void submitBlog(action)}
+          onSubmit={submitBlog}
         />
       </div>
     </div>
