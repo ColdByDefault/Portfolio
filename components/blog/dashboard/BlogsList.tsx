@@ -65,7 +65,7 @@ export function BlogsList({
             {blogs.map((blog) => (
               <div
                 key={blog.id}
-                className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
+                className="border rounded-lg p-4"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex-1 min-w-0">

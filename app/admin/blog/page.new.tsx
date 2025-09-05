@@ -124,7 +124,10 @@ export default function AdminBlogPage() {
           setCurrentPage={setCurrentPage}
           onEdit={openEditDialog}
           onDelete={(blogId: string) => void deleteBlog(blogId)}
-          onToggleStatus={(blogId: string, action: "publish" | "unpublish" | "feature" | "unfeature") => void toggleBlogStatus(blogId, action)}
+          onToggleStatus={(
+            blogId: string,
+            action: "publish" | "unpublish" | "feature" | "unfeature"
+          ) => void toggleBlogStatus(blogId, action)}
           loading={loading}
         />
 

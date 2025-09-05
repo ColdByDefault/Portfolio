@@ -146,10 +146,13 @@ export function useBlogAdmin() {
       });
 
       if (response.ok) {
-        const data = (await response.json()) as BlogListResponse;
-        setBlogs(data.blogs || []);
-        setPagination(data.pagination || null);
-        setMessage("");
+        const apiResponse = (await response.json()) as BlogAdminResponse;
+        if (apiResponse.success && apiResponse.data) {
+          const data = apiResponse.data as BlogListResponse;
+          setBlogs(data.blogs || []);
+          setPagination(data.pagination || null);
+          setMessage("");
+        }
       } else {
         const errorData = (await response
           .json()

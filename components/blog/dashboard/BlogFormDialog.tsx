@@ -8,6 +8,7 @@ import React from "react";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -79,6 +80,11 @@ export function BlogFormDialog({
           <DialogTitle>
             {editingBlog ? "Edit Blog" : "Create New Blog"}
           </DialogTitle>
+          <DialogDescription>
+            {editingBlog
+              ? "Update the blog post details below. All fields marked with * are required."
+              : "Fill in the details below to create a new blog post. All fields marked with * are required."}
+          </DialogDescription>
         </DialogHeader>
 
         {/* Form Validation Errors */}
