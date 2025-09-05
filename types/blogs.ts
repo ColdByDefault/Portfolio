@@ -310,6 +310,22 @@ export const BLOG_CONSTANTS = {
   MAX_PAGE_SIZE: 100,
 } as const;
 
+/**
+ * An array of supported blog license types.
+ * 
+ * - "CC BY": Creative Commons Attribution; allows redistribution and adaptation with attribution.
+ * - "CC BY-SA": Creative Commons Attribution-ShareAlike; same as CC BY, but adaptations must be shared under the same terms.
+ * - "CC BY-NC": Creative Commons Attribution-NonCommercial; allows non-commercial use with attribution.
+ * - "CC BY-NC-SA": Creative Commons Attribution-NonCommercial-ShareAlike; non-commercial use, share alike, with attribution.
+ * - "CC BY-ND": Creative Commons Attribution-NoDerivs; redistribution allowed, no derivatives, with attribution.
+ * - "CC BY-NC-ND": Creative Commons Attribution-NonCommercial-NoDerivs; non-commercial redistribution, no derivatives, with attribution.
+ * - "MIT": MIT License; permissive, allows reuse with attribution.
+ * - "Apache 2.0": Apache License 2.0; permissive, includes patent rights, requires attribution.
+ * - "GPL": GNU General Public License; copyleft, derivatives must be open source under GPL.
+ * - "Fair Use": Use permitted under fair use doctrine; limited by law, not a license.
+ * - "All Rights Reserved": No rights granted; all rights retained by the author.
+ * - "Custom": Custom license specified by the author.
+ */
 export const BLOG_LICENSE_TYPES = [
   "CC BY",
   "CC BY-SA",

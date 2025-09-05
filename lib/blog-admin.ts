@@ -282,6 +282,20 @@ export async function createBlog(data: CreateBlogRequest): Promise<Blog> {
             connect: { id: data.categoryId },
           },
         }),
+        // Handle credits if provided
+        ...(data.credits && {
+          credits: {
+            create: {
+              originalAuthor: data.credits.originalAuthor || "",
+              originalSource: data.credits.originalSource || null,
+              sourceUrl: data.credits.sourceUrl || null,
+              licenseType: data.credits.licenseType || null,
+              creditText: data.credits.creditText || null,
+              translatedFrom: data.credits.translatedFrom || null,
+              adaptedFrom: data.credits.adaptedFrom || null,
+            },
+          },
+        }),
       },
       include: {
         category: true,
@@ -361,6 +375,11 @@ export async function updateBlog(
         }),
         ...(data.isFeatured !== undefined && { isFeatured: data.isFeatured }),
         ...(data.isDraft !== undefined && { isDraft: data.isDraft }),
+        ...(data.categoryId !== undefined && {
+          category: data.categoryId
+            ? { connect: { id: data.categoryId } }
+            : { disconnect: true },
+        }),
         readingTime,
         publishedAt,
         updatedAt: new Date(),
@@ -375,6 +394,32 @@ export async function updateBlog(
         credits: true,
       },
     });
+
+    // Handle credits separately due to upsert complexity
+    if (data.credits) {
+      await prisma.blogCredit.upsert({
+        where: { blogId: id },
+        update: {
+          originalAuthor: data.credits.originalAuthor || "",
+          originalSource: data.credits.originalSource || null,
+          sourceUrl: data.credits.sourceUrl || null,
+          licenseType: data.credits.licenseType || null,
+          creditText: data.credits.creditText || null,
+          translatedFrom: data.credits.translatedFrom || null,
+          adaptedFrom: data.credits.adaptedFrom || null,
+        },
+        create: {
+          blogId: id,
+          originalAuthor: data.credits.originalAuthor || "",
+          originalSource: data.credits.originalSource || null,
+          sourceUrl: data.credits.sourceUrl || null,
+          licenseType: data.credits.licenseType || null,
+          creditText: data.credits.creditText || null,
+          translatedFrom: data.credits.translatedFrom || null,
+          adaptedFrom: data.credits.adaptedFrom || null,
+        },
+      });
+    }
 
     return blog as Blog;
   } catch (error) {
@@ -436,4 +481,35 @@ export async function getAdminBlogById(id: string): Promise<Blog | null> {
  */
 export function checkAdminRateLimit(clientIP: string): boolean {
   return adminRateLimiter.isAllowed(clientIP);
+}
+
+/**
+ * Get all categories for admin forms
+ */
+export async function getAdminCategories() {
+  try {
+    const categories = await prisma.blogCategory.findMany({
+      where: { isActive: true },
+      orderBy: { name: "asc" },
+    });
+    return categories;
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    throw new Error("Failed to fetch categories");
+  }
+}
+
+/**
+ * Get all tags for admin forms
+ */
+export async function getAdminTags() {
+  try {
+    const tags = await prisma.blogTag.findMany({
+      orderBy: { name: "asc" },
+    });
+    return tags;
+  } catch (error) {
+    console.error("Error fetching tags:", error);
+    throw new Error("Failed to fetch tags");
+  }
 }

@@ -19,7 +19,6 @@ import remarkBreaks from "remark-breaks";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 
-
 interface BlogViewProps {
   blog: Blog;
   className?: string;
@@ -27,14 +26,14 @@ interface BlogViewProps {
 
 export function BlogView({ blog, className }: BlogViewProps) {
   const [imageSrc, setImageSrc] = useState(
-    blog.featuredImage || "/assets/blogsFallback.png"
+    blog.featuredImage || "/assets/blogs/blogsFallback.png"
   );
   const [imageError, setImageError] = useState(false);
 
   const handleImageError = () => {
-    if (!imageError && imageSrc !== "/assets/blogsFallback.png") {
+    if (!imageError && imageSrc !== "/assets/blogs/blogsFallback.png") {
       setImageError(true);
-      setImageSrc("/assets/blogsFallback.png");
+      setImageSrc("/assets/blogs/blogsFallback.png");
     }
   };
   return (
@@ -73,7 +72,11 @@ export function BlogView({ blog, className }: BlogViewProps) {
 
         {/* Tags and Category */}
         <div className="flex flex-wrap gap-2 mb-6">
-          {blog.isFeatured && <Badge variant="secondary">Featured</Badge>}
+          {blog.isFeatured && (
+            <Badge style={{ backgroundColor: "#22c55e", color: "white" }}>
+              Featured
+            </Badge>
+          )}
           {blog.language && blog.language !== "en" && (
             <LanguageBadge language={blog.language} showIcon={true} />
           )}

@@ -50,10 +50,22 @@ interface BlogFormData {
   content: string;
   featuredImage: string;
   language: string;
+  categoryId: string;
   metaTitle: string;
   metaDescription: string;
   isPublished: boolean;
   isFeatured: boolean;
+  credits?:
+    | {
+        originalAuthor: string;
+        originalSource: string;
+        sourceUrl: string;
+        licenseType: string;
+        creditText: string;
+        translatedFrom: string;
+        adaptedFrom: string;
+      }
+    | undefined;
 }
 
 const initialFormData: BlogFormData = {
@@ -63,6 +75,7 @@ const initialFormData: BlogFormData = {
   content: "",
   featuredImage: "",
   language: "en",
+  categoryId: "",
   metaTitle: "",
   metaDescription: "",
   isPublished: false,
@@ -87,6 +100,10 @@ export default function AdminBlogPage() {
   const [editingBlog, setEditingBlog] = useState<Blog | null>(null);
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
   const [formData, setFormData] = useState<BlogFormData>(initialFormData);
+  const [formErrors, setFormErrors] = useState<string[]>([]);
+  const [categories, setCategories] = useState<
+    Array<{ id: string; name: string }>
+  >([]);
 
   const handleError = useCallback((error: unknown, context: string): void => {
     const errorMessage = error instanceof Error ? error.message : String(error);
@@ -98,13 +115,43 @@ export default function AdminBlogPage() {
     return (
       typeof data === "object" &&
       data !== null &&
-      ("message" in data || "error" in data)
+      ("message" in data || "error" in data || "details" in data)
     );
   };
+
+  const getFormErrorMessage = useCallback((data: unknown): string[] => {
+    if (isValidErrorResponse(data)) {
+      // Handle detailed validation errors
+      if ("details" in data) {
+        const errorData = data as ApiErrorResponse & {
+          details: string[] | string;
+        };
+        if (Array.isArray(errorData.details)) {
+          return errorData.details;
+        } else if (typeof errorData.details === "string") {
+          return [errorData.details];
+        }
+      }
+      const message = String(data.message || data.error || "Unknown error");
+      return [message];
+    }
+    return ["Unknown error occurred"];
+  }, []);
 
   const getErrorMessage = useCallback(
     (data: unknown, defaultMessage: string): string => {
       if (isValidErrorResponse(data)) {
+        // Handle detailed validation errors
+        if ("details" in data) {
+          const errorData = data as ApiErrorResponse & {
+            details: string[] | string;
+          };
+          if (Array.isArray(errorData.details)) {
+            return `Validation Error: ${errorData.details.join(", ")}`;
+          } else if (typeof errorData.details === "string") {
+            return `Validation Error: ${errorData.details}`;
+          }
+        }
         return String(data.message || data.error || defaultMessage);
       }
       return defaultMessage;
@@ -179,10 +226,73 @@ export default function AdminBlogPage() {
     getErrorMessage,
   ]);
 
+  const loadCategories = useCallback(async (): Promise<void> => {
+    if (!isAuthenticated || !token) return;
+
+    try {
+      console.log("Loading categories...");
+      const response = await fetch("/api/admin/blog?action=categories", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      console.log("Categories response status:", response.status);
+      console.log(
+        "Categories response headers:",
+        Object.fromEntries(response.headers.entries())
+      );
+
+      if (response.ok) {
+        const data = (await response.json()) as BlogAdminResponse;
+        console.log("Categories full response:", data);
+        if (data.success && data.data) {
+          console.log("Setting categories:", data.data);
+          console.log("Categories data type:", typeof data.data);
+          console.log("Categories is array:", Array.isArray(data.data));
+          setCategories(data.data as Array<{ id: string; name: string }>);
+        } else {
+          console.log(
+            "Categories request succeeded but no data or not success:",
+            {
+              success: data.success,
+              hasData: !!data.data,
+              data: data.data,
+            }
+          );
+        }
+      } else {
+        console.log("Categories request failed:", response.statusText);
+        const errorText = await response.text();
+        console.log("Error response body:", errorText);
+      }
+    } catch (error) {
+      console.error("Error loading categories:", error);
+    }
+  }, [token, isAuthenticated]);
+
+  const loadTags = useCallback(async (): Promise<void> => {
+    if (!isAuthenticated || !token) return;
+
+    try {
+      const response = await fetch("/api/admin/blog?action=tags", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (response.ok) {
+        const data = (await response.json()) as BlogAdminResponse;
+        if (data.success && data.data) {
+          // Tags loaded successfully but not used in current UI
+          console.log("Tags loaded:", data.data);
+        }
+      }
+    } catch (error) {
+      console.error("Error loading tags:", error);
+    }
+  }, [token, isAuthenticated]);
+
   const loadData = useCallback(async (): Promise<void> => {
-    await Promise.all([loadStats(), loadBlogs()]);
+    await Promise.all([loadStats(), loadBlogs(), loadCategories(), loadTags()]);
     setLastRefresh(new Date());
-  }, [loadStats, loadBlogs]);
+  }, [loadStats, loadBlogs, loadCategories, loadTags]);
 
   const authenticate = useCallback(async (): Promise<void> => {
     if (!token.trim()) {
@@ -248,11 +358,81 @@ export default function AdminBlogPage() {
     });
   };
 
+  const handleCreditsChange = (
+    field: keyof NonNullable<BlogFormData["credits"]>,
+    value: string
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      credits: {
+        originalAuthor: "",
+        originalSource: "",
+        sourceUrl: "",
+        licenseType: "",
+        creditText: "",
+        translatedFrom: "",
+        adaptedFrom: "",
+        ...prev.credits,
+        [field]: value,
+      },
+    }));
+  };
+
+  const validateForm = useCallback((): string[] => {
+    const errors: string[] = [];
+
+    if (!formData.title.trim()) {
+      errors.push("Title is required");
+    } else if (formData.title.length < 3) {
+      errors.push("Title must be at least 3 characters long");
+    } else if (formData.title.length > 200) {
+      errors.push("Title must be no more than 200 characters long");
+    }
+
+    if (!formData.content.trim()) {
+      errors.push("Content is required");
+    } else if (formData.content.length < 10) {
+      errors.push("Content must be at least 10 characters long");
+    } else if (formData.content.length > 50000) {
+      errors.push("Content must be no more than 50,000 characters long");
+    }
+
+    if (formData.excerpt && formData.excerpt.length > 500) {
+      errors.push("Excerpt must be no more than 500 characters long");
+    }
+
+    if (formData.metaTitle && formData.metaTitle.length > 60) {
+      errors.push("Meta title must be no more than 60 characters long");
+    }
+
+    if (formData.metaDescription && formData.metaDescription.length > 160) {
+      errors.push("Meta description must be no more than 160 characters long");
+    }
+
+    if (formData.credits?.sourceUrl && formData.credits.sourceUrl.trim()) {
+      try {
+        new URL(formData.credits.sourceUrl);
+      } catch {
+        errors.push("Source URL must be a valid URL");
+      }
+    }
+
+    return errors;
+  }, [formData]);
+
   const submitBlog = useCallback(
     async (action: "create" | "update"): Promise<void> => {
       if (!isAuthenticated || !token) return;
 
+      // Client-side validation first
+      const clientErrors = validateForm();
+      if (clientErrors.length > 0) {
+        setFormErrors(clientErrors);
+        return;
+      }
+
       setLoading(true);
+      setFormErrors([]); // Clear previous form errors
       try {
         const payload = {
           action,
@@ -264,10 +444,14 @@ export default function AdminBlogPage() {
             content: formData.content,
             featuredImage: formData.featuredImage || undefined,
             language: formData.language,
+            categoryId: formData.categoryId || undefined,
             metaTitle: formData.metaTitle || undefined,
             metaDescription: formData.metaDescription || undefined,
             isPublished: formData.isPublished,
             isFeatured: formData.isFeatured,
+            ...(formData.credits && {
+              credits: formData.credits,
+            }),
           },
         };
 
@@ -287,6 +471,7 @@ export default function AdminBlogPage() {
               `Blog ${action}d successfully`
           );
           setFormData(initialFormData);
+          setFormErrors([]);
           setEditingBlog(null);
           setIsCreateDialogOpen(false);
           await loadData();
@@ -294,10 +479,17 @@ export default function AdminBlogPage() {
           const errorData = (await response
             .json()
             .catch(() => ({ error: `Error ${action}ing blog` }))) as unknown;
+
+          // Set form-specific errors
+          const formErrorMessages = getFormErrorMessage(errorData);
+          setFormErrors(formErrorMessages);
+
+          // Also set general message for main UI
           setMessage(getErrorMessage(errorData, `Error ${action}ing blog`));
         }
       } catch (error) {
         handleError(error, `Error ${action}ing blog`);
+        setFormErrors([`Network error: Unable to ${action} blog`]);
       } finally {
         setLoading(false);
       }
@@ -310,6 +502,8 @@ export default function AdminBlogPage() {
       handleError,
       loadData,
       getErrorMessage,
+      getFormErrorMessage,
+      validateForm,
     ]
   );
 
@@ -389,6 +583,7 @@ export default function AdminBlogPage() {
 
   const openEditDialog = (blog: Blog) => {
     setEditingBlog(blog);
+    setFormErrors([]); // Clear form errors
     setFormData({
       title: blog.title,
       slug: blog.slug,
@@ -396,16 +591,29 @@ export default function AdminBlogPage() {
       content: blog.content,
       featuredImage: blog.featuredImage || "",
       language: blog.language,
+      categoryId: blog.categoryId || "",
       metaTitle: blog.metaTitle || "",
       metaDescription: blog.metaDescription || "",
       isPublished: blog.isPublished,
       isFeatured: blog.isFeatured,
+      credits: blog.credits
+        ? {
+            originalAuthor: blog.credits.originalAuthor || "",
+            originalSource: blog.credits.originalSource || "",
+            sourceUrl: blog.credits.sourceUrl || "",
+            licenseType: blog.credits.licenseType || "",
+            creditText: blog.credits.creditText || "",
+            translatedFrom: blog.credits.translatedFrom || "",
+            adaptedFrom: blog.credits.adaptedFrom || "",
+          }
+        : undefined,
     });
     setIsCreateDialogOpen(true);
   };
 
   const openCreateDialog = () => {
     setEditingBlog(null);
+    setFormErrors([]); // Clear form errors
     setFormData(initialFormData);
     setIsCreateDialogOpen(true);
   };
@@ -656,6 +864,14 @@ export default function AdminBlogPage() {
                           <Badge variant="outline">
                             {blog.language.toUpperCase()}
                           </Badge>
+                          {blog.category && (
+                            <Badge
+                              variant="outline"
+                              className="bg-blue-50 text-blue-700"
+                            >
+                              {blog.category.name}
+                            </Badge>
+                          )}
                           {blog.isPublished ? (
                             <Badge variant="default" className="bg-green-500">
                               Published
@@ -666,6 +882,11 @@ export default function AdminBlogPage() {
                           {blog.isFeatured && (
                             <Badge variant="default" className="bg-purple-500">
                               Featured
+                            </Badge>
+                          )}
+                          {blog.credits?.licenseType && (
+                            <Badge variant="secondary" className="text-xs">
+                              {blog.credits.licenseType}
                             </Badge>
                           )}
                           <Badge variant="outline">
@@ -767,6 +988,23 @@ export default function AdminBlogPage() {
                   : "Fill in the details to create a new blog."}
               </DialogDescription>
             </DialogHeader>
+
+            {/* Form Validation Errors */}
+            {formErrors.length > 0 && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+                <h4 className="text-red-800 font-medium mb-2">
+                  Please fix the following errors:
+                </h4>
+                <ul className="list-disc list-inside space-y-1">
+                  {formErrors.map((error, index) => (
+                    <li key={index} className="text-red-700 text-sm">
+                      {error}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -794,6 +1032,14 @@ export default function AdminBlogPage() {
                   onChange={(e) => handleFormChange("excerpt", e.target.value)}
                   placeholder="Brief description"
                 />
+                <div className="text-xs text-muted-foreground mt-1">
+                  {formData.excerpt.length}/500 characters
+                  {formData.excerpt.length > 500 && (
+                    <span className="text-red-500 ml-2">
+                      Exceeds maximum length
+                    </span>
+                  )}
+                </div>
               </div>
 
               <div>
@@ -804,21 +1050,30 @@ export default function AdminBlogPage() {
                   onChange={(e) => handleFormChange("content", e.target.value)}
                   placeholder="Blog content (Markdown supported)"
                 />
+                <div className="text-xs text-muted-foreground mt-1">
+                  {formData.content.length}/50,000 characters
+                  {formData.content.length > 50000 && (
+                    <span className="text-red-500 ml-2">
+                      Exceeds maximum length
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">
+                  Featured Image URL
+                </label>
+                <Input
+                  value={formData.featuredImage}
+                  onChange={(e) =>
+                    handleFormChange("featuredImage", e.target.value)
+                  }
+                  placeholder="https://example.com/image.jpg"
+                />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-medium">
-                    Featured Image URL
-                  </label>
-                  <Input
-                    value={formData.featuredImage}
-                    onChange={(e) =>
-                      handleFormChange("featuredImage", e.target.value)
-                    }
-                    placeholder="https://example.com/image.jpg"
-                  />
-                </div>
                 <div>
                   <label className="text-sm font-medium">Language</label>
                   <select
@@ -835,6 +1090,23 @@ export default function AdminBlogPage() {
                     <option value="sv">Swedish</option>
                   </select>
                 </div>
+                <div>
+                  <label className="text-sm font-medium">Category</label>
+                  <select
+                    className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                    value={formData.categoryId}
+                    onChange={(e) =>
+                      handleFormChange("categoryId", e.target.value)
+                    }
+                  >
+                    <option value="">No Category</option>
+                    {categories.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -847,6 +1119,14 @@ export default function AdminBlogPage() {
                     }
                     placeholder="SEO title"
                   />
+                  <div className="text-xs text-muted-foreground mt-1">
+                    {formData.metaTitle.length}/60 characters
+                    {formData.metaTitle.length > 60 && (
+                      <span className="text-red-500 ml-2">
+                        Exceeds maximum length
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div>
                   <label className="text-sm font-medium">
@@ -859,6 +1139,14 @@ export default function AdminBlogPage() {
                     }
                     placeholder="SEO description"
                   />
+                  <div className="text-xs text-muted-foreground mt-1">
+                    {formData.metaDescription.length}/160 characters
+                    {formData.metaDescription.length > 160 && (
+                      <span className="text-red-500 ml-2">
+                        Exceeds maximum length
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -883,6 +1171,114 @@ export default function AdminBlogPage() {
                   />
                   <span className="text-sm">Featured</span>
                 </label>
+              </div>
+
+              {/* Credits/License Section */}
+              <div className="border rounded-lg p-4 space-y-4">
+                <h3 className="text-lg font-semibold">
+                  Credits & License (Optional)
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium">
+                      Original Author
+                    </label>
+                    <Input
+                      value={formData.credits?.originalAuthor || ""}
+                      onChange={(e) =>
+                        handleCreditsChange("originalAuthor", e.target.value)
+                      }
+                      placeholder="e.g., John Doe"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">
+                      Original Source
+                    </label>
+                    <Input
+                      value={formData.credits?.originalSource || ""}
+                      onChange={(e) =>
+                        handleCreditsChange("originalSource", e.target.value)
+                      }
+                      placeholder="e.g., Medium, GitHub, etc."
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium">Source URL</label>
+                    <Input
+                      value={formData.credits?.sourceUrl || ""}
+                      onChange={(e) =>
+                        handleCreditsChange("sourceUrl", e.target.value)
+                      }
+                      placeholder="https://example.com/original-post"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">License Type</label>
+                    <select
+                      className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                      value={formData.credits?.licenseType || ""}
+                      onChange={(e) =>
+                        handleCreditsChange("licenseType", e.target.value)
+                      }
+                    >
+                      <option value="">Select License</option>
+                      <option value="CC BY">CC BY</option>
+                      <option value="CC BY-SA">CC BY-SA</option>
+                      <option value="CC BY-NC">CC BY-NC</option>
+                      <option value="CC BY-NC-SA">CC BY-NC-SA</option>
+                      <option value="CC BY-ND">CC BY-ND</option>
+                      <option value="CC BY-NC-ND">CC BY-NC-ND</option>
+                      <option value="MIT">MIT</option>
+                      <option value="Apache 2.0">Apache 2.0</option>
+                      <option value="GPL">GPL</option>
+                      <option value="Fair Use">Fair Use</option>
+                      <option value="All Rights Reserved">
+                        All Rights Reserved
+                      </option>
+                      <option value="Custom">Custom</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium">Credit Text</label>
+                  <Input
+                    value={formData.credits?.creditText || ""}
+                    onChange={(e) =>
+                      handleCreditsChange("creditText", e.target.value)
+                    }
+                    placeholder="Custom credit text if needed"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium">
+                      Translated From
+                    </label>
+                    <Input
+                      value={formData.credits?.translatedFrom || ""}
+                      onChange={(e) =>
+                        handleCreditsChange("translatedFrom", e.target.value)
+                      }
+                      placeholder="Original language if translated"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Adapted From</label>
+                    <Input
+                      value={formData.credits?.adaptedFrom || ""}
+                      onChange={(e) =>
+                        handleCreditsChange("adaptedFrom", e.target.value)
+                      }
+                      placeholder="If adapted from another work"
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className="flex justify-end gap-2">
