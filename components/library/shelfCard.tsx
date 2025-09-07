@@ -14,6 +14,8 @@ import {
   Clock,
   Calendar,
   ExternalLink,
+  Star,
+  Hash,
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -70,37 +72,49 @@ function MediaCard({
           subtitle: item.author,
           details: item.pages ? `${item.pages} pages` : undefined,
           year: item.publishedYear,
+          extraDetails: item.isbn ? `ISBN: ${item.isbn}` : undefined,
         };
       case "movie":
         return {
           subtitle: item.director,
           details: item.duration ? `${item.duration} min` : undefined,
           year: item.releaseYear,
+          extraDetails: undefined,
         };
       case "series":
         return {
           subtitle: item.creator,
           details: `${item.seasons} season${item.seasons > 1 ? "s" : ""}`,
           year: item.releaseYear,
+          extraDetails: item.episodes ? `${item.episodes} episodes` : undefined,
         };
       case "podcast":
         return {
           subtitle: item.host,
           details: item.episodes ? `${item.episodes} episodes` : undefined,
           year: undefined,
+          extraDetails: item.platform ? `${item.platform}` : undefined,
         };
       case "game":
         return {
           subtitle: item.developer,
           details: item.platform?.join(", "),
           year: item.releaseYear,
+          extraDetails: item.metacriticScore
+            ? `Score: ${item.metacriticScore}`
+            : undefined,
         };
       default:
-        return { subtitle: "", details: undefined, year: undefined };
+        return {
+          subtitle: "",
+          details: undefined,
+          year: undefined,
+          extraDetails: undefined,
+        };
     }
   };
 
-  const { subtitle, details, year } = getItemDetails();
+  const { subtitle, details, year, extraDetails } = getItemDetails();
   const itemUrl = getItemUrl(item);
 
   const cardContent = (
@@ -136,6 +150,25 @@ function MediaCard({
             </p>
           )}
 
+          {/* Genre Tags */}
+          {item.genre && item.genre.length > 0 && (
+            <div className="flex flex-wrap gap-1">
+              {item.genre.slice(0, 3).map((genre) => (
+                <span
+                  key={genre}
+                  className="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-secondary/50 text-secondary-foreground"
+                >
+                  {genre}
+                </span>
+              ))}
+              {item.genre.length > 3 && (
+                <span className="text-xs text-muted-foreground">
+                  +{item.genre.length - 3} more
+                </span>
+              )}
+            </div>
+          )}
+
           {/* Divider */}
           <div className="border-b border-border/50"></div>
         </div>
@@ -151,24 +184,50 @@ function MediaCard({
           )}
         </div>
 
-        {/* BOTTOM SECTION: Duration and Release - 1/4 */}
-        <div className="flex-shrink-0 flex items-center justify-between text-xs text-muted-foreground">
-          <div className="flex items-center gap-1">
-            {year && (
-              <>
-                <Calendar className="h-3 w-3" />
-                <span>{year}</span>
-              </>
-            )}
+        {/* BOTTOM SECTION: Details, Year, and Extra Info - 1/4 */}
+        <div className="flex-shrink-0 space-y-1">
+          {/* Primary Details Row */}
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            <div className="flex items-center gap-1">
+              {year && (
+                <>
+                  <Calendar className="h-3 w-3" />
+                  <span>{year}</span>
+                </>
+              )}
+            </div>
+            <div className="flex items-center gap-1">
+              {details && (
+                <>
+                  <Clock className="h-3 w-3" />
+                  <span>{details}</span>
+                </>
+              )}
+            </div>
           </div>
-          <div className="flex items-center gap-1">
-            {details && (
-              <>
-                <Clock className="h-3 w-3" />
-                <span>{details}</span>
-              </>
-            )}
-          </div>
+
+          {/* Extra Details Row */}
+          {extraDetails && (
+            <div className="flex items-center justify-center text-xs text-muted-foreground">
+              <div className="flex items-center gap-1">
+                {item.type === "game" && item.metacriticScore && (
+                  <>
+                    <Star className="h-3 w-3" />
+                    <span>{extraDetails}</span>
+                  </>
+                )}
+                {item.type === "series" && item.episodes && (
+                  <>
+                    <Hash className="h-3 w-3" />
+                    <span>{extraDetails}</span>
+                  </>
+                )}
+                {(item.type === "book" || item.type === "podcast") && (
+                  <span>{extraDetails}</span>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>
