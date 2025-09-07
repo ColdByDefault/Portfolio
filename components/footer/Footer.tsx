@@ -3,14 +3,14 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 "use client";
-import Link from "next/link";
-import Links from "./Links";
+import { Links } from "@/components/footer";
 import {
   legalLinks,
   resourceLinks,
   socialLinks,
   creditLinks,
 } from "@/data/footerLinks";
+
 
 export default function Footer() {
   return (
@@ -71,25 +71,10 @@ export default function Footer() {
             <div className="flex space-x-6 sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2">
               <Links links={socialLinks} className="flex space-x-6" />
             </div>
-            <div className="sm:flex-1 sm:flex sm:justify-end">
-              <div className="flex flex-col space-y-1">
-                <Link
-                  href="/admin/contact"
-                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
-                >
-                  <span className="text-xs text-green-500 dark:text-gray-400">
-                    <code>Contact Admin</code>
-                  </span>
-                </Link>
-                <Link
-                  href="/admin/blog"
-                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-prime dark:hover:text-white transition-colors duration-200"
-                >
-                  <span className="text-xs text-green-500 dark:text-gray-400">
-                    <code>Blog Admin</code>
-                  </span>
-                </Link>
-              </div>
+            <div className="flex-1 flex justify-end items-center gap-2">
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                madridista since 2007
+              </span>
             </div>
           </div>
         </div>

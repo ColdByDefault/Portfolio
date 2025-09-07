@@ -86,6 +86,39 @@
     "anotherProject": "AutreProjet",
     "lastUpdated": "Dernière mise à jour :"
   },
+  "MediaDashboard": {
+    "title": "Tableau de Bord Média",
+    "subtitle": "Un hub central pour naviguer dans tous les contenus et ressources. Explorez les blogs, la documentation, les projets et plus encore.",
+    "cards": {
+      "blogs": {
+        "title": "Blogs",
+        "description": "Lisez mes derniers articles et perspectives techniques"
+      },
+      "about": {
+        "title": "À propos de moi",
+        "description": "Apprenez-en plus sur mon parcours et mon expérience"
+      },
+      "projects": {
+        "title": "Projets",
+        "description": "Explorez mes projets de développement et contributions"
+      },
+      "library": {
+        "title": "Bibliothèque",
+        "description": "Une collection personnelle de livres, de films et d'autres médias"
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "Contactez-moi pour des collaborations"
+      }
+    },
+    "comingSoon": "Bientôt"
+  },
+  "Library": {
+    "title": "Bibliothèque",
+    "subtitle": "Une collection personnelle de livres, de films et d'autres médias qui ont inspiré et influencé mon parcours.",
+    "comingSoon": "Bientôt disponible",
+    "comingSoonDescription": "Les recommandations et critiques de livres seront bientôt disponibles ici."
+  },
   "About": {
     "aboutMe": "À propos de moi",
     "getInTouch": "Me Contacter",

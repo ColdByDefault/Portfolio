@@ -23,6 +23,7 @@
   "license": "Copyright 2025 ColdByDefault. All Rights Reserved.",
   "private": true,
   "scripts": {
+    "almighty": "npm run lint && npm run build && npm run dev",
     "dev": "next dev --turbopack --hostname 0.0.0.0",
     "build": "next build",
     "start": "next start --hostname 0.0.0.0",

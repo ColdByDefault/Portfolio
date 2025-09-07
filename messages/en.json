@@ -86,6 +86,39 @@
     "anotherProject": "AnotherProject",
     "lastUpdated": "Last updated:"
   },
+  "MediaDashboard": {
+    "title": "Media Dashboard",
+    "subtitle": "A central hub for navigating all content and resources. Explore blogs, documentation, projects, and more.",
+    "cards": {
+      "blogs": {
+        "title": "Blogs",
+        "description": "Read my latest articles and technical insights"
+      },
+      "about": {
+        "title": "About Me",
+        "description": "Learn more about my background and experience"
+      },
+      "projects": {
+        "title": "Projects",
+        "description": "Explore my development projects and contributions"
+      },
+      "library": {
+        "title": "Library",
+        "description": "A personal collection of books, movies, and other media"
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "Get in touch for collaborations"
+      }
+    },
+    "comingSoon": "Soon"
+  },
+  "Library": {
+    "title": "Library",
+    "subtitle": "A personal collection of books, movies, and other media that have inspired and influenced my journey.",
+    "comingSoon": "Coming Soon",
+    "comingSoonDescription": "Book recommendations and reviews will be available here soon."
+  },
   "About": {
     "aboutMe": "About Me",
     "getInTouch": "Get In Touch",

@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
+  // Allow cross-origin requests from local network devices during development
+  allowedDevOrigins: process.env.ALLOWED_DEV_ORIGINS?.split(",") || [],
   images: {
     qualities: [100],
     remotePatterns: [
@@ -21,7 +23,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "X-Frame-Options",
-            value: "DENY", 
+            value: "DENY",
           },
           {
             key: "X-Content-Type-Options",
@@ -39,7 +41,7 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval'", 
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
               "style-src 'self' 'unsafe-inline'", // Allow inline styles for Tailwind and components
               "img-src 'self' data: blob: https://avatars.githubusercontent.com https://github.com",
               "font-src 'self' data:",
@@ -49,7 +51,10 @@ const nextConfig: NextConfig = {
               "base-uri 'self'",
               "form-action 'self'",
               "frame-ancestors 'none'",
-              "upgrade-insecure-requests",
+              // Remove upgrade-insecure-requests for development
+              ...(process.env.NODE_ENV === "production"
+                ? ["upgrade-insecure-requests"]
+                : []),
             ].join("; "),
           },
         ],
