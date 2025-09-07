@@ -59,7 +59,7 @@ export default function Navbar() {
       icon: BookOpenCheck,
     },
     {
-      name: "Media",
+      name: t("media"),
       href: "/media",
       icon: SquareLibrary,
     },
