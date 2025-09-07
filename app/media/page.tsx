@@ -5,10 +5,6 @@
 
 import { MediaDashboard } from "@/components/mediaDashboard";
 
-export default function MediaHomePage() {
-  return (
-    <div className="min-h-screen bg-background">
-      <MediaDashboard />
-    </div>
-  );
+export default function MediaPage() {
+  return <MediaDashboard />;
 }
