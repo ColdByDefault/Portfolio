@@ -86,6 +86,39 @@
     "anotherProject": "Ett annat projekt",
     "lastUpdated": "Senast uppdaterad:"
   },
+  "MediaDashboard": {
+    "title": "Media Dashboard",
+    "subtitle": "En central hub för att navigera genom allt innehåll och resurser. Utforska bloggar, dokumentation, projekt och mer.",
+    "cards": {
+      "blogs": {
+        "title": "Bloggar",
+        "description": "Läs mina senaste artiklar och tekniska insikter"
+      },
+      "about": {
+        "title": "Om mig",
+        "description": "Lär dig mer om min bakgrund och erfarenhet"
+      },
+      "projects": {
+        "title": "Projekt",
+        "description": "Utforska mina utvecklingsprojekt och bidrag"
+      },
+      "library": {
+        "title": "Bibliotek",
+        "description": "En personlig samling av böcker, filmer och annan media"
+      },
+      "contact": {
+        "title": "Kontakt",
+        "description": "Hör av dig för samarbeten"
+      }
+    },
+    "comingSoon": "Snart"
+  },
+  "Library": {
+    "title": "Bibliotek",
+    "subtitle": "En personlig samling av böcker, filmer och annan media som har inspirerat och påverkat min resa.",
+    "comingSoon": "Kommer snart",
+    "comingSoonDescription": "Bokrekommendationer och recensioner kommer att finnas tillgängliga här snart."
+  },
   "About": {
     "aboutMe": "Om mig",
     "getInTouch": "Kontakta mig",

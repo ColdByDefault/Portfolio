@@ -22,6 +22,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { QuickActions } from "@/components/quickActions";
+import { useTranslations } from "next-intl";
 
 interface NavigationCard {
   title: string;
@@ -32,52 +33,52 @@ interface NavigationCard {
   isComingSoon?: boolean;
 }
 
-const navigationCards: NavigationCard[] = [
-  {
-    title: "Blogs",
-    description: "Read my latest articles and technical insights",
-    href: "/blog",
-    icon: FileText,
-  },
-  {
-    title: "About Me",
-    description: "Learn more about my background and experience",
-    href: "/about",
-    icon: User,
-  },
-  {
-    title: "Projects",
-    description: "Explore my development projects and contributions",
-    href: "/#projects",
-    icon: FolderGit2,
-  },
-  {
-    title: "Library",
-    description: "Books I've read and recommend",
-    href: "/library",
-    icon: BookOpen,
-  },
-  {
-    title: "Contact",
-    description: "Get in touch for collaborations",
-    href: "#",
-    icon: Mail,
-    isComingSoon: true,
-  },
-];
-
 export function MediaDashboard() {
+  const t = useTranslations("MediaDashboard");
+
+  const navigationCards: NavigationCard[] = [
+    {
+      title: t("cards.blogs.title"),
+      description: t("cards.blogs.description"),
+      href: "/blog",
+      icon: FileText,
+    },
+    {
+      title: t("cards.about.title"),
+      description: t("cards.about.description"),
+      href: "/about",
+      icon: User,
+    },
+    {
+      title: t("cards.projects.title"),
+      description: t("cards.projects.description"),
+      href: "/#projects",
+      icon: FolderGit2,
+    },
+    {
+      title: t("cards.library.title"),
+      description: t("cards.library.description"),
+      href: "/library",
+      icon: BookOpen,
+    },
+    {
+      title: t("cards.contact.title"),
+      description: t("cards.contact.description"),
+      href: "#",
+      icon: Mail,
+      isComingSoon: true,
+    },
+  ];
   return (
     <div className="flex flex-col pt-20">
       <div className="container mx-auto px-4 py-8 flex-1">
         {/* Header Section */}
         <div className="mb-12 text-center">
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Media Dashboard
+            {t("title")}
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Your central hub for navigating all content and resources. Explore
-            blogs, documentation, projects, and more.
+            {t("subtitle")}
           </p>
         </div>
 
@@ -137,7 +138,7 @@ export function MediaDashboard() {
                           )}
                           {card.isComingSoon && (
                             <span className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded-full">
-                              Soon
+                              {t("comingSoon")}
                             </span>
                           )}
                         </CardTitle>
