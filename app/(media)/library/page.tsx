@@ -4,7 +4,7 @@
  */
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { BookOpen, Clock, Star } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 export default function LibraryPage() {
   return (
@@ -14,8 +14,8 @@ export default function LibraryPage() {
           Library
         </h1>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Books I've read, am reading, and recommend for developers and tech
-          enthusiasts.
+          Books I&apos;ve read, am reading, and recommend for developers and
+          tech enthusiasts.
         </p>
       </div>
 
