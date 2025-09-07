@@ -106,59 +106,71 @@ function MediaCard({
   const cardContent = (
     <Card
       className={cn(
-        "group cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-[1.02] overflow-hidden",
+        "group cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-[1.02] overflow-hidden p-0",
         onItemClick && "hover:border-primary/50"
       )}
       onClick={() => onItemClick?.(item)}
     >
-      <CardHeader className="px-4 py-1">
-        <div className="space-y-2">
-          {/* Header with icon and title */}
-          <div className="flex items-start gap-2">
-            <div className="flex-shrink-0  rounded-md bg-primary/10 text-primary">
+      <CardContent className="px-2 flex flex-col gap-2 border h-full p-2">
+        {/* TOP SECTION: Header (Icon, Title, Author) - 1/4 */}
+        <div className="flex-shrink-0 space-y-1">
+          {/* Icon and Title */}
+          <div className="flex items-center gap-2">
+            <div className="flex-shrink-0 p-1 rounded bg-primary/10 text-primary">
               {getMediaIcon(item.type)}
             </div>
             <div className="flex-1 min-w-0">
-              <CardTitle className="text-sm line-clamp-2 group-hover:text-primary transition-colors">
+              <CardTitle className="text-sm line-clamp-2 group-hover:text-primary transition-colors leading-tight">
                 {item.title}
               </CardTitle>
-              {subtitle && (
-                <p className="text-xs text-muted-foreground mt-1 line-clamp-1">
-                  {subtitle}
-                </p>
-              )}
             </div>
             {itemUrl && (
-              <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+              <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
             )}
           </div>
 
-          {/* Details row */}
-          {(details || year) && (
-            <div className="flex items-center justify-between text-xs text-muted-foreground">
-              {details && (
-                <div className="flex items-center gap-1">
-                  <Clock className="h-3 w-3" />
-                  <span>{details}</span>
-                </div>
-              )}
-              {year && (
-                <div className="flex items-center gap-1">
-                  <Calendar className="h-3 w-3" />
-                  <span>{year}</span>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Description */}
-          {showDetails && item.description && (
-            <p className="text-xs text-muted-foreground line-clamp-2 pt-1">
-              {item.description}
+          {/* Author/Director/Creator */}
+          {subtitle && (
+            <p className="text-xs text-muted-foreground line-clamp-1">
+              {subtitle}
             </p>
           )}
+
+          {/* Divider */}
+          <div className="border-b border-border/30"></div>
         </div>
-      </CardHeader>
+
+        {/* MIDDLE SECTION: Description - 2/4 */}
+        <div className="flex-1 flex items-center py-1">
+          {showDetails && item.description ? (
+            <p className="text-xs text-muted-foreground line-clamp-3 leading-relaxed">
+              {item.description}
+            </p>
+          ) : (
+            <div className="w-full"></div>
+          )}
+        </div>
+
+        {/* BOTTOM SECTION: Duration and Release - 1/4 */}
+        <div className="flex-shrink-0 flex items-center justify-between text-xs text-muted-foreground">
+          <div className="flex items-center gap-1">
+            {year && (
+              <>
+                <Calendar className="h-3 w-3" />
+                <span>{year}</span>
+              </>
+            )}
+          </div>
+          <div className="flex items-center gap-1">
+            {details && (
+              <>
+                <Clock className="h-3 w-3" />
+                <span>{details}</span>
+              </>
+            )}
+          </div>
+        </div>
+      </CardContent>
     </Card>
   );
 
@@ -195,16 +207,16 @@ export function MediaCards({
           className
         )}
       >
-        <Card className="border-dashed border-2 border-muted-foreground/25">
-          <CardHeader className="text-center py-6">
-            <BookOpen className="h-6 w-6 mx-auto text-muted-foreground/50 mb-2" />
-            <CardTitle className="text-sm text-muted-foreground">
+        <Card className="border-dashed border-2 border-muted-foreground/25 h-full">
+          <CardContent className="p-3 h-full flex flex-col items-center justify-center text-center min-h-[150px]">
+            <BookOpen className="h-6 w-6 text-muted-foreground/50 mb-2" />
+            <CardTitle className="text-sm text-muted-foreground mb-1">
               {emptyStateTitle}
             </CardTitle>
-            <p className="text-xs text-muted-foreground/75 mt-1">
+            <p className="text-xs text-muted-foreground/75">
               {emptyStateDescription}
             </p>
-          </CardHeader>
+          </CardContent>
         </Card>
       </div>
     );
