@@ -10,7 +10,7 @@ export default function LibraryPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-12 text-center">
+      <div className="mb-2 text-center">
         <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
           {t("title")}
         </h1>
@@ -18,7 +18,8 @@ export default function LibraryPage() {
           {t("subtitle")}
         </p>
       </div>
-      <div>
+      <div className="border-b border-border/70 mb-12"></div>
+      <div className="flex flex-col gap-16">
         <BooksShelf />
         <OthersShelf />
       </div>

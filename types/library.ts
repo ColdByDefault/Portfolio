@@ -8,8 +8,6 @@ export interface BaseMediaItem {
   title: string;
   description?: string;
   imageUrl?: string;
-  rating?: number;
-  status: "reading" | "completed" | "planning" | "watching" | "planned";
   genre?: string[];
 }
 

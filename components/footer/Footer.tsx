@@ -3,7 +3,6 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 "use client";
-import Link from "next/link";
 import { Links } from "@/components/footer";
 import {
   legalLinks,
@@ -11,7 +10,7 @@ import {
   socialLinks,
   creditLinks,
 } from "@/data/footerLinks";
-import Image from "next/image";
+
 
 export default function Footer() {
   return (

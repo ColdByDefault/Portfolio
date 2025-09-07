@@ -4,7 +4,7 @@
  */
 "use client";
 
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardTitle, CardContent } from "@/components/ui/card";
 import {
   BookOpen,
   Film,
@@ -111,7 +111,7 @@ function MediaCard({
       )}
       onClick={() => onItemClick?.(item)}
     >
-      <CardContent className="px-2 flex flex-col gap-2 border h-full p-2">
+      <CardContent className="px-2 flex flex-col gap-2 border h-full p-3">
         {/* TOP SECTION: Header (Icon, Title, Author) - 1/4 */}
         <div className="flex-shrink-0 space-y-1">
           {/* Icon and Title */}
@@ -137,7 +137,7 @@ function MediaCard({
           )}
 
           {/* Divider */}
-          <div className="border-b border-border/30"></div>
+          <div className="border-b border-border/50"></div>
         </div>
 
         {/* MIDDLE SECTION: Description - 2/4 */}
