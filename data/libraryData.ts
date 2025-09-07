@@ -19,6 +19,9 @@ export const booksData: Book[] = [
     publishedYear: 2008,
     genre: ["Programming", "Software Engineering", "Technical"],
     isbn: "978-0132350884",
+    goodreadsUrl: "https://www.goodreads.com/book/show/3735293-clean-code",
+    amazonUrl:
+      "https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350884",
   },
   {
     id: "book-2",
@@ -87,6 +90,7 @@ export const moviesData: Movie[] = [
     releaseYear: 2010,
     duration: 120,
     genre: ["Drama", "Biography", "Tech"],
+    imdbUrl: "https://www.imdb.com/title/tt1285016/",
   },
   {
     id: "movie-2",
@@ -175,6 +179,7 @@ export const gamesData: Game[] = [
     platform: ["PC", "PlayStation", "Xbox"],
     genre: ["Puzzle", "Sci-Fi", "Adventure"],
     metacriticScore: 95,
+    steamUrl: "https://store.steampowered.com/app/620/Portal_2/",
   },
   {
     id: "game-2",
@@ -218,6 +223,7 @@ export const podcastsData: Podcast[] = [
     rating: 4.8,
     episodes: 500,
     platform: "Spotify",
+    spotifyUrl: "https://open.spotify.com/show/4kYCRYJ3yK5DQbP5tbfZby",
   },
   {
     id: "podcast-2",

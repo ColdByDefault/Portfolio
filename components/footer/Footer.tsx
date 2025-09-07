@@ -76,12 +76,6 @@ export default function Footer() {
               <span className="text-xs text-gray-500 dark:text-gray-400">
                 madridista since 2007
               </span>
-              <Image
-                src="/assets/icons/madrid.png"
-                alt="madridista Logo"
-                width={15}
-                height={10}
-              />
             </div>
           </div>
         </div>
