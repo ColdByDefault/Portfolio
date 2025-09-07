@@ -20,7 +20,7 @@ import {
   Antenna,
   Atom,
   BookOpenCheck,
-  NotebookText,
+  SquareLibrary,
 } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-toggle";
 import Link from "next/link";
@@ -59,9 +59,9 @@ export default function Navbar() {
       icon: BookOpenCheck,
     },
     {
-      name: "Blogs",
-      href: "/blog",
-      icon: NotebookText,
+      name: "Media",
+      href: "/media",
+      icon: SquareLibrary,
     },
   ];
 

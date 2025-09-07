@@ -75,7 +75,7 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
     <div className="flex flex-col min-h-full">
       <div className="container mx-auto px-4 py-8 flex-1">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-4">Blog</h1>
+          <h1 className="text-4xl font-bold mb-4">Blogs</h1>
           <p className="text-muted-foreground mb-6">
             Thoughts, tutorials, and insights about development and technology.
           </p>
