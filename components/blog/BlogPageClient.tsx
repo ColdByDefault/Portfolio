@@ -8,6 +8,8 @@
 import { useState } from "react";
 import { BlogsList, LanguageFilter } from "@/components/blog";
 import type { Blog, BlogLanguage } from "@/types/blogs";
+import { QuickActions } from "@/components/quickActions";
+
 
 interface BlogApiResponse {
   blogs: Blog[];
@@ -72,24 +74,22 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
   };
 
   return (
-    <div className="flex flex-col min-h-full">
+    <div className="flex flex-col mx-auto px-4 py-8 flex-1">
       <div className="container mx-auto px-4 py-8 flex-1">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-4">Blog</h1>
-          <p className="text-muted-foreground mb-6">
+        <div className="mb-8 text-center">
+          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Blogs</h1>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Thoughts, tutorials, and insights about development and technology.
           </p>
-
-          {/* Language Filter */}
-          <div className="mb-6">
-            <h3 className="text-sm font-medium mb-3">Filter by Language:</h3>
-            <LanguageFilter
-              selectedLanguage={selectedLanguage}
-              onLanguageChange={handleLanguageChange}
-            />
-          </div>
         </div>
-
+        {/* Language Filter */}
+        <div className="mb-6">
+          <h3 className="text-sm font-medium mb-3">Filter by Language:</h3>
+          <LanguageFilter
+            selectedLanguage={selectedLanguage}
+            onLanguageChange={handleLanguageChange}
+          />
+        </div>
         {isLoading ? (
           <div className="flex items-center justify-center py-16">
             <div className="text-center">
@@ -100,6 +100,7 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
         ) : (
           <BlogsList blogs={blogs} />
         )}
+        <QuickActions />
       </div>
     </div>
   );
