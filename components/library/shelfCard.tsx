@@ -15,7 +15,6 @@ import {
   Calendar,
   ExternalLink,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { MediaCardsProps, MediaItem } from "@/types/library";
@@ -112,63 +111,51 @@ function MediaCard({
       )}
       onClick={() => onItemClick?.(item)}
     >
-      {/* Image section */}
-      <div className="relative h-48 w-full overflow-hidden">
-        <Image
-          src={item.imageUrl || "/default.png"}
-          alt={item.title}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-        <div className="absolute top-2 left-2">
-          <div className="bg-black/50 backdrop-blur-sm rounded-full p-1.5">
-            {getMediaIcon(item.type)}
-          </div>
-        </div>
-        {itemUrl && (
-          <div className="absolute top-2 right-2">
-            <div className="bg-black/50 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-              <ExternalLink className="h-4 w-4 text-white" />
-            </div>
-          </div>
-        )}
-      </div>
-
-      <CardHeader className="pb-3">
+      <CardHeader className="px-4 py-1">
         <div className="space-y-2">
-          <div>
-            <CardTitle className="text-sm line-clamp-2 group-hover:text-primary transition-colors">
-              {item.title}
-            </CardTitle>
-            {subtitle && (
-              <p className="text-xs text-muted-foreground mt-1 line-clamp-1">
-                {subtitle}
-              </p>
+          {/* Header with icon and title */}
+          <div className="flex items-start gap-2">
+            <div className="flex-shrink-0  rounded-md bg-primary/10 text-primary">
+              {getMediaIcon(item.type)}
+            </div>
+            <div className="flex-1 min-w-0">
+              <CardTitle className="text-sm line-clamp-2 group-hover:text-primary transition-colors">
+                {item.title}
+              </CardTitle>
+              {subtitle && (
+                <p className="text-xs text-muted-foreground mt-1 line-clamp-1">
+                  {subtitle}
+                </p>
+              )}
+            </div>
+            {itemUrl && (
+              <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
             )}
           </div>
 
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
-            {details && (
-              <div className="flex items-center gap-1">
-                <Clock className="h-3 w-3" />
-                <span>{details}</span>
-              </div>
-            )}
-            {year && (
-              <div className="flex items-center gap-1">
-                <Calendar className="h-3 w-3" />
-                <span>{year}</span>
-              </div>
-            )}
-          </div>
+          {/* Details row */}
+          {(details || year) && (
+            <div className="flex items-center justify-between text-xs text-muted-foreground">
+              {details && (
+                <div className="flex items-center gap-1">
+                  <Clock className="h-3 w-3" />
+                  <span>{details}</span>
+                </div>
+              )}
+              {year && (
+                <div className="flex items-center gap-1">
+                  <Calendar className="h-3 w-3" />
+                  <span>{year}</span>
+                </div>
+              )}
+            </div>
+          )}
 
+          {/* Description */}
           {showDetails && item.description && (
-            <CardContent className="px-0 pb-0 pt-2">
-              <p className="text-xs text-muted-foreground line-clamp-2">
-                {item.description}
-              </p>
-            </CardContent>
+            <p className="text-xs text-muted-foreground line-clamp-2 pt-1">
+              {item.description}
+            </p>
           )}
         </div>
       </CardHeader>
@@ -200,26 +187,23 @@ export function MediaCards({
   showDetails = false,
   className,
 }: MediaCardsProps) {
-
   if (items.length === 0) {
     return (
       <div
         className={cn(
-          "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+          "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4",
           className
         )}
       >
         <Card className="border-dashed border-2 border-muted-foreground/25">
-          <CardHeader className="text-center py-12">
-            <BookOpen className="h-12 w-12 mx-auto text-muted-foreground/50 mb-4" />
-            <CardTitle className="text-muted-foreground">
+          <CardHeader className="text-center py-6">
+            <BookOpen className="h-6 w-6 mx-auto text-muted-foreground/50 mb-2" />
+            <CardTitle className="text-sm text-muted-foreground">
               {emptyStateTitle}
             </CardTitle>
-            <CardContent className="p-0">
-              <p className="text-sm text-muted-foreground/75">
-                {emptyStateDescription}
-              </p>
-            </CardContent>
+            <p className="text-xs text-muted-foreground/75 mt-1">
+              {emptyStateDescription}
+            </p>
           </CardHeader>
         </Card>
       </div>
@@ -229,7 +213,7 @@ export function MediaCards({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+        "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4",
         className
       )}
     >
