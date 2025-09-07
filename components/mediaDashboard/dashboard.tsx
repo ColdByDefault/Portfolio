@@ -68,7 +68,7 @@ const navigationCards: NavigationCard[] = [
 
 export function MediaDashboard() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pt-20">
       <div className="container mx-auto px-4 py-8 flex-1">
         {/* Header Section */}
         <div className="mb-12 text-center">

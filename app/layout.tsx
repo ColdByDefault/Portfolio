@@ -127,10 +127,6 @@ export default async function RootLayout({
           httpEquiv="Permissions-Policy"
           content="camera=(), microphone=(), geolocation=()"
         />
-        <meta
-          httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://vercel.live https://*.vercel-scripts.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://api.github.com https://vitals.vercel-analytics.com https://vercel.live wss: blob:; worker-src 'self' blob:; frame-src 'self' https://vercel.live;"
-        />
 
         {/* Language and Canonical URLs */}
         <link rel="canonical" href={seoConfigEN.siteUrl} />
