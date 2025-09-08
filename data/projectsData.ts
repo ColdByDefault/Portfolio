@@ -23,7 +23,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Portfolio Website v3",
+    title: "Portfolio Website v4",
     description: "portfolioWebsite",
     technologies: [
       "Next.js",
