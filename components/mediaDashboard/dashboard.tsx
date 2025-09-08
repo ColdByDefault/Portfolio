@@ -21,7 +21,6 @@ import {
   Mail,
   ExternalLink,
 } from "lucide-react";
-import { QuickActions } from "@/components/quickActions";
 import { useTranslations } from "next-intl";
 
 interface NavigationCard {
@@ -153,7 +152,6 @@ export function MediaDashboard() {
             );
           })}
         </div>
-        <QuickActions />
       </div>
     </div>
   );

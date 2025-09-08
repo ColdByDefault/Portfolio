@@ -3,16 +3,18 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 'use client';
-
-import { MediaDashboard } from "@/components/mediaDashboard";
 import { QuickActions } from "@/components/quickActions";
 import { Background } from "@/components/visuals";
 
-export default function MediaPage() {
+export default function MediaGroupLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div>
+    <div className="min-h-screen">
       <QuickActions />
-      <MediaDashboard />
+      {children}
       <Background />
     </div>
   );

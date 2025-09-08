@@ -2,8 +2,8 @@
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
-
 import type { Metadata } from "next";
+
 
 export const metadata: Metadata = {
   title: "Media Dashboard - Portfolio",
@@ -19,10 +19,15 @@ export const metadata: Metadata = {
   ],
 };
 
+
 export default function MediaLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="bg-background min-h-screen">{children}</div>;
+  return (
+    <div className="min-h-screen">
+      {children}
+    </div>
+  );
 }

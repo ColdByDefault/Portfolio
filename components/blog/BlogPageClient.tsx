@@ -8,7 +8,6 @@
 import { useState } from "react";
 import { BlogsList, LanguageFilter } from "@/components/blog";
 import type { Blog, BlogLanguage } from "@/types/blogs";
-import { QuickActions } from "@/components/quickActions";
 
 
 interface BlogApiResponse {
@@ -77,7 +76,9 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
     <div className="flex flex-col mx-auto px-4 py-8 flex-1">
       <div className="container mx-auto px-4 py-8 flex-1">
         <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Blogs</h1>
+          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+            Blogs
+          </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Thoughts, tutorials, and insights about development and technology.
           </p>
@@ -100,7 +101,6 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
         ) : (
           <BlogsList blogs={blogs} />
         )}
-        <QuickActions />
       </div>
     </div>
   );

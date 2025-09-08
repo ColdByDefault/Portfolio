@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
- * 
+ *
  * Renders the main client-side homepage for the portfolio, including loading screen,
  * hero section, company banner, sticky background image (dark mode), project showcase,
  * GitHub showcase, technologies, certifications, and website performance insights.
@@ -17,7 +17,6 @@
 import { CertificationShowcase } from "@/components/cer";
 import { Hero } from "@/components/hero";
 import LoadingScreen from "@/components/visuals/LoadingScreen";
-import { Background } from "@/components/visuals/motion-background";
 import { Technologies } from "@/components/tech";
 import { ProjectsShowcase } from "@/components/projects";
 import { GitHubShowcase } from "@/components/github";
@@ -26,6 +25,8 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { CompanyBanner } from "@/components/companies";
+import { Background } from "@/components/visuals";
+
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -57,7 +58,7 @@ export default function Home() {
         <Background />
       </div>
       {/* Scroll Indicator */}
-      <div className="hidden lg:block lg:absolute lg:bottom-8 lg:left-1/6 transform -translate-x-1/2 animate-bounce">
+      <div className="hidden lg:block lg:absolute lg:bottom-24 lg:left-1/6 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
           <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2"></div>
         </div>
