@@ -33,6 +33,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Urbanist } from "next/font/google";
 
+
 // Configure Urbanist Variable font
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -167,13 +168,6 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {/* Skip Navigation Link */}
-            <a
-              href="#main-content"
-              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:shadow-lg"
-            >
-              Skip to main content
-            </a>
             <Navbar />
             <main className="flex-1" id="main-content">
               {children}

@@ -6,7 +6,6 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Background } from "@/components/visuals/motion-background";
 import { AchievementCard } from "@/components/about";
@@ -76,12 +75,12 @@ export default function AboutPage() {
                       </Badge>
                     ))}
                 </div>
-                <div className="flex gap-4">
+{/*                 <div className="flex gap-4">
                   <Button size="lg">{t("getInTouch")}</Button>
                   <Button variant="outline" size="lg">
                     {t("downloadCV")}
                   </Button>
-                </div>
+                </div> */}
               </div>
               <div className="relative">
                 <div className="aspect-square max-w-md mx-auto relative rounded-2xl overflow-hidden">
