@@ -41,8 +41,9 @@ async function ensureUniqueSlug(
 ): Promise<string> {
   let uniqueSlug = slug;
   let counter = 1;
+  const maxAttempts = 100; // Prevent infinite loops
 
-  while (true) {
+  while (counter <= maxAttempts) {
     const existing = await prisma.blog.findFirst({
       where: {
         slug: uniqueSlug,
@@ -57,6 +58,26 @@ async function ensureUniqueSlug(
     uniqueSlug = `${slug}-${counter}`;
     counter++;
   }
+
+  // Fallback: Use timestamp-based unique identifier
+  const timestamp = Date.now();
+  const fallbackSlug = `${slug}-${timestamp}`;
+
+  // Final check for the fallback slug
+  const existingFallback = await prisma.blog.findFirst({
+    where: {
+      slug: fallbackSlug,
+      ...(excludeId && { id: { not: excludeId } }),
+    },
+  });
+
+  if (!existingFallback) {
+    return fallbackSlug;
+  }
+
+  // Ultimate fallback: Add random suffix to timestamp
+  const randomSuffix = Math.random().toString(36).substring(2, 8);
+  return `${slug}-${timestamp}-${randomSuffix}`;
 }
 
 /**
