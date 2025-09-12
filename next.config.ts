@@ -51,7 +51,7 @@ const nextConfig: NextConfig = {
               "base-uri 'self'",
               "form-action 'self'",
               "frame-ancestors 'none'",
-              // Remove upgrade-insecure-requests for development
+              // Only upgrade insecure requests in production
               ...(process.env.NODE_ENV === "production"
                 ? ["upgrade-insecure-requests"]
                 : []),

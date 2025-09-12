@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/de/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/de",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",
