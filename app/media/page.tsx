@@ -2,16 +2,14 @@
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
-'use client';
+"use client";
 
 import { MediaDashboard } from "@/components/mediaDashboard";
-import { QuickActions } from "@/components/quickActions";
 import { Background } from "@/components/visuals";
 
 export default function MediaPage() {
   return (
     <div>
-      <QuickActions />
       <MediaDashboard />
       <Background />
     </div>

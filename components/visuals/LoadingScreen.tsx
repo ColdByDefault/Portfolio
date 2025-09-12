@@ -2,6 +2,7 @@
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
+"use client";
 import React, { useEffect, useState } from "react";
 import "@/styles/glitchEffect.css";
 

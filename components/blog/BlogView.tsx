@@ -109,7 +109,7 @@ export function BlogView({ blog, className }: BlogViewProps) {
       </div>
 
       {/* Content */}
-      <div className="prose prose-lg dark:prose-invert max-w-none markdown-content">
+      <div className="prose prose-lg dark:prose-invert max-w-none">
         <ReactMarkdown
           remarkPlugins={[remarkGfm, remarkBreaks]}
           rehypePlugins={[rehypeHighlight, rehypeRaw]}
