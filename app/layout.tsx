@@ -28,11 +28,11 @@ import { ThemeProvider } from "@/components/theme/theme-provider";
 import { Navbar } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { CookiesBanner } from "@/components/cookies";
+import { BrowserTranslationNotice } from "@/components/languages";
 import { seoConfigEN, generateStructuredData } from "@/lib/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Urbanist } from "next/font/google";
-
 
 // Configure Urbanist Variable font
 const urbanist = Urbanist({
@@ -174,6 +174,7 @@ export default async function RootLayout({
             </main>
             <Footer />
             <CookiesBanner />
+            <BrowserTranslationNotice />
           </ThemeProvider>
         </NextIntlClientProvider>
         <Analytics />

@@ -41,7 +41,7 @@ async function ensureUniqueSlug(
 ): Promise<string> {
   let uniqueSlug = slug;
   let counter = 1;
-  const maxAttempts = 100; // Prevent infinite loops
+  const maxAttempts = 20; // Prevent infinite loops
 
   while (counter <= maxAttempts) {
     const existing = await prisma.blog.findFirst({

@@ -147,6 +147,11 @@
     @apply bg-background text-foreground;
     font-family: var(--font-urbanist), sans-serif;
   }
+
+  /* Ensure proper scroll offset for sticky navbar */
+  [id] {
+    scroll-margin-top: 4rem; /* 64px - navbar height */
+  }
 }
 
 /* Project card gradient animation */
