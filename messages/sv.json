@@ -18,9 +18,10 @@
     "technologies": "Teknologier",
     "certifications": "Certifieringar",
     "media": "Media",
-    "navigation": "Navigering",
+    "navigation": "Navigation",
     "impressum": "Juridisk information",
-    "legal": "Rättsligt"
+    "privacy": "Integritet",
+    "legal": "Juridisk"
   },
   "Technologies": {
     "title": "Teknologier jag använder",
@@ -83,7 +84,42 @@
     "projectDescription": "Denna webbplats är en helt privat och icke-kommersiell portfölj som enbart används för experimentella och personliga inlärningsändamål. Ingen kommersiell användning eller vinstintention finns.",
     "legalBasis": "Rättslig grund:",
     "legalBasisDescription": "Enligt § 5 TMG föreligger därför ingen skyldighet att tillhandahålla juridisk information.",
-    "anotherProject": "Ett annat projekt",
+    "anotherProject": "AnotherProject",
+    "lastUpdated": "Senast uppdaterad:"
+  },
+  "Privacy": {
+    "title": "Integritetspolicy",
+    "subtitle": "Hur vi hanterar dina data och integritet",
+    "overview": {
+      "title": "Översikt",
+      "description": "Denna integritetspolicy förklarar hur denna personliga portfolio hanterar dina data. Som en privat, icke-kommersiell webbplats samlar vi in minimal information och prioriterar din integritet.",
+      "keyPoint": "Integritet först",
+      "keyPointDescription": "Vi samlar inte in, lagrar eller säljer dina personuppgifter. Allt är designat med integritet i åtanke."
+    },
+    "cookies": {
+      "title": "Cookies & Lokal Lagring",
+      "essential": {
+        "title": "Nödvändiga Cookies",
+        "description": "Språkpreferenser och temainställningar som lagras lokalt i din webbläsare. Krävs för webbplatsens funktionalitet."
+      },
+      "analytics": {
+        "title": "Analytiska Cookies",
+        "description": "Integritetsvänlig Vercel Analytics och Speed Insights för att övervaka webbplatsens prestanda. Inga personuppgifter spåras eller lagras."
+      }
+    },
+    "dataProcessing": {
+      "title": "Databehandling",
+      "description": "Denna webbplats bearbetar minimal data för att tillhandahålla funktionalitet. All bearbetning sker på klientsidan i din webbläsare eller genom integritetsvänliga tjänster.",
+      "vercelTitle": "Vercel Analytics & Speed Insights",
+      "vercelDescription": "Dessa tjänster samlar in anonyma prestandamått för att hjälpa till att förbättra webbplatsen. Ingen personlig information samlas in eller lagras."
+    },
+    "rights": {
+      "title": "Dina Rättigheter",
+      "description": "Du har full kontroll över dina data och integritet på denna webbplats:",
+      "clearCookies": "Rensa dina webbläsarcookies när som helst för att återställa preferenser",
+      "disableAnalytics": "Använd cookie-bannern för att inaktivera analysspårning",
+      "contact": "Kontakta oss om du har frågor om din integritet"
+    },
     "lastUpdated": "Senast uppdaterad:"
   },
   "MediaDashboard": {

@@ -14,6 +14,7 @@ export interface LinkItem {
 
 export const legalLinks: LinkItem[] = [
   { href: "/impressum", label: "Impressum" },
+  { href: "/privacy", label: "Privacy" },
 ];
 
 export const resourceLinks: LinkItem[][] = [
