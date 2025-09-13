@@ -23,32 +23,65 @@ const languages: Record<string, { name: string; flag: string }> = {
 const LanguageSwitcher = () => {
   // 1. State must be declared before use
   const [locale, setLocale] = useState<string>("en");
+  const [browserLang, setBrowserLang] = useState<string>("en");
+  const [isUnsupportedLang, setIsUnsupportedLang] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
-    // 2. Read existing cookie
+    // 2. Read existing cookies (set by middleware)
     const cookieLocale = document.cookie
       .split("; ")
       .find((row) => row.startsWith("PORTFOLIOVERSIONLATEST_LOCALE="))
       ?.split("=")[1];
 
+    const cookieBrowserLang = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("PORTFOLIOVERSIONLATEST_BROWSER_LANG="))
+      ?.split("=")[1];
+
     if (cookieLocale && languages[cookieLocale]) {
       setLocale(cookieLocale);
-    } else {
-      // 3. Derive from browser, but ensure it's one of our supported locales
+    }
+
+    if (cookieBrowserLang) {
+      setBrowserLang(cookieBrowserLang);
+      // Check if browser language is supported
+      setIsUnsupportedLang(!languages[cookieBrowserLang]);
+    }
+
+    // Fallback: if no cookies, detect client-side (shouldn't happen with new middleware)
+    if (!cookieLocale) {
       const browserLang = navigator.language.slice(0, 2);
       const defaultLocale = languages[browserLang] ? browserLang : "en";
       setLocale(defaultLocale);
+      setBrowserLang(browserLang);
+      setIsUnsupportedLang(!languages[browserLang]);
       document.cookie = `PORTFOLIOVERSIONLATEST_LOCALE=${defaultLocale}; path=/;`;
+      document.cookie = `PORTFOLIOVERSIONLATEST_BROWSER_LANG=${browserLang}; path=/;`;
     }
   }, []);
 
   const changeLocale = (newLocale: string) => {
     if (!languages[newLocale]) return;
     setLocale(newLocale);
+    setIsUnsupportedLang(false); // User manually selected a supported language
     document.cookie = `PORTFOLIOVERSIONLATEST_LOCALE=${newLocale}; path=/;`;
     // 4. Refresh current route to re-render server components with new locale
     router.refresh(); // useRouter only works in Client Components :contentReference[oaicite:0]{index=0}
+  };
+
+  const getCurrentFlag = () => {
+    if (isUnsupportedLang) {
+      return "🌐"; // Show globe for unsupported languages
+    }
+    return languages[locale]?.flag ?? "🌐";
+  };
+
+  const getCurrentName = () => {
+    if (isUnsupportedLang && browserLang !== locale) {
+      return `${languages[locale]?.name ?? "English"} (Auto)`;
+    }
+    return languages[locale]?.name ?? "English";
   };
 
   return (
@@ -57,28 +90,40 @@ const LanguageSwitcher = () => {
         <Button
           variant="ghost"
           className="flex items-center w-12 h-10"
-          aria-label={`Current language: ${
-            languages[locale]?.name ?? "English"
-          }. Click to change language`}
+          aria-label={`Current language: ${getCurrentName()}. Click to change language`}
         >
           <Languages aria-hidden="true" />
           <span className="ml-1" aria-hidden="true">
-            {languages[locale]?.flag ?? "🌐"}
+            {getCurrentFlag()}
           </span>
           <span className="sr-only">Change language</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" aria-label="Language selection menu">
+        {isUnsupportedLang && browserLang !== locale && (
+          <DropdownMenuItem disabled className="text-muted-foreground text-xs">
+            <span className="mr-2" aria-hidden="true">
+              ⚠️
+            </span>
+            Browser: {browserLang.toUpperCase()} (Unsupported)
+          </DropdownMenuItem>
+        )}
         {Object.entries(languages).map(([key, { name, flag }]) => (
           <DropdownMenuItem
             key={key}
             onClick={() => changeLocale(key)}
             aria-label={`Switch to ${name}`}
+            className={locale === key ? "bg-accent" : ""}
           >
             <span className="mr-2" aria-hidden="true">
               {flag}
             </span>
             {name}
+            {locale === key && isUnsupportedLang && (
+              <span className="ml-auto text-xs text-muted-foreground">
+                (Auto)
+              </span>
+            )}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

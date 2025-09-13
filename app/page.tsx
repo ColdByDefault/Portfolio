@@ -27,7 +27,6 @@ import Image from "next/image";
 import { CompanyBanner } from "@/components/companies";
 import { Background } from "@/components/visuals";
 
-
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [mounted, setMounted] = useState<boolean>(false);
@@ -58,7 +57,7 @@ export default function Home() {
         <Background />
       </div>
       {/* Scroll Indicator */}
-      <div className="hidden lg:block lg:absolute lg:bottom-24 lg:left-1/6 transform -translate-x-1/2 animate-bounce">
+      <div className="hidden lg:block lg:absolute lg:bottom-24 lg:left-1/6 xl:left-1/5 xl:bottom-40 2xl:left-1/4 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
           <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2"></div>
         </div>
@@ -66,7 +65,7 @@ export default function Home() {
       <div className="min-h-screen flex flex-col justify-evenly" id="home">
         <Hero />
         {/* Company Banner */}
-        <span className="text-md font-light text-center mb-8 text-black dark:text-white">
+        <span className="text-md font-light text-center text-black dark:text-white">
           {t("companiesContributing")}
         </span>
         <CompanyBanner />

@@ -4,19 +4,18 @@
  */
 "use client";
 
-
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-
 
 function Hero() {
   const t = useTranslations("Hero");
 
   return (
     <main
-      className="w-full flex items-center justify-center pt-12"
+      id="home"
+      className="w-full flex items-center justify-center scroll-mt-16"
       role="main"
       aria-label="Hero section"
     >
@@ -49,19 +48,19 @@ function Hero() {
           {/* Content */}
           <div className="space-y-6 max-w-4xl">
             <div className="space-y-4">
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+              <h1 className="text-3xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-5xl">
                 Yazan Abo-Ayash
               </h1>
               <div className="space-y-2">
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-medium text-muted-foreground">
+                <h2 className="text-xl md:text-2xl lg:text-2xl font-medium text-muted-foreground">
                   {t("fullStackDeveloper")}
                 </h2>
               </div>
             </div>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            <p className="text-md text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               {t("description")}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+            <div className="flex flex-col sm:flex-row gap-2 items-center justify-center">
               <Button
                 variant="outline"
                 asChild
@@ -73,9 +72,9 @@ function Hero() {
               </Button>
               {/* <ContactForm /> */}
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 items-center">
-              {/* <SocialLinks /> */}
-            </div>
+{/*             <div className="flex flex-col sm:flex-row gap-4 items-center">
+              <SocialLinks />
+            </div> */}
           </div>
         </div>
       </div>

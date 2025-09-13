@@ -6,7 +6,13 @@ import type { LocaleModule } from "@/types/i18n";
 export default getRequestConfig(async () => {
   const cookieStore = await cookies();
   const localeCookie = cookieStore.get("PORTFOLIOVERSIONLATEST_LOCALE")?.value;
-  const locale = localeCookie ?? "en";
+
+  // Validate that the locale exists in our supported languages
+  const supportedLocales = ["en", "de", "es", "fr", "sv"];
+  const locale =
+    localeCookie && supportedLocales.includes(localeCookie)
+      ? localeCookie
+      : "en";
 
   const localeModule = (await import(
     `../messages/${locale}.json`
