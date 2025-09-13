@@ -4,7 +4,7 @@
  */
 
 import { notFound } from "next/navigation";
-import { BlogView } from "@/components/blog";
+import { BlogView, BlogBreadcrumb } from "@/components/blog";
 import { getBlogBySlug } from "@/lib/blogs";
 
 interface BlogPageProps {
@@ -24,6 +24,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
     return (
       <div className="container mx-auto px-4 py-8">
+        {/* Breadcrumb Navigation */}
+        <div className="mb-6">
+          <BlogBreadcrumb blog={blog} />
+        </div>
+
         <BlogView blog={blog} />
       </div>
     );

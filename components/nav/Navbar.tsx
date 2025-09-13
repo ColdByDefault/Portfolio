@@ -35,7 +35,7 @@ export default function Navbar() {
   const navItems = [
     {
       name: t("home"),
-      href: "#home",
+      href: "/",
       icon: Home,
     },
     {
