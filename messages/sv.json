@@ -23,6 +23,19 @@
     "privacy": "Integritet",
     "legal": "Juridisk"
   },
+  "Contact": {
+    "getInTouch": "Kom i kontakt",
+    "description": "Tveka inte att höra av dig för samarbete, frågor eller bara för att säga hej!",
+    "email": "E-post",
+    "clickToSendEmail": "Klicka för att skicka e-post",
+    "socialMedia": "Sociala medier",
+    "info": "Info",
+    "location": "Plats",
+    "status": "Status",
+    "training": "Utbildning",
+    "quickLinks": "Snabblänkar",
+    "openForCollaboration": "Tillgänglig för hobbyprojekt"
+  },
   "Technologies": {
     "title": "Teknologier jag använder",
     "manyMoreTechnologies": "...och många fler teknologier i min verktygslåda",

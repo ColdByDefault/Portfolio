@@ -64,7 +64,7 @@ export function CookiesBanner() {
   return (
     <div
       className={cn(
-        "fixed bottom-4 left-4 right-4 md:left-6 md:right-6 z-[100]",
+        "fixed bottom-4 left-4 right-4 md:left-6 md:right-6 z-10",
         "animate-in slide-in-from-bottom-5 duration-500",
         "max-w-md md:max-w-lg lg:max-w-xl ml-auto"
       )}

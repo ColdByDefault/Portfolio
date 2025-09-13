@@ -23,6 +23,19 @@
     "privacy": "Confidentialité",
     "legal": "Juridique"
   },
+  "Contact": {
+    "getInTouch": "Contactez-moi",
+    "description": "N'hésitez pas à me contacter pour une collaboration, des questions ou simplement pour dire bonjour !",
+    "email": "Email",
+    "clickToSendEmail": "Cliquez pour envoyer un email",
+    "socialMedia": "Réseaux sociaux",
+    "info": "Info",
+    "location": "Localisation",
+    "status": "Statut",
+    "training": "Formation",
+    "quickLinks": "Liens rapides",
+    "openForCollaboration": "Disponible pour projets personnels"
+  },
   "Technologies": {
     "title": "Technologies que j'utilise",
     "manyMoreTechnologies": "...et bien d'autres technologies dans ma boîte à outils",

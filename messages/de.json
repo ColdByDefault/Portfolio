@@ -23,6 +23,19 @@
     "privacy": "Datenschutz",
     "legal": "Rechtliches"
   },
+  "Contact": {
+    "getInTouch": "Kontaktieren Sie mich",
+    "description": "Zögern Sie nicht, sich für eine Zusammenarbeit, Fragen oder einfach zum Hallo sagen zu melden!",
+    "email": "E-Mail",
+    "clickToSendEmail": "Klicken Sie hier, um eine E-Mail zu senden",
+    "socialMedia": "Soziale Medien",
+    "info": "Info",
+    "location": "Standort",
+    "status": "Status",
+    "training": "Ausbildung",
+    "quickLinks": "Schnelllinks",
+    "openForCollaboration": "Verfügbar für Hobbyprojekte"
+  },
   "Technologies": {
     "title": "Technologien, die ich verwende",
     "manyMoreTechnologies": "...und viele weitere Technologien in meinem Toolkit",
