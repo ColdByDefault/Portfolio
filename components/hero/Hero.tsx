@@ -14,7 +14,7 @@ function Hero() {
 
   return (
     <main
-      id="home"
+      id="home2"
       className="w-full flex items-center justify-center scroll-mt-16"
       role="main"
       aria-label="Hero section"

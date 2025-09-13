@@ -6,9 +6,8 @@
 "use client";
 
 import { useState } from "react";
-import { BlogsList, LanguageFilter } from "@/components/blog";
+import { BlogsList, LanguageFilter, BlogBreadcrumb } from "@/components/blog";
 import type { Blog, BlogLanguage } from "@/types/blogs";
-
 
 interface BlogApiResponse {
   blogs: Blog[];
@@ -75,6 +74,11 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
   return (
     <div className="flex flex-col mx-auto px-4 py-8 flex-1">
       <div className="container mx-auto px-4 py-8 flex-1">
+        {/* Breadcrumb Navigation */}
+        <div className="mb-6">
+          <BlogBreadcrumb />
+        </div>
+
         <div className="mb-8 text-center">
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             Blogs
