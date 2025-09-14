@@ -42,7 +42,7 @@ export function BlogBreadcrumb({ blog, className }: BlogBreadcrumbProps) {
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
             <Link
-              href="/"
+              href="/media"
               className="flex items-center gap-1.5"
               aria-label="Go to home page"
             >
