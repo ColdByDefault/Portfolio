@@ -41,11 +41,6 @@ export default function Navbar() {
       icon: Home,
     },
     {
-      name: t("projects"),
-      href: "/#projects",
-      icon: FolderGit2,
-    },
-    {
       name: t("mcp"),
       href: "/#github",
       icon: Antenna,
@@ -59,6 +54,11 @@ export default function Navbar() {
       name: t("certifications"),
       href: "/#cert",
       icon: BookOpenCheck,
+    },
+    {
+      name: t("projects"),
+      href: "/projects",
+      icon: FolderGit2,
     },
     {
       name: t("media"),
@@ -92,7 +92,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center space-x-6" role="menubar">
             {navItems.map((item, index) => {
               const Icon = item.icon;
-              const isLastItem = index === navItems.length - 1;
+              const isLastItem = index === navItems.length - 2;
               return (
                 <Link
                   key={item.name}
@@ -100,7 +100,7 @@ export default function Navbar() {
                   className={`
                   flex items-center space-x-2 text-sm font-medium transition-colors
                   ${lightLink} ${darkLink}
-                  ${isLastItem ? "border-l pl-6 ml-2" : ""}
+                  ${isLastItem ? "border-x pl-6 ml-2" : ""}
                   focus:outline-none px-2 py-1
                 `}
                   role="menuitem"
