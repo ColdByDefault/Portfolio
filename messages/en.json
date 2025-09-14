@@ -20,7 +20,21 @@
     "media": "Media",
     "navigation": "Navigation",
     "impressum": "Impressum",
+    "privacy": "Privacy",
     "legal": "Legal"
+  },
+  "Contact": {
+    "getInTouch": "Get in Touch",
+    "description": "Feel free to reach out for collaboration, questions, or just to say hello!",
+    "email": "Email",
+    "clickToSendEmail": "Click to send email",
+    "socialMedia": "Social Media",
+    "info": "Info",
+    "location": "Location",
+    "status": "Status",
+    "training": "Training",
+    "quickLinks": "Quick Links",
+    "openForCollaboration": "Available for hobby projects"
   },
   "Technologies": {
     "title": "Technologies I Use",
@@ -84,6 +98,41 @@
     "legalBasis": "Legal Basis:",
     "legalBasisDescription": "According to § 5 TMG, there is therefore no obligation to provide an impressum.",
     "anotherProject": "AnotherProject",
+    "lastUpdated": "Last updated:"
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "How we handle your data and privacy",
+    "overview": {
+      "title": "Overview",
+      "description": "This privacy policy explains how this personal portfolio handles your data. As a private, non-commercial website, we collect minimal information and prioritize your privacy.",
+      "keyPoint": "Privacy First",
+      "keyPointDescription": "We don't collect, store, or sell your personal data. Everything is designed with privacy in mind."
+    },
+    "cookies": {
+      "title": "Cookies & Local Storage",
+      "essential": {
+        "title": "Essential Cookies",
+        "description": "Language preference and theme settings stored locally in your browser. Required for website functionality."
+      },
+      "analytics": {
+        "title": "Analytics Cookies",
+        "description": "Privacy-friendly Vercel Analytics and Speed Insights to monitor website performance. No personal data is tracked or stored."
+      }
+    },
+    "dataProcessing": {
+      "title": "Data Processing",
+      "description": "This website processes minimal data to provide functionality. All processing is done client-side in your browser or through privacy-compliant services.",
+      "vercelTitle": "Vercel Analytics & Speed Insights",
+      "vercelDescription": "These services collect anonymous performance metrics to help improve the website. No personal information is collected or stored."
+    },
+    "rights": {
+      "title": "Your Rights",
+      "description": "You have full control over your data and privacy on this website:",
+      "clearCookies": "Clear your browser cookies anytime to reset preferences",
+      "disableAnalytics": "Use cookie banner to disable analytics tracking",
+      "contact": "Contact us if you have questions about your privacy"
+    },
     "lastUpdated": "Last updated:"
   },
   "MediaDashboard": {

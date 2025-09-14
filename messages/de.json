@@ -20,7 +20,21 @@
     "media": "Medien",
     "navigation": "Navigation",
     "impressum": "Impressum",
+    "privacy": "Datenschutz",
     "legal": "Rechtliches"
+  },
+  "Contact": {
+    "getInTouch": "Kontaktieren Sie mich",
+    "description": "Zögern Sie nicht, sich für eine Zusammenarbeit, Fragen oder einfach zum Hallo sagen zu melden!",
+    "email": "E-Mail",
+    "clickToSendEmail": "Klicken Sie hier, um eine E-Mail zu senden",
+    "socialMedia": "Soziale Medien",
+    "info": "Info",
+    "location": "Standort",
+    "status": "Status",
+    "training": "Ausbildung",
+    "quickLinks": "Schnelllinks",
+    "openForCollaboration": "Verfügbar für Hobbyprojekte"
   },
   "Technologies": {
     "title": "Technologien, die ich verwende",
@@ -83,7 +97,42 @@
     "projectDescription": "Diese Website ist ein rein privates, nicht-kommerzielles Portfolio und dient ausschließlich zu experimentellen und persönlichen Lernzwecken. Es besteht weder kommerzielle Nutzung noch Gewinnabsicht.",
     "legalBasis": "Rechtliche Grundlage:",
     "legalBasisDescription": "Gemäß § 5 TMG besteht daher keine Verpflichtung zur Bereitstellung eines Impressums.",
-    "anotherProject": "Ein weiteres Projekt",
+    "anotherProject": "AnotherProject",
+    "lastUpdated": "Zuletzt aktualisiert:"
+  },
+  "Privacy": {
+    "title": "Datenschutzerklärung",
+    "subtitle": "Wie wir mit Ihren Daten und Ihrer Privatsphäre umgehen",
+    "overview": {
+      "title": "Übersicht",
+      "description": "Diese Datenschutzerklärung erklärt, wie dieses persönliche Portfolio mit Ihren Daten umgeht. Als private, nicht-kommerzielle Website sammeln wir minimale Informationen und priorisieren Ihre Privatsphäre.",
+      "keyPoint": "Privatsphäre zuerst",
+      "keyPointDescription": "Wir sammeln, speichern oder verkaufen keine persönlichen Daten. Alles ist auf Privatsphäre ausgelegt."
+    },
+    "cookies": {
+      "title": "Cookies & lokaler Speicher",
+      "essential": {
+        "title": "Essentielle Cookies",
+        "description": "Spracheinstellungen und Theme-Einstellungen werden lokal in Ihrem Browser gespeichert. Erforderlich für die Website-Funktionalität."
+      },
+      "analytics": {
+        "title": "Analyse-Cookies",
+        "description": "Datenschutzfreundliche Vercel Analytics und Speed Insights zur Überwachung der Website-Performance. Keine persönlichen Daten werden verfolgt oder gespeichert."
+      }
+    },
+    "dataProcessing": {
+      "title": "Datenverarbeitung",
+      "description": "Diese Website verarbeitet minimale Daten zur Bereitstellung der Funktionalität. Alle Verarbeitung erfolgt clientseitig in Ihrem Browser oder über datenschutzkonforme Dienste.",
+      "vercelTitle": "Vercel Analytics & Speed Insights",
+      "vercelDescription": "Diese Dienste sammeln anonyme Performance-Metriken zur Verbesserung der Website. Keine persönlichen Informationen werden gesammelt oder gespeichert."
+    },
+    "rights": {
+      "title": "Ihre Rechte",
+      "description": "Sie haben vollständige Kontrolle über Ihre Daten und Privatsphäre auf dieser Website:",
+      "clearCookies": "Löschen Sie jederzeit Ihre Browser-Cookies, um Einstellungen zurückzusetzen",
+      "disableAnalytics": "Verwenden Sie das Cookie-Banner, um Analyse-Tracking zu deaktivieren",
+      "contact": "Kontaktieren Sie uns bei Fragen zu Ihrer Privatsphäre"
+    },
     "lastUpdated": "Zuletzt aktualisiert:"
   },
   "MediaDashboard": {

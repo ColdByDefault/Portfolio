@@ -21,11 +21,13 @@ import {
   Atom,
   BookOpenCheck,
   SquareLibrary,
+  MessageSquare,
 } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-toggle";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import LanguageSwitcher from "@/components/languages/language-switcher";
+import { ContactSheet } from "@/components/contact";
 import { useTranslations } from "next-intl";
 
 export default function Navbar() {
@@ -122,6 +124,17 @@ export default function Navbar() {
           {/* Desktop Theme Toggle */}
           <div className="hidden lg:flex items-center gap-2">
             <div className="border-r-2 pr-2">
+              <ContactSheet>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label="Open contact information"
+                >
+                  <MessageSquare className="h-4 w-4" aria-hidden="true" />
+                </Button>
+              </ContactSheet>
+            </div>
+            <div className="border-r-2 pr-2">
               <ModeToggle />
             </div>
             <div className="border-r-2 pr-2">
@@ -142,6 +155,16 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         <div className="flex lg:hidden items-center space-x-2 px-4">
+          {/* Mobile Contact Button */}
+          <ContactSheet>
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label="Open contact information"
+            >
+              <MessageSquare className="h-4 w-4" aria-hidden="true" />
+            </Button>
+          </ContactSheet>
           {/* Mobile Theme Toggle */}
           <ModeToggle />
           <div>

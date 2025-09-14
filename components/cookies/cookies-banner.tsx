@@ -64,7 +64,7 @@ export function CookiesBanner() {
   return (
     <div
       className={cn(
-        "fixed bottom-4 left-4 right-4 md:left-6 md:right-6 z-[100]",
+        "fixed bottom-4 left-4 right-4 md:left-6 md:right-6 z-10",
         "animate-in slide-in-from-bottom-5 duration-500",
         "max-w-md md:max-w-lg lg:max-w-xl ml-auto"
       )}
@@ -94,28 +94,42 @@ export function CookiesBanner() {
                   I bake my own cookies! Theme preferences are stored locally in
                   your browser. I use Vercel Analytics and Speed Insights to
                   monitor performance, which are privacy-friendly and do not
-                  track personal data. By clicking &ldquo;Accept All&rdquo;, you
-                  consent to the use of all cookies. Promise I won&apos;t eat
-                  them!
+                  track personal data.{" "}
+                  <a
+                    href="/privacy"
+                    className="text-primary hover:underline"
+                    onClick={handleClose}
+                  >
+                    Learn more
+                  </a>
                 </CardDescription>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-2">
-                <Button
-                  onClick={handleAccept}
-                  size="sm"
-                  className="flex-1 text-xs"
-                >
-                  Accept All
-                </Button>
+              <div className="flex flex-col gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <Button
+                    onClick={handleAccept}
+                    size="sm"
+                    className="flex-1 text-xs"
+                  >
+                    Accept All Cookies
+                  </Button>
+                  <Button
+                    onClick={handleDecline}
+                    variant="outline"
+                    size="sm"
+                    className="flex-1 text-xs"
+                  >
+                    Essential Only
+                  </Button>
+                </div>
                 <Button
                   onClick={handleDecline}
-                  variant="outline"
+                  variant="ghost"
                   size="sm"
-                  className="flex-1 text-xs"
+                  className="text-xs text-muted-foreground hover:text-foreground"
                 >
-                  <span className="font-serif">Accept</span> in another
-                  font-style
+                  Decline Analytics
                 </Button>
               </div>
             </div>

@@ -20,7 +20,21 @@
     "media": "Médias",
     "navigation": "Navigation",
     "impressum": "Mentions légales",
-    "legal": "Légal"
+    "privacy": "Confidentialité",
+    "legal": "Juridique"
+  },
+  "Contact": {
+    "getInTouch": "Contactez-moi",
+    "description": "N'hésitez pas à me contacter pour une collaboration, des questions ou simplement pour dire bonjour !",
+    "email": "Email",
+    "clickToSendEmail": "Cliquez pour envoyer un email",
+    "socialMedia": "Réseaux sociaux",
+    "info": "Info",
+    "location": "Localisation",
+    "status": "Statut",
+    "training": "Formation",
+    "quickLinks": "Liens rapides",
+    "openForCollaboration": "Disponible pour projets personnels"
   },
   "Technologies": {
     "title": "Technologies que j'utilise",
@@ -83,7 +97,42 @@
     "projectDescription": "Ce site web est un portfolio purement privé et non commercial, servant exclusivement à des fins expérimentales et d'apprentissage personnel. Il n'y a aucune utilisation commerciale ni intention de profit.",
     "legalBasis": "Base légale :",
     "legalBasisDescription": "Conformément au § 5 TMG, il n'existe donc aucune obligation de fournir un impressum.",
-    "anotherProject": "AutreProjet",
+    "anotherProject": "AnotherProject",
+    "lastUpdated": "Dernière mise à jour :"
+  },
+  "Privacy": {
+    "title": "Politique de Confidentialité",
+    "subtitle": "Comment nous gérons vos données et votre vie privée",
+    "overview": {
+      "title": "Aperçu",
+      "description": "Cette politique de confidentialité explique comment ce portfolio personnel traite vos données. En tant que site web privé et non commercial, nous collectons un minimum d'informations et priorisons votre vie privée.",
+      "keyPoint": "Vie privée d'abord",
+      "keyPointDescription": "Nous ne collectons, ne stockons ni ne vendons vos données personnelles. Tout est conçu en pensant à la vie privée."
+    },
+    "cookies": {
+      "title": "Cookies et Stockage Local",
+      "essential": {
+        "title": "Cookies Essentiels",
+        "description": "Préférences de langue et paramètres de thème stockés localement dans votre navigateur. Requis pour la fonctionnalité du site web."
+      },
+      "analytics": {
+        "title": "Cookies d'Analyse",
+        "description": "Vercel Analytics et Speed Insights respectueux de la vie privée pour surveiller les performances du site web. Aucune donnée personnelle n'est suivie ou stockée."
+      }
+    },
+    "dataProcessing": {
+      "title": "Traitement des Données",
+      "description": "Ce site web traite des données minimales pour fournir des fonctionnalités. Tout le traitement est effectué côté client dans votre navigateur ou via des services respectueux de la vie privée.",
+      "vercelTitle": "Vercel Analytics & Speed Insights",
+      "vercelDescription": "Ces services collectent des métriques de performance anonymes pour aider à améliorer le site web. Aucune information personnelle n'est collectée ou stockée."
+    },
+    "rights": {
+      "title": "Vos Droits",
+      "description": "Vous avez un contrôle total sur vos données et votre vie privée sur ce site web :",
+      "clearCookies": "Effacez les cookies de votre navigateur à tout moment pour réinitialiser les préférences",
+      "disableAnalytics": "Utilisez la bannière de cookies pour désactiver le suivi analytique",
+      "contact": "Contactez-nous si vous avez des questions sur votre vie privée"
+    },
     "lastUpdated": "Dernière mise à jour :"
   },
   "MediaDashboard": {

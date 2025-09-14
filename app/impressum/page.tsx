@@ -2,25 +2,14 @@
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
-"use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Shield, Info } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { useLanguage } from "@/hooks/use-language";
+import { getTranslations } from "next-intl/server";
 
-export default function Impressum() {
-  const t = useTranslations("Impressum");
-  const { language } = useLanguage();
-
-  const formatDate = (date: Date) => {
-    const localeMap = {
-      en: "en-US",
-      de: "de-DE",
-    };
-    return date.toLocaleDateString(localeMap[language] || "en-US");
-  };
+export default async function Impressum() {
+  const t = await getTranslations("Impressum");
 
   return (
     <div className="container mx-auto px-4 py-8 mt-20 max-w-4xl">
@@ -77,7 +66,8 @@ export default function Impressum() {
 
         <div className="text-center pt-6">
           <p className="text-xs">
-            {t("lastUpdated")} {formatDate(new Date())}
+            {t("lastUpdated")}
+            {new Date().toLocaleDateString()}
           </p>
         </div>
       </div>

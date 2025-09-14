@@ -378,7 +378,8 @@ Refer to `LICENSE` & `COPYRIGHT` files for formal wording.
 
 ## 16. Contact
 
-Portfolio: https://www.coldbydefault.com  
+Portfolio: https://www.coldbydefault.com
+Email: contact@coldbydefault.com
 Linktree: https://linktr.ee/ColdByDefault  
 For professional or security inquiries, reach out via the official channels listed above.
 

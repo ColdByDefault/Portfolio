@@ -19,7 +19,7 @@
     "responsive-design",
     "modern-web-technologies"
   ],
-  "author": "Yazan Abo-Ayash (ColdByDefault) <github.com/coldbydefault>",
+  "author": "Yazan Abo-Ayash (ColdByDefault) <contact@coldbydefault.com>",
   "license": "Copyright 2025 ColdByDefault. All Rights Reserved.",
   "private": true,
   "scripts": {
@@ -44,7 +44,7 @@
     "@neondatabase/serverless": "^1.0.1",
     "@prisma/client": "^6.15.0",
     "@radix-ui/react-alert-dialog": "^1.1.14",
-    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-hover-card": "^1.1.14",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-navigation-menu": "^1.2.13",

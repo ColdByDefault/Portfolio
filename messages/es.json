@@ -20,7 +20,21 @@
     "media": "Medios",
     "navigation": "Navegación",
     "impressum": "Aviso legal",
+    "privacy": "Privacidad",
     "legal": "Legal"
+  },
+  "Contact": {
+    "getInTouch": "Ponte en contacto",
+    "description": "¡No dudes en contactarme para colaboraciones, preguntas o simplemente para saludar!",
+    "email": "Email",
+    "clickToSendEmail": "Haz clic para enviar un email",
+    "socialMedia": "Redes sociales",
+    "info": "Info",
+    "location": "Ubicación",
+    "status": "Estado",
+    "training": "Formación",
+    "quickLinks": "Enlaces rápidos",
+    "openForCollaboration": "Disponible para proyectos personales"
   },
   "Technologies": {
     "title": "Tecnologías que utilizo",
@@ -83,7 +97,42 @@
     "projectDescription": "Este sitio web es un portafolio puramente privado y no comercial, que sirve exclusivamente para fines experimentales y de aprendizaje personal. No existe uso comercial ni intención de lucro.",
     "legalBasis": "Base legal:",
     "legalBasisDescription": "Según el § 5 TMG, no existe obligación de proporcionar un aviso legal.",
-    "anotherProject": "Otro proyecto",
+    "anotherProject": "AnotherProject",
+    "lastUpdated": "Última actualización:"
+  },
+  "Privacy": {
+    "title": "Política de Privacidad",
+    "subtitle": "Cómo manejamos tus datos y privacidad",
+    "overview": {
+      "title": "Resumen",
+      "description": "Esta política de privacidad explica cómo este portafolio personal maneja tus datos. Como un sitio web privado y no comercial, recopilamos información mínima y priorizamos tu privacidad.",
+      "keyPoint": "Privacidad Primero",
+      "keyPointDescription": "No recopilamos, almacenamos ni vendemos tus datos personales. Todo está diseñado pensando en la privacidad."
+    },
+    "cookies": {
+      "title": "Cookies y Almacenamiento Local",
+      "essential": {
+        "title": "Cookies Esenciales",
+        "description": "Preferencias de idioma y configuraciones de tema almacenadas localmente en tu navegador. Requeridas para la funcionalidad del sitio web."
+      },
+      "analytics": {
+        "title": "Cookies de Análisis",
+        "description": "Vercel Analytics y Speed Insights que respetan la privacidad para monitorear el rendimiento del sitio web. No se rastrean ni almacenan datos personales."
+      }
+    },
+    "dataProcessing": {
+      "title": "Procesamiento de Datos",
+      "description": "Este sitio web procesa datos mínimos para proporcionar funcionalidad. Todo el procesamiento se realiza del lado del cliente en tu navegador o a través de servicios que cumplen con la privacidad.",
+      "vercelTitle": "Vercel Analytics & Speed Insights",
+      "vercelDescription": "Estos servicios recopilan métricas de rendimiento anónimas para ayudar a mejorar el sitio web. No se recopila ni almacena información personal."
+    },
+    "rights": {
+      "title": "Tus Derechos",
+      "description": "Tienes control total sobre tus datos y privacidad en este sitio web:",
+      "clearCookies": "Borra las cookies de tu navegador en cualquier momento para restablecer las preferencias",
+      "disableAnalytics": "Usa el banner de cookies para desactivar el seguimiento de análisis",
+      "contact": "Contáctanos si tienes preguntas sobre tu privacidad"
+    },
     "lastUpdated": "Última actualización:"
   },
   "MediaDashboard": {
