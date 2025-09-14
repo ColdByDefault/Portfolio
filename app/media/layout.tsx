@@ -1,33 +1,22 @@
 /**
+ * Media Dashboard Layout - Layout for the main media dashboard page
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
+
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
+import { generateMediaSectionSEO } from "@/lib/seo";
 
-
-export const metadata: Metadata = {
-  title: "Media Dashboard - Portfolio",
-  description:
-    "Central hub for navigating all content and resources including blogs, projects, and more.",
-  keywords: [
-    "media",
-    "dashboard",
-    "blog",
-    "projects",
-    "portfolio",
-    "navigation",
-  ],
-};
-
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  return generateMediaSectionSEO("dashboard", locale);
+}
 
 export default function MediaLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="min-h-screen">
-      {children}
-    </div>
-  );
+  return <div className="min-h-screen">{children}</div>;
 }
