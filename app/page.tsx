@@ -18,7 +18,6 @@ import { CertificationShowcase } from "@/components/cer";
 import { Hero } from "@/components/hero";
 import LoadingScreen from "@/components/visuals/LoadingScreen";
 import { Technologies } from "@/components/tech";
-import { ProjectsShowcase } from "@/components/projects";
 import { GitHubShowcase } from "@/components/github";
 import { PageSpeedInsights } from "@/components/pagespeed";
 import { useState, useEffect } from "react";
@@ -120,7 +119,6 @@ export default function Home() {
 
         {/* Content Container */}
         <div className="relative z-10 dark:-mt-[100vh]">
-          <ProjectsShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
           <div className="py-12 px-4 sm:px-6 lg:px-8" id="github">
             <GitHubShowcase />
           </div>

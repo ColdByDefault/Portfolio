@@ -70,11 +70,11 @@ const ProjectCard = ({ project, index: _index }: ProjectCardProps) => {
         onMouseLeave={onMouseLeave}
       >
         {isFeaturedProject(project) && (
-          <div className="absolute top-0 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium px-3 py-1 text-center z-30">
+          <div className="absolute top-0 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium px-3 py-1 text-center z-1">
             {t("featuredProject")}
           </div>
         )}{" "}
-        <CardHeader className="py-4 relative z-20">
+        <CardHeader className="py-4 relative z-1">
           <div className="flex items-start justify-between">
             <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors">
               {project.title}
@@ -84,7 +84,7 @@ const ProjectCard = ({ project, index: _index }: ProjectCardProps) => {
             </Badge>
           </div>
         </CardHeader>
-        <CardContent className="space-y-4 relative z-20">
+        <CardContent className="space-y-4 relative z-1">
           <div className="h-24 overflow-hidden">
             <p
               ref={descriptionRef}
@@ -148,7 +148,7 @@ const ProjectCard = ({ project, index: _index }: ProjectCardProps) => {
                 variant="ghost"
                 size="sm"
                 onClick={onCopyClick}
-                className="h-6 w-6 p-0 cursor-pointer hover:bg-muted relative z-10"
+                className="h-6 w-6 p-0 cursor-pointer hover:bg-muted relative z-1"
               >
                 {copied ? (
                   <FiCheck className="h-3 w-3 text-green-500" />
@@ -162,14 +162,14 @@ const ProjectCard = ({ project, index: _index }: ProjectCardProps) => {
             </code>
           </div>
         </CardContent>
-        <CardFooter className="relative z-20">
+        <CardFooter className="relative z-1">
           {/* Action Buttons */}
           <div className="flex gap-2 pt-2 justify-between w-full">
             <Button
               variant="outline"
               size="sm"
               asChild
-              className="flex-1 cursor-pointer hover:bg-primary/10 relative z-10"
+              className="flex-1 cursor-pointer hover:bg-primary/10 relative z-1"
             >
               <Link
                 href={project.githubUrl}
@@ -186,7 +186,7 @@ const ProjectCard = ({ project, index: _index }: ProjectCardProps) => {
               <Button
                 size="sm"
                 asChild
-                className="flex-1 cursor-pointer hover:bg-primary/90 relative z-10"
+                className="flex-1 cursor-pointer hover:bg-primary/90 relative z-1"
               >
                 <Link
                   href={project.liveUrl}

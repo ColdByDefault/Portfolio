@@ -41,12 +41,10 @@ import {
   FaRobot,
   FaFigma,
   FaUsers,
-  FaComments,
   FaLightbulb,
   FaSearch,
   FaVideo,
   FaImage,
-  FaChalkboardTeacher,
   FaBook,
   FaDatabase,
   FaCode,
@@ -55,20 +53,14 @@ import {
   FaLayerGroup,
   FaPuzzlePiece,
 } from "react-icons/fa";
-import { RiOpenaiFill, RiFlowChart, RiTeamFill } from "react-icons/ri";
+import { RiOpenaiFill, RiFlowChart } from "react-icons/ri";
 import { BiLogoVisualStudio } from "react-icons/bi";
 import { DiScrum } from "react-icons/di";
 import { FiServer } from "react-icons/fi";
-import {
-  TbAutomation,
-  TbPresentationAnalytics,
-  TbVectorTriangle,
-  TbBinaryTree,
-} from "react-icons/tb";
+import { TbAutomation, TbVectorTriangle, TbBinaryTree } from "react-icons/tb";
 import {
   Box,
   Database,
-  Users,
   MessageCircle,
   Clock,
   FileText,
