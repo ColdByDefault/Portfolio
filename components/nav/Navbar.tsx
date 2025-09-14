@@ -21,7 +21,8 @@ import {
   Atom,
   BookOpenCheck,
   SquareLibrary,
-  MessageSquare,
+  Contact,
+  Brush,  
 } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-toggle";
 import Link from "next/link";
@@ -39,6 +40,11 @@ export default function Navbar() {
       name: t("home"),
       href: "/",
       icon: Home,
+    },
+    {
+      name: t("aboutSite"),
+      href: "/#this-portfolio",
+      icon: Brush,
     },
     {
       name: t("mcp"),
@@ -130,7 +136,7 @@ export default function Navbar() {
                   size="icon"
                   aria-label="Open contact information"
                 >
-                  <MessageSquare className="h-4 w-4" aria-hidden="true" />
+                  <Contact className="h-4 w-4" aria-hidden="true" />
                 </Button>
               </ContactSheet>
             </div>
@@ -162,7 +168,7 @@ export default function Navbar() {
               size="icon"
               aria-label="Open contact information"
             >
-              <MessageSquare className="h-4 w-4" aria-hidden="true" />
+              <Contact className="h-4 w-4" aria-hidden="true" />
             </Button>
           </ContactSheet>
           {/* Mobile Theme Toggle */}

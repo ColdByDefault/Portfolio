@@ -13,6 +13,7 @@
   "Navigation": {
     "home": "Hem",
     "about": "Om mig",
+    "aboutSite": "Om sajten",
     "projects": "Projekt",
     "mcp": "MCP",
     "technologies": "Teknologier",
@@ -231,5 +232,43 @@
         "category": "project"
       }
     ]
+  },
+  "PortfolioAbout": {
+    "title": "Om Denna Portfolio",
+    "description": "En modern, högpresterande utvecklarportfolio som visar full-stack-kapacitet med företagsarkitektur, tillgänglighetsstandarder och toppmoderna teknologier.",
+    "performanceBadge": "95+ Google Lighthouse Poäng",
+    "techHighlights": "Byggd Med Moderna Teknologier",
+    "readMore": "Läs Mer",
+    "readMoreNote": "Detaljerad dokumentation kommer snart",
+    "features": {
+      "techStack": {
+        "title": "Full-Stack-Arkitektur",
+        "description": "Moderna Next.js 15 med React 19, TypeScript strict mode och företagsmönster för skalbar utveckling."
+      },
+      "cleanArchitecture": {
+        "title": "Ren Kodarkitektur",
+        "description": "Välorganiserad kodbas med separation av concerns genom dedikerade lib-, data-, hooks- och components-mappar."
+      },
+      "database": {
+        "title": "Databas & Lagring",
+        "description": "Typsäker PostgreSQL med Prisma ORM på Neons serverlösa plattform för pålitliga dataoperationer."
+      },
+      "performance": {
+        "title": "Prestanda & Tillgänglighet",
+        "description": "Optimerad för hastighet och tillgänglighet med 95+ Google Lighthouse poäng över alla mätvärden."
+      },
+      "mainFeatures": {
+        "title": "Huvudfunktioner",
+        "description": "Innehållshantering med bloggsystem, mediegaleri och organiserat bibliotek för att visa upp arbete."
+      },
+      "techFeatures": {
+        "title": "Avancerade Integrationer",
+        "description": "Realtids GitHub MCP-server, live PageSpeed övervakning och automatiserade CI/CD-arbetsflöden."
+      },
+      "localization": {
+        "title": "Internationalisering",
+        "description": "Flerspråkigt stöd med auto-detektering, temaväxling och lokaliserad innehållsleverans."
+      }
+    }
   }
 }
