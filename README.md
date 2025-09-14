@@ -1,6 +1,6 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V4.2.0
+# ColdByDefault Portfolio · V4.2.1
 
 Modern, secure, high‑performance developer portfolio built with Next.js 15.5.1, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
@@ -20,7 +20,7 @@ v3
 
 [![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/beb9337a-f033-4377-9e03-26f96c36a41a.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/beb9337a-f033-4377-9e03-26f96c36a41a)
 
-latest 4
+latest >= 4
 
 [![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/76e31353-a33c-4db5-9263-8ede3103f951.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/76e31353-a33c-4db5-9263-8ede3103f951)
 
