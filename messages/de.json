@@ -37,17 +37,21 @@
     "openForCollaboration": "Verfügbar für Hobbyprojekte"
   },
   "Technologies": {
-    "title": "Technologien, die ich verwende",
-    "manyMoreTechnologies": "...und viele weitere Technologien in meinem Toolkit",
+    "title": "Fähigkeiten, Technologien & Expertise",
+    "manyMoreTechnologies": "...und viele weitere Fähigkeiten & Technologien in meinem Toolkit",
     "categories": {
       "uiFrontend": "UI & Frontend",
       "backendApis": "Backend & APIs",
+      "softwareEngineeringFundamentals": "Software-Engineering Grundlagen",
       "databasesStorage": "Datenbanken & Speicher",
       "infrastructureDevops": "Infrastruktur & DevOps",
-      "aiLlm": "KI & LLM",
-      "automationWorkflow": "Automatisierung & Workflow",
-      "toolsProductivity": "Tools & Produktivität",
-      "architectureDiagrams": "Architektur & Diagramme"
+      "aiAutomation": "KI & Automatisierung",
+      "developmentWorkflow": "Entwicklungsworkflow",
+      "designCreative": "Design & Kreativ",
+      "businessProductivity": "Business & Produktivitäts-Tools",
+      "documentationTechnicalWriting": "Dokumentation & Technisches Schreiben",
+      "professionalSkills": "Berufliche Fähigkeiten",
+      "softSkills": "Soft Skills"
     }
   },
   "Certifications": {
