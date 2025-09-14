@@ -1,0 +1,32 @@
+# Backup Branch Synchronization
+#
+# This workflow automatically synchronizes the 'backup' branch with the 'main' branch
+# whenever changes are pushed to main. This ensures that the backup branch always
+# contains the same code as the production main branch, providing a safety net
+# and maintaining branch parity.
+#
+# The workflow performs a non-fast-forward merge to preserve commit history
+# and creates a merge commit for traceability.
+#
+name: Sync Backup Branch
+
+on:
+  push:
+    branches: [main] # Trigger only when main branch receives new commits
+
+jobs:
+  sync-backup:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository with full history to enable proper merging
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch complete history for all branches
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Merge main branch changes into backup branch
+      - name: Sync backup branch
+        run: |
+          git checkout backup              # Switch to backup branch
+          git merge main --no-ff          # Merge main with explicit merge commit
+          git push origin backup          # Push updated backup branch to remote

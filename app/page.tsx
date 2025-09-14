@@ -25,6 +25,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { CompanyBanner } from "@/components/companies";
 import { Background } from "@/components/visuals";
+import PortoCard from "@/components/aboutPorto";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -119,6 +120,9 @@ export default function Home() {
 
         {/* Content Container */}
         <div className="relative z-10 dark:-mt-[100vh]">
+          <div className="container mx-auto px-4 py-8">
+            <PortoCard />
+          </div>
           <div className="py-12 px-4 sm:px-6 lg:px-8" id="github">
             <GitHubShowcase />
           </div>
