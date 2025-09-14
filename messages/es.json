@@ -37,17 +37,21 @@
     "openForCollaboration": "Disponible para proyectos personales"
   },
   "Technologies": {
-    "title": "Tecnologías que utilizo",
-    "manyMoreTechnologies": "...y muchas más tecnologías en mi caja de herramientas",
+    "title": "Habilidades, Tecnologías y Experiencia",
+    "manyMoreTechnologies": "...y muchas más habilidades y tecnologías en mi caja de herramientas",
     "categories": {
       "uiFrontend": "UI & Frontend",
       "backendApis": "Backend & APIs",
+      "softwareEngineeringFundamentals": "Fundamentos de Ingeniería de Software",
       "databasesStorage": "Bases de datos & Almacenamiento",
       "infrastructureDevops": "Infraestructura & DevOps",
-      "aiLlm": "IA & LLM",
-      "automationWorkflow": "Automatización & Flujos de trabajo",
-      "toolsProductivity": "Herramientas & Productividad",
-      "architectureDiagrams": "Arquitectura & Diagramas"
+      "aiAutomation": "IA & Automatización",
+      "developmentWorkflow": "Flujo de Desarrollo",
+      "designCreative": "Diseño & Creatividad",
+      "businessProductivity": "Herramientas de Negocio & Productividad",
+      "documentationTechnicalWriting": "Documentación & Escritura Técnica",
+      "professionalSkills": "Habilidades Profesionales",
+      "softSkills": "Habilidades Blandas"
     }
   },
   "Certifications": {
@@ -102,12 +106,12 @@
   },
   "Privacy": {
     "title": "Política de Privacidad",
-    "subtitle": "Cómo manejamos tus datos y privacidad",
+    "subtitle": "Cómo manejo tus datos y privacidad",
     "overview": {
       "title": "Resumen",
-      "description": "Esta política de privacidad explica cómo este portafolio personal maneja tus datos. Como un sitio web privado y no comercial, recopilamos información mínima y priorizamos tu privacidad.",
+      "description": "Esta política de privacidad explica cómo este portafolio personal maneja tus datos. Como un sitio web privado y no comercial, recopilo información mínima y priorizo tu privacidad.",
       "keyPoint": "Privacidad Primero",
-      "keyPointDescription": "No recopilamos, almacenamos ni vendemos tus datos personales. Todo está diseñado pensando en la privacidad."
+      "keyPointDescription": "No recopilo, almaceno ni vendo tus datos personales. Todo está diseñado pensando en la privacidad."
     },
     "cookies": {
       "title": "Cookies y Almacenamiento Local",

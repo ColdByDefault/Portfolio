@@ -37,17 +37,21 @@
     "openForCollaboration": "Tillgänglig för hobbyprojekt"
   },
   "Technologies": {
-    "title": "Teknologier jag använder",
-    "manyMoreTechnologies": "...och många fler teknologier i min verktygslåda",
+    "title": "Färdigheter, Teknologier & Expertis",
+    "manyMoreTechnologies": "...och många fler färdigheter och teknologier i min verktygslåda",
     "categories": {
       "uiFrontend": "UI & Frontend",
       "backendApis": "Backend & API:er",
+      "softwareEngineeringFundamentals": "Mjukvaruteknik Grunderna",
       "databasesStorage": "Databaser & Lagring",
       "infrastructureDevops": "Infrastruktur & DevOps",
-      "aiLlm": "AI & LLM",
-      "automationWorkflow": "Automatisering & Arbetsflöden",
-      "toolsProductivity": "Verktyg & Produktivitet",
-      "architectureDiagrams": "Arkitektur & Diagram"
+      "aiAutomation": "AI & Automatisering",
+      "developmentWorkflow": "Utvecklingsflöde",
+      "designCreative": "Design & Kreativitet",
+      "businessProductivity": "Business & Produktivitetsverktyg",
+      "documentationTechnicalWriting": "Dokumentation & Teknisk Skrivande",
+      "professionalSkills": "Professionella Färdigheter",
+      "softSkills": "Mjuka Färdigheter"
     }
   },
   "Certifications": {
@@ -102,12 +106,12 @@
   },
   "Privacy": {
     "title": "Integritetspolicy",
-    "subtitle": "Hur vi hanterar dina data och integritet",
+    "subtitle": "Hur jag hanterar dina data och integritet",
     "overview": {
       "title": "Översikt",
-      "description": "Denna integritetspolicy förklarar hur denna personliga portfolio hanterar dina data. Som en privat, icke-kommersiell webbplats samlar vi in minimal information och prioriterar din integritet.",
+      "description": "Denna integritetspolicy förklarar hur denna personliga portfolio hanterar dina data. Som en privat, icke-kommersiell webbplats samlar jag in minimal information och prioriterar din integritet.",
       "keyPoint": "Integritet först",
-      "keyPointDescription": "Vi samlar inte in, lagrar eller säljer dina personuppgifter. Allt är designat med integritet i åtanke."
+      "keyPointDescription": "Jag samlar inte in, lagrar eller säljer dina personuppgifter. Allt är designat med integritet i åtanke."
     },
     "cookies": {
       "title": "Cookies & Lokal Lagring",

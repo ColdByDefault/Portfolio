@@ -37,17 +37,21 @@
     "openForCollaboration": "Available for hobby projects"
   },
   "Technologies": {
-    "title": "Technologies I Use",
-    "manyMoreTechnologies": "...and many more technologies in my toolkit",
+    "title": "Skills, Technologies & Expertise",
+    "manyMoreTechnologies": "...and many more skills & technologies in my toolkit",
     "categories": {
       "uiFrontend": "UI & Frontend",
       "backendApis": "Backend & APIs",
+      "softwareEngineeringFundamentals": "Software Engineering Fundamentals",
       "databasesStorage": "Databases & Storage",
       "infrastructureDevops": "Infrastructure & DevOps",
-      "aiLlm": "AI & LLM",
-      "automationWorkflow": "Automation & Workflow",
-      "toolsProductivity": "Tools & Productivity",
-      "architectureDiagrams": "Architecture & Diagrams"
+      "aiAutomation": "AI & Automation",
+      "developmentWorkflow": "Development Workflow",
+      "designCreative": "Design & Creative",
+      "businessProductivity": "Business & Productivity Tools",
+      "documentationTechnicalWriting": "Documentation & Technical Writing",
+      "professionalSkills": "Professional Skills",
+      "softSkills": "Soft Skills"
     }
   },
   "Certifications": {
@@ -102,12 +106,12 @@
   },
   "Privacy": {
     "title": "Privacy Policy",
-    "subtitle": "How we handle your data and privacy",
+    "subtitle": "How I handle your data and privacy",
     "overview": {
       "title": "Overview",
-      "description": "This privacy policy explains how this personal portfolio handles your data. As a private, non-commercial website, we collect minimal information and prioritize your privacy.",
+      "description": "This privacy policy explains how this personal portfolio handles your data. As a private, non-commercial website, I collect minimal information and prioritize your privacy.",
       "keyPoint": "Privacy First",
-      "keyPointDescription": "We don't collect, store, or sell your personal data. Everything is designed with privacy in mind."
+      "keyPointDescription": "I don't collect, store, or sell your personal data. Everything is designed with privacy in mind."
     },
     "cookies": {
       "title": "Cookies & Local Storage",

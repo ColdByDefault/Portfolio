@@ -37,17 +37,21 @@
     "openForCollaboration": "Verfügbar für Hobbyprojekte"
   },
   "Technologies": {
-    "title": "Technologien, die ich verwende",
-    "manyMoreTechnologies": "...und viele weitere Technologien in meinem Toolkit",
+    "title": "Fähigkeiten, Technologien & Expertise",
+    "manyMoreTechnologies": "...und viele weitere Fähigkeiten & Technologien in meinem Toolkit",
     "categories": {
       "uiFrontend": "UI & Frontend",
       "backendApis": "Backend & APIs",
+      "softwareEngineeringFundamentals": "Software-Engineering Grundlagen",
       "databasesStorage": "Datenbanken & Speicher",
       "infrastructureDevops": "Infrastruktur & DevOps",
-      "aiLlm": "KI & LLM",
-      "automationWorkflow": "Automatisierung & Workflow",
-      "toolsProductivity": "Tools & Produktivität",
-      "architectureDiagrams": "Architektur & Diagramme"
+      "aiAutomation": "KI & Automatisierung",
+      "developmentWorkflow": "Entwicklungsworkflow",
+      "designCreative": "Design & Kreativ",
+      "businessProductivity": "Business & Produktivitäts-Tools",
+      "documentationTechnicalWriting": "Dokumentation & Technisches Schreiben",
+      "professionalSkills": "Berufliche Fähigkeiten",
+      "softSkills": "Soft Skills"
     }
   },
   "Certifications": {
@@ -102,12 +106,12 @@
   },
   "Privacy": {
     "title": "Datenschutzerklärung",
-    "subtitle": "Wie wir mit Ihren Daten und Ihrer Privatsphäre umgehen",
+    "subtitle": "Wie ich mit Ihren Daten und Ihrer Privatsphäre umgehe",
     "overview": {
       "title": "Übersicht",
-      "description": "Diese Datenschutzerklärung erklärt, wie dieses persönliche Portfolio mit Ihren Daten umgeht. Als private, nicht-kommerzielle Website sammeln wir minimale Informationen und priorisieren Ihre Privatsphäre.",
+      "description": "Diese Datenschutzerklärung erklärt, wie dieses persönliche Portfolio mit Ihren Daten umgeht. Als private, nicht-kommerzielle Website sammle ich minimale Informationen und priorisiere Ihre Privatsphäre.",
       "keyPoint": "Privatsphäre zuerst",
-      "keyPointDescription": "Wir sammeln, speichern oder verkaufen keine persönlichen Daten. Alles ist auf Privatsphäre ausgelegt."
+      "keyPointDescription": "Ich sammle, speichere oder verkaufe keine persönlichen Daten. Alles ist auf Privatsphäre ausgelegt."
     },
     "cookies": {
       "title": "Cookies & lokaler Speicher",

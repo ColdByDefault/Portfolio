@@ -394,3 +394,388 @@ export function generateBlogListSEO(
     } as BlogStructuredData,
   };
 }
+
+/**
+ * Generate SEO metadata for legal pages (privacy, terms, impressum)
+ */
+export function generateLegalPageSEO(
+  pageType: "privacy" | "impressum" | "terms",
+  locale: string = "en"
+) {
+  const config = locale === "de" ? seoConfigDE : seoConfigEN;
+  const baseUrl = config.siteUrl;
+
+  const pageContent = {
+    privacy: {
+      en: {
+        title: "Privacy Policy",
+        description:
+          "Learn how we collect, use, and protect your personal information on our website.",
+        keywords: [
+          "privacy policy",
+          "data protection",
+          "GDPR",
+          "personal information",
+          "cookies",
+        ],
+        path: "/privacy",
+      },
+      de: {
+        title: "Datenschutzerklärung",
+        description:
+          "Erfahren Sie, wie wir Ihre persönlichen Daten auf unserer Website sammeln, verwenden und schützen.",
+        keywords: [
+          "Datenschutzerklärung",
+          "Datenschutz",
+          "DSGVO",
+          "persönliche Daten",
+          "Cookies",
+        ],
+        path: "/privacy",
+      },
+    },
+    impressum: {
+      en: {
+        title: "Legal Notice",
+        description:
+          "Legal information and contact details as required by German law.",
+        keywords: [
+          "legal notice",
+          "impressum",
+          "contact information",
+          "legal requirements",
+        ],
+        path: "/impressum",
+      },
+      de: {
+        title: "Impressum",
+        description:
+          "Rechtliche Informationen und Kontaktdaten nach deutschem Recht.",
+        keywords: [
+          "Impressum",
+          "rechtliche Informationen",
+          "Kontaktdaten",
+          "Anbieterkennzeichnung",
+        ],
+        path: "/impressum",
+      },
+    },
+    terms: {
+      en: {
+        title: "Terms of Service",
+        description: "Terms and conditions for using our website and services.",
+        keywords: [
+          "terms of service",
+          "terms and conditions",
+          "user agreement",
+          "legal terms",
+        ],
+        path: "/terms",
+      },
+      de: {
+        title: "Nutzungsbedingungen",
+        description:
+          "Allgemeine Geschäftsbedingungen für die Nutzung unserer Website und Dienste.",
+        keywords: [
+          "Nutzungsbedingungen",
+          "AGB",
+          "Nutzungsvereinbarung",
+          "rechtliche Bedingungen",
+        ],
+        path: "/terms",
+      },
+    },
+  };
+
+  const currentLang = locale === "de" ? "de" : "en";
+  const content = pageContent[pageType][currentLang];
+  const fullTitle = `${content.title} | ${config.siteName}`;
+  const canonicalUrl = `${baseUrl}${content.path}`;
+
+  return {
+    title: {
+      default: fullTitle,
+      template: `%s | ${config.siteName}`,
+    },
+    description: content.description,
+    keywords: [...config.keywords, ...content.keywords],
+    authors: [{ name: config.author }],
+    creator: config.author,
+    publisher: config.siteName,
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        en: `${baseUrl}${content.path}`,
+        de: `${baseUrl}/de${content.path}`,
+      },
+    },
+    openGraph: {
+      title: content.title,
+      description: content.description,
+      url: canonicalUrl,
+      siteName: config.siteName,
+      type: "website",
+      locale: config.locale,
+      images: [
+        {
+          url: `${baseUrl}/og-legal.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `${content.title} - ${config.siteName}`,
+        },
+      ],
+    },
+    twitter: {
+      card: config.twitter.cardType,
+      title: content.title,
+      description: content.description,
+      creator: config.twitter.handle,
+      images: [`${baseUrl}/og-legal.jpg`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large" as const,
+        "max-snippet": -1,
+      },
+    },
+  };
+}
+
+/**
+ * Generate SEO metadata for media section pages
+ */
+export function generateMediaSectionSEO(
+  section: "dashboard" | "about" | "blog" | "projects" | "library",
+  locale: string = "en"
+) {
+  const config = locale === "de" ? seoConfigDE : seoConfigEN;
+  const baseUrl = config.siteUrl;
+
+  const sectionContent = {
+    dashboard: {
+      en: {
+        title: "Media Dashboard",
+        description:
+          "Central hub for navigating all content and resources including blogs, projects, and more.",
+        keywords: [
+          "media dashboard",
+          "content hub",
+          "navigation",
+          "portfolio sections",
+        ],
+        path: "/media",
+      },
+      de: {
+        title: "Medien Dashboard",
+        description:
+          "Zentrale Anlaufstelle für die Navigation durch alle Inhalte und Ressourcen einschließlich Blogs, Projekte und mehr.",
+        keywords: [
+          "Medien Dashboard",
+          "Content Hub",
+          "Navigation",
+          "Portfolio Bereiche",
+        ],
+        path: "/media",
+      },
+    },
+    about: {
+      en: {
+        title: "About Me - Full Stack Developer",
+        description:
+          "Learn more about my journey, philosophy, and passion for creating exceptional digital experiences. Currently interning at Avarno GmbH, specializing in Next.js, React, and modern web technologies.",
+        keywords: [
+          "about",
+          "developer",
+          "full stack",
+          "Next.js",
+          "React",
+          "JavaScript",
+          "TypeScript",
+          "web development",
+          "software engineer",
+          "Avarno GmbH",
+        ],
+        path: "/about",
+      },
+      de: {
+        title: "Über Mich - Full Stack Entwickler",
+        description:
+          "Erfahren Sie mehr über meinen Werdegang, meine Philosophie und meine Leidenschaft für die Erstellung außergewöhnlicher digitaler Erlebnisse. Derzeit Praktikant bei Avarno GmbH, spezialisiert auf Next.js, React und moderne Webtechnologien.",
+        keywords: [
+          "über mich",
+          "Entwickler",
+          "Full Stack",
+          "Next.js",
+          "React",
+          "JavaScript",
+          "TypeScript",
+          "Webentwicklung",
+          "Software Ingenieur",
+          "Avarno GmbH",
+        ],
+        path: "/about",
+      },
+    },
+    blog: {
+      en: {
+        title: "Blog - Web Development & Technology",
+        description:
+          "Discover articles about web development, programming, and technology. Sharing insights and tutorials on modern development practices.",
+        keywords: [
+          "blog",
+          "articles",
+          "tutorials",
+          "web development",
+          "programming",
+          "technology",
+          "Next.js",
+          "React",
+        ],
+        path: "/blog",
+      },
+      de: {
+        title: "Blog - Webentwicklung & Technologie",
+        description:
+          "Entdecken Sie Artikel über Webentwicklung, Programmierung und Technologie. Teilen von Einblicken und Tutorials zu modernen Entwicklungspraktiken.",
+        keywords: [
+          "Blog",
+          "Artikel",
+          "Tutorials",
+          "Webentwicklung",
+          "Programmierung",
+          "Technologie",
+          "Next.js",
+          "React",
+        ],
+        path: "/blog",
+      },
+    },
+    projects: {
+      en: {
+        title: "Projects - Full Stack Development Showcase",
+        description:
+          "Explore my portfolio of web development projects, including full-stack applications, React components, and modern web solutions.",
+        keywords: [
+          "projects",
+          "portfolio",
+          "web development",
+          "full stack",
+          "React",
+          "Next.js",
+          "applications",
+        ],
+        path: "/projects",
+      },
+      de: {
+        title: "Projekte - Full Stack Entwicklung Showcase",
+        description:
+          "Entdecken Sie mein Portfolio von Webentwicklungsprojekten, einschließlich Full-Stack-Anwendungen, React-Komponenten und modernen Web-Lösungen.",
+        keywords: [
+          "Projekte",
+          "Portfolio",
+          "Webentwicklung",
+          "Full Stack",
+          "React",
+          "Next.js",
+          "Anwendungen",
+        ],
+        path: "/projects",
+      },
+    },
+    library: {
+      en: {
+        title: "Library - Code Resources & Components",
+        description:
+          "Browse through my collection of reusable components, code snippets, and development resources for modern web applications.",
+        keywords: [
+          "library",
+          "components",
+          "code resources",
+          "snippets",
+          "reusable",
+          "web development",
+        ],
+        path: "/library",
+      },
+      de: {
+        title: "Bibliothek - Code Ressourcen & Komponenten",
+        description:
+          "Durchstöbern Sie meine Sammlung von wiederverwendbaren Komponenten, Code-Snippets und Entwicklungsressourcen für moderne Webanwendungen.",
+        keywords: [
+          "Bibliothek",
+          "Komponenten",
+          "Code Ressourcen",
+          "Snippets",
+          "wiederverwendbar",
+          "Webentwicklung",
+        ],
+        path: "/library",
+      },
+    },
+  };
+
+  const currentLang = locale === "de" ? "de" : "en";
+  const content = sectionContent[section][currentLang];
+  const fullTitle = `${content.title} | ${config.siteName}`;
+  const canonicalUrl = `${baseUrl}${content.path}`;
+
+  return {
+    title: {
+      default: fullTitle,
+      template: `%s | ${config.siteName}`,
+    },
+    description: content.description,
+    keywords: [...config.keywords, ...content.keywords],
+    authors: [{ name: config.author }],
+    creator: config.author,
+    publisher: config.siteName,
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        en: `${baseUrl}${content.path}`,
+        de: `${baseUrl}/de${content.path}`,
+      },
+    },
+    openGraph: {
+      title: content.title,
+      description: content.description,
+      url: canonicalUrl,
+      siteName: config.siteName,
+      type: "website",
+      locale: config.locale,
+      images: [
+        {
+          url: `${baseUrl}/og-${section}.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `${content.title} - ${config.siteName}`,
+        },
+      ],
+    },
+    twitter: {
+      card: config.twitter.cardType,
+      title: content.title,
+      description: content.description,
+      creator: config.twitter.handle,
+      images: [`${baseUrl}/og-${section}.jpg`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large" as const,
+        "max-snippet": -1,
+      },
+    },
+  };
+}

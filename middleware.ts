@@ -61,7 +61,7 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
   let browserLang = "en";
 
   for (const lang of languages) {
-    const langCode = lang.code.split("-")[0]; // Extract main language code (e.g., 'de' from 'de-DE')
+    const langCode = lang.code.split("-")[0]; // Extract main language code
     if (!langCode) continue;
 
     browserLang = langCode;

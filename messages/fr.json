@@ -37,17 +37,21 @@
     "openForCollaboration": "Disponible pour projets personnels"
   },
   "Technologies": {
-    "title": "Technologies que j'utilise",
-    "manyMoreTechnologies": "...et bien d'autres technologies dans ma boîte à outils",
+    "title": "Compétences, Technologies et Expertise",
+    "manyMoreTechnologies": "...et bien d'autres compétences et technologies dans ma boîte à outils",
     "categories": {
       "uiFrontend": "UI & Frontend",
       "backendApis": "Backend & APIs",
+      "softwareEngineeringFundamentals": "Fondamentaux du Génie Logiciel",
       "databasesStorage": "Bases de données & Stockage",
       "infrastructureDevops": "Infrastructure & DevOps",
-      "aiLlm": "IA & LLM",
-      "automationWorkflow": "Automatisation & Flux de travail",
-      "toolsProductivity": "Outils & Productivité",
-      "architectureDiagrams": "Architecture & Schémas"
+      "aiAutomation": "IA & Automatisation",
+      "developmentWorkflow": "Flux de Développement",
+      "designCreative": "Design & Créativité",
+      "businessProductivity": "Outils Business & Productivité",
+      "documentationTechnicalWriting": "Documentation & Rédaction Technique",
+      "professionalSkills": "Compétences Professionnelles",
+      "softSkills": "Compétences Relationnelles"
     }
   },
   "Certifications": {
@@ -102,12 +106,12 @@
   },
   "Privacy": {
     "title": "Politique de Confidentialité",
-    "subtitle": "Comment nous gérons vos données et votre vie privée",
+    "subtitle": "Comment je gère vos données et votre vie privée",
     "overview": {
       "title": "Aperçu",
-      "description": "Cette politique de confidentialité explique comment ce portfolio personnel traite vos données. En tant que site web privé et non commercial, nous collectons un minimum d'informations et priorisons votre vie privée.",
+      "description": "Cette politique de confidentialité explique comment ce portfolio personnel traite vos données. En tant que site web privé et non commercial, je collecte un minimum d'informations et priorise votre vie privée.",
       "keyPoint": "Vie privée d'abord",
-      "keyPointDescription": "Nous ne collectons, ne stockons ni ne vendons vos données personnelles. Tout est conçu en pensant à la vie privée."
+      "keyPointDescription": "Je ne collecte, ne stocke ni ne vends vos données personnelles. Tout est conçu en pensant à la vie privée."
     },
     "cookies": {
       "title": "Cookies et Stockage Local",
@@ -131,7 +135,7 @@
       "description": "Vous avez un contrôle total sur vos données et votre vie privée sur ce site web :",
       "clearCookies": "Effacez les cookies de votre navigateur à tout moment pour réinitialiser les préférences",
       "disableAnalytics": "Utilisez la bannière de cookies pour désactiver le suivi analytique",
-      "contact": "Contactez-nous si vous avez des questions sur votre vie privée"
+      "contact": "Contactez-moi si vous avez des questions sur votre vie privée"
     },
     "lastUpdated": "Dernière mise à jour :"
   },

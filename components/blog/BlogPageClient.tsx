@@ -84,7 +84,8 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
             Blogs
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Thoughts, tutorials, and insights about development and technology.
+            Personal thoughts, tutorials, insights, and stories about various
+            topics.
           </p>
         </div>
         {/* Language Filter */}

@@ -174,31 +174,31 @@ export default function ContactSheet({
                 {
                   label: "GitLab",
                   icon: "FaGitlab",
-                  href: "#",
+                  href: "https://gitlab.com/ColdByDefault",
                   displayName: "GitLab",
                 },
                 {
                   label: "CodePen",
                   icon: "FaCodepen",
-                  href: "#",
+                  href: "https://codepen.io/ColdByDefault",
                   displayName: "CodePen",
                 },
                 {
                   label: "Developer Roadmaps",
                   icon: "SiRoadmapdotsh",
-                  href: "#",
+                  href: "https://roadmap.sh/u/coldbydefault",
                   displayName: "Roadmaps",
                 },
                 {
                   label: "Daily.dev",
                   icon: "SiDailydotdev",
-                  href: "#",
+                  href: "https://app.daily.dev/coldbydefault",
                   displayName: "Daily.dev",
                 },
                 {
                   label: "DEV Community",
                   icon: "FaDev",
-                  href: "#",
+                  href: "https://dev.to/coldbydefault",
                   displayName: "Dev",
                 },
               ].map((platform) => {

@@ -30,15 +30,46 @@ import {
   SiJira,
   SiNotion,
   SiMiro,
+  SiWebstorm,
+  SiPycharm,
+  SiMarkdown,
+  SiLatex,
+  SiGoogleanalytics,
 } from "react-icons/si";
-import { FaBrain, FaRobot, FaFigma } from "react-icons/fa";
+import {
+  FaBrain,
+  FaRobot,
+  FaFigma,
+  FaUsers,
+  FaLightbulb,
+  FaSearch,
+  FaVideo,
+  FaImage,
+  FaBook,
+  FaDatabase,
+  FaCode,
+  FaNetworkWired,
+  FaCogs,
+  FaLayerGroup,
+  FaPuzzlePiece,
+} from "react-icons/fa";
 import { RiOpenaiFill, RiFlowChart } from "react-icons/ri";
 import { BiLogoVisualStudio } from "react-icons/bi";
 import { DiScrum } from "react-icons/di";
-import { FiLayers, FiServer } from "react-icons/fi";
-import { TbAutomation } from "react-icons/tb";
-import { Box } from "lucide-react";
-import { Database } from "lucide-react";
+import { FiServer } from "react-icons/fi";
+import { TbAutomation, TbVectorTriangle, TbBinaryTree } from "react-icons/tb";
+import {
+  Box,
+  Database,
+  MessageCircle,
+  Clock,
+  FileText,
+  Network,
+  Monitor,
+  MonitorSpeaker,
+  Cpu,
+  Workflow,
+} from "lucide-react";
 
 export interface TechItem {
   name: string;
@@ -62,7 +93,7 @@ export const techGroups: TechGroup[] = [
       { name: "TailwindCSS", Icon: SiTailwindcss },
       { name: "JavaScript", Icon: SiJavascript },
       { name: "TypeScript", Icon: SiTypescript },
-      { name: "shadcn/ui", Icon: Box },
+      { name: "shadcnUI", Icon: Box },
     ],
   },
   {
@@ -74,7 +105,20 @@ export const techGroups: TechGroup[] = [
       { name: "Prisma", Icon: SiPrisma },
       { name: "REST APIs", Icon: FiServer },
       { name: "LangChain", Icon: SiLangchain },
-      { name: "LangFlow", Icon: TbAutomation },
+    ],
+  },
+  {
+    category: "Software Engineering Fundamentals",
+    categoryKey: "softwareEngineeringFundamentals",
+    items: [
+      { name: "Object-Oriented Programming", Icon: FaLayerGroup },
+      { name: "Data Structures", Icon: TbBinaryTree },
+      { name: "Algorithms", Icon: Cpu },
+      { name: "Design Patterns", Icon: FaPuzzlePiece },
+      { name: "Software Architecture Patterns", Icon: Workflow },
+      { name: "Basic Networking", Icon: FaNetworkWired },
+      { name: "System Design", Icon: FaCogs },
+      { name: "Code Quality & Clean Code", Icon: FaCode },
     ],
   },
   {
@@ -84,6 +128,8 @@ export const techGroups: TechGroup[] = [
       { name: "PostgreSQL", Icon: SiPostgresql },
       { name: "Supabase", Icon: SiSupabase },
       { name: "Neon", Icon: Database },
+      { name: "Vector Databases", Icon: TbVectorTriangle },
+      { name: "Data Stack", Icon: FaDatabase },
     ],
   },
   {
@@ -95,47 +141,82 @@ export const techGroups: TechGroup[] = [
       { name: "Firebase", Icon: SiFirebase },
       { name: "Vercel", Icon: SiVercel },
       { name: "Netlify", Icon: SiNetlify },
+      { name: "Windows OS", Icon: Monitor },
     ],
   },
   {
-    category: "AI & LLM",
-    categoryKey: "aiLlm",
+    category: "AI & Automation",
+    categoryKey: "aiAutomation",
     items: [
       { name: "ChatGPT", Icon: RiOpenaiFill },
-      { name: "LLM (generic)", Icon: FaBrain },
+      { name: "LLM Integration", Icon: FaBrain },
       { name: "Ollama", Icon: SiOllama },
-    ],
-  },
-  {
-    category: "Automation & Workflow",
-    categoryKey: "automationWorkflow",
-    items: [
+      { name: "RAG Systems", Icon: Network },
+      { name: "MCPs", Icon: FileText },
       { name: "n8n", Icon: SiN8N },
       { name: "GitHub Actions", Icon: SiGithubactions },
-      { name: "Automations", Icon: FaRobot },
+      { name: "LangFlow", Icon: TbAutomation },
+      { name: "Workflow Automation", Icon: FaRobot },
     ],
   },
   {
-    category: "Tools & Productivity",
-    categoryKey: "toolsProductivity",
+    category: "Development Workflow",
+    categoryKey: "developmentWorkflow",
     items: [
       { name: "Git", Icon: SiGit },
       { name: "GitHub", Icon: SiGithub },
       { name: "Bitbucket", Icon: SiBitbucket },
       { name: "VSCode", Icon: BiLogoVisualStudio },
-      { name: "Figma", Icon: FaFigma },
-      { name: "Jira", Icon: SiJira },
-      { name: "Notion", Icon: SiNotion },
-      { name: "Miro", Icon: SiMiro },
-      { name: "SCRUM", Icon: DiScrum },
+      { name: "WebStorm", Icon: SiWebstorm },
+      { name: "PyCharm", Icon: SiPycharm },
     ],
   },
   {
-    category: "Architecture & Diagrams",
-    categoryKey: "architectureDiagrams",
+    category: "Design & Creative",
+    categoryKey: "designCreative",
     items: [
-      { name: "Software Architecture", Icon: FiLayers },
+      { name: "Figma", Icon: FaFigma },
+      { name: "Photo Editing", Icon: FaImage },
+      { name: "Video Editing", Icon: FaVideo },
+    ],
+  },
+  {
+    category: "Business & Productivity Tools",
+    categoryKey: "businessProductivity",
+    items: [
+      { name: "Jira", Icon: SiJira },
+      { name: "Notion", Icon: SiNotion },
+      { name: "Miro", Icon: SiMiro },
+      { name: "SEO & Google Console", Icon: SiGoogleanalytics },
+    ],
+  },
+  {
+    category: "Documentation & Technical Writing",
+    categoryKey: "documentationTechnicalWriting",
+    items: [
       { name: "Diagrams & Flowcharts", Icon: RiFlowChart },
+      { name: "LaTeX", Icon: SiLatex },
+      { name: "Markdown", Icon: SiMarkdown },
+      { name: "PowerPoint Presentations", Icon: MonitorSpeaker },
+    ],
+  },
+  {
+    category: "Professional Skills",
+    categoryKey: "professionalSkills",
+    items: [
+      { name: "SCRUM/Agile", Icon: DiScrum },
+      { name: "Research & Information Finding", Icon: FaSearch },
+      { name: "Technical Documentation", Icon: FaBook },
+    ],
+  },
+  {
+    category: "Soft Skills",
+    categoryKey: "softSkills",
+    items: [
+      { name: "Team Collaboration", Icon: FaUsers },
+      { name: "Communication", Icon: MessageCircle },
+      { name: "Problem Solving", Icon: FaLightbulb },
+      { name: "Time Management", Icon: Clock },
     ],
   },
 ];
