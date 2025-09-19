@@ -44,7 +44,7 @@ interface MobileControlsProps {
   onMenuToggle?: () => void;
 }
 
-type DesktopControlsProps = object;
+interface DesktopControlsProps {}
 
 export function useNavItems(): NavItem[] {
   const t = useTranslations("Navigation");
@@ -132,7 +132,7 @@ export function DesktopNavigation({
   );
 }
 
-export function DesktopControls(_props: DesktopControlsProps) {
+export function DesktopControls({}: DesktopControlsProps) {
   return (
     <div className="hidden lg:flex items-center gap-2">
       <div className="border-r-2 pr-2">
@@ -141,7 +141,7 @@ export function DesktopControls(_props: DesktopControlsProps) {
             variant="ghost"
             size="icon"
             aria-label="Open contact information"
-            className="cursor-pointer"
+            className="cursor-pointer hover:text-sky-600 transition-colors duration-300"
           >
             <Contact className="h-4 w-4" aria-hidden={true} />
           </Button>
@@ -159,6 +159,7 @@ export function DesktopControls(_props: DesktopControlsProps) {
           aria-label="Visit ColdByDefault GitHub profile (opens in new tab)"
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:text-sky-600 transition-colors duration-300"
         >
           <FaGithub aria-hidden={true} />
         </Link>
@@ -167,9 +168,7 @@ export function DesktopControls(_props: DesktopControlsProps) {
   );
 }
 
-export function MobileControls({
-  onMenuToggle: _onMenuToggle,
-}: MobileControlsProps) {
+export function MobileControls({ onMenuToggle }: MobileControlsProps) {
   return (
     <div className="flex lg:hidden items-center space-x-2 px-4">
       <ContactSheet>
@@ -177,7 +176,7 @@ export function MobileControls({
           variant="ghost"
           size="icon"
           aria-label="Open contact information"
-          className="cursor-pointer"
+          className="cursor-pointer hover:text-sky-600 transition-colors duration-300"
         >
           <Contact className="h-4 w-4" aria-hidden={true} />
         </Button>

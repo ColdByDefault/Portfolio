@@ -26,6 +26,7 @@ export function ModeToggle() {
           size="icon"
           aria-label="Toggle theme"
           aria-expanded="false"
+          className="hover:text-sky-600 transition-colors duration-300"
         >
           <Sun
             className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"

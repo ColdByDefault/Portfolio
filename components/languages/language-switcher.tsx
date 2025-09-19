@@ -89,7 +89,7 @@ const LanguageSwitcher = () => {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="flex items-center w-12 h-10 cursor-pointer"
+          className="flex items-center w-12 h-10 cursor-pointer hover:text-sky-600 transition-colors duration-300"
           aria-label={`Current language: ${getCurrentName()}. Click to change language`}
         >
           <Languages aria-hidden="true" />
