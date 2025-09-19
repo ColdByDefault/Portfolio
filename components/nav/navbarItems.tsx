@@ -111,14 +111,15 @@ export function DesktopNavigation({
             role="menuitem"
             aria-label={`Navigate to ${item.name} section`}
           >
-            <div className="relative overflow-hidden">
-              <div className="flex items-center space-x-2 group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-                <Icon className="h-4 w-4" aria-hidden={true} />
-                <span>{item.name}</span>
-              </div>
-              <div className="absolute top-7 left-0 flex items-center space-x-2 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-                <Icon className="h-4 w-4" aria-hidden={true} />
-                <span>{item.name}</span>
+            <div className="flex items-center space-x-2">
+              <Icon className="h-4 w-4" aria-hidden={true} />
+              <div className="relative overflow-hidden">
+                <div className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                  <span>{item.name}</span>
+                </div>
+                <div className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                  <span>{item.name}</span>
+                </div>
               </div>
             </div>
           </Link>
