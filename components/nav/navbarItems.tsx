@@ -103,7 +103,7 @@ export function DesktopNavigation({
             key={item.name}
             href={item.href}
             className={`
-              flex items-center space-x-2 text-sm font-medium transition-colors
+              group flex items-center space-x-2 text-sm font-medium transition-colors
               ${lightLink} ${darkLink}
               ${isLastItem ? "border-x pl-6 ml-2" : ""}
               focus:outline-none px-2 py-1
@@ -111,8 +111,16 @@ export function DesktopNavigation({
             role="menuitem"
             aria-label={`Navigate to ${item.name} section`}
           >
-            <Icon className="h-4 w-4" aria-hidden={true} />
-            <span>{item.name}</span>
+            <div className="relative overflow-hidden">
+              <div className="flex items-center space-x-2 group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                <Icon className="h-4 w-4" aria-hidden={true} />
+                <span>{item.name}</span>
+              </div>
+              <div className="absolute top-7 left-0 flex items-center space-x-2 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                <Icon className="h-4 w-4" aria-hidden={true} />
+                <span>{item.name}</span>
+              </div>
+            </div>
           </Link>
         );
       })}
