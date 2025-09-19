@@ -137,6 +137,7 @@ export function DesktopControls({}: DesktopControlsProps) {
             variant="ghost"
             size="icon"
             aria-label="Open contact information"
+            className="cursor-pointer"
           >
             <Contact className="h-4 w-4" aria-hidden={true} />
           </Button>
@@ -170,6 +171,7 @@ export function MobileControls({ onMenuToggle }: MobileControlsProps) {
           variant="ghost"
           size="icon"
           aria-label="Open contact information"
+          className="cursor-pointer"
         >
           <Contact className="h-4 w-4" aria-hidden={true} />
         </Button>
