@@ -44,7 +44,7 @@ interface MobileControlsProps {
   onMenuToggle?: () => void;
 }
 
-interface DesktopControlsProps {}
+type DesktopControlsProps = object;
 
 export function useNavItems(): NavItem[] {
   const t = useTranslations("Navigation");
@@ -132,7 +132,7 @@ export function DesktopNavigation({
   );
 }
 
-export function DesktopControls({}: DesktopControlsProps) {
+export function DesktopControls(_props: DesktopControlsProps) {
   return (
     <div className="hidden lg:flex items-center gap-2">
       <div className="border-r-2 pr-2">
@@ -168,7 +168,9 @@ export function DesktopControls({}: DesktopControlsProps) {
   );
 }
 
-export function MobileControls({ onMenuToggle }: MobileControlsProps) {
+export function MobileControls({
+  onMenuToggle: _onMenuToggle,
+}: MobileControlsProps) {
   return (
     <div className="flex lg:hidden items-center space-x-2 px-4">
       <ContactSheet>
