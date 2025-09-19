@@ -112,7 +112,10 @@ export function DesktopNavigation({
             aria-label={`Navigate to ${item.name} section`}
           >
             <div className="flex items-center space-x-2">
-              <Icon className="h-4 w-4" aria-hidden={true} />
+              <Icon
+                className="h-4 w-4 transition-colors duration-300 group-hover:text-sky-600"
+                aria-hidden={true}
+              />
               <div className="relative overflow-hidden">
                 <div className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
                   <span>{item.name}</span>
