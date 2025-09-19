@@ -11,6 +11,7 @@ import { useTranslations } from "next-intl";
 
 function Hero() {
   const t = useTranslations("Hero");
+  const light = "from-black/90 to-gray-500";
 
   return (
     <main
@@ -48,7 +49,11 @@ function Hero() {
           {/* Content */}
           <div className="space-y-6 max-w-4xl">
             <div className="space-y-4">
-              <h1 className="text-3xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-5xl">
+              <h1
+                className={`bg-gradient-to-r text-transparent flex justify-center text-3xl sm:text-3xl md:text-4xl lg:text-5xl
+                            ${light} bg-clip-text font-extrabold
+                          dark:from-gray-900 dark:to-gray-200`}
+              >
                 Yazan Abo-Ayash
               </h1>
               <div className="space-y-2">
@@ -72,7 +77,7 @@ function Hero() {
               </Button>
               {/* <ContactForm /> */}
             </div>
-{/*             <div className="flex flex-col sm:flex-row gap-4 items-center">
+            {/*             <div className="flex flex-col sm:flex-row gap-4 items-center">
               <SocialLinks />
             </div> */}
           </div>

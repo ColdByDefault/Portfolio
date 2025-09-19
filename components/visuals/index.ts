@@ -9,10 +9,4 @@ export { default as LoadingSkeleton } from "./LoadingSkeleton";
 export { default as CentralizedLoading } from "./CentralizedLoading";
 export { Background } from "./motion-background";
 
-// Loading examples and patterns
-export {
-  ExampleWithSuspense,
-  ExampleWithHook,
-  ExampleWithOverlay,
-  ExampleInlineLoading,
-} from "./LoadingExamples";
+
