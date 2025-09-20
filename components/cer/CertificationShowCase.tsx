@@ -69,34 +69,38 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
     return (
       <Card
         key={cert.id}
-        className={`px-3 ${getCardHoverClasses(isCurrentCardHovered)}`}
+        className={`px-3 py-4 h-full flex flex-col ${getCardHoverClasses(
+          isCurrentCardHovered
+        )}`}
         onMouseEnter={() => setHoveredCard(cert.id)}
         onMouseLeave={() => setHoveredCard(null)}
       >
-        <CardTitle>
-          <h3 className="text-lg font-semibold text-center">{cert.title}</h3>
+        <CardTitle className="mb-3">
+          <h3 className="text-lg font-semibold text-center min-h-[3rem] flex items-center justify-center">
+            {cert.title}
+          </h3>
         </CardTitle>
-        <div className="flex w-full justify-center items-center pt-2">
+        <div className="flex w-full justify-center items-center pt-2 mb-4">
           <ImageZoomDialog src={cert.image} alt={cert.title} title={cert.title}>
             <Image
               src={cert.image}
               alt={cert.title}
-              width={300}
+              width={400}
               height={280}
-              className="object-cover rounded-md"
-              style={{ width: "auto", height: "auto" }}
+              className="object-cover rounded-md w-full max-w-[400px] h-[280px]"
+              style={{ width: "100%", maxWidth: "400px", height: "280px" }}
               priority={cert.id <= 3}
             />
           </ImageZoomDialog>
         </div>
-        <div className="">
-          <p className="text-sm mb-1">
+        <div className="flex-1 space-y-2">
+          <p className="text-sm">
             {t("issuedBy")} {cert.issuer}
           </p>
           <p className="text-sm text-gray-600 dark:text-gray-400">
             {t("date")} {cert.date}
           </p>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
+          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
             {tDescriptions(cert.descriptionKey)}
           </p>
         </div>
@@ -309,7 +313,7 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
     } else if (isTablet) {
       return "flex flex-col gap-4 px-4";
     } else {
-      return "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6";
+      return "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start";
     }
   };
 

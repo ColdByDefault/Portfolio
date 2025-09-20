@@ -36,7 +36,7 @@ export const certifications = [
   },
   {
     id: 4,
-    title: "Udemy HTML and CSS for Beginners - Build a Website & Launch Online",
+    title: "Udemy HTML and CSS for Beginners",
     image: "/assets/htmlC.png",
     issuer: "Udemy",
     description:
