@@ -109,9 +109,7 @@ export default function Technologies() {
     return (
       <Card
         key={group.category}
-        className={`${getCardHoverClasses(
-          isCurrentCardHovered
-        )} flex flex-col h-full`}
+        className={`${getCardHoverClasses(isCurrentCardHovered)} flex flex-col`}
         onMouseEnter={() => setHoveredCard(group.category)}
         onMouseLeave={() => setHoveredCard(null)}
       >
@@ -120,7 +118,7 @@ export default function Technologies() {
             {tCategories(group.categoryKey)}
           </CardTitle>
         </CardHeader>
-        <CardContent className="px-3 sm:px-6 flex-grow flex items-center justify-center">
+        <CardContent className="px-3 sm:px-6 flex items-center justify-center">
           <div className="flex flex-wrap gap-2 sm:gap-3 justify-center items-center w-full">
             {group.items.map(({ name, Icon }) => (
               <motion.div
@@ -185,7 +183,7 @@ export default function Technologies() {
                 {slides.map((slide, slideIndex) => (
                   <CarouselItem key={slideIndex} className="pl-2 md:pl-4">
                     <div
-                      className={`grid gap-4 sm:gap-6 items-stretch h-full ${
+                      className={`grid gap-4 sm:gap-6 items-start ${
                         cardsPerSlide === 1
                           ? "grid-cols-1"
                           : cardsPerSlide === 2
