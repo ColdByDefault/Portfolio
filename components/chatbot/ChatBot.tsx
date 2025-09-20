@@ -78,8 +78,7 @@ export function ChatBot({
   const [inputValue, setInputValue] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const { messages, isLoading, error, sendMessage, clearError, clearMessages } =
-    useChatBot();
+  const { messages, isLoading, error, sendMessage, clearError } = useChatBot();
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -95,7 +94,6 @@ export function ChatBot({
 
   const handleCloseChat = () => {
     setIsOpen(false);
-    clearMessages(); // Clear all messages when closing chat
     setInputValue(""); // Clear input
   };
 
@@ -181,12 +179,12 @@ export function ChatBot({
                       <Sparkles className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="font-semibold text-foreground mb-2">
-                      Hi! I'm Reem 👋
+                      Hi! I&apos;m Reem 👋
                     </h3>
                     <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-                      I'm your AI assistant, here to help you explore Yazan's
-                      portfolio and answer questions about his projects, skills,
-                      and experience.
+                      I&apos;m your AI assistant, here to help you explore
+                      Yazan&apos;s portfolio and answer questions about his
+                      projects, skills, and experience.
                     </p>
                   </div>
                 )}
@@ -285,7 +283,7 @@ export function ChatBot({
                   <Input
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Ask me about the portfolio..."
+                    placeholder="Ask me about Yazan or his portfolio..."
                     disabled={isLoading}
                     className="pr-12 bg-background border-border/50 focus:border-primary/50 rounded-full transition-all duration-200 placeholder:text-muted-foreground/60"
                     maxLength={1000}

@@ -6,7 +6,7 @@
 
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import type {
   ChatMessage,
   ChatBotResponse,
@@ -30,6 +30,82 @@ export function useChatBot(): UseChatBotReturn {
   const [error, setError] = useState<string | null>(null);
   const sessionIdRef = useRef<string | null>(null);
 
+  // Storage keys for persistence
+  const STORAGE_KEY_MESSAGES = "chatbot_messages";
+  const STORAGE_KEY_SESSION = "chatbot_session";
+
+  // Load messages from localStorage on component mount
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const savedMessages = localStorage.getItem(STORAGE_KEY_MESSAGES);
+        const savedSession = localStorage.getItem(STORAGE_KEY_SESSION);
+
+        if (savedMessages) {
+          const parsedMessages = JSON.parse(savedMessages) as ChatMessage[];
+          // Convert timestamp strings back to Date objects
+          const messagesWithDates: ChatMessage[] = parsedMessages.map(
+            (msg) => ({
+              ...msg,
+              timestamp: new Date(msg.timestamp),
+            })
+          );
+          setMessages(messagesWithDates);
+        }
+
+        if (savedSession) {
+          sessionIdRef.current = savedSession;
+        }
+      } catch (error) {
+        console.error("Failed to load chat history from localStorage:", error);
+        // Clear corrupted data
+        localStorage.removeItem(STORAGE_KEY_MESSAGES);
+        localStorage.removeItem(STORAGE_KEY_SESSION);
+      }
+    }
+  }, []);
+
+  // Save messages to localStorage whenever messages change
+  useEffect(() => {
+    if (typeof window !== "undefined" && messages.length > 0) {
+      try {
+        localStorage.setItem(STORAGE_KEY_MESSAGES, JSON.stringify(messages));
+      } catch (error) {
+        console.error("Failed to save chat history to localStorage:", error);
+      }
+    }
+  }, [messages]);
+
+  // Save session ID to localStorage whenever it changes
+  useEffect(() => {
+    if (typeof window !== "undefined" && sessionIdRef.current) {
+      try {
+        localStorage.setItem(STORAGE_KEY_SESSION, sessionIdRef.current);
+      } catch (error) {
+        console.error("Failed to save session ID to localStorage:", error);
+      }
+    }
+  });
+
+  // Clear chat history when user leaves the page completely
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleBeforeUnload = () => {
+        localStorage.removeItem(STORAGE_KEY_MESSAGES);
+        localStorage.removeItem(STORAGE_KEY_SESSION);
+      };
+
+      window.addEventListener("beforeunload", handleBeforeUnload);
+
+      return () => {
+        window.removeEventListener("beforeunload", handleBeforeUnload);
+      };
+    }
+
+    // Return empty cleanup function if window is not available
+    return () => {};
+  }, []);
+
   const generateMessageId = (): string => {
     return `msg_${Date.now()}_${Math.random().toString(36).substring(2)}`;
   };
@@ -41,6 +117,12 @@ export function useChatBot(): UseChatBotReturn {
   const clearMessages = useCallback(() => {
     setMessages([]);
     sessionIdRef.current = null;
+
+    // Also clear from localStorage
+    if (typeof window !== "undefined") {
+      localStorage.removeItem(STORAGE_KEY_MESSAGES);
+      localStorage.removeItem(STORAGE_KEY_SESSION);
+    }
   }, []);
 
   const sendMessage = useCallback(
@@ -107,6 +189,15 @@ export function useChatBot(): UseChatBotReturn {
 
         // Store session ID for future requests
         sessionIdRef.current = data.data.sessionId;
+
+        // Save session ID to localStorage
+        if (typeof window !== "undefined") {
+          try {
+            localStorage.setItem(STORAGE_KEY_SESSION, data.data.sessionId);
+          } catch (error) {
+            console.error("Failed to save session ID to localStorage:", error);
+          }
+        }
 
         // Create assistant message
         const assistantMessage: ChatMessage = {
