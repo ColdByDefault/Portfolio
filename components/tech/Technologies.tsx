@@ -59,8 +59,6 @@ export default function Technologies() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(false);
   const t = useTranslations("Technologies");
   const tCategories = useTranslations("Technologies.categories");
   const { cardsPerSlide } = useResponsiveCarousel();
@@ -85,8 +83,6 @@ export default function Technologies() {
 
     const updateCarouselState = () => {
       setCurrentSlide(api.selectedScrollSnap());
-      setCanScrollPrev(api.canScrollPrev());
-      setCanScrollNext(api.canScrollNext());
     };
 
     updateCarouselState();
