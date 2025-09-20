@@ -1,195 +1,175 @@
 /**
- * ChatBot Main Component
+ * Simple Floating ChatBot Component
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { useChatBot } from "./useChatBot";
-import { ChatHeader } from "./ChatHeader";
-import { ChatMessage } from "./ChatMessage";
-import { ChatInput } from "./ChatInput";
-import type { ChatBotUIProps } from "@/types/chatbot";
+import React, { useState, useRef, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { MessageCircle, X, Send, Loader2 } from "lucide-react";
+import { useChatBot } from "./use-chatbot";
+import type { ChatBotUIProps, ChatMessage } from "@/types/chatbot";
 
 export function ChatBot({
-  className,
-  position = "bottom-right",
-  theme = "system",
+  className = "",
+  position = "bottom-left",
 }: ChatBotUIProps) {
-  const { state, messages, sendMessage, toggleChat, clearChat, isTyping } =
+  const [isOpen, setIsOpen] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const { messages, isLoading, isConnected, error, sendMessage, clearError } =
     useChatBot();
 
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Show chatbot after 4 seconds
+  // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, []);
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
-  if (!isVisible) return null;
+  // Clear error when opening chat
+  useEffect(() => {
+    if (isOpen && error) {
+      clearError();
+    }
+  }, [isOpen, error, clearError]);
 
-  const positionStyles = {
-    "bottom-right": { bottom: "20px", right: "20px" },
-    "bottom-left": { bottom: "20px", left: "20px" },
-    "top-right": { top: "20px", right: "20px" },
-    "top-left": { top: "20px", left: "20px" },
+  const handleSendMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!inputValue.trim() || isLoading) return;
+
+    const message = inputValue.trim();
+    setInputValue("");
+
+    try {
+      await sendMessage(message);
+    } catch (err) {
+      // Error is handled by the hook
+      console.error("Failed to send message:", err);
+    }
+  };
+
+  const positionClasses = {
+    "bottom-left": "bottom-4 left-4",
+    "bottom-right": "bottom-4 right-4",
+    "top-left": "top-4 left-4",
+    "top-right": "top-4 right-4",
   };
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        zIndex: 50,
-        width: "320px",
-        height: "400px",
-        backgroundColor: "white",
-        border: "1px solid #ccc",
-        borderRadius: "8px",
-        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-        display: "flex",
-        flexDirection: "column",
-        ...positionStyles[position],
-      }}
-      className={className}
-    >
-      {!state.isOpen ? (
-        <button
-          onClick={toggleChat}
-          style={{
-            width: "60px",
-            height: "60px",
-            borderRadius: "50%",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            cursor: "pointer",
-            fontSize: "24px",
-          }}
+    <div className={`fixed ${positionClasses[position]} z-50 ${className}`}>
+      {!isOpen ? (
+        // Chat Button
+        <Button
+          onClick={() => setIsOpen(true)}
+          size="lg"
+          className="rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-primary/90"
         >
-          💬
-        </button>
+          <MessageCircle className="h-5 w-5" />
+          <span className="sr-only">Open chat</span>
+        </Button>
       ) : (
-        <>
-          <ChatHeader
-            onClose={toggleChat}
-            onMinimize={toggleChat}
-            isConnected={state.isConnected}
-          />
-
-          <div style={{ flex: 1, padding: "16px", overflowY: "auto" }}>
-            {messages.length === 0 && (
+        // Chat Window
+        <Card className="w-80 h-96 shadow-xl border-0 bg-background/95 backdrop-blur-sm">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 bg-primary text-primary-foreground rounded-t-lg">
+            <CardTitle className="text-sm font-medium">
+              Chat Assistant
+            </CardTitle>
+            <div className="flex items-center gap-2">
               <div
-                style={{
-                  textAlign: "center",
-                  color: "#666",
-                  fontSize: "14px",
-                  padding: "32px 0",
-                }}
-              >
-                <p>👋 Hi! I'm your AI assistant.</p>
-                <p style={{ marginTop: "8px" }}>
-                  Ask me anything about ColdByDefault's projects and skills!
-                </p>
-              </div>
-            )}
-
-            {messages.map((message, index) => (
-              <ChatMessage
-                key={message.id}
-                message={message}
-                isLatest={index === messages.length - 1}
+                className={`w-2 h-2 rounded-full ${
+                  isConnected ? "bg-green-400" : "bg-red-400"
+                }`}
               />
-            ))}
-
-            {isTyping && (
-              <div style={{ display: "flex", justifyContent: "flex-start" }}>
-                <div
-                  style={{
-                    backgroundColor: "#f0f0f0",
-                    borderRadius: "8px",
-                    padding: "8px 12px",
-                    maxWidth: "75%",
-                  }}
-                >
-                  <div style={{ display: "flex", gap: "4px" }}>
-                    <div
-                      style={{
-                        width: "8px",
-                        height: "8px",
-                        backgroundColor: "#666",
-                        borderRadius: "50%",
-                      }}
-                    />
-                    <div
-                      style={{
-                        width: "8px",
-                        height: "8px",
-                        backgroundColor: "#666",
-                        borderRadius: "50%",
-                      }}
-                    />
-                    <div
-                      style={{
-                        width: "8px",
-                        height: "8px",
-                        backgroundColor: "#666",
-                        borderRadius: "50%",
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {state.error && (
-              <div
-                style={{
-                  backgroundColor: "#fee",
-                  color: "#c00",
-                  fontSize: "14px",
-                  padding: "12px",
-                  borderRadius: "8px",
-                  border: "1px solid #fcc",
-                }}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsOpen(false)}
+                className="h-6 w-6 p-0 hover:bg-primary/20 text-primary-foreground"
               >
-                <p style={{ fontWeight: "600" }}>Error</p>
-                <p>{state.error}</p>
-                <button
-                  onClick={clearChat}
-                  style={{
-                    marginTop: "8px",
-                    fontSize: "12px",
-                    textDecoration: "underline",
-                    background: "none",
-                    border: "none",
-                    color: "#c00",
-                    cursor: "pointer",
-                  }}
-                >
-                  Clear chat and retry
-                </button>
-              </div>
-            )}
-          </div>
+                <X className="h-4 w-4" />
+                <span className="sr-only">Close chat</span>
+              </Button>
+            </div>
+          </CardHeader>
 
-          <ChatInput
-            onSendMessage={sendMessage}
-            isLoading={state.isLoading || isTyping}
-            disabled={!state.isConnected}
-            placeholder={
-              !state.isConnected
-                ? "ChatBot is currently unavailable..."
-                : "Type your message..."
-            }
-            maxLength={1000}
-          />
-        </>
+          <CardContent className="p-0 flex flex-col h-full">
+            {/* Messages Area */}
+            <div className="flex-1 p-3 min-h-0 overflow-y-auto">
+              <div className="space-y-3">
+                {messages.length === 0 && (
+                  <div className="text-center text-muted-foreground text-sm py-8">
+                    Hi! I'm here to help you learn more about ColdByDefault's
+                    portfolio. Ask me anything!
+                  </div>
+                )}
+
+                {messages.map((message: ChatMessage) => (
+                  <div
+                    key={message.id}
+                    className={`flex ${
+                      message.role === "user" ? "justify-end" : "justify-start"
+                    }`}
+                  >
+                    <div
+                      className={`max-w-[80%] p-2 rounded-lg text-sm ${
+                        message.role === "user"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-muted"
+                      }`}
+                    >
+                      {message.content}
+                      {message.status === "sending" && (
+                        <Loader2 className="h-3 w-3 animate-spin ml-1 inline" />
+                      )}
+                    </div>
+                  </div>
+                ))}
+
+                {error && (
+                  <div className="text-center text-destructive text-sm py-2">
+                    {error}
+                  </div>
+                )}
+
+                <div ref={messagesEndRef} />
+              </div>
+            </div>
+
+            {/* Input Area */}
+            <div className="p-3 border-t">
+              <form onSubmit={handleSendMessage} className="flex gap-2">
+                <Input
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  placeholder="Type your message..."
+                  disabled={isLoading || !isConnected}
+                  className="flex-1"
+                  maxLength={1000}
+                />
+                <Button
+                  type="submit"
+                  size="sm"
+                  disabled={!inputValue.trim() || isLoading || !isConnected}
+                  className="px-3"
+                >
+                  {isLoading ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Send className="h-4 w-4" />
+                  )}
+                  <span className="sr-only">Send message</span>
+                </Button>
+              </form>
+            </div>
+          </CardContent>
+        </Card>
       )}
     </div>
   );
 }
+
+export default ChatBot;

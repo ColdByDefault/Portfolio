@@ -1,12 +1,8 @@
 /**
- * ChatBot UI Components
+ * ChatBot Components Barrel Exports
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 
-export { ChatBot } from "./ChatBot";
-export { ChatMessage } from "./ChatMessage";
-export { ChatInput } from "./ChatInput";
-export { ChatHeader } from "./ChatHeader";
-export { ChatBubble } from "./ChatBubble";
-export { useChatBot } from "./useChatBot";
+export { default as ChatBot } from "./ChatBot";
+export { useChatBot } from "./use-chatbot";
