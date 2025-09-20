@@ -197,9 +197,9 @@ export default function Technologies() {
                 ))}
               </CarouselContent>
 
-              {/* Custom Navigation Buttons - Closer to the slider */}
-              <CarouselPrevious className="-left-4 sm:-left-6 bg-white/90 dark:bg-gray-800/90 border-gray-200 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-800 shadow-md" />
-              <CarouselNext className="-right-4 sm:-right-6 bg-white/90 dark:bg-gray-800/90 border-gray-200 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-800 shadow-md" />
+              {/* Custom Navigation Buttons - Enhanced for better theming */}
+              <CarouselPrevious className="-left-4 sm:-left-6 bg-background/95 border-border hover:bg-accent hover:text-accent-foreground shadow-lg backdrop-blur-sm transition-all duration-200 hover:shadow-xl disabled:opacity-50 disabled:hover:bg-background/95" />
+              <CarouselNext className="-right-4 sm:-right-6 bg-background/95 border-border hover:bg-accent hover:text-accent-foreground shadow-lg backdrop-blur-sm transition-all duration-200 hover:shadow-xl disabled:opacity-50 disabled:hover:bg-background/95" />
             </Carousel>
 
             {/* Dot Indicators */}
@@ -212,8 +212,8 @@ export default function Technologies() {
                     size="sm"
                     className={`w-3 h-3 rounded-full p-0 transition-all duration-200 ${
                       index === currentSlide
-                        ? "bg-primary scale-110"
-                        : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                        ? "bg-primary scale-110 shadow-sm"
+                        : "bg-muted hover:bg-muted-foreground/20 border border-border"
                     }`}
                     onClick={() => goToSlide(index)}
                     aria-label={`Go to slide ${index + 1}`}
