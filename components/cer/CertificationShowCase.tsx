@@ -16,6 +16,7 @@ import {
   getOverlayStyles,
   gradientShiftCSS,
 } from "@/lib/card-animations";
+import { ImageZoomDialog } from "@/components/ui/image-zoom-dialog";
 
 interface CertificationShowcaseProps {
   className?: string;
@@ -76,15 +77,17 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
           <h3 className="text-lg font-semibold text-center">{cert.title}</h3>
         </CardTitle>
         <div className="flex w-full justify-center items-center pt-2">
-          <Image
-            src={cert.image}
-            alt={cert.title}
-            width={300}
-            height={280}
-            className="object-cover rounded-md"
-            style={{ width: "auto", height: "auto" }}
-            priority={cert.id <= 3}
-          />
+          <ImageZoomDialog src={cert.image} alt={cert.title} title={cert.title}>
+            <Image
+              src={cert.image}
+              alt={cert.title}
+              width={300}
+              height={280}
+              className="object-cover rounded-md"
+              style={{ width: "auto", height: "auto" }}
+              priority={cert.id <= 3}
+            />
+          </ImageZoomDialog>
         </div>
         <div className="">
           <p className="text-sm mb-1">
@@ -130,15 +133,21 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
         >
           <div className="flex items-center gap-4">
             <div className="flex-shrink-0">
-              <Image
+              <ImageZoomDialog
                 src={cert.image}
                 alt={cert.title}
-                width={80}
-                height={80}
-                className="object-cover rounded-md"
-                style={{ width: "auto", height: "auto" }}
-                priority={cert.id <= 3}
-              />
+                title={cert.title}
+              >
+                <Image
+                  src={cert.image}
+                  alt={cert.title}
+                  width={80}
+                  height={80}
+                  className="object-cover rounded-md"
+                  style={{ width: "auto", height: "auto" }}
+                  priority={cert.id <= 3}
+                />
+              </ImageZoomDialog>
             </div>
             <div className="min-w-0">
               <h3 className="text-lg font-semibold truncate">{cert.title}</h3>
@@ -160,15 +169,21 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
           <div className="px-5 pb-5 border-t border-gray-200 dark:border-gray-700 animate-in slide-in-from-top-2 duration-300">
             <div className="pt-4 space-y-4">
               <div className="flex justify-center">
-                <Image
+                <ImageZoomDialog
                   src={cert.image}
                   alt={cert.title}
-                  width={280}
-                  height={240}
-                  className="object-cover rounded-md"
-                  style={{ width: "auto", height: "auto" }}
-                  priority={cert.id <= 3}
-                />
+                  title={cert.title}
+                >
+                  <Image
+                    src={cert.image}
+                    alt={cert.title}
+                    width={280}
+                    height={240}
+                    className="object-cover rounded-md"
+                    style={{ width: "auto", height: "auto" }}
+                    priority={cert.id <= 3}
+                  />
+                </ImageZoomDialog>
               </div>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
@@ -210,15 +225,21 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
         >
           <div className="flex items-center gap-3">
             <div className="flex-shrink-0">
-              <Image
+              <ImageZoomDialog
                 src={cert.image}
                 alt={cert.title}
-                width={60}
-                height={60}
-                className="object-cover rounded-md"
-                style={{ width: "auto", height: "auto" }}
-                priority={cert.id <= 3}
-              />
+                title={cert.title}
+              >
+                <Image
+                  src={cert.image}
+                  alt={cert.title}
+                  width={60}
+                  height={60}
+                  className="object-cover rounded-md"
+                  style={{ width: "auto", height: "auto" }}
+                  priority={cert.id <= 3}
+                />
+              </ImageZoomDialog>
             </div>
             <div className="min-w-0">
               <h3 className="text-base font-semibold truncate">{cert.title}</h3>
@@ -240,15 +261,21 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
           <div className="px-4 pb-4 border-t border-gray-200 dark:border-gray-700 animate-in slide-in-from-top-2 duration-300">
             <div className="pt-4 space-y-3">
               <div className="flex justify-center">
-                <Image
+                <ImageZoomDialog
                   src={cert.image}
                   alt={cert.title}
-                  width={240}
-                  height={200}
-                  className="object-cover rounded-md"
-                  style={{ width: "auto", height: "auto" }}
-                  priority={cert.id <= 3}
-                />
+                  title={cert.title}
+                >
+                  <Image
+                    src={cert.image}
+                    alt={cert.title}
+                    width={240}
+                    height={200}
+                    className="object-cover rounded-md"
+                    style={{ width: "auto", height: "auto" }}
+                    priority={cert.id <= 3}
+                  />
+                </ImageZoomDialog>
               </div>
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
