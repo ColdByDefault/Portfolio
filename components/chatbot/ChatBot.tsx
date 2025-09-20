@@ -76,9 +76,19 @@ export function ChatBot({
 }: ChatBotUIProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const { messages, isLoading, error, sendMessage, clearError } = useChatBot();
+
+  // Show ChatBot button after 4 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -124,7 +134,7 @@ export function ChatBot({
     "top-right": "top-6 right-6",
   };
 
-  return (
+  return isVisible ? (
     <div className={`fixed ${positionClasses[position]} z-50 ${className}`}>
       {!isOpen ? (
         <Button
@@ -312,7 +322,7 @@ export function ChatBot({
         </Card>
       )}
     </div>
-  );
+  ) : null;
 }
 
 export default ChatBot;
