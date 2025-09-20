@@ -4,8 +4,22 @@ import createNextIntlPlugin from "next-intl/plugin";
 const nextConfig: NextConfig = {
   // Allow cross-origin requests from local network devices during development
   allowedDevOrigins: process.env.ALLOWED_DEV_ORIGINS?.split(",") || [],
+
+  // Performance optimizations
+  compress: true,
+  poweredByHeader: false,
+
+  // Image optimization with modern formats
   images: {
-    qualities: [100],
+    // Optimize image quality based on device capabilities
+    qualities: [75, 85, 100],
+    // Enable modern image formats
+    formats: ["image/avif", "image/webp"],
+    // Add image optimization for better performance
+    minimumCacheTTL: 31536000, // 1 year
+    dangerouslyAllowSVG: false,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
       {
         protocol: "https",
@@ -15,10 +29,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  // Experimental features for better performance
+  experimental: {
+    optimizePackageImports: ["lucide-react", "react-icons"],
+  },
   async headers() {
     return [
       {
-        // Apply comprehensive security headers
+        // Apply comprehensive security and performance headers
         source: "/(.*)",
         headers: [
           {
@@ -36,6 +55,15 @@ const nextConfig: NextConfig = {
           {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=(), payment=()",
+          },
+          // Performance headers
+          {
+            key: "X-DNS-Prefetch-Control",
+            value: "on",
+          },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains; preload",
           },
           {
             key: "Content-Security-Policy",
@@ -56,6 +84,27 @@ const nextConfig: NextConfig = {
                 ? ["upgrade-insecure-requests"]
                 : []),
             ].join("; "),
+          },
+        ],
+      },
+      {
+        // Static assets cache optimization
+        source:
+          "/((?!api/).*).(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|webp|avif)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        // API routes cache
+        source: "/api/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, s-maxage=86400, stale-while-revalidate=43200",
           },
         ],
       },

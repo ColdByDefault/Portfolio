@@ -37,7 +37,7 @@ export default function Home() {
     setMounted(true);
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2200);
+    }, 1500); // Reduced from 2200ms to 1500ms
     return () => clearTimeout(timer);
   }, []);
 
@@ -91,8 +91,10 @@ export default function Home() {
                     alt="Background image of Birmingham Museums Trust"
                     className="object-cover object-center"
                     priority
-                    quality={100}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                    quality={75}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                    sizes="100vw"
                     style={{
                       objectFit: "cover",
                       objectPosition: "center",

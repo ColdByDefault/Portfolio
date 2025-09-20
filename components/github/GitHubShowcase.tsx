@@ -8,6 +8,12 @@ import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { FaGithub, FaTerminal } from "react-icons/fa";
 import GitHubProfile from "./GitHubProfile";
 import GitHubRepositories from "./GitHubRepositories";
@@ -152,20 +158,28 @@ export default function GitHubShowcase({ className }: { className?: string }) {
     >
       {/* Section Header */}
       <div className="flex flex-col items-center space-y-2 text-center">
-        <h2 className="text-3xl font-light text-black dark:text-white">
+        <h2 className="text-3xl font-light text-black dark:text-white py-12">
           GitHub Activity
         </h2>
         <Drawer>
-          <DrawerTrigger asChild>
-            <Button
-              variant="outline"
-              size="sm"
-              className="text-green-500 cursor-pointer"
-            >
-              <FaTerminal className="mr-2 h-4 w-4" />
-              MCP Live
-            </Button>
-          </DrawerTrigger>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <DrawerTrigger asChild>
+                  <Button variant="default" size="sm" className="cursor-pointer animate-pulse">
+                    <FaTerminal className="mr-2 h-4 w-4 animate-pulse" />
+                    Start MCP Live
+                  </Button>
+                </DrawerTrigger>
+              </TooltipTrigger>
+              <TooltipContent className="hidden lg:block">
+                <p>
+                  Click to see live GitHub data fetching via Model Context
+                  Protocol
+                </p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           <DrawerContent>
             <DrawerHeader>
               <DrawerTitle>GitHub MCP Communication</DrawerTitle>
