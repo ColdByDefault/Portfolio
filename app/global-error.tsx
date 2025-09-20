@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { AlertCircle, RefreshCw, Home, Bug } from "lucide-react";
+import { AlertCircle, RefreshCw, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -23,8 +23,6 @@ export default function GlobalError({
     console.error("Global error occurred:", error);
   }, [error]);
 
-  const isDevelopment = process.env.NODE_ENV === "development";
-
   return (
     <html>
       <body className="min-h-screen ">
@@ -41,29 +39,12 @@ export default function GlobalError({
                   Something went wrong!
                 </CardTitle>
                 <CardDescription>
-                  We encountered an unexpected error.
+                  We encountered an unexpected error. Please try again or return
+                  to the home page.
                 </CardDescription>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              {isDevelopment && error.message && (
-                <div className="p-3 bg-muted rounded-md">
-                  <div className="flex items-start gap-2">
-                    <Bug className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-                    <div className="space-y-1">
-                      <p className="text-sm font-medium">Error Details:</p>
-                      <p className="text-xs text-muted-foreground font-mono break-all">
-                        {error.message}
-                      </p>
-                      {error.digest && (
-                        <p className="text-xs text-muted-foreground">
-                          Error ID: {error.digest}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )}
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button
                   onClick={() => {
