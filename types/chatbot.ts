@@ -36,8 +36,10 @@ export interface ChatBotRequest {
     | {
         page?: string | undefined;
         userAgent?: string | undefined;
+        timestamp?: number | undefined;
       }
     | undefined;
+  csrfToken?: string | undefined;
 }
 
 export interface ChatBotResponse {
@@ -46,6 +48,7 @@ export interface ChatBotResponse {
     message: string;
     sessionId: string;
     messageId: string;
+    csrfToken?: string;
   };
   error?: string;
   rateLimitInfo?: {

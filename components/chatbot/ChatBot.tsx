@@ -14,6 +14,17 @@ import { Bot, X, Send, Loader2 } from "lucide-react";
 import { useChatBot } from "./use-chatbot";
 import type { ChatBotUIProps, ChatMessage } from "@/types/chatbot";
 
+// Security helper to sanitize message content for display
+function sanitizeMessageForDisplay(content: string): string {
+  return content
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;")
+    .substring(0, 2000); // Limit display length
+}
+
 export function ChatBot({
   className = "",
   position = "bottom-left",
@@ -51,11 +62,16 @@ export function ChatBot({
     e.preventDefault();
     if (!inputValue.trim() || isLoading) return;
 
-    const message = inputValue.trim();
+    // Basic client-side input sanitization
+    const sanitizedMessage = inputValue.trim().substring(0, 1000);
+
+    // Simple spam detection
+    if (sanitizedMessage.length < 2) return;
+
     setInputValue("");
 
     try {
-      await sendMessage(message);
+      await sendMessage(sanitizedMessage);
     } catch (err) {
       // Error is handled by the hook
       console.error("Failed to send message:", err);
@@ -142,7 +158,11 @@ export function ChatBot({
                           : "bg-muted"
                       }`}
                     >
-                      {message.content}
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: sanitizeMessageForDisplay(message.content),
+                        }}
+                      />
                       {message.status === "sending" && (
                         <Loader2 className="h-3 w-3 animate-spin ml-1 inline" />
                       )}

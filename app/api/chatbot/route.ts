@@ -14,6 +14,14 @@ import type {
   ChatBotConfig,
   ChatMessage,
 } from "@/types/chatbot";
+import {
+  sanitizeInput,
+  isSpamContent,
+  sanitizeErrorMessage,
+  sanitizeChatInput,
+  isChatSpam,
+  validateUserAgent,
+} from "@/lib/security";
 
 // Environment configuration with validation
 const GEMINI_API_KEY = process.env.GEMINI_KEY;
@@ -43,17 +51,30 @@ const chatbotConfig: ChatBotConfig = {
   systemPrompt: `You are a helpful AI assistant for ColdByDefault's portfolio website. You can help visitors learn more about Yazan Abo-Ayash's projects, skills, and experience. Keep responses concise, professional, and relevant to web development and the portfolio content. If asked about topics outside of the portfolio, politely redirect the conversation back to relevant topics.`,
 };
 
-// Validation schemas
+// Enhanced validation schemas with security checks
 const chatRequestSchema = z.object({
-  message: z.string().min(1).max(chatbotConfig.maxMessageLength),
-  sessionId: z.string().optional(),
+  message: z
+    .string()
+    .min(1, "Message cannot be empty")
+    .max(chatbotConfig.maxMessageLength, "Message too long")
+    .refine((val) => !isChatSpam(val), "Spam content detected")
+    .transform((val) => sanitizeChatInput(val)),
+  sessionId: z
+    .string()
+    .regex(/^session_[0-9]+_[a-f0-9]+$/, "Invalid session ID format")
+    .optional(),
   context: z
     .object({
-      page: z.string().optional(),
-      userAgent: z.string().optional(),
+      page: z.string().max(200).optional(),
+      userAgent: z.string().max(500).optional(),
+      timestamp: z.number().optional(),
     })
     .optional(),
+  csrfToken: z.string().min(32).max(64).optional(),
 });
+
+// Request size limit (100KB)
+const MAX_REQUEST_SIZE = 100 * 1024;
 
 // In-memory rate limiting and session storage
 const rateLimits = new Map<string, ChatBotRateLimit>();

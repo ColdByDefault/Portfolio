@@ -99,12 +99,38 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // API routes cache
+        // API routes cache and security
         source: "/api/(.*)",
         headers: [
           {
             key: "Cache-Control",
             value: "public, s-maxage=86400, stale-while-revalidate=43200",
+          },
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow, nosnippet, noarchive",
+          },
+        ],
+      },
+      {
+        // Enhanced security for ChatBot API
+        source: "/api/chatbot",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-cache, no-store, must-revalidate",
+          },
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow, nosnippet, noarchive",
+          },
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          {
+            key: "X-Frame-Options",
+            value: "DENY",
           },
         ],
       },

@@ -185,7 +185,192 @@ export function sanitizeErrorMessage(error: unknown): string {
     if (error.message.includes("403")) {
       return "Access denied";
     }
+    if (error.message.includes("timeout")) {
+      return "Request timeout";
+    }
+    if (error.message.includes("AI service")) {
+      return error.message; // These are already sanitized
+    }
   }
 
   return "Service temporarily unavailable";
+}
+
+/**
+ * ChatBot-specific input sanitization with XSS protection
+ */
+export function sanitizeChatInput(input: string): string {
+  if (!input) return "";
+
+  // Remove HTML tags completely
+  let sanitized = input.replace(/<[^>]*>/g, "");
+
+  // Remove script tags and javascript: protocols
+  sanitized = sanitized.replace(/javascript:/gi, "");
+  sanitized = sanitized.replace(/data:/gi, "");
+  sanitized = sanitized.replace(/vbscript:/gi, "");
+
+  // Remove potentially dangerous attributes
+  sanitized = sanitized.replace(/on\w+\s*=\s*[^>]*/gi, "");
+
+  // Encode special characters
+  sanitized = sanitized
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;")
+    .replace(/\//g, "&#x2F;");
+
+  // Remove excessive whitespace but preserve line breaks
+  sanitized = sanitized.replace(/\s{2,}/g, " ").trim();
+
+  return sanitized;
+}
+
+/**
+ * Advanced spam detection for chat messages
+ */
+export function isChatSpam(content: string): boolean {
+  if (!content) return true;
+
+  // Check for common spam patterns
+  const spamPatterns = [
+    /(.)\1{6,}/g, // Repeated characters (7+ times)
+    /[A-Z]{8,}/g, // Excessive ALL CAPS
+    /\b(CLICK|BUY|MONEY|FREE|URGENT|LIMITED|ACT NOW)\b/gi,
+    /\$[0-9,]+/g, // Money amounts
+    /\b[0-9]{3}[-.]?[0-9]{3}[-.]?[0-9]{4}\b/g, // Phone numbers
+    /https?:\/\/[^\s]+/gi, // URLs
+    /\b(bitcoin|crypto|lottery|casino|viagra|cialis)\b/gi,
+  ];
+
+  let spamScore = 0;
+  spamPatterns.forEach((pattern) => {
+    const matches = content.match(pattern);
+    if (matches) {
+      spamScore += matches.length;
+    }
+  });
+
+  // Additional checks
+  if (content.length < 2) spamScore += 2;
+  if (content.length > 2000) spamScore += 3;
+
+  // Check for repeated words
+  const words = content.toLowerCase().split(/\s+/);
+  const wordCounts = new Map();
+  words.forEach((word) => {
+    if (word.length > 3) {
+      wordCounts.set(word, (wordCounts.get(word) || 0) + 1);
+    }
+  });
+
+  for (const count of wordCounts.values()) {
+    if (count > 3) spamScore += 2;
+  }
+
+  return spamScore >= 4;
+}
+
+/**
+ * Validate and sanitize user agent string
+ */
+export function validateUserAgent(userAgent: string | null): boolean {
+  if (!userAgent) return false;
+
+  // Check for minimum length
+  if (userAgent.length < 10) return false;
+
+  // Check for suspicious patterns
+  const suspiciousPatterns = [
+    /bot/i,
+    /crawler/i,
+    /spider/i,
+    /scraper/i,
+    /python/i,
+    /curl/i,
+    /wget/i,
+  ];
+
+  for (const pattern of suspiciousPatterns) {
+    if (pattern.test(userAgent)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/**
+ * ChatBot rate limiter with enhanced DoS protection
+ */
+export class ChatBotRateLimiter extends RateLimiter {
+  private readonly maxBurst: number;
+  private readonly burstWindow: number;
+  private burstCounts: Map<string, { count: number; windowStart: number }> =
+    new Map();
+
+  constructor() {
+    // Allow 5 messages per minute, 20 per hour
+    super(60 * 1000, 5);
+    this.maxBurst = 3; // Max 3 messages in 10 seconds
+    this.burstWindow = 10 * 1000;
+  }
+
+  override isAllowed(identifier: string): boolean {
+    const now = Date.now();
+
+    // Check burst limit first
+    const burstData = this.burstCounts.get(identifier);
+    if (burstData) {
+      if (now - burstData.windowStart < this.burstWindow) {
+        if (burstData.count >= this.maxBurst) {
+          return false;
+        }
+        burstData.count++;
+      } else {
+        this.burstCounts.set(identifier, { count: 1, windowStart: now });
+      }
+    } else {
+      this.burstCounts.set(identifier, { count: 1, windowStart: now });
+    }
+
+    // Then check regular rate limit
+    return super.isAllowed(identifier);
+  }
+}
+
+/**
+ * Prevent session fixation attacks
+ */
+export function validateSessionId(sessionId: string | null): boolean {
+  if (!sessionId) return false;
+
+  // Check format: session_{timestamp}_{hex}
+  const pattern = /^session_\d{13}_[a-f0-9]{32}$/;
+  return pattern.test(sessionId);
+}
+
+/**
+ * Check for suspicious activity patterns
+ */
+export function detectSuspiciousActivity(
+  clientIP: string,
+  userAgent: string,
+  messageCount: number,
+  timeWindow: number
+): boolean {
+  // Rapid fire messages
+  if (messageCount > 10 && timeWindow < 60000) {
+    // 10 messages in 1 minute
+    return true;
+  }
+
+  // Check for automation patterns
+  if (!validateUserAgent(userAgent)) {
+    return true;
+  }
+
+  return false;
 }
