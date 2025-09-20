@@ -20,10 +20,20 @@ export function ChatBot({
 }: ChatBotUIProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const { messages, isLoading, isConnected, error, sendMessage, clearError } =
     useChatBot();
+
+  // Show chat icon after 4 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -60,7 +70,15 @@ export function ChatBot({
   };
 
   return (
-    <div className={`fixed ${positionClasses[position]} z-50 ${className}`}>
+    <div
+      className={`fixed ${
+        positionClasses[position]
+      } z-50 ${className} transition-all duration-500 ${
+        isVisible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-4 pointer-events-none"
+      }`}
+    >
       {!isOpen ? (
         // Chat Button
         <Button
