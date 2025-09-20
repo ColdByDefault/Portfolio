@@ -16,6 +16,7 @@ import type {
   ChatMessage,
 } from "@/types/chatbot";
 import { sanitizeChatInput, isChatSpam } from "@/lib/security";
+import { REEM_SYSTEM_PROMPT, REEM_CONFIG } from "@/data/chatbot-system-prompt";
 
 // Environment configuration with validation
 const GEMINI_API_KEY = process.env.GEMINI_KEY;
@@ -42,7 +43,7 @@ const chatbotConfig: ChatBotConfig = {
     process.env.CHATBOT_SESSION_TIMEOUT_MS || "1800000",
     10
   ),
-  systemPrompt: `You are a helpful AI assistant for ColdByDefault's portfolio website. You can help visitors learn more about Yazan Abo-Ayash's projects, skills, and experience. Keep responses concise, professional, and relevant to web development and the portfolio content. If asked about topics outside of the portfolio, politely redirect the conversation back to relevant topics.`,
+  systemPrompt: REEM_SYSTEM_PROMPT,
 };
 
 // Enhanced validation schemas with security checks
@@ -394,6 +395,7 @@ export async function POST(
 export function GET(): NextResponse<{
   status: string;
   config: Partial<ChatBotConfig>;
+  assistant: typeof REEM_CONFIG;
 }> {
   return NextResponse.json({
     status: CHATBOT_ENABLED ? "available" : "disabled",
@@ -401,6 +403,7 @@ export function GET(): NextResponse<{
       maxMessageLength: chatbotConfig.maxMessageLength,
       maxMessagesPerSession: chatbotConfig.maxMessagesPerSession,
     },
+    assistant: REEM_CONFIG,
   });
 }
 

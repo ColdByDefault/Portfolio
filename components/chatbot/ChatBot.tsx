@@ -18,7 +18,6 @@ import {
   Send,
   Loader2,
   CircleAlert,
-  MessageSquare,
   AlertCircle,
   CheckCircle2,
   Sparkles,
@@ -47,7 +46,7 @@ function TypingIndicator() {
             <Bot className="w-3 h-3 text-primary-foreground" />
           </div>
           <span className="text-xs text-muted-foreground font-medium">
-            Assistant
+            Reem is typing...
           </span>
           <Badge variant="secondary" className="text-xs px-2 py-0.5">
             <Sparkles className="w-3 h-3 mr-1" />
@@ -139,21 +138,24 @@ export function ChatBot({
             className="w-6 h-6 animate-subtle-shake"
             style={{ width: "1.5rem", height: "1.5rem" }}
           />
-          <span className="sr-only">Open chat assistant</span>
+          <span className="sr-only">Open Reem AI assistant</span>
         </Button>
       ) : (
         <Card className="w-96 h-[32rem] shadow-2xl border border-border/50 bg-background/95 backdrop-blur-xl">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 px-4 py-3 bg-gradient-to-r from-primary/5 to-primary/10 border-b border-border/50">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 px-4 py-3  border-b border-border/50">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center">
                 <Bot className="w-5 h-5 text-primary-foreground" />
               </div>
               <div className="flex flex-col">
                 <CardTitle className="text-base font-semibold text-foreground">
-                  Portfolio Assistant
+                  Reem{" "}
+                  <span className="text-xs text-muted-foreground font-normal">
+                    (/riːm/)
+                  </span>
                 </CardTitle>
                 <span className="text-xs text-muted-foreground font-medium">
-                  Ask me about the portfolio
+                  Your AI portfolio assistant
                 </span>
               </div>
             </div>
@@ -179,12 +181,12 @@ export function ChatBot({
                       <Sparkles className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="font-semibold text-foreground mb-2">
-                      Welcome to Portfolio Chat!
+                      Hi! I'm Reem 👋
                     </h3>
                     <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-                      I&apos;m here to help you explore ColdByDefault&apos;s
-                      portfolio and answer any questions you have about their
-                      work.
+                      I'm your AI assistant, here to help you explore Yazan's
+                      portfolio and answer questions about his projects, skills,
+                      and experience.
                     </p>
                   </div>
                 )}
@@ -207,7 +209,7 @@ export function ChatBot({
                             <Bot className="w-3 h-3 text-primary-foreground" />
                           </div>
                           <span className="text-xs text-muted-foreground font-medium">
-                            Assistant
+                            Reem
                           </span>
                           {message.status === "sending" && (
                             <Badge

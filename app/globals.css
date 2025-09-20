@@ -180,5 +180,5 @@
 }
 
 .animate-subtle-shake {
-  animation: subtle-shake 2s ease-in-out infinite;
+  animation: subtle-shake 1.4s ease-in-out infinite;
 }
