@@ -10,7 +10,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { MessageCircle, X, Send, Loader2 } from "lucide-react";
+import { Bot, X, Send, Loader2 } from "lucide-react";
 import { useChatBot } from "./use-chatbot";
 import type { ChatBotUIProps, ChatMessage } from "@/types/chatbot";
 
@@ -86,7 +86,7 @@ export function ChatBot({
           size="lg"
           className="rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-primary/90"
         >
-          <MessageCircle className="h-5 w-5" />
+          <Bot className="h-5 w-5 animate-subtle-shake hover:animate-none" />
           <span className="sr-only">Open chat</span>
         </Button>
       ) : (
