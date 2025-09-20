@@ -30,6 +30,7 @@ import { Footer } from "@/components/footer";
 import { CookiesBanner } from "@/components/cookies";
 import { BrowserTranslationNotice } from "@/components/languages";
 import { ChatBot } from "@/components/chatbot";
+import { NoSSR } from "@/components/NoSSR";
 import { seoConfigEN, generateStructuredData } from "@/lib/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
@@ -190,7 +191,9 @@ export default async function RootLayout({
             <Footer />
             <CookiesBanner />
             <BrowserTranslationNotice />
-            <ChatBot position="bottom-left" />
+            <NoSSR>
+              <ChatBot position="bottom-left" />
+            </NoSSR>
           </ThemeProvider>
         </NextIntlClientProvider>
         <Analytics />
