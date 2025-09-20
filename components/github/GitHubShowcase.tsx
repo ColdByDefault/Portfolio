@@ -166,7 +166,7 @@ export default function GitHubShowcase({ className }: { className?: string }) {
             <Tooltip>
               <TooltipTrigger asChild>
                 <DrawerTrigger asChild>
-                  <Button variant="default" size="sm" className="cursor-pointer">
+                  <Button variant="default" size="sm" className="cursor-pointer animate-pulse">
                     <FaTerminal className="mr-2 h-4 w-4 animate-pulse" />
                     Start MCP Live
                   </Button>
