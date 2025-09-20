@@ -84,9 +84,12 @@ export function ChatBot({
         <Button
           onClick={() => setIsOpen(true)}
           size="lg"
-          className="rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-primary/90"
+          className="rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-primary/90 h-12 w-12"
         >
-          <Bot className="h-5 w-5 animate-subtle-shake hover:animate-none" />
+          <Bot
+            className="animate-subtle-shake hover:animate-none"
+            style={{ width: "1.5rem", height: "1.5rem" }}
+          />
           <span className="sr-only">Open chat</span>
         </Button>
       ) : (
