@@ -91,6 +91,10 @@ function CompanyLogoItem({
             fill
             className="object-contain"
             sizes="40px"
+            loading="lazy"
+            quality={75}
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
           />
         </div>
       ) : (
@@ -164,6 +168,10 @@ export function CompanyBannerMinimal({
                     fill
                     className="object-contain"
                     sizes="40px"
+                    loading="lazy"
+                    quality={75}
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
                   />
                 </div>
               ) : (

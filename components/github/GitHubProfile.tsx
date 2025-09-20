@@ -42,8 +42,12 @@ export default function GitHubProfile({ profile, stats }: GitHubProfileProps) {
                 width={56}
                 height={56}
                 src={profile.avatar_url}
-                alt={profile.name}
+                alt={`${profile.name || profile.login} GitHub profile picture`}
                 className="w-14 h-14 rounded-full border-2 border-slate-200 dark:border-slate-700"
+                loading="lazy"
+                quality={75}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
               />
               <div>
                 <h3 className="font-semibold text-slate-900 dark:text-slate-100 text-sm">

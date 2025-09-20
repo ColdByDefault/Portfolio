@@ -15,7 +15,7 @@ interface TextEncryptedProps {
 
 const TextEncrypted: React.FC<TextEncryptedProps> = ({
   text,
-  interval = 50,
+  interval = 30, // Reduced from 50 for faster animation
 }) => {
   const [outputText, setOutputText] = useState<string>("");
   const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -79,21 +79,28 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
       setIsFading(true);
       setTimeout(() => {
         onComplete();
-      }, 1100);
-    }, 2200);
+      }, 800); // Reduced from 1100
+    }, 1500); // Reduced from 2200
     return () => clearTimeout(timer);
   }, [onComplete]);
 
   return (
     <div
       className={`fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center 
-      transition-opacity duration-1000 ${
+      transition-opacity duration-800 ${
         isFading ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
+      role="status"
+      aria-live="polite"
+      aria-label="Loading portfolio content"
     >
-      <h1 className="text-xl mb-8 font-bold drop-shadow-black">
-        <TextEncrypted text={text} interval={120} />
+      <h1
+        className="text-xl mb-8 font-bold drop-shadow-black"
+        aria-hidden="true"
+      >
+        <TextEncrypted text={text} interval={80} />
       </h1>
+      <span className="sr-only">Loading portfolio, please wait...</span>
     </div>
   );
 };

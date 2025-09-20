@@ -33,6 +33,7 @@ import { seoConfigEN, generateStructuredData } from "@/lib/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Urbanist } from "next/font/google";
+import Link from "next/link";
 
 // Configure Urbanist Variable font
 const urbanist = Urbanist({
@@ -110,7 +111,7 @@ export default async function RootLayout({
   const messages = await getMessages();
   const locale = await getLocale();
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale}>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -149,6 +150,15 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
 
+        {/* DNS Prefetch for performance */}
+        <link rel="dns-prefetch" href="https://api.github.com" />
+        <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+
         {/* Structured Data */}
         <script
           type="application/ld+json"
@@ -157,10 +167,14 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${urbanist.variable} flex flex-col min-h-screen`}
-        suppressHydrationWarning
-      >
+      <body className={`${urbanist.variable} flex flex-col min-h-screen`}>
+        {/* Skip to main content for accessibility */}
+        <Link
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-[9999] focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          Skip to main content
+        </Link>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
