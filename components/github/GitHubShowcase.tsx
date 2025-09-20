@@ -8,6 +8,12 @@ import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { FaGithub, FaTerminal } from "react-icons/fa";
 import GitHubProfile from "./GitHubProfile";
 import GitHubRepositories from "./GitHubRepositories";
@@ -152,19 +158,31 @@ export default function GitHubShowcase({ className }: { className?: string }) {
     >
       {/* Section Header */}
       <div className="flex flex-col items-center space-y-2 text-center">
-        <h2 className="text-3xl font-light text-black dark:text-white">
+        <h2 className="text-3xl font-light text-black dark:text-white py-12">
           GitHub Activity
         </h2>
         <Drawer>
           <DrawerTrigger asChild>
-            <Button
-              variant="outline"
-              size="sm"
-              className="text-green-500 cursor-pointer"
-            >
-              <FaTerminal className="mr-2 h-4 w-4" />
-              MCP Live
-            </Button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-blue-500 dark:text-yellow-400 cursor-pointer animate-pulse hover:animate-none transition-all duration-300 border-blue-500/30 dark:border-yellow-400/30 bg-blue-500/10 dark:bg-yellow-400/10 hover:bg-blue-500/15 dark:hover:bg-yellow-400/15"
+                  >
+                    <FaTerminal className="mr-2 h-4 w-4 animate-pulse" />
+                    MCP Live
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent className="hidden lg:block">
+                  <p>
+                    Click to see live GitHub data fetching via Model Context
+                    Protocol
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </DrawerTrigger>
           <DrawerContent>
             <DrawerHeader>
