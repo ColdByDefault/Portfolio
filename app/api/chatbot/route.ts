@@ -4,7 +4,8 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 
-import { NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { z } from "zod";
 import type {
   ChatBotRequest,
@@ -14,14 +15,7 @@ import type {
   ChatBotConfig,
   ChatMessage,
 } from "@/types/chatbot";
-import {
-  sanitizeInput,
-  isSpamContent,
-  sanitizeErrorMessage,
-  sanitizeChatInput,
-  isChatSpam,
-  validateUserAgent,
-} from "@/lib/security";
+import { sanitizeChatInput, isChatSpam } from "@/lib/security";
 
 // Environment configuration with validation
 const GEMINI_API_KEY = process.env.GEMINI_KEY;
@@ -72,9 +66,6 @@ const chatRequestSchema = z.object({
     .optional(),
   csrfToken: z.string().min(32).max(64).optional(),
 });
-
-// Request size limit (100KB)
-const MAX_REQUEST_SIZE = 100 * 1024;
 
 // In-memory rate limiting and session storage
 const rateLimits = new Map<string, ChatBotRateLimit>();
@@ -227,7 +218,9 @@ async function callGeminiAPI(messages: ChatMessage[]): Promise<string> {
     );
 
     if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
+      const errorData = (await response.json().catch(() => ({}))) as {
+        error?: { message?: string };
+      };
       throw new Error(
         `Gemini API error: ${response.status} - ${
           errorData.error?.message || "Unknown error"
@@ -235,7 +228,13 @@ async function callGeminiAPI(messages: ChatMessage[]): Promise<string> {
       );
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as {
+      candidates?: Array<{
+        content?: {
+          parts?: Array<{ text?: string }>;
+        };
+      }>;
+    };
 
     if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
       throw new Error("Invalid response format from Gemini API");
@@ -294,7 +293,7 @@ export async function POST(
     // Parse and validate request body
     let requestBody: ChatBotRequest;
     try {
-      const rawBody = await request.json();
+      const rawBody = (await request.json()) as unknown;
       const validatedBody = chatRequestSchema.parse(rawBody);
       requestBody = validatedBody as ChatBotRequest;
     } catch (error) {
@@ -303,7 +302,7 @@ export async function POST(
           error:
             error instanceof z.ZodError
               ? `Validation error: ${error.issues
-                  .map((e: any) => e.message)
+                  .map((e) => e.message)
                   .join(", ")}`
               : "Invalid request body",
           code: "INVALID_INPUT",
@@ -316,7 +315,7 @@ export async function POST(
     const sessionId = requestBody.sessionId || generateSessionId();
 
     // Get or initialize session messages
-    let sessionMessages = sessions.get(sessionId) || [];
+    const sessionMessages = sessions.get(sessionId) || [];
 
     // Check session message limit
     if (sessionMessages.length >= chatbotConfig.maxMessagesPerSession) {
@@ -392,9 +391,10 @@ export async function POST(
   }
 }
 
-export async function GET(): Promise<
-  NextResponse<{ status: string; config: Partial<ChatBotConfig> }>
-> {
+export function GET(): NextResponse<{
+  status: string;
+  config: Partial<ChatBotConfig>;
+}> {
   return NextResponse.json({
     status: CHATBOT_ENABLED ? "available" : "disabled",
     config: {

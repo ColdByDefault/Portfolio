@@ -19,13 +19,11 @@ import {
   Loader2,
   CircleAlert,
   MessageSquare,
-  Minimize2,
   AlertCircle,
   CheckCircle2,
-  Clock,
   Sparkles,
 } from "lucide-react";
-import { useChatBot } from "./use-chatbot";
+import { useChatBot } from "@/components/chatbot";
 import type { ChatBotUIProps, ChatMessage } from "@/types/chatbot";
 
 // Security helper to sanitize message content for display
@@ -37,25 +35,6 @@ function sanitizeMessageForDisplay(content: string): string {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#x27;")
     .substring(0, 2000); // Limit display length
-}
-
-// Professional Message Skeleton Component
-function MessageSkeleton() {
-  return (
-    <div className="flex justify-start">
-      <div className="max-w-[80%] space-y-2">
-        <div className="flex items-center gap-2 mb-2">
-          <div className="w-6 h-6 rounded-full bg-muted animate-pulse" />
-          <div className="w-16 h-3 bg-muted rounded animate-pulse" />
-        </div>
-        <div className="bg-muted p-3 rounded-lg space-y-2">
-          <div className="w-full h-3 bg-muted-foreground/20 rounded animate-pulse" />
-          <div className="w-3/4 h-3 bg-muted-foreground/20 rounded animate-pulse" />
-          <div className="w-1/2 h-3 bg-muted-foreground/20 rounded animate-pulse" />
-        </div>
-      </div>
-    </div>
-  );
 }
 
 // Professional Typing Indicator Component
@@ -100,7 +79,7 @@ export function ChatBot({
   const [inputValue, setInputValue] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const { messages, isLoading, isConnected, error, sendMessage, clearError } =
+  const { messages, isLoading, error, sendMessage, clearError, clearMessages } =
     useChatBot();
 
   // Auto-scroll to bottom when new messages arrive
@@ -114,6 +93,12 @@ export function ChatBot({
       clearError();
     }
   }, [isOpen, error, clearError]);
+
+  const handleCloseChat = () => {
+    setIsOpen(false);
+    clearMessages(); // Clear all messages when closing chat
+    setInputValue(""); // Clear input
+  };
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -135,18 +120,6 @@ export function ChatBot({
     }
   };
 
-  const getStatusIcon = () => {
-    if (error) return <AlertCircle className="w-3 h-3 text-red-400" />;
-    if (isConnected) return <CheckCircle2 className="w-3 h-3 text-green-400" />;
-    return <Clock className="w-3 h-3 text-yellow-400" />;
-  };
-
-  const getStatusText = () => {
-    if (error) return "Offline";
-    if (isConnected) return "Online";
-    return "Connecting...";
-  };
-
   const positionClasses = {
     "bottom-left": "bottom-6 left-6",
     "bottom-right": "bottom-6 right-6",
@@ -157,68 +130,38 @@ export function ChatBot({
   return (
     <div className={`fixed ${positionClasses[position]} z-50 ${className}`}>
       {!isOpen ? (
-        // Professional Chat Button
         <Button
           onClick={() => setIsOpen(true)}
           size="lg"
           className="relative rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 h-14 w-14 border-2 border-primary/20 group"
         >
-          <div className="relative">
-            <MessageSquare className="w-6 h-6 transition-transform group-hover:scale-110" />
-            {isConnected && (
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-background animate-pulse" />
-            )}
-          </div>
+          <Bot
+            className="w-6 h-6 animate-subtle-shake"
+            style={{ width: "1.5rem", height: "1.5rem" }}
+          />
           <span className="sr-only">Open chat assistant</span>
         </Button>
       ) : (
-        // Professional Chat Window
         <Card className="w-96 h-[32rem] shadow-2xl border border-border/50 bg-background/95 backdrop-blur-xl">
-          {/* Professional Header */}
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 px-4 py-3 bg-gradient-to-r from-primary/5 to-primary/10 border-b border-border/50">
             <div className="flex items-center gap-3">
-              <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center">
-                  <Bot className="w-5 h-5 text-primary-foreground" />
-                </div>
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-background rounded-full border border-border flex items-center justify-center">
-                  {getStatusIcon()}
-                </div>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center">
+                <Bot className="w-5 h-5 text-primary-foreground" />
               </div>
               <div className="flex flex-col">
                 <CardTitle className="text-base font-semibold text-foreground">
                   Portfolio Assistant
                 </CardTitle>
-                <div className="flex items-center gap-2">
-                  <div
-                    className={`w-2 h-2 rounded-full ${
-                      error
-                        ? "bg-red-400"
-                        : isConnected
-                        ? "bg-green-400"
-                        : "bg-yellow-400"
-                    } animate-pulse`}
-                  />
-                  <span className="text-xs text-muted-foreground font-medium">
-                    {getStatusText()}
-                  </span>
-                </div>
+                <span className="text-xs text-muted-foreground font-medium">
+                  Ask me about the portfolio
+                </span>
               </div>
             </div>
             <div className="flex items-center gap-1">
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => setIsOpen(false)}
-                className="h-8 w-8 p-0 hover:bg-muted/50 rounded-full transition-colors"
-              >
-                <Minimize2 className="h-4 w-4" />
-                <span className="sr-only">Minimize chat</span>
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsOpen(false)}
+                onClick={handleCloseChat}
                 className="h-8 w-8 p-0 hover:bg-destructive/10 hover:text-destructive rounded-full transition-colors"
               >
                 <X className="h-4 w-4" />
@@ -228,7 +171,6 @@ export function ChatBot({
           </CardHeader>
 
           <CardContent className="p-0 flex flex-col h-full">
-            {/* Messages Area */}
             <div className="flex-1 p-4 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
               <div className="space-y-4">
                 {messages.length === 0 && !isLoading && (
@@ -240,13 +182,14 @@ export function ChatBot({
                       Welcome to Portfolio Chat!
                     </h3>
                     <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-                      I'm here to help you explore ColdByDefault's portfolio and
-                      answer any questions you have about their work.
+                      I&apos;m here to help you explore ColdByDefault&apos;s
+                      portfolio and answer any questions you have about their
+                      work.
                     </p>
                   </div>
                 )}
 
-                {messages.map((message: ChatMessage, index: number) => (
+                {messages.map((message: ChatMessage) => (
                   <div
                     key={message.id}
                     className={`flex ${
@@ -329,15 +272,19 @@ export function ChatBot({
 
             <Separator className="opacity-50" />
 
-            {/* Professional Input Area */}
             <div className="p-4 bg-muted/20">
-              <form onSubmit={handleSendMessage} className="flex gap-3">
+              <form
+                onSubmit={(e) => {
+                  handleSendMessage(e).catch(console.error);
+                }}
+                className="flex gap-3"
+              >
                 <div className="flex-1 relative">
                   <Input
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder="Ask me about the portfolio..."
-                    disabled={isLoading || !isConnected}
+                    disabled={isLoading}
                     className="pr-12 bg-background border-border/50 focus:border-primary/50 rounded-full transition-all duration-200 placeholder:text-muted-foreground/60"
                     maxLength={1000}
                   />
@@ -349,7 +296,7 @@ export function ChatBot({
                 </div>
                 <Button
                   type="submit"
-                  disabled={!inputValue.trim() || isLoading || !isConnected}
+                  disabled={!inputValue.trim() || isLoading}
                   className="px-4 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 rounded-full shadow-lg hover:shadow-xl transition-all duration-200"
                 >
                   {isLoading ? (
@@ -360,13 +307,6 @@ export function ChatBot({
                   <span className="sr-only">Send message</span>
                 </Button>
               </form>
-
-              {!isConnected && (
-                <div className="flex items-center gap-2 mt-2 text-xs text-muted-foreground">
-                  <AlertCircle className="w-3 h-3" />
-                  <span>Connection issues detected. Retrying...</span>
-                </div>
-              )}
             </div>
           </CardContent>
         </Card>

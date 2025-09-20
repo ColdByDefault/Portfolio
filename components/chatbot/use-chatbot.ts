@@ -85,7 +85,9 @@ export function useChatBot(): UseChatBotReturn {
           body: JSON.stringify(requestBody),
         });
 
-        const data: ChatBotResponse | ChatBotApiError = await response.json();
+        const data = (await response.json()) as
+          | ChatBotResponse
+          | ChatBotApiError;
 
         // Update user message status
         setMessages((prev) =>
@@ -99,20 +101,18 @@ export function useChatBot(): UseChatBotReturn {
           throw new Error(errorData.error || "Failed to send message");
         }
 
-        const successData = data as ChatBotResponse;
-
-        if (!successData.data) {
+        if (!data.data) {
           throw new Error("Invalid response from server");
         }
 
         // Store session ID for future requests
-        sessionIdRef.current = successData.data.sessionId;
+        sessionIdRef.current = data.data.sessionId;
 
         // Create assistant message
         const assistantMessage: ChatMessage = {
-          id: successData.data.messageId,
+          id: data.data.messageId,
           role: "assistant",
-          content: successData.data.message,
+          content: data.data.message,
           timestamp: new Date(),
           status: "sent",
         };
