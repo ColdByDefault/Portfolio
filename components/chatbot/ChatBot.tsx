@@ -7,6 +7,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -38,6 +39,8 @@ function sanitizeMessageForDisplay(content: string): string {
 
 // Professional Typing Indicator Component
 function TypingIndicator() {
+  const t = useTranslations("ChatBot");
+
   return (
     <div className="flex justify-start">
       <div className="max-w-[80%]">
@@ -46,11 +49,11 @@ function TypingIndicator() {
             <Bot className="w-3 h-3 text-primary-foreground" />
           </div>
           <span className="text-xs text-muted-foreground font-medium">
-            Reem is typing...
+            {t("typing.status")}
           </span>
           <Badge variant="secondary" className="text-xs px-2 py-0.5">
             <Sparkles className="w-3 h-3 mr-1" />
-            Thinking
+            {t("typing.thinking")}
           </Badge>
         </div>
         <div className="bg-muted/80 backdrop-blur-sm p-3 rounded-lg border border-border/50">
@@ -61,7 +64,7 @@ function TypingIndicator() {
               <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"></div>
             </div>
             <span className="text-xs text-muted-foreground ml-2">
-              Processing your message...
+              {t("typing.processing")}
             </span>
           </div>
         </div>
@@ -78,6 +81,7 @@ export function ChatBot({
   const [inputValue, setInputValue] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("ChatBot");
 
   const { messages, isLoading, error, sendMessage, clearError } = useChatBot();
 
@@ -146,24 +150,24 @@ export function ChatBot({
             className="w-6 h-6 animate-subtle-shake"
             style={{ width: "1.5rem", height: "1.5rem" }}
           />
-          <span className="sr-only">Open Reem AI assistant</span>
+          <span className="sr-only">{t("openAssistant")}</span>
         </Button>
       ) : (
-        <Card className="w-96 h-[32rem] shadow-2xl border border-border/50 bg-background/95 backdrop-blur-xl">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 px-4 py-3  border-b border-border/50">
+        <Card className="w-96 min-h-[28rem] max-h-[32rem] shadow-2xl border border-border/50 bg-background/95 backdrop-blur-xl flex flex-col">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-4  border-b border-border/50 flex-shrink-0">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center">
                 <Bot className="w-5 h-5 text-primary-foreground" />
               </div>
               <div className="flex flex-col">
                 <CardTitle className="text-base font-semibold text-foreground">
-                  Reem{" "}
+                  {t("name")}{" "}
                   <span className="text-xs text-muted-foreground font-normal">
-                    (/riːm/)
+                    {t("pronunciation")}
                   </span>
                 </CardTitle>
                 <span className="text-xs text-muted-foreground font-medium">
-                  Your AI portfolio assistant
+                  {t("subtitle")}
                 </span>
               </div>
             </div>
@@ -175,13 +179,13 @@ export function ChatBot({
                 className="h-8 w-8 p-0 hover:bg-destructive/10 hover:text-destructive rounded-full transition-colors"
               >
                 <X className="h-4 w-4" />
-                <span className="sr-only">Close chat</span>
+                <span className="sr-only">{t("closeChat")}</span>
               </Button>
             </div>
           </CardHeader>
 
-          <CardContent className="p-0 flex flex-col h-full">
-            <div className="flex-1 p-4 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
+          <CardContent className="p-0 flex flex-col flex-1 min-h-0">
+            <div className="flex-1 p-4 min-h-0 max-h-[20rem] overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
               <div className="space-y-4">
                 {messages.length === 0 && !isLoading && (
                   <div className="flex flex-col items-center justify-center py-12 text-center">
@@ -189,12 +193,10 @@ export function ChatBot({
                       <Sparkles className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="font-semibold text-foreground mb-2">
-                      Hi! I&apos;m Reem 👋
+                      {t("greeting.title")}
                     </h3>
                     <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-                      I&apos;m your AI assistant, here to help you explore
-                      Yazan&apos;s portfolio and answer questions about his
-                      projects, skills, and experience.
+                      {t("greeting.description")}
                     </p>
                   </div>
                 )}
@@ -217,7 +219,7 @@ export function ChatBot({
                             <Bot className="w-3 h-3 text-primary-foreground" />
                           </div>
                           <span className="text-xs text-muted-foreground font-medium">
-                            Reem
+                            {t("name")}
                           </span>
                           {message.status === "sending" && (
                             <Badge
@@ -225,7 +227,7 @@ export function ChatBot({
                               className="text-xs px-2 py-0.5"
                             >
                               <Loader2 className="w-3 h-3 mr-1 animate-spin" />
-                              Sending
+                              {t("status.sending")}
                             </Badge>
                           )}
                         </div>
@@ -282,7 +284,7 @@ export function ChatBot({
 
             <Separator className="opacity-50" />
 
-            <div className="p-4 bg-muted/20">
+            <div className="p-3 bg-muted/20 flex-shrink-0">
               <form
                 onSubmit={(e) => {
                   handleSendMessage(e).catch(console.error);
@@ -293,14 +295,15 @@ export function ChatBot({
                   <Input
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Ask me about Yazan or his portfolio..."
+                    placeholder={t("input.placeholder")}
                     disabled={isLoading}
                     className="pr-12 bg-background border-border/50 focus:border-primary/50 rounded-full transition-all duration-200 placeholder:text-muted-foreground/60"
                     maxLength={1000}
                   />
                   <div className="absolute right-3 top-1/2 -translate-y-1/2">
                     <span className="text-xs text-muted-foreground">
-                      {inputValue.length}/1000
+                      {inputValue.length}
+                      {t("input.characterLimit")}
                     </span>
                   </div>
                 </div>
@@ -314,7 +317,9 @@ export function ChatBot({
                   ) : (
                     <Send className="h-4 w-4" />
                   )}
-                  <span className="sr-only">Send message</span>
+                  <span className="sr-only">
+                    {t("accessibility.sendMessage")}
+                  </span>
                 </Button>
               </form>
             </div>

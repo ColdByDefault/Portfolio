@@ -270,5 +270,38 @@
         "description": "Flerspråkigt stöd med auto-detektering, temaväxling och lokaliserad innehållsleverans."
       }
     }
+  },
+  "ChatBot": {
+    "name": "Reem",
+    "pronunciation": "/riːm/",
+    "subtitle": "Din AI-portföljassistent",
+    "openAssistant": "Öppna Reem AI-assistent",
+    "closeChat": "Stäng chatt",
+    "greeting": {
+      "title": "Hej! Jag är Reem 👋",
+      "description": "Jag är din AI-assistent, här för att hjälpa dig utforska Yazans portfölj och svara på frågor om hans projekt, färdigheter och erfarenhet."
+    },
+    "typing": {
+      "status": "Reem skriver...",
+      "thinking": "Tänker",
+      "processing": "Bearbetar ditt meddelande..."
+    },
+    "input": {
+      "placeholder": "Fråga mig om Yazan eller hans portfölj...",
+      "characterLimit": "/1000"
+    },
+    "status": {
+      "sending": "Skickar",
+      "sent": "Skickat",
+      "error": "Fel"
+    },
+    "errors": {
+      "generic": "Något gick fel. Vänligen försök igen.",
+      "network": "Nätverksfel. Vänligen kontrollera din anslutning.",
+      "rateLimit": "För många meddelanden. Vänligen vänta en stund."
+    },
+    "accessibility": {
+      "sendMessage": "Skicka meddelande"
+    }
   }
 }
