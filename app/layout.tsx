@@ -28,6 +28,7 @@ import { ThemeProvider } from "@/components/theme/theme-provider";
 import { Navbar } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { CookiesBanner } from "@/components/cookies";
+import { ChatBot } from "@/components/chatbot";
 import { BrowserTranslationNotice } from "@/components/languages";
 import { seoConfigEN, generateStructuredData } from "@/lib/seo";
 import { NextIntlClientProvider } from "next-intl";
@@ -189,6 +190,7 @@ export default async function RootLayout({
             <Footer />
             <CookiesBanner />
             <BrowserTranslationNotice />
+            <ChatBot position="bottom-right" theme="system" />
           </ThemeProvider>
         </NextIntlClientProvider>
         <Analytics />
