@@ -162,28 +162,24 @@ export default function GitHubShowcase({ className }: { className?: string }) {
           GitHub Activity
         </h2>
         <Drawer>
-          <DrawerTrigger asChild>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-blue-500 dark:text-yellow-400 cursor-pointer animate-pulse hover:animate-none transition-all duration-300 border-blue-500/30 dark:border-yellow-400/30 bg-blue-500/10 dark:bg-yellow-400/10 hover:bg-blue-500/15 dark:hover:bg-yellow-400/15"
-                  >
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <DrawerTrigger asChild>
+                  <Button variant="default" size="sm" className="cursor-pointer">
                     <FaTerminal className="mr-2 h-4 w-4 animate-pulse" />
-                    MCP Live
+                    Start MCP Live
                   </Button>
-                </TooltipTrigger>
-                <TooltipContent className="hidden lg:block">
-                  <p>
-                    Click to see live GitHub data fetching via Model Context
-                    Protocol
-                  </p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </DrawerTrigger>
+                </DrawerTrigger>
+              </TooltipTrigger>
+              <TooltipContent className="hidden lg:block">
+                <p>
+                  Click to see live GitHub data fetching via Model Context
+                  Protocol
+                </p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           <DrawerContent>
             <DrawerHeader>
               <DrawerTitle>GitHub MCP Communication</DrawerTitle>
