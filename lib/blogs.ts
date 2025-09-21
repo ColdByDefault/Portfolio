@@ -7,6 +7,7 @@
 import type { Blog, BlogListQuery, BlogListResponse } from "@/types/blogs";
 import { prisma } from "./prisma";
 import type { Prisma } from "@prisma/client";
+import { sanitizeInput } from "./security";
 
 /**
  * Get all published blogs
@@ -36,10 +37,11 @@ export async function getBlogs(
   }
 
   if (search) {
+    const sanitizedSearch = sanitizeInput(search);
     where.OR = [
-      { title: { contains: search, mode: "insensitive" } },
-      { excerpt: { contains: search, mode: "insensitive" } },
-      { content: { contains: search, mode: "insensitive" } },
+      { title: { contains: sanitizedSearch, mode: "insensitive" } },
+      { excerpt: { contains: sanitizedSearch, mode: "insensitive" } },
+      { content: { contains: sanitizedSearch, mode: "insensitive" } },
     ];
   }
 
@@ -112,10 +114,20 @@ export async function getBlogs(
  * Get a single blog by slug
  */
 export async function getBlogBySlug(slug: string): Promise<Blog | null> {
+  if (!slug || typeof slug !== 'string') {
+    return null;
+  }
+  
+  // Basic slug validation - only allow letters, numbers, hyphens
+  const sanitizedSlug = slug.replace(/[^a-zA-Z0-9-]/g, '').toLowerCase();
+  if (!sanitizedSlug || sanitizedSlug.length === 0) {
+    return null;
+  }
+
   try {
     const blog = await prisma.blog.findFirst({
       where: {
-        slug,
+        slug: sanitizedSlug,
       },
       include: {
         category: true,
