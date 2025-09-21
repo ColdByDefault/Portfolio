@@ -108,13 +108,19 @@ export const techGroups: TechGroup[] = [
     ],
   },
   {
-    category: "Software Engineering Fundamentals",
-    categoryKey: "softwareEngineeringFundamentals",
+    category: "Core Programming Concepts",
+    categoryKey: "coreProgrammingConcepts",
     items: [
       { name: "Object-Oriented Programming", Icon: FaLayerGroup },
       { name: "Data Structures", Icon: TbBinaryTree },
       { name: "Algorithms", Icon: Cpu },
       { name: "Design Patterns", Icon: FaPuzzlePiece },
+    ],
+  },
+  {
+    category: "Architecture & System Design",
+    categoryKey: "architectureSystemDesign",
+    items: [
       { name: "Software Architecture Patterns", Icon: Workflow },
       { name: "Basic Networking", Icon: FaNetworkWired },
       { name: "System Design", Icon: FaCogs },

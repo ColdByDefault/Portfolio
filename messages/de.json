@@ -44,6 +44,8 @@
       "uiFrontend": "UI & Frontend",
       "backendApis": "Backend & APIs",
       "softwareEngineeringFundamentals": "Software-Engineering Grundlagen",
+      "coreProgrammingConcepts": "Programmierkonzepte",
+      "architectureSystemDesign": "Architektur & Systemdesign",
       "databasesStorage": "Datenbanken & Speicher",
       "infrastructureDevops": "Infrastruktur & DevOps",
       "aiAutomation": "KI & Automatisierung",

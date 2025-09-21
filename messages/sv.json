@@ -44,6 +44,8 @@
       "uiFrontend": "UI & Frontend",
       "backendApis": "Backend & API:er",
       "softwareEngineeringFundamentals": "Mjukvaruteknik Grunderna",
+      "coreProgrammingConcepts": "Programmeringskoncept",
+      "architectureSystemDesign": "Arkitektur & Systemdesign",
       "databasesStorage": "Databaser & Lagring",
       "infrastructureDevops": "Infrastruktur & DevOps",
       "aiAutomation": "AI & Automatisering",

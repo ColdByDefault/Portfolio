@@ -20,9 +20,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from "@/components/ui/carousel";
-import { Button } from "@/components/ui/button";
 
 // Custom hook for responsive breakpoints
 function useResponsiveCarousel() {
@@ -57,8 +55,6 @@ function useResponsiveCarousel() {
 
 export default function Technologies() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  const [api, setApi] = useState<CarouselApi>();
-  const [currentSlide, setCurrentSlide] = useState(0);
   const t = useTranslations("Technologies");
   const tCategories = useTranslations("Technologies.categories");
   const { cardsPerSlide } = useResponsiveCarousel();
@@ -66,39 +62,18 @@ export default function Technologies() {
   // Calculate the maximum number of items in any tech group to determine carousel height
   const maxItems = Math.max(...techGroups.map((group) => group.items.length));
   // Stable carousel height to prevent layout shifts
-  const baseHeight = 450;
-  const itemRows = Math.ceil(maxItems / 3);
-  const carouselHeight = Math.max(baseHeight, baseHeight + (itemRows - 5) * 40);
+  const baseHeight = 400;
+  const itemHeight = 35; // Approximate height per item including gaps
+  const carouselHeight = Math.max(
+    baseHeight,
+    baseHeight + (maxItems - 4) * itemHeight
+  );
 
   // Create slides by grouping techGroups based on cardsPerSlide
   const slides = [];
   for (let i = 0; i < techGroups.length; i += cardsPerSlide) {
     slides.push(techGroups.slice(i, i + cardsPerSlide));
   }
-
-  const totalSlides = slides.length;
-
-  // Update carousel state when API is available
-  useEffect(() => {
-    if (!api) return;
-
-    const updateCarouselState = () => {
-      setCurrentSlide(api.selectedScrollSnap());
-    };
-
-    updateCarouselState();
-    api.on("select", updateCarouselState);
-
-    return () => {
-      api.off("select", updateCarouselState);
-    };
-  }, [api]);
-
-  const goToSlide = (slideIndex: number) => {
-    if (api) {
-      api.scrollTo(slideIndex);
-    }
-  };
 
   const renderTechCard = (group: (typeof techGroups)[0]) => {
     const isCurrentCardHovered = hoveredCard === group.category;
@@ -169,7 +144,6 @@ export default function Technologies() {
                 align: "start",
                 loop: true,
               }}
-              setApi={setApi}
               className="w-full px-8 sm:px-12"
               style={{ height: `${carouselHeight}px` }}
             >
@@ -198,34 +172,6 @@ export default function Technologies() {
               <CarouselPrevious className="-left-4 sm:-left-6 bg-background/95 border-border hover:bg-accent hover:text-accent-foreground shadow-lg backdrop-blur-sm transition-all duration-200 hover:shadow-xl disabled:opacity-50 disabled:hover:bg-background/95" />
               <CarouselNext className="-right-4 sm:-right-6 bg-background/95 border-border hover:bg-accent hover:text-accent-foreground shadow-lg backdrop-blur-sm transition-all duration-200 hover:shadow-xl disabled:opacity-50 disabled:hover:bg-background/95" />
             </Carousel>
-
-            {/* Dot Indicators */}
-            {totalSlides > 1 && (
-              <div className="flex justify-center mt-6 space-x-3">
-                {Array.from({ length: totalSlides }).map((_, index) => (
-                  <Button
-                    key={index}
-                    variant="ghost"
-                    size="sm"
-                    className={`w-11 h-11 rounded-full p-0 transition-all duration-200 flex items-center justify-center ${
-                      index === currentSlide
-                        ? "bg-primary scale-110 shadow-sm"
-                        : "bg-muted hover:bg-muted-foreground/20 border border-border"
-                    }`}
-                    onClick={() => goToSlide(index)}
-                    aria-label={`Go to slide ${index + 1}`}
-                  >
-                    <div
-                      className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                        index === currentSlide
-                          ? "bg-primary-foreground"
-                          : "bg-muted-foreground"
-                      }`}
-                    />
-                  </Button>
-                ))}
-              </div>
-            )}
           </div>
         </CardContent>
         <div
