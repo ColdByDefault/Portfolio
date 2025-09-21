@@ -99,8 +99,9 @@ export function CookiesBanner() {
                     href="/privacy"
                     className="text-primary hover:underline"
                     onClick={handleClose}
+                    aria-label="Learn more about privacy policy and cookie usage"
                   >
-                    Learn more
+                    Learn more about privacy policy
                   </a>
                 </CardDescription>
               </div>
