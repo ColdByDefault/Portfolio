@@ -316,7 +316,7 @@ export default function PageSpeedInsights({
               <Button
                 onClick={refresh}
                 variant="outline"
-                className="w-full"
+                className="w-full cursor-pointer"
                 disabled={loading}
               >
                 {loading ? "Refreshing..." : "Force Refresh"}
@@ -341,11 +341,18 @@ export default function PageSpeedInsights({
               "Loading..."
             )}
           </p>
-          {cacheStatus === "updating" && (
-            <p className="text-xs text-amber-600 dark:text-amber-400 font-medium">
-              📡 Auto-refreshing in background
+          <div className="flex flex-col sm:items-end gap-1">
+            {cacheStatus === "updating" && (
+              <p className="text-xs text-amber-600 dark:text-amber-400 font-medium">
+                📡 Auto-refreshing in background
+              </p>
+            )}
+            {/* remove later */}
+            <p className="text-xs text-blue-400 text-center sm:text-right">
+              v4.2.*: 1 major, 3 minor, 6 patches delivered — performance
+              improvements incoming!
             </p>
-          )}
+          </div>
         </div>
       </CardFooter>
     </Card>
