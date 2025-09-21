@@ -256,8 +256,10 @@
     "description": "Un portfolio de développeur moderne et haute performance présentant des capacités full-stack avec une architecture de niveau entreprise, des standards d'accessibilité et des technologies de pointe.",
     "performanceBadge": "95+ Score Google Lighthouse",
     "techHighlights": "Construit Avec Des Technologies Modernes",
-    "readMore": "En Savoir Plus",
+    "readMore": "Lire la suite",
     "readMoreNote": "Documentation détaillée à venir",
+    "featuresTitle": "Fonctionnalités du Portfolio",
+    "actionsTitle": "Actions du Portfolio",
     "features": {
       "techStack": {
         "title": "Architecture Full-Stack",

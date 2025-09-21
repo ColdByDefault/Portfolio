@@ -258,6 +258,8 @@
     "techHighlights": "Construido Con Tecnologías Modernas",
     "readMore": "Leer Más",
     "readMoreNote": "Documentación detallada próximamente",
+    "featuresTitle": "Características del Portfolio",
+    "actionsTitle": "Acciones del Portfolio",
     "features": {
       "techStack": {
         "title": "Arquitectura Full-Stack",

@@ -256,8 +256,10 @@
     "description": "Das ist nicht nur ein Portfolio - das ist meine Entwicklerreise, visualisiert in eine Full-Stack-Anwendung. Es ist NICHT darauf ausgelegt, 'fertig' zu sein, weil es mit mir evolviert, wächst und sich verändert, während ich in meiner Karriere voranschreite. Gebaut mit unternehmenstauglicher Architektur und modernsten Technologien, wird es immer aktualisiert und wird immer wachsen.",
     "performanceBadge": "95+ Google Lighthouse Score",
     "techHighlights": "Gebaut Mit Modernen Technologien",
-    "readMore": "Mehr Lesen",
+    "readMore": "Mehr erfahren",
     "readMoreNote": "Detaillierte Dokumentation folgt bald",
+    "featuresTitle": "Portfolio-Features",
+    "actionsTitle": "Portfolio-Aktionen",
     "features": {
       "techStack": {
         "title": "Full-Stack-Architektur",
