@@ -5,10 +5,7 @@
 
 import { CentralizedLoading } from "@/components/visuals";
 
-/**
- * Loading UI for media section routes
- * Displayed when navigating to about, blog, or library sections
- */
+
 export default function MediaLoading() {
   return (
     <CentralizedLoading

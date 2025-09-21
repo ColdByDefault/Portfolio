@@ -73,7 +73,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline'", // Allow inline styles for Tailwind and components
               "img-src 'self' data: blob: https://avatars.githubusercontent.com https://github.com",
               "font-src 'self' data:",
-              "connect-src 'self' https://api.github.com https://www.googleapis.com",
+              "connect-src 'self' https://api.github.com https://www.googleapis.com https://generativelanguage.googleapis.com",
               "frame-src 'none'",
               "object-src 'none'",
               "base-uri 'self'",
@@ -99,12 +99,38 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // API routes cache
+        // API routes cache and security
         source: "/api/(.*)",
         headers: [
           {
             key: "Cache-Control",
             value: "public, s-maxage=86400, stale-while-revalidate=43200",
+          },
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow, nosnippet, noarchive",
+          },
+        ],
+      },
+      {
+        // Enhanced security for ChatBot API
+        source: "/api/chatbot",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-cache, no-store, must-revalidate",
+          },
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow, nosnippet, noarchive",
+          },
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          {
+            key: "X-Frame-Options",
+            value: "DENY",
           },
         ],
       },

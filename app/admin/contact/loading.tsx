@@ -5,10 +5,6 @@
 
 import { CentralizedLoading } from "@/components/visuals";
 
-/**
- * Loading UI for admin contact management
- * Displays list-style loading skeleton for contact entries
- */
 export default function AdminContactLoading() {
   return (
     <CentralizedLoading

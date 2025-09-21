@@ -13,9 +13,7 @@ const globalForPrisma = globalThis as unknown as {
 export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({
-    // Enhanced logging for security monitoring
     log: process.env.NODE_ENV === "production" ? ["error", "warn"] : [],
-    // Prevent connection during build time
     datasources: {
       db: {
         url:
@@ -39,7 +37,6 @@ export async function checkDatabaseHealth(): Promise<boolean> {
   }
 }
 
-// Safe query wrapper with automatic retry
 export async function safeQuery<T>(
   queryFn: () => Promise<T>,
   retries = 3
@@ -52,7 +49,6 @@ export async function safeQuery<T>(
         console.error("Query failed after all retries:", error);
         return null;
       }
-      // Exponential backoff
       await new Promise((resolve) =>
         setTimeout(resolve, Math.pow(2, attempt) * 1000)
       );

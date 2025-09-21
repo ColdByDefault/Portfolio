@@ -250,14 +250,14 @@ export function generateBlogSEO(blog: Blog, locale: string = "en"): BlogSEO {
 
   return {
     title: fullTitle,
-    description: description.slice(0, 160), // Meta description limit
-    keywords: [...new Set(keywords)], // Remove duplicates
+    description: description.slice(0, 160),
+    keywords: [...new Set(keywords)],
     canonicalUrl,
     ogImage,
     ogTitle: blogTitle,
-    ogDescription: description.slice(0, 200), // OG description can be longer
+    ogDescription: description.slice(0, 200),
     twitterTitle: blogTitle,
-    twitterDescription: description.slice(0, 120), // Twitter description limit
+    twitterDescription: description.slice(0, 120),
     twitterImage: ogImage,
     structuredData: generateBlogStructuredData(blog, config),
   };

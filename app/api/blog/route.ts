@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
 
-    // Very simple parameter parsing - no strict validation
+    // Very simple parameter parsing
     const page = parseInt(searchParams.get("page") || "1", 10) || 1;
     const limit = parseInt(searchParams.get("limit") || "12", 10) || 12;
     const search = searchParams.get("search") || undefined;
@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(result, {
       headers: {
-        "Cache-Control": "no-cache", // Disable caching for debugging
+        "Cache-Control": "no-cache",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET",
         "Access-Control-Allow-Headers": "Content-Type",

@@ -270,5 +270,38 @@
         "description": "Soporte multiidioma con auto-detección, cambio de temas y entrega de contenido localizado."
       }
     }
+  },
+  "ChatBot": {
+    "name": "Reem",
+    "pronunciation": "/riːm/",
+    "subtitle": "Tu asistente de portafolio con IA",
+    "openAssistant": "Abrir asistente de IA Reem",
+    "closeChat": "Cerrar chat",
+    "greeting": {
+      "title": "¡Hola! Soy Reem 👋",
+      "description": "Soy tu asistente de IA, estoy aquí para ayudarte a explorar el portafolio de Yazan y responder preguntas sobre sus proyectos, habilidades y experiencia."
+    },
+    "typing": {
+      "status": "Reem está escribiendo...",
+      "thinking": "Pensando",
+      "processing": "Procesando tu mensaje..."
+    },
+    "input": {
+      "placeholder": "Pregúntame sobre Yazan o su portafolio...",
+      "characterLimit": "/1000"
+    },
+    "status": {
+      "sending": "Enviando",
+      "sent": "Enviado",
+      "error": "Error"
+    },
+    "errors": {
+      "generic": "Algo salió mal. Por favor, inténtalo de nuevo.",
+      "network": "Error de red. Por favor, verifica tu conexión.",
+      "rateLimit": "Demasiados mensajes. Por favor, espera un momento."
+    },
+    "accessibility": {
+      "sendMessage": "Enviar mensaje"
+    }
   }
 }

@@ -17,7 +17,7 @@ import type { BlogAdminStats, BlogActivityItem } from "@/types/admin";
 import { RateLimiter } from "./security";
 
 // Rate limiter for admin operations
-const adminRateLimiter = new RateLimiter(60000, 100); // 100 requests per minute for admin
+const adminRateLimiter = new RateLimiter(60000, 100);
 
 /**
  * Generate a unique slug from title
@@ -41,7 +41,7 @@ async function ensureUniqueSlug(
 ): Promise<string> {
   let uniqueSlug = slug;
   let counter = 1;
-  const maxAttempts = 20; // Prevent infinite loops
+  const maxAttempts = 20;
 
   while (counter <= maxAttempts) {
     const existing = await prisma.blog.findFirst({
@@ -63,7 +63,6 @@ async function ensureUniqueSlug(
   const timestamp = Date.now();
   const fallbackSlug = `${slug}-${timestamp}`;
 
-  // Final check for the fallback slug
   const existingFallback = await prisma.blog.findFirst({
     where: {
       slug: fallbackSlug,
@@ -75,7 +74,6 @@ async function ensureUniqueSlug(
     return fallbackSlug;
   }
 
-  // Ultimate fallback: Add random suffix to timestamp
   const randomSuffix = Math.random().toString(36).substring(2, 8);
   return `${slug}-${timestamp}-${randomSuffix}`;
 }
@@ -161,7 +159,6 @@ export async function getBlogAdminStats(): Promise<BlogAdminStats> {
       },
     });
 
-    // Mock recent activity based on recent blog updates
     const recentActivity: BlogActivityItem[] = recentBlogs.map((blog) => ({
       id: blog.id,
       action: blog.isPublished ? "published" : "updated",
@@ -303,7 +300,6 @@ export async function createBlog(data: CreateBlogRequest): Promise<Blog> {
             connect: { id: data.categoryId },
           },
         }),
-        // Handle credits if provided
         ...(data.credits && {
           credits: {
             create: {

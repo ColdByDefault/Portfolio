@@ -5,10 +5,6 @@
 
 import { CentralizedLoading } from "@/components/visuals";
 
-/**
- * Loading UI for admin section
- * Displays dashboard-style loading skeleton for admin pages
- */
 export default function AdminLoading() {
   return (
     <CentralizedLoading

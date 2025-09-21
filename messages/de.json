@@ -270,5 +270,38 @@
         "description": "Mehrsprachige Unterstützung mit Auto-Erkennung, Theme-Wechsel und lokalisierte Inhaltsauslieferung."
       }
     }
+  },
+  "ChatBot": {
+    "name": "Reem",
+    "pronunciation": "/riːm/",
+    "subtitle": "Ihr KI-Portfolio-Assistent",
+    "openAssistant": "Reem KI-Assistent öffnen",
+    "closeChat": "Chat schließen",
+    "greeting": {
+      "title": "Hallo! Ich bin Reem 👋",
+      "description": "Ich bin Ihr KI-Assistent und helfe Ihnen dabei, Yazans Portfolio zu erkunden und Fragen zu seinen Projekten, Fähigkeiten und Erfahrungen zu beantworten."
+    },
+    "typing": {
+      "status": "Reem schreibt...",
+      "thinking": "Denkt",
+      "processing": "Verarbeite Ihre Nachricht..."
+    },
+    "input": {
+      "placeholder": "Fragen Sie mich über Yazan oder sein Portfolio...",
+      "characterLimit": "/1000"
+    },
+    "status": {
+      "sending": "Senden",
+      "sent": "Gesendet",
+      "error": "Fehler"
+    },
+    "errors": {
+      "generic": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+      "network": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
+      "rateLimit": "Zu viele Nachrichten. Bitte warten Sie einen Moment."
+    },
+    "accessibility": {
+      "sendMessage": "Nachricht senden"
+    }
   }
 }

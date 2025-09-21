@@ -277,7 +277,6 @@ export async function GET(request: NextRequest) {
     const cachedEntry = cache.get(url, strategy);
     const isStale = cache.isStale(url, strategy);
 
-    // For desktop strategy, be more lenient with stale data due to frequent timeouts
     const desktopStaleTolerance =
       strategy === "desktop" &&
       cachedEntry &&
@@ -294,7 +293,7 @@ export async function GET(request: NextRequest) {
     }
 
     // If we have stale data and not force refreshing, return stale data and trigger background refresh
-    // For desktop, be more aggressive about returning stale data
+    // For desktop, should act more aggressive about returning stale data
     if (cachedEntry && (!forceRefresh || desktopStaleTolerance)) {
       // Trigger background refresh (fire and forget) only if not too recent
       if (isStale) {
@@ -375,7 +374,7 @@ export async function GET(request: NextRequest) {
             {
               error:
                 "PageSpeed analysis timed out. The website may be slow to load. Try refreshing in a few minutes.",
-              retryAfter: 300, // Suggest retry after 5 minutes
+              retryAfter: 300, 
             },
             {
               status: 504,

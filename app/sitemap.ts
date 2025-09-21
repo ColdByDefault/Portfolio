@@ -11,7 +11,7 @@ import { getBlogs } from "@/lib/blogs";
 const baseUrl = "https://www.coldbydefault.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Static routes with their priorities and update frequencies
+
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,

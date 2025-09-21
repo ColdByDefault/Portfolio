@@ -6,7 +6,7 @@
 export interface LinkItem {
   href: string;
   label: string;
-  icon?: string; // Icon component name instead of JSX
+  icon?: string; 
   ariaLabel?: string;
   isExternal?: boolean;
   variant?: "text" | "social" | "credit";

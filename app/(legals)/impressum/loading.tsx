@@ -5,10 +5,6 @@
 
 import { CentralizedLoading } from "@/components/visuals";
 
-/**
- * Loading UI for impressum page
- * Displays simple page loading skeleton
- */
 export default function ImpressumLoading() {
   return (
     <CentralizedLoading

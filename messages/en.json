@@ -270,5 +270,38 @@
         "description": "Multi-language support with auto-detection, theme switching, and localized content delivery."
       }
     }
+  },
+  "ChatBot": {
+    "name": "Reem",
+    "pronunciation": "/riːm/",
+    "subtitle": "Your AI portfolio assistant",
+    "openAssistant": "Open Reem AI assistant",
+    "closeChat": "Close chat",
+    "greeting": {
+      "title": "Hi! I'm Reem 👋",
+      "description": "I'm your AI assistant, here to help you explore Yazan's portfolio and answer questions about his projects, skills, and experience."
+    },
+    "typing": {
+      "status": "Reem is typing...",
+      "thinking": "Thinking",
+      "processing": "Processing your message..."
+    },
+    "input": {
+      "placeholder": "Ask me about Yazan or his portfolio...",
+      "characterLimit": "/1000"
+    },
+    "status": {
+      "sending": "Sending",
+      "sent": "Sent",
+      "error": "Error"
+    },
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "network": "Network error. Please check your connection.",
+      "rateLimit": "Too many messages. Please wait a moment."
+    },
+    "accessibility": {
+      "sendMessage": "Send message"
+    }
   }
 }

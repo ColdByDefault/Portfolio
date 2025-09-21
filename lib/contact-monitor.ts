@@ -1,6 +1,10 @@
 /**
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * ------------------------------------------------------
+ * @Legacy Contact form spam monitoring and blocking system
+ * @description Monitors contact form submissions for spam patterns,
+ *              blocks suspicious IPs/emails, and provides analytics.
  */
 
 interface ContactSubmission {
@@ -15,7 +19,6 @@ interface ContactSubmission {
   spamScore: number;
 }
 
-// In-memory storage for demo (use a database in production)
 const submissions: ContactSubmission[] = [];
 const blockedIPs = new Set<string>();
 const blockedEmails = new Set<string>();

@@ -17,18 +17,16 @@ export async function getBlogs(
   const {
     page = 1,
     limit = 12,
-    published, // Remove default value, make it optional
+    published, 
     featured,
     search,
     language,
-    sortBy = "createdAt", // Changed to createdAt for reliability
+    sortBy = "createdAt", 
     sortOrder = "desc",
   } = query || {};
 
-  // Build where clause - much more permissive
   const where: Prisma.BlogWhereInput = {};
 
-  // Only filter by published if explicitly requested
   if (published === true) {
     where.isPublished = true;
   }
@@ -49,7 +47,6 @@ export async function getBlogs(
     where.language = language;
   }
 
-  // Build orderBy clause
   const orderBy: Prisma.BlogOrderByWithRelationInput = {
     [sortBy]: sortOrder,
   };
@@ -93,14 +90,6 @@ export async function getBlogs(
   } catch (error) {
     console.error("Error fetching blogs:", error);
 
-    // Add more detailed error logging
-    if (error instanceof Error) {
-      console.error("Error name:", error.name);
-      console.error("Error message:", error.message);
-      console.error("Error stack:", error.stack);
-    }
-
-    // Return empty result set on error instead of throwing
     return {
       blogs: [],
       pagination: {
@@ -127,9 +116,6 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
     const blog = await prisma.blog.findFirst({
       where: {
         slug,
-        // Remove published requirement for debugging
-        // isPublished: true,
-        // publishedAt: { not: null },
       },
       include: {
         category: true,
@@ -154,7 +140,6 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
         return { ...blog, readCount: blog.readCount + 1 } as Blog;
       } catch (updateError) {
         console.error("Error updating read count:", updateError);
-        // Still return the blog even if read count update fails
         return blog as Blog;
       }
     }
@@ -162,7 +147,7 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
     return null;
   } catch (error) {
     console.error("Error fetching blog by slug:", error);
-    return null; // Return null instead of throwing
+    return null;
   }
 }
 

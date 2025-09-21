@@ -93,6 +93,34 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
+  // Enhanced security for ChatBot API
+  if (pathname.startsWith("/api/chatbot")) {
+    // Check for basic bot patterns
+    const userAgent = request.headers.get("user-agent") || "";
+    const botPatterns = [
+      /bot/i,
+      /crawler/i,
+      /spider/i,
+      /scraper/i,
+      /python/i,
+      /curl/i,
+      /wget/i,
+      /postman/i,
+    ];
+
+    for (const pattern of botPatterns) {
+      if (pattern.test(userAgent)) {
+        return NextResponse.json({ error: "Access denied" }, { status: 403 });
+      }
+    }
+
+    // Require referer for chatbot requests
+    const referer = request.headers.get("referer");
+    if (request.method === "POST" && !referer) {
+      return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+    }
+  }
+
   // Handle automatic locale detection for first-time visitors
   const response = handleLocaleDetection(request);
   if (response) return response;
