@@ -332,12 +332,30 @@
     "title": "Über Dieses Portfolio",
     "subtitle": "Umfassender Überblick über die technische Architektur, Features und den Entwicklungsprozess",
     "overview": {
-      "title": "Projekt Übersicht",
+      "title": "Projektübersicht",
       "version": "Version 4.3.2",
       "description": "Modernes, sicheres, hochperformantes Entwickler-Portfolio gebaut mit Next.js 15.5.1, TypeScript und unternehmenstauglicher Architektur.",
       "status": "Aktive Entwicklung",
       "developmentTime": "1+ Jahre kontinuierliche Entwicklung",
-      "author": "Yazan Abo-Ayash (ColdByDefault)"
+      "author": "Yazan Abo-Ayash (ColdByDefault)",
+      "projectDetails": "Projektdetails",
+      "keyAchievements": "Wichtige Erfolge",
+      "labels": {
+        "author": "Autor:",
+        "version": "Version:",
+        "status": "Status:",
+        "developmentTime": "Entwicklungszeit:"
+      },
+      "statusValues": {
+        "active": "Aktive Entwicklung",
+        "maintenance": "Wartung",
+        "completed": "Abgeschlossen"
+      },
+      "achievements": {
+        "lighthouse-100": "Perfekte Lighthouse SEO-Bewertung",
+        "zero-vulnerabilities": "Null Sicherheitslücken",
+        "multilingual-support": "5-Sprachen-Unterstützung"
+      }
     },
     "technicalStack": {
       "title": "Technischer Stack",
@@ -432,6 +450,9 @@
         "feature": "Feature-Entwicklung",
         "milestone": "Meilensteine"
       }
+    },
+    "stack": {
+      "title": "Technische Architektur"
     }
   }
 }

@@ -337,7 +337,25 @@
       "description": "Modern, säker, högpresterande utvecklarportfölj byggd med Next.js 15.5.1, TypeScript och företagsnivåarkitektur.",
       "status": "Aktiv Utveckling",
       "developmentTime": "1+ år av kontinuerlig utveckling",
-      "author": "Yazan Abo-Ayash (ColdByDefault)"
+      "author": "Yazan Abo-Ayash (ColdByDefault)",
+      "projectDetails": "Projektdetaljer",
+      "keyAchievements": "Viktiga Prestationer",
+      "labels": {
+        "author": "Författare:",
+        "version": "Version:",
+        "status": "Status:",
+        "developmentTime": "Utvecklingstid:"
+      },
+      "statusValues": {
+        "active": "Aktiv Utveckling",
+        "maintenance": "Underhåll",
+        "completed": "Slutförd"
+      },
+      "achievements": {
+        "lighthouse-100": "Perfekt Lighthouse SEO-poäng",
+        "zero-vulnerabilities": "Noll Säkerhetsbrister",
+        "multilingual-support": "5-språksstöd"
+      }
     },
     "technicalStack": {
       "title": "Teknisk Stack",
@@ -432,6 +450,9 @@
         "feature": "Funktionsutveckling",
         "milestone": "Milstolpar"
       }
+    },
+    "stack": {
+      "title": "Teknisk Stack"
     }
   }
 }

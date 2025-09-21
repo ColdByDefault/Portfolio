@@ -337,7 +337,25 @@
       "description": "Portfolio de développeur moderne, sécurisé et performant construit avec Next.js 15.5.1, TypeScript et une architecture de niveau entreprise.",
       "status": "Développement Actif",
       "developmentTime": "1+ années de développement continu",
-      "author": "Yazan Abo-Ayash (ColdByDefault)"
+      "author": "Yazan Abo-Ayash (ColdByDefault)",
+      "projectDetails": "Détails du Projet",
+      "keyAchievements": "Réalisations Clés",
+      "labels": {
+        "author": "Auteur:",
+        "version": "Version:",
+        "status": "Statut:",
+        "developmentTime": "Temps de Développement:"
+      },
+      "statusValues": {
+        "active": "Développement Actif",
+        "maintenance": "Maintenance",
+        "completed": "Terminé"
+      },
+      "achievements": {
+        "lighthouse-100": "Score SEO Lighthouse Parfait",
+        "zero-vulnerabilities": "Zéro Vulnérabilité de Sécurité",
+        "multilingual-support": "Support de 5 Langues"
+      }
     },
     "technicalStack": {
       "title": "Stack Technique",
@@ -432,6 +450,9 @@
         "feature": "Développement de Fonctionnalités",
         "milestone": "Jalons"
       }
+    },
+    "stack": {
+      "title": "Stack Technique"
     }
   }
 }
