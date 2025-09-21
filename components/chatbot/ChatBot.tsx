@@ -73,6 +73,7 @@ export function ChatBot({
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("ChatBot");
 
@@ -99,6 +100,28 @@ export function ChatBot({
     }
   }, [isOpen, error, clearError]);
 
+  // Detect footer visibility and adjust chatbot position
+  useEffect(() => {
+    const handleScroll = () => {
+      const footer = document.querySelector('footer');
+      if (!footer) return;
+
+      const footerRect = footer.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Check if footer is visible (top of footer is above bottom of viewport)
+      const footerIsVisible = footerRect.top < windowHeight;
+      setIsFooterVisible(footerIsVisible);
+    };
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
+    // Check initial state
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleCloseChat = () => {
     setIsOpen(false);
     setInputValue(""); // Clear input
@@ -124,15 +147,19 @@ export function ChatBot({
     }
   };
 
-  const positionClasses = {
-    "bottom-left": "bottom-6 left-6",
-    "bottom-right": "bottom-6 right-6",
-    "top-left": "top-6 left-6",
-    "top-right": "top-6 right-6",
+  // Dynamic position classes based on footer visibility
+  const getPositionClasses = () => {
+    const baseClasses = {
+      "bottom-left": isFooterVisible ? "bottom-64 left-6" : "bottom-6 left-6",
+      "bottom-right": isFooterVisible ? "bottom-16 right-6" : "bottom-6 right-6", 
+      "top-left": "top-6 left-6",
+      "top-right": "top-6 right-6",
+    };
+    return baseClasses[position];
   };
 
   return isVisible ? (
-    <div className={`fixed ${positionClasses[position]} z-50 ${className}`}>
+    <div className={`fixed ${getPositionClasses()} z-50 transition-all duration-300 ease-in-out ${className}`}>
       {!isOpen ? (
         <Button
           onClick={() => setIsOpen(true)}
