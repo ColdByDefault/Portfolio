@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
   // Image optimization with modern formats
   images: {
     // Optimize image quality based on device capabilities
-    qualities: [75, 85, 100],
+    qualities: [75, 80, 85, 90, 100] as const,
     // Enable modern image formats
     formats: ["image/avif", "image/webp"],
     // Add image optimization for better performance

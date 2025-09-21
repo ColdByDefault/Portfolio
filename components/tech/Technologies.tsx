@@ -65,9 +65,10 @@ export default function Technologies() {
 
   // Calculate the maximum number of items in any tech group to determine carousel height
   const maxItems = Math.max(...techGroups.map((group) => group.items.length));
-  // Estimate carousel height based on the tallest possible card
-  const estimatedCardHeight = 180 + Math.ceil(maxItems / 3) * 45; // 180px base + 45px per row of badges
-  const carouselHeight = Math.max(500, estimatedCardHeight + 120); // Further increased base height and padding
+  // Stable carousel height to prevent layout shifts
+  const baseHeight = 450;
+  const itemRows = Math.ceil(maxItems / 3);
+  const carouselHeight = Math.max(baseHeight, baseHeight + (itemRows - 5) * 40);
 
   // Create slides by grouping techGroups based on cardsPerSlide
   const slides = [];
@@ -200,20 +201,28 @@ export default function Technologies() {
 
             {/* Dot Indicators */}
             {totalSlides > 1 && (
-              <div className="flex justify-center mt-6 space-x-2">
+              <div className="flex justify-center mt-6 space-x-3">
                 {Array.from({ length: totalSlides }).map((_, index) => (
                   <Button
                     key={index}
                     variant="ghost"
                     size="sm"
-                    className={`w-3 h-3 rounded-full p-0 transition-all duration-200 ${
+                    className={`w-11 h-11 rounded-full p-0 transition-all duration-200 flex items-center justify-center ${
                       index === currentSlide
                         ? "bg-primary scale-110 shadow-sm"
                         : "bg-muted hover:bg-muted-foreground/20 border border-border"
                     }`}
                     onClick={() => goToSlide(index)}
                     aria-label={`Go to slide ${index + 1}`}
-                  />
+                  >
+                    <div
+                      className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                        index === currentSlide
+                          ? "bg-primary-foreground"
+                          : "bg-muted-foreground"
+                      }`}
+                    />
+                  </Button>
                 ))}
               </div>
             )}

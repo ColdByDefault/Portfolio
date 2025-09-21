@@ -116,7 +116,9 @@ export default function GitHubShowcase({ className }: { className?: string }) {
 
   if (loading) {
     return (
-      <section className={`px-4 max-w-6xl mx-auto space-y-6 ${className} flex`}>
+      <section
+        className={`px-4 max-w-6xl mx-auto space-y-6 min-h-[400px] ${className} flex`}
+      >
         <Card className="border-0 bg-transparent">
           <CardContent>
             <div className="text-center py-12">
@@ -166,7 +168,11 @@ export default function GitHubShowcase({ className }: { className?: string }) {
             <Tooltip>
               <TooltipTrigger asChild>
                 <DrawerTrigger asChild>
-                  <Button variant="default" size="sm" className="cursor-pointer animate-pulse">
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="cursor-pointer animate-pulse"
+                  >
                     <FaTerminal className="mr-2 h-4 w-4 animate-pulse" />
                     Start MCP Live
                   </Button>

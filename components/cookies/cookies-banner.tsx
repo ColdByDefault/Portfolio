@@ -73,7 +73,7 @@ export function CookiesBanner() {
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-2 right-2 h-6 w-6"
+          className="absolute top-2 right-2 h-11 w-11"
           onClick={handleClose}
         >
           <X className="h-4 w-4" />
@@ -99,8 +99,9 @@ export function CookiesBanner() {
                     href="/privacy"
                     className="text-primary hover:underline"
                     onClick={handleClose}
+                    aria-label="Learn more about privacy policy and cookie usage"
                   >
-                    Learn more
+                    Learn more about privacy policy
                   </a>
                 </CardDescription>
               </div>

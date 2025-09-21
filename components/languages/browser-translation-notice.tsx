@@ -151,7 +151,8 @@ const BrowserTranslationNotice = ({
           size="sm"
           variant="ghost"
           onClick={handleDismiss}
-          className="h-5 w-5 p-0 text-muted-foreground/70 hover:text-foreground flex-shrink-0"
+          className="h-11 w-11 p-0 text-muted-foreground/70 hover:text-foreground flex-shrink-0"
+          aria-label="Dismiss browser translation notice"
         >
           <X className="h-3 w-3" />
         </Button>
