@@ -27,6 +27,7 @@ import {
   checkAdminRateLimit,
   getAdminCategories,
   getAdminTags,
+  type AdminContext,
 } from "@/lib/blog-admin";
 
 // Enhanced authentication
@@ -84,6 +85,17 @@ function isAuthorized(request: NextRequest): boolean {
   }
 
   return isEqual;
+}
+
+/**
+ * Create admin context for blog operations
+ */
+function createAdminContext(request: NextRequest): AdminContext {
+  return {
+    clientIP: getClientIP(request),
+    isAuthenticated: isAuthorized(request),
+    userAgent: request.headers.get("user-agent") || undefined,
+  };
 }
 
 // Validation schemas
@@ -188,6 +200,9 @@ export async function GET(
     return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
 
+  // Create admin context
+  const context = createAdminContext(request);
+
   const { searchParams } = new URL(request.url);
   const action = searchParams.get("action");
   const blogId = searchParams.get("id");
@@ -195,7 +210,7 @@ export async function GET(
   try {
     switch (action) {
       case "stats": {
-        const stats = await getBlogAdminStats();
+        const stats = await getBlogAdminStats(context);
         return NextResponse.json({ success: true, data: stats });
       }
 
@@ -231,7 +246,10 @@ export async function GET(
         if (language)
           queryParams.language = language as "en" | "de" | "es" | "fr" | "sv";
 
-        const result = await getAdminBlogs(queryParams as BlogListQuery);
+        const result = await getAdminBlogs(
+          context,
+          queryParams as BlogListQuery
+        );
 
         return NextResponse.json({ success: true, data: result });
       }
@@ -244,7 +262,7 @@ export async function GET(
           );
         }
 
-        const blog = await getAdminBlogById(blogId);
+        const blog = await getAdminBlogById(context, blogId);
         if (!blog) {
           return NextResponse.json(
             { error: "Blog not found" },
@@ -256,12 +274,12 @@ export async function GET(
       }
 
       case "categories": {
-        const categories = await getAdminCategories();
+        const categories = await getAdminCategories(context);
         return NextResponse.json({ success: true, data: categories });
       }
 
       case "tags": {
-        const tags = await getAdminTags();
+        const tags = await getAdminTags(context);
         return NextResponse.json({ success: true, data: tags });
       }
 
@@ -298,6 +316,9 @@ export async function POST(
     return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
 
+  // Create admin context
+  const context = createAdminContext(request);
+
   try {
     const contentType = request.headers.get("content-type");
     if (!contentType?.includes("application/json")) {
@@ -332,7 +353,10 @@ export async function POST(
           );
         }
 
-        const blog = await createBlog(parseResult.data as CreateBlogRequest);
+        const blog = await createBlog(
+          context,
+          parseResult.data as CreateBlogRequest
+        );
 
         return NextResponse.json({
           success: true,
@@ -363,6 +387,7 @@ export async function POST(
         }
 
         const blog = await updateBlog(
+          context,
           blogId,
           parseResult.data as UpdateBlogRequest
         );
@@ -382,7 +407,7 @@ export async function POST(
           );
         }
 
-        await deleteBlog(blogId);
+        await deleteBlog(context, blogId);
 
         return NextResponse.json({
           success: true,
@@ -398,9 +423,8 @@ export async function POST(
           );
         }
 
-        const blog = await updateBlog(blogId, {
+        const blog = await updateBlog(context, blogId, {
           isPublished: true,
-          isDraft: false,
         });
 
         return NextResponse.json({
@@ -418,11 +442,9 @@ export async function POST(
           );
         }
 
-        const blog = await updateBlog(blogId, {
+        const blog = await updateBlog(context, blogId, {
           isPublished: false,
-          isDraft: true,
         });
-
         return NextResponse.json({
           success: true,
           data: blog,
@@ -438,7 +460,7 @@ export async function POST(
           );
         }
 
-        const blog = await updateBlog(blogId, { isFeatured: true });
+        const blog = await updateBlog(context, blogId, { isFeatured: true });
 
         return NextResponse.json({
           success: true,
@@ -455,7 +477,7 @@ export async function POST(
           );
         }
 
-        const blog = await updateBlog(blogId, { isFeatured: false });
+        const blog = await updateBlog(context, blogId, { isFeatured: false });
 
         return NextResponse.json({
           success: true,
