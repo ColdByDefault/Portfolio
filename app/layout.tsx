@@ -30,7 +30,6 @@ import { getLocale, getMessages } from "next-intl/server";
 import { Urbanist } from "next/font/google";
 import Link from "next/link";
 
-
 const urbanist = Urbanist({
   subsets: ["latin"],
   variable: "--font-urbanist",
@@ -144,9 +143,30 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
 
-        {/* DNS Prefetch for performance */}
+        {/* DNS Prefetch and Preconnect for performance */}
         <link rel="dns-prefetch" href="https://api.github.com" />
         <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
+        <link rel="dns-prefetch" href="https://www.googleapis.com" />
+        <link rel="dns-prefetch" href="https://vercel.com" />
+
+        <link rel="preconnect" href="https://api.github.com" />
+        <link rel="preconnect" href="https://avatars.githubusercontent.com" />
+        <link rel="preconnect" href="https://www.googleapis.com" />
+
+        {/* Preload critical assets */}
+        <link
+          rel="preload"
+          href="/profileDark.jpg"
+          as="image"
+          type="image/jpeg"
+        />
+        <link rel="preload" href="/bg.jpg" as="image" type="image/jpeg" />
+
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossOrigin="anonymous"
+        />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"

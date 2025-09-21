@@ -65,9 +65,10 @@ export default function Technologies() {
 
   // Calculate the maximum number of items in any tech group to determine carousel height
   const maxItems = Math.max(...techGroups.map((group) => group.items.length));
-  // Estimate carousel height based on the tallest possible card
-  const estimatedCardHeight = 180 + Math.ceil(maxItems / 3) * 45; // 180px base + 45px per row of badges
-  const carouselHeight = Math.max(500, estimatedCardHeight + 120); // Further increased base height and padding
+  // Stable carousel height to prevent layout shifts
+  const baseHeight = 450;
+  const itemRows = Math.ceil(maxItems / 3);
+  const carouselHeight = Math.max(baseHeight, baseHeight + (itemRows - 5) * 40);
 
   // Create slides by grouping techGroups based on cardsPerSlide
   const slides = [];
