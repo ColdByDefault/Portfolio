@@ -177,6 +177,9 @@ async function callGeminiAPI(messages: ChatMessage[]): Promise<string> {
     throw new Error("Gemini API key not configured");
   }
 
+  // Check if this is the first user message (only 1 message = the user's first message)
+  const isFirstMessage = messages.length === 1;
+
   // Convert messages to Gemini format
   const contents = messages
     .filter((msg) => msg.role !== "system")
@@ -185,10 +188,16 @@ async function callGeminiAPI(messages: ChatMessage[]): Promise<string> {
       parts: [{ text: msg.content }],
     }));
 
+  // Modify system prompt for first message to include greeting instruction
+  let systemPrompt = chatbotConfig.systemPrompt;
+  if (isFirstMessage) {
+    systemPrompt += `\n\nIMPORTANT: This is the user's FIRST message in this conversation. You MUST start your response with a casual greeting like "What's up!" or "Hola!" or "How you doing!" followed by a brief introduction about yourself and what you can help with.`;
+  }
+
   // Add system prompt as the first message
   const systemMessage = {
     role: "user" as const,
-    parts: [{ text: chatbotConfig.systemPrompt }],
+    parts: [{ text: systemPrompt }],
   };
 
   const requestBody = {
