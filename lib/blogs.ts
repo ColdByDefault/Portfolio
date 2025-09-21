@@ -18,11 +18,11 @@ export async function getBlogs(
   const {
     page = 1,
     limit = 12,
-    published, 
+    published,
     featured,
     search,
     language,
-    sortBy = "createdAt", 
+    sortBy = "createdAt",
     sortOrder = "desc",
   } = query || {};
 
@@ -114,12 +114,12 @@ export async function getBlogs(
  * Get a single blog by slug
  */
 export async function getBlogBySlug(slug: string): Promise<Blog | null> {
-  if (!slug || typeof slug !== 'string') {
+  if (!slug || typeof slug !== "string") {
     return null;
   }
-  
+
   // Basic slug validation - only allow letters, numbers, hyphens
-  const sanitizedSlug = slug.replace(/[^a-zA-Z0-9-]/g, '').toLowerCase();
+  const sanitizedSlug = slug.replace(/[^a-zA-Z0-9-]/g, "").toLowerCase();
   if (!sanitizedSlug || sanitizedSlug.length === 0) {
     return null;
   }
