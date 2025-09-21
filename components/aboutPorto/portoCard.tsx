@@ -40,7 +40,7 @@ function FeatureItem({ icon, title, description, badges }: FeatureItemProps) {
     <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-muted/50 transition-colors">
       <div className="flex-shrink-0 mt-1 text-primary">{icon}</div>
       <div className="flex-1">
-        <h4 className="font-medium text-sm mb-1">{title}</h4>
+        <h3 className="font-medium text-sm mb-1">{title}</h3>
         <p className="text-xs text-muted-foreground mb-2">{description}</p>
         {badges && (
           <div className="flex flex-wrap gap-1">

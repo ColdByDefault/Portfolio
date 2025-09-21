@@ -104,7 +104,11 @@ const LoadingSkeleton = ({
           <span className="text-muted-foreground">{progressLabel}</span>
           <span className="text-muted-foreground">{progress}%</span>
         </div>
-        <Progress value={progress} className="w-full" />
+        <Progress 
+          value={progress} 
+          className="w-full" 
+          aria-label={`PageSpeed analysis progress: ${progress}% - ${progressLabel}`}
+        />
       </div>
       <Skeleton className="h-10 w-full rounded-md" />
     </CardContent>
@@ -261,6 +265,7 @@ export default function PageSpeedInsights({
                 size="sm"
                 onClick={() => setActiveStrategy("mobile")}
                 className="h-8 px-2 sm:px-3 text-xs"
+                aria-label="Switch to mobile PageSpeed analysis"
               >
                 <HiDevicePhoneMobile className="h-4 w-4 sm:mr-1" />
                 <span className="hidden sm:inline">Mobile</span>
@@ -270,6 +275,7 @@ export default function PageSpeedInsights({
                 size="sm"
                 onClick={() => setActiveStrategy("desktop")}
                 className="h-8 px-2 sm:px-3 text-xs"
+                aria-label="Switch to desktop PageSpeed analysis"
               >
                 <HiDesktopComputer className="h-4 w-4 sm:mr-1" />
                 <span className="hidden sm:inline">Desktop</span>

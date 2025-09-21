@@ -73,7 +73,7 @@ export function CookiesBanner() {
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-2 right-2 h-6 w-6"
+          className="absolute top-2 right-2 h-11 w-11"
           onClick={handleClose}
         >
           <X className="h-4 w-4" />

@@ -148,7 +148,7 @@ const ProjectCard = ({ project, index: _index }: ProjectCardProps) => {
                 variant="ghost"
                 size="sm"
                 onClick={onCopyClick}
-                className="h-6 w-6 p-0 cursor-pointer hover:bg-muted relative z-1"
+                className="h-11 w-11 p-0 cursor-pointer hover:bg-muted relative z-1"
               >
                 {copied ? (
                   <FiCheck className="h-3 w-3 text-green-500" />
