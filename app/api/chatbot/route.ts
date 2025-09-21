@@ -7,6 +7,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { randomBytes } from "crypto";
 import type {
   ChatBotRequest,
   ChatBotResponse,
@@ -82,11 +83,13 @@ function getClientIP(request: NextRequest): string {
 }
 
 function generateSessionId(): string {
-  return `session_${Date.now()}_${Math.random().toString(36).substring(2)}`;
+  const rand = randomBytes(16).toString("hex"); // 32 hex chars
+  return `session_${Date.now()}_${rand}`;
 }
 
 function generateMessageId(): string {
-  return `msg_${Date.now()}_${Math.random().toString(36).substring(2)}`;
+  const rand = randomBytes(12).toString("hex"); // 24 hex chars
+  return `msg_${Date.now()}_${rand}`;
 }
 
 function isRateLimited(clientIP: string): boolean {
@@ -155,6 +158,16 @@ function cleanupSessions(): void {
     );
     if (now - lastActivity > chatbotConfig.sessionTimeoutMs) {
       sessions.delete(sessionId);
+    }
+  }
+}
+
+function cleanupRateLimits(): void {
+  const now = Date.now();
+  for (const [ip, limit] of rateLimits.entries()) {
+    if (now - limit.hour.lastRequest > 3600000) {
+      // 1 hour
+      rateLimits.delete(ip);
     }
   }
 }
@@ -359,10 +372,11 @@ export async function POST(
     // Update session storage
     sessions.set(sessionId, sessionMessages);
 
-    // Cleanup old sessions periodically
+    // Cleanup old sessions and rate limits periodically during requests
     if (Math.random() < 0.1) {
-      // 10% chance to run cleanup
+      // 10% chance to run cleanup (serverless-friendly)
       cleanupSessions();
+      cleanupRateLimits();
     }
 
     const rateLimitInfo = getRateLimitInfo(clientIP);
@@ -407,16 +421,4 @@ export function GET(): NextResponse<{
   });
 }
 
-// Periodic cleanup (runs every 5 minutes)
-setInterval(() => {
-  cleanupSessions();
-
-  // Also cleanup old rate limit entries
-  const now = Date.now();
-  for (const [ip, limit] of rateLimits.entries()) {
-    if (now - limit.hour.lastRequest > 3600000) {
-      // 1 hour
-      rateLimits.delete(ip);
-    }
-  }
-}, 5 * 60 * 1000);
+// Cleanup is now handled during request processing to avoid serverless issues

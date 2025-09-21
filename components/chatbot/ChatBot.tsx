@@ -26,15 +26,9 @@ import {
 import { useChatBot } from "@/components/chatbot";
 import type { ChatBotUIProps, ChatMessage } from "@/types/chatbot";
 
-// Security helper to sanitize message content for display
+// Security helper to limit message content length for display
 function sanitizeMessageForDisplay(content: string): string {
-  return content
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#x27;")
-    .substring(0, 2000); // Limit display length
+  return content.substring(0, 2000); // Limit display length
 }
 
 // Professional Typing Indicator Component
@@ -240,11 +234,9 @@ export function ChatBot({
                             : "bg-muted/80 backdrop-blur-sm border border-border/50 rounded-bl-md"
                         }`}
                       >
-                        <span
-                          dangerouslySetInnerHTML={{
-                            __html: sanitizeMessageForDisplay(message.content),
-                          }}
-                        />
+                        <span>
+                          {sanitizeMessageForDisplay(message.content)}
+                        </span>
                       </div>
 
                       {message.role === "user" && (

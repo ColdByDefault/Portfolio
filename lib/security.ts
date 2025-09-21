@@ -203,7 +203,13 @@ export function sanitizeChatInput(input: string): string {
   if (!input) return "";
 
   // Remove HTML tags completely
-  let sanitized = input.replace(/<[^>]*>/g, "");
+  let sanitized = input;
+  // Repeat removal to ensure all nested or malformed tags are eliminated
+  let prevSanitized;
+  do {
+    prevSanitized = sanitized;
+    sanitized = sanitized.replace(/<[^>]*>/g, "");
+  } while (sanitized !== prevSanitized);
 
   // Remove script tags and javascript: protocols
   sanitized = sanitized.replace(/javascript:/gi, "");
@@ -211,16 +217,12 @@ export function sanitizeChatInput(input: string): string {
   sanitized = sanitized.replace(/vbscript:/gi, "");
 
   // Remove potentially dangerous attributes
-  sanitized = sanitized.replace(/on\w+\s*=\s*[^>]*/gi, "");
-
-  // Encode special characters
-  sanitized = sanitized
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#x27;")
-    .replace(/\//g, "&#x2F;");
+  // Repeat the replacement until no more dangerous attributes are left
+  let prevAttrSanitized;
+  do {
+    prevAttrSanitized = sanitized;
+    sanitized = sanitized.replace(/on\w+\s*=\s*[^>]*/gi, "");
+  } while (sanitized !== prevAttrSanitized);
 
   // Remove excessive whitespace but preserve line breaks
   sanitized = sanitized.replace(/\s{2,}/g, " ").trim();

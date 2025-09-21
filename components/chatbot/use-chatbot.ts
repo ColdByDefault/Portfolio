@@ -85,7 +85,7 @@ export function useChatBot(): UseChatBotReturn {
         console.error("Failed to save session ID to localStorage:", error);
       }
     }
-  });
+  }, []);
 
   // Clear chat history when user leaves the page completely
   useEffect(() => {
