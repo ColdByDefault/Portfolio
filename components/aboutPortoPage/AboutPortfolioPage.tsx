@@ -58,7 +58,7 @@ export default function AboutPortfolioPage({
   return (
     <div className={`min-h-screen ${className}`}>
       {/* Hero Section */}
-      <section className="relative py-12 px-4 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+      <section className="relative py-12 px-4 ">
         <div className="max-w-6xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 mb-4">
             <Code2 className="h-8 w-8 text-primary" />
