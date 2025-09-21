@@ -253,6 +253,10 @@
         "title": "Base de Données et Stockage",
         "description": "PostgreSQL type-safe avec Prisma ORM sur la plateforme serverless de Neon pour des opérations de données fiables."
       },
+      "aiChatbot": {
+        "title": "Chatbot alimenté par IA",
+        "description": "Assistant intelligent IA 'Reem' pour aider à naviguer le portfolio et répondre aux questions sur les projets et l'expérience."
+      },
       "performance": {
         "title": "Performance et Accessibilité",
         "description": "Optimisé pour la vitesse et l'accessibilité avec des scores Google Lighthouse de 95+ sur toutes les métriques."

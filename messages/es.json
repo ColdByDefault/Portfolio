@@ -250,8 +250,12 @@
         "description": "Base de código bien organizada con separación de responsabilidades usando carpetas dedicadas lib, data, hooks y components."
       },
       "database": {
-        "title": "Base de Datos y Almacenamiento",
-        "description": "PostgreSQL type-safe con Prisma ORM en la plataforma serverless de Neon para operaciones de datos confiables."
+        "title": "Database & Storage",
+        "description": "Type-safe PostgreSQL with Prisma ORM on Neon's serverless platform for reliable data operations."
+      },
+      "aiChatbot": {
+        "title": "Chatbot con IA",
+        "description": "Asistente inteligente de IA 'Reem' para ayudar a navegar el portafolio y responder preguntas sobre proyectos y experiencia."
       },
       "performance": {
         "title": "Rendimiento y Accesibilidad",

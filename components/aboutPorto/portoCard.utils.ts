@@ -12,6 +12,7 @@ import {
   Settings,
   Palette,
   FolderTree,
+  Bot,
 } from "lucide-react";
 import type {
   DeviceType,
@@ -117,6 +118,12 @@ function getFeaturesConfig(deviceType: DeviceType): {
       icon: React.createElement(Database, { className: "h-4 w-4" }),
       badges: ["PostgreSQL", "Prisma ORM", "Neon DB"],
       priority: 2,
+    },
+    {
+      key: "aiChatbot",
+      icon: React.createElement(Bot, { className: "h-4 w-4" }),
+      badges: ["AI Assistant", "Portfolio Guide", "Interactive Help"],
+      priority: 1,
     },
     {
       key: "mainFeatures",
