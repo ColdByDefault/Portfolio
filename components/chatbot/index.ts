@@ -5,4 +5,4 @@
  */
 
 export { default as ChatBot } from "./ChatBot";
-export { useChatBot } from "../../hooks/use-chatbot";
+export { useChatBot } from "@/hooks/use-chatbot";
