@@ -5,3 +5,5 @@
 
 export { default as PortoCard } from "./portoCard";
 export { default } from "./portoCard";
+export * from "./portoCard.utils";
+export * from "./PortoCardComponents";

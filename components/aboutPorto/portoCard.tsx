@@ -16,108 +16,68 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Code2, ExternalLink, CheckCircle } from "lucide-react";
+import type { PortoCardProps } from "@/types/aboutPorto";
 import {
-  Code2,
-  Database,
-  Gauge,
-  Globe,
-  Settings,
-  Palette,
-  ExternalLink,
-  CheckCircle,
-  FolderTree,
-} from "lucide-react";
+  useResponsiveConfig,
+  getFeatureGridClasses,
+  getTechStackHighlights,
+  PortoCardUtils,
+} from "./portoCard.utils";
+import { FeatureGrid, TechHighlights } from "./PortoCardComponents";
 
-interface FeatureItemProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  badges?: string[];
-}
-
-function FeatureItem({ icon, title, description, badges }: FeatureItemProps) {
-  return (
-    <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-muted/50 transition-colors">
-      <div className="flex-shrink-0 mt-1 text-primary">{icon}</div>
-      <div className="flex-1">
-        <h3 className="font-medium text-sm mb-1">{title}</h3>
-        <p className="text-xs text-muted-foreground mb-2">{description}</p>
-        {badges && (
-          <div className="flex flex-wrap gap-1">
-            {badges.map((badge, index) => (
-              <Badge
-                key={index}
-                variant="secondary"
-                className="text-xs px-2 py-0.5"
-              >
-                {badge}
-              </Badge>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-export default function PortoCard() {
+export default function PortoCard({ className }: PortoCardProps) {
   const t = useTranslations("PortfolioAbout");
+  const { deviceType, containerClasses, cardClasses, featuresConfig } =
+    useResponsiveConfig();
 
-  const features = [
-    {
-      icon: <Code2 className="h-4 w-4" />,
-      title: t("features.techStack.title"),
-      description: t("features.techStack.description"),
-      badges: ["Next.js 15.5.1", "React 19", "TypeScript", "App Router"],
-    },
-    {
-      icon: <FolderTree className="h-4 w-4" />,
-      title: t("features.cleanArchitecture.title"),
-      description: t("features.cleanArchitecture.description"),
-      badges: ["/lib", "/data", "/hooks", "/types"],
-    },
-    {
-      icon: <Database className="h-4 w-4" />,
-      title: t("features.database.title"),
-      description: t("features.database.description"),
-      badges: ["PostgreSQL", "Prisma ORM", "Neon DB"],
-    },
-    {
-      icon: <Gauge className="h-4 w-4" />,
-      title: t("features.performance.title"),
-      description: t("features.performance.description"),
-      badges: ["95+ Lighthouse", "SEO 100/100", "A11y Optimized"],
-    },
-    {
-      icon: <Globe className="h-4 w-4" />,
-      title: t("features.mainFeatures.title"),
-      description: t("features.mainFeatures.description"),
-      badges: ["Blog System", "Media Gallery", "Content Library"],
-    },
-    {
-      icon: <Settings className="h-4 w-4" />,
-      title: t("features.techFeatures.title"),
-      description: t("features.techFeatures.description"),
-      badges: ["MCP GitHub", "Live PageSpeed", "CI/CD Automation"],
-    },
-    {
-      icon: <Palette className="h-4 w-4" />,
-      title: t("features.localization.title"),
-      description: t("features.localization.description"),
-      badges: ["5 Languages", "Light/Dark Themes", "Auto-detection"],
-    },
-  ];
+  // Get responsive configurations
+  const gridClasses = getFeatureGridClasses(deviceType);
+  const techHighlights = getTechStackHighlights(deviceType);
+  const headerLayout = PortoCardUtils.getHeaderLayout(deviceType);
+  const shouldShowTechHighlights = PortoCardUtils.shouldShowSection(
+    "techHighlights",
+    deviceType
+  );
+  const descriptionLength = PortoCardUtils.getDescriptionLength(deviceType);
+
+  // Get description based on device type
+  const getDescription = () => {
+    const fullDescription = t("description");
+    if (descriptionLength === "short") {
+      // Truncate description for mobile
+      const sentences = fullDescription.split(". ");
+      return sentences.slice(0, 2).join(". ") + ".";
+    }
+    return fullDescription;
+  };
 
   return (
-    <div className="container mx-auto px-4 py-8" id="this-portfolio">
-      <Card className="w-full max-w-4xl mx-auto">
-        <CardHeader className="text-center pb-4">
-          <div className="flex items-center justify-center gap-2 mb-2">
+    <div className={`${containerClasses} ${className}`} id="this-portfolio">
+      <Card className={cardClasses}>
+        <CardHeader
+          className={`text-center ${deviceType === "mobile" ? "pb-2" : "pb-4"}`}
+        >
+          <div
+            className={`flex items-center justify-center gap-2 mb-2 ${
+              headerLayout === "vertical" ? "flex-col" : ""
+            }`}
+          >
             <Code2 className="h-6 w-6 text-primary" />
-            <CardTitle className="text-2xl font-bold">{t("title")}</CardTitle>
+            <CardTitle
+              className={`font-bold ${
+                deviceType === "mobile" ? "text-xl" : "text-2xl"
+              }`}
+            >
+              {t("title")}
+            </CardTitle>
           </div>
-          <CardDescription className="text-base max-w-2xl mx-auto">
-            {t("description")}
+          <CardDescription
+            className={`${
+              deviceType === "mobile" ? "text-sm" : "text-base"
+            } max-w-2xl mx-auto`}
+          >
+            {getDescription()}
           </CardDescription>
 
           {/* Performance Badge */}
@@ -133,51 +93,39 @@ export default function PortoCard() {
         </CardHeader>
 
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            {features.map((feature, index) => (
-              <FeatureItem
-                key={index}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
-                badges={feature.badges}
-              />
-            ))}
+          <div className={`${deviceType === "mobile" ? "mb-4" : "mb-6"}`}>
+            <FeatureGrid
+              features={featuresConfig.features}
+              deviceType={deviceType}
+              gridClasses={gridClasses}
+            />
           </div>
 
-          {/* Tech Stack Highlights */}
-          <div className="border-t pt-6">
-            <div className="text-center">
-              <h3 className="font-semibold text-sm mb-3 text-muted-foreground uppercase tracking-wide">
-                {t("techHighlights")}
-              </h3>
-              <div className="flex flex-wrap justify-center gap-2 mb-4">
-                {[
-                  "Tailwind CSS",
-                  "shadcnUI",
-                  "Framer Motion",
-                  "Embla Carousel",
-                  "next-intl",
-                  "Vercel Edge",
-                  "Zod Validation",
-                  "ESLint 9.x",
-                ].map((tech, index) => (
-                  <Badge key={index} variant="outline" className="text-xs">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          </div>
+          {/* Tech Stack Highlights - Hidden on mobile */}
+          {shouldShowTechHighlights && (
+            <TechHighlights techs={techHighlights} deviceType={deviceType} />
+          )}
 
-          {/* Read More Section */}
-          <div className="border-t pt-6 mt-4">
+          {/* Read More Section - Compact on mobile */}
+          <div
+            className={`border-t ${
+              deviceType === "mobile" ? "pt-3 mt-3" : "pt-6 mt-4"
+            }`}
+          >
             <div className="text-center">
-              <Button variant="outline" className="mt-2" disabled>
+              <Button
+                variant="outline"
+                className={deviceType === "mobile" ? "text-sm mt-2" : "mt-2"}
+                disabled
+              >
                 <span>{t("readMore")}</span>
                 <ExternalLink className="ml-2 h-3 w-3" />
               </Button>
-              <p className="text-xs text-muted-foreground mt-2">
+              <p
+                className={`text-xs text-muted-foreground ${
+                  deviceType === "mobile" ? "mt-2" : "mt-2"
+                }`}
+              >
                 {t("readMoreNote")}
               </p>
             </div>
