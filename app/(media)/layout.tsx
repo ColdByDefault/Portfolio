@@ -13,8 +13,6 @@ import { Background } from "@/components/visuals";
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
 
-  // Default to dashboard metadata for the media route group
-  // Individual pages will override this with their specific metadata
   return generateMediaSectionSEO("dashboard", locale);
 }
 

@@ -374,7 +374,6 @@ export async function POST(
 
     // Cleanup old sessions and rate limits periodically during requests
     if (Math.random() < 0.1) {
-      // 10% chance to run cleanup (serverless-friendly)
       cleanupSessions();
       cleanupRateLimits();
     }
@@ -420,5 +419,3 @@ export function GET(): NextResponse<{
     assistant: REEM_CONFIG,
   });
 }
-
-// Cleanup is now handled during request processing to avoid serverless issues

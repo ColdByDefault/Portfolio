@@ -29,7 +29,7 @@ import {
   getAdminTags,
 } from "@/lib/blog-admin";
 
-// Enhanced authentication - same as contact admin
+// Enhanced authentication
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 
 function getClientIP(request: NextRequest): string {

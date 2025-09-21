@@ -4,18 +4,11 @@ without the prior written consent of the author, unless otherwise indicated for 
 <!-- @Free_Palestine -->
 */
 /**
- * RootLayout component serves as the main layout wrapper for the application.
- * It includes global metadata, styles, and shared components such as Navbar and Footer.
- *
  * @file /app/layout.tsx
  * @created 2024-12-31 23:00:00
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  *
- * @remarks
- * This layout component sets up the HTML structure, including the `<head>` section
- * with metadata for SEO and social sharing, and the `<body>` section with shared UI components.
- * It also integrates Vercel Analytics and Speed Insights for performance monitoring.
  *
  * @see @link https://www.coldbydefault.com for the live website.
  */
@@ -37,7 +30,7 @@ import { getLocale, getMessages } from "next-intl/server";
 import { Urbanist } from "next/font/google";
 import Link from "next/link";
 
-// Configure Urbanist Variable font
+
 const urbanist = Urbanist({
   subsets: ["latin"],
   variable: "--font-urbanist",
@@ -104,7 +97,6 @@ export const metadata = {
   },
 };
 
-// Generate structured data once to avoid hydration mismatches
 const structuredData = generateStructuredData(seoConfigEN);
 
 export default async function RootLayout({

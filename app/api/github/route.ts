@@ -20,7 +20,7 @@ import type {
 } from "@/types/github";
 
 // Rate limiter instance
-const rateLimiter = new RateLimiter(60000, 10); // 10 requests per minute
+const rateLimiter = new RateLimiter(60000, 10);
 
 class GitHubDataFetcher {
   private username: string;
@@ -52,7 +52,7 @@ class GitHubDataFetcher {
     try {
       const response = await fetch(`${this.baseUrl}/users/${this.username}`, {
         headers: this.headers,
-        next: { revalidate: 3600 }, // Cache for 1 hour
+        next: { revalidate: 3600 }, 
       });
 
       if (!response.ok) {
@@ -72,7 +72,6 @@ class GitHubDataFetcher {
   }
 
   async fetchRepositories(limit = 6): Promise<GitHubRepo[]> {
-    // Get recently updated repositories (not forks)
     const response = await fetch(
       `${this.baseUrl}/users/${this.username}/repos?sort=updated&direction=desc&per_page=${limit}&type=owner`,
       {
@@ -302,7 +301,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error("GitHub API Error:", error);
 
-    // Sanitized error response - don't expose internal details
+    // Sanitized error response
     const errorDetails = {
       error: "Failed to fetch GitHub data",
       message: sanitizeErrorMessage(error),

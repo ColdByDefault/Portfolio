@@ -5,10 +5,6 @@
 
 import { CentralizedLoading } from "@/components/visuals";
 
-/**
- * Loading UI for media page
- * Displays page-level loading skeleton
- */
 export default function MediaPageLoading() {
   return (
     <CentralizedLoading

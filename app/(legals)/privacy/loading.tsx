@@ -5,10 +5,6 @@
 
 import { CentralizedLoading } from "@/components/visuals";
 
-/**
- * Loading UI for privacy policy page
- * Displays simple page loading skeleton
- */
 export default function PrivacyLoading() {
   return (
     <CentralizedLoading

@@ -32,7 +32,7 @@ export function validateDataType(type: string | null): string {
 }
 
 /**
- * Rate limiting check (simple implementation)
+ * Rate limiting check
  */
 export class RateLimiter {
   private requests: Map<string, number[]> = new Map();
@@ -137,7 +137,6 @@ export function validateEmailSecurity(email: string): {
  */
 export class ContactRateLimiter extends RateLimiter {
   constructor() {
-    // Allow only 1 email per 15 minutes per IP
     super(15 * 60 * 1000, 1);
   }
 }
@@ -189,7 +188,7 @@ export function sanitizeErrorMessage(error: unknown): string {
       return "Request timeout";
     }
     if (error.message.includes("AI service")) {
-      return error.message; // These are already sanitized
+      return error.message;
     }
   }
 
@@ -349,7 +348,6 @@ export class ChatBotRateLimiter extends RateLimiter {
 export function validateSessionId(sessionId: string | null): boolean {
   if (!sessionId) return false;
 
-  // Check format: session_{timestamp}_{hex}
   const pattern = /^session_\d{13}_[a-f0-9]{32}$/;
   return pattern.test(sessionId);
 }

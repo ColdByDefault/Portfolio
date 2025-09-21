@@ -17,7 +17,7 @@ import {
   blockEmail,
 } from "@/lib/contact-monitor";
 
-// Enhanced authentication - replace with proper auth in production
+// Enhanced authentication
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 
 function getClientIP(request: NextRequest): string {
@@ -35,7 +35,6 @@ function getClientIP(request: NextRequest): string {
   for (const header of headers) {
     const value = request.headers.get(header);
     if (value) {
-      // x-forwarded-for can contain multiple IPs, take the first one
       const ip = value.split(",")[0]?.trim();
       if (ip && ip !== "unknown") {
         return ip;

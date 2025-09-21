@@ -5,10 +5,6 @@
 
 import { CentralizedLoading } from "@/components/visuals";
 
-/**
- * Loading UI for blog section
- * Displays blog-specific loading skeleton with multiple posts
- */
 export default function BlogLoading() {
   return (
     <CentralizedLoading

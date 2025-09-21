@@ -34,7 +34,6 @@ const staggerChildren = {
 export default function AboutPage() {
   const t = useTranslations("About");
 
-  // Type-safe accessors using the interface
   const getCurrentFocusItems = (): AboutTranslations["currentFocusItems"] => {
     return t.raw("currentFocusItems") as AboutTranslations["currentFocusItems"];
   };
@@ -75,12 +74,6 @@ export default function AboutPage() {
                       </Badge>
                     ))}
                 </div>
-{/*                 <div className="flex gap-4">
-                  <Button size="lg">{t("getInTouch")}</Button>
-                  <Button variant="outline" size="lg">
-                    {t("downloadCV")}
-                  </Button>
-                </div> */}
               </div>
               <div className="relative">
                 <div className="aspect-square max-w-md mx-auto relative rounded-2xl overflow-hidden">

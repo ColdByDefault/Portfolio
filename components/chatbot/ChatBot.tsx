@@ -31,7 +31,6 @@ function sanitizeMessageForDisplay(content: string): string {
   return content.substring(0, 2000); // Limit display length
 }
 
-// Professional Typing Indicator Component
 function TypingIndicator() {
   const t = useTranslations("ChatBot");
 

@@ -12,8 +12,6 @@ import { Background } from "@/components/visuals";
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
 
-  // Default to privacy policy metadata for the legal section
-  // Individual pages will override this with their specific metadata
   return generateLegalPageSEO("privacy", locale);
 }
 

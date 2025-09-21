@@ -5,10 +5,6 @@
 
 import { CentralizedLoading } from "@/components/visuals";
 
-/**
- * Root loading UI for the entire application
- * Automatically displayed by Next.js when navigating between routes
- */
 export default function Loading() {
   return (
     <CentralizedLoading

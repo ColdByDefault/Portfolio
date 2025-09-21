@@ -5,10 +5,7 @@
 
 import { CentralizedLoading } from "@/components/visuals";
 
-/**
- * Loading UI for admin blog management
- * Displays blog-specific loading skeleton for admin view
- */
+
 export default function AdminBlogLoading() {
   return (
     <CentralizedLoading

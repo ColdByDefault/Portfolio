@@ -1,16 +1,6 @@
 /**
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
- *
- * Renders the main client-side homepage for the portfolio, including loading screen,
- * hero section, company banner, sticky background image (dark mode), project showcase,
- * GitHub showcase, technologies, certifications, and website performance insights.
- *
- * Handles initial loading state with a timed loading screen and prevents hydration mismatch.
- * Utilizes internationalization for text content.
- *
- * @component
- * @returns {JSX.Element} The rendered homepage component.
  */
 
 "use client";
@@ -37,7 +27,7 @@ export default function Home() {
     setMounted(true);
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500); // Reduced from 2200ms to 1500ms
+    }, 1500); 
     return () => clearTimeout(timer);
   }, []);
 

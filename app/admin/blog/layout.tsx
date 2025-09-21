@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog Admin - Portfolio",
   description: "Blog management dashboard",
-  robots: "noindex, nofollow", // Prevent search engines from indexing admin pages
+  robots: "noindex, nofollow", 
 };
 
 export default function AdminBlogLayout({

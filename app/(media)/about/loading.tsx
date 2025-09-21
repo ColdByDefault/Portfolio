@@ -5,10 +5,6 @@
 
 import { CentralizedLoading } from "@/components/visuals";
 
-/**
- * Loading UI for about page
- * Displays profile-specific loading skeleton
- */
 export default function AboutLoading() {
   return (
     <CentralizedLoading
