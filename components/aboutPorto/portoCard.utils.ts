@@ -23,7 +23,7 @@ import type {
 /**
  * Debounce utility function to improve performance
  */
-function debounce<T extends (...args: any[]) => void>(
+function debounce<T extends (...args: unknown[]) => void>(
   func: T,
   delay: number
 ): T & { cancel: () => void } {

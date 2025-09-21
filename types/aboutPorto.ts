@@ -3,7 +3,7 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 
-import React from "react";
+import type React from "react";
 
 export type DeviceType = "mobile" | "tablet" | "desktop";
 
