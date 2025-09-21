@@ -104,9 +104,9 @@ const LoadingSkeleton = ({
           <span className="text-muted-foreground">{progressLabel}</span>
           <span className="text-muted-foreground">{progress}%</span>
         </div>
-        <Progress 
-          value={progress} 
-          className="w-full" 
+        <Progress
+          value={progress}
+          className="w-full"
           aria-label={`PageSpeed analysis progress: ${progress}% - ${progressLabel}`}
         />
       </div>

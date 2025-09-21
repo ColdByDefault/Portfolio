@@ -215,10 +215,10 @@ export default function Technologies() {
                     onClick={() => goToSlide(index)}
                     aria-label={`Go to slide ${index + 1}`}
                   >
-                    <div 
+                    <div
                       className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                        index === currentSlide 
-                          ? "bg-primary-foreground" 
+                        index === currentSlide
+                          ? "bg-primary-foreground"
                           : "bg-muted-foreground"
                       }`}
                     />
