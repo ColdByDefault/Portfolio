@@ -69,11 +69,11 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://va.vercel-scripts.com",
               "style-src 'self' 'unsafe-inline'", // Allow inline styles for Tailwind and components
               "img-src 'self' data: blob: https://avatars.githubusercontent.com https://github.com",
               "font-src 'self' data:",
-              "connect-src 'self' https://api.github.com https://www.googleapis.com https://generativelanguage.googleapis.com",
+              "connect-src 'self' https://api.github.com https://www.googleapis.com https://generativelanguage.googleapis.com https://vercel.live https://vitals.vercel-analytics.com",
               "frame-src 'none'",
               "object-src 'none'",
               "base-uri 'self'",

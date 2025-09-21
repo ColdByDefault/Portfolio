@@ -54,6 +54,33 @@ export default async function Impressum() {
 
         <Card>
           <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="w-5 h-5" />
+              {t("services.title")}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="bg-muted/50 p-4 rounded-lg">
+              <p className="text-sm font-medium mb-2">
+                {t("services.chatbotTitle")}
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                {t("services.chatbotDescription")}
+              </p>
+              <div className="bg-blue-50 dark:bg-blue-950/20 p-3 rounded border border-blue-200 dark:border-blue-800">
+                <p className="text-xs font-medium text-blue-900 dark:text-blue-100 mb-1">
+                  {t("services.googleTerms")}
+                </p>
+                <p className="text-xs text-blue-800 dark:text-blue-200">
+                  {t("services.googleTermsDescription")}
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
             <CardTitle>{t("anotherProject")}</CardTitle>
           </CardHeader>
           <CardContent>

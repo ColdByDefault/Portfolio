@@ -44,6 +44,8 @@
       "uiFrontend": "UI & Frontend",
       "backendApis": "Backend & APIs",
       "softwareEngineeringFundamentals": "Fondamentaux du Génie Logiciel",
+      "coreProgrammingConcepts": "Concepts de Programmation",
+      "architectureSystemDesign": "Architecture & Conception de Systèmes",
       "databasesStorage": "Bases de données & Stockage",
       "infrastructureDevops": "Infrastructure & DevOps",
       "aiAutomation": "IA & Automatisation",
@@ -52,7 +54,8 @@
       "businessProductivity": "Outils Business & Productivité",
       "documentationTechnicalWriting": "Documentation & Rédaction Technique",
       "professionalSkills": "Compétences Professionnelles",
-      "softSkills": "Compétences Relationnelles"
+      "softSkills": "Compétences Douces",
+      "securityPrivacy": "Sécurité et Confidentialité"
     }
   },
   "Certifications": {
@@ -102,6 +105,13 @@
     "projectDescription": "Ce site web est un portfolio purement privé et non commercial, servant exclusivement à des fins expérimentales et d'apprentissage personnel. Il n'y a aucune utilisation commerciale ni intention de profit.",
     "legalBasis": "Base légale :",
     "legalBasisDescription": "Conformément au § 5 TMG, il n'existe donc aucune obligation de fournir un impressum.",
+    "services": {
+      "title": "Services Tiers",
+      "chatbotTitle": "Service de Chatbot IA",
+      "chatbotDescription": "Ce site web inclut un chatbot IA alimenté par l'API Gemini de Google. En utilisant le chatbot, vous acceptez automatiquement les conditions de service de Google, la politique de confidentialité et autres accords légaux tels que fournis par Google.",
+      "googleTerms": "Conditions de l'API Google Gemini",
+      "googleTermsDescription": "Les interactions de chat sont traitées par les services de Google. Je ne sauvegarde aucune conversation de chat ou information personnelle des interactions du chatbot."
+    },
     "anotherProject": "AnotherProject",
     "lastUpdated": "Dernière mise à jour :"
   },
@@ -130,6 +140,14 @@
       "description": "Ce site web traite des données minimales pour fournir des fonctionnalités. Tout le traitement est effectué côté client dans votre navigateur ou via des services respectueux de la vie privée.",
       "vercelTitle": "Vercel Analytics & Speed Insights",
       "vercelDescription": "Ces services collectent des métriques de performance anonymes pour aider à améliorer le site web. Aucune information personnelle n'est collectée ou stockée."
+    },
+    "chatbot": {
+      "title": "Service de Chatbot IA",
+      "description": "Ce site web inclut un chatbot IA alimenté par l'API Gemini de Google pour l'assistance interactive et l'information.",
+      "geminiTitle": "Intégration de l'API Google Gemini",
+      "geminiDescription": "En utilisant le chatbot, vous acceptez automatiquement les conditions de service de Google, la politique de confidentialité et les conditions de traitement des données telles que fournies par Google. Les données de chat sont traitées par les services de Google selon leurs politiques de confidentialité.",
+      "temporaryTitle": "Stockage Temporaire des Données",
+      "temporaryDescription": "Je ne sauvegarde aucune conversation de chat ou information personnelle. Toutes les données de chat sont stockées temporairement dans le stockage local de votre navigateur et sont automatiquement supprimées lorsque vous actualisez la page ou fermez votre navigateur."
     },
     "rights": {
       "title": "Vos Droits",
@@ -252,6 +270,10 @@
       "database": {
         "title": "Base de Données et Stockage",
         "description": "PostgreSQL type-safe avec Prisma ORM sur la plateforme serverless de Neon pour des opérations de données fiables."
+      },
+      "aiChatbot": {
+        "title": "Chatbot alimenté par IA",
+        "description": "Assistant intelligent IA 'Reem' pour aider à naviguer le portfolio et répondre aux questions sur les projets et l'expérience."
       },
       "performance": {
         "title": "Performance et Accessibilité",

@@ -52,6 +52,10 @@ import {
   FaCogs,
   FaLayerGroup,
   FaPuzzlePiece,
+  FaShieldAlt,
+  FaLock,
+  FaKey,
+  FaUserShield,
 } from "react-icons/fa";
 import { RiOpenaiFill, RiFlowChart } from "react-icons/ri";
 import { BiLogoVisualStudio } from "react-icons/bi";
@@ -108,13 +112,19 @@ export const techGroups: TechGroup[] = [
     ],
   },
   {
-    category: "Software Engineering Fundamentals",
-    categoryKey: "softwareEngineeringFundamentals",
+    category: "Core Programming Concepts",
+    categoryKey: "coreProgrammingConcepts",
     items: [
       { name: "Object-Oriented Programming", Icon: FaLayerGroup },
       { name: "Data Structures", Icon: TbBinaryTree },
       { name: "Algorithms", Icon: Cpu },
       { name: "Design Patterns", Icon: FaPuzzlePiece },
+    ],
+  },
+  {
+    category: "Architecture & System Design",
+    categoryKey: "architectureSystemDesign",
+    items: [
       { name: "Software Architecture Patterns", Icon: Workflow },
       { name: "Basic Networking", Icon: FaNetworkWired },
       { name: "System Design", Icon: FaCogs },
@@ -217,6 +227,16 @@ export const techGroups: TechGroup[] = [
       { name: "Communication", Icon: MessageCircle },
       { name: "Problem Solving", Icon: FaLightbulb },
       { name: "Time Management", Icon: Clock },
+    ],
+  },
+  {
+    category: "Security & Privacy",
+    categoryKey: "securityPrivacy",
+    items: [
+      { name: "Data Protection", Icon: FaShieldAlt },
+      { name: "Authentication & Authorization", Icon: FaLock },
+      { name: "API Security", Icon: FaKey },
+      { name: "Privacy Compliance", Icon: FaUserShield },
     ],
   },
 ];

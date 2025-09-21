@@ -20,9 +20,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from "@/components/ui/carousel";
-import { Button } from "@/components/ui/button";
 
 // Custom hook for responsive breakpoints
 function useResponsiveCarousel() {
@@ -57,48 +55,26 @@ function useResponsiveCarousel() {
 
 export default function Technologies() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  const [api, setApi] = useState<CarouselApi>();
-  const [currentSlide, setCurrentSlide] = useState(0);
   const t = useTranslations("Technologies");
   const tCategories = useTranslations("Technologies.categories");
   const { cardsPerSlide } = useResponsiveCarousel();
 
   // Calculate the maximum number of items in any tech group to determine carousel height
   const maxItems = Math.max(...techGroups.map((group) => group.items.length));
-  // Stable carousel height to prevent layout shifts
-  const baseHeight = 450;
-  const itemRows = Math.ceil(maxItems / 3);
-  const carouselHeight = Math.max(baseHeight, baseHeight + (itemRows - 5) * 40);
+  // Responsive carousel height - smaller on mobile devices
+  const baseHeight =
+    cardsPerSlide === 1 ? 240 : cardsPerSlide === 2 ? 260 : 280;
+  const itemHeight = cardsPerSlide === 1 ? 20 : 25; // Even tighter on mobile
+  const carouselHeight = Math.max(
+    baseHeight,
+    baseHeight + (maxItems - 4) * itemHeight
+  );
 
   // Create slides by grouping techGroups based on cardsPerSlide
   const slides = [];
   for (let i = 0; i < techGroups.length; i += cardsPerSlide) {
     slides.push(techGroups.slice(i, i + cardsPerSlide));
   }
-
-  const totalSlides = slides.length;
-
-  // Update carousel state when API is available
-  useEffect(() => {
-    if (!api) return;
-
-    const updateCarouselState = () => {
-      setCurrentSlide(api.selectedScrollSnap());
-    };
-
-    updateCarouselState();
-    api.on("select", updateCarouselState);
-
-    return () => {
-      api.off("select", updateCarouselState);
-    };
-  }, [api]);
-
-  const goToSlide = (slideIndex: number) => {
-    if (api) {
-      api.scrollTo(slideIndex);
-    }
-  };
 
   const renderTechCard = (group: (typeof techGroups)[0]) => {
     const isCurrentCardHovered = hoveredCard === group.category;
@@ -109,13 +85,31 @@ export default function Technologies() {
         className={`${getCardHoverClasses(isCurrentCardHovered)} flex flex-col`}
         onMouseEnter={() => setHoveredCard(group.category)}
         onMouseLeave={() => setHoveredCard(null)}
+        role="article"
+        aria-labelledby={`card-title-${group.categoryKey}`}
+        aria-describedby={`card-content-${group.categoryKey}`}
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setHoveredCard(isCurrentCardHovered ? null : group.category);
+          }
+        }}
       >
         <CardHeader className="pb-3 sm:pb-4 flex-shrink-0">
-          <CardTitle className="text-lg sm:text-xl font-semibold text-center">
+          <CardTitle
+            id={`card-title-${group.categoryKey}`}
+            className="text-lg sm:text-xl font-semibold text-center"
+          >
             {tCategories(group.categoryKey)}
           </CardTitle>
         </CardHeader>
-        <CardContent className="px-3 sm:px-6 flex items-center justify-center">
+        <CardContent
+          className="px-3 sm:px-6 flex items-center justify-center"
+          id={`card-content-${group.categoryKey}`}
+          role="list"
+          aria-label={`${tCategories(group.categoryKey)} technologies`}
+        >
           <div className="flex flex-wrap gap-2 sm:gap-3 justify-center items-center w-full">
             {group.items.map(({ name, Icon }) => (
               <motion.div
@@ -123,8 +117,15 @@ export default function Technologies() {
                 className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border hover:shadow-sm transition-all duration-200"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                role="listitem"
+                aria-label={`${name} technology`}
+                tabIndex={0}
               >
-                <Icon size={16} className="flex-shrink-0 sm:w-5 sm:h-5" />
+                <Icon
+                  size={16}
+                  className="flex-shrink-0 sm:w-5 sm:h-5"
+                  aria-hidden="true"
+                />
                 <span className="text-xs sm:text-sm font-medium whitespace-nowrap cursor-default">
                   {name}
                 </span>
@@ -155,32 +156,56 @@ export default function Technologies() {
     <section
       className="px-4 max-w-7xl mx-auto flex flex-col space-y-4 sm:space-y-6 lg:space-y-8"
       id="tech"
+      aria-labelledby="tech-section-title"
+      role="region"
     >
       <Card className="relative overflow-hidden bg-transparent !border-0 shadow-none">
         <CardHeader className="text-center pb-2">
-          <CardTitle className="text-2xl sm:text-3xl lg:text-4xl font-light text-black dark:text-white">
+          <CardTitle
+            id="tech-section-title"
+            className="text-2xl sm:text-3xl lg:text-4xl font-light text-black dark:text-white"
+          >
             {t("title")}
           </CardTitle>
         </CardHeader>
         <CardContent>
+          {/* Hidden instructions for screen readers */}
+          <div
+            id="carousel-instructions"
+            className="sr-only"
+            aria-hidden="true"
+          >
+            Use arrow keys or navigation buttons to browse through technology
+            categories. Press Enter or Space on cards to view details.
+          </div>
           <div className="relative">
             <Carousel
               opts={{
                 align: "start",
                 loop: true,
               }}
-              setApi={setApi}
               className="w-full px-8 sm:px-12"
               style={{ height: `${carouselHeight}px` }}
+              role="region"
+              aria-label={`${t("title")} carousel with ${slides.length} slides`}
+              aria-describedby="carousel-instructions"
             >
               <CarouselContent
                 className="-ml-2 md:-ml-4"
                 style={{ height: `${carouselHeight}px` }}
+                role="tablist"
+                aria-live="polite"
               >
                 {slides.map((slide, slideIndex) => (
-                  <CarouselItem key={slideIndex} className="pl-2 md:pl-4">
+                  <CarouselItem
+                    key={slideIndex}
+                    className="pl-2 md:pl-4"
+                    role="tabpanel"
+                    aria-label={`Slide ${slideIndex + 1} of ${slides.length}`}
+                    tabIndex={0}
+                  >
                     <div
-                      className={`grid gap-4 sm:gap-6 items-start ${
+                      className={`grid gap-4 sm:gap-6 items-center justify-items-center h-full ${
                         cardsPerSlide === 1
                           ? "grid-cols-1"
                           : cardsPerSlide === 2
@@ -195,37 +220,15 @@ export default function Technologies() {
               </CarouselContent>
 
               {/* Custom Navigation Buttons - Enhanced for better theming */}
-              <CarouselPrevious className="-left-4 sm:-left-6 bg-background/95 border-border hover:bg-accent hover:text-accent-foreground shadow-lg backdrop-blur-sm transition-all duration-200 hover:shadow-xl disabled:opacity-50 disabled:hover:bg-background/95" />
-              <CarouselNext className="-right-4 sm:-right-6 bg-background/95 border-border hover:bg-accent hover:text-accent-foreground shadow-lg backdrop-blur-sm transition-all duration-200 hover:shadow-xl disabled:opacity-50 disabled:hover:bg-background/95" />
+              <CarouselPrevious
+                className="-left-4 sm:-left-6 bg-background/95 border-border hover:bg-accent hover:text-accent-foreground shadow-lg backdrop-blur-sm transition-all duration-200 hover:shadow-xl disabled:opacity-50 disabled:hover:bg-background/95"
+                aria-label="Previous slide - View previous technology categories"
+              />
+              <CarouselNext
+                className="-right-4 sm:-right-6 bg-background/95 border-border hover:bg-accent hover:text-accent-foreground shadow-lg backdrop-blur-sm transition-all duration-200 hover:shadow-xl disabled:opacity-50 disabled:hover:bg-background/95"
+                aria-label="Next slide - View next technology categories"
+              />
             </Carousel>
-
-            {/* Dot Indicators */}
-            {totalSlides > 1 && (
-              <div className="flex justify-center mt-6 space-x-3">
-                {Array.from({ length: totalSlides }).map((_, index) => (
-                  <Button
-                    key={index}
-                    variant="ghost"
-                    size="sm"
-                    className={`w-11 h-11 rounded-full p-0 transition-all duration-200 flex items-center justify-center ${
-                      index === currentSlide
-                        ? "bg-primary scale-110 shadow-sm"
-                        : "bg-muted hover:bg-muted-foreground/20 border border-border"
-                    }`}
-                    onClick={() => goToSlide(index)}
-                    aria-label={`Go to slide ${index + 1}`}
-                  >
-                    <div
-                      className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                        index === currentSlide
-                          ? "bg-primary-foreground"
-                          : "bg-muted-foreground"
-                      }`}
-                    />
-                  </Button>
-                ))}
-              </div>
-            )}
           </div>
         </CardContent>
         <div
