@@ -6,7 +6,7 @@
 "use client";
 
 import { Hero } from "@/components/hero";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { CompanyBanner } from "@/components/companies";
 import PortoCard from "@/components/aboutPorto";
@@ -57,6 +57,7 @@ const GitHubShowcase = dynamic(
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const t = useTranslations("Home");
 
   useEffect(() => {
     setMounted(true);
@@ -69,6 +70,7 @@ export default function Home() {
   // Control loading screen and main content visibility
   const showLoadingScreen = mounted && isLoading;
   const showMainContent = mounted && !isLoading;
+
 
   return (
     <div>
@@ -101,8 +103,7 @@ export default function Home() {
               <Hero />
               {/* Company Banner */}
               <span className="text-md font-light text-center text-black dark:text-white">
-                {/* {t("companiesContributing")} */}
-                Companies I've Contributed To
+                {t("companiesContributing")}
               </span>
               <CompanyBanner />
             </div>
@@ -170,7 +171,6 @@ export default function Home() {
                 <div className="py-12 px-4 sm:px-6 lg:px-8">
                   <div className="max-w-4xl mx-auto">
                     <h2 className="text-3xl font-light text-center mb-8 text-black dark:text-white">
-                      {/* {t("WebsitePerformance")} */}
                       Website Performance
                     </h2>
                     <NoSSR>
