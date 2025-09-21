@@ -16,7 +16,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Home } from "lucide-react";
+import { SquareLibrary } from "lucide-react";
 import type { Blog } from "@/types/blogs";
 
 interface BlogBreadcrumbProps {
@@ -38,7 +38,7 @@ export function BlogBreadcrumb({ blog, className }: BlogBreadcrumbProps) {
   return (
     <Breadcrumb className={className}>
       <BreadcrumbList>
-        {/* Home */}
+        {/* Media */}
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
             <Link
@@ -46,8 +46,8 @@ export function BlogBreadcrumb({ blog, className }: BlogBreadcrumbProps) {
               className="flex items-center gap-1.5"
               aria-label="Go to home page"
             >
-              <Home className="h-4 w-4" />
-              Home
+              <SquareLibrary className="h-4 w-4" />
+              Media
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
