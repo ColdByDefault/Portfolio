@@ -28,7 +28,7 @@ export function useResponsiveConfig(): ResponsiveConfig {
   const [deviceType, setDeviceType] = React.useState<DeviceType>("desktop");
 
   React.useEffect(() => {
-    const checkDeviceType = () => {
+    const checkDeviceType = (): void => {
       const width = window.innerWidth;
       if (width < 768) {
         setDeviceType("mobile");
@@ -40,7 +40,7 @@ export function useResponsiveConfig(): ResponsiveConfig {
     };
 
     // Debounce resize handler to improve performance
-    const debouncedHandler = debounce(checkDeviceType, 150);
+    const debouncedHandler = debounce(checkDeviceType, 150) as () => void;
 
     // Set initial device type
     checkDeviceType();
