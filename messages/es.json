@@ -105,6 +105,13 @@
     "projectDescription": "Este sitio web es un portafolio puramente privado y no comercial, que sirve exclusivamente para fines experimentales y de aprendizaje personal. No existe uso comercial ni intención de lucro.",
     "legalBasis": "Base legal:",
     "legalBasisDescription": "Según el § 5 TMG, no existe obligación de proporcionar un aviso legal.",
+    "services": {
+      "title": "Servicios de Terceros",
+      "chatbotTitle": "Servicio de Chatbot IA",
+      "chatbotDescription": "Este sitio web incluye un chatbot de IA impulsado por la API Gemini de Google. Al usar el chatbot, automáticamente aceptas los términos de servicio de Google, política de privacidad y otros acuerdos legales según los proporciona Google.",
+      "googleTerms": "Términos de Google Gemini API",
+      "googleTermsDescription": "Las interacciones del chat son procesadas por los servicios de Google. No guardo ninguna conversación de chat o información personal de las interacciones del chatbot."
+    },
     "anotherProject": "AnotherProject",
     "lastUpdated": "Última actualización:"
   },
@@ -133,6 +140,14 @@
       "description": "Este sitio web procesa datos mínimos para proporcionar funcionalidad. Todo el procesamiento se realiza del lado del cliente en tu navegador o a través de servicios que cumplen con la privacidad.",
       "vercelTitle": "Vercel Analytics & Speed Insights",
       "vercelDescription": "Estos servicios recopilan métricas de rendimiento anónimas para ayudar a mejorar el sitio web. No se recopila ni almacena información personal."
+    },
+    "chatbot": {
+      "title": "Servicio de Chatbot IA",
+      "description": "Este sitio web incluye un chatbot de IA impulsado por la API Gemini de Google para asistencia interactiva e información.",
+      "geminiTitle": "Integración de Google Gemini API",
+      "geminiDescription": "Al usar el chatbot, automáticamente aceptas los términos de servicio de Google, política de privacidad y términos de procesamiento de datos según los proporciona Google. Los datos del chat son procesados por los servicios de Google de acuerdo con sus políticas de privacidad.",
+      "temporaryTitle": "Almacenamiento Temporal de Datos",
+      "temporaryDescription": "No guardo ninguna conversación de chat o información personal. Todos los datos del chat se almacenan temporalmente en el almacenamiento local de tu navegador y se eliminan automáticamente cuando actualizas la página o cierras tu navegador."
     },
     "rights": {
       "title": "Tus Derechos",

@@ -101,6 +101,36 @@ export default function Privacy() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
+              <Server className="w-5 h-5" />
+              {t("chatbot.title")}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {t("chatbot.description")}
+            </p>
+            <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-lg border border-amber-200 dark:border-amber-800">
+              <p className="text-sm font-medium text-amber-900 dark:text-amber-100 mb-2">
+                {t("chatbot.geminiTitle")}
+              </p>
+              <p className="text-sm text-amber-800 dark:text-amber-200">
+                {t("chatbot.geminiDescription")}
+              </p>
+            </div>
+            <div className="bg-green-50 dark:bg-green-950/20 p-4 rounded-lg border border-green-200 dark:border-green-800">
+              <p className="text-sm font-medium text-green-900 dark:text-green-100 mb-2">
+                {t("chatbot.temporaryTitle")}
+              </p>
+              <p className="text-sm text-green-800 dark:text-green-200">
+                {t("chatbot.temporaryDescription")}
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
               <Globe className="w-5 h-5" />
               {t("rights.title")}
             </CardTitle>

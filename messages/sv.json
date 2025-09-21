@@ -105,6 +105,13 @@
     "projectDescription": "Denna webbplats är en helt privat och icke-kommersiell portfölj som enbart används för experimentella och personliga inlärningsändamål. Ingen kommersiell användning eller vinstintention finns.",
     "legalBasis": "Rättslig grund:",
     "legalBasisDescription": "Enligt § 5 TMG föreligger därför ingen skyldighet att tillhandahålla juridisk information.",
+    "services": {
+      "title": "Tredjepartstjänster",
+      "chatbotTitle": "AI Chatbot-tjänst",
+      "chatbotDescription": "Denna webbplats inkluderar en AI-chatbot som drivs av Googles Gemini API. Genom att använda chatboten accepterar du automatiskt Googles användarvillkor, integritetspolicy och andra juridiska avtal som tillhandahålls av Google.",
+      "googleTerms": "Google Gemini API Villkor",
+      "googleTermsDescription": "Chattinteraktioner bearbetas av Googles tjänster. Jag sparar inga chattkonversationer eller personlig information från chatbot-interaktioner."
+    },
     "anotherProject": "AnotherProject",
     "lastUpdated": "Senast uppdaterad:"
   },
@@ -133,6 +140,14 @@
       "description": "Denna webbplats bearbetar minimal data för att tillhandahålla funktionalitet. All bearbetning sker på klientsidan i din webbläsare eller genom integritetsvänliga tjänster.",
       "vercelTitle": "Vercel Analytics & Speed Insights",
       "vercelDescription": "Dessa tjänster samlar in anonyma prestandamått för att hjälpa till att förbättra webbplatsen. Ingen personlig information samlas in eller lagras."
+    },
+    "chatbot": {
+      "title": "AI Chatbot-tjänst",
+      "description": "Denna webbplats inkluderar en AI-chatbot som drivs av Googles Gemini API för interaktiv assistans och information.",
+      "geminiTitle": "Google Gemini API Integration",
+      "geminiDescription": "Genom att använda chatboten accepterar du automatiskt Googles användarvillkor, integritetspolicy och databehandlingsvillkor som tillhandahålls av Google. Chattdata bearbetas av Googles tjänster enligt deras integritetspolicyer.",
+      "temporaryTitle": "Tillfällig Datalagring",
+      "temporaryDescription": "Jag sparar inga chattkonversationer eller personlig information. All chattdata lagras tillfälligt i din webbläsares lokala lagring och raderas automatiskt när du uppdaterar sidan eller stänger din webbläsare."
     },
     "rights": {
       "title": "Dina Rättigheter",
