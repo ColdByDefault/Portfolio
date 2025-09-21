@@ -79,11 +79,7 @@ function Hero() {
                   {t("learnMoreAboutMe")}
                 </Link>
               </Button>
-              {/* <ContactForm /> */}
             </div>
-            {/*             <div className="flex flex-col sm:flex-row gap-4 items-center">
-              <SocialLinks />
-            </div> */}
           </div>
         </div>
       </div>

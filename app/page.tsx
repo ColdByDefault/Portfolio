@@ -102,7 +102,7 @@ export default function Home() {
             >
               <Hero />
               {/* Company Banner */}
-              <span className="text-md font-light text-center text-black dark:text-white">
+              <span className="text-sm font-medium text-center text-black dark:text-white">
                 {t("companiesContributing")}
               </span>
               <CompanyBanner />
