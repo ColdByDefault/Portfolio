@@ -21,6 +21,25 @@ import type {
 } from "@/types/aboutPorto";
 
 /**
+ * Debounce utility function to improve performance
+ */
+function debounce<T extends (...args: any[]) => void>(
+  func: T,
+  delay: number
+): T & { cancel: () => void } {
+  let timeoutId: NodeJS.Timeout;
+
+  const debounced = ((...args: Parameters<T>) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func(...args), delay);
+  }) as T & { cancel: () => void };
+
+  debounced.cancel = () => clearTimeout(timeoutId);
+
+  return debounced;
+}
+
+/**
  * Determines the device type and responsive configuration
  */
 export function useResponsiveConfig(): ResponsiveConfig {
@@ -38,21 +57,43 @@ export function useResponsiveConfig(): ResponsiveConfig {
       }
     };
 
+    // Debounce resize handler to improve performance
+    const debouncedHandler = debounce(checkDeviceType, 150);
+
+    // Set initial device type
     checkDeviceType();
-    window.addEventListener("resize", checkDeviceType);
-    return () => window.removeEventListener("resize", checkDeviceType);
+
+    window.addEventListener("resize", debouncedHandler);
+    return () => {
+      window.removeEventListener("resize", debouncedHandler);
+      // Clear any pending debounced calls
+      debouncedHandler.cancel?.();
+    };
   }, []);
 
-  const containerClasses = getContainerClasses(deviceType);
-  const cardClasses = getCardClasses(deviceType);
-  const featuresConfig = getFeaturesConfig(deviceType);
+  // Memoize computed values to prevent unnecessary recalculations
+  const containerClasses = React.useMemo(
+    () => getContainerClasses(deviceType),
+    [deviceType]
+  );
+  const cardClasses = React.useMemo(
+    () => getCardClasses(deviceType),
+    [deviceType]
+  );
+  const featuresConfig = React.useMemo(
+    () => getFeaturesConfig(deviceType),
+    [deviceType]
+  );
 
-  return {
-    deviceType,
-    containerClasses,
-    cardClasses,
-    featuresConfig,
-  };
+  return React.useMemo(
+    () => ({
+      deviceType,
+      containerClasses,
+      cardClasses,
+      featuresConfig,
+    }),
+    [deviceType, containerClasses, cardClasses, featuresConfig]
+  );
 }
 
 /**

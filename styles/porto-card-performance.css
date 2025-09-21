@@ -1,0 +1,103 @@
+/**
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ */
+
+/**
+ * Performance-optimized CSS classes for aboutPorto components
+ * These styles use CSS custom properties for better reusability
+ * and will-change for performance optimization
+ */
+
+/* Container optimizations */
+.porto-card-container {
+  /* Use transform3d to enable hardware acceleration */
+  transform: translate3d(0, 0, 0);
+  /* Optimize repainting */
+  contain: layout style paint;
+}
+
+/* Smooth transitions without layout thrashing */
+.porto-feature-item {
+  /* Use transform and opacity for smooth hover effects */
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out,
+    box-shadow 0.2s ease-out;
+  /* Prevent layout shifts during hover */
+  will-change: transform, box-shadow;
+}
+
+.porto-feature-item:hover {
+  /* Use transform instead of margin/padding changes */
+  transform: translateY(-1px);
+  /* Use box-shadow instead of border changes */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Badge hover optimizations */
+.porto-tech-badge {
+  transition: background-color 0.15s ease-out, color 0.15s ease-out;
+  /* Prevent unnecessary repaints */
+  backface-visibility: hidden;
+}
+
+/* Focus indicators with better performance */
+.porto-focus-ring {
+  /* Use outline instead of box-shadow for better performance */
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: outline-color 0.15s ease-out;
+}
+
+.porto-focus-ring:focus-visible {
+  outline-color: hsl(var(--ring));
+}
+
+/* Media queries for performance (using container queries when available) */
+@container (max-width: 768px) {
+  .porto-card-mobile {
+    /* Reduce animations on mobile for battery saving */
+    transform: none;
+    will-change: auto;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .porto-feature-item,
+  .porto-tech-badge,
+  .porto-focus-ring {
+    transition: none;
+    animation: none;
+  }
+
+  .porto-feature-item:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .porto-performance-badge {
+    border-width: 2px;
+  }
+
+  .porto-feature-item {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Print styles */
+@media print {
+  .porto-card-container {
+    transform: none;
+    box-shadow: none;
+    background: white !important;
+    color: black !important;
+  }
+
+  .porto-tech-badge {
+    border: 1px solid black;
+    background: white !important;
+    color: black !important;
+  }
+}
