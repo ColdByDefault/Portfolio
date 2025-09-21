@@ -45,20 +45,37 @@ function validateAdminAccess(context: AdminContext): void {
 }
 
 /**
- * Sanitize blog content safely
+ * Sanitize blog content while preserving markdown formatting
  */
 function sanitizeBlogContent(content: string): string {
   if (!content) return "";
 
-  // Use robust sanitization for blog content
-  let sanitized = sanitizeChatInput(content);
+  let sanitized = content;
 
-  // Additional blog-specific sanitization
+  // Remove HTML tags completely (but preserve markdown)
+  let prevSanitized;
+  do {
+    prevSanitized = sanitized;
+    sanitized = sanitized.replace(/<[^>]*>/g, "");
+  } while (sanitized !== prevSanitized);
+
+  // Remove script tags and dangerous protocols
   sanitized = sanitized.replace(/javascript:/gi, "");
   sanitized = sanitized.replace(/data:/gi, "");
   sanitized = sanitized.replace(/vbscript:/gi, "");
 
-  return sanitized.trim();
+  // Remove potentially dangerous attributes
+  let prevAttrSanitized;
+  do {
+    prevAttrSanitized = sanitized;
+    sanitized = sanitized.replace(/on\w+\s*=\s*[^>]*/gi, "");
+  } while (sanitized !== prevAttrSanitized);
+
+  // PRESERVE markdown formatting - DO NOT remove whitespace or newlines
+  // Only remove NULL characters and other control characters that could be dangerous
+  sanitized = sanitized.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "");
+
+  return sanitized;
 }
 
 /**
