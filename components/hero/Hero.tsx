@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { ExternalLink } from "lucide-react";
 
 function Hero() {
   const t = useTranslations("Hero");
@@ -76,6 +77,7 @@ function Hero() {
                 className="gap-2 cursor-pointer hover:bg-primary/10"
               >
                 <Link href="/about" className="flex items-center gap-2">
+                  <ExternalLink className="ml-2 h-3 w-3" aria-hidden="true"/>
                   {t("learnMoreAboutMe")}
                 </Link>
               </Button>

@@ -327,5 +327,111 @@
     "accessibility": {
       "sendMessage": "Envoyer le message"
     }
+  },
+  "AboutPortfolio": {
+    "title": "À Propos de Ce Portfolio",
+    "subtitle": "Aperçu complet de l'architecture technique, des fonctionnalités et du processus de développement",
+    "overview": {
+      "title": "Aperçu du Projet",
+      "version": "Version 4.3.2",
+      "description": "Portfolio de développeur moderne, sécurisé et performant construit avec Next.js 15.5.1, TypeScript et une architecture de niveau entreprise.",
+      "status": "Développement Actif",
+      "developmentTime": "1+ années de développement continu",
+      "author": "Yazan Abo-Ayash (ColdByDefault)"
+    },
+    "technicalStack": {
+      "title": "Stack Technique",
+      "subtitle": "Technologies alimentant ce portfolio",
+      "categories": {
+        "core": "Framework Principal",
+        "development": "Outils de Développement",
+        "database": "Base de Données et ORM",
+        "deployment": "Déploiement et Hébergement",
+        "ai": "IA et Machine Learning",
+        "security": "Sécurité et Validation"
+      }
+    },
+    "features": {
+      "title": "Fonctionnalités Clés",
+      "subtitle": "Capacités avancées et implémentations",
+      "categories": {
+        "ui-ux": "UI/UX",
+        "performance": "Performance",
+        "security": "Sécurité",
+        "ai": "Intégration IA",
+        "content": "Gestion de Contenu",
+        "integration": "Intégrations Tierces"
+      }
+    },
+    "performance": {
+      "title": "Métriques de Performance",
+      "lighthouse": "Scores Google Lighthouse",
+      "coreWebVitals": "Core Web Vitals",
+      "bundleSize": "Analyse de Bundle",
+      "lastChecked": "Dernière vérification"
+    },
+    "security": {
+      "title": "Implémentation Sécurisée",
+      "subtitle": "Mesures de sécurité complètes et meilleures pratiques",
+      "categories": {
+        "headers": "En-têtes de Sécurité",
+        "validation": "Validation d'Entrée",
+        "rateLimit": "Limitation de Débit",
+        "csp": "Politique de Sécurité de Contenu",
+        "sanitization": "Assainissement des Données"
+      }
+    },
+    "architecture": {
+      "title": "Modèles d'Architecture",
+      "subtitle": "Modèles de conception et décisions architecturales",
+      "separation": "Séparation des Préoccupations",
+      "modularity": "Design Modulaire",
+      "scalability": "Architecture Évolutive"
+    },
+    "database": {
+      "title": "Conception de Base de Données",
+      "provider": "PostgreSQL avec Prisma ORM",
+      "features": "Opérations type-safe, migrations automatisées, gestion des relations"
+    },
+    "ai": {
+      "title": "Intégrations IA",
+      "chatbot": "Assistant IA Reem",
+      "provider": "API Google Gemini",
+      "features": "Réponses intelligentes, conscience du contexte, limitation de débit"
+    },
+    "internationalization": {
+      "title": "Internationalisation",
+      "supportedLocales": "Langues Supportées",
+      "locales": "Anglais, Allemand, Espagnol, Français, Suédois",
+      "features": "Auto-détection, stratégie de repli, routage de locale"
+    },
+    "qualityMetrics": {
+      "title": "Assurance Qualité",
+      "codeQuality": "Qualité du Code",
+      "typeScript": "TypeScript Mode Strict",
+      "testing": "Tests et Validation",
+      "accessibility": "Conformité WCAG 2.1 AA"
+    },
+    "roadmap": {
+      "title": "Feuille de Route de Développement",
+      "planned": "Planifié",
+      "inProgress": "En Cours",
+      "completed": "Terminé",
+      "priorities": {
+        "high": "Haute Priorité",
+        "medium": "Priorité Moyenne",
+        "low": "Basse Priorité"
+      }
+    },
+    "achievements": {
+      "title": "Réalisations Notables",
+      "categories": {
+        "performance": "Performance",
+        "security": "Sécurité",
+        "quality": "Qualité du Code",
+        "feature": "Développement de Fonctionnalités",
+        "milestone": "Jalons"
+      }
+    }
   }
 }

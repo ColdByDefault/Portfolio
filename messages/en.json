@@ -295,6 +295,112 @@
       }
     }
   },
+  "AboutPortfolio": {
+    "title": "About This Portfolio",
+    "subtitle": "Comprehensive overview of the technical architecture, features, and development process",
+    "overview": {
+      "title": "Project Overview",
+      "version": "Version 4.3.2",
+      "description": "Modern, secure, high-performance developer portfolio built with Next.js 15.5.1, TypeScript, and enterprise-grade architecture.",
+      "status": "Active Development",
+      "developmentTime": "1+ years of continuous development",
+      "author": "Yazan Abo-Ayash (ColdByDefault)"
+    },
+    "technicalStack": {
+      "title": "Technical Stack",
+      "subtitle": "Technologies powering this portfolio",
+      "categories": {
+        "core": "Core Framework",
+        "development": "Development Tools",
+        "database": "Database & ORM",
+        "deployment": "Deployment & Hosting",
+        "ai": "AI & Machine Learning",
+        "security": "Security & Validation"
+      }
+    },
+    "features": {
+      "title": "Key Features",
+      "subtitle": "Advanced capabilities and implementations",
+      "categories": {
+        "ui-ux": "UI/UX",
+        "performance": "Performance",
+        "security": "Security",
+        "ai": "AI Integration",
+        "content": "Content Management",
+        "integration": "Third-party Integrations"
+      }
+    },
+    "performance": {
+      "title": "Performance Metrics",
+      "lighthouse": "Google Lighthouse Scores",
+      "coreWebVitals": "Core Web Vitals",
+      "bundleSize": "Bundle Analysis",
+      "lastChecked": "Last checked"
+    },
+    "security": {
+      "title": "Security Implementation",
+      "subtitle": "Comprehensive security measures and best practices",
+      "categories": {
+        "headers": "Security Headers",
+        "validation": "Input Validation",
+        "rateLimit": "Rate Limiting",
+        "csp": "Content Security Policy",
+        "sanitization": "Data Sanitization"
+      }
+    },
+    "architecture": {
+      "title": "Architecture Patterns",
+      "subtitle": "Design patterns and architectural decisions",
+      "separation": "Separation of Concerns",
+      "modularity": "Modular Design",
+      "scalability": "Scalable Architecture"
+    },
+    "database": {
+      "title": "Database Design",
+      "provider": "PostgreSQL with Prisma ORM",
+      "features": "Type-safe operations, automated migrations, relation management"
+    },
+    "ai": {
+      "title": "AI Integrations",
+      "chatbot": "Reem AI Assistant",
+      "provider": "Google Gemini API",
+      "features": "Intelligent responses, context awareness, rate limiting"
+    },
+    "internationalization": {
+      "title": "Internationalization",
+      "supportedLocales": "Supported Languages",
+      "locales": "English, German, Spanish, French, Swedish",
+      "features": "Auto-detection, fallback strategy, locale routing"
+    },
+    "qualityMetrics": {
+      "title": "Quality Assurance",
+      "codeQuality": "Code Quality",
+      "typeScript": "TypeScript Strict Mode",
+      "testing": "Testing & Validation",
+      "accessibility": "WCAG 2.1 AA Compliance"
+    },
+    "roadmap": {
+      "title": "Development Roadmap",
+      "planned": "Planned",
+      "inProgress": "In Progress",
+      "completed": "Completed",
+      "priorities": {
+        "high": "High Priority",
+        "medium": "Medium Priority",
+        "low": "Low Priority"
+      }
+    },
+    "achievements": {
+      "title": "Notable Achievements",
+      "categories": {
+        "performance": "Performance",
+        "security": "Security",
+        "quality": "Code Quality",
+        "feature": "Feature Development",
+        "milestone": "Milestones"
+      }
+    }
+  },
   "ChatBot": {
     "name": "Reem",
     "pronunciation": "/riːm/",

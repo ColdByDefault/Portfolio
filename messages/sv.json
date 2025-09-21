@@ -327,5 +327,111 @@
     "accessibility": {
       "sendMessage": "Skicka meddelande"
     }
+  },
+  "AboutPortfolio": {
+    "title": "Om Denna Portfolio",
+    "subtitle": "Omfattande översikt av den tekniska arkitekturen, funktionerna och utvecklingsprocessen",
+    "overview": {
+      "title": "Projektöversikt",
+      "version": "Version 4.3.2",
+      "description": "Modern, säker, högpresterande utvecklarportfölj byggd med Next.js 15.5.1, TypeScript och företagsnivåarkitektur.",
+      "status": "Aktiv Utveckling",
+      "developmentTime": "1+ år av kontinuerlig utveckling",
+      "author": "Yazan Abo-Ayash (ColdByDefault)"
+    },
+    "technicalStack": {
+      "title": "Teknisk Stack",
+      "subtitle": "Teknologier som driver denna portfolio",
+      "categories": {
+        "core": "Kärn-Framework",
+        "development": "Utvecklingsverktyg",
+        "database": "Databas & ORM",
+        "deployment": "Driftsättning & Hosting",
+        "ai": "AI & Maskininlärning",
+        "security": "Säkerhet & Validering"
+      }
+    },
+    "features": {
+      "title": "Nyckelfunktioner",
+      "subtitle": "Avancerade kapaciteter och implementationer",
+      "categories": {
+        "ui-ux": "UI/UX",
+        "performance": "Prestanda",
+        "security": "Säkerhet",
+        "ai": "AI-Integration",
+        "content": "Innehållshantering",
+        "integration": "Tredjepartsintegrationer"
+      }
+    },
+    "performance": {
+      "title": "Prestandamätvarden",
+      "lighthouse": "Google Lighthouse Poäng",
+      "coreWebVitals": "Core Web Vitals",
+      "bundleSize": "Bundle-analys",
+      "lastChecked": "Senast kontrollerat"
+    },
+    "security": {
+      "title": "Säkerhetsimplementering",
+      "subtitle": "Omfattande säkerhetsåtgärder och bästa praxis",
+      "categories": {
+        "headers": "Säkerhetsheaders",
+        "validation": "Inmatningsvalidering",
+        "rateLimit": "Hastighetsbegränsning",
+        "csp": "Content Security Policy",
+        "sanitization": "Datasanering"
+      }
+    },
+    "architecture": {
+      "title": "Arkitekturmönster",
+      "subtitle": "Designmönster och arkitektoniska beslut",
+      "separation": "Separation av Angelägenheter",
+      "modularity": "Modulär Design",
+      "scalability": "Skalbar Arkitektur"
+    },
+    "database": {
+      "title": "Databasdesign",
+      "provider": "PostgreSQL med Prisma ORM",
+      "features": "Typsäkra operationer, automatiserade migreringar, relationshantering"
+    },
+    "ai": {
+      "title": "AI-Integrationer",
+      "chatbot": "Reem AI-Assistent",
+      "provider": "Google Gemini API",
+      "features": "Intelligenta svar, kontextmedvetenhet, hastighetsbegränsning"
+    },
+    "internationalization": {
+      "title": "Internationalisering",
+      "supportedLocales": "Stödda Språk",
+      "locales": "Engelska, Tyska, Spanska, Franska, Svenska",
+      "features": "Auto-detektion, fallback-strategi, locale-routing"
+    },
+    "qualityMetrics": {
+      "title": "Kvalitetsäkring",
+      "codeQuality": "Kodkvalitet",
+      "typeScript": "TypeScript Strikt Läge",
+      "testing": "Testning & Validering",
+      "accessibility": "WCAG 2.1 AA Efterlevnad"
+    },
+    "roadmap": {
+      "title": "Utvecklingsfärdplan",
+      "planned": "Planerad",
+      "inProgress": "Pågående",
+      "completed": "Klar",
+      "priorities": {
+        "high": "Hög Prioritet",
+        "medium": "Medel Prioritet",
+        "low": "Låg Prioritet"
+      }
+    },
+    "achievements": {
+      "title": "Anmärkningsvärda Prestationer",
+      "categories": {
+        "performance": "Prestanda",
+        "security": "Säkerhet",
+        "quality": "Kodkvalitet",
+        "feature": "Funktionsutveckling",
+        "milestone": "Milstolpar"
+      }
+    }
   }
 }

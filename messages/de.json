@@ -327,5 +327,111 @@
     "accessibility": {
       "sendMessage": "Nachricht senden"
     }
+  },
+  "AboutPortfolio": {
+    "title": "Über Dieses Portfolio",
+    "subtitle": "Umfassender Überblick über die technische Architektur, Features und den Entwicklungsprozess",
+    "overview": {
+      "title": "Projekt Übersicht",
+      "version": "Version 4.3.2",
+      "description": "Modernes, sicheres, hochperformantes Entwickler-Portfolio gebaut mit Next.js 15.5.1, TypeScript und unternehmenstauglicher Architektur.",
+      "status": "Aktive Entwicklung",
+      "developmentTime": "1+ Jahre kontinuierliche Entwicklung",
+      "author": "Yazan Abo-Ayash (ColdByDefault)"
+    },
+    "technicalStack": {
+      "title": "Technischer Stack",
+      "subtitle": "Technologien, die dieses Portfolio antreiben",
+      "categories": {
+        "core": "Kern-Framework",
+        "development": "Entwicklungstools",
+        "database": "Datenbank & ORM",
+        "deployment": "Deployment & Hosting",
+        "ai": "KI & Machine Learning",
+        "security": "Sicherheit & Validierung"
+      }
+    },
+    "features": {
+      "title": "Schlüsselfunktionen",
+      "subtitle": "Erweiterte Funktionen und Implementierungen",
+      "categories": {
+        "ui-ux": "UI/UX",
+        "performance": "Performance",
+        "security": "Sicherheit",
+        "ai": "KI-Integration",
+        "content": "Content-Management",
+        "integration": "Drittanbieter-Integrationen"
+      }
+    },
+    "performance": {
+      "title": "Performance-Metriken",
+      "lighthouse": "Google Lighthouse Scores",
+      "coreWebVitals": "Core Web Vitals",
+      "bundleSize": "Bundle-Analyse",
+      "lastChecked": "Zuletzt geprüft"
+    },
+    "security": {
+      "title": "Sicherheitsimplementierung",
+      "subtitle": "Umfassende Sicherheitsmaßnahmen und Best Practices",
+      "categories": {
+        "headers": "Sicherheits-Header",
+        "validation": "Eingabevalidierung",
+        "rateLimit": "Rate Limiting",
+        "csp": "Content Security Policy",
+        "sanitization": "Datenbereinigung"
+      }
+    },
+    "architecture": {
+      "title": "Architektur-Patterns",
+      "subtitle": "Design-Patterns und architektonische Entscheidungen",
+      "separation": "Trennung der Belange",
+      "modularity": "Modulares Design",
+      "scalability": "Skalierbare Architektur"
+    },
+    "database": {
+      "title": "Datenbankdesign",
+      "provider": "PostgreSQL mit Prisma ORM",
+      "features": "Typsichere Operationen, automatisierte Migrationen, Beziehungsmanagement"
+    },
+    "ai": {
+      "title": "KI-Integrationen",
+      "chatbot": "Reem KI-Assistent",
+      "provider": "Google Gemini API",
+      "features": "Intelligente Antworten, Kontextbewusstsein, Rate Limiting"
+    },
+    "internationalization": {
+      "title": "Internationalisierung",
+      "supportedLocales": "Unterstützte Sprachen",
+      "locales": "Englisch, Deutsch, Spanisch, Französisch, Schwedisch",
+      "features": "Auto-Erkennung, Fallback-Strategie, Locale-Routing"
+    },
+    "qualityMetrics": {
+      "title": "Qualitätssicherung",
+      "codeQuality": "Code-Qualität",
+      "typeScript": "TypeScript Strict Mode",
+      "testing": "Tests & Validierung",
+      "accessibility": "WCAG 2.1 AA Compliance"
+    },
+    "roadmap": {
+      "title": "Entwicklungsroadmap",
+      "planned": "Geplant",
+      "inProgress": "In Bearbeitung",
+      "completed": "Abgeschlossen",
+      "priorities": {
+        "high": "Hohe Priorität",
+        "medium": "Mittlere Priorität",
+        "low": "Niedrige Priorität"
+      }
+    },
+    "achievements": {
+      "title": "Bemerkenswerte Erfolge",
+      "categories": {
+        "performance": "Performance",
+        "security": "Sicherheit",
+        "quality": "Code-Qualität",
+        "feature": "Feature-Entwicklung",
+        "milestone": "Meilensteine"
+      }
+    }
   }
 }
