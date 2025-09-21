@@ -63,14 +63,13 @@ export default function Home() {
     setMounted(true);
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // 3 seconds duration as requested
+    }, 3000); // 3 seconds loading duration
     return () => clearTimeout(timer);
   }, []);
 
   // Control loading screen and main content visibility
   const showLoadingScreen = mounted && isLoading;
   const showMainContent = mounted && !isLoading;
-
 
   return (
     <div>

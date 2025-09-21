@@ -14,30 +14,12 @@ import {
   FolderTree,
   Bot,
 } from "lucide-react";
+import { debounce } from "perfect-debounce";
 import type {
   DeviceType,
   PortoCardFeature,
   ResponsiveConfig,
 } from "@/types/aboutPorto";
-
-/**
- * Debounce utility function to improve performance
- */
-function debounce<T extends (...args: unknown[]) => void>(
-  func: T,
-  delay: number
-): T & { cancel: () => void } {
-  let timeoutId: NodeJS.Timeout;
-
-  const debounced = ((...args: Parameters<T>) => {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => func(...args), delay);
-  }) as T & { cancel: () => void };
-
-  debounced.cancel = () => clearTimeout(timeoutId);
-
-  return debounced;
-}
 
 /**
  * Determines the device type and responsive configuration
@@ -46,7 +28,7 @@ export function useResponsiveConfig(): ResponsiveConfig {
   const [deviceType, setDeviceType] = React.useState<DeviceType>("desktop");
 
   React.useEffect(() => {
-    const checkDeviceType = () => {
+    const checkDeviceType = (): void => {
       const width = window.innerWidth;
       if (width < 768) {
         setDeviceType("mobile");
@@ -58,7 +40,7 @@ export function useResponsiveConfig(): ResponsiveConfig {
     };
 
     // Debounce resize handler to improve performance
-    const debouncedHandler = debounce(checkDeviceType, 150);
+    const debouncedHandler = debounce(checkDeviceType, 150) as () => void;
 
     // Set initial device type
     checkDeviceType();
@@ -66,8 +48,6 @@ export function useResponsiveConfig(): ResponsiveConfig {
     window.addEventListener("resize", debouncedHandler);
     return () => {
       window.removeEventListener("resize", debouncedHandler);
-      // Clear any pending debounced calls
-      debouncedHandler.cancel?.();
     };
   }, []);
 

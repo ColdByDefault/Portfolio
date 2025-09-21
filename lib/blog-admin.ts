@@ -14,10 +14,74 @@ import type {
   BlogListResponse,
 } from "@/types/blogs";
 import type { BlogAdminStats, BlogActivityItem } from "@/types/admin";
-import { RateLimiter } from "./security";
+import { RateLimiter, sanitizeInput, sanitizeErrorMessage } from "./security";
 
 // Rate limiter for admin operations
 const adminRateLimiter = new RateLimiter(60000, 100);
+
+// Authentication context interface
+interface AdminContext {
+  clientIP: string;
+  isAuthenticated: boolean;
+  userAgent?: string | undefined;
+}
+
+/**
+ * Validate admin authentication and rate limits
+ */
+function validateAdminAccess(context: AdminContext): void {
+  if (!context.isAuthenticated) {
+    throw new Error("Unauthorized: Admin access required");
+  }
+
+  if (!adminRateLimiter.isAllowed(context.clientIP)) {
+    throw new Error("Rate limit exceeded");
+  }
+}
+
+/**
+ * Sanitize blog content while preserving markdown formatting
+ */
+function sanitizeBlogContent(content: string): string {
+  if (!content) return "";
+
+  let sanitized = content;
+
+  // Remove HTML tags completely (but preserve markdown)
+  let prevSanitized;
+  do {
+    prevSanitized = sanitized;
+    sanitized = sanitized.replace(/<[^>]*>/g, "");
+  } while (sanitized !== prevSanitized);
+
+  // Remove script tags and dangerous protocols
+  sanitized = sanitized.replace(/javascript:/gi, "");
+  sanitized = sanitized.replace(/data:/gi, "");
+  sanitized = sanitized.replace(/vbscript:/gi, "");
+
+  // Remove potentially dangerous attributes
+  let prevAttrSanitized;
+  do {
+    prevAttrSanitized = sanitized;
+    sanitized = sanitized.replace(/on\w+\s*=\s*[^>]*/gi, "");
+  } while (sanitized !== prevAttrSanitized);
+
+  // PRESERVE markdown formatting - DO NOT remove whitespace or newlines
+  // Only remove NULL characters and other control characters that could be dangerous
+  // eslint-disable-next-line no-control-regex
+  sanitized = sanitized.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "");
+
+  return sanitized;
+}
+
+/**
+ * Common error handler with sanitized messages
+ */
+function handleBlogError(error: unknown, operation: string): never {
+  console.error(`Blog ${operation} error:`, error);
+  const sanitizedMessage = sanitizeErrorMessage(error);
+  throw new Error(`Failed to ${operation}: ${sanitizedMessage}`);
+}
 
 /**
  * Generate a unique slug from title
@@ -33,49 +97,33 @@ function generateSlug(title: string): string {
 }
 
 /**
- * Ensure unique slug by appending number if needed
+ * Ensure unique slug by appending number if needed (simplified)
  */
 async function ensureUniqueSlug(
   slug: string,
   excludeId?: string
 ): Promise<string> {
-  let uniqueSlug = slug;
-  let counter = 1;
-  const maxAttempts = 20;
+  const maxAttempts = 10;
 
-  while (counter <= maxAttempts) {
+  for (let counter = 0; counter < maxAttempts; counter++) {
+    const testSlug = counter === 0 ? slug : `${slug}-${counter}`;
+
     const existing = await prisma.blog.findFirst({
       where: {
-        slug: uniqueSlug,
+        slug: testSlug,
         ...(excludeId && { id: { not: excludeId } }),
       },
+      select: { id: true },
     });
 
     if (!existing) {
-      return uniqueSlug;
+      return testSlug;
     }
-
-    uniqueSlug = `${slug}-${counter}`;
-    counter++;
   }
 
-  // Fallback: Use timestamp-based unique identifier
+  // Final fallback with timestamp
   const timestamp = Date.now();
-  const fallbackSlug = `${slug}-${timestamp}`;
-
-  const existingFallback = await prisma.blog.findFirst({
-    where: {
-      slug: fallbackSlug,
-      ...(excludeId && { id: { not: excludeId } }),
-    },
-  });
-
-  if (!existingFallback) {
-    return fallbackSlug;
-  }
-
-  const randomSuffix = Math.random().toString(36).substring(2, 8);
-  return `${slug}-${timestamp}-${randomSuffix}`;
+  return `${slug}-${timestamp}`;
 }
 
 /**
@@ -131,7 +179,11 @@ function validateBlogData(
 /**
  * Get admin statistics
  */
-export async function getBlogAdminStats(): Promise<BlogAdminStats> {
+export async function getBlogAdminStats(
+  context: AdminContext
+): Promise<BlogAdminStats> {
+  validateAdminAccess(context);
+
   try {
     const [totalBlogs, publishedBlogs, draftBlogs, featuredBlogs, recentBlogs] =
       await Promise.all([
@@ -176,8 +228,7 @@ export async function getBlogAdminStats(): Promise<BlogAdminStats> {
       recentActivity,
     };
   } catch (error) {
-    console.error("Error fetching blog admin stats:", error);
-    throw new Error("Failed to fetch blog statistics");
+    handleBlogError(error, "fetch blog statistics");
   }
 }
 
@@ -185,8 +236,11 @@ export async function getBlogAdminStats(): Promise<BlogAdminStats> {
  * Get all blogs for admin (including drafts)
  */
 export async function getAdminBlogs(
+  context: AdminContext,
   query?: BlogListQuery
 ): Promise<BlogListResponse> {
+  validateAdminAccess(context);
+
   const {
     page = 1,
     limit = 20,
@@ -210,10 +264,12 @@ export async function getAdminBlogs(
     }
 
     if (search) {
+      // Sanitize search input
+      const sanitizedSearch = sanitizeInput(search);
       where.OR = [
-        { title: { contains: search, mode: "insensitive" } },
-        { excerpt: { contains: search, mode: "insensitive" } },
-        { content: { contains: search, mode: "insensitive" } },
+        { title: { contains: sanitizedSearch, mode: "insensitive" } },
+        { excerpt: { contains: sanitizedSearch, mode: "insensitive" } },
+        { content: { contains: sanitizedSearch, mode: "insensitive" } },
       ];
     }
 
@@ -256,15 +312,19 @@ export async function getAdminBlogs(
       },
     };
   } catch (error) {
-    console.error("Error fetching admin blogs:", error);
-    throw new Error("Failed to fetch blogs");
+    handleBlogError(error, "fetch blogs");
   }
 }
 
 /**
  * Create a new blog
  */
-export async function createBlog(data: CreateBlogRequest): Promise<Blog> {
+export async function createBlog(
+  context: AdminContext,
+  data: CreateBlogRequest
+): Promise<Blog> {
+  validateAdminAccess(context);
+
   // Validate input
   const errors = validateBlogData(data);
   if (errors.length > 0) {
@@ -272,23 +332,35 @@ export async function createBlog(data: CreateBlogRequest): Promise<Blog> {
   }
 
   try {
+    // Sanitize all text content
+    const sanitizedData = {
+      ...data,
+      title: sanitizeInput(data.title),
+      content: sanitizeBlogContent(data.content),
+      excerpt: data.excerpt ? sanitizeInput(data.excerpt) : null,
+      metaTitle: data.metaTitle ? sanitizeInput(data.metaTitle) : null,
+      metaDescription: data.metaDescription
+        ? sanitizeInput(data.metaDescription)
+        : null,
+    };
+
     // Generate slug if not provided
-    let slug = data.slug || generateSlug(data.title);
+    let slug = sanitizedData.slug || generateSlug(sanitizedData.title);
     slug = await ensureUniqueSlug(slug);
 
     // Calculate reading time
-    const readingTime = calculateReadingTime(data.content);
+    const readingTime = calculateReadingTime(sanitizedData.content);
 
     const blog = await prisma.blog.create({
       data: {
-        title: data.title,
+        title: sanitizedData.title,
         slug,
-        excerpt: data.excerpt || null,
-        content: data.content,
+        excerpt: sanitizedData.excerpt,
+        content: sanitizedData.content,
         featuredImage: data.featuredImage || null,
         language: data.language || "en",
-        metaTitle: data.metaTitle || null,
-        metaDescription: data.metaDescription || null,
+        metaTitle: sanitizedData.metaTitle,
+        metaDescription: sanitizedData.metaDescription,
         isPublished: data.isPublished || false,
         isFeatured: data.isFeatured || false,
         isDraft: !data.isPublished,
@@ -303,11 +375,15 @@ export async function createBlog(data: CreateBlogRequest): Promise<Blog> {
         ...(data.credits && {
           credits: {
             create: {
-              originalAuthor: data.credits.originalAuthor || "",
-              originalSource: data.credits.originalSource || null,
+              originalAuthor: sanitizeInput(data.credits.originalAuthor || ""),
+              originalSource: data.credits.originalSource
+                ? sanitizeInput(data.credits.originalSource)
+                : null,
               sourceUrl: data.credits.sourceUrl || null,
               licenseType: data.credits.licenseType || null,
-              creditText: data.credits.creditText || null,
+              creditText: data.credits.creditText
+                ? sanitizeInput(data.credits.creditText)
+                : null,
               translatedFrom: data.credits.translatedFrom || null,
               adaptedFrom: data.credits.adaptedFrom || null,
             },
@@ -327,8 +403,7 @@ export async function createBlog(data: CreateBlogRequest): Promise<Blog> {
 
     return blog as Blog;
   } catch (error) {
-    console.error("Error creating blog:", error);
-    throw new Error("Failed to create blog");
+    handleBlogError(error, "create blog");
   }
 }
 
@@ -336,9 +411,12 @@ export async function createBlog(data: CreateBlogRequest): Promise<Blog> {
  * Update an existing blog
  */
 export async function updateBlog(
+  context: AdminContext,
   id: string,
   data: UpdateBlogRequest
 ): Promise<Blog> {
+  validateAdminAccess(context);
+
   // Validate input
   const errors = validateBlogData(data);
   if (errors.length > 0) {
@@ -347,10 +425,44 @@ export async function updateBlog(
 
   try {
     // Check if blog exists
-    const existingBlog = await prisma.blog.findUnique({ where: { id } });
+    const existingBlog = await prisma.blog.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        slug: true,
+        readingTime: true,
+        isPublished: true,
+        publishedAt: true,
+      },
+    });
     if (!existingBlog) {
       throw new Error("Blog not found");
     }
+
+    // Sanitize all text content
+    const sanitizedData = {
+      ...data,
+      title: data.title ? sanitizeInput(data.title) : undefined,
+      content: data.content ? sanitizeBlogContent(data.content) : undefined,
+      excerpt:
+        data.excerpt !== undefined
+          ? data.excerpt
+            ? sanitizeInput(data.excerpt)
+            : null
+          : undefined,
+      metaTitle:
+        data.metaTitle !== undefined
+          ? data.metaTitle
+            ? sanitizeInput(data.metaTitle)
+            : null
+          : undefined,
+      metaDescription:
+        data.metaDescription !== undefined
+          ? data.metaDescription
+            ? sanitizeInput(data.metaDescription)
+            : null
+          : undefined,
+    };
 
     // Handle slug update
     let slug = data.slug;
@@ -360,8 +472,8 @@ export async function updateBlog(
 
     // Calculate reading time if content changed
     let readingTime = existingBlog.readingTime;
-    if (data.content) {
-      readingTime = calculateReadingTime(data.content);
+    if (sanitizedData.content) {
+      readingTime = calculateReadingTime(sanitizedData.content);
     }
 
     // Handle publish status change
@@ -375,17 +487,21 @@ export async function updateBlog(
     const blog = await prisma.blog.update({
       where: { id },
       data: {
-        ...(data.title && { title: data.title }),
+        ...(sanitizedData.title && { title: sanitizedData.title }),
         ...(slug && { slug }),
-        ...(data.excerpt !== undefined && { excerpt: data.excerpt }),
-        ...(data.content && { content: data.content }),
+        ...(sanitizedData.excerpt !== undefined && {
+          excerpt: sanitizedData.excerpt,
+        }),
+        ...(sanitizedData.content && { content: sanitizedData.content }),
         ...(data.featuredImage !== undefined && {
           featuredImage: data.featuredImage,
         }),
         ...(data.language && { language: data.language }),
-        ...(data.metaTitle !== undefined && { metaTitle: data.metaTitle }),
-        ...(data.metaDescription !== undefined && {
-          metaDescription: data.metaDescription,
+        ...(sanitizedData.metaTitle !== undefined && {
+          metaTitle: sanitizedData.metaTitle,
+        }),
+        ...(sanitizedData.metaDescription !== undefined && {
+          metaDescription: sanitizedData.metaDescription,
         }),
         ...(data.isPublished !== undefined && {
           isPublished: data.isPublished,
@@ -414,64 +530,75 @@ export async function updateBlog(
 
     // Handle credits separately due to upsert complexity
     if (data.credits) {
+      const sanitizedCredits = {
+        originalAuthor: sanitizeInput(data.credits.originalAuthor || ""),
+        originalSource: data.credits.originalSource
+          ? sanitizeInput(data.credits.originalSource)
+          : null,
+        sourceUrl: data.credits.sourceUrl || null,
+        licenseType: data.credits.licenseType || null,
+        creditText: data.credits.creditText
+          ? sanitizeInput(data.credits.creditText)
+          : null,
+        translatedFrom: data.credits.translatedFrom || null,
+        adaptedFrom: data.credits.adaptedFrom || null,
+      };
+
       await prisma.blogCredit.upsert({
         where: { blogId: id },
-        update: {
-          originalAuthor: data.credits.originalAuthor || "",
-          originalSource: data.credits.originalSource || null,
-          sourceUrl: data.credits.sourceUrl || null,
-          licenseType: data.credits.licenseType || null,
-          creditText: data.credits.creditText || null,
-          translatedFrom: data.credits.translatedFrom || null,
-          adaptedFrom: data.credits.adaptedFrom || null,
-        },
+        update: sanitizedCredits,
         create: {
           blogId: id,
-          originalAuthor: data.credits.originalAuthor || "",
-          originalSource: data.credits.originalSource || null,
-          sourceUrl: data.credits.sourceUrl || null,
-          licenseType: data.credits.licenseType || null,
-          creditText: data.credits.creditText || null,
-          translatedFrom: data.credits.translatedFrom || null,
-          adaptedFrom: data.credits.adaptedFrom || null,
+          ...sanitizedCredits,
         },
       });
     }
 
     return blog as Blog;
   } catch (error) {
-    console.error("Error updating blog:", error);
-    throw new Error("Failed to update blog");
+    handleBlogError(error, "update blog");
   }
 }
 
 /**
  * Delete a blog
  */
-export async function deleteBlog(id: string): Promise<void> {
+export async function deleteBlog(
+  context: AdminContext,
+  id: string
+): Promise<void> {
+  validateAdminAccess(context);
+
   try {
     // Check if blog exists
-    const existingBlog = await prisma.blog.findUnique({ where: { id } });
+    const existingBlog = await prisma.blog.findUnique({
+      where: { id },
+      select: { id: true },
+    });
     if (!existingBlog) {
       throw new Error("Blog not found");
     }
 
-    // Delete related data first
-    await prisma.blogTagRelation.deleteMany({ where: { blogId: id } });
-    await prisma.blogCredit.deleteMany({ where: { blogId: id } });
-
-    // Delete the blog
-    await prisma.blog.delete({ where: { id } });
+    // Delete related data first (using transaction for consistency)
+    await prisma.$transaction([
+      prisma.blogTagRelation.deleteMany({ where: { blogId: id } }),
+      prisma.blogCredit.deleteMany({ where: { blogId: id } }),
+      prisma.blog.delete({ where: { id } }),
+    ]);
   } catch (error) {
-    console.error("Error deleting blog:", error);
-    throw new Error("Failed to delete blog");
+    handleBlogError(error, "delete blog");
   }
 }
 
 /**
  * Get a blog by ID for admin
  */
-export async function getAdminBlogById(id: string): Promise<Blog | null> {
+export async function getAdminBlogById(
+  context: AdminContext,
+  id: string
+): Promise<Blog | null> {
+  validateAdminAccess(context);
+
   try {
     const blog = await prisma.blog.findUnique({
       where: { id },
@@ -488,8 +615,7 @@ export async function getAdminBlogById(id: string): Promise<Blog | null> {
 
     return blog as Blog | null;
   } catch (error) {
-    console.error("Error fetching blog by ID:", error);
-    throw new Error("Failed to fetch blog");
+    handleBlogError(error, "fetch blog");
   }
 }
 
@@ -503,30 +629,47 @@ export function checkAdminRateLimit(clientIP: string): boolean {
 /**
  * Get all categories for admin forms
  */
-export async function getAdminCategories() {
+export async function getAdminCategories(context: AdminContext) {
+  validateAdminAccess(context);
+
   try {
     const categories = await prisma.blogCategory.findMany({
       where: { isActive: true },
       orderBy: { name: "asc" },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        description: true,
+        isActive: true,
+      },
     });
     return categories;
   } catch (error) {
-    console.error("Error fetching categories:", error);
-    throw new Error("Failed to fetch categories");
+    handleBlogError(error, "fetch categories");
   }
 }
 
 /**
  * Get all tags for admin forms
  */
-export async function getAdminTags() {
+export async function getAdminTags(context: AdminContext) {
+  validateAdminAccess(context);
+
   try {
     const tags = await prisma.blogTag.findMany({
       orderBy: { name: "asc" },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+      },
     });
     return tags;
   } catch (error) {
-    console.error("Error fetching tags:", error);
-    throw new Error("Failed to fetch tags");
+    handleBlogError(error, "fetch tags");
   }
 }
+
+// Export the AdminContext interface for use in API routes
+export type { AdminContext };

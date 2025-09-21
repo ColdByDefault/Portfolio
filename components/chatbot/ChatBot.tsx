@@ -73,6 +73,7 @@ export function ChatBot({
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const [bottomOffset, setBottomOffset] = useState(24); // Default 6 * 4 (1.5rem)
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("ChatBot");
 
@@ -99,6 +100,44 @@ export function ChatBot({
     }
   }, [isOpen, error, clearError]);
 
+  // Detect footer visibility and adjust chatbot position dynamically
+  useEffect(() => {
+    const handleScroll = () => {
+      const footer = document.querySelector("footer");
+      if (!footer) {
+        setBottomOffset(24); // Default bottom spacing (6 * 4 = 1.5rem)
+        return;
+      }
+
+      const footerRect = footer.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Calculate how much of the footer is visible
+      const footerVisibleHeight = Math.max(0, windowHeight - footerRect.top);
+
+      // If footer is visible, position chatbot above it with some padding
+      if (footerVisibleHeight > 0) {
+        // Add extra padding (16px) to ensure chatbot doesn't overlap with footer
+        setBottomOffset(footerVisibleHeight + 16);
+      } else {
+        // Footer not visible, use default bottom spacing
+        setBottomOffset(24);
+      }
+    };
+
+    // Add scroll listener
+    window.addEventListener("scroll", handleScroll);
+    // Add resize listener for responsive behavior
+    window.addEventListener("resize", handleScroll);
+    // Check initial state
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
   const handleCloseChat = () => {
     setIsOpen(false);
     setInputValue(""); // Clear input
@@ -124,15 +163,24 @@ export function ChatBot({
     }
   };
 
-  const positionClasses = {
-    "bottom-left": "bottom-6 left-6",
-    "bottom-right": "bottom-6 right-6",
-    "top-left": "top-6 left-6",
-    "top-right": "top-6 right-6",
+  // Dynamic position classes based on calculated bottom offset
+  const getPositionClasses = () => {
+    const baseClasses = {
+      "bottom-left": `left-6`,
+      "bottom-right": `right-6`,
+      "top-left": "top-6 left-6",
+      "top-right": "top-6 right-6",
+    };
+    return baseClasses[position];
   };
 
   return isVisible ? (
-    <div className={`fixed ${positionClasses[position]} z-50 ${className}`}>
+    <div
+      className={`fixed ${getPositionClasses()} z-50 transition-all duration-300 ease-in-out ${className}`}
+      style={{
+        bottom: position.startsWith("bottom") ? `${bottomOffset}px` : undefined,
+      }}
+    >
       {!isOpen ? (
         <Button
           onClick={() => setIsOpen(true)}

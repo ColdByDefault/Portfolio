@@ -47,6 +47,7 @@ next-env.d.ts
 
 # instructions
 portfolio.latest.instructions.md
+portfolio.check.instructions.md
 /lib/generated/prisma
 
 # Vercel

@@ -258,6 +258,8 @@
     "techHighlights": "Built With Modern Technologies",
     "readMore": "Read More",
     "readMoreNote": "Detailed documentation coming soon",
+    "featuresTitle": "Portfolio Features",
+    "actionsTitle": "Portfolio Actions",
     "features": {
       "techStack": {
         "title": "Full-Stack Architecture",
