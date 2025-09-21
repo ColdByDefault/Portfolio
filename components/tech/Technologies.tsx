@@ -61,9 +61,10 @@ export default function Technologies() {
 
   // Calculate the maximum number of items in any tech group to determine carousel height
   const maxItems = Math.max(...techGroups.map((group) => group.items.length));
-  // Stable carousel height to prevent layout shifts
-  const baseHeight = 400;
-  const itemHeight = 35; // Approximate height per item including gaps
+  // Responsive carousel height - smaller on mobile devices
+  const baseHeight =
+    cardsPerSlide === 1 ? 240 : cardsPerSlide === 2 ? 260 : 280;
+  const itemHeight = cardsPerSlide === 1 ? 20 : 25; // Even tighter on mobile
   const carouselHeight = Math.max(
     baseHeight,
     baseHeight + (maxItems - 4) * itemHeight
@@ -154,7 +155,7 @@ export default function Technologies() {
                 {slides.map((slide, slideIndex) => (
                   <CarouselItem key={slideIndex} className="pl-2 md:pl-4">
                     <div
-                      className={`grid gap-4 sm:gap-6 items-start ${
+                      className={`grid gap-4 sm:gap-6 items-center justify-items-center h-full ${
                         cardsPerSlide === 1
                           ? "grid-cols-1"
                           : cardsPerSlide === 2
