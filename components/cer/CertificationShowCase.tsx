@@ -11,7 +11,10 @@ import { Card, CardTitle } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { getCardHoverClasses, getOverlayStyles } from "@/lib/card-animations";
+import {
+  getCardHoverClasses,
+  getOverlayStyles,
+} from "@/components/visuals/card-animations";
 import { ImageZoomDialog } from "@/components/ui/image-zoom-dialog";
 
 interface CertificationShowcaseProps {

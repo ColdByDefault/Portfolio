@@ -9,7 +9,10 @@ import { techGroups } from "@/data/tech";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { getCardHoverClasses, getOverlayStyles } from "@/lib/card-animations";
+import {
+  getCardHoverClasses,
+  getOverlayStyles,
+} from "@/components/visuals/card-animations";
 import {
   Carousel,
   CarouselContent,

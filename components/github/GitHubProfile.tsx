@@ -12,7 +12,10 @@ import { GoRepoForked } from "react-icons/go";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { getCardHoverClasses, getOverlayStyles } from "@/lib/card-animations";
+import {
+  getCardHoverClasses,
+  getOverlayStyles,
+} from "@/components/visuals/card-animations";
 import type { GitHubProfile, GitHubStats } from "@/types/github";
 
 interface GitHubProfileProps {

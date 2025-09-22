@@ -12,7 +12,10 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import { getCardHoverClasses, getOverlayStyles } from "@/lib/card-animations";
+import {
+  getCardHoverClasses,
+  getOverlayStyles,
+} from "@/components/visuals/card-animations";
 import type { GitHubRepositoriesProps } from "@/types/github";
 
 const LanguageColors: Record<string, string> = {

@@ -18,7 +18,10 @@ import { Button } from "@/components/ui/button";
 import { FiGithub, FiExternalLink, FiCopy, FiCheck } from "react-icons/fi";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { getCardHoverClasses, getOverlayStyles } from "@/lib/card-animations";
+import {
+  getCardHoverClasses,
+  getOverlayStyles,
+} from "@/components/visuals/card-animations";
 import type { ProjectsShowcaseProps, ProjectCardProps } from "@/types/projects";
 import {
   useProjectLogic,
