@@ -258,8 +258,28 @@ export default function GitHubShowcase({ className }: { className?: string }) {
 
       {/* Last Updated Section */}
       <div className="text-center">
-        <Badge variant="outline" className="text-xs text-black dark:text-white">
-          Last updated: {formatDate(githubData.lastUpdated)}{" "}
+        <Badge
+          variant="outline"
+          className="text-xs text-black dark:text-white flex items-center gap-2 justify-center"
+        >
+          <div className="flex items-center relative">
+            {/* Green status dot with inline styles as fallback */}
+            <div
+              className="w-3 h-3 rounded-full animate-pulse"
+              style={{
+                backgroundColor: "#22c55e",
+                minWidth: "12px",
+                minHeight: "12px",
+              }}
+            ></div>
+            <div
+              className="absolute inset-0 w-3 h-3 rounded-full animate-ping opacity-50"
+              style={{
+                backgroundColor: "#4ade80",
+              }}
+            ></div>
+          </div>
+          API Online • Last updated: {formatDate(githubData.lastUpdated)}{" "}
           {new Date(githubData.lastUpdated).toLocaleTimeString("en-US", {
             hour: "2-digit",
             minute: "2-digit",
