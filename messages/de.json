@@ -311,7 +311,7 @@
       "processing": "Verarbeite Ihre Nachricht..."
     },
     "input": {
-      "placeholder": "Fragen Sie mich über Yazan oder sein Portfolio...",
+      "placeholder": "ask Reem..",
       "characterLimit": "/1000"
     },
     "status": {

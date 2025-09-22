@@ -311,7 +311,7 @@
       "processing": "Procesando tu mensaje..."
     },
     "input": {
-      "placeholder": "Pregúntame sobre Yazan o su portafolio...",
+      "placeholder": "ask Reem..",
       "characterLimit": "/1000"
     },
     "status": {

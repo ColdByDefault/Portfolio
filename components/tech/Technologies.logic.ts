@@ -28,12 +28,6 @@ interface CardInteractionHandlers {
   readonly onKeyDown: (e: KeyboardEvent<HTMLElement>) => void;
 }
 
-/**
- * Calculate carousel configuration based on responsive settings
- * @param cardsPerSlide - Number of cards to display per slide
- * @param maxItems - Maximum number of items in any tech group
- * @returns Carousel configuration object
- */
 export function calculateCarouselConfig(
   cardsPerSlide: number,
   maxItems: number
@@ -55,11 +49,7 @@ export function calculateCarouselConfig(
   return { height, gridClasses };
 }
 
-/**
- * Generate slides by grouping tech groups based on cards per slide
- * @param cardsPerSlide - Number of cards to display per slide
- * @returns Array of tech group slides
- */
+
 export function generateSlides(cardsPerSlide: number): (typeof techGroups)[] {
   const slides: (typeof techGroups)[] = [];
   for (let i = 0; i < techGroups.length; i += cardsPerSlide) {
@@ -68,21 +58,11 @@ export function generateSlides(cardsPerSlide: number): (typeof techGroups)[] {
   return slides;
 }
 
-/**
- * Get the maximum number of items across all tech groups
- * @returns Maximum item count
- */
+
 export function getMaxItemsCount(): number {
   return Math.max(...techGroups.map((group) => group.items.length));
 }
 
-/**
- * Create card interaction handlers for hover and keyboard navigation
- * @param categoryId - The category ID for the card
- * @param currentHoveredCard - Currently hovered card ID
- * @param setHoveredCard - Function to update hovered card state
- * @returns Object with interaction handlers
- */
 export function createCardInteractionHandlers(
   categoryId: string,
   currentHoveredCard: string | null,

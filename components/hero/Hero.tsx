@@ -39,16 +39,6 @@ function Hero() {
                 sizes="(max-width: 640px) 192px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
               />
             </div>
-            {/* <div className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4">
-              <Badge
-                variant="secondary"
-                className="px-3 py-1 text-sm font-medium"
-                role="status"
-                aria-label="Available for collaboration"
-              >
-                {t("availableForCollaboration")}
-              </Badge>
-            </div> */}
           </div>
 
           {/* Content */}

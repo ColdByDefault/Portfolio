@@ -311,7 +311,7 @@
       "processing": "Bearbetar ditt meddelande..."
     },
     "input": {
-      "placeholder": "Fråga mig om Yazan eller hans portfölj...",
+      "placeholder": "ask Reem..",
       "characterLimit": "/1000"
     },
     "status": {

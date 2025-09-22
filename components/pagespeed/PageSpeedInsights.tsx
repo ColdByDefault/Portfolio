@@ -24,7 +24,7 @@ import type {
   PageSpeedResult,
   PageSpeedInsightsProps,
 } from "@/types/pagespeed";
-import { usePageSpeedData } from "./usePageSpeedData";
+import { usePageSpeedData } from "../../hooks/use-pageSpeed-data";
 
 const getScoreBadgeColor = (score: number): string => {
   if (score >= 90)
