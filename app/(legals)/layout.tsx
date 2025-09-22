@@ -8,6 +8,7 @@ import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { generateLegalPageSEO } from "@/lib/seo";
 import { Background } from "@/components/visuals";
+import { NoSSR } from "@/components/NoSSR";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -23,7 +24,9 @@ export default function LegalsGroupLayout({
   return (
     <div className="min-h-screen">
       {children}
-      <Background />
+      <NoSSR>
+        <Background />
+      </NoSSR>
     </div>
   );
 }

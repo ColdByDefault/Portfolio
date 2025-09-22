@@ -7,7 +7,6 @@
 
 import { Hero } from "@/components/hero";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { CompanyBanner } from "@/components/companies";
 import PortoCard from "@/components/aboutPorto";
 import { NoSSR } from "@/components/NoSSR";
@@ -107,56 +106,8 @@ export default function Home() {
               <CompanyBanner />
             </div>
 
-            {/* Main content section with sticky background */}
+            {/* Main content section */}
             <div className="relative" id="main-content">
-              {/* Sticky Background Image - Only in dark mode */}
-              <div className="dark:block hidden sticky top-0 h-screen z-0">
-                <div className="relative w-full h-full">
-                  <Image
-                    src="/bg.jpg"
-                    fill
-                    alt="Background image of Birmingham Museums Trust"
-                    className="object-cover object-center"
-                    priority={false}
-                    quality={75}
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-                    sizes="100vw"
-                    loading="lazy"
-                    style={{
-                      objectFit: "cover",
-                      objectPosition: "center",
-                    }}
-                  />
-                  {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
-
-                  {/* Photo Credit - Hidden on small screens, visible on medium+ screens */}
-                  <div className="hidden md:block absolute bottom-4 right-4 text-xs text-white/70 hover:text-white/90 transition-colors duration-200">
-                    <span>
-                      Photo by{" "}
-                      <a
-                        href="https://unsplash.com/@birminghammuseumstrust"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline hover:text-white"
-                      >
-                        Birmingham Museums Trust
-                      </a>{" "}
-                      on{" "}
-                      <a
-                        href="https://unsplash.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline hover:text-white"
-                      >
-                        Unsplash
-                      </a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-
               {/* Content Container */}
               <div className="relative z-10 dark:-mt-[100vh]">
                 <div className="container mx-auto px-4 py-8">

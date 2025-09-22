@@ -2,16 +2,17 @@
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
-"use client";
-
 import { MediaDashboard } from "@/components/mediaDashboard";
 import { Background } from "@/components/visuals";
+import { NoSSR } from "@/components/NoSSR";
 
 export default function MediaPage() {
   return (
     <div>
-      <MediaDashboard />
-      <Background />
+      <NoSSR>
+        <MediaDashboard />
+        <Background />
+      </NoSSR>
     </div>
   );
 }
