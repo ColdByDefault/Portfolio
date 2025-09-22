@@ -7,19 +7,13 @@
 export const cardHoverStyles = {
   base: "border-gray-500/50 bg-white shadow-2xl",
   themed:
-    "dark:bg-black dark:shadow-yellow-500/20 dark:border-yellow-500/50 bg-white shadow-blue-200/20",
+    "dark:bg-black dark:shadow-blue-200/20 dark:border-blue-500/50 bg-white shadow-blue-200/20",
 };
 
-// Gradient overlay configurations
-export const gradientOverlays = {
-  light: {
-    backgroundImage: `linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%),
-                     linear-gradient(-45deg, transparent 30%, rgba(147, 197, 253, 0.1) 50%, transparent 70%)`,
-  },
-  dark: {
-    backgroundImage: `linear-gradient(45deg, transparent 30%, rgba(218, 165, 32, 0.09) 50%, transparent 70%),
-                     linear-gradient(-45deg, transparent 30%, rgba(255, 215, 0, 0.09) 50%, transparent 70%)`,
-  },
+// Unified gradient overlay configuration for both themes
+export const gradientOverlay = {
+  backgroundImage: `linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.08) 50%, transparent 70%),
+                   linear-gradient(-45deg, transparent 30%, rgba(147, 197, 253, 0.08) 50%, transparent 70%)`,
 };
 
 // Animation configuration
@@ -38,24 +32,11 @@ export const getCardHoverClasses = (isHovered: boolean) => {
 };
 
 // Helper function to get overlay styles
-export const getOverlayStyles = (isHovered: boolean, isDark = false) => {
+export const getOverlayStyles = (isHovered: boolean) => {
   if (!isHovered) return { backgroundImage: "none" };
 
-  const gradient = isDark ? gradientOverlays.dark : gradientOverlays.light;
   return {
-    ...gradient,
+    ...gradientOverlay,
     ...cardAnimation,
   };
 };
-
-// CSS for gradient animation keyframes
-export const gradientShiftCSS = `
-  @keyframes gradient-shift {
-    0%, 100% {
-      background-position: 0% 0%;
-    }
-    50% {
-      background-position: 100% 100%;
-    }
-  }
-`;

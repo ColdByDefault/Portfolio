@@ -9,11 +9,7 @@ import { techGroups } from "@/data/tech";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import {
-  getCardHoverClasses,
-  getOverlayStyles,
-  gradientShiftCSS,
-} from "@/lib/card-animations";
+import { getCardHoverClasses, getOverlayStyles } from "@/lib/card-animations";
 import {
   Carousel,
   CarouselContent,
@@ -140,14 +136,6 @@ export default function Technologies() {
           `}
           style={getOverlayStyles(isCurrentCardHovered)}
         />
-        {/* Dark mode gradient overlay */}
-        <div
-          className={`
-            absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none dark:block hidden
-            ${isCurrentCardHovered ? "opacity-100" : "opacity-0"}
-          `}
-          style={getOverlayStyles(isCurrentCardHovered, true)}
-        />
       </Card>
     );
   };
@@ -231,11 +219,6 @@ export default function Technologies() {
             </Carousel>
           </div>
         </CardContent>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `<style>${gradientShiftCSS}</style>`,
-          }}
-        />
       </Card>
       <motion.div
         className="text-center pt-2 sm:pt-4"

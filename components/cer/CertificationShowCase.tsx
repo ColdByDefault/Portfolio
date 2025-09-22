@@ -11,11 +11,7 @@ import { Card, CardTitle } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useTranslations } from "next-intl";
-import {
-  getCardHoverClasses,
-  getOverlayStyles,
-  gradientShiftCSS,
-} from "@/lib/card-animations";
+import { getCardHoverClasses, getOverlayStyles } from "@/lib/card-animations";
 import { ImageZoomDialog } from "@/components/ui/image-zoom-dialog";
 
 interface CertificationShowcaseProps {
@@ -110,14 +106,6 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
             ${isCurrentCardHovered ? "opacity-100" : "opacity-0"}
           `}
           style={getOverlayStyles(isCurrentCardHovered)}
-        />
-        {/* Dark mode gradient overlay */}
-        <div
-          className={`
-            absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none dark:block hidden
-            ${isCurrentCardHovered ? "opacity-100" : "opacity-0"}
-          `}
-          style={getOverlayStyles(isCurrentCardHovered, true)}
         />
       </Card>
     );
@@ -336,7 +324,6 @@ function CertificationShowcase({ className }: CertificationShowcaseProps) {
         <div className={`z-40 ${getContainerClasses()}`}>
           {certifications.map((cert) => renderCard(cert))}
         </div>
-        <style dangerouslySetInnerHTML={{ __html: gradientShiftCSS }} />
       </Card>
     </section>
   );

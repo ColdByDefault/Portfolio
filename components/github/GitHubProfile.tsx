@@ -12,11 +12,7 @@ import { GoRepoForked } from "react-icons/go";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import {
-  getCardHoverClasses,
-  getOverlayStyles,
-  gradientShiftCSS,
-} from "@/lib/card-animations";
+import { getCardHoverClasses, getOverlayStyles } from "@/lib/card-animations";
 import type { GitHubProfile, GitHubStats } from "@/types/github";
 
 interface GitHubProfileProps {
@@ -141,15 +137,6 @@ export default function GitHubProfile({ profile, stats }: GitHubProfileProps) {
                   `}
         style={getOverlayStyles(isHovered)}
       />
-      {/* Dark mode gradient overlay */}
-      <div
-        className={`
-                    absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none dark:block hidden
-                    ${isHovered ? "opacity-100" : "opacity-0"}
-                  `}
-        style={getOverlayStyles(isHovered, true)}
-      />
-      <style dangerouslySetInnerHTML={{ __html: gradientShiftCSS }} />
     </Card>
   );
 }

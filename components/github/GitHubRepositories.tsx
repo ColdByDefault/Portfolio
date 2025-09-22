@@ -12,11 +12,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import {
-  getCardHoverClasses,
-  getOverlayStyles,
-  gradientShiftCSS,
-} from "@/lib/card-animations";
+import { getCardHoverClasses, getOverlayStyles } from "@/lib/card-animations";
 import type { GitHubRepositoriesProps } from "@/types/github";
 
 const LanguageColors: Record<string, string> = {
@@ -175,17 +171,6 @@ export default function GitHubRepositories({
                     ${isHovered ? "opacity-100" : "opacity-0"}
                   `}
                     style={getOverlayStyles(isHovered)}
-                  />
-                  {/* Dark mode gradient overlay */}
-                  <div
-                    className={`
-                    absolute inset-0 rounded-lg transition-opacity duration-500 dark:block hidden
-                    ${isHovered ? "opacity-100" : "opacity-0"}
-                  `}
-                    style={getOverlayStyles(isHovered, true)}
-                  />
-                  <style
-                    dangerouslySetInnerHTML={{ __html: gradientShiftCSS }}
                   />
                 </Card>
               </motion.div>
