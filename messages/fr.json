@@ -257,41 +257,32 @@
     "performanceBadge": "95+ Score Google Lighthouse",
     "techHighlights": "Construit Avec Des Technologies Modernes",
     "readMore": "Lire la suite",
-    "readMoreNote": "Documentation détaillée à venir",
     "featuresTitle": "Fonctionnalités du Portfolio",
     "actionsTitle": "Actions du Portfolio",
     "features": {
       "techStack": {
-        "title": "Architecture Full-Stack",
-        "description": "Next.js 15 moderne avec React 19, TypeScript en mode strict et patterns d'entreprise pour un développement évolutif."
+        "title": "Architecture Full-Stack"
       },
       "cleanArchitecture": {
-        "title": "Architecture de Code Propre",
-        "description": "Base de code bien organisée avec séparation des préoccupations utilisant des dossiers dédiés lib, data, hooks et components."
+        "title": "Architecture de Code Propre"
       },
       "database": {
-        "title": "Base de Données et Stockage",
-        "description": "PostgreSQL type-safe avec Prisma ORM sur la plateforme serverless de Neon pour des opérations de données fiables."
+        "title": "Base de Données et Stockage"
       },
       "aiChatbot": {
-        "title": "Chatbot alimenté par IA",
-        "description": "Assistant intelligent IA 'Reem' pour aider à naviguer le portfolio et répondre aux questions sur les projets et l'expérience."
+        "title": "Chatbot alimenté par IA"
       },
       "performance": {
-        "title": "Performance et Accessibilité",
-        "description": "Optimisé pour la vitesse et l'accessibilité avec des scores Google Lighthouse de 95+ sur toutes les métriques."
+        "title": "Performance et Accessibilité"
       },
       "mainFeatures": {
-        "title": "Fonctionnalités Principales",
-        "description": "Gestion de contenu avec système de blog, galerie multimédia et bibliothèque organisée pour présenter le travail."
+        "title": "Fonctionnalités Principales"
       },
       "techFeatures": {
-        "title": "Intégrations Avancées",
-        "description": "Serveur GitHub MCP en temps réel, surveillance PageSpeed en direct et workflows CI/CD automatisés."
+        "title": "Intégrations Avancées"
       },
       "localization": {
-        "title": "Internationalisation",
-        "description": "Support multilingue avec détection automatique, changement de thèmes et livraison de contenu localisé."
+        "title": "Internationalisation"
       }
     }
   },

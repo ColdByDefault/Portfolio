@@ -160,7 +160,7 @@ export default React.memo(function PortoCard({ className }: PortoCardProps) {
                 variant="outline"
                 className={deviceType === "mobile" ? "text-sm mt-2" : "mt-2"}
                 aria-describedby="read-more-note"
-                aria-label={`${t("readMore")} - ${t("readMoreNote")}`}
+                aria-label={`${t("readMore")}`}
                 asChild
               >
                 <Link href="/about-portfolio">
@@ -168,15 +168,6 @@ export default React.memo(function PortoCard({ className }: PortoCardProps) {
                   <ExternalLink className="ml-2 h-3 w-3" aria-hidden="true" />
                 </Link>
               </Button>
-              <p
-                id="read-more-note"
-                className={`text-xs text-muted-foreground cursor-pointer ${
-                  deviceType === "mobile" ? "mt-2" : "mt-2"
-                }`}
-                role="note"
-              >
-                {t("readMoreNote")}
-              </p>
             </div>
           </section>
         </CardContent>
