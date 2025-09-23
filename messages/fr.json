@@ -251,6 +251,50 @@
       }
     ]
   },
+  "PortfolioAbout": {
+    "title": "À Propos de Ce Portfolio",
+    "description": "Un portfolio de développeur moderne et haute performance présentant des capacités full-stack avec une architecture de niveau entreprise, des standards d'accessibilité et des technologies de pointe.",
+    "performanceBadge": "95+ Score Google Lighthouse",
+    "techHighlights": "Construit Avec Des Technologies Modernes",
+    "readMore": "Lire la suite",
+    "readMoreNote": "Documentation détaillée à venir",
+    "featuresTitle": "Fonctionnalités du Portfolio",
+    "actionsTitle": "Actions du Portfolio",
+    "features": {
+      "techStack": {
+        "title": "Architecture Full-Stack",
+        "description": "Next.js 15 moderne avec React 19, TypeScript en mode strict et patterns d'entreprise pour un développement évolutif."
+      },
+      "cleanArchitecture": {
+        "title": "Architecture de Code Propre",
+        "description": "Base de code bien organisée avec séparation des préoccupations utilisant des dossiers dédiés lib, data, hooks et components."
+      },
+      "database": {
+        "title": "Base de Données et Stockage",
+        "description": "PostgreSQL type-safe avec Prisma ORM sur la plateforme serverless de Neon pour des opérations de données fiables."
+      },
+      "aiChatbot": {
+        "title": "Chatbot alimenté par IA",
+        "description": "Assistant intelligent IA 'Reem' pour aider à naviguer le portfolio et répondre aux questions sur les projets et l'expérience."
+      },
+      "performance": {
+        "title": "Performance et Accessibilité",
+        "description": "Optimisé pour la vitesse et l'accessibilité avec des scores Google Lighthouse de 95+ sur toutes les métriques."
+      },
+      "mainFeatures": {
+        "title": "Fonctionnalités Principales",
+        "description": "Gestion de contenu avec système de blog, galerie multimédia et bibliothèque organisée pour présenter le travail."
+      },
+      "techFeatures": {
+        "title": "Intégrations Avancées",
+        "description": "Serveur GitHub MCP en temps réel, surveillance PageSpeed en direct et workflows CI/CD automatisés."
+      },
+      "localization": {
+        "title": "Internationalisation",
+        "description": "Support multilingue avec détection automatique, changement de thèmes et livraison de contenu localisé."
+      }
+    }
+  },
   "ChatBot": {
     "name": "Reem",
     "pronunciation": "/riːm/",
@@ -409,6 +453,58 @@
     },
     "stack": {
       "title": "Stack Technique"
+    },
+    "Overview": {
+      "sections": {
+        "portfolioFeatures": {
+          "title": "Fonctionnalités du Portfolio",
+          "description": "Fonctionnalités clés et capacités de ce portfolio"
+        },
+        "architectureFeatures": {
+          "title": "Aperçu de l'Architecture",
+          "description": "Architecture technique et principes de conception"
+        },
+        "developmentGoals": {
+          "title": "Objectifs de Développement",
+          "description": "Objectifs principaux et principes suivis pendant le développement"
+        }
+      },
+      "portfolioFeatures": {
+        "responsiveDesign": "Design responsive moderne avec support des thèmes sombre/clair",
+        "multiLanguage": "Support multilingue avec internationalisation",
+        "blogSystem": "Système de blog avec panneau d'administration et support Markdown",
+        "projectShowcase": "Vitrine de projets avec informations détaillées",
+        "interactiveChatbot": "Chatbot interactif pour l'engagement des visiteurs",
+        "performanceOptimized": "Optimisé pour les performances avec des scores Lighthouse de 100/100",
+        "seoOptimized": "Optimisé SEO avec données structurées et balises méta",
+        "securityFirst": "Approche sécurité d'abord avec validation des entrées"
+      },
+      "architectureFeatures": {
+        "componentArchitecture": "Architecture basée sur les composants avec séparation claire des préoccupations",
+        "typescriptStrict": "Mode strict TypeScript pour la sécurité des types",
+        "serverSideRendering": "Rendu côté serveur avec Next.js App Router",
+        "databaseIntegration": "Intégration base de données avec Prisma ORM",
+        "authenticationSystem": "Système d'authentification et d'autorisation",
+        "apiRoutesSecurity": "Routes API avec validation et sécurité appropriées"
+      },
+      "developmentGoals": {
+        "performance": {
+          "title": "Performance",
+          "description": "Optimisé pour la vitesse avec les Core Web Vitals à l'esprit, atteignant des scores Lighthouse parfaits."
+        },
+        "accessibility": {
+          "title": "Accessibilité",
+          "description": "Conforme WCAG 2.1 AA avec HTML sémantique approprié et attributs ARIA."
+        },
+        "security": {
+          "title": "Sécurité",
+          "description": "Développement axé sur la sécurité avec validation des entrées, assainissement et en-têtes CSP."
+        },
+        "maintainability": {
+          "title": "Maintenabilité",
+          "description": "Architecture de code propre avec TypeScript, tests appropriés et documentation."
+        }
+      }
     }
   }
 }

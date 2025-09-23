@@ -327,5 +327,59 @@
     "accessibility": {
       "sendMessage": "Send message"
     }
+  },
+  "AboutPortfolio": {
+    "Overview": {
+      "sections": {
+        "portfolioFeatures": {
+          "title": "Portfolio Features",
+          "description": "Key features and capabilities of this portfolio"
+        },
+        "architectureFeatures": {
+          "title": "Architecture Overview",
+          "description": "Technical architecture and design principles"
+        },
+        "developmentGoals": {
+          "title": "Development Goals",
+          "description": "Primary objectives and principles followed during development"
+        }
+      },
+      "portfolioFeatures": {
+        "responsiveDesign": "Modern responsive design with dark/light theme support",
+        "multiLanguage": "Multi-language support with internationalization",
+        "blogSystem": "Blog system with admin panel and markdown support",
+        "projectShowcase": "Project showcase with detailed information",
+        "interactiveChatbot": "Interactive chatbot for visitor engagement",
+        "performanceOptimized": "Performance optimized with 100/100 Lighthouse scores",
+        "seoOptimized": "SEO optimized with structured data and meta tags",
+        "securityFirst": "Security-first approach with input validation"
+      },
+      "architectureFeatures": {
+        "componentArchitecture": "Component-based architecture with clear separation of concerns",
+        "typescriptStrict": "TypeScript strict mode for type safety",
+        "serverSideRendering": "Server-side rendering with Next.js App Router",
+        "databaseIntegration": "Database integration with Prisma ORM",
+        "authenticationSystem": "Authentication and authorization system",
+        "apiRoutesSecurity": "API routes with proper validation and security"
+      },
+      "developmentGoals": {
+        "performance": {
+          "title": "Performance",
+          "description": "Optimized for speed with Core Web Vitals in mind, achieving perfect Lighthouse scores."
+        },
+        "accessibility": {
+          "title": "Accessibility",
+          "description": "WCAG 2.1 AA compliant with proper semantic HTML and ARIA attributes."
+        },
+        "security": {
+          "title": "Security",
+          "description": "Security-first development with input validation, sanitization, and CSP headers."
+        },
+        "maintainability": {
+          "title": "Maintainability",
+          "description": "Clean code architecture with TypeScript, proper testing, and documentation."
+        }
+      }
+    }
   }
 }
