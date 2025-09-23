@@ -251,50 +251,6 @@
       }
     ]
   },
-  "PortfolioAbout": {
-    "title": "À Propos de Ce Portfolio",
-    "description": "Un portfolio de développeur moderne et haute performance présentant des capacités full-stack avec une architecture de niveau entreprise, des standards d'accessibilité et des technologies de pointe.",
-    "performanceBadge": "95+ Score Google Lighthouse",
-    "techHighlights": "Construit Avec Des Technologies Modernes",
-    "readMore": "Lire la suite",
-    "readMoreNote": "Documentation détaillée à venir",
-    "featuresTitle": "Fonctionnalités du Portfolio",
-    "actionsTitle": "Actions du Portfolio",
-    "features": {
-      "techStack": {
-        "title": "Architecture Full-Stack",
-        "description": "Next.js 15 moderne avec React 19, TypeScript en mode strict et patterns d'entreprise pour un développement évolutif."
-      },
-      "cleanArchitecture": {
-        "title": "Architecture de Code Propre",
-        "description": "Base de code bien organisée avec séparation des préoccupations utilisant des dossiers dédiés lib, data, hooks et components."
-      },
-      "database": {
-        "title": "Base de Données et Stockage",
-        "description": "PostgreSQL type-safe avec Prisma ORM sur la plateforme serverless de Neon pour des opérations de données fiables."
-      },
-      "aiChatbot": {
-        "title": "Chatbot alimenté par IA",
-        "description": "Assistant intelligent IA 'Reem' pour aider à naviguer le portfolio et répondre aux questions sur les projets et l'expérience."
-      },
-      "performance": {
-        "title": "Performance et Accessibilité",
-        "description": "Optimisé pour la vitesse et l'accessibilité avec des scores Google Lighthouse de 95+ sur toutes les métriques."
-      },
-      "mainFeatures": {
-        "title": "Fonctionnalités Principales",
-        "description": "Gestion de contenu avec système de blog, galerie multimédia et bibliothèque organisée pour présenter le travail."
-      },
-      "techFeatures": {
-        "title": "Intégrations Avancées",
-        "description": "Serveur GitHub MCP en temps réel, surveillance PageSpeed en direct et workflows CI/CD automatisés."
-      },
-      "localization": {
-        "title": "Internationalisation",
-        "description": "Support multilingue avec détection automatique, changement de thèmes et livraison de contenu localisé."
-      }
-    }
-  },
   "ChatBot": {
     "name": "Reem",
     "pronunciation": "/riːm/",
