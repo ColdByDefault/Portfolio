@@ -261,28 +261,28 @@
     "actionsTitle": "Actions du Portfolio",
     "features": {
       "techStack": {
-        "title": "Architecture Full-Stack"
+        "title": "Next.js & React 19"
       },
       "cleanArchitecture": {
-        "title": "Architecture de Code Propre"
+        "title": "Architecture TypeScript"
       },
       "database": {
-        "title": "Base de Données et Stockage"
+        "title": "Base de Données PostgreSQL"
       },
       "aiChatbot": {
-        "title": "Chatbot alimenté par IA"
+        "title": "Assistant IA"
       },
       "performance": {
-        "title": "Performance et Accessibilité"
+        "title": "95+ Lighthouse Score"
       },
       "mainFeatures": {
-        "title": "Fonctionnalités Principales"
+        "title": "Blog & Galerie Média"
       },
       "techFeatures": {
-        "title": "Intégrations Avancées"
+        "title": "Intégration GitHub"
       },
       "localization": {
-        "title": "Internationalisation"
+        "title": "Support 5 Langues"
       }
     }
   },

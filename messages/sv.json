@@ -261,28 +261,28 @@
     "actionsTitle": "Portfolio-åtgärder",
     "features": {
       "techStack": {
-        "title": "Full-Stack-Arkitektur"
+        "title": "Next.js & React 19"
       },
       "cleanArchitecture": {
-        "title": "Ren Kodarkitektur"
+        "title": "TypeScript Arkitektur"
       },
       "database": {
-        "title": "Database & Storage"
+        "title": "PostgreSQL Databas"
       },
       "aiChatbot": {
-        "title": "AI-driven Chatbot"
+        "title": "AI-Assistent"
       },
       "performance": {
-        "title": "Prestanda & Tillgänglighet"
+        "title": "95+ Lighthouse Score"
       },
       "mainFeatures": {
-        "title": "Huvudfunktioner"
+        "title": "Blog & Media Galleri"
       },
       "techFeatures": {
-        "title": "Avancerade Integrationer"
+        "title": "GitHub Integration"
       },
       "localization": {
-        "title": "Internationalisering"
+        "title": "5 Språk Support"
       }
     }
   },
