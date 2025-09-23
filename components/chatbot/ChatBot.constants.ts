@@ -6,8 +6,8 @@
 
 export const CHATBOT_CONFIG = {
   // UI Constants
-  DEFAULT_BOTTOM_OFFSET: 24, // 6 * 4 (1.5rem in Tailwind)
-  FOOTER_PADDING: 16, // Extra padding to avoid footer overlap
+  DEFAULT_BOTTOM_OFFSET: 0, // 6 * 4 (1.5rem in Tailwind)
+  FOOTER_PADDING: 0, // Extra padding to avoid footer overlap
   VISIBILITY_DELAY: 4000, // Show ChatBot button after 4 seconds
 
   // Message Limits

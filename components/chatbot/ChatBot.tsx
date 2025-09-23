@@ -64,6 +64,8 @@ export function ChatBot({
   // Detect footer visibility and adjust chatbot position dynamically
   useEffect(() => {
     const handleScroll = () => {
+      if (!isVisible) return; // Only adjust position if chatbot is visible
+
       const footer = document.querySelector("footer");
       if (!footer) {
         setBottomOffset(CHATBOT_CONFIG.DEFAULT_BOTTOM_OFFSET);
@@ -95,7 +97,7 @@ export function ChatBot({
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, []);
+  }, [isVisible]);
 
   const handleCloseChat = () => {
     setIsOpen(false);
