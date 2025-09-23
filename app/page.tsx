@@ -109,7 +109,7 @@ export default function Home() {
             {/* Main content section */}
             <div className="relative" id="main-content">
               {/* Content Container */}
-              <div className="relative z-10 dark:-mt-[100vh]">
+              <div className="relative z-10">
                 <div className="container mx-auto px-4 py-8">
                   <PortoCard />
                 </div>
