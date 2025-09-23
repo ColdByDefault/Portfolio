@@ -43,7 +43,7 @@ export function QuickActions() {
           variant: "outline",
         },
         {
-          href: "/#projects",
+          href: "/projects",
           icon: FolderOpen,
           label: "Projects",
           variant: "outline",

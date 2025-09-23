@@ -14,6 +14,7 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { NoSSR } from "@/components/NoSSR";
 
 // Animation variants
 const fadeInUp = {
@@ -48,7 +49,9 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen relative">
-      <Background />
+      <NoSSR>
+        <Background />
+      </NoSSR>
       <div className="relative z-10">
         {/* Hero Section */}
         <section className="pt-32 pb-20 px-4 lg:px-8">

@@ -21,8 +21,7 @@ import { useTranslations } from "next-intl";
 import {
   getCardHoverClasses,
   getOverlayStyles,
-  gradientShiftCSS,
-} from "@/lib/card-animations";
+} from "@/components/visuals/card-animations";
 import type { ProjectsShowcaseProps, ProjectCardProps } from "@/types/projects";
 import {
   useProjectLogic,
@@ -208,14 +207,6 @@ const ProjectCard = ({ project, index: _index }: ProjectCardProps) => {
                   `}
           style={getOverlayStyles(isHovered)}
         />
-        {/* Dark mode gradient overlay */}
-        <div
-          className={`
-                    absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none dark:block hidden
-                    ${isHovered ? "opacity-100" : "opacity-0"}
-                  `}
-          style={getOverlayStyles(isHovered, true)}
-        />
       </Card>
     </motion.div>
   );
@@ -299,11 +290,6 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
           </motion.div>
         )}
       </Card>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `<style>${gradientShiftCSS}</style>`,
-        }}
-      />
     </section>
   );
 }

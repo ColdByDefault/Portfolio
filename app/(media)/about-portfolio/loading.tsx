@@ -5,13 +5,12 @@
 
 import { CentralizedLoading } from "@/components/visuals";
 
-export default function AdminContactLoading() {
+export default function AboutLoading() {
   return (
     <CentralizedLoading
-      variant="list"
-      title="Loading Contact Management..."
-      description="Preparing contact administration tools"
-      count={5}
+      variant="profile"
+      title="Loading About-Portfolio..."
+      description="Fetching About-Portfolio information"
     />
   );
 }

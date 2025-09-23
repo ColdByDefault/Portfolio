@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { ExternalLink } from "lucide-react";
 
 function Hero() {
   const t = useTranslations("Hero");
@@ -38,16 +39,6 @@ function Hero() {
                 sizes="(max-width: 640px) 192px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
               />
             </div>
-            {/* <div className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4">
-              <Badge
-                variant="secondary"
-                className="px-3 py-1 text-sm font-medium"
-                role="status"
-                aria-label="Available for collaboration"
-              >
-                {t("availableForCollaboration")}
-              </Badge>
-            </div> */}
           </div>
 
           {/* Content */}
@@ -76,6 +67,7 @@ function Hero() {
                 className="gap-2 cursor-pointer hover:bg-primary/10"
               >
                 <Link href="/about" className="flex items-center gap-2">
+                  <ExternalLink className="ml-2 h-3 w-3" aria-hidden="true"/>
                   {t("learnMoreAboutMe")}
                 </Link>
               </Button>

@@ -15,8 +15,7 @@ import { useState } from "react";
 import {
   getCardHoverClasses,
   getOverlayStyles,
-  gradientShiftCSS,
-} from "@/lib/card-animations";
+} from "@/components/visuals/card-animations";
 import type { GitHubRepositoriesProps } from "@/types/github";
 
 const LanguageColors: Record<string, string> = {
@@ -175,17 +174,6 @@ export default function GitHubRepositories({
                     ${isHovered ? "opacity-100" : "opacity-0"}
                   `}
                     style={getOverlayStyles(isHovered)}
-                  />
-                  {/* Dark mode gradient overlay */}
-                  <div
-                    className={`
-                    absolute inset-0 rounded-lg transition-opacity duration-500 dark:block hidden
-                    ${isHovered ? "opacity-100" : "opacity-0"}
-                  `}
-                    style={getOverlayStyles(isHovered, true)}
-                  />
-                  <style
-                    dangerouslySetInnerHTML={{ __html: gradientShiftCSS }}
                   />
                 </Card>
               </motion.div>

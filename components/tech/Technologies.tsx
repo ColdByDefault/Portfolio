@@ -5,15 +5,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { techGroups } from "@/data/tech";
+import type { techGroups } from "@/data/tech";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import {
   getCardHoverClasses,
   getOverlayStyles,
-  gradientShiftCSS,
-} from "@/lib/card-animations";
+} from "@/components/visuals/card-animations";
 import {
   Carousel,
   CarouselContent,
@@ -21,37 +20,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
-// Custom hook for responsive breakpoints
-function useResponsiveCarousel() {
-  const [cardsPerSlide, setCardsPerSlide] = useState(3);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkScreenSize = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        // mobile
-        setCardsPerSlide(1);
-        setIsMobile(true);
-      } else if (width < 1024) {
-        // tablet
-        setCardsPerSlide(2);
-        setIsMobile(false);
-      } else {
-        // desktop
-        setCardsPerSlide(3);
-        setIsMobile(false);
-      }
-    };
-
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
-
-  return { cardsPerSlide, isMobile };
-}
+import { useResponsiveCarousel } from "@/hooks/use-responsive-carousel";
+import {
+  calculateCarouselConfig,
+  generateSlides,
+  getMaxItemsCount,
+  createCardInteractionHandlers,
+} from "./Technologies.logic";
 
 export default function Technologies() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -59,42 +34,30 @@ export default function Technologies() {
   const tCategories = useTranslations("Technologies.categories");
   const { cardsPerSlide } = useResponsiveCarousel();
 
-  // Calculate the maximum number of items in any tech group to determine carousel height
-  const maxItems = Math.max(...techGroups.map((group) => group.items.length));
-  // Responsive carousel height - smaller on mobile devices
-  const baseHeight =
-    cardsPerSlide === 1 ? 240 : cardsPerSlide === 2 ? 260 : 280;
-  const itemHeight = cardsPerSlide === 1 ? 20 : 25; // Even tighter on mobile
-  const carouselHeight = Math.max(
-    baseHeight,
-    baseHeight + (maxItems - 4) * itemHeight
-  );
-
-  // Create slides by grouping techGroups based on cardsPerSlide
-  const slides = [];
-  for (let i = 0; i < techGroups.length; i += cardsPerSlide) {
-    slides.push(techGroups.slice(i, i + cardsPerSlide));
-  }
+  // Calculate carousel configuration using logic functions
+  const maxItems = getMaxItemsCount();
+  const carouselConfig = calculateCarouselConfig(cardsPerSlide, maxItems);
+  const slides = generateSlides(cardsPerSlide);
 
   const renderTechCard = (group: (typeof techGroups)[0]) => {
     const isCurrentCardHovered = hoveredCard === group.category;
+    const cardHandlers = createCardInteractionHandlers(
+      group.category,
+      hoveredCard,
+      setHoveredCard
+    );
 
     return (
       <Card
         key={group.category}
         className={`${getCardHoverClasses(isCurrentCardHovered)} flex flex-col`}
-        onMouseEnter={() => setHoveredCard(group.category)}
-        onMouseLeave={() => setHoveredCard(null)}
+        onMouseEnter={cardHandlers.onMouseEnter}
+        onMouseLeave={cardHandlers.onMouseLeave}
         role="article"
         aria-labelledby={`card-title-${group.categoryKey}`}
         aria-describedby={`card-content-${group.categoryKey}`}
         tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            setHoveredCard(isCurrentCardHovered ? null : group.category);
-          }
-        }}
+        onKeyDown={cardHandlers.onKeyDown}
       >
         <CardHeader className="pb-3 sm:pb-4 flex-shrink-0">
           <CardTitle
@@ -140,14 +103,6 @@ export default function Technologies() {
           `}
           style={getOverlayStyles(isCurrentCardHovered)}
         />
-        {/* Dark mode gradient overlay */}
-        <div
-          className={`
-            absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none dark:block hidden
-            ${isCurrentCardHovered ? "opacity-100" : "opacity-0"}
-          `}
-          style={getOverlayStyles(isCurrentCardHovered, true)}
-        />
       </Card>
     );
   };
@@ -185,14 +140,14 @@ export default function Technologies() {
                 loop: true,
               }}
               className="w-full px-8 sm:px-12"
-              style={{ height: `${carouselHeight}px` }}
+              style={{ height: `${carouselConfig.height}px` }}
               role="region"
               aria-label={`${t("title")} carousel with ${slides.length} slides`}
               aria-describedby="carousel-instructions"
             >
               <CarouselContent
                 className="-ml-2 md:-ml-4"
-                style={{ height: `${carouselHeight}px` }}
+                style={{ height: `${carouselConfig.height}px` }}
                 role="tablist"
                 aria-live="polite"
               >
@@ -205,13 +160,7 @@ export default function Technologies() {
                     tabIndex={0}
                   >
                     <div
-                      className={`grid gap-4 sm:gap-6 items-center justify-items-center h-full ${
-                        cardsPerSlide === 1
-                          ? "grid-cols-1"
-                          : cardsPerSlide === 2
-                          ? "grid-cols-2"
-                          : "grid-cols-3"
-                      }`}
+                      className={`grid gap-4 sm:gap-6 items-center justify-items-center h-full ${carouselConfig.gridClasses}`}
                     >
                       {slide.map((group) => renderTechCard(group))}
                     </div>
@@ -231,11 +180,6 @@ export default function Technologies() {
             </Carousel>
           </div>
         </CardContent>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `<style>${gradientShiftCSS}</style>`,
-          }}
-        />
       </Card>
       <motion.div
         className="text-center pt-2 sm:pt-4"

@@ -257,41 +257,32 @@
     "performanceBadge": "95+ Google Lighthouse Score",
     "techHighlights": "Gebaut Mit Modernen Technologien",
     "readMore": "Mehr erfahren",
-    "readMoreNote": "Detaillierte Dokumentation folgt bald",
     "featuresTitle": "Portfolio-Features",
     "actionsTitle": "Portfolio-Aktionen",
     "features": {
       "techStack": {
-        "title": "Full-Stack-Architektur",
-        "description": "Modernes Next.js 15 mit React 19, TypeScript im Strict-Modus und unternehmenstaugliche Patterns für skalierbare Entwicklung."
+        "title": "Next.js & React 19"
       },
       "cleanArchitecture": {
-        "title": "Saubere Code-Architektur",
-        "description": "Gut organisierte Codebasis mit Separation of Concerns durch dedizierte Ordner für Utilities, Daten, Custom Hooks und Typdefinitionen."
+        "title": "TypeScript Architektur"
       },
       "database": {
-        "title": "Datenbank & Speicherung",
-        "description": "Typsichere PostgreSQL-Datenbank mit Prisma ORM auf Neons serverloser Plattform für zuverlässige Datenoperationen."
+        "title": "PostgreSQL Datenbank"
       },
       "aiChatbot": {
-        "title": "KI-gestützter Chatbot",
-        "description": "Intelligente KI-Assistentin 'Reem' zur Navigation im Portfolio und Beantwortung von Fragen zu Projekten und Erfahrungen."
+        "title": "KI-Assistent"
       },
       "performance": {
-        "title": "Performance & Barrierefreiheit",
-        "description": "Optimiert für Geschwindigkeit und Barrierefreiheit mit 95+ Google Lighthouse Scores in allen Metriken."
+        "title": "95+ Lighthouse Score"
       },
       "mainFeatures": {
-        "title": "Kernfunktionen",
-        "description": "Content-Management mit Blog-System, Mediengalerie und organisierter Bibliothek zur Präsentation der Arbeit."
+        "title": "Blog & Media Galerie"
       },
       "techFeatures": {
-        "title": "Erweiterte Integrationen",
-        "description": "Echtzeit GitHub MCP Server, Live PageSpeed Monitoring und automatisierte CI/CD Workflows."
+        "title": "GitHub Integration"
       },
       "localization": {
-        "title": "Internationalisierung",
-        "description": "Mehrsprachige Unterstützung mit Auto-Erkennung, Theme-Wechsel und lokalisierte Inhaltsauslieferung."
+        "title": "5 Sprachen Support"
       }
     }
   },
@@ -311,7 +302,7 @@
       "processing": "Verarbeite Ihre Nachricht..."
     },
     "input": {
-      "placeholder": "Fragen Sie mich über Yazan oder sein Portfolio...",
+      "placeholder": "ask Reem..",
       "characterLimit": "/1000"
     },
     "status": {
@@ -326,6 +317,214 @@
     },
     "accessibility": {
       "sendMessage": "Nachricht senden"
+    }
+  },
+  "AboutPortfolio": {
+    "title": "Über Dieses Portfolio",
+    "subtitle": "Umfassender Überblick über die technische Architektur, Features und den Entwicklungsprozess",
+    "overview": {
+      "title": "Projektübersicht",
+      "version": "Version 4.3.2",
+      "description": "Modernes, sicheres, hochperformantes Entwickler-Portfolio gebaut mit Next.js 15.5.1, TypeScript und unternehmenstauglicher Architektur.",
+      "status": "Aktive Entwicklung",
+      "developmentTime": "1+ Jahre kontinuierliche Entwicklung",
+      "author": "Yazan Abo-Ayash (ColdByDefault)",
+      "projectDetails": "Projektdetails",
+      "keyAchievements": "Wichtige Erfolge",
+      "labels": {
+        "author": "Autor:",
+        "version": "Version:",
+        "status": "Status:",
+        "developmentTime": "Entwicklungszeit:"
+      },
+      "statusValues": {
+        "active": "Aktive Entwicklung",
+        "maintenance": "Wartung",
+        "completed": "Abgeschlossen"
+      },
+      "achievements": {
+        "lighthouse-100": "Perfekte Lighthouse SEO-Bewertung",
+        "zero-vulnerabilities": "Null Sicherheitslücken",
+        "multilingual-support": "5-Sprachen-Unterstützung"
+      }
+    },
+    "technicalStack": {
+      "title": "Technischer Stack",
+      "subtitle": "Technologien, die dieses Portfolio antreiben",
+      "categories": {
+        "core": "Kern-Framework",
+        "development": "Entwicklungstools",
+        "database": "Datenbank & ORM",
+        "deployment": "Deployment & Hosting",
+        "ai": "KI & Machine Learning",
+        "security": "Sicherheit & Validierung"
+      }
+    },
+    "features": {
+      "title": "Schlüsselfunktionen",
+      "subtitle": "Erweiterte Funktionen und Implementierungen",
+      "categories": {
+        "ui-ux": "UI/UX",
+        "performance": "Performance",
+        "security": "Sicherheit",
+        "ai": "KI-Integration",
+        "content": "Content-Management",
+        "integration": "Drittanbieter-Integrationen"
+      }
+    },
+    "performance": {
+      "title": "Performance-Metriken",
+      "lighthouse": "Google Lighthouse Scores",
+      "coreWebVitals": "Core Web Vitals",
+      "bundleSize": "Bundle-Analyse",
+      "lastChecked": "Zuletzt geprüft"
+    },
+    "security": {
+      "title": "Sicherheitsimplementierung",
+      "subtitle": "Umfassende Sicherheitsmaßnahmen und Best Practices",
+      "categories": {
+        "headers": "Sicherheits-Header",
+        "validation": "Eingabevalidierung",
+        "rateLimit": "Rate Limiting",
+        "csp": "Content Security Policy",
+        "sanitization": "Datenbereinigung"
+      }
+    },
+    "architecture": {
+      "title": "Architektur-Patterns",
+      "subtitle": "Design-Patterns und architektonische Entscheidungen",
+      "separation": "Trennung der Belange",
+      "modularity": "Modulares Design",
+      "scalability": "Skalierbare Architektur"
+    },
+    "database": {
+      "title": "Datenbankdesign",
+      "provider": "PostgreSQL mit Prisma ORM",
+      "features": "Typsichere Operationen, automatisierte Migrationen, Beziehungsmanagement"
+    },
+    "ai": {
+      "title": "KI-Integrationen",
+      "chatbot": "Reem KI-Assistent",
+      "provider": "Google Gemini API",
+      "features": "Intelligente Antworten, Kontextbewusstsein, Rate Limiting"
+    },
+    "internationalization": {
+      "title": "Internationalisierung",
+      "supportedLocales": "Unterstützte Sprachen",
+      "locales": "Englisch, Deutsch, Spanisch, Französisch, Schwedisch",
+      "features": "Auto-Erkennung, Fallback-Strategie, Locale-Routing"
+    },
+    "qualityMetrics": {
+      "title": "Qualitätssicherung",
+      "codeQuality": "Code-Qualität",
+      "typeScript": "TypeScript Strict Mode",
+      "testing": "Tests & Validierung",
+      "accessibility": "WCAG 2.1 AA Compliance"
+    },
+    "roadmap": {
+      "title": "Entwicklungsroadmap",
+      "planned": "Geplant",
+      "inProgress": "In Bearbeitung",
+      "completed": "Abgeschlossen",
+      "priorities": {
+        "high": "Hohe Priorität",
+        "medium": "Mittlere Priorität",
+        "low": "Niedrige Priorität"
+      }
+    },
+    "achievements": {
+      "title": "Bemerkenswerte Erfolge",
+      "categories": {
+        "performance": "Performance",
+        "security": "Sicherheit",
+        "quality": "Code-Qualität",
+        "feature": "Feature-Entwicklung",
+        "milestone": "Meilensteine"
+      }
+    },
+    "stack": {
+      "title": "Technische Architektur"
+    },
+    "navigation": {
+      "overview": "Überblick",
+      "technology": "Technologie",
+      "documentation": "Dokumentation"
+    },
+    "Overview": {
+      "sections": {
+        "portfolioFeatures": {
+          "title": "Portfolio-Funktionen",
+          "description": "Hauptfunktionen und Fähigkeiten dieses Portfolios"
+        },
+        "architectureFeatures": {
+          "title": "Architektur-Übersicht",
+          "description": "Technische Architektur und Designprinzipien"
+        },
+        "developmentGoals": {
+          "title": "Entwicklungsziele",
+          "description": "Hauptziele und Prinzipien während der Entwicklung"
+        }
+      },
+      "portfolioFeatures": {
+        "responsiveDesign": "Modernes responsives Design mit Dark/Light-Theme-Unterstützung",
+        "multiLanguage": "Mehrsprachige Unterstützung mit Internationalisierung",
+        "blogSystem": "Blog-System mit Admin-Panel und Markdown-Unterstützung",
+        "projectShowcase": "Projekt-Präsentation mit detaillierten Informationen",
+        "interactiveChatbot": "Interaktiver Chatbot für Besucherinteraktion",
+        "performanceOptimized": "Performance-optimiert mit 100/100 Lighthouse-Scores",
+        "seoOptimized": "SEO-optimiert mit strukturierten Daten und Meta-Tags",
+        "securityFirst": "Sicherheitsorientierter Ansatz mit Eingabevalidierung"
+      },
+      "architectureFeatures": {
+        "componentArchitecture": "Komponentenbasierte Architektur mit klarer Trennung der Belange",
+        "typescriptStrict": "TypeScript Strict-Modus für Typsicherheit",
+        "serverSideRendering": "Server-seitiges Rendering mit Next.js App Router",
+        "databaseIntegration": "Datenbankintegration mit Prisma ORM",
+        "authenticationSystem": "Benutzerdefiniertes Authentifizierungs- und Autorisierungssystem",
+        "apiRoutesSecurity": "API-Routen mit ordnungsgemäßer Validierung und Sicherheit"
+      },
+      "developmentGoals": {
+        "performance": {
+          "title": "Performance",
+          "description": "Für Geschwindigkeit optimiert mit Core Web Vitals im Fokus, perfekte Lighthouse-Scores erzielen."
+        },
+        "accessibility": {
+          "title": "Zugänglichkeit",
+          "description": "WCAG 2.1 AA-konform mit ordnungsgemäßem semantischem HTML und ARIA-Attributen."
+        },
+        "security": {
+          "title": "Sicherheit",
+          "description": "Sicherheitsorientierte Entwicklung mit Eingabevalidierung, Bereinigung und CSP-Headern."
+        },
+        "maintainability": {
+          "title": "Wartbarkeit",
+          "description": "Saubere Code-Architektur mit TypeScript, ordnungsgemäßen Tests und Dokumentation."
+        }
+      }
+    },
+    "Technology": {
+      "categories": {
+        "frontend": {
+          "title": "Frontend-Technologien",
+          "description": "Client-seitige Technologien und Frameworks",
+          "detail": "Erstellt mit Next.js 15 unter Verwendung des App Routers für optimale Performance und SEO. React 19 bildet das Fundament mit TypeScript für Typsicherheit."
+        },
+        "backend": {
+          "title": "Backend-Technologien",
+          "description": "Server-seitige Technologien und Datenbank",
+          "detail": "API-Routen handhaben Server-seitige Logik mit Prisma für Datenbankoperationen. Benutzerdefinierte Authentifizierung mit token-basierter Autorisierung und Zod für Datenvalidierung."
+        },
+        "devTools": {
+          "title": "Entwicklungstools",
+          "description": "Tools für Entwicklung und Qualitätssicherung",
+          "detail": "Umfassendes Tooling-Setup einschließlich Linting, Formatierung und CI/CD. GitHub Actions automatisieren Test- und Deployment-Prozesse."
+        },
+        "deployment": {
+          "title": "Deployment & Infrastruktur",
+          "description": "Hosting- und Deployment-Technologien",
+          "detail": "Bereitgestellt auf Vercel mit automatischen Deployments von GitHub. Cloudflare bietet CDN- und Sicherheitsfeatures."
+        }
+      }
     }
   }
 }

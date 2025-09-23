@@ -24,7 +24,7 @@ import type {
   PageSpeedResult,
   PageSpeedInsightsProps,
 } from "@/types/pagespeed";
-import { usePageSpeedData } from "./usePageSpeedData";
+import { usePageSpeedData } from "../../hooks/use-pageSpeed-data";
 
 const getScoreBadgeColor = (score: number): string => {
   if (score >= 90)
@@ -328,10 +328,28 @@ export default function PageSpeedInsights({
 
       <CardFooter className="pt-4">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-2">
-          <p className="text-xs text-muted-foreground">
+          <div className="text-xs text-muted-foreground flex items-center gap-2">
+            <div className="flex items-center relative">
+              {/* Green status dot with inline styles as fallback */}
+              <div
+                className="w-2 h-2 rounded-full animate-pulse"
+                style={{
+                  backgroundColor: "#22c55e",
+                  minWidth: "8px",
+                  minHeight: "8px",
+                }}
+              ></div>
+              <div
+                className="absolute inset-0 w-2 h-2 rounded-full animate-ping opacity-50"
+                style={{
+                  backgroundColor: "#4ade80",
+                }}
+              ></div>
+            </div>
             {lastUpdated ? (
               <>
-                Last updated: {new Date(lastUpdated).toLocaleDateString()} at{" "}
+                API Online • Last updated:{" "}
+                {new Date(lastUpdated).toLocaleDateString()} at{" "}
                 {new Date(lastUpdated).toLocaleTimeString([], {
                   hour: "2-digit",
                   minute: "2-digit",
@@ -340,18 +358,13 @@ export default function PageSpeedInsights({
             ) : (
               "Loading..."
             )}
-          </p>
+          </div>
           <div className="flex flex-col sm:items-end gap-1">
             {cacheStatus === "updating" && (
               <p className="text-xs text-amber-600 dark:text-amber-400 font-medium">
                 📡 Auto-refreshing in background
               </p>
             )}
-            {/* remove later */}
-            <p className="text-xs text-blue-400 text-center sm:text-right">
-              v4.2.*: 1 major, 3 minor, 6 patches delivered — performance
-              improvements incoming!
-            </p>
           </div>
         </div>
       </CardFooter>

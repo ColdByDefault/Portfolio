@@ -11,7 +11,6 @@ import {
   creditLinks,
 } from "@/data/footerLinks";
 
-
 export default function Footer() {
   return (
     <footer className="w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60  border-t">
@@ -49,7 +48,7 @@ export default function Footer() {
         <div className="border-t border-gray-200 dark:border-gray-800 py-4">
           <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0">
             <div className="text-xs text-gray-500 dark:text-gray-400 sm:flex-1">
-              <div className="flex flex-col">
+              <div className="flex flex-col text-center sm:text-left">
                 <span>
                   {new Date().getFullYear()} ColdByDefault&#174;. All rights
                   reserved.

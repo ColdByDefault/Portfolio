@@ -7,6 +7,7 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -158,22 +159,15 @@ export default React.memo(function PortoCard({ className }: PortoCardProps) {
               <Button
                 variant="outline"
                 className={deviceType === "mobile" ? "text-sm mt-2" : "mt-2"}
-                disabled
                 aria-describedby="read-more-note"
-                aria-label={`${t("readMore")} - ${t("readMoreNote")}`}
+                aria-label={`${t("readMore")}`}
+                asChild
               >
-                <span>{t("readMore")}</span>
-                <ExternalLink className="ml-2 h-3 w-3" aria-hidden="true" />
+                <Link href="/about-portfolio">
+                  <span>{t("readMore")}</span>
+                  <ExternalLink className="ml-2 h-3 w-3" aria-hidden="true" />
+                </Link>
               </Button>
-              <p
-                id="read-more-note"
-                className={`text-xs text-muted-foreground ${
-                  deviceType === "mobile" ? "mt-2" : "mt-2"
-                }`}
-                role="note"
-              >
-                {t("readMoreNote")}
-              </p>
             </div>
           </section>
         </CardContent>

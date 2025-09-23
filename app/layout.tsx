@@ -160,7 +160,6 @@ export default async function RootLayout({
           as="image"
           type="image/jpeg"
         />
-        <link rel="preload" href="/bg.jpg" as="image" type="image/jpeg" />
 
         <link
           rel="preconnect"

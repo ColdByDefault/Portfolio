@@ -15,8 +15,8 @@ import type {
 export const FeatureItem = React.memo(function FeatureItem({
   icon,
   title,
-  description,
-  badges,
+  description: _description,
+  badges: _badges,
   compact = false,
 }: FeatureItemProps) {
   if (compact) {
@@ -36,22 +36,6 @@ export const FeatureItem = React.memo(function FeatureItem({
           >
             {title}
           </h4>
-          <div
-            className="flex flex-wrap gap-1 mt-1"
-            role="list"
-            aria-label={`Technologies for ${title}`}
-          >
-            {badges?.slice(0, 2).map((badge, index) => (
-              <Badge
-                key={index}
-                variant="secondary"
-                className="text-xs px-1.5 py-0.5"
-                role="listitem"
-              >
-                {badge}
-              </Badge>
-            ))}
-          </div>
         </div>
       </article>
     );
@@ -59,35 +43,16 @@ export const FeatureItem = React.memo(function FeatureItem({
 
   return (
     <article
-      className="flex items-start space-x-3 p-3 rounded-lg hover:bg-muted/50 transition-colors focus-within:ring-2 focus-within:ring-primary/50"
+      className="flex items-center space-x-3 p-3 rounded-lg hover:bg-muted/50 transition-colors focus-within:ring-2 focus-within:ring-primary/50"
       role="listitem"
     >
-      <div className="flex-shrink-0 mt-1 text-primary" aria-hidden="true">
+      <div className="flex-shrink-0 text-primary" aria-hidden="true">
         {icon}
       </div>
       <div className="flex-1">
-        <h4 className="font-medium text-sm mb-1" role="heading" aria-level={4}>
+        <h4 className="font-medium text-sm" role="heading" aria-level={4}>
           {title}
         </h4>
-        <p className="text-xs text-muted-foreground mb-2">{description}</p>
-        {badges && (
-          <div
-            className="flex flex-wrap gap-1"
-            role="list"
-            aria-label={`Technologies for ${title}`}
-          >
-            {badges.map((badge, index) => (
-              <Badge
-                key={index}
-                variant="secondary"
-                className="text-xs px-2 py-0.5"
-                role="listitem"
-              >
-                {badge}
-              </Badge>
-            ))}
-          </div>
-        )}
       </div>
     </article>
   );
@@ -118,7 +83,6 @@ export const FeatureGrid = React.memo(function FeatureGrid({
           key={`${feature.key}-${index}`}
           icon={feature.icon}
           title={t(`${feature.key}.title`)}
-          description={t(`${feature.key}.description`)}
           badges={feature.badges}
           compact={isCompact}
         />

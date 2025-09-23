@@ -15,8 +15,7 @@ import { useState } from "react";
 import {
   getCardHoverClasses,
   getOverlayStyles,
-  gradientShiftCSS,
-} from "@/lib/card-animations";
+} from "@/components/visuals/card-animations";
 import type { GitHubProfile, GitHubStats } from "@/types/github";
 
 interface GitHubProfileProps {
@@ -141,15 +140,6 @@ export default function GitHubProfile({ profile, stats }: GitHubProfileProps) {
                   `}
         style={getOverlayStyles(isHovered)}
       />
-      {/* Dark mode gradient overlay */}
-      <div
-        className={`
-                    absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none dark:block hidden
-                    ${isHovered ? "opacity-100" : "opacity-0"}
-                  `}
-        style={getOverlayStyles(isHovered, true)}
-      />
-      <style dangerouslySetInnerHTML={{ __html: gradientShiftCSS }} />
     </Card>
   );
 }

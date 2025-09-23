@@ -27,7 +27,7 @@ export interface PortoCardFeature {
 export interface FeatureItemProps {
   icon: React.ReactNode;
   title: string;
-  description: string;
+  description?: string;
   badges?: string[];
   compact?: boolean;
 }
