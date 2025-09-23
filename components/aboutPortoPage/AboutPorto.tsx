@@ -7,6 +7,7 @@
 "use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 import { Overview } from "./Overview";
 import { Technology } from "./Technology";
 import { Documentation } from "./Documentation";
@@ -18,16 +19,14 @@ interface AboutPortoProps {
 
 export function AboutPorto({ className }: AboutPortoProps) {
   const { currentSection, setCurrentSection, sections } = useAboutPorto();
+  const t = useTranslations("AboutPortfolio");
 
   return (
     <div className={`container mx-auto px-4 py-8 ${className || ""}`}>
       <div className="max-w-4xl mx-auto">
         <header className="mb-8">
-          <h1 className="text-3xl font-bold mb-4">About This Portfolio</h1>
-          <p className="text-muted-foreground">
-            Learn about the technologies, architecture, and documentation behind
-            this portfolio
-          </p>
+          <h1 className="text-3xl font-bold mb-4">{t("title")}</h1>
+          <p className="text-muted-foreground">{t("subtitle")}</p>
         </header>
 
         <nav className="mb-8">

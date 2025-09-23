@@ -320,6 +320,13 @@
     }
   },
   "AboutPortfolio": {
+    "title": "About This Portfolio",
+    "subtitle": "Learn about the technologies, architecture, and documentation behind this portfolio",
+    "navigation": {
+      "overview": "Overview",
+      "technology": "Technology",
+      "documentation": "Documentation"
+    },
     "Overview": {
       "sections": {
         "portfolioFeatures": {
@@ -350,7 +357,7 @@
         "typescriptStrict": "TypeScript strict mode for type safety",
         "serverSideRendering": "Server-side rendering with Next.js App Router",
         "databaseIntegration": "Database integration with Prisma ORM",
-        "authenticationSystem": "Authentication and authorization system",
+        "authenticationSystem": "Custom authentication and authorization system",
         "apiRoutesSecurity": "API routes with proper validation and security"
       },
       "developmentGoals": {
@@ -369,6 +376,30 @@
         "maintainability": {
           "title": "Maintainability",
           "description": "Clean code architecture with TypeScript, proper testing, and documentation."
+        }
+      }
+    },
+    "Technology": {
+      "categories": {
+        "frontend": {
+          "title": "Frontend Technologies",
+          "description": "Client-side technologies and frameworks",
+          "detail": "Built with Next.js 15 using the App Router for optimal performance and SEO. React 19 provides the foundation with TypeScript ensuring type safety throughout."
+        },
+        "backend": {
+          "title": "Backend Technologies",
+          "description": "Server-side technologies and database",
+          "detail": "API routes handle server-side logic with Prisma managing database operations. Custom authentication with token-based authorization and Zod ensuring data validation."
+        },
+        "devTools": {
+          "title": "Development Tools",
+          "description": "Tools used for development and quality assurance",
+          "detail": "Comprehensive tooling setup including linting, formatting, and CI/CD. GitHub Actions automate testing and deployment processes."
+        },
+        "deployment": {
+          "title": "Deployment & Infrastructure",
+          "description": "Hosting and deployment technologies",
+          "detail": "Deployed on Vercel with automatic deployments from GitHub. Cloudflare provides CDN and security features."
         }
       }
     }

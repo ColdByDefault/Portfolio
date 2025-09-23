@@ -445,6 +445,11 @@
     "stack": {
       "title": "Teknisk Stack"
     },
+    "navigation": {
+      "overview": "Översikt",
+      "technology": "Teknologi",
+      "documentation": "Dokumentation"
+    },
     "Overview": {
       "sections": {
         "portfolioFeatures": {
@@ -475,7 +480,7 @@
         "typescriptStrict": "TypeScript strikt läge för typsäkerhet",
         "serverSideRendering": "Server-side rendering med Next.js App Router",
         "databaseIntegration": "Databasintegration med Prisma ORM",
-        "authenticationSystem": "Autentiserings- och auktoriseringssystem",
+        "authenticationSystem": "Anpassat autentiserings- och auktoriseringssystem",
         "apiRoutesSecurity": "API-rutter med korrekt validering och säkerhet"
       },
       "developmentGoals": {
@@ -494,6 +499,30 @@
         "maintainability": {
           "title": "Underhållbarhet",
           "description": "Ren kodarkitektur med TypeScript, korrekt testning och dokumentation."
+        }
+      }
+    },
+    "Technology": {
+      "categories": {
+        "frontend": {
+          "title": "Frontend-teknologier",
+          "description": "Klientsidiga teknologier och ramverk",
+          "detail": "Byggd med Next.js 15 med App Router för optimal prestanda och SEO. React 19 ger grunden med TypeScript som säkerställer typsäkerhet."
+        },
+        "backend": {
+          "title": "Backend-teknologier",
+          "description": "Serversidiga teknologier och databas",
+          "detail": "API-rutter hanterar serverlogik med Prisma som hanterar databasoperationer. Anpassad autentisering med tokenbaserad auktorisering och Zod som säkerställer datavalidering."
+        },
+        "devTools": {
+          "title": "Utvecklingsverktyg",
+          "description": "Verktyg för utveckling och kvalitetssäkring",
+          "detail": "Omfattande verktygsinställning inklusive linting, formatering och CI/CD. GitHub Actions automatiserar test- och distributionsprocesser."
+        },
+        "deployment": {
+          "title": "Distribution & Infrastruktur",
+          "description": "Hosting- och distributionsteknologier",
+          "detail": "Distribuerad på Vercel med automatiska distributioner från GitHub. Cloudflare tillhandahåller CDN- och säkerhetsfunktioner."
         }
       }
     }

@@ -445,6 +445,11 @@
     "stack": {
       "title": "Technische Architektur"
     },
+    "navigation": {
+      "overview": "Überblick",
+      "technology": "Technologie",
+      "documentation": "Dokumentation"
+    },
     "Overview": {
       "sections": {
         "portfolioFeatures": {
@@ -475,7 +480,7 @@
         "typescriptStrict": "TypeScript Strict-Modus für Typsicherheit",
         "serverSideRendering": "Server-seitiges Rendering mit Next.js App Router",
         "databaseIntegration": "Datenbankintegration mit Prisma ORM",
-        "authenticationSystem": "Authentifizierungs- und Autorisierungssystem",
+        "authenticationSystem": "Benutzerdefiniertes Authentifizierungs- und Autorisierungssystem",
         "apiRoutesSecurity": "API-Routen mit ordnungsgemäßer Validierung und Sicherheit"
       },
       "developmentGoals": {
@@ -494,6 +499,30 @@
         "maintainability": {
           "title": "Wartbarkeit",
           "description": "Saubere Code-Architektur mit TypeScript, ordnungsgemäßen Tests und Dokumentation."
+        }
+      }
+    },
+    "Technology": {
+      "categories": {
+        "frontend": {
+          "title": "Frontend-Technologien",
+          "description": "Client-seitige Technologien und Frameworks",
+          "detail": "Erstellt mit Next.js 15 unter Verwendung des App Routers für optimale Performance und SEO. React 19 bildet das Fundament mit TypeScript für Typsicherheit."
+        },
+        "backend": {
+          "title": "Backend-Technologien",
+          "description": "Server-seitige Technologien und Datenbank",
+          "detail": "API-Routen handhaben Server-seitige Logik mit Prisma für Datenbankoperationen. Benutzerdefinierte Authentifizierung mit token-basierter Autorisierung und Zod für Datenvalidierung."
+        },
+        "devTools": {
+          "title": "Entwicklungstools",
+          "description": "Tools für Entwicklung und Qualitätssicherung",
+          "detail": "Umfassendes Tooling-Setup einschließlich Linting, Formatierung und CI/CD. GitHub Actions automatisieren Test- und Deployment-Prozesse."
+        },
+        "deployment": {
+          "title": "Deployment & Infrastruktur",
+          "description": "Hosting- und Deployment-Technologien",
+          "detail": "Bereitgestellt auf Vercel mit automatischen Deployments von GitHub. Cloudflare bietet CDN- und Sicherheitsfeatures."
         }
       }
     }

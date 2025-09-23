@@ -9,6 +9,8 @@ import type {
   PortfolioFeature,
   ArchitectureFeature,
   DevelopmentGoal,
+  TechnologyData,
+  TechnologyCategory,
 } from "@/types/aboutPortfolioPage";
 
 const portfolioFeatures: readonly PortfolioFeature[] = [
@@ -113,10 +115,73 @@ const developmentGoals: readonly DevelopmentGoal[] = [
   },
 ] as const;
 
+const technologyCategories: readonly TechnologyCategory[] = [
+  {
+    key: "frontend",
+    titleTranslationKey: "AboutPortfolio.Technology.categories.frontend.title",
+    descriptionTranslationKey:
+      "AboutPortfolio.Technology.categories.frontend.description",
+    technologies: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Framer Motion",
+      "next-intl",
+    ],
+    detailTranslationKey:
+      "AboutPortfolio.Technology.categories.frontend.detail",
+  },
+  {
+    key: "backend",
+    titleTranslationKey: "AboutPortfolio.Technology.categories.backend.title",
+    descriptionTranslationKey:
+      "AboutPortfolio.Technology.categories.backend.description",
+    technologies: [
+      "Next.js API Routes",
+      "Prisma ORM",
+      "PostgreSQL",
+      "Custom Authentication",
+      "Zod Validation",
+      "Rate Limiting",
+    ],
+    detailTranslationKey: "AboutPortfolio.Technology.categories.backend.detail",
+  },
+  {
+    key: "devTools",
+    titleTranslationKey: "AboutPortfolio.Technology.categories.devTools.title",
+    descriptionTranslationKey:
+      "AboutPortfolio.Technology.categories.devTools.description",
+    technologies: [
+      "ESLint",
+      "Prettier",
+      "GitHub Actions",
+      "TypeScript Compiler",
+    ],
+    detailTranslationKey:
+      "AboutPortfolio.Technology.categories.devTools.detail",
+  },
+  {
+    key: "deployment",
+    titleTranslationKey:
+      "AboutPortfolio.Technology.categories.deployment.title",
+    descriptionTranslationKey:
+      "AboutPortfolio.Technology.categories.deployment.description",
+    technologies: ["Vercel", "GitHub", "Cloudflare"],
+    detailTranslationKey:
+      "AboutPortfolio.Technology.categories.deployment.detail",
+  },
+] as const;
+
 export const overviewData: OverviewData = {
   portfolioFeatures,
   architectureFeatures,
   developmentGoals,
+} as const;
+
+export const technologyData: TechnologyData = {
+  categories: technologyCategories,
 } as const;
 
 // Section metadata for easy access

@@ -5,6 +5,7 @@
  */
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 type SectionId = "overview" | "technology" | "documentation";
 
@@ -19,14 +20,15 @@ interface UseAboutPortoReturn {
   readonly sections: readonly Section[];
 }
 
-const sections: readonly Section[] = [
-  { id: "overview", label: "Overview" },
-  { id: "technology", label: "Technology" },
-  { id: "documentation", label: "Documentation" },
-] as const;
-
 export function useAboutPorto(): UseAboutPortoReturn {
   const [currentSection, setCurrentSection] = useState<SectionId>("overview");
+  const t = useTranslations("AboutPortfolio.navigation");
+
+  const sections: readonly Section[] = [
+    { id: "overview", label: t("overview") },
+    { id: "technology", label: t("technology") },
+    { id: "documentation", label: t("documentation") },
+  ] as const;
 
   return {
     currentSection,

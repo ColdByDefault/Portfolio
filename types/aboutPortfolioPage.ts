@@ -8,6 +8,10 @@ export interface OverviewProps {
   readonly className?: string;
 }
 
+export interface TechnologyProps {
+  readonly className?: string;
+}
+
 export interface PortfolioFeature {
   readonly key: string;
   readonly translationKey: string;
@@ -24,10 +28,22 @@ export interface DevelopmentGoal {
   readonly descriptionTranslationKey: string;
 }
 
+export interface TechnologyCategory {
+  readonly key: string;
+  readonly titleTranslationKey: string;
+  readonly descriptionTranslationKey: string;
+  readonly technologies: readonly string[];
+  readonly detailTranslationKey: string;
+}
+
 export interface OverviewData {
   readonly portfolioFeatures: readonly PortfolioFeature[];
   readonly architectureFeatures: readonly ArchitectureFeature[];
   readonly developmentGoals: readonly DevelopmentGoal[];
+}
+
+export interface TechnologyData {
+  readonly categories: readonly TechnologyCategory[];
 }
 
 export interface OverviewSectionData {

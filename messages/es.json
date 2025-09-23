@@ -445,6 +445,11 @@
     "stack": {
       "title": "Stack Técnico"
     },
+    "navigation": {
+      "overview": "Descripción",
+      "technology": "Tecnología",
+      "documentation": "Documentación"
+    },
     "Overview": {
       "sections": {
         "portfolioFeatures": {
@@ -475,7 +480,7 @@
         "typescriptStrict": "Modo estricto de TypeScript para seguridad de tipos",
         "serverSideRendering": "Renderizado del lado del servidor con Next.js App Router",
         "databaseIntegration": "Integración de base de datos con Prisma ORM",
-        "authenticationSystem": "Sistema de autenticación y autorización",
+        "authenticationSystem": "Sistema personalizado de autenticación y autorización",
         "apiRoutesSecurity": "Rutas API con validación y seguridad adecuadas"
       },
       "developmentGoals": {
@@ -494,6 +499,30 @@
         "maintainability": {
           "title": "Mantenibilidad",
           "description": "Arquitectura de código limpio con TypeScript, pruebas adecuadas y documentación."
+        }
+      }
+    },
+    "Technology": {
+      "categories": {
+        "frontend": {
+          "title": "Tecnologías Frontend",
+          "description": "Tecnologías y frameworks del lado del cliente",
+          "detail": "Construido con Next.js 15 usando App Router para rendimiento y SEO óptimos. React 19 proporciona la base con TypeScript asegurando seguridad de tipos."
+        },
+        "backend": {
+          "title": "Tecnologías Backend",
+          "description": "Tecnologías del servidor y base de datos",
+          "detail": "Las rutas API manejan la lógica del servidor con Prisma gestionando operaciones de base de datos. Autenticación personalizada con autorización basada en tokens y Zod asegurando validación de datos."
+        },
+        "devTools": {
+          "title": "Herramientas de Desarrollo",
+          "description": "Herramientas para desarrollo y aseguramiento de calidad",
+          "detail": "Configuración completa de herramientas incluyendo linting, formateo y CI/CD. GitHub Actions automatiza los procesos de testing y deployment."
+        },
+        "deployment": {
+          "title": "Deployment e Infraestructura",
+          "description": "Tecnologías de hosting y deployment",
+          "detail": "Desplegado en Vercel con deployments automáticos desde GitHub. Cloudflare proporciona CDN y características de seguridad."
         }
       }
     }
