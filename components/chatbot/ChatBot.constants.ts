@@ -6,8 +6,8 @@
 
 export const CHATBOT_CONFIG = {
   // UI Constants
-  DEFAULT_BOTTOM_OFFSET: 0, // 6 * 4 (1.5rem in Tailwind)
-  FOOTER_PADDING: 0, // Extra padding to avoid footer overlap
+  DEFAULT_BOTTOM_OFFSET: 4, // 6 * 4 (1.5rem in Tailwind)
+  FOOTER_PADDING: 4, // Extra padding to avoid footer overlap
   VISIBILITY_DELAY: 4000, // Show ChatBot button after 4 seconds
 
   // Message Limits
@@ -18,7 +18,8 @@ export const CHATBOT_CONFIG = {
   // Chat Dimensions - Responsive
   CHAT_WIDTH: {
     DESKTOP: "24rem", // w-96 equivalent (384px)
-    MOBILE: "20rem", // w-80 equivalent (320px)
+    MOBILE: "20rem", // w-80 equivalent (320px) - balanced for mobile
+    SMALL: "18rem", // w-72 equivalent (288px) - for very small screens if needed
   },
   CHAT_MIN_HEIGHT: {
     DESKTOP: "28rem", // min-h-[28rem]
@@ -62,11 +63,14 @@ export const CHATBOT_CONFIG = {
 
   // Position Classes - Responsive
   POSITION_CLASSES: {
-    "bottom-left": "left-4 sm:left-6", // Closer to edge on mobile
-    "bottom-right": "right-4 sm:right-6", // Closer to edge on mobile
-    "top-left": "top-6 left-4 sm:left-6",
-    "top-right": "top-6 right-4 sm:right-6",
+    "bottom-left": "bottom-2 left-2 sm:left-4 md:left-6", // Progressive spacing increase
+    "bottom-right": "right-2 sm:right-4 md:right-6", // Progressive spacing increase
+    "top-left": "top-6 left-2 sm:left-4 md:left-6",
+    "top-right": "top-6 right-2 sm:right-4 md:right-6",
   },
+
+  // Responsive Width Classes
+  RESPONSIVE_WIDTH_CLASSES: "w-80 sm:w-96", // 320px → 384px (good balance for mobile vs desktop)
 
   // Mobile breakpoint
   MOBILE_BREAKPOINT: 640, // Tailwind's sm breakpoint

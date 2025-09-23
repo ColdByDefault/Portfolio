@@ -56,12 +56,12 @@ export function ChatInput({
   };
 
   return (
-    <div className={`p-3 bg-muted/20 flex-shrink-0 ${className}`}>
+    <div className={`p-2 sm:p-3 bg-muted/20 flex-shrink-0 ${className}`}>
       <form
         onSubmit={(e) => {
           handleSubmit(e).catch(console.error);
         }}
-        className="flex gap-3"
+        className="flex gap-2 sm:gap-3"
       >
         <div className="flex-1 relative">
           <Input

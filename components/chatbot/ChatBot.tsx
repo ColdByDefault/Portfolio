@@ -140,13 +140,13 @@ export function ChatBot({
         </Button>
       ) : (
         <Card
-          className={`w-96 min-h-[28rem] max-h-[32rem] ${CHATBOT_STYLES.CARD_SHADOW} ${CHATBOT_STYLES.CARD_BORDER} flex flex-col`}
+          className={`${CHATBOT_CONFIG.RESPONSIVE_WIDTH_CLASSES} min-h-[24rem] sm:min-h-[28rem] max-h-[28rem] sm:max-h-[32rem] ${CHATBOT_STYLES.CARD_SHADOW} ${CHATBOT_STYLES.CARD_BORDER} flex flex-col`}
         >
           <ChatHeader onClose={handleCloseChat} />
 
           <CardContent className="p-0 flex flex-col flex-1 min-h-0">
             <div
-              className={`flex-1 p-4 min-h-0 max-h-[20rem] overflow-y-auto ${CHATBOT_STYLES.SCROLLBAR}`}
+              className={`flex-1 p-3 sm:p-4 min-h-0 max-h-[16rem] sm:max-h-[20rem] overflow-y-auto ${CHATBOT_STYLES.SCROLLBAR}`}
             >
               <div className="space-y-4">
                 {messages.length === 0 && !isLoading && (
