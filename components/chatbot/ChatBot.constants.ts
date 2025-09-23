@@ -15,11 +15,23 @@ export const CHATBOT_CONFIG = {
   INPUT_MAX_LENGTH: 1000, // Max input length
   INPUT_MIN_LENGTH: 2, // Min input length to prevent spam
 
-  // Chat Dimensions
-  CHAT_WIDTH: "24rem", // w-96 equivalent
-  CHAT_MIN_HEIGHT: "28rem", // min-h-[28rem]
-  CHAT_MAX_HEIGHT: "32rem", // max-h-[32rem]
-  MESSAGES_MAX_HEIGHT: "20rem", // max-h-[20rem]
+  // Chat Dimensions - Responsive
+  CHAT_WIDTH: {
+    DESKTOP: "24rem", // w-96 equivalent (384px)
+    MOBILE: "20rem", // w-80 equivalent (320px)
+  },
+  CHAT_MIN_HEIGHT: {
+    DESKTOP: "28rem", // min-h-[28rem]
+    MOBILE: "24rem", // min-h-[24rem] - more compact on mobile
+  },
+  CHAT_MAX_HEIGHT: {
+    DESKTOP: "32rem", // max-h-[32rem]
+    MOBILE: "28rem", // max-h-[28rem] - more compact on mobile
+  },
+  MESSAGES_MAX_HEIGHT: {
+    DESKTOP: "20rem", // max-h-[20rem]
+    MOBILE: "16rem", // max-h-[16rem] - more compact on mobile
+  },
 
   // Animation & Timing
   SCROLL_BEHAVIOR: "smooth" as ScrollBehavior,
@@ -48,13 +60,16 @@ export const CHATBOT_CONFIG = {
     },
   },
 
-  // Position Classes
+  // Position Classes - Responsive
   POSITION_CLASSES: {
-    "bottom-left": "left-6",
-    "bottom-right": "right-6",
-    "top-left": "top-6 left-6",
-    "top-right": "top-6 right-6",
+    "bottom-left": "left-4 sm:left-6", // Closer to edge on mobile
+    "bottom-right": "right-4 sm:right-6", // Closer to edge on mobile
+    "top-left": "top-6 left-4 sm:left-6",
+    "top-right": "top-6 right-4 sm:right-6",
   },
+
+  // Mobile breakpoint
+  MOBILE_BREAKPOINT: 640, // Tailwind's sm breakpoint
 };
 
 export const CHATBOT_STYLES = {
