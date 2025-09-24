@@ -6,7 +6,7 @@
 
 import type { CreateBlogRequest, UpdateBlogRequest } from "@/types/blogs";
 import { BLOG_CONSTANTS } from "@/types/blogs";
-import { RateLimiter } from "../security";
+import { RateLimiter } from "@/lib/security";
 
 // Rate limiter for admin operations
 const adminRateLimiter = new RateLimiter(60000, 100);

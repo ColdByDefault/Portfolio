@@ -9,7 +9,7 @@ import { Card, CardTitle } from "@/components/ui/card";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { ImageZoomDialog } from "@/components/visuals";
-import type { CertificationShowcaseLogic } from "./CertificationShowcase.logic";
+import type { CertificationShowcaseLogic } from "@/components/cer/CertificationShowcase.logic";
 
 interface Certification {
   readonly id: number;

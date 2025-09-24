@@ -6,7 +6,7 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { SectionCard, FeatureList } from "./shared";
+import { SectionCard, FeatureList } from "@/components/aboutPortoPage";
 import { overviewData, overviewSections } from "@/data/aboutPortfolioData";
 import type { OverviewProps } from "@/types/aboutPortfolioPage";
 

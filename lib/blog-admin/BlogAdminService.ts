@@ -12,13 +12,13 @@ import type {
   BlogListResponse,
 } from "@/types/blogs";
 import type { BlogAdminStats } from "@/types/admin";
-import { RateLimiter } from "../security";
+import { RateLimiter } from "@/lib/security";
 import {
   BlogValidationService,
   type AdminContext,
-} from "./BlogValidationService";
-import { BlogUtilityService } from "./BlogUtilityService";
-import { BlogQueryService } from "./BlogQueryService";
+} from "@/lib/blog-admin/BlogValidationService";
+import { BlogUtilityService } from "@/lib/blog-admin/BlogUtilityService";
+import { BlogQueryService } from "@/lib/blog-admin/BlogQueryService";
 
 // Rate limiter for admin operations
 const adminRateLimiter = new RateLimiter(60000, 100);

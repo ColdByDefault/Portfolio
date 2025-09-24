@@ -6,7 +6,7 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { SectionCard, TechBadgeList } from "./shared";
+import { SectionCard, TechBadgeList } from "@/components/aboutPortoPage";
 import { technologyData } from "@/data/aboutPortfolioData";
 import type { TechnologyProps } from "@/types/aboutPortfolioPage";
 

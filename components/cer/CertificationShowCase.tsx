@@ -6,9 +6,11 @@
 
 import React from "react";
 import { certifications } from "@/data/certificationsData";
-import { CertificationShowcaseDesktop } from "./CertificationShowcaseDesktop";
-import { CertificationShowcaseMobile } from "./CertificationShowcaseMobile";
-import { useCertificationShowcaseLogic } from "./CertificationShowcase.logic";
+import {
+  CertificationShowcaseDesktop,
+  CertificationShowcaseMobile,
+} from "@/components/cer";
+import { useCertificationShowcaseLogic } from "@/components/cer/CertificationShowcase.logic";
 
 interface CertificationShowcaseProps {
   readonly className?: string;

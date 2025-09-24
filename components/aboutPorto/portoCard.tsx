@@ -25,7 +25,10 @@ import {
   getTechStackHighlights,
   PortoCardUtils,
 } from "./portoCard.utils";
-import { FeatureGrid, TechHighlights } from "./PortoCardComponents";
+import {
+  FeatureGrid,
+  TechHighlights,
+} from "@/components/aboutPorto";
 
 export default React.memo(function PortoCard({ className }: PortoCardProps) {
   const t = useTranslations("PortfolioAbout");

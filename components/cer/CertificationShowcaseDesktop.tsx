@@ -12,7 +12,7 @@ import {
   getOverlayStyles,
 } from "@/components/visuals/card-animations";
 import { ImageZoomDialog } from "@/components/visuals";
-import type { CertificationShowcaseLogic } from "./CertificationShowcase.logic";
+import type { CertificationShowcaseLogic } from "@/components/cer/CertificationShowcase.logic";
 
 interface Certification {
   readonly id: number;

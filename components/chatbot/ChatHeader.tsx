@@ -11,7 +11,10 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { CardHeader, CardTitle } from "@/components/ui/card";
 import { Bot, X } from "lucide-react";
-import { CHATBOT_STYLES, CHATBOT_TRANSLATION_KEYS } from "./ChatBot.constants";
+import {
+  CHATBOT_STYLES,
+  CHATBOT_TRANSLATION_KEYS,
+} from "@/components/chatbot";
 
 export interface ChatHeaderProps {
   onClose: () => void;

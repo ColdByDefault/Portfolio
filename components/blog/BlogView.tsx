@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import { Calendar, Clock, Eye, Languages } from "lucide-react";
 import type { Blog } from "@/types/blogs";
 import { BLOG_LANGUAGE_NAMES } from "@/types/blogs";
-import { LanguageBadge } from "./LanguageBadge";
+import { LanguageBadge } from "@/components/blog";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";

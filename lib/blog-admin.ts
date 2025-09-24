@@ -12,8 +12,8 @@ import type {
   BlogListResponse,
 } from "@/types/blogs";
 import type { BlogAdminStats } from "@/types/admin";
-import { BlogAdminService } from "./blog-admin/BlogAdminService";
-import type { AdminContext } from "./blog-admin/BlogValidationService";
+import { BlogAdminService } from "@/lib/blog-admin/BlogAdminService";
+import type { AdminContext } from "@/lib/blog-admin/BlogValidationService";
 
 // Export all functions using the service layer while maintaining the same API
 
