@@ -73,7 +73,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline'", // Allow inline styles for Tailwind and components
               "img-src 'self' data: blob: https://avatars.githubusercontent.com https://github.com",
               "font-src 'self' data:",
-              "connect-src 'self' https://api.github.com https://www.googleapis.com https://generativelanguage.googleapis.com https://vercel.live https://vitals.vercel-analytics.com",
+              "connect-src 'self' https://api.github.com https://www.googleapis.com https://generativelanguage.googleapis.com",
               "frame-src 'none'",
               "object-src 'none'",
               "base-uri 'self'",
