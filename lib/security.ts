@@ -70,14 +70,12 @@ export function sanitizeInput(input: string): string {
 
   // Remove HTML tags and encode remaining angle brackets safely
   let htmlStripped = input;
-  
+
   // First pass: Remove complete HTML tags
   htmlStripped = htmlStripped.replace(/<[^>]*>/g, "");
-  
+
   // Second pass: Encode any remaining angle brackets that weren't part of tags
-  htmlStripped = htmlStripped
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+  htmlStripped = htmlStripped.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
   // Remove common spam patterns
   const spamPatterns = [
@@ -211,14 +209,12 @@ export function sanitizeChatInput(input: string): string {
 
   // Remove HTML tags completely with proper handling
   let sanitized = input;
-  
+
   // Remove HTML tags first
   sanitized = sanitized.replace(/<[^>]*>/g, "");
-  
+
   // Then encode remaining angle brackets
-  sanitized = sanitized
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+  sanitized = sanitized.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
   // Remove script tags and dangerous protocols in a single pass
   sanitized = sanitized.replace(/(javascript|data|vbscript):/gi, "");
