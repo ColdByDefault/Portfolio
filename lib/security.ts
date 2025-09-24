@@ -68,11 +68,16 @@ export class RateLimiter {
 export function sanitizeInput(input: string): string {
   if (!input) return "";
 
-  // Remove HTML tags and encode remaining angle brackets
-  const htmlStripped = input
-    .replace(/<[^>]*>/g, "") // Remove complete HTML tags first
-    .replace(/</g, "&lt;") // Encode remaining < characters
-    .replace(/>/g, "&gt;"); // Encode remaining > characters
+  // Remove HTML tags and encode remaining angle brackets safely
+  let htmlStripped = input;
+  
+  // First pass: Remove complete HTML tags
+  htmlStripped = htmlStripped.replace(/<[^>]*>/g, "");
+  
+  // Second pass: Encode any remaining angle brackets that weren't part of tags
+  htmlStripped = htmlStripped
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 
   // Remove common spam patterns
   const spamPatterns = [
@@ -204,12 +209,16 @@ export function sanitizeErrorMessage(error: unknown): string {
 export function sanitizeChatInput(input: string): string {
   if (!input) return "";
 
-  // Remove HTML tags completely with a more efficient approach
-  // This regex handles nested tags, self-closing tags, and malformed HTML in a single pass
-  let sanitized = input
-    .replace(/<[^>]*>/g, "") // Remove complete HTML tags
-    .replace(/</g, "&lt;") // Encode remaining < characters
-    .replace(/>/g, "&gt;"); // Encode remaining > characters
+  // Remove HTML tags completely with proper handling
+  let sanitized = input;
+  
+  // Remove HTML tags first
+  sanitized = sanitized.replace(/<[^>]*>/g, "");
+  
+  // Then encode remaining angle brackets
+  sanitized = sanitized
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 
   // Remove script tags and dangerous protocols in a single pass
   sanitized = sanitized.replace(/(javascript|data|vbscript):/gi, "");
