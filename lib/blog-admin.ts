@@ -8,11 +8,13 @@ import { prisma } from "./prisma";
 import type { Prisma } from "@prisma/client";
 import type {
   Blog,
+  BlogCredit,
   CreateBlogRequest,
   UpdateBlogRequest,
   BlogListQuery,
   BlogListResponse,
 } from "@/types/blogs";
+import { BLOG_CONSTANTS } from "@/types/blogs";
 import type { BlogAdminStats, BlogActivityItem } from "@/types/admin";
 import { RateLimiter, sanitizeInput, sanitizeErrorMessage } from "./security";
 
@@ -136,6 +138,57 @@ function calculateReadingTime(content: string): number {
 }
 
 /**
+ * Sanitize blog data fields
+ */
+function sanitizeBlogData(data: CreateBlogRequest | UpdateBlogRequest) {
+  return {
+    title:
+      "title" in data && data.title ? sanitizeInput(data.title) : undefined,
+    content:
+      "content" in data && data.content
+        ? sanitizeBlogContent(data.content)
+        : undefined,
+    excerpt:
+      "excerpt" in data && data.excerpt !== undefined
+        ? data.excerpt
+          ? sanitizeInput(data.excerpt)
+          : null
+        : undefined,
+    metaTitle:
+      "metaTitle" in data && data.metaTitle !== undefined
+        ? data.metaTitle
+          ? sanitizeInput(data.metaTitle)
+          : null
+        : undefined,
+    metaDescription:
+      "metaDescription" in data && data.metaDescription !== undefined
+        ? data.metaDescription
+          ? sanitizeInput(data.metaDescription)
+          : null
+        : undefined,
+  };
+}
+
+/**
+ * Sanitize credits data fields
+ */
+function sanitizeCreditsData(
+  credits: Omit<BlogCredit, "id" | "blogId" | "createdAt" | "updatedAt">
+) {
+  return {
+    originalAuthor: sanitizeInput(credits.originalAuthor || ""),
+    originalSource: credits.originalSource
+      ? sanitizeInput(credits.originalSource)
+      : null,
+    sourceUrl: credits.sourceUrl || null,
+    licenseType: credits.licenseType || null,
+    creditText: credits.creditText ? sanitizeInput(credits.creditText) : null,
+    translatedFrom: credits.translatedFrom || null,
+    adaptedFrom: credits.adaptedFrom || null,
+  };
+}
+
+/**
  * Validate blog data
  */
 function validateBlogData(
@@ -147,30 +200,42 @@ function validateBlogData(
     if (data.title.length < 3) {
       errors.push("Title must be at least 3 characters long");
     }
-    if (data.title.length > 200) {
-      errors.push("Title must be less than 200 characters");
+    if (data.title.length > BLOG_CONSTANTS.MAX_TITLE_LENGTH) {
+      errors.push(
+        `Title must be less than ${BLOG_CONSTANTS.MAX_TITLE_LENGTH} characters`
+      );
     }
   }
 
   if ("content" in data && data.content) {
-    if (data.content.length < 10) {
-      errors.push("Content must be at least 10 characters long");
+    if (data.content.length < BLOG_CONSTANTS.MIN_CONTENT_LENGTH) {
+      errors.push(
+        `Content must be at least ${BLOG_CONSTANTS.MIN_CONTENT_LENGTH} characters long`
+      );
     }
     if (data.content.length > 50000) {
       errors.push("Content must be less than 50,000 characters");
     }
   }
 
-  if ("excerpt" in data && data.excerpt && data.excerpt.length > 500) {
-    errors.push("Excerpt must be less than 500 characters");
+  if (
+    "excerpt" in data &&
+    data.excerpt &&
+    data.excerpt.length > BLOG_CONSTANTS.MAX_EXCERPT_LENGTH
+  ) {
+    errors.push(
+      `Excerpt must be less than ${BLOG_CONSTANTS.MAX_EXCERPT_LENGTH} characters`
+    );
   }
 
   if (
     "metaDescription" in data &&
     data.metaDescription &&
-    data.metaDescription.length > 160
+    data.metaDescription.length > BLOG_CONSTANTS.MAX_META_DESCRIPTION_LENGTH
   ) {
-    errors.push("Meta description must be less than 160 characters");
+    errors.push(
+      `Meta description must be less than ${BLOG_CONSTANTS.MAX_META_DESCRIPTION_LENGTH} characters`
+    );
   }
 
   return errors;
@@ -333,15 +398,14 @@ export async function createBlog(
 
   try {
     // Sanitize all text content
+    const sanitizedFields = sanitizeBlogData(data);
     const sanitizedData = {
       ...data,
-      title: sanitizeInput(data.title),
-      content: sanitizeBlogContent(data.content),
-      excerpt: data.excerpt ? sanitizeInput(data.excerpt) : null,
-      metaTitle: data.metaTitle ? sanitizeInput(data.metaTitle) : null,
-      metaDescription: data.metaDescription
-        ? sanitizeInput(data.metaDescription)
-        : null,
+      title: sanitizedFields.title!,
+      content: sanitizedFields.content!,
+      excerpt: sanitizedFields.excerpt ?? null,
+      metaTitle: sanitizedFields.metaTitle ?? null,
+      metaDescription: sanitizedFields.metaDescription ?? null,
     };
 
     // Generate slug if not provided
@@ -374,19 +438,7 @@ export async function createBlog(
         }),
         ...(data.credits && {
           credits: {
-            create: {
-              originalAuthor: sanitizeInput(data.credits.originalAuthor || ""),
-              originalSource: data.credits.originalSource
-                ? sanitizeInput(data.credits.originalSource)
-                : null,
-              sourceUrl: data.credits.sourceUrl || null,
-              licenseType: data.credits.licenseType || null,
-              creditText: data.credits.creditText
-                ? sanitizeInput(data.credits.creditText)
-                : null,
-              translatedFrom: data.credits.translatedFrom || null,
-              adaptedFrom: data.credits.adaptedFrom || null,
-            },
+            create: sanitizeCreditsData(data.credits),
           },
         }),
       },
@@ -442,26 +494,7 @@ export async function updateBlog(
     // Sanitize all text content
     const sanitizedData = {
       ...data,
-      title: data.title ? sanitizeInput(data.title) : undefined,
-      content: data.content ? sanitizeBlogContent(data.content) : undefined,
-      excerpt:
-        data.excerpt !== undefined
-          ? data.excerpt
-            ? sanitizeInput(data.excerpt)
-            : null
-          : undefined,
-      metaTitle:
-        data.metaTitle !== undefined
-          ? data.metaTitle
-            ? sanitizeInput(data.metaTitle)
-            : null
-          : undefined,
-      metaDescription:
-        data.metaDescription !== undefined
-          ? data.metaDescription
-            ? sanitizeInput(data.metaDescription)
-            : null
-          : undefined,
+      ...sanitizeBlogData(data),
     };
 
     // Handle slug update
@@ -530,19 +563,7 @@ export async function updateBlog(
 
     // Handle credits separately due to upsert complexity
     if (data.credits) {
-      const sanitizedCredits = {
-        originalAuthor: sanitizeInput(data.credits.originalAuthor || ""),
-        originalSource: data.credits.originalSource
-          ? sanitizeInput(data.credits.originalSource)
-          : null,
-        sourceUrl: data.credits.sourceUrl || null,
-        licenseType: data.credits.licenseType || null,
-        creditText: data.credits.creditText
-          ? sanitizeInput(data.credits.creditText)
-          : null,
-        translatedFrom: data.credits.translatedFrom || null,
-        adaptedFrom: data.credits.adaptedFrom || null,
-      };
+      const sanitizedCredits = sanitizeCreditsData(data.credits);
 
       await prisma.blogCredit.upsert({
         where: { blogId: id },
