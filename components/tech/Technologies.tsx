@@ -148,14 +148,16 @@ export default function Technologies() {
               <CarouselContent
                 className="-ml-2 md:-ml-4"
                 style={{ height: `${carouselConfig.height}px` }}
-                role="tablist"
+                role="group"
                 aria-live="polite"
+                aria-label="Technology categories carousel"
               >
                 {slides.map((slide, slideIndex) => (
                   <CarouselItem
                     key={slideIndex}
                     className="pl-2 md:pl-4"
-                    role="tabpanel"
+                    role="group"
+                    aria-roledescription="slide"
                     aria-label={`Slide ${slideIndex + 1} of ${slides.length}`}
                     tabIndex={0}
                   >

@@ -11,7 +11,7 @@ import {
   getCardHoverClasses,
   getOverlayStyles,
 } from "@/components/visuals/card-animations";
-import { ImageZoomDialog } from "@/components/ui/image-zoom-dialog";
+import { ImageZoomDialog } from "@/components/visuals";
 import type { CertificationShowcaseLogic } from "./CertificationShowcase.logic";
 
 interface Certification {

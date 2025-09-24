@@ -8,7 +8,7 @@ import Image from "next/image";
 import { Card, CardTitle } from "@/components/ui/card";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { ImageZoomDialog } from "@/components/ui/image-zoom-dialog";
+import { ImageZoomDialog } from "@/components/visuals";
 import type { CertificationShowcaseLogic } from "./CertificationShowcase.logic";
 
 interface Certification {

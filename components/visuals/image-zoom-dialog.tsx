@@ -46,10 +46,18 @@ export function ImageZoomDialog({
     <Dialog>
       <DialogTrigger asChild>
         <div
+          role="button"
+          tabIndex={0}
           className={cn(
             "cursor-zoom-in transition-opacity hover:opacity-80",
             className
           )}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              e.currentTarget.click();
+            }
+          }}
         >
           {children}
         </div>
