@@ -1,6 +1,6 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V4.11.12
+# ColdByDefault Portfolio · V4.11.15
 
 Modern, secure, high‑performance developer portfolio built with Next.js 15.5.1, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
@@ -207,7 +207,6 @@ All endpoints are read-only and sanitized.
 | ---------------- | -------------------------------------------- | -------------------- |
 | `/api/about`     | Returns profile / about metadata             | Static + typed       |
 | `/api/blog`      | Blog content management and retrieval        | Prisma + Zod         |
-| `/api/contact`   | Securely handles contact intent (anti‑abuse) | Rate limited         |
 | `/api/github`    | Fetches GitHub profile + repos (filtered)    | Tokenized (env)      |
 | `/api/pagespeed` | Surfaces PageSpeed metrics                   | External API wrapper |
 | `/api/admin`     | Administrative operations for content        | Secured endpoints    |
