@@ -68,8 +68,11 @@ export class RateLimiter {
 export function sanitizeInput(input: string): string {
   if (!input) return "";
 
-  // Remove HTML tags and script injections
-  const htmlStripped = input.replace(/<|>/g, "");
+  // Remove HTML tags and encode remaining angle brackets
+  const htmlStripped = input
+    .replace(/<[^>]*>/g, "") // Remove complete HTML tags first
+    .replace(/</g, "&lt;") // Encode remaining < characters
+    .replace(/>/g, "&gt;"); // Encode remaining > characters
 
   // Remove common spam patterns
   const spamPatterns = [
@@ -201,27 +204,19 @@ export function sanitizeErrorMessage(error: unknown): string {
 export function sanitizeChatInput(input: string): string {
   if (!input) return "";
 
-  // Remove HTML tags completely
-  let sanitized = input;
-  // Repeat removal to ensure all nested or malformed tags are eliminated
-  let prevSanitized;
-  do {
-    prevSanitized = sanitized;
-    sanitized = sanitized.replace(/<[^>]*>/g, "");
-  } while (sanitized !== prevSanitized);
+  // Remove HTML tags completely with a more efficient approach
+  // This regex handles nested tags, self-closing tags, and malformed HTML in a single pass
+  let sanitized = input
+    .replace(/<[^>]*>/g, "") // Remove complete HTML tags
+    .replace(/</g, "&lt;") // Encode remaining < characters
+    .replace(/>/g, "&gt;"); // Encode remaining > characters
 
-  // Remove script tags and javascript: protocols
-  sanitized = sanitized.replace(/javascript:/gi, "");
-  sanitized = sanitized.replace(/data:/gi, "");
-  sanitized = sanitized.replace(/vbscript:/gi, "");
+  // Remove script tags and dangerous protocols in a single pass
+  sanitized = sanitized.replace(/(javascript|data|vbscript):/gi, "");
 
-  // Remove potentially dangerous attributes
-  // Repeat the replacement until no more dangerous attributes are left
-  let prevAttrSanitized;
-  do {
-    prevAttrSanitized = sanitized;
-    sanitized = sanitized.replace(/on\w+\s*=\s*[^>]*/gi, "");
-  } while (sanitized !== prevAttrSanitized);
+  // Remove potentially dangerous event handler attributes efficiently
+  // This handles all common event attributes (onclick, onload, etc.) in one pass
+  sanitized = sanitized.replace(/\bon\w+\s*=\s*[^>\s]*/gi, "");
 
   // Remove excessive whitespace but preserve line breaks
   sanitized = sanitized.replace(/\s{2,}/g, " ").trim();
