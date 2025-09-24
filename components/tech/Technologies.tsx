@@ -19,6 +19,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { useResponsiveCarousel } from "@/hooks/use-responsive-carousel";
 import {
@@ -30,6 +31,7 @@ import {
 
 export default function Technologies() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
   const t = useTranslations("Technologies");
   const tCategories = useTranslations("Technologies.categories");
   const { cardsPerSlide } = useResponsiveCarousel();
@@ -133,6 +135,10 @@ export default function Technologies() {
             Use arrow keys or navigation buttons to browse through technology
             categories. Press Enter or Space on cards to view details.
           </div>
+          {/* Live region for slide announcements */}
+          <div aria-live="polite" aria-atomic="true" className="sr-only">
+            Slide {currentSlide + 1} of {slides.length}
+          </div>
           <div className="relative">
             <Carousel
               opts={{
@@ -141,25 +147,25 @@ export default function Technologies() {
               }}
               className="w-full px-8 sm:px-12"
               style={{ height: `${carouselConfig.height}px` }}
-              role="region"
               aria-label={`${t("title")} carousel with ${slides.length} slides`}
               aria-describedby="carousel-instructions"
+              setApi={(api: CarouselApi) => {
+                if (api) {
+                  api.on("select", () => {
+                    setCurrentSlide(api.selectedScrollSnap());
+                  });
+                }
+              }}
             >
               <CarouselContent
                 className="-ml-2 md:-ml-4"
                 style={{ height: `${carouselConfig.height}px` }}
-                role="group"
-                aria-live="polite"
-                aria-label="Technology categories carousel"
               >
                 {slides.map((slide, slideIndex) => (
                   <CarouselItem
                     key={slideIndex}
                     className="pl-2 md:pl-4"
-                    role="group"
-                    aria-roledescription="slide"
                     aria-label={`Slide ${slideIndex + 1} of ${slides.length}`}
-                    tabIndex={0}
                   >
                     <div
                       className={`grid gap-4 sm:gap-6 items-center justify-items-center h-full ${carouselConfig.gridClasses}`}

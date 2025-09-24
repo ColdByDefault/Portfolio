@@ -45,22 +45,15 @@ export function ImageZoomDialog({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div
-          role="button"
-          tabIndex={0}
+        <button
+          type="button"
           className={cn(
-            "cursor-zoom-in transition-opacity hover:opacity-80",
+            "cursor-zoom-in transition-opacity hover:opacity-80 border-none bg-transparent p-0 m-0",
             className
           )}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              e.currentTarget.click();
-            }
-          }}
         >
           {children}
-        </div>
+        </button>
       </DialogTrigger>
       <DialogPortal>
         <DialogOverlay className="backdrop-blur-md bg-black/70" />
