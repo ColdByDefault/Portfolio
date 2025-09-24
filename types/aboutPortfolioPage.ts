@@ -40,6 +40,7 @@ export interface OverviewData {
   readonly portfolioFeatures: readonly PortfolioFeature[];
   readonly architectureFeatures: readonly ArchitectureFeature[];
   readonly developmentGoals: readonly DevelopmentGoal[];
+  readonly qualityHighlights: readonly PortfolioFeature[];
 }
 
 export interface TechnologyData {

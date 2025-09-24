@@ -463,6 +463,10 @@
         "developmentGoals": {
           "title": "Entwicklungsziele",
           "description": "Hauptziele und Prinzipien während der Entwicklung"
+        },
+        "qualityHighlights": {
+          "title": "Qualität & Automatisierung",
+          "description": "Automatisierte Workflows und Tools, die das Portfolio zuverlässig halten."
         }
       },
       "portfolioFeatures": {
@@ -473,7 +477,9 @@
         "interactiveChatbot": "Interaktiver Chatbot für Besucherinteraktion",
         "performanceOptimized": "Performance-optimiert mit 100/100 Lighthouse-Scores",
         "seoOptimized": "SEO-optimiert mit strukturierten Daten und Meta-Tags",
-        "securityFirst": "Sicherheitsorientierter Ansatz mit Eingabevalidierung"
+        "securityFirst": "Sicherheitsorientierter Ansatz mit Eingabevalidierung",
+        "pageSpeedInsights": "Live PageSpeed Insights-Integration mit automatischer Aktualisierung",
+        "adminDashboard": "Sicheres Admin-Dashboard für das komplette Blog-Management"
       },
       "architectureFeatures": {
         "componentArchitecture": "Komponentenbasierte Architektur mit klarer Trennung der Belange",
@@ -481,7 +487,9 @@
         "serverSideRendering": "Server-seitiges Rendering mit Next.js App Router",
         "databaseIntegration": "Datenbankintegration mit Prisma ORM",
         "authenticationSystem": "Benutzerdefiniertes Authentifizierungs- und Autorisierungssystem",
-        "apiRoutesSecurity": "API-Routen mit ordnungsgemäßer Validierung und Sicherheit"
+        "apiRoutesSecurity": "API-Routen mit ordnungsgemäßer Validierung und Sicherheit",
+        "edgeRuntime": "Edge-First-Bereitstellung auf Vercel für geringe Latenz",
+        "securityHeaders": "Gehärtete Sicherheits-Header und durchgesetzte CSP"
       },
       "developmentGoals": {
         "performance": {
@@ -499,7 +507,17 @@
         "maintainability": {
           "title": "Wartbarkeit",
           "description": "Saubere Code-Architektur mit TypeScript, ordnungsgemäßen Tests und Dokumentation."
+        },
+        "automation": {
+          "title": "Automatisierung",
+          "description": "Automatisierte CI/CD, Sicherheitsscans und geplante Jobs für gleichbleibende Qualität."
         }
+      },
+      "qualityHighlights": {
+        "codeqlSecurity": "GitHub Actions CodeQL-Scans für JavaScript, TypeScript und Python",
+        "dependencyReview": "Automatische Dependency-Reviews sichern Pull Requests ab",
+        "vercelCronJobs": "Vercel CRON-Jobs aktualisieren PageSpeed-Daten alle 12 Stunden",
+        "typedocDocs": "Typedoc-Dokumentationspipeline für Komponenten, App und Types"
       }
     },
     "Technology": {

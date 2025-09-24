@@ -49,7 +49,16 @@ const portfolioFeatures: readonly PortfolioFeature[] = [
     key: "security_first",
     translationKey: "AboutPortfolio.Overview.portfolioFeatures.securityFirst",
   },
-] as const;
+  {
+    key: "pagespeed_insights",
+    translationKey:
+      "AboutPortfolio.Overview.portfolioFeatures.pageSpeedInsights",
+  },
+  {
+    key: "admin_dashboard",
+    translationKey: "AboutPortfolio.Overview.portfolioFeatures.adminDashboard",
+  },
+];
 
 const architectureFeatures: readonly ArchitectureFeature[] = [
   {
@@ -82,7 +91,16 @@ const architectureFeatures: readonly ArchitectureFeature[] = [
     translationKey:
       "AboutPortfolio.Overview.architectureFeatures.apiRoutesSecurity",
   },
-] as const;
+  {
+    key: "edge_runtime",
+    translationKey: "AboutPortfolio.Overview.architectureFeatures.edgeRuntime",
+  },
+  {
+    key: "security_headers",
+    translationKey:
+      "AboutPortfolio.Overview.architectureFeatures.securityHeaders",
+  },
+];
 
 const developmentGoals: readonly DevelopmentGoal[] = [
   {
@@ -113,7 +131,34 @@ const developmentGoals: readonly DevelopmentGoal[] = [
     descriptionTranslationKey:
       "AboutPortfolio.Overview.developmentGoals.maintainability.description",
   },
-] as const;
+  {
+    key: "automation",
+    titleTranslationKey:
+      "AboutPortfolio.Overview.developmentGoals.automation.title",
+    descriptionTranslationKey:
+      "AboutPortfolio.Overview.developmentGoals.automation.description",
+  },
+];
+
+const qualityHighlights: readonly PortfolioFeature[] = [
+  {
+    key: "codeql_security",
+    translationKey: "AboutPortfolio.Overview.qualityHighlights.codeqlSecurity",
+  },
+  {
+    key: "dependency_review",
+    translationKey:
+      "AboutPortfolio.Overview.qualityHighlights.dependencyReview",
+  },
+  {
+    key: "vercel_cron_jobs",
+    translationKey: "AboutPortfolio.Overview.qualityHighlights.vercelCronJobs",
+  },
+  {
+    key: "typedoc_docs",
+    translationKey: "AboutPortfolio.Overview.qualityHighlights.typedocDocs",
+  },
+];
 
 const technologyCategories: readonly TechnologyCategory[] = [
   {
@@ -172,17 +217,18 @@ const technologyCategories: readonly TechnologyCategory[] = [
     detailTranslationKey:
       "AboutPortfolio.Technology.categories.deployment.detail",
   },
-] as const;
+];
 
 export const overviewData: OverviewData = {
   portfolioFeatures,
   architectureFeatures,
   developmentGoals,
-} as const;
+  qualityHighlights,
+};
 
 export const technologyData: TechnologyData = {
   categories: technologyCategories,
-} as const;
+};
 
 // Section metadata for easy access
 export const overviewSections = {
@@ -201,4 +247,9 @@ export const overviewSections = {
     descriptionKey:
       "AboutPortfolio.Overview.sections.developmentGoals.description",
   },
-} as const;
+  qualityHighlights: {
+    titleKey: "AboutPortfolio.Overview.sections.qualityHighlights.title",
+    descriptionKey:
+      "AboutPortfolio.Overview.sections.qualityHighlights.description",
+  },
+};

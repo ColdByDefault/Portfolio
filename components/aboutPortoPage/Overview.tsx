@@ -38,6 +38,17 @@ export function Overview({ className }: OverviewProps) {
       </SectionCard>
 
       <SectionCard
+        title={t(overviewSections.qualityHighlights.titleKey)}
+        description={t(overviewSections.qualityHighlights.descriptionKey)}
+      >
+        <FeatureList
+          items={overviewData.qualityHighlights.map((highlight) =>
+            t(highlight.translationKey)
+          )}
+        />
+      </SectionCard>
+
+      <SectionCard
         title={t(overviewSections.developmentGoals.titleKey)}
         description={t(overviewSections.developmentGoals.descriptionKey)}
       >
