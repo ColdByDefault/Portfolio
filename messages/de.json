@@ -37,6 +37,16 @@
     "quickLinks": "Schnelllinks",
     "openForCollaboration": "Verfügbar für Hobbyprojekte"
   },
+  "QuickActions": {
+    "title": "Schnelle Aktionen",
+    "allMedia": "Alle Medien",
+    "projects": "Projekte",
+    "latestPosts": "Neueste Beiträge",
+    "aboutMe": "Über mich",
+    "portfolioDocs": "Portfolio-Dokumentation",
+    "library": "Bibliothek",
+    "latestBlog": "Neuester Blog"
+  },
   "Technologies": {
     "title": "Fähigkeiten, Technologien & Expertise",
     "manyMoreTechnologies": "...und viele weitere Fähigkeiten & Technologien in meinem Toolkit",

@@ -37,6 +37,16 @@
     "quickLinks": "Snabblänkar",
     "openForCollaboration": "Tillgänglig för hobbyprojekt"
   },
+  "QuickActions": {
+    "title": "Snabbåtgärder",
+    "allMedia": "Alla Media",
+    "projects": "Projekt",
+    "latestPosts": "Senaste Inlägg",
+    "aboutMe": "Om Mig",
+    "portfolioDocs": "Portfolio Dokumentation",
+    "library": "Bibliotek",
+    "latestBlog": "Senaste Blogg"
+  },
   "Technologies": {
     "title": "Färdigheter, Teknologier & Expertis",
     "manyMoreTechnologies": "...och många fler färdigheter och teknologier i min verktygslåda",

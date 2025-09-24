@@ -37,6 +37,16 @@
     "quickLinks": "Liens rapides",
     "openForCollaboration": "Disponible pour projets personnels"
   },
+  "QuickActions": {
+    "title": "Actions Rapides",
+    "allMedia": "Tous les Médias",
+    "projects": "Projets",
+    "latestPosts": "Derniers Articles",
+    "aboutMe": "À Propos de Moi",
+    "portfolioDocs": "Documentation Portfolio",
+    "library": "Bibliothèque",
+    "latestBlog": "Dernier Blog"
+  },
   "Technologies": {
     "title": "Compétences, Technologies et Expertise",
     "manyMoreTechnologies": "...et bien d'autres compétences et technologies dans ma boîte à outils",
