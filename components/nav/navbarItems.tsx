@@ -108,7 +108,7 @@ export function DesktopNavigation({
     >
       {navItems.map((item, index) => {
         const Icon = item.icon;
-        const isLastItem = index === navItems.length - 2;
+        const isLastItem = index === navItems.length - 1;
         return (
           <Link
             key={item.name}
@@ -118,7 +118,7 @@ export function DesktopNavigation({
             className={`
               group flex items-center space-x-2 text-sm font-medium transition-colors
               ${lightLink} ${darkLink}
-              ${isLastItem ? "border-x pl-6 ml-2" : ""}
+              ${isLastItem ? "border-x pl-4" : ""}
               focus:outline-none px-2 py-1
             `}
             role="menuitem"
