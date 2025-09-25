@@ -1,12 +1,12 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V4.11.15
+# ColdByDefault Portfolio · V4.11.18
 
 Modern, secure, high‑performance developer portfolio built with Next.js 15.5.1, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
 <img width="990" height="174" alt="Screenshot 2025-08-31 111906" src="https://github.com/user-attachments/assets/2a863d38-e178-42ee-85a9-75010601fb2b" />
 
-**Live:** https://www.coldbydefault.com • **Stack:** Next.js 15.5.1 · React 19.1.1 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.3.5 · Prisma ORM · Neon PostgreSQL · Zod · ESLint 9.x · Vercel
+**Live:** https://www.coldbydefault.com • **Docs:** https://docs.coldbydefault.com/ • **Stack:** Next.js 15.5.1 · React 19.1.1 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.3.5 · Prisma ORM · Neon PostgreSQL · Zod · ESLint 9.x · Vercel
 
 </div>
 
@@ -62,18 +62,19 @@ Core:
 - Tailwind CSS 4.1.12 + PostCSS
 - shadcn/ui (accessible primitives)
 - Embla Carousel 8.6.0 (modern carousel with autoplay)
-- Framer Motion 12.x (animation system)
+- Framer Motion 12.23.12 (animation system)
 - next-intl 4.3.5 (runtime + server i18n)
 - Vercel Hosting & Edge Network
-- Vercel CRON_Jobs (Automated Background Tasks & refresh Data)
+- Vercel CRON Jobs (Automated Background Tasks & refresh Data)
 
 Development & Quality:
 
-- ESLint 9.x (flat config system, TypeScript-ESLint integration)
+- ESLint 9.x (flat config system, TypeScript-ESLint 8.41.0 integration)
 - Strict type checking with zero `any` tolerance
 - Enhanced import/export linting and validation
 - Comprehensive type coverage for all API interfaces (`AdminStats`, `GitHubData`, `PageSpeedMetrics`)
 - Discriminated unions for locale handling and error states
+- TypeDoc for comprehensive documentation generation
 
 Supporting & Utilities:
 
@@ -112,6 +113,7 @@ Content & Data:
 - Enhanced type-safe API interfaces for all data endpoints
 - Blog system with dynamic content management and filtering
 - CRUD admin dashboard for comprehensive blog management
+- Interactive chatbot system for visitor engagement
 - Enhanced blog styling with error handling & fallbacks
 - New dedicated pages: /media & /library for content showcase
 - Dynamic sitemap & robots.txt generation for improved SEO
@@ -201,15 +203,16 @@ Design Principles:
 
 ## 8. API Surface
 
-All endpoints are read-only and sanitized.
+Comprehensive API endpoints with security-first design:
 
-| Endpoint         | Purpose                                      | Notes                |
-| ---------------- | -------------------------------------------- | -------------------- |
-| `/api/about`     | Returns profile / about metadata             | Static + typed       |
-| `/api/blog`      | Blog content management and retrieval        | Prisma + Zod         |
-| `/api/github`    | Fetches GitHub profile + repos (filtered)    | Tokenized (env)      |
-| `/api/pagespeed` | Surfaces PageSpeed metrics                   | External API wrapper |
-| `/api/admin`     | Administrative operations for content        | Secured endpoints    |
+| Endpoint         | Purpose                                           | Notes                |
+| ---------------- | ------------------------------------------------- | -------------------- |
+| `/api/about`     | Returns profile / about metadata                  | Static + typed       |
+| `/api/blog`      | Blog content management and retrieval             | Prisma + Zod         |
+| `/api/github`    | Fetches GitHub profile + repos (filtered)         | Tokenized (env)      |
+| `/api/pagespeed` | Surfaces PageSpeed metrics                        | External API wrapper |
+| `/api/chatbot`   | Interactive AI chatbot (Reem) for visitor queries | AI-powered responses |
+| `/api/admin`     | Administrative operations for content             | Secured endpoints    |
 
 Controls:
 
@@ -217,6 +220,7 @@ Controls:
 - Standardized error envelopes (no internal leakage)
 - Rate limiting (per IP windowed)
 - Type-safe database operations via Prisma ORM
+- Enhanced security headers and CSP compliance
 
 ---
 
@@ -224,13 +228,15 @@ Controls:
 
 Last internal assessment: 2025‑09 (latest iteration) — no known unresolved critical/high issues.
 
-Implemented Layers (expanded in 3.1):
+Implemented Layers (expanded in 4.11.15):
 
 1. Transport & Headers: HSTS, CSP, X-Content-Type-Options, X-Frame-Options (deny), Referrer-Policy, Permissions-Policy.
 2. Application: Sanitized inputs, explicit error redaction, avoidance of `eval` / dangerous DOM sinks, reinforced type gates (locale / SEO literal unions) reducing unchecked paths.
 3. Operational: Secrets confined to environment variables; repository free of credentials.
-4. Abuse Mitigation: IP‑scoped rate limiting on sensitive endpoints.
+4. Abuse Mitigation: IP‑scoped rate limiting on sensitive endpoints with enhanced Zod validation.
 5. Dependency Hygiene: Routine audit (npm audit) — zero known CVEs at last scan; periodic verification of transitive packages relevant to security headers & i18n.
+6. Automated Security: CodeQL Advanced Security Scanning for JavaScript, TypeScript, and Python with multi-language matrix analysis.
+7. Dependency Security: Automated dependency review workflows blocking vulnerable dependencies in pull requests.
 
 Security Posture Snapshot:
 
@@ -238,6 +244,7 @@ Security Posture Snapshot:
 - High: 0
 - Medium: 0
 - Low/Informational: Monitored
+- Automated Scanning: Active (CodeQL + Dependency Review)
 
 ---
 
@@ -268,6 +275,14 @@ Automated security and quality workflows ensuring code integrity and vulnerabili
 - **Vercel Redirections**: Advanced URL redirections & routing optimizations
 - **Automated Background Tasks**: Comprehensive automation for data freshness & performance
 - **Integration**: Seamless background updates maintaining data freshness for performance transparency
+
+**Documentation & Quality Automation:**
+
+- **TypeDoc Generation**: Automated documentation generation covering components, app, types, hooks, data, and more
+- **Live Documentation**: Available at https://docs.coldbydefault.com/ with comprehensive API and component documentation
+- **Command Integration**: `docs` script for comprehensive TypeDoc documentation pipeline
+- **Coverage**: Expands across all major project directories with TypeScript configuration integration
+- **Quality Gates**: Enhanced ESLint flat config system with TypeScript-ESLint integration
 
 ---
 
@@ -312,6 +327,28 @@ pnpm lint:fix
 
 # Check for dependency updates
 pnpm test-dep
+
+# Generate comprehensive TypeDoc documentation
+pnpm docs
+```
+
+**Database Management:**
+
+```bash
+# Generate Prisma client
+pnpm db:generate
+
+# Deploy migrations
+pnpm db:migrate
+
+# Push schema changes
+pnpm db:push
+
+# Seed database with initial data
+pnpm db:seed
+
+# Reset database with fresh seed
+pnpm db:reset
 ```
 
 **Blog System & Content Management:**
@@ -329,16 +366,26 @@ pnpm test-dep
 **Development Workflow:**
 
 - Complete migration to ESLint flat config system (`eslint.config.mts`)
+- TypeScript-ESLint with enhanced rule configuration
 - Custom rule configuration for UI components vs. application code
 - Enhanced import resolution and React hooks linting
 - Zero-tolerance policy for `@typescript-eslint/no-explicit-any`
 
+**Documentation & Type Safety:**
+
+- TypeDoc for comprehensive documentation generation
+- Covers components, app, types, hooks, data, i18n, lib, and more
+- Automated documentation pipeline with `docs` script integration
+- Enhanced type coverage across all project domains
+- Zod runtime validation ensuring type safety at API boundaries
+
 **UI Component Architecture:**
 
-- New carousel component system using Embla Carousel with autoplay
-- Improved component composition patterns
+- Carousel component system using Embla Carousel with autoplay
+- Improved component composition patterns with Radix UI primitives
 - Better separation of concerns (data vs presentation layers)
 - Enhanced accessibility focus states & ARIA coverage
+- Framer Motion integration for advanced animations
 
 **Development Experience:**
 
@@ -346,16 +393,31 @@ pnpm test-dep
 - Improved error boundaries and type-safe error handling
 - Better debugging capabilities with structured logging
 - Performance monitoring with enhanced PageSpeed integration
+- Prisma ORM with comprehensive database tooling
+- Advanced middleware system for locale routing and redirections
 
 ---
 
 ## 14. Roadmap
 
-- Expand localization (additional languages beyond 4; automated missing key detection)
+**Completed Features:**
+
+- ✅ TypeDoc documentation system implementation
+- ✅ Enhanced CodeQL security scanning across multiple languages
+- ✅ Automated dependency review workflows
+- ✅ Interactive chatbot system (Reem AI Assistant) integration
+- ✅ Comprehensive admin dashboard with CRUD operations
+- ✅ Enhanced Prisma ORM integration
+
+**Planned Enhancements:**
+
+- Expand localization (additional languages beyond 5; automated missing key detection)
 - Further edge caching tuning & RUM instrumentation (privacy‑preserving)
 - Enhanced visual regression / accessibility automation
 - Add selective metrics dashboard (anonymized)
 - Structured data expansion (Projects, Certifications)
+- Advanced chatbot capabilities with memory and context awareness
+- Enhanced performance monitoring and optimization tools
 
 ---
 
@@ -378,6 +440,7 @@ Refer to `LICENSE` & `COPYRIGHT` files for formal wording.
 ## 16. Contact
 
 Portfolio: https://www.coldbydefault.com
+Documentation: https://docs.coldbydefault.com/
 Email: contact@coldbydefault.com
 Linktree: https://linktr.ee/ColdByDefault  
 For professional or security inquiries, reach out via the official channels listed above.
