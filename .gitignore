@@ -36,6 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# vscode
+.vscode
+.vscode/*
+
 # typescript
 *.tsbuildinfo
 tsconfig.tsbuildinfo
@@ -49,9 +53,6 @@ next-env.d.ts
 portfolio.latest.instructions.md
 portfolio.check.instructions.md
 /lib/generated/prisma
-
-# Vercel
-.vercel
 
 
 # Private Notes

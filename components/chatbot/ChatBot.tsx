@@ -14,10 +14,13 @@ import { Separator } from "@/components/ui/separator";
 import { Bot, CircleAlert, Sparkles } from "lucide-react";
 import { useChatBot } from "@/components/chatbot";
 import type { ChatBotUIProps, ChatMessage } from "@/types/chatbot";
-import { ChatHeader } from "./ChatHeader";
-import { ChatMessage as ChatMessageComponent } from "./ChatMessage";
-import { ChatInput } from "./ChatInput";
-import { TypingIndicator } from "./TypingIndicator";
+import {
+  ChatHeader,
+  ChatMessage as ChatMessageComponent,
+  ChatInput,
+  TypingIndicator,
+} from "@/components/chatbot";
+
 import {
   CHATBOT_CONFIG,
   CHATBOT_STYLES,

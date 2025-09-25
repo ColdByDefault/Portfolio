@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import LoadingSkeleton from "./LoadingSkeleton";
+import {LoadingSkeleton} from "@/components/visuals";
 import { cn } from "@/lib/utils";
 
 interface CentralizedLoadingProps {
@@ -48,29 +48,28 @@ const CentralizedLoading: React.FC<CentralizedLoadingProps> = ({
           )}
         </div>
       )}
-      
-      <LoadingSkeleton variant={variant} {...(count !== undefined && { count })} />
+
+      <LoadingSkeleton
+        variant={variant}
+        {...(count !== undefined && { count })}
+      />
     </div>
   );
 
   if (fullScreen) {
     return (
-      <div className={cn(
-        "fixed inset-0 z-50 bg-background/80 backdrop-blur-sm flex items-center justify-center",
-        className
-      )}>
-        <div className="container max-w-4xl mx-auto px-4">
-          {content}
-        </div>
+      <div
+        className={cn(
+          "fixed inset-0 z-50 bg-background/80 backdrop-blur-sm flex items-center justify-center",
+          className
+        )}
+      >
+        <div className="container max-w-4xl mx-auto px-4">{content}</div>
       </div>
     );
   }
 
-  return (
-    <div className={cn("w-full", className)}>
-      {content}
-    </div>
-  );
+  return <div className={cn("w-full", className)}>{content}</div>;
 };
 
 export default CentralizedLoading;

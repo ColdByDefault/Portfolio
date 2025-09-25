@@ -37,6 +37,16 @@
     "quickLinks": "Quick Links",
     "openForCollaboration": "Available for hobby projects"
   },
+  "QuickActions": {
+    "title": "Quick Actions",
+    "allMedia": "All Media",
+    "projects": "Projects",
+    "latestPosts": "Latest Posts",
+    "aboutMe": "About Me",
+    "portfolioDocs": "Portfolio Docs",
+    "library": "Library",
+    "latestBlog": "Latest Blog"
+  },
   "Technologies": {
     "title": "Skills, Technologies & Expertise",
     "manyMoreTechnologies": "...and many more skills & technologies in my toolkit",
@@ -256,7 +266,7 @@
     "description": "This is not just a portfolio - this is my developer journey visualized into a full-stack application. It's not meant to be 'finished' because it evolves with me, growing and changing as I advance in my career. Built with enterprise-grade architecture and cutting-edge technologies, it will always be updated and will always grow.",
     "performanceBadge": "95+ Google Lighthouse Score",
     "techHighlights": "Built With Modern Technologies",
-    "readMore": "Read More",
+    "readMore": "Learn About Portfolio Architecture",
     "featuresTitle": "Portfolio Features",
     "actionsTitle": "Portfolio Actions",
     "features": {
@@ -340,6 +350,10 @@
         "developmentGoals": {
           "title": "Development Goals",
           "description": "Primary objectives and principles followed during development"
+        },
+        "qualityHighlights": {
+          "title": "Quality & Automation",
+          "description": "Automated workflows and tooling that keep the portfolio reliable."
         }
       },
       "portfolioFeatures": {
@@ -350,7 +364,9 @@
         "interactiveChatbot": "Interactive chatbot for visitor engagement",
         "performanceOptimized": "Performance optimized with 100/100 Lighthouse scores",
         "seoOptimized": "SEO optimized with structured data and meta tags",
-        "securityFirst": "Security-first approach with input validation"
+        "securityFirst": "Security-first approach with input validation",
+        "pageSpeedInsights": "Live PageSpeed Insights integration with automated refresh",
+        "adminDashboard": "Secure admin dashboard for full blog management lifecycle"
       },
       "architectureFeatures": {
         "componentArchitecture": "Component-based architecture with clear separation of concerns",
@@ -358,7 +374,9 @@
         "serverSideRendering": "Server-side rendering with Next.js App Router",
         "databaseIntegration": "Database integration with Prisma ORM",
         "authenticationSystem": "Custom authentication and authorization system",
-        "apiRoutesSecurity": "API routes with proper validation and security"
+        "apiRoutesSecurity": "API routes with proper validation and security",
+        "edgeRuntime": "Edge-first runtime deployment on Vercel for low latency",
+        "securityHeaders": "Hardened security headers and CSP enforcement"
       },
       "developmentGoals": {
         "performance": {
@@ -376,7 +394,17 @@
         "maintainability": {
           "title": "Maintainability",
           "description": "Clean code architecture with TypeScript, proper testing, and documentation."
+        },
+        "automation": {
+          "title": "Automation",
+          "description": "Automated CI/CD, security scanning, and scheduled jobs preserving quality."
         }
+      },
+      "qualityHighlights": {
+        "codeqlSecurity": "GitHub Actions CodeQL scans across JavaScript, TypeScript, and Python",
+        "dependencyReview": "Automated dependency review gates for secure pull requests",
+        "vercelCronJobs": "Vercel CRON jobs refreshing PageSpeed data every 12 hours",
+        "typedocDocs": "Typedoc documentation pipeline covering components, app, and types"
       }
     },
     "Technology": {

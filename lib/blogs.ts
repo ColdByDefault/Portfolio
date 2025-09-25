@@ -5,9 +5,9 @@
  */
 
 import type { Blog, BlogListQuery, BlogListResponse } from "@/types/blogs";
-import { prisma } from "./prisma";
+import { prisma } from "@/lib/prisma";
 import type { Prisma } from "@prisma/client";
-import { sanitizeInput } from "./security";
+import { sanitizeInput } from "@/lib/security";
 
 /**
  * Get all published blogs

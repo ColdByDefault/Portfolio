@@ -11,8 +11,8 @@ import {
   getCardHoverClasses,
   getOverlayStyles,
 } from "@/components/visuals/card-animations";
-import { ImageZoomDialog } from "@/components/ui/image-zoom-dialog";
-import type { CertificationShowcaseLogic } from "./CertificationShowcase.logic";
+import { ImageZoomDialog } from "@/components/visuals";
+import type { CertificationShowcaseLogic } from "@/components/cer/CertificationShowcase.logic";
 
 interface Certification {
   readonly id: number;

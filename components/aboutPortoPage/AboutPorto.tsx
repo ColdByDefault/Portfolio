@@ -8,10 +8,12 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { Overview } from "./Overview";
-import { Technology } from "./Technology";
-import { Documentation } from "./Documentation";
-import { useAboutPorto } from "./aboutPorto.logic";
+import {
+  Overview,
+  Technology,
+  Documentation,
+} from "@/components/aboutPortoPage";
+import { useAboutPorto } from "@/components/aboutPortoPage/aboutPorto.logic";
 
 interface AboutPortoProps {
   readonly className?: string;

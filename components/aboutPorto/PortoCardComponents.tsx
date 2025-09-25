@@ -21,10 +21,7 @@ export const FeatureItem = React.memo(function FeatureItem({
 }: FeatureItemProps) {
   if (compact) {
     return (
-      <article
-        className="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted/50 transition-colors focus-within:ring-2 focus-within:ring-primary/50"
-        role="listitem"
-      >
+      <article className="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted/50 transition-colors focus-within:ring-2 focus-within:ring-primary/50">
         <div className="flex-shrink-0 text-primary" aria-hidden="true">
           {icon}
         </div>
@@ -42,10 +39,7 @@ export const FeatureItem = React.memo(function FeatureItem({
   }
 
   return (
-    <article
-      className="flex items-center space-x-3 p-3 rounded-lg hover:bg-muted/50 transition-colors focus-within:ring-2 focus-within:ring-primary/50"
-      role="listitem"
-    >
+    <article className="flex items-center space-x-3 p-3 rounded-lg hover:bg-muted/50 transition-colors focus-within:ring-2 focus-within:ring-primary/50">
       <div className="flex-shrink-0 text-primary" aria-hidden="true">
         {icon}
       </div>

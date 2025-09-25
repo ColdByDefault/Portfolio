@@ -9,6 +9,7 @@ import { Home, FileText, User, FolderOpen, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 interface QuickAction {
   href: string;
@@ -25,6 +26,7 @@ interface QuickAction {
 
 export function QuickActions() {
   const pathname = usePathname();
+  const t = useTranslations("QuickActions");
 
   // Don't show on /media routes
   if (pathname.startsWith("/media")) {
@@ -33,19 +35,59 @@ export function QuickActions() {
 
   // Define actions based on current route
   const getActionsForRoute = (): QuickAction[] => {
-    if (pathname.startsWith("/about")) {
+    if (pathname.startsWith("/about-portfolio")) {
       return [
-        { href: "/media", icon: Home, label: "All Media", variant: "default" },
+        {
+          href: "/media",
+          icon: Home,
+          label: t("allMedia"),
+          variant: "default",
+        },
+        {
+          href: "/projects",
+          icon: FolderOpen,
+          label: t("projects"),
+          variant: "outline",
+        },
         {
           href: "/blog",
           icon: FileText,
-          label: "Latest Posts",
+          label: t("latestPosts"),
+          variant: "outline",
+        },
+        {
+          href: "/about",
+          icon: User,
+          label: t("aboutMe"),
+          variant: "outline",
+        },
+      ];
+    }
+
+    if (pathname.startsWith("/about")) {
+      return [
+        {
+          href: "/media",
+          icon: Home,
+          label: t("allMedia"),
+          variant: "default",
+        },
+        {
+          href: "/about-portfolio",
+          icon: User,
+          label: t("portfolioDocs"),
+          variant: "outline",
+        },
+        {
+          href: "/blog",
+          icon: FileText,
+          label: t("latestPosts"),
           variant: "outline",
         },
         {
           href: "/projects",
           icon: FolderOpen,
-          label: "Projects",
+          label: t("projects"),
           variant: "outline",
         },
       ];
@@ -53,40 +95,68 @@ export function QuickActions() {
 
     if (pathname.startsWith("/blog")) {
       return [
-        { href: "/media", icon: Home, label: "All Media", variant: "default" },
+        {
+          href: "/media",
+          icon: Home,
+          label: t("allMedia"),
+          variant: "default",
+        },
         {
           href: "/library",
           icon: BookOpen,
-          label: "Library",
+          label: t("library"),
           variant: "outline",
         },
-        { href: "/about", icon: User, label: "About Me", variant: "outline" },
+        { href: "/about", icon: User, label: t("aboutMe"), variant: "outline" },
+        {
+          href: "/about-portfolio",
+          icon: User,
+          label: t("portfolioDocs"),
+          variant: "outline",
+        },
       ];
     }
 
     if (pathname.startsWith("/library")) {
       return [
-        { href: "/media", icon: Home, label: "All Media", variant: "default" },
+        {
+          href: "/media",
+          icon: Home,
+          label: t("allMedia"),
+          variant: "default",
+        },
         {
           href: "/blog",
           icon: FileText,
-          label: "Latest Blog",
+          label: t("latestBlog"),
           variant: "outline",
         },
-        { href: "/about", icon: User, label: "About Me", variant: "outline" },
+        { href: "/about", icon: User, label: t("aboutMe"), variant: "outline" },
+        {
+          href: "/about-portfolio",
+          icon: User,
+          label: t("portfolioDocs"),
+          variant: "outline",
+        },
       ];
     }
 
     // Default actions for other routes
     return [
-      { href: "/media", icon: Home, label: "All Media", variant: "default" },
+      { href: "/media", icon: Home, label: t("allMedia"), variant: "default" },
       {
         href: "/blog",
         icon: FileText,
-        label: "Latest Posts",
+        label: t("latestPosts"),
         variant: "outline",
       },
-      { href: "/about", icon: User, label: "About Me", variant: "outline" },
+      { href: "/about", icon: User, label: t("aboutMe"), variant: "outline" },
+      {
+        href: "/about-portfolio",
+        icon: User,
+        label: t("portfolioDocs"),
+        variant: "outline",
+      },
     ];
   };
 
@@ -94,7 +164,7 @@ export function QuickActions() {
 
   return (
     <div className="mt-16 text-center">
-      <h2 className="text-2xl font-semibold mb-6">Quick Actions</h2>
+      <h2 className="text-2xl font-semibold mb-6">{t("title")}</h2>
       <div className="flex flex-wrap justify-center gap-4">
         {actions.map((action) => {
           const IconComponent = action.icon;

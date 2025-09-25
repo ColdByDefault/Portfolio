@@ -6,24 +6,31 @@
 
 import { PrismaClient } from "@prisma/client";
 
-const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined;
+// Type-safe global declaration
+declare global {
+  var __prisma: PrismaClient | undefined;
+}
+
+// Database configuration with security and performance optimizations
+const createPrismaClient = (): PrismaClient => {
+  // Validate required environment variables
+  if (!process.env.DATABASE_URL) {
+    throw new Error("Database configuration error");
+  }
+
+  return new PrismaClient({
+    log: process.env.NODE_ENV === "production" ? ["error", "warn"] : [],
+    // Remove datasources override - use environment configuration only
+    // This prevents hardcoded URL overrides and improves security
+  });
 };
 
-export const prisma =
-  globalForPrisma.prisma ??
-  new PrismaClient({
-    log: process.env.NODE_ENV === "production" ? ["error", "warn"] : [],
-    datasources: {
-      db: {
-        url:
-          process.env.DATABASE_URL!,
-      },
-    },
-  });
+// Singleton pattern with proper typing
+export const prisma: PrismaClient = globalThis.__prisma ?? createPrismaClient();
 
+// Development-only global assignment
 if (process.env.NODE_ENV !== "production") {
-  globalForPrisma.prisma = prisma;
+  globalThis.__prisma = prisma;
 }
 
 // Enhanced database health check

@@ -6,33 +6,23 @@
 
 import React from "react";
 import Link from "next/link";
-import { SectionCard, FeatureList } from "./shared";
+import { SectionCard, FeatureList } from "@/components/aboutPortoPage";
 import { Button } from "@/components/ui/button";
 
 interface DocumentationProps {
   readonly className?: string;
 }
 
-const codeStandards: readonly string[] = [
-
-];
-
-
+const codeStandards: readonly string[] = [];
 
 export function Documentation({ className }: DocumentationProps) {
   return (
     <div className={`space-y-6 ${className || ""}`}>
-      <SectionCard
-        title=""
-        description=""
-      >
+      <SectionCard title="" description="">
         <FeatureList items={codeStandards} />
       </SectionCard>
 
-      <SectionCard
-        title=""
-        description=""
-      >
+      <SectionCard title="" description="">
         <div className="flex flex-col sm:flex-row gap-4">
           <Button asChild variant="default">
             <Link
@@ -45,8 +35,7 @@ export function Documentation({ className }: DocumentationProps) {
             </Link>
           </Button>
           <Button asChild variant="outline">
-            <Link href="/" className="cursor-pointer">
-            </Link>
+            <Link href="/" className="cursor-pointer"></Link>
           </Button>
         </div>
       </SectionCard>

@@ -15,8 +15,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { FaGithub, FaTerminal } from "react-icons/fa";
-import GitHubProfile from "./GitHubProfile";
-import GitHubRepositories from "./GitHubRepositories";
+import GitHubProfile from "@/components/github/GitHubProfile";
+import GitHubRepositories from "@/components/github/GitHubRepositories";
 import type { GitHubData, GitHubApiResponse } from "@/types/github";
 import {
   Drawer,

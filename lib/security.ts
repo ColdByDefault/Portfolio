@@ -4,21 +4,6 @@
  */
 
 /**
- * Validates and sanitizes URL parameters
- */
-export function validateURLParam(param: string | null): string | null {
-  if (!param) return null;
-
-  // Remove any potentially dangerous characters
-  const sanitized = param.replace(/[<>&"'/]/g, "");
-
-  // Limit length to prevent DoS
-  if (sanitized.length > 100) return null;
-
-  return sanitized;
-}
-
-/**
  * Validates GitHub API data type parameter
  */
 export function validateDataType(type: string | null): string {
@@ -38,6 +23,8 @@ export class RateLimiter {
   private requests: Map<string, number[]> = new Map();
   private readonly windowMs: number;
   private readonly maxRequests: number;
+  private lastCleanup: number = Date.now();
+  private readonly cleanupInterval: number = 300000; // 5 minutes
 
   constructor(windowMs: number = 60000, maxRequests: number = 10) {
     this.windowMs = windowMs;
@@ -46,6 +33,13 @@ export class RateLimiter {
 
   isAllowed(identifier: string): boolean {
     const now = Date.now();
+
+    // Periodic cleanup to prevent memory leaks
+    if (now - this.lastCleanup > this.cleanupInterval) {
+      this.cleanup();
+      this.lastCleanup = now;
+    }
+
     const requests = this.requests.get(identifier) || [];
 
     // Remove old requests outside the window
@@ -60,6 +54,20 @@ export class RateLimiter {
 
     return true;
   }
+
+  private cleanup(): void {
+    const now = Date.now();
+    for (const [identifier, requests] of this.requests.entries()) {
+      const validRequests = requests.filter(
+        (time) => now - time < this.windowMs
+      );
+      if (validRequests.length === 0) {
+        this.requests.delete(identifier);
+      } else {
+        this.requests.set(identifier, validRequests);
+      }
+    }
+  }
 }
 
 /**
@@ -68,15 +76,45 @@ export class RateLimiter {
 export function sanitizeInput(input: string): string {
   if (!input) return "";
 
-  // Remove HTML tags and script injections
-  const htmlStripped = input.replace(/<|>/g, "");
+  // Prevent ReDoS by limiting input length
+  if (input.length > 10000) return "";
 
-  // Remove common spam patterns
+  // Secure HTML tag removal using character-by-character parsing
+  let htmlStripped = "";
+  let insideTag = false;
+
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i];
+
+    if (char === "<") {
+      insideTag = true;
+      continue;
+    }
+
+    if (char === ">" && insideTag) {
+      insideTag = false;
+      continue;
+    }
+
+    if (!insideTag) {
+      htmlStripped += char;
+    }
+  }
+
+  // Complete HTML entity encoding
+  htmlStripped = htmlStripped
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;");
+
+  // Remove common spam patterns (ReDoS-safe implementations)
   const spamPatterns = [
     /\b(viagra|cialis|casino|poker|lottery|bitcoin|crypto)\b/gi,
     /\b(click here|visit now|amazing offer|limited time)\b/gi,
     /\b(make money|earn money|work from home|get rich)\b/gi,
-    /https?:\/\/[^\s]+/g, // Remove URLs
+    /https?:\/\/\S+/g, // Remove URLs (more efficient)
   ];
 
   let sanitized = htmlStripped;
@@ -85,85 +123,6 @@ export function sanitizeInput(input: string): string {
   });
 
   return sanitized.trim();
-}
-
-/**
- * Validates email format and checks for suspicious patterns
- */
-export function validateEmailSecurity(email: string): {
-  valid: boolean;
-  reason?: string;
-} {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (!emailRegex.test(email)) {
-    return { valid: false, reason: "Invalid email format" };
-  }
-
-  // Check for suspicious patterns
-  const suspiciousPatterns = [
-    /\+.*\+/g, // Multiple plus signs
-    /\.{2,}/g, // Multiple dots
-    /@.*@/g, // Multiple @ symbols
-    /[0-9]{10,}/, // Long number sequences
-  ];
-
-  for (const pattern of suspiciousPatterns) {
-    if (pattern.test(email)) {
-      return { valid: false, reason: "Suspicious email pattern detected" };
-    }
-  }
-
-  // Check for disposable email domains
-  const disposableDomains = [
-    "10minutemail.com",
-    "tempmail.org",
-    "guerrillamail.com",
-    "mailinator.com",
-    "throwaway.email",
-    "temp-mail.org",
-  ];
-
-  const domain = email.split("@")[1]?.toLowerCase();
-  if (domain && disposableDomains.includes(domain)) {
-    return { valid: false, reason: "Disposable email addresses not allowed" };
-  }
-
-  return { valid: true };
-}
-
-/**
- * Contact form rate limiter with stricter limits
- */
-export class ContactRateLimiter extends RateLimiter {
-  constructor() {
-    super(15 * 60 * 1000, 1);
-  }
-}
-
-/**
- * Check if content appears to be spam
- */
-export function isSpamContent(content: string): boolean {
-  const spamIndicators = [
-    /(.)\1{4,}/g, // Repeated characters (5+ times)
-    /[A-Z]{5,}/g, // ALL CAPS words
-    /\b(URGENT|IMMEDIATE|ACT NOW|LIMITED TIME|CONGRATULATIONS)\b/gi,
-    /\$[0-9,]+/g, // Money amounts
-    /\b[0-9]{3}[-.]?[0-9]{3}[-.]?[0-9]{4}\b/g, // Phone numbers
-  ];
-
-  let spamScore = 0;
-
-  spamIndicators.forEach((pattern) => {
-    const matches = content.match(pattern);
-    if (matches) {
-      spamScore += matches.length;
-    }
-  });
-
-  // Content is spam if score > 3 or very short/long
-  return spamScore > 3 || content.length < 10 || content.length > 5000;
 }
 
 /**
@@ -201,27 +160,49 @@ export function sanitizeErrorMessage(error: unknown): string {
 export function sanitizeChatInput(input: string): string {
   if (!input) return "";
 
-  // Remove HTML tags completely
-  let sanitized = input;
-  // Repeat removal to ensure all nested or malformed tags are eliminated
-  let prevSanitized;
-  do {
-    prevSanitized = sanitized;
-    sanitized = sanitized.replace(/<[^>]*>/g, "");
-  } while (sanitized !== prevSanitized);
+  // Prevent ReDoS by limiting input length
+  if (input.length > 10000) return "";
 
-  // Remove script tags and javascript: protocols
-  sanitized = sanitized.replace(/javascript:/gi, "");
-  sanitized = sanitized.replace(/data:/gi, "");
-  sanitized = sanitized.replace(/vbscript:/gi, "");
+  // Secure HTML tag removal using character-by-character parsing
+  let sanitized = "";
+  let insideTag = false;
 
-  // Remove potentially dangerous attributes
-  // Repeat the replacement until no more dangerous attributes are left
-  let prevAttrSanitized;
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i];
+
+    if (char === "<") {
+      insideTag = true;
+      continue;
+    }
+
+    if (char === ">" && insideTag) {
+      insideTag = false;
+      continue;
+    }
+
+    if (!insideTag) {
+      sanitized += char;
+    }
+  }
+
+  // Complete HTML entity encoding
+  sanitized = sanitized
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;");
+
+  // Remove script tags and dangerous protocols in a single pass
+  sanitized = sanitized.replace(/(javascript|data|vbscript):/gi, "");
+
+  // Remove potentially dangerous event handler attributes iteratively
+  // This ensures complete removal of overlapping or nested patterns
+  let previousLength;
   do {
-    prevAttrSanitized = sanitized;
-    sanitized = sanitized.replace(/on\w+\s*=\s*[^>]*/gi, "");
-  } while (sanitized !== prevAttrSanitized);
+    previousLength = sanitized.length;
+    sanitized = sanitized.replace(/\bon\w+\s*=\s*[^>\s]*/gi, "");
+  } while (sanitized.length !== previousLength);
 
   // Remove excessive whitespace but preserve line breaks
   sanitized = sanitized.replace(/\s{2,}/g, " ").trim();
@@ -235,14 +216,17 @@ export function sanitizeChatInput(input: string): string {
 export function isChatSpam(content: string): boolean {
   if (!content) return true;
 
-  // Check for common spam patterns
+  // Prevent ReDoS by limiting input length
+  if (content.length > 10000) return true;
+
+  // Check for common spam patterns (ReDoS-safe implementations)
   const spamPatterns = [
     /(.)\1{6,}/g, // Repeated characters (7+ times)
     /[A-Z]{8,}/g, // Excessive ALL CAPS
     /\b(CLICK|BUY|MONEY|FREE|URGENT|LIMITED|ACT NOW)\b/gi,
     /\$[0-9,]+/g, // Money amounts
-    /\b[0-9]{3}[-.]?[0-9]{3}[-.]?[0-9]{4}\b/g, // Phone numbers
-    /https?:\/\/[^\s]+/gi, // URLs
+    /\b[0-9]{3}[-.]?[0-9]{3}[-.]?[0-9]{4}\b/g, // Phone numbers (simplified, ReDoS safe)
+    /https?:\/\/\S+/gi, // URLs (more efficient)
     /\b(bitcoin|crypto|lottery|casino|viagra|cialis)\b/gi,
   ];
 
@@ -272,105 +256,4 @@ export function isChatSpam(content: string): boolean {
   }
 
   return spamScore >= 4;
-}
-
-/**
- * Validate and sanitize user agent string
- */
-export function validateUserAgent(userAgent: string | null): boolean {
-  if (!userAgent) return false;
-
-  // Check for minimum length
-  if (userAgent.length < 10) return false;
-
-  // Check for suspicious patterns
-  const suspiciousPatterns = [
-    /bot/i,
-    /crawler/i,
-    /spider/i,
-    /scraper/i,
-    /python/i,
-    /curl/i,
-    /wget/i,
-  ];
-
-  for (const pattern of suspiciousPatterns) {
-    if (pattern.test(userAgent)) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-/**
- * ChatBot rate limiter with enhanced DoS protection
- */
-export class ChatBotRateLimiter extends RateLimiter {
-  private readonly maxBurst: number;
-  private readonly burstWindow: number;
-  private burstCounts: Map<string, { count: number; windowStart: number }> =
-    new Map();
-
-  constructor() {
-    // Allow 5 messages per minute, 20 per hour
-    super(60 * 1000, 5);
-    this.maxBurst = 3; // Max 3 messages in 10 seconds
-    this.burstWindow = 10 * 1000;
-  }
-
-  override isAllowed(identifier: string): boolean {
-    const now = Date.now();
-
-    // Check burst limit first
-    const burstData = this.burstCounts.get(identifier);
-    if (burstData) {
-      if (now - burstData.windowStart < this.burstWindow) {
-        if (burstData.count >= this.maxBurst) {
-          return false;
-        }
-        burstData.count++;
-      } else {
-        this.burstCounts.set(identifier, { count: 1, windowStart: now });
-      }
-    } else {
-      this.burstCounts.set(identifier, { count: 1, windowStart: now });
-    }
-
-    // Then check regular rate limit
-    return super.isAllowed(identifier);
-  }
-}
-
-/**
- * Prevent session fixation attacks
- */
-export function validateSessionId(sessionId: string | null): boolean {
-  if (!sessionId) return false;
-
-  const pattern = /^session_\d{13}_[a-f0-9]{32}$/;
-  return pattern.test(sessionId);
-}
-
-/**
- * Check for suspicious activity patterns
- */
-export function detectSuspiciousActivity(
-  clientIP: string,
-  userAgent: string,
-  messageCount: number,
-  timeWindow: number
-): boolean {
-  // Rapid fire messages
-  if (messageCount > 10 && timeWindow < 60000) {
-    // 10 messages in 1 minute
-    return true;
-  }
-
-  // Check for automation patterns
-  if (!validateUserAgent(userAgent)) {
-    return true;
-  }
-
-  return false;
 }

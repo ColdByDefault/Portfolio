@@ -7,7 +7,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { LanguageBadge } from "./LanguageBadge";
+import { LanguageBadge } from "@/components/blog";
 import { SUPPORTED_BLOG_LANGUAGES, type BlogLanguage } from "@/types/blogs";
 
 interface LanguageFilterProps {

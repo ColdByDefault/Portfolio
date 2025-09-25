@@ -5,7 +5,7 @@
   },
   "Hero": {
     "availableForCollaboration": "Tillgänglig för samarbete",
-    "fullStackDeveloper": "Juni",
+    "fullStackDeveloper": "Junior Fullstackutvecklare",
     "description": "Passionerad över att skapa enastående digitala upplevelser genom ren kod, innovativa lösningar och användarcentrerad design. Specialiserad på moderna webbteknologier med över 3 års erfarenhet.",
     "learnMoreAboutMe": "Läs mer om mig",
     "moreAboutMe": "Mer om mig på"
@@ -36,6 +36,16 @@
     "training": "Utbildning",
     "quickLinks": "Snabblänkar",
     "openForCollaboration": "Tillgänglig för hobbyprojekt"
+  },
+  "QuickActions": {
+    "title": "Snabbåtgärder",
+    "allMedia": "Alla Media",
+    "projects": "Projekt",
+    "latestPosts": "Senaste Inlägg",
+    "aboutMe": "Om Mig",
+    "portfolioDocs": "Portfolio Dokumentation",
+    "library": "Bibliotek",
+    "latestBlog": "Senaste Blogg"
   },
   "Technologies": {
     "title": "Färdigheter, Teknologier & Expertis",
@@ -256,7 +266,7 @@
     "description": "En modern, högpresterande utvecklarportfolio som visar full-stack-kapacitet med företagsarkitektur, tillgänglighetsstandarder och toppmoderna teknologier.",
     "performanceBadge": "95+ Google Lighthouse Poäng",
     "techHighlights": "Byggd Med Moderna Teknologier",
-    "readMore": "Läs Mer",
+    "readMore": "Lär dig om portfolions arkitektur",
     "featuresTitle": "Portfolio-funktioner",
     "actionsTitle": "Portfolio-åtgärder",
     "features": {
@@ -463,6 +473,10 @@
         "developmentGoals": {
           "title": "Utvecklingsmål",
           "description": "Primära mål och principer som följts under utvecklingen"
+        },
+        "qualityHighlights": {
+          "title": "Kvalitet & Automatisering",
+          "description": "Automatiserade flöden och verktyg som håller portfolion pålitlig."
         }
       },
       "portfolioFeatures": {
@@ -473,7 +487,9 @@
         "interactiveChatbot": "Interaktiv chatbot för besökarengagemang",
         "performanceOptimized": "Prestandaoptimerad med 100/100 Lighthouse-poäng",
         "seoOptimized": "SEO-optimerad med strukturerad data och meta-taggar",
-        "securityFirst": "Säkerhet-först-approach med indatavalidering"
+        "securityFirst": "Säkerhet-först-approach med indatavalidering",
+        "pageSpeedInsights": "Live PageSpeed Insights-integration med automatiska uppdateringar",
+        "adminDashboard": "Säker adminpanel för komplett bloggadministration"
       },
       "architectureFeatures": {
         "componentArchitecture": "Komponentbaserad arkitektur med tydlig separation av ansvar",
@@ -481,7 +497,9 @@
         "serverSideRendering": "Server-side rendering med Next.js App Router",
         "databaseIntegration": "Databasintegration med Prisma ORM",
         "authenticationSystem": "Anpassat autentiserings- och auktoriseringssystem",
-        "apiRoutesSecurity": "API-rutter med korrekt validering och säkerhet"
+        "apiRoutesSecurity": "API-rutter med korrekt validering och säkerhet",
+        "edgeRuntime": "Edge-first-distribution på Vercel för låg latens",
+        "securityHeaders": "Förstärkta säkerhetsrubriker och genomdriven CSP"
       },
       "developmentGoals": {
         "performance": {
@@ -499,7 +517,17 @@
         "maintainability": {
           "title": "Underhållbarhet",
           "description": "Ren kodarkitektur med TypeScript, korrekt testning och dokumentation."
+        },
+        "automation": {
+          "title": "Automatisering",
+          "description": "Automatiserade CI/CD-flöden, säkerhetsskanningar och schemalagda jobb som bevarar kvaliteten."
         }
+      },
+      "qualityHighlights": {
+        "codeqlSecurity": "GitHub Actions CodeQL-skanningar för JavaScript, TypeScript och Python",
+        "dependencyReview": "Automatiska beroenderevisioner som skyddar pull requests",
+        "vercelCronJobs": "Vercel CRON-jobb uppdaterar PageSpeed-data var 12:e timme",
+        "typedocDocs": "Typedoc-dokumentationspipeline för komponenter, app och typer"
       }
     },
     "Technology": {

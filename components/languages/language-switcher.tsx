@@ -12,12 +12,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Languages } from "lucide-react";
 
-const languages: Record<string, { name: string; flag: string }> = {
-  en: { name: "English", flag: "🇬🇧" },
-  de: { name: "Deutsch", flag: "🇩🇪" },
-  es: { name: "Español", flag: "🇪🇸" },
-  fr: { name: "Français", flag: "🇫🇷" },
-  sv: { name: "Svenska", flag: "🇸🇪" },
+const languages: Record<string, { name: string }> = {
+  en: { name: "English" },
+  de: { name: "Deutsch" },
+  es: { name: "Español" },
+  fr: { name: "Français" },
+  sv: { name: "Svenska" },
 };
 
 const LanguageSwitcher = () => {
@@ -71,10 +71,7 @@ const LanguageSwitcher = () => {
   };
 
   const getCurrentFlag = () => {
-    if (isUnsupportedLang) {
-      return "🌐"; // Show globe for unsupported languages
-    }
-    return languages[locale]?.flag ?? "🌐";
+    return "🌐"; // Always show globe emoji
   };
 
   const getCurrentName = () => {
@@ -102,22 +99,16 @@ const LanguageSwitcher = () => {
       <DropdownMenuContent align="end" aria-label="Language selection menu">
         {isUnsupportedLang && browserLang !== locale && (
           <DropdownMenuItem disabled className="text-muted-foreground text-xs">
-            <span className="mr-2" aria-hidden="true">
-              ⚠️
-            </span>
             Browser: {browserLang.toUpperCase()} (Unsupported)
           </DropdownMenuItem>
         )}
-        {Object.entries(languages).map(([key, { name, flag }]) => (
+        {Object.entries(languages).map(([key, { name }]) => (
           <DropdownMenuItem
             key={key}
             onClick={() => changeLocale(key)}
             aria-label={`Switch to ${name}`}
             className={locale === key ? "bg-accent" : ""}
           >
-            <span className="mr-2" aria-hidden="true">
-              {flag}
-            </span>
             {name}
             {locale === key && isUnsupportedLang && (
               <span className="ml-auto text-xs text-muted-foreground">

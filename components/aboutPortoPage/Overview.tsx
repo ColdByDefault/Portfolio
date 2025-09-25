@@ -6,7 +6,7 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { SectionCard, FeatureList } from "./shared";
+import { SectionCard, FeatureList } from "@/components/aboutPortoPage";
 import { overviewData, overviewSections } from "@/data/aboutPortfolioData";
 import type { OverviewProps } from "@/types/aboutPortfolioPage";
 
@@ -33,6 +33,17 @@ export function Overview({ className }: OverviewProps) {
         <FeatureList
           items={overviewData.architectureFeatures.map((feature) =>
             t(feature.translationKey)
+          )}
+        />
+      </SectionCard>
+
+      <SectionCard
+        title={t(overviewSections.qualityHighlights.titleKey)}
+        description={t(overviewSections.qualityHighlights.descriptionKey)}
+      >
+        <FeatureList
+          items={overviewData.qualityHighlights.map((highlight) =>
+            t(highlight.translationKey)
           )}
         />
       </SectionCard>

@@ -25,7 +25,7 @@ import {
   getTechStackHighlights,
   PortoCardUtils,
 } from "./portoCard.utils";
-import { FeatureGrid, TechHighlights } from "./PortoCardComponents";
+import { FeatureGrid, TechHighlights } from "@/components/aboutPorto";
 
 export default React.memo(function PortoCard({ className }: PortoCardProps) {
   const t = useTranslations("PortfolioAbout");
@@ -160,7 +160,6 @@ export default React.memo(function PortoCard({ className }: PortoCardProps) {
                 variant="outline"
                 className={deviceType === "mobile" ? "text-sm mt-2" : "mt-2"}
                 aria-describedby="read-more-note"
-                aria-label={`${t("readMore")}`}
                 asChild
               >
                 <Link href="/about-portfolio">
