@@ -15,7 +15,7 @@ declare global {
 const createPrismaClient = (): PrismaClient => {
   // Validate required environment variables
   if (!process.env.DATABASE_URL) {
-    throw new Error("DATABASE_URL environment variable is required");
+    throw new Error("Database configuration error");
   }
 
   return new PrismaClient({

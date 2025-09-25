@@ -56,10 +56,14 @@ export function sanitizeInput(input: string): string {
   // Remove HTML tags and encode remaining angle brackets safely
   let htmlStripped = input;
 
-  // First pass: Remove complete HTML tags
-  htmlStripped = htmlStripped.replace(/<[^>]*>/g, "");
+  // Iterative removal: Keep removing HTML tags until no more tags are found
+  let previousLength;
+  do {
+    previousLength = htmlStripped.length;
+    htmlStripped = htmlStripped.replace(/<[^>]*>/g, "");
+  } while (htmlStripped.length !== previousLength);
 
-  // Second pass: Encode any remaining angle brackets that weren't part of tags
+  // Encode any remaining angle brackets
   htmlStripped = htmlStripped.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
   // Remove common spam patterns
@@ -116,8 +120,12 @@ export function sanitizeChatInput(input: string): string {
   // Remove HTML tags completely with proper handling
   let sanitized = input;
 
-  // Remove HTML tags first
-  sanitized = sanitized.replace(/<[^>]*>/g, "");
+  // Iterative removal: Keep removing HTML tags until no more tags are found
+  let previousLength;
+  do {
+    previousLength = sanitized.length;
+    sanitized = sanitized.replace(/<[^>]*>/g, "");
+  } while (sanitized.length !== previousLength);
 
   // Then encode remaining angle brackets
   sanitized = sanitized.replace(/</g, "&lt;").replace(/>/g, "&gt;");

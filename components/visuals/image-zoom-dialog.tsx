@@ -47,6 +47,8 @@ export function ImageZoomDialog({
       <DialogTrigger asChild>
         <button
           type="button"
+          aria-label={`Open ${alt} in full size view`}
+          aria-describedby={title ? `zoom-title-${alt}` : undefined}
           className={cn(
             "cursor-zoom-in transition-opacity hover:opacity-80 border-none bg-transparent p-0 m-0",
             className
@@ -76,7 +78,10 @@ export function ImageZoomDialog({
             />
             {title && (
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-6 text-center">
-                <h3 className="text-xl font-semibold drop-shadow-lg">
+                <h3
+                  id={`zoom-title-${alt}`}
+                  className="text-xl font-semibold drop-shadow-lg"
+                >
                   {title}
                 </h3>
               </div>
