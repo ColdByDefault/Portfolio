@@ -58,11 +58,6 @@ export function useNavItems(): NavItem[] {
       icon: Home,
     },
     {
-      name: t("aboutSite"),
-      href: "/#this-portfolio",
-      icon: Brush,
-    },
-    {
       name: t("mcp"),
       href: "/#github",
       icon: Antenna,
@@ -76,6 +71,11 @@ export function useNavItems(): NavItem[] {
       name: t("certifications"),
       href: "/#cert",
       icon: BookOpenCheck,
+    },
+    {
+      name: t("aboutSite"),
+      href: "/about-portfolio",
+      icon: Brush,
     },
     {
       name: t("media"),
