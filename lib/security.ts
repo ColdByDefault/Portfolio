@@ -23,6 +23,8 @@ export class RateLimiter {
   private requests: Map<string, number[]> = new Map();
   private readonly windowMs: number;
   private readonly maxRequests: number;
+  private lastCleanup: number = Date.now();
+  private readonly cleanupInterval: number = 300000; // 5 minutes
 
   constructor(windowMs: number = 60000, maxRequests: number = 10) {
     this.windowMs = windowMs;
@@ -31,6 +33,13 @@ export class RateLimiter {
 
   isAllowed(identifier: string): boolean {
     const now = Date.now();
+
+    // Periodic cleanup to prevent memory leaks
+    if (now - this.lastCleanup > this.cleanupInterval) {
+      this.cleanup();
+      this.lastCleanup = now;
+    }
+
     const requests = this.requests.get(identifier) || [];
 
     // Remove old requests outside the window
@@ -44,6 +53,20 @@ export class RateLimiter {
     this.requests.set(identifier, validRequests);
 
     return true;
+  }
+
+  private cleanup(): void {
+    const now = Date.now();
+    for (const [identifier, requests] of this.requests.entries()) {
+      const validRequests = requests.filter(
+        (time) => now - time < this.windowMs
+      );
+      if (validRequests.length === 0) {
+        this.requests.delete(identifier);
+      } else {
+        this.requests.set(identifier, validRequests);
+      }
+    }
   }
 }
 
@@ -63,8 +86,13 @@ export function sanitizeInput(input: string): string {
     htmlStripped = htmlStripped.replace(/<[^>]*>/g, "");
   } while (htmlStripped.length !== previousLength);
 
-  // Encode any remaining angle brackets
-  htmlStripped = htmlStripped.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  // Complete HTML entity encoding
+  htmlStripped = htmlStripped
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;");
 
   // Remove common spam patterns
   const spamPatterns = [
@@ -127,8 +155,13 @@ export function sanitizeChatInput(input: string): string {
     sanitized = sanitized.replace(/<[^>]*>/g, "");
   } while (sanitized.length !== previousLength);
 
-  // Then encode remaining angle brackets
-  sanitized = sanitized.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  // Complete HTML entity encoding
+  sanitized = sanitized
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;");
 
   // Remove script tags and dangerous protocols in a single pass
   sanitized = sanitized.replace(/(javascript|data|vbscript):/gi, "");
@@ -149,13 +182,16 @@ export function sanitizeChatInput(input: string): string {
 export function isChatSpam(content: string): boolean {
   if (!content) return true;
 
+  // Prevent ReDoS by limiting input length
+  if (content.length > 10000) return true;
+
   // Check for common spam patterns
   const spamPatterns = [
     /(.)\1{6,}/g, // Repeated characters (7+ times)
     /[A-Z]{8,}/g, // Excessive ALL CAPS
     /\b(CLICK|BUY|MONEY|FREE|URGENT|LIMITED|ACT NOW)\b/gi,
     /\$[0-9,]+/g, // Money amounts
-    /\b[0-9]{3}[-.]?[0-9]{3}[-.]?[0-9]{4}\b/g, // Phone numbers
+    /\b(?:[0-9]{3}[-.]?){2}[0-9]{4}\b/g, // Phone numbers (ReDoS safe)
     /https?:\/\/[^\s]+/gi, // URLs
     /\b(bitcoin|crypto|lottery|casino|viagra|cialis)\b/gi,
   ];
