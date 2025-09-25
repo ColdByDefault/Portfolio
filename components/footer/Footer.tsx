@@ -7,6 +7,7 @@ import {
   legalLinks,
   resourceLinks,
   socialLinks,
+  footerNavLinks,
 } from "@/data/footerLinks";
 
 export default function Footer() {
@@ -14,7 +15,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-t min-h-[200px]">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 py-6">
           <div className="space-y-3">
             <h3 className="text-xs font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
               Legal
@@ -27,11 +28,27 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div className="lg:col-span-3 space-y-3">
+          <div className="space-y-3">
+            <h3 className="text-xs font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
+              Navigation
+            </h3>
+            <div className="grid grid-cols-1 gap-4">
+              {footerNavLinks.map((columnLinks, columnIndex) => (
+                <ul key={columnIndex} className="space-y-2">
+                  {columnLinks.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <Links links={[link]} />
+                    </li>
+                  ))}
+                </ul>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-3">
             <h3 className="text-xs font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
               Resources
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               {resourceLinks.map((columnLinks, columnIndex) => (
                 <ul key={columnIndex} className="space-y-2">
                   {columnLinks.map((link, linkIndex) => (
