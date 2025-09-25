@@ -76,15 +76,30 @@ export class RateLimiter {
 export function sanitizeInput(input: string): string {
   if (!input) return "";
 
-  // Remove HTML tags and encode remaining angle brackets safely
-  let htmlStripped = input;
+  // Prevent ReDoS by limiting input length
+  if (input.length > 10000) return "";
 
-  // Iterative removal: Keep removing HTML tags until no more tags are found
-  let previousLength;
-  do {
-    previousLength = htmlStripped.length;
-    htmlStripped = htmlStripped.replace(/<[^>]*>/g, "");
-  } while (htmlStripped.length !== previousLength);
+  // Secure HTML tag removal using character-by-character parsing
+  let htmlStripped = "";
+  let insideTag = false;
+
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i];
+
+    if (char === "<") {
+      insideTag = true;
+      continue;
+    }
+
+    if (char === ">" && insideTag) {
+      insideTag = false;
+      continue;
+    }
+
+    if (!insideTag) {
+      htmlStripped += char;
+    }
+  }
 
   // Complete HTML entity encoding
   htmlStripped = htmlStripped
@@ -94,12 +109,12 @@ export function sanitizeInput(input: string): string {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#x27;");
 
-  // Remove common spam patterns
+  // Remove common spam patterns (ReDoS-safe implementations)
   const spamPatterns = [
     /\b(viagra|cialis|casino|poker|lottery|bitcoin|crypto)\b/gi,
     /\b(click here|visit now|amazing offer|limited time)\b/gi,
     /\b(make money|earn money|work from home|get rich)\b/gi,
-    /https?:\/\/[^\s]+/g, // Remove URLs
+    /https?:\/\/\S+/g, // Remove URLs (more efficient)
   ];
 
   let sanitized = htmlStripped;
@@ -145,15 +160,30 @@ export function sanitizeErrorMessage(error: unknown): string {
 export function sanitizeChatInput(input: string): string {
   if (!input) return "";
 
-  // Remove HTML tags completely with proper handling
-  let sanitized = input;
+  // Prevent ReDoS by limiting input length
+  if (input.length > 10000) return "";
 
-  // Iterative removal: Keep removing HTML tags until no more tags are found
-  let previousLength;
-  do {
-    previousLength = sanitized.length;
-    sanitized = sanitized.replace(/<[^>]*>/g, "");
-  } while (sanitized.length !== previousLength);
+  // Secure HTML tag removal using character-by-character parsing
+  let sanitized = "";
+  let insideTag = false;
+
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i];
+
+    if (char === "<") {
+      insideTag = true;
+      continue;
+    }
+
+    if (char === ">" && insideTag) {
+      insideTag = false;
+      continue;
+    }
+
+    if (!insideTag) {
+      sanitized += char;
+    }
+  }
 
   // Complete HTML entity encoding
   sanitized = sanitized
@@ -166,9 +196,13 @@ export function sanitizeChatInput(input: string): string {
   // Remove script tags and dangerous protocols in a single pass
   sanitized = sanitized.replace(/(javascript|data|vbscript):/gi, "");
 
-  // Remove potentially dangerous event handler attributes efficiently
-  // This handles all common event attributes (onclick, onload, etc.) in one pass
-  sanitized = sanitized.replace(/\bon\w+\s*=\s*[^>\s]*/gi, "");
+  // Remove potentially dangerous event handler attributes iteratively
+  // This ensures complete removal of overlapping or nested patterns
+  let previousLength;
+  do {
+    previousLength = sanitized.length;
+    sanitized = sanitized.replace(/\bon\w+\s*=\s*[^>\s]*/gi, "");
+  } while (sanitized.length !== previousLength);
 
   // Remove excessive whitespace but preserve line breaks
   sanitized = sanitized.replace(/\s{2,}/g, " ").trim();
@@ -185,14 +219,14 @@ export function isChatSpam(content: string): boolean {
   // Prevent ReDoS by limiting input length
   if (content.length > 10000) return true;
 
-  // Check for common spam patterns
+  // Check for common spam patterns (ReDoS-safe implementations)
   const spamPatterns = [
     /(.)\1{6,}/g, // Repeated characters (7+ times)
     /[A-Z]{8,}/g, // Excessive ALL CAPS
     /\b(CLICK|BUY|MONEY|FREE|URGENT|LIMITED|ACT NOW)\b/gi,
     /\$[0-9,]+/g, // Money amounts
-    /\b(?:[0-9]{3}[-.]?){2}[0-9]{4}\b/g, // Phone numbers (ReDoS safe)
-    /https?:\/\/[^\s]+/gi, // URLs
+    /\b[0-9]{3}[-.]?[0-9]{3}[-.]?[0-9]{4}\b/g, // Phone numbers (simplified, ReDoS safe)
+    /https?:\/\/\S+/gi, // URLs (more efficient)
     /\b(bitcoin|crypto|lottery|casino|viagra|cialis)\b/gi,
   ];
 
