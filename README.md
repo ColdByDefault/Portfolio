@@ -444,6 +444,7 @@ Documentation: https://docs.coldbydefault.com/
 Email: contact@coldbydefault.com
 Linktree: https://linktr.ee/ColdByDefault  
 For professional or security inquiries, reach out via the official channels listed above.
+*P.S. If you find any bugs, they're not bugs - they're undocumented features!*
 
 ---
 
