@@ -11,6 +11,7 @@ import {
   CodeExamples,
   PerformanceMetrics,
 } from "@/components/aboutPortoPage";
+import Link from "next/link";
 
 export default function PortfolioDocumentation() {
   return (
@@ -110,6 +111,9 @@ export default function PortfolioDocumentation() {
             </p>
           </div>
           <PerformanceMetrics />
+        </section>
+        <section>
+          <Link className="mx-auto flex items-center justify-center gap-2 text-sm text-primary hover:underline" href="https://docs.coldbydefault.com"></Link>
         </section>
       </main>
     </div>
