@@ -4,4 +4,5 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 
+export * from "./portfolio-section";
 
