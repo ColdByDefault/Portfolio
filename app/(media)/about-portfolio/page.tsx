@@ -8,7 +8,6 @@ import {
   ArchitectureDiagram,
   TechStackGrid,
   WorkflowDiagram,
-  ProjectShowcase,
   CodeExamples,
   PerformanceMetrics,
 } from "@/components/aboutPortoPage";
@@ -78,22 +77,6 @@ export default function PortfolioDocumentation() {
             </p>
           </div>
           <WorkflowDiagram />
-        </section>
-
-        <Separator className="my-20" />
-
-        {/* Featured Projects */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
-              Featured Projects Portfolio
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Showcase of technical achievements and project implementations
-              demonstrating real-world problem-solving and innovative solutions.
-            </p>
-          </div>
-          <ProjectShowcase />
         </section>
 
         <Separator className="my-20" />

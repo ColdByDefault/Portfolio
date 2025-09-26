@@ -1,19 +1,67 @@
-import { Code, Globe, Target, Gauge } from "lucide-react";
+/**
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ */
+import {
+  Code,
+  Globe,
+  Target,
+  Gauge,
+  Shield,
+  Languages,
+  Database,
+  Zap,
+  Palette,
+  Settings,
+  GitBranch,
+  TestTube,
+  Rocket,
+  CheckCircle,
+} from "lucide-react";
 import type {
   TechStackItem,
-  ProjectItem,
   ArchitectureNode,
   WorkflowStep,
   CodeExample,
   PerformanceMetric,
-} from "../types/portfolio-section.types";
+} from "@/types/portfolio-section.types";
 
 export const architectureNodes: ArchitectureNode[] = [
   {
     icon: Globe,
-    title: "CDN Layer",
-    subtitle: "CloudFlare, AWS CloudFront",
+    title: "CDN & Edge Network",
+    subtitle: "Vercel Edge Network",
     color: "bg-blue-500/10 text-blue-600",
+  },
+  {
+    icon: Shield,
+    title: "Security & Middleware",
+    subtitle: "CSP Headers + Rate Limiting + Request Sanitization",
+    color: "bg-red-500/10 text-red-600",
+  },
+  {
+    icon: Code,
+    title: "Frontend Application",
+    subtitle: "Next.js 15.5.1 + React 19.1.1 + TypeScript",
+    color: "bg-green-500/10 text-green-600",
+  },
+  {
+    icon: Languages,
+    title: "Internationalization",
+    subtitle: "next-intl 4.3.5 (5 Languages)",
+    color: "bg-indigo-500/10 text-indigo-600",
+  },
+  {
+    icon: Target,
+    title: "Database Layer",
+    subtitle: "Neon PostgreSQL + Prisma ORM",
+    color: "bg-purple-500/10 text-purple-600",
+  },
+  {
+    icon: Gauge,
+    title: "API Integration",
+    subtitle: "GitHub API + PageSpeed Insights",
+    color: "bg-orange-500/10 text-orange-600",
   },
 ];
 
@@ -22,40 +70,126 @@ export const techStacks: TechStackItem[] = [
     icon: Code,
     title: "Frontend Development",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Modern reactive user interfaces.",
+      "Modern reactive user interfaces with Next.js 15.5.1 and React 19.1.1, featuring server components and edge runtime optimization.",
     technologies: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Three.js",
+      "Next.js 15.5.1",
+      "React 19.1.1",
+      "TypeScript 5.x",
+      "Server Components",
+      "Framer Motion 12.x",
+      "React Hooks",
     ],
     level: 95,
+  },
+  {
+    icon: Database,
+    title: "Backend & Database",
+    description:
+      "Type-safe backend development with Prisma ORM and serverless PostgreSQL, ensuring data integrity and optimal performance.",
+    technologies: [
+      "Prisma ORM",
+      "Neon PostgreSQL",
+      "Zod Validation",
+      "Next.js API Routes",
+      "Vercel Edge Functions",
+      "Database Migrations",
+    ],
+    level: 90,
+  },
+  {
+    icon: Palette,
+    title: "UI/UX & Design",
+    description:
+      "Accessible, responsive design systems with modern animations and cross-platform compatibility for optimal user experience.",
+    technologies: [
+      "Tailwind CSS 4.1.12",
+      "Radix UI Primitives",
+      "shadcn/ui Components",
+      "Embla Carousel 8.6.0",
+      "Lucide React Icons",
+      "Responsive Design",
+    ],
+    level: 88,
+  },
+  {
+    icon: Zap,
+    title: "Performance & SEO",
+    description:
+      "Lighthouse 100/100 optimization with advanced caching strategies, Core Web Vitals optimization, and comprehensive SEO implementation.",
+    technologies: [
+      "Core Web Vitals",
+      "Image Optimization",
+      "Code Splitting",
+      "JSON-LD Schema",
+      "Open Graph Meta",
+      "Vercel Analytics",
+    ],
+    level: 100,
+  },
+  {
+    icon: Settings,
+    title: "Development Tools",
+    description:
+      "Modern development workflow with strict TypeScript, comprehensive linting, and automated quality assurance for maintainable code.",
+    technologies: [
+      "ESLint 9.x",
+      "TypeScript Strict Mode",
+      "Prettier",
+      "Git Workflow",
+      "Vercel Deployment",
+      "TypeDoc",
+    ],
+    level: 92,
+  },
+  {
+    icon: Languages,
+    title: "Internationalization",
+    description:
+      "Multi-language support with next-intl 4.3.5, covering 5 languages with dynamic locale routing and SEO optimization.",
+    technologies: [
+      "next-intl 4.3.5",
+      "Dynamic Routing",
+      "5 Languages (EN/DE/ES/FR/SV)",
+      "Locale Detection",
+      "SEO Localization",
+      "Type-safe Messages",
+    ],
+    level: 85,
   },
 ];
 
 export const workflowSteps: WorkflowStep[] = [
   {
     icon: Target,
-    label: "Requirements Analysis",
+    label: "Planning & Design",
+    color: "bg-blue-500/10 text-blue-600",
+  },
+  {
+    icon: Code,
+    label: "TypeScript Development",
+    color: "bg-green-500/10 text-green-600",
+  },
+  {
+    icon: TestTube,
+    label: "Quality Assurance",
+    color: "bg-purple-500/10 text-purple-600",
+  },
+  {
+    icon: GitBranch,
+    label: "Version Control",
+    color: "bg-orange-500/10 text-orange-600",
+  },
+  {
+    icon: Rocket,
+    label: "Vercel Deployment",
     color: "bg-red-500/10 text-red-600",
   },
-];
-
-export const projects: ProjectItem[] = [
   {
-    title: "Lorem E-commerce Platform",
-    description:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim. Full-featured online marketplace with advanced analytics.",
-    tech: ["React", "Node.js", "PostgreSQL", "Stripe", "Redis", "Docker"],
-    metrics: "50k+ users, 99.9% uptime, $2M+ processed",
-    category: "E-commerce",
-    status: "completed",
+    icon: CheckCircle,
+    label: "Performance Validation",
+    color: "bg-indigo-500/10 text-indigo-600",
   },
 ];
-
-export const projectCategories = ["All", "Analytics", "Mobile", "AI/ML"];
 
 export const codeExamples: CodeExample[] = [
   {

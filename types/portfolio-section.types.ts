@@ -1,3 +1,7 @@
+/**
+ * @author ColdByDefault
+ * @copyright 2025 ColdByDefault. All Rights Reserved.
+ */
 import type React from "react";
 
 export interface TechStackItem {
@@ -7,15 +11,6 @@ export interface TechStackItem {
   technologies: string[];
   metrics?: string;
   level?: number;
-}
-
-export interface ProjectItem {
-  title: string;
-  description: string;
-  tech: string[];
-  metrics: string;
-  category: string;
-  status: "completed" | "in-progress" | "planned";
 }
 
 export interface ArchitectureNode {
