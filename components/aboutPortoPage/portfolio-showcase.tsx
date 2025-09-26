@@ -13,10 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FileCode } from "lucide-react";
-import {
-  codeExamples,
-} from "@/data/portfolio-section.data";
-
+import { codeExamples } from "@/data/portfolio-section.data";
 
 export function CodeExamples() {
   return (
@@ -27,18 +24,19 @@ export function CodeExamples() {
           Code Examples & Implementation
         </CardTitle>
         <CardDescription>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Real-world
-          code samples and best practices.
+          Real-world TypeScript code examples showcasing separation of concerns,
+          custom hooks, and clean architecture patterns from the portfolio
+          codebase.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="0" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 gap-4">
             {codeExamples.map((example, index) => (
               <TabsTrigger
                 key={index}
                 value={index.toString()}
-                className="text-xs"
+                className="text-xs bg-background cursor-pointer hover:bg-black/20 transition-colors"
               >
                 {example.title}
               </TabsTrigger>

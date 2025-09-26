@@ -17,6 +17,9 @@ import {
   TestTube,
   Rocket,
   CheckCircle,
+  Search,
+  Smartphone,
+  Monitor,
 } from "lucide-react";
 import type {
   TechStackItem,
@@ -193,35 +196,146 @@ export const workflowSteps: WorkflowStep[] = [
 
 export const codeExamples: CodeExample[] = [
   {
-    title: "Frontend Component",
+    title: "Custom Hook",
     language: "TypeScript",
-    code: `// Lorem ipsum component example
-export function LoremComponent({ data }: LoremProps) {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+    code: `// Custom hook for responsive behavior
+export function useResponsiveCarousel(): ResponsiveCarouselConfig {
+  const [cardsPerSlide, setCardsPerSlide] = useState<number>(3);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkScreenSize = (): void => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setCardsPerSlide(1);
+        setIsMobile(true);
+      } else if (width < 1024) {
+        setCardsPerSlide(2);
+        setIsMobile(false);
+      } else {
+        setCardsPerSlide(3);
+        setIsMobile(false);
+      }
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  return { cardsPerSlide, isMobile };
+}`,
+  },
+  {
+    title: "Logic Hook",
+    language: "TypeScript",
+    code: `// Business logic separation in custom hook
+export function useCertificationShowcaseLogic(): CertificationShowcaseLogic {
+  const isMobile = useIsMobile();
+  const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
+  const [isTablet, setIsTablet] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
+  useEffect(() => {
+    const checkIsTablet = () => {
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024);
+    };
+    
+    checkIsTablet();
+    window.addEventListener("resize", checkIsTablet);
+    return () => window.removeEventListener("resize", checkIsTablet);
+  }, []);
+
+  const toggleCard = (id: number) => {
+    setExpandedCards((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  };
+
+  return { isMobile, isTablet, expandedCards, hoveredCard, toggleCard, setHoveredCard };
+}`,
+  },
+  {
+    title: "Component Structure",
+    language: "TypeScript",
+    code: `// Clean component with separated concerns
+export function CertificationShowcaseMobile({
+  certifications,
+  logic,
+  className,
+}: CertificationShowcaseMobileProps) {
   
-  const handleSubmit = async (formData: FormData) => {
-    setLoading(true)
-    try {
-      const result = await submitLorem(formData)
-      toast.success('Lorem submitted successfully')
-      return result
-    } catch (err) {
-      setError(err.message)
-      toast.error('Failed to submit lorem')
-    } finally {
-      setLoading(false)
+  const getContainerClasses = () => {
+    if (logic.isMobile) {
+      return "flex flex-col gap-4 px-2 sm:px-4";
+    } else if (logic.isTablet) {
+      return "flex flex-col gap-4 px-4";
     }
-  }
-  
+    return "flex flex-col gap-4 px-4"; // fallback
+  };
+
+  const renderCard = (cert: Certification) => {
+    if (logic.isMobile) {
+      return renderMobileCard(cert);
+    } else if (logic.isTablet) {
+      return renderTabletCard(cert);
+    }
+    return renderMobileCard(cert);
+  };
+
   return (
-    <Card className="lorem-container">
-      <CardContent>
-        {error && <Alert variant="destructive">{error}</Alert>}
-        <LoremForm onSubmit={handleSubmit} loading={loading} />
-      </CardContent>
-    </Card>
-  )
+    <section className={className} id="cert">
+      <Card className="max-w-7xl mx-auto">
+        {certifications.map((cert) => renderCard(cert))}
+      </Card>
+    </section>
+  );
+}`,
+  },
+  {
+    title: "API Data Hook",
+    language: "TypeScript",
+    code: `// Data fetching with caching and error handling
+export function usePageSpeedData({
+  url,
+  showBothStrategies = true,
+}: UsePageSpeedDataProps): UsePageSpeedDataReturn {
+  const [mobileData, setMobileData] = useState<PageSpeedResult | null>(null);
+  const [desktopData, setDesktopData] = useState<PageSpeedResult | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [cacheStatus, setCacheStatus] = useState<
+    "fresh" | "updating" | "updated" | null
+  >(null);
+
+  const fetchStrategy = useCallback(async (
+    strategy: "mobile" | "desktop",
+    forceRefresh = false
+  ): Promise<void> => {
+    try {
+      const queryParams = new URLSearchParams({ url, strategy });
+      if (forceRefresh) queryParams.append("refresh", "true");
+      
+      const response = await fetch(\`/api/pagespeed?\${queryParams}\`);
+      const result = await response.json();
+      
+      if (strategy === "mobile") {
+        setMobileData(result);
+      } else {
+        setDesktopData(result);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    }
+  }, [url]);
+
+  return { mobileData, desktopData, loading, error, cacheStatus, refresh };
 }`,
   },
 ];
@@ -229,17 +343,92 @@ export function LoremComponent({ data }: LoremProps) {
 export const performanceMetrics: PerformanceMetric[] = [
   {
     icon: Gauge,
-    title: "Performance Optimization",
+    title: "Core Web Vitals",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Advanced optimization techniques.",
+      "Lighthouse 100/100 performance scores with optimized Core Web Vitals metrics for exceptional user experience.",
     items: [
-      "Code splitting & lazy loading",
-      "Image optimization & WebP conversion",
-      "Caching strategies (Redis, CDN)",
-      "Bundle size optimization",
-      "Tree shaking & dead code elimination",
-      "Service worker implementation",
+      "Largest Contentful Paint (LCP) < 2.5s",
+      "First Input Delay (FID) < 100ms",
+      "Cumulative Layout Shift (CLS) < 0.1",
+      "Time to Interactive (TTI) optimization",
+      "Speed Index optimization",
+      "First Contentful Paint (FCP) < 1.8s",
     ],
-    score: 98,
+    score: 95,
+  },
+  {
+    icon: Search,
+    title: "SEO Optimization",
+    description:
+      "Comprehensive SEO implementation achieving 100/100 Lighthouse SEO score with structured data and meta optimization.",
+    items: [
+      "JSON-LD structured data schema",
+      "Open Graph & Twitter Cards meta",
+      "Semantic HTML5 markup",
+      "Multi-language SEO optimization",
+      "Dynamic sitemap generation",
+      "Canonical URLs & robots.txt",
+    ],
+    score: 100,
+  },
+  {
+    icon: Zap,
+    title: "Build Optimization",
+    description:
+      "Advanced build optimization with Next.js 15.5.1 features, edge runtime, and intelligent code splitting strategies.",
+    items: [
+      "Server Components optimization",
+      "Dynamic imports & lazy loading",
+      "Tree shaking & dead code elimination",
+      "Bundle size optimization",
+      "Image optimization with Next.js Image",
+      "Turbopack for faster builds",
+    ],
+    score: 91,
+  },
+  {
+    icon: Monitor,
+    title: "Accessibility",
+    description:
+      "WCAG 2.1 AA compliance with comprehensive accessibility features ensuring inclusive user experience.",
+    items: [
+      "Keyboard navigation support",
+      "Screen reader compatibility",
+      "Color contrast ≥ 4.5:1 ratio",
+      "ARIA labels and roles",
+      "Skip links implementation",
+      "Focus management",
+    ],
+    score: 92,
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile Performance",
+    description:
+      "Mobile-first responsive design with optimized performance for all device types and screen sizes.",
+    items: [
+      "Responsive breakpoint optimization",
+      "Touch-friendly interface design",
+      "Mobile Core Web Vitals < targets",
+      "Progressive enhancement",
+      "Adaptive loading strategies",
+      "Cross-device compatibility",
+    ],
+    score: 60,
+  },
+  {
+    icon: Shield,
+    title: "Security & Headers",
+    description:
+      "Production-grade security implementation with CSP headers, rate limiting, and comprehensive security measures.",
+    items: [
+      "Content Security Policy (CSP) headers",
+      "Rate limiting implementation",
+      "Request sanitization",
+      "HTTPS enforcement",
+      "Security headers (HSTS, X-Frame-Options)",
+      "Input validation & Zod schemas",
+    ],
+    score: 97,
   },
 ];
