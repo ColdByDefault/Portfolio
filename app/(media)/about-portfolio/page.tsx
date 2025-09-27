@@ -12,6 +12,10 @@ import {
   PerformanceMetrics,
 } from "@/components/aboutPortoPage";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ExternalLink, FileText } from "lucide-react";
 
 export default function PortfolioDocumentation() {
   return (
@@ -34,8 +38,8 @@ export default function PortfolioDocumentation() {
 
         {/* System Architecture */}
         <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
+          <div className="text-center mb-12 w-full">
+            <h2 className="text-3xl font-bold mb-4 text-center">
               System Architecture & Design
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -112,8 +116,48 @@ export default function PortfolioDocumentation() {
           </div>
           <PerformanceMetrics />
         </section>
-        <section>
-          <Link className="mx-auto flex items-center justify-center gap-2 text-sm text-primary hover:underline" href="https://docs.coldbydefault.com"></Link>
+        <section
+          className="text-center"
+          aria-labelledby="documentation-section"
+        >
+          <Card
+            className="border-primary/20"
+            role="region"
+            aria-labelledby="documentation-card-title"
+          >
+            <CardHeader>
+              <CardTitle
+                id="documentation-card-title"
+                className="flex items-center gap-2 justify-center"
+              >
+                <FileText className="h-5 w-5" aria-hidden="true" />
+                Technical Documentation
+                <Badge
+                  variant="default"
+                  className="bg-green-500"
+                  aria-label="Documentation status: Online"
+                >
+                  Online
+                </Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-4">
+                Comprehensive API documentation and component references.
+              </p>
+              <Button asChild variant="outline">
+                <Link
+                  href="https://docs.coldbydefault.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View comprehensive technical documentation (opens in new tab)"
+                >
+                  <ExternalLink className="mr-2 h-4 w-4" aria-hidden="true" />
+                  View Documentation
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
         </section>
       </main>
     </div>
