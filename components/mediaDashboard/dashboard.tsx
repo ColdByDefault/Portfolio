@@ -18,7 +18,6 @@ import {
   User,
   FolderGit2,
   BookOpen,
-  Mail,
   ExternalLink,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -59,13 +58,6 @@ export function MediaDashboard() {
       description: t("cards.library.description"),
       href: "/library",
       icon: BookOpen,
-    },
-    {
-      title: t("cards.contact.title"),
-      description: t("cards.contact.description"),
-      href: "#",
-      icon: Mail,
-      isComingSoon: true,
     },
   ];
   return (
