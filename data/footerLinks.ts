@@ -27,7 +27,7 @@ export const footerNavLinks: LinkItem[][] = [
     { href: "/media", label: "Media" },
     { href: "/about", label: "About Me" },
     { href: "/about-portfolio", label: "About Portfolio" },
-    { href: "/blog", label: "Blog" },
+    { href: "/blog", label: "Blogs" },
   ],
 ];
 
