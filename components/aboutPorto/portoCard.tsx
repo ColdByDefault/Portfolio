@@ -2,6 +2,9 @@
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
+/** This component has types and data in portoCard.utils.ts 
+ * NOT as other components in @/types @/data 
+*/
 
 "use client";
 
@@ -27,7 +30,7 @@ import {
   PortoCardUtils,
 } from "./portoCard.utils";
 import { FeatureGrid, TechHighlights } from "@/components/aboutPorto";
-import VersionDisplay from "../VersionDisplay";
+import VersionDisplay from "@/components/VersionDisplay";
 
 export default React.memo(function PortoCard({ className }: PortoCardProps) {
   const t = useTranslations("PortfolioAbout");

@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FileCode } from "lucide-react";
+import { FileCode, ChevronRight } from "lucide-react";
 import { codeExamples } from "@/data/portfolio-section.data";
 
 export function CodeExamples() {
@@ -36,9 +36,10 @@ export function CodeExamples() {
               <TabsTrigger
                 key={index}
                 value={index.toString()}
-                className="text-xs bg-background cursor-pointer hover:bg-black/20 transition-colors"
+                className="text-xs bg-background cursor-pointer hover:bg-black/20 transition-colors flex items-center gap-1"
               >
                 {example.title}
+                <ChevronRight className="w-3 h-3" />
               </TabsTrigger>
             ))}
           </TabsList>

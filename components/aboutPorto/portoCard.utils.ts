@@ -5,12 +5,12 @@
 
 import React from "react";
 import {
-  Code2,
+  Atom,
   Database,
-  Gauge,
-  Globe,
-  Settings,
-  Palette,
+  Zap,
+  Layout,
+  GitBranch,
+  Languages,
   FolderTree,
   Bot,
 } from "lucide-react";
@@ -21,9 +21,6 @@ import type {
   ResponsiveConfig,
 } from "@/types/aboutPorto";
 
-/**
- * Determines the device type and responsive configuration
- */
 export function useResponsiveConfig(): ResponsiveConfig {
   const [deviceType, setDeviceType] = React.useState<DeviceType>("desktop");
 
@@ -118,13 +115,13 @@ function getFeaturesConfig(deviceType: DeviceType): {
   const allFeatures: PortoCardFeature[] = [
     {
       key: "techStack",
-      icon: React.createElement(Code2, { className: "h-4 w-4" }),
+      icon: React.createElement(Atom, { className: "h-4 w-4" }),
       badges: ["Next.js 15.5.1", "React 19", "TypeScript", "App Router"],
       priority: 1,
     },
     {
       key: "performance",
-      icon: React.createElement(Gauge, { className: "h-4 w-4" }),
+      icon: React.createElement(Zap, { className: "h-4 w-4" }),
       badges: ["95+ Lighthouse", "SEO 100/100", "A11y Optimized"],
       priority: 1,
     },
@@ -148,19 +145,19 @@ function getFeaturesConfig(deviceType: DeviceType): {
     },
     {
       key: "mainFeatures",
-      icon: React.createElement(Globe, { className: "h-4 w-4" }),
+      icon: React.createElement(Layout, { className: "h-4 w-4" }),
       badges: ["Blog System", "Media Gallery", "Content Library"],
       priority: 3,
     },
     {
       key: "techFeatures",
-      icon: React.createElement(Settings, { className: "h-4 w-4" }),
+      icon: React.createElement(GitBranch, { className: "h-4 w-4" }),
       badges: ["MCP GitHub", "Live PageSpeed", "CI/CD Automation"],
       priority: 3,
     },
     {
       key: "localization",
-      icon: React.createElement(Palette, { className: "h-4 w-4" }),
+      icon: React.createElement(Languages, { className: "h-4 w-4" }),
       badges: ["5 Languages", "Light/Dark Themes", "Auto-detection"],
       priority: 3,
     },
