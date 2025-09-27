@@ -39,3 +39,32 @@ export interface PerformanceMetric {
   items: string[];
   score: number;
 }
+
+export interface RouteGroup {
+  name: string;
+  description: string;
+  routes: string[];
+  layout: string;
+}
+
+export interface RouteStructure {
+  rootLayout: {
+    name: string;
+    path: string;
+    features: string[];
+  };
+  routeGroups: RouteGroup[];
+  apiRoutes: string[];
+}
+
+export interface ComponentFile {
+  folder: string;
+  files?: string[];
+  description?: string;
+  examples?: string[];
+}
+
+export interface ComponentStructure {
+  pattern: string;
+  structure: ComponentFile[];
+}

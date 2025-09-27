@@ -20,6 +20,7 @@ import {
   Search,
   Smartphone,
   Monitor,
+  Layers,
 } from "lucide-react";
 import type {
   TechStackItem,
@@ -29,43 +30,77 @@ import type {
   PerformanceMetric,
 } from "@/types/portfolio-section.types";
 
-export const architectureNodes: ArchitectureNode[] = [
+// Infrastructure Layer
+export const infrastructureNodes: ArchitectureNode[] = [
   {
     icon: Globe,
     title: "CDN & Edge Network",
-    subtitle: "Vercel Edge Network",
+    subtitle: "Vercel Edge Network + Global Distribution",
     color: "bg-blue-500/10 text-blue-600",
   },
   {
     icon: Shield,
-    title: "Security & Middleware",
-    subtitle: "CSP Headers + Rate Limiting + Request Sanitization",
+    title: "Security Middleware",
+    subtitle: "CSP Headers + Rate Limiting + Locale Detection",
     color: "bg-red-500/10 text-red-600",
   },
+];
+
+// Application Layer
+export const applicationNodes: ArchitectureNode[] = [
   {
     icon: Code,
-    title: "Frontend Application",
-    subtitle: "Next.js 15.5.1 + React 19.1.1 + TypeScript",
+    title: "App Router (Next.js 15.5.1)",
+    subtitle: "File-based routing + Server Components + Edge Runtime",
     color: "bg-green-500/10 text-green-600",
+  },
+  {
+    icon: Layers,
+    title: "Route Groups & Layouts",
+    subtitle: "(media) + (legals) + admin/* + Nested Layouts",
+    color: "bg-purple-500/10 text-purple-600",
+  },
+  {
+    icon: Zap,
+    title: "Loading & Error States",
+    subtitle: "Strategic loading.tsx + Error Boundaries + not-found.tsx",
+    color: "bg-yellow-500/10 text-yellow-600",
+  },
+  {
+    icon: Settings,
+    title: "Component Architecture",
+    subtitle: "Atomic Design + Custom Hooks + Logic Separation",
+    color: "bg-indigo-500/10 text-indigo-600",
+  },
+];
+
+// Data & API Layer
+export const dataNodes: ArchitectureNode[] = [
+  {
+    icon: Target,
+    title: "API Routes Structure",
+    subtitle: "RESTful Endpoints + GitHub API + PageSpeed API",
+    color: "bg-orange-500/10 text-orange-600",
+  },
+  {
+    icon: Database,
+    title: "Database Layer",
+    subtitle: "Neon PostgreSQL + Prisma ORM + Type Safety",
+    color: "bg-purple-700/10 text-purple-700",
   },
   {
     icon: Languages,
     title: "Internationalization",
-    subtitle: "next-intl 4.3.5 (5 Languages)",
-    color: "bg-indigo-500/10 text-indigo-600",
+    subtitle: "next-intl 4.3.5 (EN/DE/ES/FR/SV) + SEO Localization",
+    color: "bg-teal-500/10 text-teal-600",
   },
-  {
-    icon: Target,
-    title: "Database Layer",
-    subtitle: "Neon PostgreSQL + Prisma ORM",
-    color: "bg-purple-500/10 text-purple-600",
-  },
-  {
-    icon: Gauge,
-    title: "API Integration",
-    subtitle: "GitHub API + PageSpeed Insights",
-    color: "bg-orange-500/10 text-orange-600",
-  },
+];
+
+// Legacy export for backward compatibility
+export const architectureNodes: ArchitectureNode[] = [
+  ...infrastructureNodes,
+  ...applicationNodes,
+  ...dataNodes,
 ];
 
 export const techStacks: TechStackItem[] = [
@@ -339,6 +374,76 @@ export function usePageSpeedData({
 }`,
   },
 ];
+
+// Route Structure Details
+export const routeStructure = {
+  rootLayout: {
+    name: "Root Layout",
+    path: "app/layout.tsx",
+    features: [
+      "Theme Provider",
+      "Navigation",
+      "Footer",
+      "Analytics",
+      "Internationalization",
+    ],
+  },
+  routeGroups: [
+    {
+      name: "(media)",
+      description: "Public content routes",
+      routes: ["about", "about-portfolio", "blog", "library", "projects"],
+      layout: "Specialized media layout with enhanced SEO",
+    },
+    {
+      name: "(legals)",
+      description: "Legal pages",
+      routes: ["impressum", "privacy"],
+      layout: "Clean legal document layout",
+    },
+    {
+      name: "admin",
+      description: "Admin dashboard",
+      routes: ["blog"],
+      layout: "Protected admin interface",
+    },
+  ],
+  apiRoutes: [
+    "api/about/*",
+    "api/admin/*",
+    "api/blog/*",
+    "api/chatbot/*",
+    "api/github/*",
+    "api/pagespeed/*",
+  ],
+};
+
+// Component Organization
+export const componentStructure = {
+  pattern: "Atomic Design + Logic Separation",
+  structure: [
+    {
+      folder: "components/[ComponentName]/",
+      files: [
+        "index.ts (Exports)",
+        "ComponentName.tsx (UI)",
+        "ComponentName.utils.ts (Utilities)",
+        "ComponentName.logic.ts (Business Logic)",
+        "ComponentName.constants.ts (Constants)",
+      ],
+    },
+    {
+      folder: "hooks/",
+      description: "Global reusable hooks",
+      examples: ["use-mobile.ts", "use-language.ts", "use-pageSpeed-data.ts"],
+    },
+    {
+      folder: "lib/",
+      description: "Cross-component utilities",
+      examples: ["security.ts", "seo.ts", "utils.ts"],
+    },
+  ],
+};
 
 export const performanceMetrics: PerformanceMetric[] = [
   {
