@@ -28,12 +28,13 @@ import { seoConfigEN, generateStructuredData } from "@/lib/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Urbanist } from "next/font/google";
+import { ThemeConfigInitializer } from "@/components/theme/theme-config-initializer";
 import Link from "next/link";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
   variable: "--font-urbanist",
-  display: "fallback", 
+  display: "fallback",
   fallback: ["system-ui", "arial"],
   adjustFontFallback: false,
 });
@@ -207,6 +208,7 @@ export default async function RootLayout({
             <NoSSR>
               <ChatBot position="bottom-left" />
             </NoSSR>
+            <ThemeConfigInitializer />
           </ThemeProvider>
         </NextIntlClientProvider>
         <Analytics />
