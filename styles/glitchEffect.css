@@ -8,45 +8,23 @@
     position: relative;
     display: inline-block;
     color: #707070;
+    transform: translateZ(0); /* Force GPU layer */
 }
 
-.glitch-effect::before,
-.glitch-effect::after {
+.glitch-effect::before {
     content: attr(data-text);
     position: absolute;
     left: 0;
     top: 0;
-    color: #333333; 
-    background: black;
-    clip: rect(0, 900px, 0, 0);
-    animation: glitch 1s infinite linear alternate-reverse;
-}
-  
-.glitch-effect::after {
-    color: #4d4e4e;
-    animation-delay: 0.2s;
+    color: #333333;
+    opacity: 0;
+    animation: glitch 3s infinite ease-in-out;
 }
 
 @keyframes glitch {
-    0% {
-      clip: rect(5px, 9999px, 44px, 0);
-      transform: translate(-2px, -2px);
-    }
-    25% {
-      clip: rect(40px, 9999px, 56px, 0);
-      transform: translate(3px, 3px);
-    }
-    50% {
-      clip: rect(12px, 9999px, 72px, 0);
-      transform: translate(-3px, 1px);
-    }
-    75% {
-      clip: rect(24px, 9999px, 80px, 0);
-      transform: translate(2px, -3px);
-    }
-    100% {
-      clip: rect(8px, 9999px, 60px, 0);
-      transform: translate(0px, 2px);
-    }
+    0%, 90% { opacity: 0; transform: translate(0); }
+    92% { opacity: 0.8; transform: translate(-2px, 0); }
+    94% { opacity: 0.6; transform: translate(2px, 0); }
+    96% { opacity: 0.9; transform: translate(-1px, 0); }
+    98%, 100% { opacity: 0; transform: translate(0); }
 }
-  

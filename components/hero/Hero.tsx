@@ -33,6 +33,7 @@ function Hero() {
                 height={400}
                 className="w-full h-full object-cover"
                 priority
+                fetchPriority="high"
                 quality={90}
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
@@ -67,7 +68,7 @@ function Hero() {
                 className="gap-2 cursor-pointer hover:bg-primary/10"
               >
                 <Link href="/about" className="flex items-center gap-2">
-                  <ExternalLink className="ml-2 h-3 w-3" aria-hidden="true"/>
+                  <ExternalLink className="ml-2 h-3 w-3" aria-hidden="true" />
                   {t("learnMoreAboutMe")}
                 </Link>
               </Button>

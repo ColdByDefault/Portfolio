@@ -4,8 +4,9 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 
-export { AboutPorto } from "./AboutPorto";
-export { Overview } from "./Overview";
-export { Technology } from "./Technology";
-export { Documentation } from "./Documentation";
-export { SectionCard, FeatureList, TechBadgeList } from "./shared";
+export { ArchitectureDiagram } from "./portfolio-architecture";
+export { PortfolioFeatures } from "./portfolio-features";
+export { PerformanceMetrics } from "./portfolio-performance";
+export { TechStackGrid } from "./portfolio-tech";
+export { WorkflowDiagram } from "./portfolio-workflow";
+export { CodeExamples } from "./portfolio-showcase";

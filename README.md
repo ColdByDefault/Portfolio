@@ -1,6 +1,6 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V4.11.18
+# ColdByDefault Portfolio · V4.23.18
 
 Modern, secure, high‑performance developer portfolio built with Next.js 15.5.1, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
@@ -444,6 +444,7 @@ Documentation: https://docs.coldbydefault.com/
 Email: contact@coldbydefault.com
 Linktree: https://linktr.ee/ColdByDefault  
 For professional or security inquiries, reach out via the official channels listed above.
+*P.S. If you find any bugs, they're not bugs - they're undocumented features!*
 
 ---
 
