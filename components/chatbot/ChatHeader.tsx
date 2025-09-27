@@ -42,7 +42,7 @@ export const ChatHeader = React.memo(function ChatHeader({
         </div>
         <div className="flex flex-col">
           <CardTitle
-            className="text-base font-semibold text-foreground"
+            className="text-base font-semibold text-foreground gap-2 flex items-center"
             id="chatbot-title"
           >
             {t(CHATBOT_TRANSLATION_KEYS.NAME)}{" "}
@@ -51,6 +51,9 @@ export const ChatHeader = React.memo(function ChatHeader({
               aria-label="pronunciation"
             >
               {t(CHATBOT_TRANSLATION_KEYS.PRONUNCIATION)}
+            </span>
+            <span className="text-xs text-muted-foreground font-normal">
+              v1.0.0
             </span>
           </CardTitle>
           <span
