@@ -12,6 +12,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -26,6 +27,7 @@ import {
   PortoCardUtils,
 } from "./portoCard.utils";
 import { FeatureGrid, TechHighlights } from "@/components/aboutPorto";
+import VersionDisplay from "../VersionDisplay";
 
 export default React.memo(function PortoCard({ className }: PortoCardProps) {
   const t = useTranslations("PortfolioAbout");
@@ -170,6 +172,17 @@ export default React.memo(function PortoCard({ className }: PortoCardProps) {
             </div>
           </section>
         </CardContent>
+        <CardFooter>
+          <div className="flex items-center justify-center sm:justify-start">
+            <span className="text-xs text-gray-400 dark:text-gray-600 pr-1">
+              Portfolio{" "}
+            </span>
+            <VersionDisplay
+              prefix="v"
+              className="text-xs text-gray-400 dark:text-gray-600 font-mono"
+            />
+          </div>
+        </CardFooter>
       </Card>
     </section>
   );
