@@ -88,6 +88,8 @@ function CompanyLogoItem({
           <Image
             src={company.logo!}
             alt={`${company.name} logo`}
+            width={40}
+            height={40}
             className="object-contain"
             sizes="40px"
             loading="lazy"
@@ -164,7 +166,8 @@ export function CompanyBannerMinimal({
                   <Image
                     src={company.logo!}
                     alt={`${company.name} logo`}
-                    fill
+                    width={40}
+                    height={40}
                     className="object-contain"
                     sizes="40px"
                     loading="lazy"
