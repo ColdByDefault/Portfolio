@@ -9,8 +9,8 @@ import { NoSSR } from "@/components/NoSSR";
 export default function MediaPage() {
   return (
     <div>
+      <MediaDashboard />
       <NoSSR>
-        <MediaDashboard />
         <Background />
       </NoSSR>
     </div>

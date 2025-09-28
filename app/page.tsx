@@ -7,7 +7,7 @@ import { Hero } from "@/components/hero";
 import { useTranslations } from "next-intl";
 import { CompanyBanner } from "@/components/companies";
 import PortoCard from "@/components/aboutPorto";
-import { NoSSR } from "@/components/NoSSR";
+
 import { GitHubShowcase } from "@/components/github";
 import { Technologies } from "@/components/tech";
 import { CertificationShowcase } from "@/components/cer";
@@ -19,9 +19,7 @@ export default function Home() {
 
   return (
     <div>
-      <NoSSR>
-        <ClientBackground />
-      </NoSSR>
+      <ClientBackground />
       {/* Scroll Indicator */}
       <div className="hidden lg:block lg:absolute lg:bottom-24 lg:left-1/6 xl:left-1/5 xl:bottom-40 2xl:left-1/4 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
@@ -55,13 +53,11 @@ export default function Home() {
               <h2 className="text-3xl font-light text-center mb-8 text-black dark:text-white">
                 Website Performance
               </h2>
-              <NoSSR>
-                <PageSpeedInsights
-                  url="https://www.coldbydefault.com"
-                  showRefreshButton={true}
-                  showBothStrategies={true}
-                />
-              </NoSSR>
+              <PageSpeedInsights
+                url="https://www.coldbydefault.com"
+                showRefreshButton={true}
+                showBothStrategies={true}
+              />
             </div>
           </div>
         </div>
