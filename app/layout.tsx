@@ -1,8 +1,8 @@
 /** All Rights Reserved - No part of this website or any of its contents may be reproduced, copied, modified or adapted,
-without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
-<!-- @Leva_Palestina -->
-<!-- @Free_Palestine -->
-*/
+ * without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
+ * @Leva_Palestina
+ * @Free_Palestine
+ */
 /**
  * @file /app/layout.tsx
  * @created 2024-12-31 23:00:00
@@ -146,24 +146,9 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
 
-        {/* DNS Prefetch and Preconnect for performance */}
-        <link rel="dns-prefetch" href="https://api.github.com" />
-        <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
-        <link rel="dns-prefetch" href="https://www.googleapis.com" />
-        <link rel="dns-prefetch" href="https://vercel.com" />
+        {/* Critical Performance Optimizations - Only preconnect to immediately needed resources */}
 
-        <link rel="preconnect" href="https://api.github.com" />
-        <link rel="preconnect" href="https://avatars.githubusercontent.com" />
-        <link rel="preconnect" href="https://www.googleapis.com" />
-
-        {/* Preload critical assets */}
-        <link
-          rel="preload"
-          href="/profileDark.jpg"
-          as="image"
-          type="image/jpeg"
-          fetchPriority="high"
-        />
+        {/* Essential: Google Fonts - Needed immediately for page render */}
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
@@ -173,6 +158,27 @@ export default async function RootLayout({
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
+        />
+
+        {/* Essential: Vercel Analytics - Needed early for performance tracking */}
+        <link rel="preconnect" href="https://vitals.vercel-analytics.com" />
+
+        {/* Non-critical: DNS prefetch for dynamically loaded resources */}
+        <link rel="dns-prefetch" href="https://api.github.com" />
+        <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
+        <link rel="dns-prefetch" href="https://www.googleapis.com" />
+        <link
+          rel="dns-prefetch"
+          href="https://generativelanguage.googleapis.com"
+        />
+
+        {/* Preload critical assets */}
+        <link
+          rel="preload"
+          href="/profileDark.jpg"
+          as="image"
+          type="image/jpeg"
+          fetchPriority="high"
         />
 
         {/* Structured Data */}
