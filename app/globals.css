@@ -8,8 +8,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
-
 .pattern {
   background-image: url("/pattern.png");
   background-size: cover;
