@@ -9,7 +9,6 @@ import { getLocale } from "next-intl/server";
 import { generateMediaSectionSEO } from "@/lib/seo";
 import { QuickActions } from "@/components/quickActions";
 import { Background } from "@/components/visuals";
-import { NoSSR } from "@/components/NoSSR";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -26,9 +25,7 @@ export default function MediaGroupLayout({
     <div className="min-h-screen">
       <QuickActions />
       {children}
-      <NoSSR>
-        <Background />
-      </NoSSR>
+      <Background />
     </div>
   );
 }

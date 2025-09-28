@@ -8,8 +8,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
-
 .pattern {
   background-image: url("/pattern.png");
   background-size: cover;
@@ -162,6 +160,16 @@
   }
 }
 
-.animate-subtle-shake {
-  animation: subtle-shake 1.4s ease-in-out infinite;
+/* Only apply animations on devices that support hover (not touch-only) */
+@media (hover: hover) {
+  .animate-subtle-shake {
+    animation: subtle-shake 1.4s ease-in-out infinite;
+  }
+}
+
+/* Disable animations on touch devices */
+@media (hover: none) {
+  .animate-subtle-shake {
+    animation: none;
+  }
 }

@@ -43,6 +43,9 @@ export function Background() {
   const isDarkTheme =
     hasMounted && (theme === "dark" || resolvedTheme === "dark");
 
+  // Only create motion values for desktop
+  const shouldUseMotion = hasMounted && !isMobile && !isMediumScreen;
+  
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -50,29 +53,56 @@ export function Background() {
   const gridY = useSpring(mouseY, { stiffness: 50, damping: 20, mass: 0.5 });
 
   useEffect(() => {
-    if (!hasMounted) return;
+    if (!shouldUseMotion) return;
 
-    // Disable mouse movements on mobile and medium screens
-    if (isMobile || isMediumScreen) return;
-
+    // Throttle mouse move events for better performance
+    let ticking = false;
     const handleMouseMove = (e: MouseEvent) => {
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      mouseX.set(((e.clientX - centerX) / centerX) * 20);
-      mouseY.set(((e.clientY - centerY) / centerY) * 20);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const centerX = window.innerWidth / 2;
+          const centerY = window.innerHeight / 2;
+          mouseX.set(((e.clientX - centerX) / centerX) * 15); // Reduced movement intensity
+          mouseY.set(((e.clientY - centerY) / centerY) * 15);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener("mousemove", handleMouseMove);
+    
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [mouseX, mouseY, hasMounted, isMobile, isMediumScreen]);
+  }, [mouseX, mouseY, shouldUseMotion]);
 
   if (!hasMounted) {
     return null;
   }
+  
   const gridColor = isDarkTheme
-    ? "rgba(255, 255, 255, 0.1)"
-    : "rgba(0, 0, 0, 0.1)";
+    ? "rgba(255, 255, 255, 0.08)"
+    : "rgba(0, 0, 0, 0.08)";
+
+  // Use static background for mobile/medium screens for better performance
+  if (!shouldUseMotion) {
+    return (
+      <div className="fixed inset-0 -z-5">
+        <div
+          className={`absolute inset-0 ${
+            isDarkTheme ? "bg-black/3" : "bg-white/3"
+          }`}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(to right, ${gridColor} 1px, transparent 1px), linear-gradient(to bottom, ${gridColor} 1px, transparent 1px)`,
+            backgroundSize: "clamp(25px, 5vw, 35px) clamp(25px, 5vw, 35px)",
+          }}
+        />
+      </div>
+    );
+  }
 
   return (
     <motion.div className="fixed inset-0 -z-5">
@@ -86,9 +116,8 @@ export function Background() {
         style={{
           backgroundImage: `linear-gradient(to right, ${gridColor} 1px, transparent 1px), linear-gradient(to bottom, ${gridColor} 1px, transparent 1px)`,
           backgroundSize: "clamp(20px, 4vw, 40px) clamp(20px, 4vw, 40px)",
-          // Disable movement on mobile and medium screens
-          x: isMobile || isMediumScreen ? 0 : gridX,
-          y: isMobile || isMediumScreen ? 0 : gridY,
+          x: gridX,
+          y: gridY,
         }}
       />
     </motion.div>

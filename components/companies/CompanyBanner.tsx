@@ -9,6 +9,7 @@ import React from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { companiesData, type CompanyLogo } from "@/data/companiesData";
+import Link from "next/link";
 
 interface CompanyBannerProps {
   className?: string;
@@ -88,7 +89,8 @@ function CompanyLogoItem({
           <Image
             src={company.logo!}
             alt={`${company.name} logo`}
-            fill
+            width={40}
+            height={40}
             className="object-contain"
             sizes="40px"
             loading="lazy"
@@ -123,14 +125,14 @@ function CompanyLogoItem({
 
   if (company.url) {
     return (
-      <a
+      <Link
         href={company.url}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-block"
       >
         {logoElement}
-      </a>
+      </Link>
     );
   }
 
@@ -165,7 +167,8 @@ export function CompanyBannerMinimal({
                   <Image
                     src={company.logo!}
                     alt={`${company.name} logo`}
-                    fill
+                    width={40}
+                    height={40}
                     className="object-contain"
                     sizes="40px"
                     loading="lazy"
