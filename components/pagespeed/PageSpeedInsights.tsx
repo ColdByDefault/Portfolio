@@ -264,7 +264,7 @@ export default function PageSpeedInsights({
                 variant={activeStrategy === "mobile" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setActiveStrategy("mobile")}
-                className="h-8 px-2 sm:px-3 text-xs"
+                className="h-8 px-2 sm:px-3 text-xs cursor-pointer"
                 aria-label="Switch to mobile PageSpeed analysis"
               >
                 <HiDevicePhoneMobile className="h-4 w-4 sm:mr-1" />
@@ -274,7 +274,7 @@ export default function PageSpeedInsights({
                 variant={activeStrategy === "desktop" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setActiveStrategy("desktop")}
-                className="h-8 px-2 sm:px-3 text-xs"
+                className="h-8 px-2 sm:px-3 text-xs cursor-pointer"
                 aria-label="Switch to desktop PageSpeed analysis"
               >
                 <HiDesktopComputer className="h-4 w-4 sm:mr-1" />

@@ -51,8 +51,11 @@
   animation: scroll-reverse-seamless 30s linear infinite;
 }
 
-.hover\:pause:hover {
-  animation-play-state: paused;
+/* Only apply hover pause on devices that support hover */
+@media (hover: hover) {
+  .hover\:pause:hover {
+    animation-play-state: paused;
+  }
 }
 
 /* Company banner container styles */
@@ -106,10 +109,23 @@
   object-position: center;
 }
 
-.company-logo-item:hover .logo-container {
-  opacity: 1;
-  filter: grayscale(0%);
-  transform: scale(1.1);
+/* Only apply hover effects on devices that support hover */
+@media (hover: hover) {
+  .company-logo-item:hover .logo-container {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }
+
+  .company-logo-item:hover .company-name {
+    opacity: 1;
+  }
+
+  .company-logo-item:hover .text-logo {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+  }
 }
 
 .company-logo-item .company-name {
@@ -118,10 +134,6 @@
   color: rgb(255, 255, 255);
   opacity: 0.7;
   transition: opacity 0.3s ease;
-}
-
-.company-logo-item:hover .company-name {
-  opacity: 1;
 }
 
 /* Dark mode adjustments */
@@ -145,8 +157,20 @@
   transition: all 0.3s ease;
 }
 
-.company-logo-item:hover .text-logo {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.1);
+/* Mobile optimization - disable hover effects on touch devices */
+@media (hover: none) {
+  .company-logo-item .logo-container {
+    /* Keep logos slightly more visible on mobile */
+    opacity: 0.8;
+    filter: grayscale(50%);
+  }
+
+  .company-logo-item .company-name {
+    opacity: 0.9;
+  }
+
+  .company-logo-item .text-logo {
+    opacity: 0.8;
+    background: rgba(255, 255, 255, 0.15);
+  }
 }

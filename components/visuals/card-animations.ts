@@ -16,10 +16,16 @@ export const gradientOverlay = {
                    linear-gradient(-45deg, transparent 30%, rgba(147, 197, 253, 0.08) 50%, transparent 70%)`,
 };
 
-// Animation configuration
+// Animation configuration (only for hover-capable devices)
 export const cardAnimation = {
   backgroundSize: "200% 200%",
   animation: "gradient-shift 3s ease infinite",
+};
+
+// Check if device supports hover
+const supportsHover = () => {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(hover: hover)").matches;
 };
 
 // Helper function to get card class names
@@ -31,9 +37,9 @@ export const getCardHoverClasses = (isHovered: boolean) => {
   `;
 };
 
-// Helper function to get overlay styles
+// Helper function to get overlay styles (disabled on touch devices)
 export const getOverlayStyles = (isHovered: boolean) => {
-  if (!isHovered) return { backgroundImage: "none" };
+  if (!isHovered || !supportsHover()) return { backgroundImage: "none" };
 
   return {
     ...gradientOverlay,
