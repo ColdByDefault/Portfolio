@@ -32,7 +32,14 @@ const nextConfig: NextConfig = {
 
   // Experimental features for better performance
   experimental: {
-    optimizePackageImports: ["lucide-react", "react-icons"],
+    optimizePackageImports: [
+      "lucide-react",
+      "react-icons",
+      "framer-motion",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-hover-card",
+      "@radix-ui/react-tooltip",
+    ],
   },
   async headers() {
     return [

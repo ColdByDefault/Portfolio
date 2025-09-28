@@ -6,13 +6,40 @@
 import { Hero } from "@/components/hero";
 import { useTranslations } from "next-intl";
 import { CompanyBanner } from "@/components/companies";
-import PortoCard from "@/components/aboutPorto";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import { LoadingSkeleton } from "@/components/visuals";
 
-import { GitHubShowcase } from "@/components/github";
-import { Technologies } from "@/components/tech";
-import { CertificationShowcase } from "@/components/cer";
-import { PageSpeedInsights } from "@/components/pagespeed";
-import { ClientBackground } from "@/components/visuals";
+// Dynamically import heavy components with loading states
+const PortoCard = dynamic(() => import("@/components/aboutPorto"), {
+  loading: () => <LoadingSkeleton />,
+  ssr: false,
+});
+
+const GitHubShowcase = dynamic(() => import("@/components/github").then(mod => ({ default: mod.GitHubShowcase })), {
+  loading: () => <LoadingSkeleton />,
+  ssr: false,
+});
+
+const Technologies = dynamic(() => import("@/components/tech").then(mod => ({ default: mod.Technologies })), {
+  loading: () => <LoadingSkeleton />,
+  ssr: false,
+});
+
+const CertificationShowcase = dynamic(() => import("@/components/cer").then(mod => ({ default: mod.CertificationShowcase })), {
+  loading: () => <LoadingSkeleton />,
+  ssr: false,
+});
+
+const PageSpeedInsights = dynamic(() => import("@/components/pagespeed").then(mod => ({ default: mod.PageSpeedInsights })), {
+  loading: () => <LoadingSkeleton />,
+  ssr: false,
+});
+
+const ClientBackground = dynamic(() => import("@/components/visuals").then(mod => ({ default: mod.ClientBackground })), {
+  loading: () => null,
+  ssr: false,
+});
 
 export default function Home() {
   const t = useTranslations("Home");
@@ -40,26 +67,40 @@ export default function Home() {
       <div className="relative" id="main-content">
         {/* Content Container */}
         <div className="relative z-10">
-          <div className="container mx-auto px-4 py-8">
-            <PortoCard />
-          </div>
-          <div className="py-12 px-4 sm:px-6 lg:px-8" id="github">
-            <GitHubShowcase />
-          </div>
-          <Technologies />
-          <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
-          <div className="py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-light text-center mb-8 text-black dark:text-white">
-                Website Performance
-              </h2>
-              <PageSpeedInsights
-                url="https://www.coldbydefault.com"
-                showRefreshButton={true}
-                showBothStrategies={true}
-              />
+          <Suspense fallback={<LoadingSkeleton />}>
+            <div className="container mx-auto px-4 py-8">
+              <PortoCard />
             </div>
-          </div>
+          </Suspense>
+          
+          <Suspense fallback={<LoadingSkeleton />}>
+            <div className="py-12 px-4 sm:px-6 lg:px-8" id="github">
+              <GitHubShowcase />
+            </div>
+          </Suspense>
+          
+          <Suspense fallback={<LoadingSkeleton />}>
+            <Technologies />
+          </Suspense>
+          
+          <Suspense fallback={<LoadingSkeleton />}>
+            <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
+          </Suspense>
+          
+          <Suspense fallback={<LoadingSkeleton />}>
+            <div className="py-12 px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-3xl font-light text-center mb-8 text-black dark:text-white">
+                  Website Performance
+                </h2>
+                <PageSpeedInsights
+                  url="https://www.coldbydefault.com"
+                  showRefreshButton={true}
+                  showBothStrategies={true}
+                />
+              </div>
+            </div>
+          </Suspense>
         </div>
       </div>
     </div>

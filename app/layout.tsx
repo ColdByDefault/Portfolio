@@ -162,8 +162,8 @@ export default async function RootLayout({
           href="/profileDark.jpg"
           as="image"
           type="image/jpeg"
+          fetchPriority="high"
         />
-
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
