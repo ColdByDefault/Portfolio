@@ -88,7 +88,6 @@ function CompanyLogoItem({
           <Image
             src={company.logo!}
             alt={`${company.name} logo`}
-            fill
             className="object-contain"
             sizes="40px"
             loading="lazy"

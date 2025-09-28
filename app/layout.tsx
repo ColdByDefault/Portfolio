@@ -34,7 +34,7 @@ import Link from "next/link";
 const urbanist = Urbanist({
   subsets: ["latin"],
   variable: "--font-urbanist",
-  display: "fallback",
+  display: "swap",
   fallback: ["system-ui", "arial"],
   adjustFontFallback: false,
 });
