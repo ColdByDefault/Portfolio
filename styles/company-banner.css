@@ -93,6 +93,17 @@
   opacity: 0.6;
   filter: grayscale(100%);
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure consistent image alignment */
+.company-logo-item .logo-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .company-logo-item:hover .logo-container {
