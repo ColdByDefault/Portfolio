@@ -4,15 +4,12 @@
  */
 import { MediaDashboard } from "@/components/mediaDashboard";
 import { Background } from "@/components/visuals";
-import { NoSSR } from "@/components/NoSSR";
 
 export default function MediaPage() {
   return (
     <div>
       <MediaDashboard />
-      <NoSSR>
-        <Background />
-      </NoSSR>
+      <Background />
     </div>
   );
 }
