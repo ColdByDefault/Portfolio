@@ -1,6 +1,6 @@
 {
   "name": "coldbydefault-portfolio",
-  "version": "4.24.1",
+  "version": "4.25.0",
   "description": "Professional portfolio of Yazan Abo-Ayash (ColdByDefault) - Full Stack Junior Developer and Computer Science Student specializing in React, Next.js, Node.js, Python and modern web technologies.",
   "keywords": [
     "portfolio",
@@ -58,7 +58,6 @@
     "@react-three/drei": "^10.6.1",
     "@react-three/fiber": "^9.3.0",
     "@tailwindcss/postcss": "^4",
-    "@types/nodemailer": "^7.0.1",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "class-variance-authority": "^0.7.1",
@@ -70,7 +69,6 @@
     "next": "^15.5.1",
     "next-intl": "^4.3.5",
     "next-themes": "^0.4.6",
-    "nodemailer": "^7.0.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.62.0",
