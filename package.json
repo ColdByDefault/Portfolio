@@ -24,7 +24,8 @@
   "private": true,
   "scripts": {
     "almighty": "npm run lint && npm run build && npm run dev",
-    "dev": "next dev --turbopack --hostname 0.0.0.0",
+    "dev": "next dev --hostname 0.0.0.0",
+    "dev:turbo": "next dev --turbopack --hostname 0.0.0.0",
     "build": "next build",
     "start": "next start --hostname 0.0.0.0",
     "deploy": "prisma migrate deploy && npm run build",
@@ -66,7 +67,7 @@
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.542.0",
-    "next": "^15.5.1",
+    "next": "^15.5.7",
     "next-intl": "^4.3.5",
     "next-themes": "^0.4.6",
     "react": "^19.1.1",
