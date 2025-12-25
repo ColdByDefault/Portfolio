@@ -57,16 +57,15 @@ export function CertificationShowcaseDesktop({
         </CardTitle>
         <div className="flex w-full justify-center items-center pt-2 mb-4">
           <ImageZoomDialog src={cert.image} alt={cert.title} title={cert.title}>
-            <div className="relative w-full max-w-100 aspect-10/7 bg-gray-100 dark:bg-gray-800 rounded-md overflow-hidden">
-              <Image
-                src={cert.image}
-                alt={cert.title}
-                fill
-                className="object-contain"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                priority={cert.id <= 4}
-              />
-            </div>
+            <Image
+              src={cert.image}
+              alt={cert.title}
+              width={400}
+              height={280}
+              className="object-cover rounded-md w-full max-w-100 h-70"
+              style={{ width: "100%", maxWidth: "400px", height: "280px" }}
+              priority={cert.id <= 4}
+            />
           </ImageZoomDialog>
         </div>
         <div className="flex-1 space-y-2">
@@ -93,7 +92,7 @@ export function CertificationShowcaseDesktop({
 
   return (
     <section className={className} id="cert">
-      <Card className="max-w-7xl mx-auto bg-transparent dark:bg-transparent shadow-none !border-0">
+      <Card className="max-w-7xl mx-auto bg-transparent dark:bg-transparent shadow-none border-0!">
         <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8 text-black dark:text-white">
           {t("title")}
         </CardTitle>
