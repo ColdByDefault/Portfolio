@@ -4,7 +4,6 @@
  */
 "use client";
 
-import React from "react";
 import { certifications } from "@/data/certificationsData";
 import {
   CertificationShowcaseDesktop,

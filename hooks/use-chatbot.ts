@@ -180,6 +180,15 @@ export function useChatBot(): UseChatBotReturn {
 
         if (!response.ok || !("success" in data) || !data.success) {
           const errorData = data as ChatBotApiError;
+
+          // Handle quota exceeded specifically
+          if (errorData.code === "QUOTA_EXCEEDED" && errorData.retryAfter) {
+            const retrySeconds = Math.ceil(errorData.retryAfter);
+            throw new Error(
+              `Reem is taking a short break. Please try again in ${retrySeconds} seconds.`
+            );
+          }
+
           throw new Error(errorData.error || "Failed to send message");
         }
 

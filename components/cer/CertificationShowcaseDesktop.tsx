@@ -51,21 +51,22 @@ export function CertificationShowcaseDesktop({
         onMouseLeave={() => logic.setHoveredCard(null)}
       >
         <CardTitle className="mb-3">
-          <h3 className="text-lg font-semibold text-center min-h-[3rem] flex items-center justify-center">
+          <h3 className="text-lg font-semibold text-center min-h-12 flex items-center justify-center">
             {cert.title}
           </h3>
         </CardTitle>
         <div className="flex w-full justify-center items-center pt-2 mb-4">
           <ImageZoomDialog src={cert.image} alt={cert.title} title={cert.title}>
-            <Image
-              src={cert.image}
-              alt={cert.title}
-              width={400}
-              height={280}
-              className="object-cover rounded-md w-full max-w-[400px] h-[280px]"
-              style={{ width: "100%", maxWidth: "400px", height: "280px" }}
-              priority={cert.id <= 3}
-            />
+            <div className="relative w-full max-w-100 aspect-10/7 bg-gray-100 dark:bg-gray-800 rounded-md overflow-hidden">
+              <Image
+                src={cert.image}
+                alt={cert.title}
+                fill
+                className="object-contain"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                priority={cert.id <= 4}
+              />
+            </div>
           </ImageZoomDialog>
         </div>
         <div className="flex-1 space-y-2">

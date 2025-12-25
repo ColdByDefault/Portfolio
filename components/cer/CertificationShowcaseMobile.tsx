@@ -90,15 +90,16 @@ export function CertificationShowcaseMobile({
                   alt={cert.title}
                   title={cert.title}
                 >
-                  <Image
-                    src={cert.image}
-                    alt={cert.title}
-                    width={280}
-                    height={240}
-                    className="object-cover rounded-md"
-                    style={{ width: "auto", height: "auto" }}
-                    priority={cert.id <= 3}
-                  />
+                  <div className="relative w-full max-w-70 aspect-10/7 bg-gray-100 dark:bg-gray-800 rounded-md overflow-hidden">
+                    <Image
+                      src={cert.image}
+                      alt={cert.title}
+                      fill
+                      className="object-contain"
+                      sizes="280px"
+                      priority={cert.id <= 3}
+                    />
+                  </div>
                 </ImageZoomDialog>
               </div>
               <div className="space-y-3">
