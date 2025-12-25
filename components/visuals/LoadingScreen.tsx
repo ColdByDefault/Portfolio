@@ -3,10 +3,12 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useSyncExternalStore } from "react";
 import "@/styles/glitchEffect.css";
 
 const chars = "-sd_sdf~`gdf!@#dfg$g%gh^&qwe*fdg()+sdf=[]{fg}|sad;:,.<>?";
+
+const emptySubscribe = () => () => {};
 
 interface TextEncryptedProps {
   text: string;
@@ -18,12 +20,13 @@ const TextEncrypted: React.FC<TextEncryptedProps> = ({
   interval = 30, // Reduced from 50 for faster animation
 }) => {
   const [outputText, setOutputText] = useState<string>("");
-  const [isMounted, setIsMounted] = useState<boolean>(false);
   const [randomChars, setRandomChars] = useState<string>("");
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isMounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   useEffect(() => {
     let timer: NodeJS.Timeout;

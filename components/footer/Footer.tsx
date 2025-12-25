@@ -13,7 +13,7 @@ import {
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="w-full bg-background/95 backdrop-blur border-t min-h-[200px]">
+    <footer className="w-full bg-background/95 backdrop-blur border-t min-h-50">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 py-6">
           <div className="space-y-3">

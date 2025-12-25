@@ -4,25 +4,27 @@
  */
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 interface NoSSRProps {
   children: React.ReactNode;
   fallback?: React.ReactNode;
 }
 
+const emptySubscribe = () => () => {};
+
 /**
  * NoSSR component prevents server-side rendering of its children
  * to avoid hydration mismatches for client-only components
  */
 export function NoSSR({ children, fallback = null }: NoSSRProps) {
-  const [mounted, setMounted] = useState(false);
+  const isClient = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
+  if (!isClient) {
     return <>{fallback}</>;
   }
 
