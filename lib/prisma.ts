@@ -1,10 +1,11 @@
 /**
- * Prisma Database Client
+ * Prisma Database Client (Prisma ORM 7)
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@/lib/generated/prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 // Type-safe global declaration
 declare global {
@@ -18,10 +19,14 @@ const createPrismaClient = (): PrismaClient => {
     throw new Error("Database configuration error");
   }
 
+  // Create PostgreSQL adapter for Prisma 7
+  const adapter = new PrismaPg({
+    connectionString: process.env.DATABASE_URL,
+  });
+
   return new PrismaClient({
+    adapter,
     log: process.env.NODE_ENV === "production" ? ["error", "warn"] : [],
-    // Remove datasources override - use environment configuration only
-    // This prevents hardcoded URL overrides and improves security
   });
 };
 

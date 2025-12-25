@@ -6,7 +6,7 @@ Modern, secure, high‑performance developer portfolio built with Next.js 16, Ty
 
 <img width="990" height="174" alt="Screenshot 2025-08-31 111906" src="https://github.com/user-attachments/assets/2a863d38-e178-42ee-85a9-75010601fb2b" />
 
-**Live:** https://www.coldbydefault.com • **Docs:** https://docs.coldbydefault.com/ • **Stack:** Next.js 16 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.6 · Prisma ORM · Neon PostgreSQL · Zod 4.x · ESLint 9.x · Vercel
+**Live:** https://www.coldbydefault.com • **Docs:** https://docs.coldbydefault.com/ • **Stack:** Next.js 16 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.6 · Prisma ORM 7 · Neon PostgreSQL · Zod 4.x · ESLint 9.x · Vercel
 
 </div>
 
@@ -352,6 +352,19 @@ pnpm db:seed
 pnpm db:reset
 ```
 
+**Prisma ORM 7 Notes:**
+
+Prisma 7 introduces a new client generation structure. The generated client exports are now in `client.ts`:
+
+```typescript
+// ✅ Correct import for Prisma 7
+import { PrismaClient } from "@/lib/generated/prisma/client";
+import type { Prisma } from "@/lib/generated/prisma/client";
+
+// ❌ Old import (Prisma 6 and below)
+import { PrismaClient } from "@/lib/generated/prisma";
+```
+
 **Blog System & Content Management:**
 
 - Prisma ORM provides type-safe database operations with PostgreSQL
@@ -404,6 +417,7 @@ pnpm db:reset
 **Completed Features:**
 
 - ✅ Upgraded to Next.js 16 with Turbopack and React 19.2.3
+- ✅ Upgraded to Prisma ORM 7 with driver adapters and ESM support
 - ✅ Enhanced PageSpeed API with improved caching, error handling, and circuit breaker
 - ✅ AI Chatbot with Groq (Llama 3.3 70B) fallback for Gemini quota limits
 - ✅ TypeDoc documentation system implementation
@@ -411,7 +425,6 @@ pnpm db:reset
 - ✅ Automated dependency review workflows
 - ✅ Interactive chatbot system (Reem AI Assistant) integration
 - ✅ Comprehensive admin dashboard with CRUD operations
-- ✅ Enhanced Prisma ORM integration
 
 **Planned Enhancements:**
 
