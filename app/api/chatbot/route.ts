@@ -308,7 +308,7 @@ async function callGeminiAPI(messages: ChatMessage[]): Promise<string> {
       if (response.status === 429) {
         const retryMatch =
           errorData.error?.message?.match(/retry in ([\d.]+)s/i);
-        const retryAfter = retryMatch ? parseFloat(retryMatch[1]) : 60;
+        const retryAfter = retryMatch?.[1] ? parseFloat(retryMatch[1]) : 60;
         throw new Error(
           `QUOTA_EXCEEDED:${retryAfter}:Gemini API quota exceeded. Please try again later.`
         );
