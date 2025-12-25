@@ -51,7 +51,7 @@ export function CertificationShowcaseDesktop({
         onMouseLeave={() => logic.setHoveredCard(null)}
       >
         <CardTitle className="mb-3">
-          <h3 className="text-lg font-semibold text-center min-h-[3rem] flex items-center justify-center">
+          <h3 className="text-lg font-semibold text-center min-h-12 flex items-center justify-center">
             {cert.title}
           </h3>
         </CardTitle>
@@ -62,9 +62,9 @@ export function CertificationShowcaseDesktop({
               alt={cert.title}
               width={400}
               height={280}
-              className="object-cover rounded-md w-full max-w-[400px] h-[280px]"
+              className="object-cover rounded-md w-full max-w-100 h-70"
               style={{ width: "100%", maxWidth: "400px", height: "280px" }}
-              priority={cert.id <= 3}
+              priority={cert.id <= 4}
             />
           </ImageZoomDialog>
         </div>
@@ -92,7 +92,7 @@ export function CertificationShowcaseDesktop({
 
   return (
     <section className={className} id="cert">
-      <Card className="max-w-7xl mx-auto bg-transparent dark:bg-transparent shadow-none !border-0">
+      <Card className="max-w-7xl mx-auto bg-transparent dark:bg-transparent shadow-none border-0!">
         <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8 text-black dark:text-white">
           {t("title")}
         </CardTitle>

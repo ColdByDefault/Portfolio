@@ -28,6 +28,7 @@ export interface PageSpeedResult {
 
 export interface PageSpeedApiResponse {
   error?: string;
+  details?: string;
   url?: string;
   strategy?: string;
   metrics?: PageSpeedMetrics;

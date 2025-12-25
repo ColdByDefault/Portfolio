@@ -42,7 +42,6 @@ export class BlogUtilityService {
 
     // PRESERVE markdown formatting - DO NOT remove whitespace or newlines
     // Only remove NULL characters and other control characters that could be dangerous
-    // eslint-disable-next-line no-control-regex
     sanitized = sanitized.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "");
 
     return sanitized;

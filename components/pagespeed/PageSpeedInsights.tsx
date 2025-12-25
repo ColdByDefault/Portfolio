@@ -192,16 +192,18 @@ export default function PageSpeedInsights({
   useEffect(() => {
     if (loading) {
       // Start progress
-      setProgress(0);
-      setProgressLabel("Connecting to PageSpeed API...");
+      const updateProgress = (value: number, label: string) => {
+        setProgress(value);
+        setProgressLabel(label);
+      };
+
+      updateProgress(0, "Connecting to PageSpeed API...");
 
       const progressTimer = setTimeout(() => {
-        setProgress(25);
-        setProgressLabel("Analyzing website performance...");
+        updateProgress(25, "Analyzing website performance...");
 
         const midTimer = setTimeout(() => {
-          setProgress(60);
-          setProgressLabel("Processing metrics...");
+          updateProgress(60, "Processing metrics...");
         }, 800);
 
         return () => clearTimeout(midTimer);
@@ -210,8 +212,11 @@ export default function PageSpeedInsights({
       return () => clearTimeout(progressTimer);
     } else {
       // Complete progress when data is loaded
-      setProgress(100);
-      setProgressLabel("Analysis complete!");
+      const finalizeProgress = () => {
+        setProgress(100);
+        setProgressLabel("Analysis complete!");
+      };
+      finalizeProgress();
       return undefined;
     }
   }, [loading]);

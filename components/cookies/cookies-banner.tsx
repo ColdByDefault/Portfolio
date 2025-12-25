@@ -4,7 +4,7 @@
  */
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import {
   Card,
   CardContent,
@@ -15,13 +15,15 @@ import { Button } from "@/components/ui/button";
 import { X, Cookie } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+const emptySubscribe = () => () => {};
+
 export function CookiesBanner() {
   const [isVisible, setIsVisible] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   useEffect(() => {
     if (!mounted) return;
@@ -82,7 +84,7 @@ export function CookiesBanner() {
 
         <CardContent className="p-6">
           <div className="flex items-start space-x-3">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <Cookie className="h-6 w-6 text-amber-600 dark:text-amber-400" />
             </div>
             <div className="flex-1 space-y-3">

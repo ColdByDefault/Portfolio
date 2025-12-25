@@ -21,6 +21,7 @@ import { REEM_SYSTEM_PROMPT, REEM_CONFIG } from "@/data/chatbot-system-prompt";
 
 // Environment configuration with validation
 const GEMINI_API_KEY = process.env.GEMINI_KEY;
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
 const CHATBOT_ENABLED = process.env.CHATBOT_ENABLED === "true";
 
 const chatbotConfig: ChatBotConfig = {
@@ -172,6 +173,64 @@ function cleanupRateLimits(): void {
   }
 }
 
+// Groq API fallback when Gemini quota is exceeded
+async function callGroqAPI(
+  messages: ChatMessage[],
+  systemPrompt: string
+): Promise<string> {
+  if (!GROQ_API_KEY) {
+    throw new Error("No fallback API available");
+  }
+
+  const groqMessages = [
+    { role: "system" as const, content: systemPrompt },
+    ...messages
+      .filter((msg) => msg.role !== "system")
+      .map((msg) => ({
+        role: msg.role as "user" | "assistant",
+        content: msg.content,
+      })),
+  ];
+
+  const response = await fetch(
+    "https://api.groq.com/openai/v1/chat/completions",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${GROQ_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "llama-3.3-70b-versatile",
+        messages: groqMessages,
+        temperature: 0.7,
+        max_tokens: 1024,
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    const errorData = (await response.json().catch(() => ({}))) as {
+      error?: { message?: string };
+    };
+    throw new Error(
+      `Groq API error: ${response.status} - ${
+        errorData.error?.message || "Unknown error"
+      }`
+    );
+  }
+
+  const data = (await response.json()) as {
+    choices?: Array<{ message?: { content?: string } }>;
+  };
+
+  if (!data.choices?.[0]?.message?.content) {
+    throw new Error("Invalid response from Groq API");
+  }
+
+  return data.choices[0].message.content;
+}
+
 async function callGeminiAPI(messages: ChatMessage[]): Promise<string> {
   if (!GEMINI_API_KEY) {
     throw new Error("Gemini API key not configured");
@@ -242,8 +301,19 @@ async function callGeminiAPI(messages: ChatMessage[]): Promise<string> {
 
     if (!response.ok) {
       const errorData = (await response.json().catch(() => ({}))) as {
-        error?: { message?: string };
+        error?: { message?: string; code?: number };
       };
+
+      // Handle quota exceeded (429) specifically
+      if (response.status === 429) {
+        const retryMatch =
+          errorData.error?.message?.match(/retry in ([\d.]+)s/i);
+        const retryAfter = retryMatch?.[1] ? parseFloat(retryMatch[1]) : 60;
+        throw new Error(
+          `QUOTA_EXCEEDED:${retryAfter}:Gemini API quota exceeded. Please try again later.`
+        );
+      }
+
       throw new Error(
         `Gemini API error: ${response.status} - ${
           errorData.error?.message || "Unknown error"
@@ -266,6 +336,18 @@ async function callGeminiAPI(messages: ChatMessage[]): Promise<string> {
     return data.candidates[0].content.parts[0].text;
   } catch (error) {
     console.error("Gemini API call failed:", error);
+
+    // Try Groq as fallback if Gemini quota exceeded and Groq key available
+    if (
+      GROQ_API_KEY &&
+      error instanceof Error &&
+      (error.message.includes("QUOTA_EXCEEDED") ||
+        error.message.includes("429"))
+    ) {
+      console.log("Falling back to Groq API...");
+      return callGroqAPI(messages, systemPrompt);
+    }
+
     throw error;
   }
 }
@@ -400,6 +482,26 @@ export async function POST(
     });
   } catch (error) {
     console.error("ChatBot API error:", error);
+
+    // Check for quota exceeded error
+    if (error instanceof Error && error.message.startsWith("QUOTA_EXCEEDED:")) {
+      const [, retryAfter, message] = error.message.split(":");
+      const retrySeconds = retryAfter ? parseFloat(retryAfter) : 60;
+      return NextResponse.json(
+        {
+          error:
+            message || "AI service quota exceeded. Please try again later.",
+          code: "QUOTA_EXCEEDED",
+          retryAfter: retrySeconds || 60,
+        },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(Math.ceil(retrySeconds || 60)),
+          },
+        }
+      );
+    }
 
     return NextResponse.json(
       {

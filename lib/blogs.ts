@@ -6,7 +6,7 @@
 
 import type { Blog, BlogListQuery, BlogListResponse } from "@/types/blogs";
 import { prisma } from "@/lib/prisma";
-import type { Prisma } from "@prisma/client";
+import type { Prisma } from "@/lib/generated/prisma/client";
 import { sanitizeInput } from "@/lib/security";
 
 /**

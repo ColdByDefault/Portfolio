@@ -48,7 +48,7 @@ export function CertificationShowcaseMobile({
           onClick={() => logic.toggleCard(cert.id)}
         >
           <div className="flex items-center gap-4">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <ImageZoomDialog
                 src={cert.image}
                 alt={cert.title}
@@ -72,7 +72,7 @@ export function CertificationShowcaseMobile({
               </p>
             </div>
           </div>
-          <div className="flex-shrink-0 ml-3">
+          <div className="shrink-0 ml-3">
             {isExpanded ? (
               <ChevronUp className="w-6 h-6 text-gray-400 transition-transform duration-300" />
             ) : (
@@ -140,7 +140,7 @@ export function CertificationShowcaseMobile({
           onClick={() => logic.toggleCard(cert.id)}
         >
           <div className="flex items-center gap-3">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <ImageZoomDialog
                 src={cert.image}
                 alt={cert.title}
@@ -164,7 +164,7 @@ export function CertificationShowcaseMobile({
               </p>
             </div>
           </div>
-          <div className="flex-shrink-0 ml-2">
+          <div className="shrink-0 ml-2">
             {isExpanded ? (
               <ChevronUp className="w-5 h-5 text-gray-400 transition-transform duration-300" />
             ) : (
@@ -239,7 +239,7 @@ export function CertificationShowcaseMobile({
 
   return (
     <section className={className} id="cert">
-      <Card className="max-w-7xl mx-auto bg-transparent dark:bg-transparent shadow-none !border-0">
+      <Card className="max-w-7xl mx-auto bg-transparent dark:bg-transparent shadow-none border-0!">
         <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8 text-black dark:text-white">
           {t("title")}
         </CardTitle>

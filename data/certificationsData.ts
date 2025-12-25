@@ -16,6 +16,15 @@ export const certifications = [
   },
   {
     id: 2,
+    title: "KI KOMPETENZ SCHULUNG",
+    image: "/assets/cer4.png",
+    issuer: "AI training Institute",
+    description: "KI KOMPETENZ SCHULUNG GEMÄSS ARTIKEL 4 EU AI ACT",
+    descriptionKey: "kiKompetenzSchulung",
+    date: "2025",
+  },
+  {
+    id: 3,
     title: "Udemy Python Bootcamp",
     image: "/assets/cer2.png",
     issuer: "Udemy",
@@ -25,7 +34,7 @@ export const certifications = [
     date: "2024",
   },
   {
-    id: 3,
+    id: 4,
     title: "Meta Frontend Development",
     image: "/assets/cer3.png",
     issuer: "Meta (via Coursera)",
@@ -35,7 +44,7 @@ export const certifications = [
     date: "2022",
   },
   {
-    id: 4,
+    id: 5,
     title: "Udemy HTML and CSS for Beginners",
     image: "/assets/htmlC.png",
     issuer: "Udemy",
@@ -45,7 +54,7 @@ export const certifications = [
     date: "2025",
   },
   {
-    id: 5,
+    id: 6,
     title: "The Git & GitHub Bootcamp",
     image: "/assets/githubC.png",
     issuer: "Udemy",
@@ -55,7 +64,7 @@ export const certifications = [
     date: "2025",
   },
   {
-    id: 6,
+    id: 7,
     title: "Full-Stack Web-Development",
     image: "/assets/nodecer.jpg",
     issuer: "Udemy",

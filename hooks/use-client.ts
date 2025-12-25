@@ -2,20 +2,20 @@
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+const emptySubscribe = () => () => {};
 
 /**
  * Custom hook to safely check if component is mounted on client-side
  * Prevents hydration mismatches by ensuring code only runs on client
  */
 export function useIsClient() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  return isClient;
+  return useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 }
 
 /**
@@ -23,11 +23,9 @@ export function useIsClient() {
  * Returns undefined on server-side to prevent hydration issues
  */
 export function useWindow() {
-  const [windowObj, setWindowObj] = useState<Window | undefined>(undefined);
-
-  useEffect(() => {
-    setWindowObj(window);
-  }, []);
-
-  return windowObj;
+  return useSyncExternalStore(
+    emptySubscribe,
+    () => window,
+    () => undefined
+  );
 }

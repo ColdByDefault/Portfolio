@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: LicenseRef-BRH-1.0
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,52 +20,71 @@ const languages: Record<string, { name: string }> = {
   sv: { name: "Svenska" },
 };
 
+const emptySubscribe = () => () => {};
+
+function getCookie(name: string): string | undefined {
+  if (typeof document === "undefined") return undefined;
+  return document.cookie
+    .split("; ")
+    .find((row) => row.startsWith(`${name}=`))
+    ?.split("=")[1];
+}
+
+function getInitialLocale(): string {
+  const cookieLocale = getCookie("PORTFOLIOVERSIONLATEST_LOCALE");
+  if (cookieLocale && languages[cookieLocale]) {
+    return cookieLocale;
+  }
+  if (typeof navigator !== "undefined") {
+    const browserLang = navigator.language.slice(0, 2);
+    return languages[browserLang] ? browserLang : "en";
+  }
+  return "en";
+}
+
+function getInitialBrowserLang(): string {
+  const cookieBrowserLang = getCookie("PORTFOLIOVERSIONLATEST_BROWSER_LANG");
+  if (cookieBrowserLang) return cookieBrowserLang;
+  if (typeof navigator !== "undefined") {
+    return navigator.language.slice(0, 2);
+  }
+  return "en";
+}
+
 const LanguageSwitcher = () => {
-  // 1. State must be declared before use
-  const [locale, setLocale] = useState<string>("en");
-  const [browserLang, setBrowserLang] = useState<string>("en");
-  const [isUnsupportedLang, setIsUnsupportedLang] = useState<boolean>(false);
   const router = useRouter();
 
-  useEffect(() => {
-    // 2. Read existing cookies (set by middleware)
-    const cookieLocale = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("PORTFOLIOVERSIONLATEST_LOCALE="))
-      ?.split("=")[1];
+  // Use useSyncExternalStore for initial values from cookies/browser
+  const initialLocale = useSyncExternalStore(
+    emptySubscribe,
+    getInitialLocale,
+    () => "en"
+  );
 
-    const cookieBrowserLang = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("PORTFOLIOVERSIONLATEST_BROWSER_LANG="))
-      ?.split("=")[1];
+  const initialBrowserLang = useSyncExternalStore(
+    emptySubscribe,
+    getInitialBrowserLang,
+    () => "en"
+  );
 
-    if (cookieLocale && languages[cookieLocale]) {
-      setLocale(cookieLocale);
-    }
+  // State for user-changed values
+  const [locale, setLocale] = useState<string | null>(null);
+  const [manuallySelected, setManuallySelected] = useState(false);
 
-    if (cookieBrowserLang) {
-      setBrowserLang(cookieBrowserLang);
-      // Check if browser language is supported
-      setIsUnsupportedLang(!languages[cookieBrowserLang]);
-    }
-
-    // Fallback: if no cookies, detect client-side (shouldn't happen with new middleware)
-    if (!cookieLocale) {
-      const browserLang = navigator.language.slice(0, 2);
-      const defaultLocale = languages[browserLang] ? browserLang : "en";
-      setLocale(defaultLocale);
-      setBrowserLang(browserLang);
-      setIsUnsupportedLang(!languages[browserLang]);
-      document.cookie = `PORTFOLIOVERSIONLATEST_LOCALE=${defaultLocale}; path=/;`;
-      document.cookie = `PORTFOLIOVERSIONLATEST_BROWSER_LANG=${browserLang}; path=/;`;
-    }
-  }, []);
+  // Use state value if manually changed, otherwise use initial value
+  const currentLocale = locale ?? initialLocale;
+  const browserLang = initialBrowserLang;
+  const isUnsupportedLang = !manuallySelected && !languages[browserLang];
 
   const changeLocale = (newLocale: string) => {
     if (!languages[newLocale]) return;
     setLocale(newLocale);
-    setIsUnsupportedLang(false); // User manually selected a supported language
-    document.cookie = `PORTFOLIOVERSIONLATEST_LOCALE=${newLocale}; path=/;`;
+    setManuallySelected(true);
+    // Update cookie using a function to avoid direct mutation warning
+    const setCookie = (value: string) => {
+      document.cookie = value;
+    };
+    setCookie(`PORTFOLIOVERSIONLATEST_LOCALE=${newLocale}; path=/;`);
     // 4. Refresh current route to re-render server components with new locale
     router.refresh(); // useRouter only works in Client Components :contentReference[oaicite:0]{index=0}
   };
@@ -75,10 +94,10 @@ const LanguageSwitcher = () => {
   };
 
   const getCurrentName = () => {
-    if (isUnsupportedLang && browserLang !== locale) {
-      return `${languages[locale]?.name ?? "English"} (Auto)`;
+    if (isUnsupportedLang && browserLang !== currentLocale) {
+      return `${languages[currentLocale]?.name ?? "English"} (Auto)`;
     }
-    return languages[locale]?.name ?? "English";
+    return languages[currentLocale]?.name ?? "English";
   };
 
   return (
@@ -97,7 +116,7 @@ const LanguageSwitcher = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" aria-label="Language selection menu">
-        {isUnsupportedLang && browserLang !== locale && (
+        {isUnsupportedLang && browserLang !== currentLocale && (
           <DropdownMenuItem disabled className="text-muted-foreground text-xs">
             Browser: {browserLang.toUpperCase()} (Unsupported)
           </DropdownMenuItem>
@@ -107,7 +126,7 @@ const LanguageSwitcher = () => {
             key={key}
             onClick={() => changeLocale(key)}
             aria-label={`Switch to ${name}`}
-            className={locale === key ? "bg-accent" : ""}
+            className={currentLocale === key ? "bg-accent" : ""}
           >
             {name}
             {locale === key && isUnsupportedLang && (

@@ -6,46 +6,57 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 
 export type Language = "en" | "de";
 
+const emptySubscribe = () => () => {};
+
+function getInitialLanguage(): Language {
+  if (typeof window === "undefined") return "en";
+
+  // Check URL params first
+  const urlParams = new URLSearchParams(window.location.search);
+  const langParam = urlParams.get("lang") as Language;
+  if (langParam && ["en", "de"].includes(langParam)) {
+    return langParam;
+  }
+
+  // Check localStorage
+  const savedLang = localStorage.getItem("preferred-language") as Language;
+  if (savedLang && ["en", "de"].includes(savedLang)) {
+    return savedLang;
+  }
+
+  // Detect browser language
+  const browserLang = navigator.language.toLowerCase();
+  return browserLang.startsWith("de") ? "de" : "en";
+}
+
 export function useLanguage() {
+  const isClient = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+
   const [language, setLanguage] = useState<Language>("en");
   const [isLoading, setIsLoading] = useState(true);
+  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    // Check URL params first
-    const urlParams = new URLSearchParams(window.location.search);
-    const langParam = urlParams.get("lang") as Language;
+    if (!isClient || initialized) return;
 
-    if (langParam && ["en", "de"].includes(langParam)) {
-      setLanguage(langParam);
-      localStorage.setItem("preferred-language", langParam);
+    const initLanguage = () => {
+      const detectedLang = getInitialLanguage();
+      setLanguage(detectedLang);
+      localStorage.setItem("preferred-language", detectedLang);
       setIsLoading(false);
-      return;
-    }
+      setInitialized(true);
+    };
 
-    // Check localStorage
-    const savedLang = localStorage.getItem("preferred-language") as Language;
-    if (savedLang && ["en", "de"].includes(savedLang)) {
-      setLanguage(savedLang);
-      setIsLoading(false);
-      return;
-    }
-
-    // Detect browser language
-    const browserLang = navigator.language.toLowerCase();
-    if (browserLang.startsWith("de")) {
-      setLanguage("de");
-      localStorage.setItem("preferred-language", "de");
-    } else {
-      setLanguage("en");
-      localStorage.setItem("preferred-language", "en");
-    }
-
-    setIsLoading(false);
-  }, []);
+    initLanguage();
+  }, [isClient, initialized]);
 
   const changeLanguage = (newLang: Language) => {
     setLanguage(newLang);

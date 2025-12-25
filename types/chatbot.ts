@@ -97,8 +97,10 @@ export interface ChatBotApiError {
     | "RATE_LIMIT_EXCEEDED"
     | "INVALID_INPUT"
     | "SERVICE_UNAVAILABLE"
-    | "UNAUTHORIZED";
+    | "UNAUTHORIZED"
+    | "QUOTA_EXCEEDED";
   details?: Record<string, unknown>;
+  retryAfter?: number;
 }
 
 // Rate Limiting Types

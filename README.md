@@ -1,12 +1,12 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V4.24.1
+# ColdByDefault Portfolio · V5.2.8
 
-Modern, secure, high‑performance developer portfolio built with Next.js 15.5.1, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
+Modern, secure, high‑performance developer portfolio built with Next.js 16, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
 <img width="990" height="174" alt="Screenshot 2025-08-31 111906" src="https://github.com/user-attachments/assets/2a863d38-e178-42ee-85a9-75010601fb2b" />
 
-**Live:** https://www.coldbydefault.com • **Docs:** https://docs.coldbydefault.com/ • **Stack:** Next.js 15.5.1 · React 19.1.1 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.3.5 · Prisma ORM · Neon PostgreSQL · Zod · ESLint 9.x · Vercel
+**Live:** https://www.coldbydefault.com • **Docs:** https://docs.coldbydefault.com/ • **Stack:** Next.js 16 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.6 · Prisma ORM 7 · Neon PostgreSQL · Zod 4.x · ESLint 9.x · Vercel
 
 </div>
 
@@ -57,13 +57,14 @@ This portfolio serves as a professional showcase of engineering capability: perf
 
 Core:
 
-- Next.js 15.5.1 (App Router, Server Components, Edge runtime where applicable)
-- React 19.1.1, TypeScript 5.x (strict mode)
+- Next.js 16 (App Router, Server Components, Turbopack, Edge runtime where applicable)
+- React 19.2.3, TypeScript 5.x (strict mode)
 - Tailwind CSS 4.1.12 + PostCSS
 - shadcn/ui (accessible primitives)
 - Embla Carousel 8.6.0 (modern carousel with autoplay)
 - Framer Motion 12.23.12 (animation system)
-- next-intl 4.3.5 (runtime + server i18n)
+- next-intl 4.6 (runtime + server i18n)
+- Zod 4.x (runtime schema validation)
 - Vercel Hosting & Edge Network
 - Vercel CRON Jobs (Automated Background Tasks & refresh Data)
 
@@ -205,14 +206,14 @@ Design Principles:
 
 Comprehensive API endpoints with security-first design:
 
-| Endpoint         | Purpose                                           | Notes                |
-| ---------------- | ------------------------------------------------- | -------------------- |
-| `/api/about`     | Returns profile / about metadata                  | Static + typed       |
-| `/api/blog`      | Blog content management and retrieval             | Prisma + Zod         |
-| `/api/github`    | Fetches GitHub profile + repos (filtered)         | Tokenized (env)      |
-| `/api/pagespeed` | Surfaces PageSpeed metrics                        | External API wrapper |
-| `/api/chatbot`   | Interactive AI chatbot (Reem) for visitor queries | AI-powered responses |
-| `/api/admin`     | Administrative operations for content             | Secured endpoints    |
+| Endpoint         | Purpose                                           | Notes                             |
+| ---------------- | ------------------------------------------------- | --------------------------------- |
+| `/api/about`     | Returns profile / about metadata                  | Static + typed                    |
+| `/api/blog`      | Blog content management and retrieval             | Prisma + Zod                      |
+| `/api/github`    | Fetches GitHub profile + repos (filtered)         | Tokenized (env)                   |
+| `/api/pagespeed` | Surfaces PageSpeed metrics                        | Enhanced caching + error handling |
+| `/api/chatbot`   | Interactive AI chatbot (Reem) for visitor queries | Gemini + Groq fallback            |
+| `/api/admin`     | Administrative operations for content             | Secured endpoints                 |
 
 Controls:
 
@@ -351,6 +352,19 @@ pnpm db:seed
 pnpm db:reset
 ```
 
+**Prisma ORM 7 Notes:**
+
+Prisma 7 introduces a new client generation structure. The generated client exports are now in `client.ts`:
+
+```typescript
+// ✅ Correct import for Prisma 7
+import { PrismaClient } from "@/lib/generated/prisma/client";
+import type { Prisma } from "@/lib/generated/prisma/client";
+
+// ❌ Old import (Prisma 6 and below)
+import { PrismaClient } from "@/lib/generated/prisma";
+```
+
 **Blog System & Content Management:**
 
 - Prisma ORM provides type-safe database operations with PostgreSQL
@@ -402,12 +416,15 @@ pnpm db:reset
 
 **Completed Features:**
 
+- ✅ Upgraded to Next.js 16 with Turbopack and React 19.2.3
+- ✅ Upgraded to Prisma ORM 7 with driver adapters and ESM support
+- ✅ Enhanced PageSpeed API with improved caching, error handling, and circuit breaker
+- ✅ AI Chatbot with Groq (Llama 3.3 70B) fallback for Gemini quota limits
 - ✅ TypeDoc documentation system implementation
 - ✅ Enhanced CodeQL security scanning across multiple languages
 - ✅ Automated dependency review workflows
 - ✅ Interactive chatbot system (Reem AI Assistant) integration
 - ✅ Comprehensive admin dashboard with CRUD operations
-- ✅ Enhanced Prisma ORM integration
 
 **Planned Enhancements:**
 
@@ -444,7 +461,7 @@ Documentation: https://docs.coldbydefault.com/
 Email: contact@coldbydefault.com
 Linktree: https://linktr.ee/ColdByDefault  
 For professional or security inquiries, reach out via the official channels listed above.
-*P.S. If you find any bugs, they're not bugs - they're undocumented features!*
+_P.S. If you find any bugs, they're not bugs - they're undocumented features!_
 
 ---
 

@@ -4,33 +4,33 @@
  */
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useSyncExternalStore } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useIsMobile } from "@/hooks/use-mobile";
 
+const emptySubscribe = () => () => {};
+
 function useHasMounted() {
-  const [hasMounted, setHasMounted] = useState(false);
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-  return hasMounted;
+  return useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+}
+
+function subscribeToMediaQuery(callback: () => void) {
+  const mql = window.matchMedia(`(max-width: 1024px)`);
+  mql.addEventListener("change", callback);
+  return () => mql.removeEventListener("change", callback);
 }
 
 function useIsMediumScreen() {
-  const [isMediumScreen, setIsMediumScreen] = useState<boolean>(false);
-
-  useEffect(() => {
-    const mql = window.matchMedia(`(max-width: 1024px)`);
-    const onChange = () => {
-      setIsMediumScreen(window.innerWidth <= 1024);
-    };
-    mql.addEventListener("change", onChange);
-    setIsMediumScreen(window.innerWidth <= 1024);
-    return () => mql.removeEventListener("change", onChange);
-  }, []);
-
-  return isMediumScreen;
+  return useSyncExternalStore(
+    subscribeToMediaQuery,
+    () => window.innerWidth <= 1024,
+    () => false
+  );
 }
 
 export function Background() {
@@ -45,7 +45,7 @@ export function Background() {
 
   // Only create motion values for desktop
   const shouldUseMotion = hasMounted && !isMobile && !isMediumScreen;
-  
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -69,7 +69,7 @@ export function Background() {
         ticking = true;
       }
     };
-    
+
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
@@ -79,7 +79,7 @@ export function Background() {
   if (!hasMounted) {
     return null;
   }
-  
+
   const gridColor = isDarkTheme
     ? "rgba(255, 255, 255, 0.08)"
     : "rgba(0, 0, 0, 0.08)";
