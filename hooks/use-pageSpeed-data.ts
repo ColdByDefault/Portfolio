@@ -77,6 +77,18 @@ export function usePageSpeedData({
               "Rate limit reached. Please wait before trying again.";
           } else if (response.status === 503) {
             errorMessage = "PageSpeed API is temporarily unavailable.";
+            try {
+              const contentType = response.headers.get("content-type");
+              if (contentType?.includes("application/json")) {
+                const errorData =
+                  (await response.json()) as PageSpeedApiResponse;
+                if (errorData.details) {
+                  errorMessage = `${errorMessage} (${errorData.details})`;
+                }
+              }
+            } catch {
+              // Keep the default message
+            }
           } else {
             try {
               const contentType = response.headers.get("content-type");
@@ -133,14 +145,15 @@ export function usePageSpeedData({
       setCacheStatus(null);
 
       try {
-        const promises = [fetchStrategy("mobile", forceRefresh)];
-        if (showBothStrategies) {
-          promises.push(fetchStrategy("desktop", forceRefresh));
-        }
+        // Fetch strategies sequentially to reduce API load and improve reliability
+        await fetchStrategy("mobile", forceRefresh);
 
-        await Promise.all(promises);
+        if (showBothStrategies) {
+          await fetchStrategy("desktop", forceRefresh);
+        }
       } catch (fetchError) {
         console.error("Failed to fetch PageSpeed data:", fetchError);
+        // Only set error if no data was fetched at all
         setError(
           fetchError instanceof Error
             ? fetchError.message

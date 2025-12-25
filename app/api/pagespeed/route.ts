@@ -219,6 +219,11 @@ async function fetchPageSpeedData(
     if (response.status === 429) {
       throw new Error("Rate limit exceeded");
     }
+    if (response.status === 403) {
+      throw new Error(
+        "PageSpeed API access denied - API key may be invalid, restricted, or the API not enabled in Google Cloud Console"
+      );
+    }
     if (response.status >= 500) {
       throw new Error("PageSpeed service unavailable");
     }
@@ -374,7 +379,7 @@ export async function GET(request: NextRequest) {
             {
               error:
                 "PageSpeed analysis timed out. The website may be slow to load. Try refreshing in a few minutes.",
-              retryAfter: 300, 
+              retryAfter: 300,
             },
             {
               status: 504,
@@ -399,10 +404,28 @@ export async function GET(request: NextRequest) {
             }
           );
         }
+
+        if (error.message.includes("not configured")) {
+          return NextResponse.json(
+            { error: "PageSpeed API key is not configured" },
+            { status: 500 }
+          );
+        }
+
+        if (error.message.includes("service unavailable")) {
+          return NextResponse.json(
+            { error: "Google PageSpeed service is temporarily unavailable" },
+            { status: 503 }
+          );
+        }
       }
 
       return NextResponse.json(
-        { error: "PageSpeed service is temporarily unavailable" },
+        {
+          error: "PageSpeed service is temporarily unavailable",
+          details:
+            error instanceof Error ? error.message : "Unknown error occurred",
+        },
         { status: 503 }
       );
     }
