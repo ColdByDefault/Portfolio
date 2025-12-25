@@ -486,17 +486,18 @@ export async function POST(
     // Check for quota exceeded error
     if (error instanceof Error && error.message.startsWith("QUOTA_EXCEEDED:")) {
       const [, retryAfter, message] = error.message.split(":");
+      const retrySeconds = retryAfter ? parseFloat(retryAfter) : 60;
       return NextResponse.json(
         {
           error:
             message || "AI service quota exceeded. Please try again later.",
           code: "QUOTA_EXCEEDED",
-          retryAfter: parseFloat(retryAfter) || 60,
+          retryAfter: retrySeconds || 60,
         },
         {
           status: 429,
           headers: {
-            "Retry-After": String(Math.ceil(parseFloat(retryAfter) || 60)),
+            "Retry-After": String(Math.ceil(retrySeconds || 60)),
           },
         }
       );

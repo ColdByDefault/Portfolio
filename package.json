@@ -23,12 +23,11 @@
   "license": "Copyright 2026 ColdByDefault. All Rights Reserved.",
   "private": true,
   "scripts": {
-    "almighty": "npm run lint && npm run build && npm run dev",
     "dev": "next dev --hostname 0.0.0.0",
-    "dev:turbo": "next dev --turbopack --hostname 0.0.0.0",
     "build": "next build --turbopack",
     "start": "next start --hostname 0.0.0.0",
     "deploy": "prisma migrate deploy && npm run build",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test-dep": "npx npm-check-updates --interactive",
