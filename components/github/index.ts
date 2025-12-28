@@ -1,5 +1,5 @@
 /**
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 export { default as GitHubShowcase } from "./GitHubShowcase";

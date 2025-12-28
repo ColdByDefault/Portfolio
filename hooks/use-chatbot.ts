@@ -1,7 +1,7 @@
 /**
  * ChatBot Custom Hook - Manages state and API communication
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
 "use client";

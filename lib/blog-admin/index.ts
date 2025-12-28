@@ -1,7 +1,7 @@
 /**
  * Blog Admin Services - Individual services for direct use
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
 // Individual services (for direct use if needed)

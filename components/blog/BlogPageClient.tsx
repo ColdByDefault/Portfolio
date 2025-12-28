@@ -1,7 +1,7 @@
 /**
  * Client-side Blog Page with Language Filtering
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 "use client";
 

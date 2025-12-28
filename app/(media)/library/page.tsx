@@ -1,6 +1,6 @@
 /**
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 import { BooksShelf, OthersShelf } from "@/components/library";
 import { useTranslations } from "next-intl";

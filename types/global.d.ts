@@ -1,7 +1,7 @@
 /**
  * @file /types/global.d.ts
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  *
  * Global type declarations for CSS imports and other module types
  */

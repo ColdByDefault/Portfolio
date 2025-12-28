@@ -1,7 +1,7 @@
 /**
  * SEO configuration and metadata generation utilities (Business Logic Only)
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
 import type { Blog, BlogSEO, BlogStructuredData } from "@/types/blogs";

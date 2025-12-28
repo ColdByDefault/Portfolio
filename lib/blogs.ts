@@ -1,7 +1,7 @@
 /**
  * Blog API Functions
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
 import type { Blog, BlogListQuery, BlogListResponse } from "@/types/blogs";

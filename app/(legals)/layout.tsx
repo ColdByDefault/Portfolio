@@ -1,7 +1,7 @@
 /**
  * Legals Route Group Layout - Layout for legal pages (privacy, impressum, terms)
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
 import type { Metadata } from "next";

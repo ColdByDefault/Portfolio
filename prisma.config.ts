@@ -1,7 +1,7 @@
 /**
  * Prisma Configuration for Prisma ORM 7
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
 import "dotenv/config";

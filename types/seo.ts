@@ -1,7 +1,7 @@
 /**
  * SEO-related TypeScript types and interfaces
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
 import type { TwitterCardType } from "@/types/metadata";

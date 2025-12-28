@@ -1,7 +1,7 @@
 /**
  * Blog Query Service
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
 import { prisma } from "@/lib/prisma";

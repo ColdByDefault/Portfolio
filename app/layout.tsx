@@ -7,7 +7,7 @@
  * @file /app/layout.tsx
  * @created 2024-12-31 23:00:00
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright 2026 ColdByDefault. All Rights Reserved.
  *
  *
  * @see @link https://www.coldbydefault.com for the live website.
@@ -193,7 +193,7 @@ export default async function RootLayout({
         {/* Skip to main content for accessibility */}
         <Link
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-[9999] focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-9999 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           Skip to main content
         </Link>

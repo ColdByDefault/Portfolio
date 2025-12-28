@@ -1,7 +1,7 @@
 /**
  * Middleware for handling redirects and locale management
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
 import { NextResponse } from "next/server";

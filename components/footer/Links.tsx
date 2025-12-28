@@ -1,6 +1,6 @@
 /**
  * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 import Link from "next/link";
 import type { ReactNode } from "react";

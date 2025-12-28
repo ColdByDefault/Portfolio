@@ -1,10 +1,11 @@
-Copyright (c) 2025 ColdByDefault
+Copyright (c) 2026 ColdByDefault
 
 All rights reserved.
 
 This code is provided for showcase purposes only. No permission is granted to use, copy, modify, distribute, or create derivative works from this code, in whole or in part, for any purpose.
 
-For inquiries, please contact me at contact@coldbydefault.com.
+For inquiries, please contact me at contact@coldbydefault.com
+abo.ayash.yazan@gmail.com
 
 ---
 
@@ -14,25 +15,32 @@ Alle Rechte vorbehalten.
 
 Dieser Code wird nur zu Präsentationszwecken bereitgestellt. Es wird keine Erlaubnis erteilt, diesen Code ganz oder teilweise für irgendwelche Zwecke zu verwenden, zu kopieren, zu modifizieren, zu verteilen oder davon abgeleitete Werke zu erstellen.
 
-Für Anfragen kontaktieren Sie mich bitte unter contact@coldbydefault.com.
+Für Anfragen kontaktieren Sie mich bitte unter contact@coldbydefault.com
+abo.ayash.yazan@gmail.com
+
+---
 
 ## FRANÇAIS
-
 
 Tous droits réservés.
 
 Ce code est fourni uniquement à des fins de présentation. Aucune autorisation n'est accordée pour utiliser, copier, modifier, distribuer ou créer des œuvres dérivées de ce code, en tout ou en partie, à quelque fin que ce soit.
 
-Pour toute demande, veuillez me contacter à contact@coldbydefault.com.
+Pour toute demande, veuillez me contacter à contact@coldbydefault.com
+abo.ayash.yazan@gmail.com
+
+---
 
 ## SVENSKA
-
 
 Alla rättigheter förbehållna.
 
 Denna kod tillhandahålls endast för visningssyften. Ingen tillstånd ges att använda, kopiera, modifiera, distribuera eller skapa härledda verk från denna kod, helt eller delvis, för något syfte.
 
-För förfrågningar, vänligen kontakta mig på contact@coldbydefault.com.
+För förfrågningar, vänligen kontakta mig på contact@coldbydefault.com
+abo.ayash.yazan@gmail.com
+
+---
 
 ## ESPAÑOL
 
@@ -40,4 +48,117 @@ Todos los derechos reservados.
 
 Este código se proporciona únicamente con fines de presentación. No se otorga ningún permiso para usar, copiar, modificar, distribuir o crear obras derivadas de este código, en todo o en parte, para cualquier propósito.
 
-Para consultas, por favor contácteme en contact@coldbydefault.com.
+Para consultas, por favor contácteme en contact@coldbydefault.com
+abo.ayash.yazan@gmail.com
+
+---
+
+# DISCLAIMER
+
+## ENGLISH
+
+### No Warranty
+
+This software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and non-infringement. In no event shall the author or copyright holder be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.
+
+### Showcase Purpose Only
+
+This code is provided for **showcase and demonstration purposes only**. No permission is granted to:
+
+- Use this code in any commercial or personal project
+- Copy, reproduce, or duplicate any part of this code
+- Modify or create derivative works
+- Distribute or sublicense this code
+- Use this code as a template or starting point for other projects
+
+### Third-Party Components
+
+This project includes third-party open-source software components. These components retain their original licenses and are not subject to the restrictions above. See `package.json` for the complete list of dependencies and their respective licenses.
+
+---
+
+## HAFTUNGSAUSSCHLUSS (DEUTSCH)
+
+### Keine Gewährleistung
+
+Diese Software wird "wie besehen" ohne jegliche ausdrückliche oder stillschweigende Gewährleistung bereitgestellt, einschließlich, aber nicht beschränkt auf die Gewährleistung der Marktgängigkeit, Eignung für einen bestimmten Zweck und Nichtverletzung von Rechten Dritter. In keinem Fall haftet der Autor oder Urheberrechtsinhaber für Ansprüche, Schäden oder andere Haftungsansprüche, sei es aus Vertrag, unerlaubter Handlung oder anderweitig, die sich aus oder im Zusammenhang mit der Software oder deren Nutzung ergeben.
+
+### Nur zu Präsentationszwecken
+
+Dieser Code wird **nur zu Präsentations- und Demonstrationszwecken** bereitgestellt. Es wird keine Erlaubnis erteilt:
+
+- Diesen Code in kommerziellen oder persönlichen Projekten zu verwenden
+- Irgendeinen Teil dieses Codes zu kopieren, reproduzieren oder duplizieren
+- Den Code zu modifizieren oder abgeleitete Werke zu erstellen
+- Diesen Code zu verteilen oder unterzulizenzieren
+- Diesen Code als Vorlage oder Ausgangspunkt für andere Projekte zu verwenden
+
+### Drittanbieter-Komponenten
+
+Dieses Projekt enthält Open-Source-Softwarekomponenten von Drittanbietern. Diese Komponenten behalten ihre ursprünglichen Lizenzen und unterliegen nicht den oben genannten Einschränkungen. Die vollständige Liste der Abhängigkeiten und ihrer jeweiligen Lizenzen finden Sie in der `package.json`.
+
+---
+
+## CLAUSE DE NON-RESPONSABILITÉ (FRANÇAIS)
+
+### Aucune Garantie
+
+Ce logiciel est fourni "tel quel", sans garantie d'aucune sorte, expresse ou implicite, y compris, mais sans s'y limiter, les garanties de qualité marchande, d'adéquation à un usage particulier et de non-contrefaçon. En aucun cas, l'auteur ou le détenteur des droits d'auteur ne sera responsable de toute réclamation, dommage ou autre responsabilité, que ce soit dans le cadre d'un contrat, d'un délit ou autrement, découlant de ou en relation avec le logiciel ou son utilisation.
+
+### Uniquement à des Fins de Présentation
+
+Ce code est fourni **uniquement à des fins de présentation et de démonstration**. Aucune autorisation n'est accordée pour :
+
+- Utiliser ce code dans un projet commercial ou personnel
+- Copier, reproduire ou dupliquer une partie de ce code
+- Modifier ou créer des œuvres dérivées
+- Distribuer ou sous-licencier ce code
+- Utiliser ce code comme modèle ou point de départ pour d'autres projets
+
+### Composants Tiers
+
+Ce projet inclut des composants logiciels open-source de tiers. Ces composants conservent leurs licences d'origine et ne sont pas soumis aux restrictions ci-dessus. Consultez `package.json` pour la liste complète des dépendances et leurs licences respectives.
+
+---
+
+## ANSVARSFRISKRIVNING (SVENSKA)
+
+### Ingen Garanti
+
+Denna programvara tillhandahålls "i befintligt skick", utan garanti av något slag, uttrycklig eller underförstådd, inklusive men inte begränsat till garantier för säljbarhet, lämplighet för ett visst ändamål och icke-intrång. Under inga omständigheter ska författaren eller upphovsrättsinnehavaren hållas ansvarig för några anspråk, skador eller annat ansvar, oavsett om det rör sig om avtal, skadestånd eller annat, som uppstår från eller i samband med programvaran eller dess användning.
+
+### Endast för Visningssyften
+
+Denna kod tillhandahålls **endast för visnings- och demonstrationssyften**. Ingen tillstånd ges att:
+
+- Använda denna kod i kommersiella eller personliga projekt
+- Kopiera, reproducera eller duplicera någon del av denna kod
+- Modifiera eller skapa härledda verk
+- Distribuera eller underlicensiera denna kod
+- Använda denna kod som mall eller utgångspunkt för andra projekt
+
+### Tredjepartskomponenter
+
+Detta projekt inkluderar programvarukomponenter med öppen källkod från tredje part. Dessa komponenter behåller sina ursprungliga licenser och omfattas inte av ovanstående begränsningar. Se `package.json` för den fullständiga listan över beroenden och deras respektive licenser.
+
+---
+
+## DESCARGO DE RESPONSABILIDAD (ESPAÑOL)
+
+### Sin Garantía
+
+Este software se proporciona "tal cual", sin garantía de ningún tipo, expresa o implícita, incluyendo, pero no limitado a, las garantías de comerciabilidad, idoneidad para un propósito particular y no infracción. En ningún caso el autor o titular de los derechos de autor será responsable de cualquier reclamación, daño u otra responsabilidad, ya sea en una acción de contrato, agravio u otro, que surja de o en conexión con el software o el uso u otras operaciones del software.
+
+### Solo con Fines de Presentación
+
+Este código se proporciona **únicamente con fines de presentación y demostración**. No se otorga ningún permiso para:
+
+- Usar este código en cualquier proyecto comercial o personal
+- Copiar, reproducir o duplicar cualquier parte de este código
+- Modificar o crear obras derivadas
+- Distribuir o sublicenciar este código
+- Usar este código como plantilla o punto de partida para otros proyectos
+
+### Componentes de Terceros
+
+Este proyecto incluye componentes de software de código abierto de terceros. Estos componentes conservan sus licencias originales y no están sujetos a las restricciones anteriores. Consulte `package.json` para la lista completa de dependencias y sus respectivas licencias.
