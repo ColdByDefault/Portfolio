@@ -23,7 +23,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Portfolio Website v4",
+    title: "Portfolio Website v5",
     description: "portfolioWebsite",
     technologies: [
       "Next.js",
@@ -65,42 +65,7 @@ export const projects: Project[] = [
       text: "openSource",
       variant: "secondary",
     },
-  },
-  {
-    id: 3,
-    title: "LLM AI Agent Chatbot",
-    description: "llmAgent",
-    technologies: [
-      "Next.js",
-      "LangChain",
-      "Ollama",
-      "DataStax Astra",
-      "PostgreSQL",
-      "TypeScript",
-    ],
-    githubUrl: "https://github.com/coldbydefault/simple-llm-agent",
-    featured: false,
-    category: "aiMl",
-    license: {
-      type: "fully-open",
-      text: "fullyOpen",
-      variant: "default",
-    },
-  },
-  {
-    id: 4,
-    title: "Subscription Management API",
-    description: "subsApi",
-    technologies: ["Next.js", "PostgreSQL", "JavaScript", "Prisma"],
-    githubUrl: "https://github.com/ColdByDefault/subs-api-manager",
-    featured: false,
-    category: "fullStack",
-    license: {
-      type: "fully-open",
-      text: "fullyOpen",
-      variant: "default",
-    },
-  },
+  }
 ];
 
 export const projectCategories = ["all", "webDevelopment", "fullStack", "aiMl"];

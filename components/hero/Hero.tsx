@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { ExternalLink } from "lucide-react";
+import { Calendar, ExternalLink } from "lucide-react";
 
 function Hero() {
   const t = useTranslations("Hero");
@@ -47,7 +47,7 @@ function Hero() {
           <div className="space-y-6 max-w-4xl">
             <div className="space-y-4">
               <h1
-                className={`bg-gradient-to-r text-transparent flex justify-center text-3xl sm:text-3xl md:text-4xl lg:text-5xl
+                className={`bg-linear-to-r text-transparent flex justify-center text-3xl sm:text-3xl md:text-4xl lg:text-5xl
                             ${light} bg-clip-text font-extrabold
                           dark:from-gray-900 dark:to-gray-200`}
               >
@@ -63,13 +63,24 @@ function Hero() {
               {t("description")}
             </p>
             <div className="flex flex-col sm:flex-row gap-2 items-center justify-center">
+              <Button asChild className="gap-2 cursor-pointer">
+                <a
+                  href="https://calendly.com/abo-ayash-yazan/intro-call"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <Calendar className="h-4 w-4" aria-hidden="true" />
+                  {t("bookFreeCall")}
+                </a>
+              </Button>
               <Button
                 variant="outline"
                 asChild
                 className="gap-2 cursor-pointer hover:bg-primary/10"
               >
                 <Link href="/about" className="flex items-center gap-2">
-                  <ExternalLink className="ml-2 h-3 w-3" aria-hidden="true" />
+                  <ExternalLink className="h-3 w-3" aria-hidden="true" />
                   {t("learnMoreAboutMe")}
                 </Link>
               </Button>

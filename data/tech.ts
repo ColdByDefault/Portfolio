@@ -7,7 +7,6 @@ import {
   SiReact,
   SiNextdotjs,
   SiTailwindcss,
-  SiJavascript,
   SiTypescript,
   SiNodedotjs,
   SiPrisma,
@@ -22,9 +21,9 @@ import {
   SiCanva,
   SiN8N,
 } from "react-icons/si";
-import { FaPuzzlePiece, FaRobot } from "react-icons/fa";
+import { FaRobot } from "react-icons/fa";
 import { TbAutomation } from "react-icons/tb";
-import { FileText, Network, MonitorSpeaker, Workflow } from "lucide-react";
+import { FileText, Network, Workflow } from "lucide-react";
 
 export interface TechItem {
   name: string;
@@ -46,7 +45,31 @@ export interface ServiceGroup {
 
 export const serviceGroups: ServiceGroup[] = [
   {
-    category: "Web Development",
+    category: "AI & Automation",
+    categoryKey: "aiAutomation",
+    descriptionKey: "aiAutomationDesc",
+    subCategories: [
+      {
+        name: "AI Assistants",
+        nameKey: "aiAgents",
+        items: [
+          { name: "AI Agents", Icon: FaRobot },
+          { name: "RAG Systems", Icon: Network },
+          { name: "MCP", Icon: FileText },
+        ],
+      },
+      {
+        name: "Workflow Automation",
+        nameKey: "workflowAutomation",
+        items: [
+          { name: "n8n", Icon: SiN8N },
+          { name: "LangFlow", Icon: TbAutomation },
+        ],
+      },
+    ],
+  },
+  {
+    category: "Web & Backend MVPs",
     categoryKey: "webDevelopment",
     descriptionKey: "webDevelopmentDesc",
     subCategories: [
@@ -55,7 +78,6 @@ export const serviceGroups: ServiceGroup[] = [
         nameKey: "frontend",
         items: [
           { name: "TypeScript", Icon: SiTypescript },
-          { name: "JavaScript", Icon: SiJavascript },
           { name: "React", Icon: SiReact },
           { name: "Next.js", Icon: SiNextdotjs },
           { name: "TailwindCSS", Icon: SiTailwindcss },
@@ -70,64 +92,32 @@ export const serviceGroups: ServiceGroup[] = [
           { name: "PostgreSQL", Icon: SiPostgresql },
         ],
       },
+    ],
+  },
+  {
+    category: "Enabling Skills",
+    categoryKey: "enablingSkills",
+    descriptionKey: "enablingSkillsDesc",
+    subCategories: [
       {
-        name: "DevOps",
+        name: "DevOps & Deployment",
         nameKey: "devops",
         items: [
           { name: "Docker", Icon: SiDocker },
           { name: "Vercel", Icon: SiVercel },
           { name: "Git", Icon: SiGit },
           { name: "GitHub", Icon: SiGithub },
-        ],
-      },
-    ],
-  },
-  {
-    category: "AI & Automation",
-    categoryKey: "aiAutomation",
-    descriptionKey: "aiAutomationDesc",
-    subCategories: [
-      {
-        name: "AI Agents",
-        nameKey: "aiAgents",
-        items: [
-          { name: "AI Agents", Icon: FaRobot },
-          { name: "RAG Systems", Icon: Network },
-          { name: "MCP", Icon: FileText },
-        ],
-      },
-      {
-        name: "Workflow Automation",
-        nameKey: "workflowAutomation",
-        items: [
-          { name: "n8n", Icon: SiN8N },
-          { name: "LangFlow", Icon: TbAutomation },
           { name: "GitHub Actions", Icon: SiGithubactions },
         ],
       },
-    ],
-  },
-  {
-    category: "Visuals & Documentation",
-    categoryKey: "visualsDocs",
-    descriptionKey: "visualsDocsDesc",
-    subCategories: [
       {
-        name: "Documentation",
-        nameKey: "documentation",
+        name: "Documentation & Design",
+        nameKey: "docsDesign",
         items: [
-          { name: "LaTeX", Icon: SiLatex },
-          { name: "Design Patterns", Icon: FaPuzzlePiece },
           { name: "System Design", Icon: Workflow },
-        ],
-      },
-      {
-        name: "Visual Design",
-        nameKey: "visualDesign",
-        items: [
-          { name: "Canva", Icon: SiCanva },
+          { name: "LaTeX", Icon: SiLatex },
           { name: "Miro", Icon: SiMiro },
-          { name: "PowerPoint", Icon: MonitorSpeaker },
+          { name: "Canva", Icon: SiCanva },
         ],
       },
     ],

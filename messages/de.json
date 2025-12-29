@@ -5,10 +5,22 @@
   },
   "Hero": {
     "availableForCollaboration": "Verfügbar für Zusammenarbeit",
-    "fullStackDeveloper": "Junior Full-Stack-Entwickler",
-    "description": "Leidenschaftlich für die Schaffung außergewöhnlicher digitaler Erlebnisse durch sauberen Code, innovative Lösungen und benutzerzentriertes Design. Spezialisiert auf moderne Webtechnologien mit 3+ Jahren Erfahrung.",
+    "fullStackDeveloper": "Automatisierung & KI-gestützte Web-MVPs",
+    "description": "Ich unterstütze KMUs und Agenturen bei der Optimierung digitaler Prozesse durch Workflow-Automatisierung, interne KI-Assistenten und pragmatische Web-MVPs — weniger manuelle Arbeit, mehr Effizienz.",
+    "bookFreeCall": "Kostenloses 15-Min Gespräch buchen",
     "learnMoreAboutMe": "Mehr über mich erfahren",
     "moreAboutMe": "Mehr über mich auf"
+  },
+  "BookingConfirmed": {
+    "confirmed": "Buchung Bestätigt",
+    "title": "Alles erledigt!",
+    "description": "Vielen Dank für Ihre Terminbuchung. Ich freue mich darauf, mehr über Ihr Projekt zu erfahren und zu erkunden, wie ich helfen kann.",
+    "whatsNext": "Was passiert als Nächstes?",
+    "step1": "Sie erhalten eine Kalendereinladung mit dem Meeting-Link.",
+    "step2": "Ich werde alle geteilten Details vor unserem Gespräch durchgehen.",
+    "step3": "Wir führen ein fokussiertes 15-Minuten-Gespräch über Ihre Anforderungen.",
+    "backToHome": "Zurück zur Startseite",
+    "learnMore": "Mehr über mich erfahren"
   },
   "Navigation": {
     "home": "Startseite",
@@ -51,23 +63,22 @@
     "title": "Dienstleistungen & Technologien",
     "manyMoreTechnologies": "...ständig am Lernen und Wachsen",
     "categories": {
-      "webDevelopment": "Webentwicklung",
       "aiAutomation": "KI & Automatisierung",
-      "visualsDocs": "Visuals & Dokumentation"
+      "webDevelopment": "Web & Backend MVPs",
+      "enablingSkills": "Unterstützende Skills"
     },
     "descriptions": {
-      "webDevelopmentDesc": "MVPs, Single-Page-Anwendungen, Full-Stack Web-Apps",
-      "aiAutomationDesc": "KI-Agenten, RAG-Systeme, Workflow-Automatisierung",
-      "visualsDocsDesc": "Technische Dokumentation, Präsentationen, Systemdesign"
+      "aiAutomationDesc": "Interne KI-Assistenten, RAG-Systeme, Workflow-Automatisierung",
+      "webDevelopmentDesc": "Pragmatische MVPs, APIs, Full-Stack Webanwendungen",
+      "enablingSkillsDesc": "DevOps, Deployment, Dokumentation & Übergabe"
     },
     "subCategories": {
+      "aiAgents": "KI-Assistenten",
+      "workflowAutomation": "Workflow-Automatisierung",
       "frontend": "Frontend",
       "backend": "Backend & Datenbank",
-      "devops": "DevOps",
-      "aiAgents": "KI-Agenten",
-      "workflowAutomation": "Workflow-Automatisierung",
-      "documentation": "Dokumentation",
-      "visualDesign": "Visuelles Design"
+      "devops": "DevOps & Deployment",
+      "docsDesign": "Dokumentation & Design"
     }
   },
   "Certifications": {

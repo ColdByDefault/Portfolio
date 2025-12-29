@@ -5,10 +5,22 @@
   },
   "Hero": {
     "availableForCollaboration": "Disponible pour collaboration",
-    "fullStackDeveloper": "Développeur Full Stack Junior",
-    "description": "Passionné par la création d'expériences numériques exceptionnelles grâce à un code propre, des solutions innovantes et une conception centrée sur l'utilisateur. Spécialisé dans les technologies web modernes avec plus de 3 ans d'expérience.",
+    "fullStackDeveloper": "Automatisation & MVPs Web propulsés par l'IA",
+    "description": "J'aide les PME et agences à optimiser leurs processus numériques grâce à l'automatisation des workflows, des assistants IA internes et des MVPs web pragmatiques — moins de travail manuel, plus d'efficacité.",
+    "bookFreeCall": "Réserver un Appel Gratuit de 15 Min",
     "learnMoreAboutMe": "En savoir plus sur moi",
     "moreAboutMe": "Plus sur moi sur"
+  },
+  "BookingConfirmed": {
+    "confirmed": "Réservation Confirmée",
+    "title": "C'est Confirmé !",
+    "description": "Merci d'avoir réservé un appel avec moi. J'ai hâte d'en apprendre davantage sur votre projet et d'explorer comment je peux vous aider.",
+    "whatsNext": "Que se passe-t-il ensuite ?",
+    "step1": "Vous recevrez une invitation calendrier avec le lien de réunion.",
+    "step2": "Je passerai en revue les détails partagés avant notre appel.",
+    "step3": "Nous aurons une conversation ciblée de 15 minutes sur vos besoins.",
+    "backToHome": "Retour à l'Accueil",
+    "learnMore": "En Savoir Plus Sur Moi"
   },
   "Navigation": {
     "home": "Accueil",
@@ -51,23 +63,22 @@
     "title": "Services & Technologies",
     "manyMoreTechnologies": "...toujours en apprentissage et en croissance",
     "categories": {
-      "webDevelopment": "Développement Web",
       "aiAutomation": "IA & Automatisation",
-      "visualsDocs": "Visuels & Documentation"
+      "webDevelopment": "Web & Backend MVPs",
+      "enablingSkills": "Compétences de Support"
     },
     "descriptions": {
-      "webDevelopmentDesc": "MVPs, Applications Monopage, Apps Web Full-Stack",
-      "aiAutomationDesc": "Agents IA, Systèmes RAG, Automatisation de Flux",
-      "visualsDocsDesc": "Documentation Technique, Présentations, Conception Système"
+      "aiAutomationDesc": "Assistants IA Internes, Systèmes RAG, Automatisation de Flux",
+      "webDevelopmentDesc": "MVPs Pragmatiques, APIs, Applications Web Full-Stack",
+      "enablingSkillsDesc": "DevOps, Déploiement, Documentation & Transfert"
     },
     "subCategories": {
+      "aiAgents": "Assistants IA",
+      "workflowAutomation": "Automatisation de Flux",
       "frontend": "Frontend",
       "backend": "Backend & Base de Données",
-      "devops": "DevOps",
-      "aiAgents": "Agents IA",
-      "workflowAutomation": "Automatisation de Flux",
-      "documentation": "Documentation",
-      "visualDesign": "Design Visuel"
+      "devops": "DevOps & Déploiement",
+      "docsDesign": "Documentation & Design"
     }
   },
   "Certifications": {
