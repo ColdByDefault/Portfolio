@@ -80,7 +80,7 @@ export default function ContactSheet({
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent
         side="right"
-        className="w-[350px] sm:w-[400px] px-8"
+        className="w-87.5 sm:w-100 px-8"
         aria-label="Contact information"
       >
         <SheetHeader className="space-y-4">
@@ -252,13 +252,13 @@ export default function ContactSheet({
               <div className="flex items-center justify-between">
                 <span className="text-muted-foreground">Position:</span>
                 <Badge variant="outline" className="text-xs">
-                  Intern at avarno GmbH
+                  Freelancer
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-muted-foreground">{t("training")}:</span>
                 <Badge variant="secondary" className="text-xs">
-                  GFN Trainee
+                  Graduated from GFN
                 </Badge>
               </div>
             </div>
