@@ -8,22 +8,22 @@
 // and NEXT_PUBLIC_THEME_VALIDATION_HASH env variables are missing in development mode.
 // Uncomment if you have those env variables set properly.
 //
-// import { initializeThemeConfig } from "./theme-config-validator";
-// import { useEffect } from "react";
+import { initializeThemeConfig } from "./theme-config-validator";
+import { useEffect } from "react";
 //
-// export function ThemeConfigInitializer() {
-//   useEffect(() => {
-//     initializeThemeConfig();
-//   }, []);
-//   return null;
-// }
+export function ThemeConfigInitializer() {
+  useEffect(() => {
+    initializeThemeConfig();
+  }, []);
+  return null;
+}
 
 /**
  * NEW CONFIG - Safe version that doesn't require env variables
  * Client-side CSS performance initialization component
  */
-export function ThemeConfigInitializer() {
+/* export function ThemeConfigInitializer() {
   // Theme config initialization disabled for development stability
   // Enable the old config above if you have the required env variables
   return null;
-}
+} */
