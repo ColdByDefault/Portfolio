@@ -5,109 +5,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { techGroups } from "@/data/tech";
+import { serviceGroups } from "@/data/tech";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useState } from "react";
 import { useTranslations } from "next-intl";
-import {
-  getCardHoverClasses,
-  getOverlayStyles,
-} from "@/components/visuals/card-animations";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from "@/components/ui/carousel";
-import { useResponsiveCarousel } from "@/hooks/use-responsive-carousel";
-import {
-  calculateCarouselConfig,
-  generateSlides,
-  getMaxItemsCount,
-  createCardInteractionHandlers,
-} from "./Technologies.logic";
 
 export default function Technologies() {
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
   const t = useTranslations("Technologies");
   const tCategories = useTranslations("Technologies.categories");
-  const { cardsPerSlide } = useResponsiveCarousel();
-
-  // Calculate carousel configuration using logic functions
-  const maxItems = getMaxItemsCount();
-  const carouselConfig = calculateCarouselConfig(cardsPerSlide, maxItems);
-  const slides = generateSlides(cardsPerSlide);
-
-  const renderTechCard = (group: (typeof techGroups)[0]) => {
-    const isCurrentCardHovered = hoveredCard === group.category;
-    const cardHandlers = createCardInteractionHandlers(
-      group.category,
-      hoveredCard,
-      setHoveredCard
-    );
-
-    return (
-      <Card
-        key={group.category}
-        className={`${getCardHoverClasses(isCurrentCardHovered)} flex flex-col`}
-        onMouseEnter={cardHandlers.onMouseEnter}
-        onMouseLeave={cardHandlers.onMouseLeave}
-        role="article"
-        aria-labelledby={`card-title-${group.categoryKey}`}
-        aria-describedby={`card-content-${group.categoryKey}`}
-        tabIndex={0}
-        onKeyDown={cardHandlers.onKeyDown}
-      >
-        <CardHeader className="pb-3 sm:pb-4 flex-shrink-0">
-          <CardTitle
-            id={`card-title-${group.categoryKey}`}
-            className="text-lg sm:text-xl font-semibold text-center"
-          >
-            {tCategories(group.categoryKey)}
-          </CardTitle>
-        </CardHeader>
-        <CardContent
-          className="px-3 sm:px-6 flex items-center justify-center"
-          id={`card-content-${group.categoryKey}`}
-          role="list"
-          aria-label={`${tCategories(group.categoryKey)} technologies`}
-        >
-          <div className="flex flex-wrap gap-2 sm:gap-3 justify-center items-center w-full">
-            {group.items.map(({ name, Icon }) => (
-              <motion.div
-                key={name}
-                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border hover:shadow-sm transition-all duration-200"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                role="listitem"
-                aria-label={`${name} technology`}
-                tabIndex={0}
-              >
-                <Icon
-                  size={16}
-                  className="flex-shrink-0 sm:w-5 sm:h-5"
-                  aria-hidden="true"
-                />
-                <span className="text-xs sm:text-sm font-medium whitespace-nowrap cursor-default">
-                  {name}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-        </CardContent>
-        <div
-          className={`
-            absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none
-            ${isCurrentCardHovered ? "opacity-100" : "opacity-0"}
-          `}
-          style={getOverlayStyles(isCurrentCardHovered)}
-        />
-      </Card>
-    );
-  };
+  const tDescriptions = useTranslations("Technologies.descriptions");
+  const tSubCategories = useTranslations("Technologies.subCategories");
 
   return (
     <section
@@ -116,8 +22,8 @@ export default function Technologies() {
       aria-labelledby="tech-section-title"
       role="region"
     >
-      <Card className="relative overflow-hidden bg-transparent !border-0 shadow-none">
-        <CardHeader className="text-center pb-2">
+      <Card className="relative overflow-hidden bg-transparent border-0! shadow-none">
+        <CardHeader className="text-center pb-4 sm:pb-6">
           <CardTitle
             id="tech-section-title"
             className="text-2xl sm:text-3xl lg:text-4xl font-light text-black dark:text-white"
@@ -125,77 +31,79 @@ export default function Technologies() {
             {t("title")}
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          {/* Hidden instructions for screen readers */}
-          <div
-            id="carousel-instructions"
-            className="sr-only"
-            aria-hidden="true"
-          >
-            Use arrow keys or navigation buttons to browse through technology
-            categories. Press Enter or Space on cards to view details.
-          </div>
-          {/* Live region for slide announcements */}
-          <div aria-live="polite" aria-atomic="true" className="sr-only">
-            Slide {currentSlide + 1} of {slides.length}
-          </div>
-          <div className="relative">
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full px-8 sm:px-12"
-              style={{ height: `${carouselConfig.height}px` }}
-              aria-label={`${t("title")} carousel with ${slides.length} slides`}
-              aria-describedby="carousel-instructions"
-              setApi={(api: CarouselApi) => {
-                if (api) {
-                  api.on("select", () => {
-                    setCurrentSlide(api.selectedScrollSnap());
-                  });
-                }
-              }}
+        <CardContent className="space-y-8 sm:space-y-10">
+          {serviceGroups.map((service, index) => (
+            <motion.div
+              key={service.categoryKey}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="space-y-4"
             >
-              <CarouselContent
-                className="-ml-2 md:-ml-4"
-                style={{ height: `${carouselConfig.height}px` }}
-              >
-                {slides.map((slide, slideIndex) => (
-                  <CarouselItem
-                    key={slideIndex}
-                    className="pl-2 md:pl-4"
-                    aria-label={`Slide ${slideIndex + 1} of ${slides.length}`}
-                  >
-                    <div
-                      className={`grid gap-4 sm:gap-6 items-center justify-items-center h-full ${carouselConfig.gridClasses}`}
-                    >
-                      {slide.map((group) => renderTechCard(group))}
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
+              {/* Service Header */}
+              <div className="text-center space-y-2">
+                <h3 className="text-xl sm:text-2xl font-semibold text-black dark:text-white">
+                  {tCategories(service.categoryKey)}
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+                  {tDescriptions(service.descriptionKey)}
+                </p>
+              </div>
 
-              {/* Custom Navigation Buttons - Enhanced for better theming */}
-              <CarouselPrevious
-                className="cursor-pointer -left-4 sm:-left-6 bg-background/95 border-border hover:bg-accent hover:text-accent-foreground shadow-lg backdrop-blur-sm transition-all duration-200 hover:shadow-xl disabled:opacity-50 disabled:hover:bg-background/95"
-                aria-label="Previous slide - View previous technology categories"
-              />
-              <CarouselNext
-                className="cursor-pointer -right-4 sm:-right-6 bg-background/95 border-border hover:bg-accent hover:text-accent-foreground shadow-lg backdrop-blur-sm transition-all duration-200 hover:shadow-xl disabled:opacity-50 disabled:hover:bg-background/95"
-                aria-label="Next slide - View next technology categories"
-              />
-            </Carousel>
-          </div>
+              {/* Subcategories Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto">
+                {service.subCategories.map((subCategory) => (
+                  <Card
+                    key={subCategory.nameKey}
+                    className="bg-card/50 backdrop-blur-sm border hover:shadow-md transition-shadow duration-200"
+                  >
+                    <CardHeader className="pb-2 sm:pb-3">
+                      <CardTitle className="text-sm sm:text-base font-medium text-center text-muted-foreground">
+                        {tSubCategories(subCategory.nameKey)}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <div className="flex flex-wrap gap-2 justify-center">
+                        {subCategory.items.map(({ name, Icon }) => (
+                          <motion.div
+                            key={name}
+                            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border bg-background/50 hover:bg-background hover:shadow-sm transition-all duration-200"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <Icon
+                              size={14}
+                              className="shrink-0"
+                              aria-hidden="true"
+                            />
+                            <span className="text-xs sm:text-sm font-medium whitespace-nowrap">
+                              {name}
+                            </span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Divider between services (except last) */}
+              {index < serviceGroups.length - 1 && (
+                <div className="pt-4 sm:pt-6">
+                  <div className="h-px bg-border/50 max-w-md mx-auto" />
+                </div>
+              )}
+            </motion.div>
+          ))}
         </CardContent>
       </Card>
       <motion.div
         className="text-center pt-2 sm:pt-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 10, delay: 2 }}
+        transition={{ duration: 1, delay: 0.5 }}
       >
-        <p className="text-sm sm:text-base text-black dark:text-white">
+        <p className="text-sm sm:text-base text-muted-foreground">
           {t("manyMoreTechnologies")}
         </p>
       </motion.div>

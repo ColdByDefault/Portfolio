@@ -5,10 +5,22 @@
   },
   "Hero": {
     "availableForCollaboration": "Tillgänglig för samarbete",
-    "fullStackDeveloper": "Junior Fullstackutvecklare",
-    "description": "Passionerad över att skapa enastående digitala upplevelser genom ren kod, innovativa lösningar och användarcentrerad design. Specialiserad på moderna webbteknologier med över 3 års erfarenhet.",
+    "fullStackDeveloper": "Automatisering & AI-drivna Webb-MVPs",
+    "description": "Jag hjälper små och medelstora företag och byråer att effektivisera sina digitala processer genom arbetsflödesautomatisering, interna AI-assistenter och pragmatiska webb-MVPs — mindre manuellt arbete, mer effektivitet.",
+    "bookFreeCall": "Boka ett Gratis 15-Min Samtal",
     "learnMoreAboutMe": "Läs mer om mig",
     "moreAboutMe": "Mer om mig på"
+  },
+  "BookingConfirmed": {
+    "confirmed": "Bokning Bekräftad",
+    "title": "Allt är Klart!",
+    "description": "Tack för att du bokade ett samtal med mig. Jag ser fram emot att lära mig om ditt projekt och utforska hur jag kan hjälpa.",
+    "whatsNext": "Vad händer härnäst?",
+    "step1": "Du får en kalenderinbjudan med möteslänken.",
+    "step2": "Jag går igenom eventuella detaljer du delat inför vårt samtal.",
+    "step3": "Vi har ett fokuserat 15-minuters samtal om dina behov.",
+    "backToHome": "Tillbaka till Startsidan",
+    "learnMore": "Läs Mer Om Mig"
   },
   "Navigation": {
     "home": "Hem",
@@ -35,7 +47,7 @@
     "status": "Status",
     "training": "Utbildning",
     "quickLinks": "Snabblänkar",
-    "openForCollaboration": "Tillgänglig för hobbyprojekt"
+    "openForCollaboration": "Tillgänglig"
   },
   "QuickActions": {
     "title": "Snabbåtgärder",
@@ -48,24 +60,25 @@
     "latestBlog": "Senaste Blogg"
   },
   "Technologies": {
-    "title": "Färdigheter, Teknologier & Expertis",
-    "manyMoreTechnologies": "...och många fler färdigheter och teknologier i min verktygslåda",
+    "title": "Tjänster & Teknologier",
+    "manyMoreTechnologies": "...alltid lärande och växande",
     "categories": {
-      "uiFrontend": "UI & Frontend",
-      "backendApis": "Backend & API:er",
-      "softwareEngineeringFundamentals": "Mjukvaruteknik Grunderna",
-      "coreProgrammingConcepts": "Programmeringskoncept",
-      "architectureSystemDesign": "Arkitektur & Systemdesign",
-      "databasesStorage": "Databaser & Lagring",
-      "infrastructureDevops": "Infrastruktur & DevOps",
       "aiAutomation": "AI & Automatisering",
-      "developmentWorkflow": "Utvecklingsflöde",
-      "designCreative": "Design & Kreativitet",
-      "businessProductivity": "Business & Produktivitetsverktyg",
-      "documentationTechnicalWriting": "Dokumentation & Teknisk Skrivande",
-      "professionalSkills": "Professionella Färdigheter",
-      "softSkills": "Mjuka Färdigheter",
-      "securityPrivacy": "Säkerhet & Integritet"
+      "webDevelopment": "Webb & Backend MVPs",
+      "enablingSkills": "Stödjande Färdigheter"
+    },
+    "descriptions": {
+      "aiAutomationDesc": "Interna AI-assistenter, RAG-system, Arbetsflödesautomatisering",
+      "webDevelopmentDesc": "Pragmatiska MVPs, APIs, Full-Stack Webbapplikationer",
+      "enablingSkillsDesc": "DevOps, Driftsättning, Dokumentation & Överlämning"
+    },
+    "subCategories": {
+      "aiAgents": "AI-assistenter",
+      "workflowAutomation": "Arbetsflödesautomatisering",
+      "frontend": "Frontend",
+      "backend": "Backend & Databas",
+      "devops": "DevOps & Driftsättning",
+      "docsDesign": "Dokumentation & Design"
     }
   },
   "Certifications": {

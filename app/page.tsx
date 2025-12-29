@@ -68,25 +68,25 @@ export default function Home() {
         {/* Content Container */}
         <div className="relative z-10">
           <Suspense fallback={<LoadingSkeleton />}>
+            <Technologies />
+          </Suspense>
+
+          <Suspense fallback={<LoadingSkeleton />}>
+            <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
+          </Suspense>
+          
+          <Suspense fallback={<LoadingSkeleton />}>
             <div className="container mx-auto px-4 py-8">
               <PortoCard />
             </div>
           </Suspense>
-          
+
           <Suspense fallback={<LoadingSkeleton />}>
             <div className="py-12 px-4 sm:px-6 lg:px-8" id="github">
               <GitHubShowcase />
             </div>
           </Suspense>
-          
-          <Suspense fallback={<LoadingSkeleton />}>
-            <Technologies />
-          </Suspense>
-          
-          <Suspense fallback={<LoadingSkeleton />}>
-            <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
-          </Suspense>
-          
+
           <Suspense fallback={<LoadingSkeleton />}>
             <div className="py-12 px-4 sm:px-6 lg:px-8">
               <div className="max-w-4xl mx-auto">

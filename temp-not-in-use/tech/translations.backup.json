@@ -1,0 +1,117 @@
+{
+  "en": {
+    "Technologies": {
+      "title": "Skills, Technologies & Expertise",
+      "manyMoreTechnologies": "...and many more skills & technologies in my toolkit",
+      "categories": {
+        "uiFrontend": "UI & Frontend",
+        "backendApis": "Backend & APIs",
+        "softwareEngineeringFundamentals": "Software Engineering Fundamentals",
+        "coreProgrammingConcepts": "Core Programming Concepts",
+        "architectureSystemDesign": "Architecture & System Design",
+        "databasesStorage": "Databases & Storage",
+        "infrastructureDevops": "Infrastructure & DevOps",
+        "aiAutomation": "AI & Automation",
+        "developmentWorkflow": "Development Workflow",
+        "designCreative": "Design & Creative",
+        "businessProductivity": "Business & Productivity Tools",
+        "documentationTechnicalWriting": "Documentation & Technical Writing",
+        "professionalSkills": "Professional Skills",
+        "softSkills": "Soft Skills",
+        "securityPrivacy": "Security & Privacy"
+      }
+    }
+  },
+  "de": {
+    "Technologies": {
+      "title": "Fähigkeiten, Technologien & Expertise",
+      "manyMoreTechnologies": "...und viele weitere Fähigkeiten & Technologien in meinem Toolkit",
+      "categories": {
+        "uiFrontend": "UI & Frontend",
+        "backendApis": "Backend & APIs",
+        "softwareEngineeringFundamentals": "Software-Engineering Grundlagen",
+        "coreProgrammingConcepts": "Programmierkonzepte",
+        "architectureSystemDesign": "Architektur & Systemdesign",
+        "databasesStorage": "Datenbanken & Speicher",
+        "infrastructureDevops": "Infrastruktur & DevOps",
+        "aiAutomation": "KI & Automatisierung",
+        "developmentWorkflow": "Entwicklungsworkflow",
+        "designCreative": "Design & Kreativ",
+        "businessProductivity": "Business & Produktivitäts-Tools",
+        "documentationTechnicalWriting": "Dokumentation & Technisches Schreiben",
+        "professionalSkills": "Berufliche Fähigkeiten",
+        "softSkills": "Soft Skills",
+        "securityPrivacy": "Sicherheit & Datenschutz"
+      }
+    }
+  },
+  "es": {
+    "Technologies": {
+      "title": "Habilidades, Tecnologías y Experiencia",
+      "manyMoreTechnologies": "...y muchas más habilidades y tecnologías en mi caja de herramientas",
+      "categories": {
+        "uiFrontend": "UI & Frontend",
+        "backendApis": "Backend & APIs",
+        "softwareEngineeringFundamentals": "Fundamentos de Ingeniería de Software",
+        "coreProgrammingConcepts": "Conceptos de Programación",
+        "architectureSystemDesign": "Arquitectura y Diseño de Sistemas",
+        "databasesStorage": "Bases de datos & Almacenamiento",
+        "infrastructureDevops": "Infraestructura & DevOps",
+        "aiAutomation": "IA & Automatización",
+        "developmentWorkflow": "Flujo de Desarrollo",
+        "designCreative": "Diseño & Creatividad",
+        "businessProductivity": "Herramientas de Negocio & Productividad",
+        "documentationTechnicalWriting": "Documentación & Escritura Técnica",
+        "professionalSkills": "Habilidades Profesionales",
+        "softSkills": "Habilidades Blandas",
+        "securityPrivacy": "Seguridad y Privacidad"
+      }
+    }
+  },
+  "fr": {
+    "Technologies": {
+      "title": "Compétences, Technologies et Expertise",
+      "manyMoreTechnologies": "...et bien d'autres compétences et technologies dans ma boîte à outils",
+      "categories": {
+        "uiFrontend": "UI & Frontend",
+        "backendApis": "Backend & APIs",
+        "softwareEngineeringFundamentals": "Fondamentaux du Génie Logiciel",
+        "coreProgrammingConcepts": "Concepts de Programmation",
+        "architectureSystemDesign": "Architecture & Conception de Systèmes",
+        "databasesStorage": "Bases de données & Stockage",
+        "infrastructureDevops": "Infrastructure & DevOps",
+        "aiAutomation": "IA & Automatisation",
+        "developmentWorkflow": "Flux de Développement",
+        "designCreative": "Design & Créativité",
+        "businessProductivity": "Outils Business & Productivité",
+        "documentationTechnicalWriting": "Documentation & Rédaction Technique",
+        "professionalSkills": "Compétences Professionnelles",
+        "softSkills": "Compétences Douces",
+        "securityPrivacy": "Sécurité et Confidentialité"
+      }
+    }
+  },
+  "sv": {
+    "Technologies": {
+      "title": "Färdigheter, Teknologier & Expertis",
+      "manyMoreTechnologies": "...och många fler färdigheter och teknologier i min verktygslåda",
+      "categories": {
+        "uiFrontend": "UI & Frontend",
+        "backendApis": "Backend & API:er",
+        "softwareEngineeringFundamentals": "Mjukvaruteknik Grunderna",
+        "coreProgrammingConcepts": "Programmeringskoncept",
+        "architectureSystemDesign": "Arkitektur & Systemdesign",
+        "databasesStorage": "Databaser & Lagring",
+        "infrastructureDevops": "Infrastruktur & DevOps",
+        "aiAutomation": "AI & Automatisering",
+        "developmentWorkflow": "Utvecklingsflöde",
+        "designCreative": "Design & Kreativitet",
+        "businessProductivity": "Business & Produktivitetsverktyg",
+        "documentationTechnicalWriting": "Dokumentation & Teknisk Skrivande",
+        "professionalSkills": "Professionella Färdigheter",
+        "softSkills": "Mjuka Färdigheter",
+        "securityPrivacy": "Säkerhet & Integritet"
+      }
+    }
+  }
+}

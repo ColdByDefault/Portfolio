@@ -5,10 +5,22 @@
   },
   "Hero": {
     "availableForCollaboration": "Disponible pour collaboration",
-    "fullStackDeveloper": "Développeur Full Stack Junior",
-    "description": "Passionné par la création d'expériences numériques exceptionnelles grâce à un code propre, des solutions innovantes et une conception centrée sur l'utilisateur. Spécialisé dans les technologies web modernes avec plus de 3 ans d'expérience.",
+    "fullStackDeveloper": "Automatisation & MVPs Web propulsés par l'IA",
+    "description": "J'aide les PME et agences à optimiser leurs processus numériques grâce à l'automatisation des workflows, des assistants IA internes et des MVPs web pragmatiques — moins de travail manuel, plus d'efficacité.",
+    "bookFreeCall": "Réserver un Appel Gratuit de 15 Min",
     "learnMoreAboutMe": "En savoir plus sur moi",
     "moreAboutMe": "Plus sur moi sur"
+  },
+  "BookingConfirmed": {
+    "confirmed": "Réservation Confirmée",
+    "title": "C'est Confirmé !",
+    "description": "Merci d'avoir réservé un appel avec moi. J'ai hâte d'en apprendre davantage sur votre projet et d'explorer comment je peux vous aider.",
+    "whatsNext": "Que se passe-t-il ensuite ?",
+    "step1": "Vous recevrez une invitation calendrier avec le lien de réunion.",
+    "step2": "Je passerai en revue les détails partagés avant notre appel.",
+    "step3": "Nous aurons une conversation ciblée de 15 minutes sur vos besoins.",
+    "backToHome": "Retour à l'Accueil",
+    "learnMore": "En Savoir Plus Sur Moi"
   },
   "Navigation": {
     "home": "Accueil",
@@ -35,7 +47,7 @@
     "status": "Statut",
     "training": "Formation",
     "quickLinks": "Liens rapides",
-    "openForCollaboration": "Disponible pour projets personnels"
+    "openForCollaboration": "Disponible"
   },
   "QuickActions": {
     "title": "Actions Rapides",
@@ -48,24 +60,25 @@
     "latestBlog": "Dernier Blog"
   },
   "Technologies": {
-    "title": "Compétences, Technologies et Expertise",
-    "manyMoreTechnologies": "...et bien d'autres compétences et technologies dans ma boîte à outils",
+    "title": "Services & Technologies",
+    "manyMoreTechnologies": "...toujours en apprentissage et en croissance",
     "categories": {
-      "uiFrontend": "UI & Frontend",
-      "backendApis": "Backend & APIs",
-      "softwareEngineeringFundamentals": "Fondamentaux du Génie Logiciel",
-      "coreProgrammingConcepts": "Concepts de Programmation",
-      "architectureSystemDesign": "Architecture & Conception de Systèmes",
-      "databasesStorage": "Bases de données & Stockage",
-      "infrastructureDevops": "Infrastructure & DevOps",
       "aiAutomation": "IA & Automatisation",
-      "developmentWorkflow": "Flux de Développement",
-      "designCreative": "Design & Créativité",
-      "businessProductivity": "Outils Business & Productivité",
-      "documentationTechnicalWriting": "Documentation & Rédaction Technique",
-      "professionalSkills": "Compétences Professionnelles",
-      "softSkills": "Compétences Douces",
-      "securityPrivacy": "Sécurité et Confidentialité"
+      "webDevelopment": "Web & Backend MVPs",
+      "enablingSkills": "Compétences de Support"
+    },
+    "descriptions": {
+      "aiAutomationDesc": "Assistants IA Internes, Systèmes RAG, Automatisation de Flux",
+      "webDevelopmentDesc": "MVPs Pragmatiques, APIs, Applications Web Full-Stack",
+      "enablingSkillsDesc": "DevOps, Déploiement, Documentation & Transfert"
+    },
+    "subCategories": {
+      "aiAgents": "Assistants IA",
+      "workflowAutomation": "Automatisation de Flux",
+      "frontend": "Frontend",
+      "backend": "Backend & Base de Données",
+      "devops": "DevOps & Déploiement",
+      "docsDesign": "Documentation & Design"
     }
   },
   "Certifications": {

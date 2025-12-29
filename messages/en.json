@@ -5,10 +5,22 @@
   },
   "Hero": {
     "availableForCollaboration": "Available for collaboration",
-    "fullStackDeveloper": "Full Stack Junior Developer",
-    "description": "Passionate about creating exceptional digital experiences through clean code, innovative solutions, and user-centered design. Specialized in modern web technologies with 3+ years of experience.",
+    "fullStackDeveloper": "Automation & AI-Powered Web MVPs",
+    "description": "I help SMEs and agencies streamline their digital processes through workflow automation, internal AI assistants, and pragmatic web MVPs — less manual work, more efficiency.",
+    "bookFreeCall": "Book a Free 15-Min Call",
     "learnMoreAboutMe": "Learn More About Me",
     "moreAboutMe": "More about me on"
+  },
+  "BookingConfirmed": {
+    "confirmed": "Booking Confirmed",
+    "title": "You're All Set!",
+    "description": "Thank you for booking a call with me. I'm looking forward to learning about your project and exploring how I can help.",
+    "whatsNext": "What happens next?",
+    "step1": "You'll receive a calendar invite with the meeting link.",
+    "step2": "I'll review any details you shared ahead of our call.",
+    "step3": "We'll have a focused 15-minute conversation about your needs.",
+    "backToHome": "Back to Home",
+    "learnMore": "Learn More About Me"
   },
   "Navigation": {
     "home": "Home",
@@ -35,7 +47,7 @@
     "status": "Status",
     "training": "Training",
     "quickLinks": "Quick Links",
-    "openForCollaboration": "Available for hobby projects"
+    "openForCollaboration": "Available"
   },
   "QuickActions": {
     "title": "Quick Actions",
@@ -48,24 +60,25 @@
     "latestBlog": "Latest Blog"
   },
   "Technologies": {
-    "title": "Skills, Technologies & Expertise",
-    "manyMoreTechnologies": "...and many more skills & technologies in my toolkit",
+    "title": "Services & Technologies",
+    "manyMoreTechnologies": "...always learning and growing",
     "categories": {
-      "uiFrontend": "UI & Frontend",
-      "backendApis": "Backend & APIs",
-      "softwareEngineeringFundamentals": "Software Engineering Fundamentals",
-      "coreProgrammingConcepts": "Core Programming Concepts",
-      "architectureSystemDesign": "Architecture & System Design",
-      "databasesStorage": "Databases & Storage",
-      "infrastructureDevops": "Infrastructure & DevOps",
       "aiAutomation": "AI & Automation",
-      "developmentWorkflow": "Development Workflow",
-      "designCreative": "Design & Creative",
-      "businessProductivity": "Business & Productivity Tools",
-      "documentationTechnicalWriting": "Documentation & Technical Writing",
-      "professionalSkills": "Professional Skills",
-      "softSkills": "Soft Skills",
-      "securityPrivacy": "Security & Privacy"
+      "webDevelopment": "Web & Backend MVPs",
+      "enablingSkills": "Enabling Skills"
+    },
+    "descriptions": {
+      "aiAutomationDesc": "Internal AI Assistants, RAG Systems, Workflow Automation",
+      "webDevelopmentDesc": "Pragmatic MVPs, APIs, Full-Stack Web Applications",
+      "enablingSkillsDesc": "DevOps, Deployment, Documentation & Handover"
+    },
+    "subCategories": {
+      "aiAgents": "AI Assistants",
+      "workflowAutomation": "Workflow Automation",
+      "frontend": "Frontend",
+      "backend": "Backend & Database",
+      "devops": "DevOps & Deployment",
+      "docsDesign": "Documentation & Design"
     }
   },
   "Certifications": {

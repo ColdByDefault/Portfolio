@@ -9,14 +9,15 @@ import { SheetContent, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 import {
   Home,
   FolderGit2,
-  Antenna,
-  Atom,
-  BookOpenCheck,
   SquareLibrary,
   Contact,
   Brush,
   DraftingCompass,
 } from "lucide-react";
+/* 
+  Antenna,
+  Atom,
+  BookOpenCheck, */
 import { ModeToggle } from "@/components/theme/theme-toggle";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
@@ -57,7 +58,7 @@ export function useNavItems(): NavItem[] {
       href: "/",
       icon: Home,
     },
-    {
+    /*     {
       name: t("mcp"),
       href: "/#github",
       icon: Antenna,
@@ -71,6 +72,11 @@ export function useNavItems(): NavItem[] {
       name: t("certifications"),
       href: "/#cert",
       icon: BookOpenCheck,
+    }, */
+    {
+      name: t("projects"),
+      href: "/projects",
+      icon: FolderGit2,
     },
     {
       name: t("aboutSite"),
@@ -81,11 +87,6 @@ export function useNavItems(): NavItem[] {
       name: t("media"),
       href: "/media",
       icon: SquareLibrary,
-    },
-    {
-      name: t("projects"),
-      href: "/projects",
-      icon: FolderGit2,
     },
     {
       name: "Docs",
