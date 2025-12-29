@@ -48,24 +48,26 @@
     "latestBlog": "Último Blog"
   },
   "Technologies": {
-    "title": "Habilidades, Tecnologías y Experiencia",
-    "manyMoreTechnologies": "...y muchas más habilidades y tecnologías en mi caja de herramientas",
+    "title": "Servicios & Tecnologías",
+    "manyMoreTechnologies": "...siempre aprendiendo y creciendo",
     "categories": {
-      "uiFrontend": "UI & Frontend",
-      "backendApis": "Backend & APIs",
-      "softwareEngineeringFundamentals": "Fundamentos de Ingeniería de Software",
-      "coreProgrammingConcepts": "Conceptos de Programación",
-      "architectureSystemDesign": "Arquitectura y Diseño de Sistemas",
-      "databasesStorage": "Bases de datos & Almacenamiento",
-      "infrastructureDevops": "Infraestructura & DevOps",
+      "webDevelopment": "Desarrollo Web",
       "aiAutomation": "IA & Automatización",
-      "developmentWorkflow": "Flujo de Desarrollo",
-      "designCreative": "Diseño & Creatividad",
-      "businessProductivity": "Herramientas de Negocio & Productividad",
-      "documentationTechnicalWriting": "Documentación & Escritura Técnica",
-      "professionalSkills": "Habilidades Profesionales",
-      "softSkills": "Habilidades Blandas",
-      "securityPrivacy": "Seguridad y Privacidad"
+      "visualsDocs": "Visuales & Documentación"
+    },
+    "descriptions": {
+      "webDevelopmentDesc": "MVPs, Aplicaciones de Página Única, Apps Web Full-Stack",
+      "aiAutomationDesc": "Agentes IA, Sistemas RAG, Automatización de Flujos",
+      "visualsDocsDesc": "Documentación Técnica, Presentaciones, Diseño de Sistemas"
+    },
+    "subCategories": {
+      "frontend": "Frontend",
+      "backend": "Backend & Base de Datos",
+      "devops": "DevOps",
+      "aiAgents": "Agentes IA",
+      "workflowAutomation": "Automatización de Flujos",
+      "documentation": "Documentación",
+      "visualDesign": "Diseño Visual"
     }
   },
   "Certifications": {

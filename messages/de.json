@@ -48,24 +48,26 @@
     "latestBlog": "Neuester Blog"
   },
   "Technologies": {
-    "title": "Fähigkeiten, Technologien & Expertise",
-    "manyMoreTechnologies": "...und viele weitere Fähigkeiten & Technologien in meinem Toolkit",
+    "title": "Dienstleistungen & Technologien",
+    "manyMoreTechnologies": "...ständig am Lernen und Wachsen",
     "categories": {
-      "uiFrontend": "UI & Frontend",
-      "backendApis": "Backend & APIs",
-      "softwareEngineeringFundamentals": "Software-Engineering Grundlagen",
-      "coreProgrammingConcepts": "Programmierkonzepte",
-      "architectureSystemDesign": "Architektur & Systemdesign",
-      "databasesStorage": "Datenbanken & Speicher",
-      "infrastructureDevops": "Infrastruktur & DevOps",
+      "webDevelopment": "Webentwicklung",
       "aiAutomation": "KI & Automatisierung",
-      "developmentWorkflow": "Entwicklungsworkflow",
-      "designCreative": "Design & Kreativ",
-      "businessProductivity": "Business & Produktivitäts-Tools",
-      "documentationTechnicalWriting": "Dokumentation & Technisches Schreiben",
-      "professionalSkills": "Berufliche Fähigkeiten",
-      "softSkills": "Soft Skills",
-      "securityPrivacy": "Sicherheit & Datenschutz"
+      "visualsDocs": "Visuals & Dokumentation"
+    },
+    "descriptions": {
+      "webDevelopmentDesc": "MVPs, Single-Page-Anwendungen, Full-Stack Web-Apps",
+      "aiAutomationDesc": "KI-Agenten, RAG-Systeme, Workflow-Automatisierung",
+      "visualsDocsDesc": "Technische Dokumentation, Präsentationen, Systemdesign"
+    },
+    "subCategories": {
+      "frontend": "Frontend",
+      "backend": "Backend & Datenbank",
+      "devops": "DevOps",
+      "aiAgents": "KI-Agenten",
+      "workflowAutomation": "Workflow-Automatisierung",
+      "documentation": "Dokumentation",
+      "visualDesign": "Visuelles Design"
     }
   },
   "Certifications": {

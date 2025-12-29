@@ -48,24 +48,26 @@
     "latestBlog": "Latest Blog"
   },
   "Technologies": {
-    "title": "Skills, Technologies & Expertise",
-    "manyMoreTechnologies": "...and many more skills & technologies in my toolkit",
+    "title": "Services & Technologies",
+    "manyMoreTechnologies": "...always learning and growing",
     "categories": {
-      "uiFrontend": "UI & Frontend",
-      "backendApis": "Backend & APIs",
-      "softwareEngineeringFundamentals": "Software Engineering Fundamentals",
-      "coreProgrammingConcepts": "Core Programming Concepts",
-      "architectureSystemDesign": "Architecture & System Design",
-      "databasesStorage": "Databases & Storage",
-      "infrastructureDevops": "Infrastructure & DevOps",
+      "webDevelopment": "Web Development",
       "aiAutomation": "AI & Automation",
-      "developmentWorkflow": "Development Workflow",
-      "designCreative": "Design & Creative",
-      "businessProductivity": "Business & Productivity Tools",
-      "documentationTechnicalWriting": "Documentation & Technical Writing",
-      "professionalSkills": "Professional Skills",
-      "softSkills": "Soft Skills",
-      "securityPrivacy": "Security & Privacy"
+      "visualsDocs": "Visuals & Documentation"
+    },
+    "descriptions": {
+      "webDevelopmentDesc": "MVPs, Single-Page Applications, Full-Stack Web Apps",
+      "aiAutomationDesc": "AI Agents, RAG Systems, Workflow Automation",
+      "visualsDocsDesc": "Technical Documentation, Presentations, System Design"
+    },
+    "subCategories": {
+      "frontend": "Frontend",
+      "backend": "Backend & Database",
+      "devops": "DevOps",
+      "aiAgents": "AI Agents",
+      "workflowAutomation": "Workflow Automation",
+      "documentation": "Documentation",
+      "visualDesign": "Visual Design"
     }
   },
   "Certifications": {

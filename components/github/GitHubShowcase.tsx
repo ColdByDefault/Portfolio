@@ -117,7 +117,7 @@ export default function GitHubShowcase({ className }: { className?: string }) {
   if (loading) {
     return (
       <section
-        className={`px-4 max-w-6xl mx-auto space-y-6 min-h-[400px] ${className} flex`}
+        className={`px-4 max-w-6xl mx-auto space-y-6 min-h-100 ${className} flex`}
       >
         <Card className="border-0 bg-transparent">
           <CardContent>

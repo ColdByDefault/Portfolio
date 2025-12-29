@@ -48,24 +48,26 @@
     "latestBlog": "Senaste Blogg"
   },
   "Technologies": {
-    "title": "Färdigheter, Teknologier & Expertis",
-    "manyMoreTechnologies": "...och många fler färdigheter och teknologier i min verktygslåda",
+    "title": "Tjänster & Teknologier",
+    "manyMoreTechnologies": "...alltid lärande och växande",
     "categories": {
-      "uiFrontend": "UI & Frontend",
-      "backendApis": "Backend & API:er",
-      "softwareEngineeringFundamentals": "Mjukvaruteknik Grunderna",
-      "coreProgrammingConcepts": "Programmeringskoncept",
-      "architectureSystemDesign": "Arkitektur & Systemdesign",
-      "databasesStorage": "Databaser & Lagring",
-      "infrastructureDevops": "Infrastruktur & DevOps",
+      "webDevelopment": "Webbutveckling",
       "aiAutomation": "AI & Automatisering",
-      "developmentWorkflow": "Utvecklingsflöde",
-      "designCreative": "Design & Kreativitet",
-      "businessProductivity": "Business & Produktivitetsverktyg",
-      "documentationTechnicalWriting": "Dokumentation & Teknisk Skrivande",
-      "professionalSkills": "Professionella Färdigheter",
-      "softSkills": "Mjuka Färdigheter",
-      "securityPrivacy": "Säkerhet & Integritet"
+      "visualsDocs": "Visuellt & Dokumentation"
+    },
+    "descriptions": {
+      "webDevelopmentDesc": "MVPs, Single-Page Applikationer, Full-Stack Webbappar",
+      "aiAutomationDesc": "AI-agenter, RAG-system, Arbetsflödesautomatisering",
+      "visualsDocsDesc": "Teknisk Dokumentation, Presentationer, Systemdesign"
+    },
+    "subCategories": {
+      "frontend": "Frontend",
+      "backend": "Backend & Databas",
+      "devops": "DevOps",
+      "aiAgents": "AI-agenter",
+      "workflowAutomation": "Arbetsflödesautomatisering",
+      "documentation": "Dokumentation",
+      "visualDesign": "Visuell Design"
     }
   },
   "Certifications": {
