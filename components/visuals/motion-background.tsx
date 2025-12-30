@@ -4,7 +4,7 @@
  */
 "use client";
 
-import React, { useEffect, useSyncExternalStore } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -49,8 +49,23 @@ export function Background() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
+  // For the bubble - tracks actual mouse position
+  const bubbleX = useMotionValue(0);
+  const bubbleY = useMotionValue(0);
+
   const gridX = useSpring(mouseX, { stiffness: 50, damping: 20, mass: 0.5 });
   const gridY = useSpring(mouseY, { stiffness: 50, damping: 20, mass: 0.5 });
+
+  const springBubbleX = useSpring(bubbleX, {
+    stiffness: 150,
+    damping: 15,
+    mass: 0.1,
+  });
+  const springBubbleY = useSpring(bubbleY, {
+    stiffness: 150,
+    damping: 15,
+    mass: 0.1,
+  });
 
   useEffect(() => {
     if (!shouldUseMotion) return;
@@ -64,6 +79,10 @@ export function Background() {
           const centerY = window.innerHeight / 2;
           mouseX.set(((e.clientX - centerX) / centerX) * 15); // Reduced movement intensity
           mouseY.set(((e.clientY - centerY) / centerY) * 15);
+
+          // Bubble follows actual mouse position
+          bubbleX.set(e.clientX - 300); // 300 = half of bubble width
+          bubbleY.set(e.clientY - 300); // 300 = half of bubble height
           ticking = false;
         });
         ticking = true;
@@ -74,20 +93,20 @@ export function Background() {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [mouseX, mouseY, shouldUseMotion]);
+  }, [mouseX, mouseY, bubbleX, bubbleY, shouldUseMotion]);
 
   if (!hasMounted) {
     return null;
   }
 
   const gridColor = isDarkTheme
-    ? "rgba(255, 255, 255, 0.08)"
-    : "rgba(0, 0, 0, 0.08)";
+    ? "rgba(255, 255, 255, 0.15)"
+    : "rgba(0, 0, 0, 0.12)";
 
   // Use static background for mobile/medium screens for better performance
   if (!shouldUseMotion) {
     return (
-      <div className="fixed inset-0 -z-5">
+      <div className="fixed inset-0 -z-10">
         <div
           className={`absolute inset-0 ${
             isDarkTheme ? "bg-black/3" : "bg-white/3"
@@ -105,7 +124,7 @@ export function Background() {
   }
 
   return (
-    <motion.div className="fixed inset-0 -z-5">
+    <motion.div className="fixed inset-0 -z-10">
       <div
         className={`absolute inset-0 ${
           isDarkTheme ? "bg-black/5" : "bg-white/5"
@@ -118,6 +137,20 @@ export function Background() {
           backgroundSize: "clamp(20px, 4vw, 40px) clamp(20px, 4vw, 40px)",
           x: gridX,
           y: gridY,
+        }}
+      />
+      {/* Glowing bubble that follows mouse */}
+      <motion.div
+        className="pointer-events-none absolute"
+        style={{
+          width: "600px",
+          height: "600px",
+          borderRadius: "50%",
+          background: isDarkTheme
+            ? "radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0.05) 40%, transparent 70%)"
+            : "radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(99, 102, 241, 0.04) 40%, transparent 70%)",
+          left: springBubbleX,
+          top: springBubbleY,
         }}
       />
     </motion.div>

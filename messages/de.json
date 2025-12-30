@@ -41,10 +41,10 @@
     "legal": "Rechtliches"
   },
   "Contact": {
-    "getInTouch": "Kontaktieren Sie mich",
-    "description": "Zögern Sie nicht, sich für eine Zusammenarbeit, Fragen oder einfach zum Hallo sagen zu melden!",
-    "email": "E-Mail",
-    "clickToSendEmail": "Klicken Sie hier, um eine E-Mail zu senden",
+    "getInTouch": "Lassen Sie uns verbinden",
+    "description": "Bereit, Ihr Projekt zu besprechen? Vereinbaren Sie einen Termin oder verbinden Sie sich mit mir in den sozialen Medien.",
+    "schedule": "Terminplanung",
+    "bookMeeting": "Termin buchen",
     "socialMedia": "Soziale Medien",
     "info": "Info",
     "location": "Standort",
@@ -151,20 +151,40 @@
   },
   "Impressum": {
     "title": "Impressum",
-    "subtitle": "Rechtliche Hinweise und Informationen",
-    "legalStatus": "Rechtlicher Status",
-    "projectInformation": "Projektinformationen:",
-    "projectDescription": "Diese Website ist ein rein privates, nicht-kommerzielles Portfolio und dient ausschließlich zu experimentellen und persönlichen Lernzwecken. Es besteht weder kommerzielle Nutzung noch Gewinnabsicht.",
-    "legalBasis": "Rechtliche Grundlage:",
-    "legalBasisDescription": "Gemäß § 5 TMG besteht daher keine Verpflichtung zur Bereitstellung eines Impressums.",
-    "services": {
-      "title": "Drittanbieter-Services",
-      "chatbotTitle": "KI-Chatbot-Service",
-      "chatbotDescription": "Diese Website enthält einen KI-Chatbot, der von Googles Gemini API bereitgestellt wird. Durch die Nutzung des Chatbots akzeptieren Sie automatisch Googles Nutzungsbedingungen, Datenschutzrichtlinien und andere rechtliche Vereinbarungen, wie sie von Google bereitgestellt werden.",
-      "googleTerms": "Google Gemini API Bedingungen",
-      "googleTermsDescription": "Chat-Interaktionen werden von Googles Diensten verarbeitet. Ich speichere keine Chat-Gespräche oder persönlichen Informationen aus Chatbot-Interaktionen."
+    "subtitle": "Angaben gemäß § 5 DDG",
+    "provider": {
+      "title": "Angaben gemäß § 5 DDG",
+      "name": "Yazan Abo-Ayash",
+      "address": "Invalidengasse 4",
+      "city": "68723 Schwetzingen",
+      "country": "Deutschland"
     },
-    "anotherProject": "AnotherProject",
+    "contact": {
+      "title": "Kontakt",
+      "phone": "Telefon:",
+      "phoneValue": "Auf Anfrage",
+      "email": "E-Mail:",
+      "emailValue": "abo.ayash@service.com"
+    },
+    "vat": {
+      "title": "Umsatzsteuer-ID",
+      "description": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:",
+      "value": ""
+    },
+    "editorial": {
+      "title": "Redaktionell verantwortlich",
+      "name": "Yazan Abo-Ayash",
+      "address": "Invalidengasse 4",
+      "city": "68723 Schwetzingen"
+    },
+    "dispute": {
+      "title": "Streitbeilegung",
+      "euTitle": "EU-Verbraucherbeschwerde",
+      "euDescription": "Die Europäische Kommission stellt Informationen zur Verbraucherbeschwerde bereit:",
+      "emailNote": "Unsere E-Mail-Adresse finden Sie oben im Impressum.",
+      "arbitrationTitle": "Verbraucherstreitbeilegung / Universalschlichtungsstelle",
+      "arbitrationDescription": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+    },
     "lastUpdated": "Zuletzt aktualisiert:"
   },
   "Privacy": {
@@ -172,7 +192,7 @@
     "subtitle": "Wie ich mit Ihren Daten und Ihrer Privatsphäre umgehe",
     "overview": {
       "title": "Übersicht",
-      "description": "Diese Datenschutzerklärung erklärt, wie dieses persönliche Portfolio mit Ihren Daten umgeht. Als private, nicht-kommerzielle Website sammle ich minimale Informationen und priorisiere Ihre Privatsphäre.",
+      "description": "Diese Datenschutzerklärung erläutert, wie dieses Portfolio mit Ihren Daten umgeht. Ich sammle keine persönlichen Daten und priorisiere Ihre Privatsphäre.",
       "keyPoint": "Privatsphäre zuerst",
       "keyPointDescription": "Ich sammle, speichere oder verkaufe keine persönlichen Daten. Alles ist auf Privatsphäre ausgelegt."
     },
@@ -195,11 +215,17 @@
     },
     "chatbot": {
       "title": "KI-Chatbot-Service",
-      "description": "Diese Website enthält einen KI-Chatbot, der von Googles Gemini API für interaktive Unterstützung und Informationen bereitgestellt wird.",
-      "geminiTitle": "Google Gemini API Integration",
-      "geminiDescription": "Durch die Nutzung des Chatbots akzeptieren Sie automatisch Googles Nutzungsbedingungen, Datenschutzrichtlinien und Datenverarbeitungsbedingungen, wie sie von Google bereitgestellt werden. Chat-Daten werden von Googles Diensten gemäß deren Datenschutzrichtlinien verarbeitet.",
-      "temporaryTitle": "Temporäre Datenspeicherung",
-      "temporaryDescription": "Ich speichere keine Chat-Gespräche oder persönlichen Informationen. Alle Chat-Daten werden temporär im lokalen Speicher Ihres Browsers gespeichert und automatisch gelöscht, wenn Sie die Seite aktualisieren oder Ihren Browser schließen."
+      "description": "Diese Website enthält einen KI-Chatbot für interaktive Unterstützung und Informationen.",
+      "geminiTitle": "Groq API Integration",
+      "geminiDescription": "Der Chatbot wird von Groq betrieben. Durch die Nutzung des Chatbots akzeptieren Sie die Nutzungsbedingungen und Datenschutzrichtlinien von Groq. Chat-Anfragen werden über die Groq API verarbeitet.",
+      "temporaryTitle": "Keine Datenspeicherung",
+      "temporaryDescription": "Ich speichere keine Chat-Gespräche, Verläufe oder persönlichen Informationen. Alle Chat-Daten werden ausschließlich in Ihrem Browser (Web-Storage) gespeichert und verbleiben vollständig unter Ihrer Kontrolle."
+    },
+    "booking": {
+      "title": "Buchungsservice",
+      "description": "Diese Website verwendet Calendly zur Terminvereinbarung.",
+      "calendlyTitle": "Calendly Integration",
+      "calendlyDescription": "Wenn Sie einen Termin buchen, werden Ihre Daten (Name, E-Mail, Buchungsdetails) von Calendly gemäß deren Datenschutzerklärung verarbeitet. Ich erhalte nur die für unser Gespräch notwendigen Informationen."
     },
     "rights": {
       "title": "Ihre Rechte",

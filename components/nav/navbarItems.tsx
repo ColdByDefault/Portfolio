@@ -295,7 +295,7 @@ export function BrandLogo() {
         className="text-sm tracking-tight pl-4"
         aria-label="ColdByDefault - Home"
       >
-        ColdByDefault
+        ColdByDefault<sup className="text-[0.5em] align-super">™</sup>
       </Link>
     </div>
   );

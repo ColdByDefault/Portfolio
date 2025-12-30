@@ -1,6 +1,13 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
+ * 
+ * BACKUP 2 - Simple vertical scroll layout version
+ * - Uses serviceGroups data structure (with subcategories)
+ * - No carousel - stacked vertical sections
+ * - Simpler animation (fade + slide up)
+ * - Nested subcategory cards
+ * - Cleaner, more minimal code (~114 lines vs ~207)
  */
 "use client";
 

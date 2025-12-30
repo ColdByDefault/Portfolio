@@ -41,10 +41,10 @@
     "legal": "Legal"
   },
   "Contact": {
-    "getInTouch": "Get in Touch",
-    "description": "Feel free to reach out for collaboration, questions, or just to say hello!",
-    "email": "Email",
-    "clickToSendEmail": "Click to send email",
+    "getInTouch": "Let's Connect",
+    "description": "Ready to discuss your project? Schedule a call or connect with me on social media.",
+    "schedule": "Schedule",
+    "bookMeeting": "Book a Meeting",
     "socialMedia": "Social Media",
     "info": "Info",
     "location": "Location",
@@ -150,21 +150,41 @@
     }
   },
   "Impressum": {
-    "title": "Impressum",
-    "subtitle": "Legal Notice and Information",
-    "legalStatus": "Legal Status",
-    "projectInformation": "Project Information:",
-    "projectDescription": "This website is a purely private, non-commercial Portfolio and serves exclusively for experimental and personal learning purposes. There is neither commercial use nor profit intention.",
-    "legalBasis": "Legal Basis:",
-    "legalBasisDescription": "According to § 5 TMG, there is therefore no obligation to provide an impressum.",
-    "services": {
-      "title": "Third-Party Services",
-      "chatbotTitle": "AI Chatbot Service",
-      "chatbotDescription": "This website includes an AI chatbot powered by Google's Gemini API. By using the chatbot, you automatically accept Google's terms of service, privacy policy, and other legal agreements as provided by Google.",
-      "googleTerms": "Google Gemini API Terms",
-      "googleTermsDescription": "Chat interactions are processed by Google's services. I do not save any chat conversations or personal information from chatbot interactions."
+    "title": "Legal Notice",
+    "subtitle": "Information according to § 5 DDG",
+    "provider": {
+      "title": "Information according to § 5 DDG",
+      "name": "Yazan Abo-Ayash",
+      "address": "Invalidengasse 4",
+      "city": "68723 Schwetzingen",
+      "country": "Germany"
     },
-    "anotherProject": "AnotherProject",
+    "contact": {
+      "title": "Contact",
+      "phone": "Phone:",
+      "phoneValue": "On request",
+      "email": "Email:",
+      "emailValue": "abo.ayash@service.com"
+    },
+    "vat": {
+      "title": "VAT ID",
+      "description": "VAT identification number according to § 27 a of the German VAT Act:",
+      "value": ""
+    },
+    "editorial": {
+      "title": "Editorially Responsible",
+      "name": "Yazan Abo-Ayash",
+      "address": "Invalidengasse 4",
+      "city": "68723 Schwetzingen"
+    },
+    "dispute": {
+      "title": "Dispute Resolution",
+      "euTitle": "EU Consumer Redress",
+      "euDescription": "The European Commission provides information on consumer redress:",
+      "emailNote": "You can find our email address in the legal notice above.",
+      "arbitrationTitle": "Consumer Dispute Resolution / Universal Arbitration Board",
+      "arbitrationDescription": "We are neither willing nor obligated to participate in dispute resolution proceedings before a consumer arbitration board."
+    },
     "lastUpdated": "Last updated:"
   },
   "Privacy": {
@@ -172,7 +192,7 @@
     "subtitle": "How I handle your data and privacy",
     "overview": {
       "title": "Overview",
-      "description": "This privacy policy explains how this personal portfolio handles your data. As a private, non-commercial website, I collect minimal information and prioritize your privacy.",
+      "description": "This privacy policy explains how this portfolio handles your data. I do not collect any personal data and prioritize your privacy.",
       "keyPoint": "Privacy First",
       "keyPointDescription": "I don't collect, store, or sell your personal data. Everything is designed with privacy in mind."
     },
@@ -195,11 +215,17 @@
     },
     "chatbot": {
       "title": "AI Chatbot Service",
-      "description": "This website includes an AI chatbot powered by Google's Gemini API for interactive assistance and information.",
-      "geminiTitle": "Google Gemini API Integration",
-      "geminiDescription": "By using the chatbot, you automatically accept Google's terms of service, privacy policy, and data processing terms as provided by Google. Chat data is processed by Google's services according to their privacy policies.",
-      "temporaryTitle": "Temporary Data Storage",
-      "temporaryDescription": "I do not save any chat conversations or personal information. All chat data is temporarily stored in your browser's local storage and is automatically deleted when you refresh the page or close your browser."
+      "description": "This website includes an AI chatbot for interactive assistance and information.",
+      "geminiTitle": "Groq API Integration",
+      "geminiDescription": "The chatbot is powered by Groq. By using the chatbot, you accept Groq's terms of service and privacy policy. Chat requests are processed via the Groq API.",
+      "temporaryTitle": "No Data Storage",
+      "temporaryDescription": "I do not save any chat conversations, history, or personal information. All chat data is stored exclusively in your browser (web storage) and remains entirely under your control."
+    },
+    "booking": {
+      "title": "Booking Service",
+      "description": "This website uses Calendly for appointment scheduling.",
+      "calendlyTitle": "Calendly Integration",
+      "calendlyDescription": "When you book a call, your data (name, email, booking details) is processed by Calendly according to their privacy policy. I only receive the information necessary to conduct our meeting."
     },
     "rights": {
       "title": "Your Rights",
