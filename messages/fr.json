@@ -85,6 +85,30 @@
       "docsDesign": "Documentation & Design"
     }
   },
+  "Capabilities": {
+    "title": "Ce Que Je Livre",
+    "subtitle": "Technologie moderne, traduite en résultats business concrets.",
+    "launch": {
+      "title": "Lancez Vite",
+      "headline": "En production en 4-8 semaines",
+      "description": "De l'idée à l'application prête pour la production. Pas de mois d'attente — arrivez sur le marché avant vos concurrents."
+    },
+    "scale": {
+      "title": "Évoluez Facilement",
+      "headline": "Gérez 10x de croissance automatiquement",
+      "description": "Infrastructure entreprise qui grandit avec vous. Votre app gère les pics de trafic sans effort."
+    },
+    "security": {
+      "title": "Sécurité Entreprise",
+      "headline": "Protection des données niveau bancaire",
+      "description": "Authentification sécurisée, données chiffrées et meilleures pratiques du secteur. Les données de vos utilisateurs restent en sécurité."
+    },
+    "global": {
+      "title": "Développez-vous à l'International",
+      "headline": "Prêt pour 5+ langues",
+      "description": "Internationalisation intégrée pour les marchés européens et mondiaux. Étendez-vous sans reconstruire."
+    }
+  },
   "Certifications": {
     "title": "Mes Certifications",
     "issuedBy": "Délivré par :",

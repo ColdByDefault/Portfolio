@@ -85,6 +85,30 @@
       "docsDesign": "Documentation & Design"
     }
   },
+  "Capabilities": {
+    "title": "What I Deliver",
+    "subtitle": "Modern technology, translated into real business outcomes.",
+    "launch": {
+      "title": "Launch Fast",
+      "headline": "Go live in 4-8 weeks",
+      "description": "From idea to production-ready application. No months of waiting — get to market before your competitors."
+    },
+    "scale": {
+      "title": "Scale Seamlessly",
+      "headline": "Handle 10x growth automatically",
+      "description": "Enterprise infrastructure that grows with you. Your app handles traffic spikes without breaking a sweat."
+    },
+    "security": {
+      "title": "Enterprise Security",
+      "headline": "Bank-level data protection",
+      "description": "Secure authentication, encrypted data, and industry best practices. Your users' data stays safe."
+    },
+    "global": {
+      "title": "Go Global",
+      "headline": "Ready for 5+ languages",
+      "description": "Built-in internationalization for European and global markets. Expand without rebuilding."
+    }
+  },
   "Certifications": {
     "title": "My Certifications",
     "issuedBy": "Issued by:",

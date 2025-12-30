@@ -85,6 +85,30 @@
       "docsDesign": "Dokumentation & Design"
     }
   },
+  "Capabilities": {
+    "title": "Was ich liefere",
+    "subtitle": "Moderne Technologie, übersetzt in echte Geschäftsergebnisse.",
+    "launch": {
+      "title": "Schnell starten",
+      "headline": "In 4-8 Wochen live",
+      "description": "Von der Idee zur produktionsreifen Anwendung. Kein monatelanges Warten — kommen Sie vor Ihren Wettbewerbern auf den Markt."
+    },
+    "scale": {
+      "title": "Nahtlos skalieren",
+      "headline": "10x Wachstum automatisch bewältigen",
+      "description": "Enterprise-Infrastruktur, die mit Ihnen wächst. Ihre App bewältigt Traffic-Spitzen ohne Probleme."
+    },
+    "security": {
+      "title": "Enterprise-Sicherheit",
+      "headline": "Datenschutz auf Bankniveau",
+      "description": "Sichere Authentifizierung, verschlüsselte Daten und Branchenbest Practices. Die Daten Ihrer Nutzer bleiben sicher."
+    },
+    "global": {
+      "title": "Global expandieren",
+      "headline": "Bereit für 5+ Sprachen",
+      "description": "Eingebaute Internationalisierung für europäische und globale Märkte. Expandieren ohne Neuentwicklung."
+    }
+  },
   "Certifications": {
     "title": "Meine Zertifikate",
     "issuedBy": "Ausgestellt von:",

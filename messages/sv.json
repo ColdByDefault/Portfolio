@@ -85,6 +85,30 @@
       "docsDesign": "Dokumentation & Design"
     }
   },
+  "Capabilities": {
+    "title": "Vad Jag Levererar",
+    "subtitle": "Modern teknik, översatt till verkliga affärsresultat.",
+    "launch": {
+      "title": "Lansera Snabbt",
+      "headline": "Live på 4-8 veckor",
+      "description": "Från idé till produktionsklar applikation. Inga månaders väntan — nå marknaden före dina konkurrenter."
+    },
+    "scale": {
+      "title": "Skala Sömlöst",
+      "headline": "Hantera 10x tillväxt automatiskt",
+      "description": "Enterprise-infrastruktur som växer med dig. Din app hanterar trafiktoppar utan ansträngning."
+    },
+    "security": {
+      "title": "Enterprise-Säkerhet",
+      "headline": "Dataskydd på banknivå",
+      "description": "Säker autentisering, krypterad data och branschens bästa praxis. Dina användares data förblir säker."
+    },
+    "global": {
+      "title": "Expandera Globalt",
+      "headline": "Redo för 5+ språk",
+      "description": "Inbyggd internationalisering för europeiska och globala marknader. Expandera utan att bygga om."
+    }
+  },
   "Certifications": {
     "title": "Mina certifieringar",
     "issuedBy": "Utfärdat av:",

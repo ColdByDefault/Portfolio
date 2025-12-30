@@ -11,9 +11,9 @@ import { Suspense } from "react";
 import { LoadingSkeleton } from "@/components/visuals";
 
 // Dynamically import heavy components with loading states
-const Technologies = dynamic(
+const Capabilities = dynamic(
   () =>
-    import("@/components/tech").then((mod) => ({ default: mod.Technologies })),
+    import("@/components/tech").then((mod) => ({ default: mod.Capabilities })),
   {
     loading: () => <LoadingSkeleton />,
     ssr: false,
@@ -80,7 +80,7 @@ export default function Home() {
         {/* Content Container */}
         <div className="relative z-10">
           <Suspense fallback={<LoadingSkeleton />}>
-            <Technologies />
+            <Capabilities />
           </Suspense>
 
           <Suspense fallback={<LoadingSkeleton />}>

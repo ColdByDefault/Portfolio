@@ -85,6 +85,30 @@
       "docsDesign": "Documentación & Diseño"
     }
   },
+  "Capabilities": {
+    "title": "Lo Que Entrego",
+    "subtitle": "Tecnología moderna, traducida en resultados de negocio reales.",
+    "launch": {
+      "title": "Lanza Rápido",
+      "headline": "En producción en 4-8 semanas",
+      "description": "De la idea a la aplicación lista para producción. Sin meses de espera — llega al mercado antes que tu competencia."
+    },
+    "scale": {
+      "title": "Escala sin Problemas",
+      "headline": "Maneja 10x crecimiento automáticamente",
+      "description": "Infraestructura empresarial que crece contigo. Tu app maneja picos de tráfico sin despeinarse."
+    },
+    "security": {
+      "title": "Seguridad Empresarial",
+      "headline": "Protección de datos nivel bancario",
+      "description": "Autenticación segura, datos encriptados y mejores prácticas de la industria. Los datos de tus usuarios están seguros."
+    },
+    "global": {
+      "title": "Expande Globalmente",
+      "headline": "Listo para 5+ idiomas",
+      "description": "Internacionalización integrada para mercados europeos y globales. Expande sin reconstruir."
+    }
+  },
   "Certifications": {
     "title": "Mis certificaciones",
     "issuedBy": "Emitido por:",
