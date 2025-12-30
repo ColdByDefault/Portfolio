@@ -16,20 +16,16 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Mail, MessageSquare } from "lucide-react";
+import { MessageSquare, Calendar } from "lucide-react";
 import {
   FaGithub,
   FaLinkedin,
   FaSquareInstagram,
   FaSquareXTwitter,
-  FaSpotify,
-  FaGitlab,
-  FaCodepen,
-  FaDev,
 } from "react-icons/fa6";
-import { SiRoadmapdotsh, SiDailydotdev } from "react-icons/si";
 import { socialLinks } from "@/data/footerLinks";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 interface ContactInfo {
   email: string;
@@ -53,12 +49,6 @@ const iconMap = {
   FaLinkedin,
   FaInstagramSquare: FaSquareInstagram,
   FaSquareXTwitter,
-  FaSpotify,
-  FaGitlab,
-  FaCodepen,
-  FaDev,
-  SiRoadmapdotsh,
-  SiDailydotdev,
 };
 
 export default function ContactSheet({
@@ -66,10 +56,6 @@ export default function ContactSheet({
   contactInfo = defaultContactInfo,
 }: ContactSheetProps) {
   const t = useTranslations("Contact");
-
-  const handleEmailClick = () => {
-    window.location.href = `mailto:${contactInfo.email}`;
-  };
 
   const handleSocialClick = (href: string, _label: string) => {
     window.open(href, "_blank", "noopener,noreferrer");
@@ -94,25 +80,26 @@ export default function ContactSheet({
         </SheetHeader>
 
         <div className="mt-6 space-y-6">
-          {/* Email Section */}
+          {/* Book a Meeting Section */}
           <div className="space-y-3">
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-              {t("email")}
+              {t("schedule")}
             </h3>
-            <Button
-              variant="outline"
-              className="w-full justify-start h-auto py-3 px-4 cursor-pointer"
-              onClick={handleEmailClick}
-              aria-label={`Send email to ${contactInfo.email}`}
+            <Link
+              href="https://calendly.com/abo-ayash-yazan/intro-call"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Book a free consultation call"
+              className="block"
             >
-              <Mail className="h-4 w-4 mr-3 text-blue-500" aria-hidden="true" />
-              <div className="text-left">
-                <div className="font-medium">{contactInfo.email}</div>
-                <div className="text-xs text-muted-foreground">
-                  {t("clickToSendEmail")}
-                </div>
-              </div>
-            </Button>
+              <Button
+                variant="default"
+                className="w-full border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-sm px-4 py-2 h-auto cursor-pointer transition-colors duration-300"
+              >
+                <Calendar className="h-4 w-4 mr-2" aria-hidden="true" />
+                {t("bookMeeting")}
+              </Button>
+            </Link>
           </div>
           <Separator />
           {/* Social Media Section */}
@@ -164,66 +151,6 @@ export default function ContactSheet({
                     </Button>
                     <span className="text-xs text-muted-foreground mt-1">
                       {getDisplayName(social.label)}
-                    </span>
-                  </div>
-                );
-              })}
-
-              {/* Additional Development Platforms */}
-              {[
-                {
-                  label: "GitLab",
-                  icon: "FaGitlab",
-                  href: "https://gitlab.com/ColdByDefault",
-                  displayName: "GitLab",
-                },
-                {
-                  label: "CodePen",
-                  icon: "FaCodepen",
-                  href: "https://codepen.io/ColdByDefault",
-                  displayName: "CodePen",
-                },
-                {
-                  label: "Developer Roadmaps",
-                  icon: "SiRoadmapdotsh",
-                  href: "https://roadmap.sh/u/coldbydefault",
-                  displayName: "Roadmaps",
-                },
-                {
-                  label: "Daily.dev",
-                  icon: "SiDailydotdev",
-                  href: "https://app.daily.dev/coldbydefault",
-                  displayName: "Daily.dev",
-                },
-                {
-                  label: "DEV Community",
-                  icon: "FaDev",
-                  href: "https://dev.to/coldbydefault",
-                  displayName: "Dev",
-                },
-              ].map((platform) => {
-                const IconComponent =
-                  iconMap[platform.icon as keyof typeof iconMap];
-                if (!IconComponent) return null;
-
-                return (
-                  <div
-                    key={platform.label}
-                    className="flex flex-col items-center"
-                  >
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="h-10 w-10 p-0 cursor-pointer"
-                      onClick={() =>
-                        handleSocialClick(platform.href, platform.label)
-                      }
-                      aria-label={`Visit ${platform.label} profile`}
-                    >
-                      <IconComponent className="h-4 w-4" aria-hidden="true" />
-                    </Button>
-                    <span className="text-xs text-muted-foreground mt-1">
-                      {platform.displayName}
                     </span>
                   </div>
                 );

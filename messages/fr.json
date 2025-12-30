@@ -41,10 +41,10 @@
     "legal": "Juridique"
   },
   "Contact": {
-    "getInTouch": "Contactez-moi",
-    "description": "N'hésitez pas à me contacter pour une collaboration, des questions ou simplement pour dire bonjour !",
-    "email": "Email",
-    "clickToSendEmail": "Cliquez pour envoyer un email",
+    "getInTouch": "Connectons-nous",
+    "description": "Prêt à discuter de votre projet ? Planifiez un appel ou connectez-vous avec moi sur les réseaux sociaux.",
+    "schedule": "Planification",
+    "bookMeeting": "Réserver une réunion",
     "socialMedia": "Réseaux sociaux",
     "info": "Info",
     "location": "Localisation",

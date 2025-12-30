@@ -41,10 +41,10 @@
     "legal": "Juridisk"
   },
   "Contact": {
-    "getInTouch": "Kom i kontakt",
-    "description": "Tveka inte att höra av dig för samarbete, frågor eller bara för att säga hej!",
-    "email": "E-post",
-    "clickToSendEmail": "Klicka för att skicka e-post",
+    "getInTouch": "Låt oss koppla samman",
+    "description": "Redo att diskutera ditt projekt? Boka ett samtal eller anslut med mig på sociala medier.",
+    "schedule": "Schemalägg",
+    "bookMeeting": "Boka möte",
     "socialMedia": "Sociala medier",
     "info": "Info",
     "location": "Plats",

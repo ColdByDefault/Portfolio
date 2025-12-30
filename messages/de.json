@@ -41,10 +41,10 @@
     "legal": "Rechtliches"
   },
   "Contact": {
-    "getInTouch": "Kontaktieren Sie mich",
-    "description": "Zögern Sie nicht, sich für eine Zusammenarbeit, Fragen oder einfach zum Hallo sagen zu melden!",
-    "email": "E-Mail",
-    "clickToSendEmail": "Klicken Sie hier, um eine E-Mail zu senden",
+    "getInTouch": "Lassen Sie uns verbinden",
+    "description": "Bereit, Ihr Projekt zu besprechen? Vereinbaren Sie einen Termin oder verbinden Sie sich mit mir in den sozialen Medien.",
+    "schedule": "Terminplanung",
+    "bookMeeting": "Termin buchen",
     "socialMedia": "Soziale Medien",
     "info": "Info",
     "location": "Standort",
