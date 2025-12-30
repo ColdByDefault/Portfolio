@@ -361,7 +361,7 @@ export default function ServicesPage() {
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerChildren}
             >
-              <Card className="bg-linear-to-br from-sky-500/10 via-transparent to-sky-600/5 border-sky-500/20">
+              <Card className="bg-muted/30 border-muted">
                 <CardContent className="py-12 text-center space-y-6">
                   <motion.h2
                     variants={fadeInUp}

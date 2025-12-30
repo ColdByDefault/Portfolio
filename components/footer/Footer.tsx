@@ -9,6 +9,9 @@ import {
   socialLinks,
   footerNavLinks,
 } from "@/data/footerLinks";
+import { SiVercel } from "react-icons/si";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -62,7 +65,43 @@ export default function Footer() {
             <div className="flex space-x-6 sm:flex-1">
               <Links links={socialLinks} className="flex space-x-6" />
             </div>
-            <div className="text-xs text-gray-500 dark:text-gray-400">
+            {/* Powered By Section */}
+            <div className="flex items-center gap-4 sm:flex-1 justify-center">
+              <span className="text-xs text-gray-400 dark:text-gray-500">
+                Powered by
+              </span>
+              <div className="flex items-center gap-3">
+                <Link
+                  href="https://vercel.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-gray-400 hover:text-foreground transition-colors"
+                  aria-label="Vercel"
+                >
+                  <SiVercel className="h-4 w-4" />
+                  <span className="text-xs font-medium">Vercel</span>
+                </Link>
+                <Link
+                  href="https://neon.tech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 opacity-60 hover:opacity-100 transition-opacity"
+                  aria-label="Neon Database"
+                >
+                  <Image
+                    src="/assets/icons/neon.png"
+                    alt="Neon"
+                    width={16}
+                    height={16}
+                    className="h-4 w-4"
+                  />
+                  <span className="text-xs font-medium text-gray-400 hover:text-[#00E599]">
+                    Neon
+                  </span>
+                </Link>
+              </div>
+            </div>
+            <div className="text-xs text-gray-500 dark:text-gray-400 sm:flex-1">
               <div className="flex flex-col text-center sm:text-right">
                 <span>
                   {currentYear} ColdByDefault&#174;. All rights reserved.
