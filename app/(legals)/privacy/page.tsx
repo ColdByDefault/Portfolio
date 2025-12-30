@@ -5,10 +5,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Shield, Cookie, Eye, Server, Globe } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function Privacy() {
-  const t = useTranslations("Privacy");
+export default async function Privacy() {
+  const t = await getTranslations("Privacy");
 
   return (
     <div className="container mx-auto px-4 py-8 mt-20 max-w-4xl">
@@ -131,6 +131,28 @@ export default function Privacy() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
+              <Server className="w-5 h-5" />
+              {t("booking.title")}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {t("booking.description")}
+            </p>
+            <div className="bg-purple-50 dark:bg-purple-950/20 p-4 rounded-lg border border-purple-200 dark:border-purple-800">
+              <p className="text-sm font-medium text-purple-900 dark:text-purple-100 mb-2">
+                {t("booking.calendlyTitle")}
+              </p>
+              <p className="text-sm text-purple-800 dark:text-purple-200">
+                {t("booking.calendlyDescription")}
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
               <Globe className="w-5 h-5" />
               {t("rights.title")}
             </CardTitle>
@@ -141,15 +163,15 @@ export default function Privacy() {
             </p>
             <div className="grid gap-2">
               <div className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0" />
                 <p className="text-sm">{t("rights.clearCookies")}</p>
               </div>
               <div className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0" />
                 <p className="text-sm">{t("rights.disableAnalytics")}</p>
               </div>
               <div className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0" />
                 <p className="text-sm">{t("rights.contact")}</p>
               </div>
             </div>

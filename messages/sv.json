@@ -150,21 +150,41 @@
     }
   },
   "Impressum": {
-    "title": "Juridisk information",
-    "subtitle": "Rättslig information och meddelande",
-    "legalStatus": "Rättslig status",
-    "projectInformation": "Projektinformation:",
-    "projectDescription": "Denna webbplats är en helt privat och icke-kommersiell portfölj som enbart används för experimentella och personliga inlärningsändamål. Ingen kommersiell användning eller vinstintention finns.",
-    "legalBasis": "Rättslig grund:",
-    "legalBasisDescription": "Enligt § 5 TMG föreligger därför ingen skyldighet att tillhandahålla juridisk information.",
-    "services": {
-      "title": "Tredjepartstjänster",
-      "chatbotTitle": "AI Chatbot-tjänst",
-      "chatbotDescription": "Denna webbplats inkluderar en AI-chatbot som drivs av Googles Gemini API. Genom att använda chatboten accepterar du automatiskt Googles användarvillkor, integritetspolicy och andra juridiska avtal som tillhandahålls av Google.",
-      "googleTerms": "Google Gemini API Villkor",
-      "googleTermsDescription": "Chattinteraktioner bearbetas av Googles tjänster. Jag sparar inga chattkonversationer eller personlig information från chatbot-interaktioner."
+    "title": "Juridisk Information",
+    "subtitle": "Information enligt § 5 DDG",
+    "provider": {
+      "title": "Information enligt § 5 DDG",
+      "name": "Yazan Abo-Ayash",
+      "address": "Invalidengasse 4",
+      "city": "68723 Schwetzingen",
+      "country": "Tyskland"
     },
-    "anotherProject": "AnotherProject",
+    "contact": {
+      "title": "Kontakt",
+      "phone": "Telefon:",
+      "phoneValue": "På begäran",
+      "email": "E-post:",
+      "emailValue": "abo.ayash@service.com"
+    },
+    "vat": {
+      "title": "Moms-ID",
+      "description": "Momsidentifikationsnummer enligt § 27 a i den tyska momslagen:",
+      "value": ""
+    },
+    "editorial": {
+      "title": "Redaktionellt ansvarig",
+      "name": "Yazan Abo-Ayash",
+      "address": "Invalidengasse 4",
+      "city": "68723 Schwetzingen"
+    },
+    "dispute": {
+      "title": "Tvistlösning",
+      "euTitle": "EU Konsumenträttelse",
+      "euDescription": "Europeiska kommissionen tillhandahåller information om konsumenträttelse:",
+      "emailNote": "Du hittar vår e-postadress i den juridiska informationen ovan.",
+      "arbitrationTitle": "Konsumenttvistlösning / Universell skiljenämnd",
+      "arbitrationDescription": "Vi är varken villiga eller skyldiga att delta i tvistlösningsförfaranden inför en konsumentskiljenämnd."
+    },
     "lastUpdated": "Senast uppdaterad:"
   },
   "Privacy": {
@@ -172,7 +192,7 @@
     "subtitle": "Hur jag hanterar dina data och integritet",
     "overview": {
       "title": "Översikt",
-      "description": "Denna integritetspolicy förklarar hur denna personliga portfolio hanterar dina data. Som en privat, icke-kommersiell webbplats samlar jag in minimal information och prioriterar din integritet.",
+      "description": "Denna integritetspolicy förklarar hur denna portfolio hanterar dina data. Jag samlar inte in några personuppgifter och prioriterar din integritet.",
       "keyPoint": "Integritet först",
       "keyPointDescription": "Jag samlar inte in, lagrar eller säljer dina personuppgifter. Allt är designat med integritet i åtanke."
     },
@@ -195,11 +215,17 @@
     },
     "chatbot": {
       "title": "AI Chatbot-tjänst",
-      "description": "Denna webbplats inkluderar en AI-chatbot som drivs av Googles Gemini API för interaktiv assistans och information.",
-      "geminiTitle": "Google Gemini API Integration",
-      "geminiDescription": "Genom att använda chatboten accepterar du automatiskt Googles användarvillkor, integritetspolicy och databehandlingsvillkor som tillhandahålls av Google. Chattdata bearbetas av Googles tjänster enligt deras integritetspolicyer.",
-      "temporaryTitle": "Tillfällig Datalagring",
-      "temporaryDescription": "Jag sparar inga chattkonversationer eller personlig information. All chattdata lagras tillfälligt i din webbläsares lokala lagring och raderas automatiskt när du uppdaterar sidan eller stänger din webbläsare."
+      "description": "Denna webbplats inkluderar en AI-chatbot för interaktiv assistans och information.",
+      "geminiTitle": "Groq API Integration",
+      "geminiDescription": "Chatboten drivs av Groq. Genom att använda chatboten accepterar du Groqs användarvillkor och integritetspolicy. Chattförfrågningar bearbetas via Groq API.",
+      "temporaryTitle": "Ingen Datalagring",
+      "temporaryDescription": "Jag sparar inga chattkonversationer, historik eller personlig information. All chattdata lagras exklusivt i din webbläsare (webblagring) och förblir helt under din kontroll."
+    },
+    "booking": {
+      "title": "Bokningstjänst",
+      "description": "Denna webbplats använder Calendly för tidsbokning.",
+      "calendlyTitle": "Calendly Integration",
+      "calendlyDescription": "När du bokar ett samtal behandlas dina uppgifter (namn, e-post, bokningsdetaljer) av Calendly enligt deras integritetspolicy. Jag tar endast emot den information som är nödvändig för vårt möte."
     },
     "rights": {
       "title": "Dina Rättigheter",

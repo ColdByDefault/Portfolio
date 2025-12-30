@@ -150,21 +150,41 @@
     }
   },
   "Impressum": {
-    "title": "Aviso legal",
-    "subtitle": "Información y aviso legal",
-    "legalStatus": "Estatus legal",
-    "projectInformation": "Información del proyecto:",
-    "projectDescription": "Este sitio web es un portafolio puramente privado y no comercial, que sirve exclusivamente para fines experimentales y de aprendizaje personal. No existe uso comercial ni intención de lucro.",
-    "legalBasis": "Base legal:",
-    "legalBasisDescription": "Según el § 5 TMG, no existe obligación de proporcionar un aviso legal.",
-    "services": {
-      "title": "Servicios de Terceros",
-      "chatbotTitle": "Servicio de Chatbot IA",
-      "chatbotDescription": "Este sitio web incluye un chatbot de IA impulsado por la API Gemini de Google. Al usar el chatbot, automáticamente aceptas los términos de servicio de Google, política de privacidad y otros acuerdos legales según los proporciona Google.",
-      "googleTerms": "Términos de Google Gemini API",
-      "googleTermsDescription": "Las interacciones del chat son procesadas por los servicios de Google. No guardo ninguna conversación de chat o información personal de las interacciones del chatbot."
+    "title": "Aviso Legal",
+    "subtitle": "Información según § 5 DDG",
+    "provider": {
+      "title": "Información según § 5 DDG",
+      "name": "Yazan Abo-Ayash",
+      "address": "Invalidengasse 4",
+      "city": "68723 Schwetzingen",
+      "country": "Alemania"
     },
-    "anotherProject": "AnotherProject",
+    "contact": {
+      "title": "Contacto",
+      "phone": "Teléfono:",
+      "phoneValue": "Bajo petición",
+      "email": "Correo electrónico:",
+      "emailValue": "abo.ayash@service.com"
+    },
+    "vat": {
+      "title": "Número de IVA",
+      "description": "Número de identificación fiscal según § 27 a de la Ley alemana del IVA:",
+      "value": ""
+    },
+    "editorial": {
+      "title": "Responsable editorial",
+      "name": "Yazan Abo-Ayash",
+      "address": "Invalidengasse 4",
+      "city": "68723 Schwetzingen"
+    },
+    "dispute": {
+      "title": "Resolución de disputas",
+      "euTitle": "Reparación al consumidor de la UE",
+      "euDescription": "La Comisión Europea proporciona información sobre la reparación al consumidor:",
+      "emailNote": "Puede encontrar nuestra dirección de correo electrónico en el aviso legal anterior.",
+      "arbitrationTitle": "Resolución de disputas del consumidor / Junta de arbitraje universal",
+      "arbitrationDescription": "No estamos dispuestos ni obligados a participar en procedimientos de resolución de disputas ante una junta de arbitraje del consumidor."
+    },
     "lastUpdated": "Última actualización:"
   },
   "Privacy": {
@@ -172,7 +192,7 @@
     "subtitle": "Cómo manejo tus datos y privacidad",
     "overview": {
       "title": "Resumen",
-      "description": "Esta política de privacidad explica cómo este portafolio personal maneja tus datos. Como un sitio web privado y no comercial, recopilo información mínima y priorizo tu privacidad.",
+      "description": "Esta política de privacidad explica cómo este portafolio maneja tus datos. No recopilo ningún dato personal y priorizo tu privacidad.",
       "keyPoint": "Privacidad Primero",
       "keyPointDescription": "No recopilo, almaceno ni vendo tus datos personales. Todo está diseñado pensando en la privacidad."
     },
@@ -195,11 +215,17 @@
     },
     "chatbot": {
       "title": "Servicio de Chatbot IA",
-      "description": "Este sitio web incluye un chatbot de IA impulsado por la API Gemini de Google para asistencia interactiva e información.",
-      "geminiTitle": "Integración de Google Gemini API",
-      "geminiDescription": "Al usar el chatbot, automáticamente aceptas los términos de servicio de Google, política de privacidad y términos de procesamiento de datos según los proporciona Google. Los datos del chat son procesados por los servicios de Google de acuerdo con sus políticas de privacidad.",
-      "temporaryTitle": "Almacenamiento Temporal de Datos",
-      "temporaryDescription": "No guardo ninguna conversación de chat o información personal. Todos los datos del chat se almacenan temporalmente en el almacenamiento local de tu navegador y se eliminan automáticamente cuando actualizas la página o cierras tu navegador."
+      "description": "Este sitio web incluye un chatbot de IA para asistencia interactiva e información.",
+      "geminiTitle": "Integración de Groq API",
+      "geminiDescription": "El chatbot funciona con Groq. Al usar el chatbot, aceptas los términos de servicio y la política de privacidad de Groq. Las solicitudes del chat se procesan a través de la API de Groq.",
+      "temporaryTitle": "Sin Almacenamiento de Datos",
+      "temporaryDescription": "No guardo ninguna conversación, historial o información personal. Todos los datos del chat se almacenan exclusivamente en tu navegador (almacenamiento web) y permanecen completamente bajo tu control."
+    },
+    "booking": {
+      "title": "Servicio de Reservas",
+      "description": "Este sitio web utiliza Calendly para programar citas.",
+      "calendlyTitle": "Integración de Calendly",
+      "calendlyDescription": "Cuando reservas una llamada, tus datos (nombre, correo electrónico, detalles de la reserva) son procesados por Calendly según su política de privacidad. Solo recibo la información necesaria para nuestra reunión."
     },
     "rights": {
       "title": "Tus Derechos",
