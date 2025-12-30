@@ -39,7 +39,9 @@ export default function Navbar() {
     >
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center justify-between w-full">
-          <BrandLogo />
+          <div className="flex-1">
+            <BrandLogo />
+          </div>
 
           {/* Desktop Navigation */}
           <DesktopNavigation
@@ -49,7 +51,9 @@ export default function Navbar() {
           />
 
           {/* Desktop Controls */}
-          <DesktopControls bookingCTA={bookingCTA} />
+          <div className="flex-1 flex justify-end">
+            <DesktopControls bookingCTA={bookingCTA} />
+          </div>
         </div>
 
         {/* Mobile Menu */}

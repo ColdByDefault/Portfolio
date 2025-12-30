@@ -11,7 +11,6 @@ import {
   Briefcase,
   FolderGit2,
   User,
-  BookOpen,
   Contact,
   Calendar,
 } from "lucide-react";
@@ -74,11 +73,6 @@ export function useNavItems(): NavItem[] {
       href: "/about",
       icon: User,
     },
-    {
-      name: t("blog"),
-      href: "/blog",
-      icon: BookOpen,
-    },
   ];
 }
 
@@ -100,9 +94,8 @@ export function DesktopNavigation({
       className="hidden lg:flex items-center space-x-2 xl:space-x-6"
       role="menubar"
     >
-      {navItems.map((item, index) => {
+      {navItems.map((item) => {
         const Icon = item.icon;
-        const isLastItem = index === navItems.length - 1;
         return (
           <Link
             key={item.name}
@@ -112,7 +105,6 @@ export function DesktopNavigation({
             className={`
               group flex items-center space-x-2 text-sm font-medium transition-colors
               ${lightLink} ${darkLink}
-              ${isLastItem ? "border-x pl-4" : ""}
               focus:outline-none px-2 py-1
             `}
             role="menuitem"
