@@ -314,5 +314,104 @@
     "accessibility": {
       "sendMessage": "Nachricht senden"
     }
+  },
+  "Services": {
+    "hero": {
+      "title": "Dienstleistungen, die Ergebnisse liefern",
+      "subtitle": "Von der Idee bis zum Launch — Webanwendungen, Automatisierung und KI-Lösungen für echten Business-Impact."
+    },
+    "packages": {
+      "cta": "Kostenloses Gespräch buchen",
+      "mvp": {
+        "name": "MVP Launch",
+        "headline": "Launch in 4-8 Wochen",
+        "description": "Full-Stack-Webanwendungen, die Ihnen helfen, Ideen schnell zu validieren und vor der Konkurrenz auf den Markt zu kommen.",
+        "pricing": "Ab 3.000 €",
+        "timeline": "4-8 Wochen",
+        "features": {
+          "fullStack": "Full-Stack-Webanwendung",
+          "responsive": "Responsives Design für alle Geräte",
+          "database": "Datengetrieben mit sicherer Datenbank",
+          "auth": "Benutzerauthentifizierung & -verwaltung",
+          "deployment": "Produktions-Deployment auf Vercel",
+          "support": "30 Tage Support nach Launch"
+        }
+      },
+      "automation": {
+        "name": "Workflow-Automatisierung",
+        "headline": "80% weniger manuelle Arbeit",
+        "description": "Optimieren Sie wiederkehrende Prozesse und integrieren Sie Ihre Tools. Skalieren Sie ohne zusätzliche Einstellungen.",
+        "pricing": "Ab 2.000 €",
+        "timeline": "2-4 Wochen",
+        "features": {
+          "analysis": "Workflow-Analyse & Mapping",
+          "integration": "Tool- & API-Integrationen",
+          "workflows": "Automatisierte Workflows & Trigger",
+          "documentation": "Vollständige Dokumentation",
+          "training": "Team-Schulung",
+          "support": "30 Tage Support inklusive"
+        }
+      },
+      "ai": {
+        "name": "KI-Lösungen",
+        "headline": "KI, die für Sie arbeitet",
+        "description": "Interne Assistenten, Chatbots und Wissenssysteme. Praktische KI-Lösungen, kein Hype.",
+        "pricing": "Ab 4.000 €",
+        "timeline": "4-6 Wochen",
+        "features": {
+          "chatbot": "Individueller KI-Chatbot oder Assistent",
+          "rag": "Wissensdatenbank / RAG-System",
+          "integration": "Integration mit Ihren Tools",
+          "training": "KI-Modell-Feinabstimmung",
+          "maintenance": "Laufender Wartungsplan",
+          "scaling": "Skalierbar mit der Nutzung"
+        }
+      }
+    },
+    "process": {
+      "title": "So funktioniert's",
+      "subtitle": "Ein klarer, vorhersehbarer Prozess vom ersten Anruf bis zum Launch.",
+      "discovery": {
+        "title": "Erstgespräch",
+        "description": "Wir besprechen Ihre Ziele, Herausforderungen und Zeitrahmen. Keine Verpflichtung, nur Klarheit."
+      },
+      "strategy": {
+        "title": "Strategie & Umfang",
+        "description": "Sie erhalten ein klares Angebot mit Umfang, Zeitplan und Festpreis. Keine Überraschungen."
+      },
+      "development": {
+        "title": "Entwicklung",
+        "description": "Regelmäßige Updates und Demos. Sie wissen immer, wo die Dinge stehen."
+      },
+      "support": {
+        "title": "Launch & Support",
+        "description": "Reibungslose Übergabe mit Dokumentation, Schulung und laufendem Support."
+      }
+    },
+    "trust": {
+      "title": "Warum Kunden mich wählen",
+      "subtitle": "Moderne Technologie, geliefert mit Klarheit und Zuverlässigkeit.",
+      "dynamic": {
+        "title": "Datengetriebene Anwendungen",
+        "description": "Keine statischen Templates — echte Anwendungen mit Datenbanken, APIs und dynamischen Inhalten, die mit Ihrem Unternehmen wachsen."
+      },
+      "scalable": {
+        "title": "Gebaut für Skalierung",
+        "description": "Enterprise-Hosting auf Vercel mit serverloser Architektur. Ihre App bewältigt Wachstum automatisch."
+      },
+      "reliable": {
+        "title": "Zuverlässig & Sicher",
+        "description": "Sauberer Code, ordentliche Tests und Sicherheits-Best-Practices. Keine technischen Schulden, keine Überraschungen."
+      },
+      "integrated": {
+        "title": "Nahtlose Integrationen",
+        "description": "Verbinden Sie sich mit Ihren bestehenden Tools — CRMs, Zahlungssysteme, Analytics und mehr."
+      }
+    },
+    "cta": {
+      "title": "Bereit loszulegen?",
+      "subtitle": "Buchen Sie ein kostenloses 15-Minuten-Erstgespräch. Keine Verpflichtung, nur ein Gespräch über Ihr Projekt.",
+      "button": "Kostenloses Gespräch buchen"
+    }
   }
 }

@@ -314,5 +314,104 @@
     "accessibility": {
       "sendMessage": "Skicka meddelande"
     }
+  },
+  "Services": {
+    "hero": {
+      "title": "Tjänster som Levererar Resultat",
+      "subtitle": "Från idé till lansering — webbappar, automatisering och AI-lösningar för verklig affärsnytta."
+    },
+    "packages": {
+      "cta": "Boka Gratis Konsultation",
+      "mvp": {
+        "name": "MVP-Lansering",
+        "headline": "Lansera på 4-8 Veckor",
+        "description": "Full-stack webbapplikationer som hjälper dig validera idéer snabbt och nå marknaden före konkurrenterna.",
+        "pricing": "Från 3 000 €",
+        "timeline": "4-8 veckor",
+        "features": {
+          "fullStack": "Full-stack webbapplikation",
+          "responsive": "Responsiv design för alla enheter",
+          "database": "Datadriven med säker databas",
+          "auth": "Användarautentisering och hantering",
+          "deployment": "Produktionsdriftsättning på Vercel",
+          "support": "30 dagars support efter lansering"
+        }
+      },
+      "automation": {
+        "name": "Arbetsflödesautomatisering",
+        "headline": "Minska Manuellt Arbete med 80%",
+        "description": "Effektivisera repetitiva processer och integrera dina verktyg. Skala utan att anställa fler.",
+        "pricing": "Från 2 000 €",
+        "timeline": "2-4 veckor",
+        "features": {
+          "analysis": "Arbetsflödesanalys och kartläggning",
+          "integration": "Verktygs- och API-integrationer",
+          "workflows": "Automatiserade arbetsflöden och triggers",
+          "documentation": "Fullständig dokumentation",
+          "training": "Teamutbildning",
+          "support": "30 dagars support inkluderat"
+        }
+      },
+      "ai": {
+        "name": "AI-Lösningar",
+        "headline": "AI som Arbetar för Dig",
+        "description": "Interna assistenter, chatbottar och kunskapssystem. Praktisk AI, ingen hype.",
+        "pricing": "Från 4 000 €",
+        "timeline": "4-6 veckor",
+        "features": {
+          "chatbot": "Anpassad AI-chatbot eller assistent",
+          "rag": "Kunskapsbas / RAG-system",
+          "integration": "Integration med dina verktyg",
+          "training": "AI-modell finjustering",
+          "maintenance": "Löpande underhållsplan",
+          "scaling": "Skalbar med användning"
+        }
+      }
+    },
+    "process": {
+      "title": "Så Fungerar Det",
+      "subtitle": "En tydlig, förutsägbar process från första samtalet till lansering.",
+      "discovery": {
+        "title": "Upptäcktssamtal",
+        "description": "Vi diskuterar dina mål, utmaningar och tidsramar. Inget åtagande, bara klarhet."
+      },
+      "strategy": {
+        "title": "Strategi och Omfattning",
+        "description": "Du får ett tydligt förslag med omfattning, tidplan och fast pris. Inga överraskningar."
+      },
+      "development": {
+        "title": "Utveckling",
+        "description": "Regelbundna uppdateringar och demos. Du vet alltid var saker står."
+      },
+      "support": {
+        "title": "Lansering och Support",
+        "description": "Smidig överlämning med dokumentation, utbildning och löpande support."
+      }
+    },
+    "trust": {
+      "title": "Varför Kunder Väljer Mig",
+      "subtitle": "Modern teknik, levererad med tydlighet och pålitlighet.",
+      "dynamic": {
+        "title": "Datadrivna Applikationer",
+        "description": "Inga statiska mallar — riktiga appar med databaser, API:er och dynamiskt innehåll som växer med din verksamhet."
+      },
+      "scalable": {
+        "title": "Byggd för Skalning",
+        "description": "Enterprise-hosting på Vercel med serverlös arkitektur. Din app hanterar tillväxt automatiskt."
+      },
+      "reliable": {
+        "title": "Pålitlig och Säker",
+        "description": "Ren kod, ordentliga tester och säkerhetsbästa praxis. Ingen teknisk skuld, inga överraskningar."
+      },
+      "integrated": {
+        "title": "Sömlösa Integrationer",
+        "description": "Anslut till dina befintliga verktyg — CRM:er, betalningssystem, analytics och mer."
+      }
+    },
+    "cta": {
+      "title": "Redo att Börja?",
+      "subtitle": "Boka ett gratis 15-minuters upptäcktssamtal. Inget åtagande, bara ett samtal om ditt projekt.",
+      "button": "Boka Gratis Konsultation"
+    }
   }
 }

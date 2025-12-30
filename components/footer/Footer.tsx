@@ -64,19 +64,10 @@ export default function Footer() {
                 <span>
                   {currentYear} ColdByDefault&#174;. All rights reserved.
                 </span>
-                <span className="text-xs text-gray-300 dark:text-gray-500">
-                  {" "}
-                  The journey was sparked in Stockholm, 2021.
-                </span>
               </div>
             </div>
             <div className="flex space-x-6 sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2">
               <Links links={socialLinks} className="flex space-x-6" />
-            </div>
-            <div className="flex-1 flex justify-end items-center gap-2">
-              <span className="text-xs text-gray-500 dark:text-gray-400">
-                madridista since 2007
-              </span>
             </div>
           </div>
         </div>

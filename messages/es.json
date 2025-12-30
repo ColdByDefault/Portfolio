@@ -314,5 +314,104 @@
     "accessibility": {
       "sendMessage": "Enviar mensaje"
     }
+  },
+  "Services": {
+    "hero": {
+      "title": "Servicios que Entregan Resultados",
+      "subtitle": "De la idea al lanzamiento — aplicaciones web, automatización y soluciones de IA para impacto empresarial real."
+    },
+    "packages": {
+      "cta": "Reservar Consulta Gratuita",
+      "mvp": {
+        "name": "Lanzamiento MVP",
+        "headline": "Lanza en 4-8 Semanas",
+        "description": "Aplicaciones web full-stack que te ayudan a validar ideas rápidamente y llegar al mercado antes que la competencia.",
+        "pricing": "Desde 3.000 €",
+        "timeline": "4-8 semanas",
+        "features": {
+          "fullStack": "Aplicación web full-stack",
+          "responsive": "Diseño responsivo para todos los dispositivos",
+          "database": "Basado en datos con base de datos segura",
+          "auth": "Autenticación y gestión de usuarios",
+          "deployment": "Despliegue en producción en Vercel",
+          "support": "30 días de soporte post-lanzamiento"
+        }
+      },
+      "automation": {
+        "name": "Automatización de Flujos",
+        "headline": "Reduce el Trabajo Manual en un 80%",
+        "description": "Optimiza procesos repetitivos e integra tus herramientas. Escala sin contratar más personal.",
+        "pricing": "Desde 2.000 €",
+        "timeline": "2-4 semanas",
+        "features": {
+          "analysis": "Análisis y mapeo de flujos de trabajo",
+          "integration": "Integraciones de herramientas y APIs",
+          "workflows": "Flujos de trabajo y triggers automatizados",
+          "documentation": "Documentación completa",
+          "training": "Capacitación del equipo",
+          "support": "30 días de soporte incluidos"
+        }
+      },
+      "ai": {
+        "name": "Soluciones de IA",
+        "headline": "IA que Trabaja para Ti",
+        "description": "Asistentes internos, chatbots y sistemas de conocimiento. IA práctica, sin exageraciones.",
+        "pricing": "Desde 4.000 €",
+        "timeline": "4-6 semanas",
+        "features": {
+          "chatbot": "Chatbot o asistente de IA personalizado",
+          "rag": "Base de conocimiento / sistema RAG",
+          "integration": "Integración con tus herramientas",
+          "training": "Ajuste fino del modelo de IA",
+          "maintenance": "Plan de mantenimiento continuo",
+          "scaling": "Escalable con el uso"
+        }
+      }
+    },
+    "process": {
+      "title": "Cómo Funciona",
+      "subtitle": "Un proceso claro y predecible desde la primera llamada hasta el lanzamiento.",
+      "discovery": {
+        "title": "Llamada de Descubrimiento",
+        "description": "Hablamos de tus objetivos, desafíos y plazos. Sin compromiso, solo claridad."
+      },
+      "strategy": {
+        "title": "Estrategia y Alcance",
+        "description": "Recibes una propuesta clara con alcance, cronograma y precio fijo. Sin sorpresas."
+      },
+      "development": {
+        "title": "Desarrollo",
+        "description": "Actualizaciones regulares y demos. Siempre sabrás cómo van las cosas."
+      },
+      "support": {
+        "title": "Lanzamiento y Soporte",
+        "description": "Entrega sin problemas con documentación, capacitación y soporte continuo."
+      }
+    },
+    "trust": {
+      "title": "Por Qué los Clientes me Eligen",
+      "subtitle": "Tecnología moderna, entregada con claridad y fiabilidad.",
+      "dynamic": {
+        "title": "Aplicaciones Basadas en Datos",
+        "description": "No son plantillas estáticas — aplicaciones reales con bases de datos, APIs y contenido dinámico que crece con tu negocio."
+      },
+      "scalable": {
+        "title": "Construido para Escalar",
+        "description": "Hosting empresarial en Vercel con arquitectura serverless. Tu app maneja el crecimiento automáticamente."
+      },
+      "reliable": {
+        "title": "Fiable y Seguro",
+        "description": "Código limpio, pruebas adecuadas y mejores prácticas de seguridad. Sin deuda técnica, sin sorpresas."
+      },
+      "integrated": {
+        "title": "Integraciones Perfectas",
+        "description": "Conéctate con tus herramientas existentes — CRMs, sistemas de pago, analytics y más."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para Empezar?",
+      "subtitle": "Reserva una llamada de descubrimiento gratuita de 15 minutos. Sin compromiso, solo una conversación sobre tu proyecto.",
+      "button": "Reservar Consulta Gratuita"
+    }
   }
 }

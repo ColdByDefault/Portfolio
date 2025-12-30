@@ -28,8 +28,8 @@ export function QuickActions() {
   const pathname = usePathname();
   const t = useTranslations("QuickActions");
 
-  // Don't show on /media routes
-  if (pathname.startsWith("/media")) {
+  // Don't show on /media or /services routes
+  if (pathname.startsWith("/media") || pathname.startsWith("/services")) {
     return null;
   }
 
