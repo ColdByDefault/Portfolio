@@ -2,7 +2,13 @@
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  * 
- * BACKUP - Original Technologies.tsx file moved here for reference
+ * BACKUP 1 - Carousel-based layout version
+ * - Uses techGroups data structure
+ * - Carousel with slides and navigation buttons
+ * - useResponsiveCarousel hook for responsive card counts
+ * - Complex hover state with animated overlays
+ * - Technologies.logic helper functions
+ * - More elaborate accessibility features
  */
 "use client";
 
