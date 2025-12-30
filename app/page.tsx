@@ -16,30 +16,47 @@ const PortoCard = dynamic(() => import("@/components/aboutPorto"), {
   ssr: false,
 });
 
-const GitHubShowcase = dynamic(() => import("@/components/github").then(mod => ({ default: mod.GitHubShowcase })), {
-  loading: () => <LoadingSkeleton />,
-  ssr: false,
-});
+const Technologies = dynamic(
+  () =>
+    import("@/components/tech").then((mod) => ({ default: mod.Technologies })),
+  {
+    loading: () => <LoadingSkeleton />,
+    ssr: false,
+  }
+);
 
-const Technologies = dynamic(() => import("@/components/tech").then(mod => ({ default: mod.Technologies })), {
-  loading: () => <LoadingSkeleton />,
-  ssr: false,
-});
+const CertificationShowcase = dynamic(
+  () =>
+    import("@/components/cer").then((mod) => ({
+      default: mod.CertificationShowcase,
+    })),
+  {
+    loading: () => <LoadingSkeleton />,
+    ssr: false,
+  }
+);
 
-const CertificationShowcase = dynamic(() => import("@/components/cer").then(mod => ({ default: mod.CertificationShowcase })), {
-  loading: () => <LoadingSkeleton />,
-  ssr: false,
-});
+const PageSpeedInsights = dynamic(
+  () =>
+    import("@/components/pagespeed").then((mod) => ({
+      default: mod.PageSpeedInsights,
+    })),
+  {
+    loading: () => <LoadingSkeleton />,
+    ssr: false,
+  }
+);
 
-const PageSpeedInsights = dynamic(() => import("@/components/pagespeed").then(mod => ({ default: mod.PageSpeedInsights })), {
-  loading: () => <LoadingSkeleton />,
-  ssr: false,
-});
-
-const ClientBackground = dynamic(() => import("@/components/visuals").then(mod => ({ default: mod.ClientBackground })), {
-  loading: () => null,
-  ssr: false,
-});
+const ClientBackground = dynamic(
+  () =>
+    import("@/components/visuals").then((mod) => ({
+      default: mod.ClientBackground,
+    })),
+  {
+    loading: () => null,
+    ssr: false,
+  }
+);
 
 export default function Home() {
   const t = useTranslations("Home");
@@ -74,16 +91,10 @@ export default function Home() {
           <Suspense fallback={<LoadingSkeleton />}>
             <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
           </Suspense>
-          
+
           <Suspense fallback={<LoadingSkeleton />}>
             <div className="container mx-auto px-4 py-8">
               <PortoCard />
-            </div>
-          </Suspense>
-
-          <Suspense fallback={<LoadingSkeleton />}>
-            <div className="py-12 px-4 sm:px-6 lg:px-8" id="github">
-              <GitHubShowcase />
             </div>
           </Suspense>
 

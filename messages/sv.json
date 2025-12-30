@@ -226,10 +226,6 @@
     "philosophy": "Filosofi",
     "myDevelopmentPhilosophy": "Min utvecklingsfilosofi",
     "currentFocus": "Nuvarande fokus",
-    "coreValues": "Kärnvärden",
-    "whatDrivesMe": "Vad som driver mig",
-    "achievementsTitle": "Prestationer",
-    "milestonesRecognition": "Milstolpar & erkännanden",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
       "title": "Junior Fullstackutvecklare",
@@ -249,34 +245,6 @@
       "Moderna React-mönster och prestanda",
       "Bästa praxis i TypeScript",
       "Användarupplevelse och tillgänglighet"
-    ],
-    "values": [
-      "Hårt arbete och disciplin lönar sig alltid",
-      "Kod ska vara ren, underhållbar och tillgänglig",
-      "Lärande genom dokumentation och experiment",
-      "Bidra till en renare och mer öppen webb",
-      "Samarbete och kunskapsdelning",
-      "Användarcentrerad design och utveckling"
-    ],
-    "achievements": [
-      {
-        "title": "Mjukvaruutvecklingspraktikant",
-        "description": "Utvecklar skräddarsydda digitala lösningar och AI-drivna applikationer på Avarno GmbH",
-        "date": "2024",
-        "category": "work"
-      },
-      {
-        "title": "Portfolio-webbplats v4",
-        "description": "Modern, responsiv portfolio byggd med Next.js 15 och TypeScript",
-        "date": "2024",
-        "category": "project"
-      },
-      {
-        "title": "Aktiv open source-bidragsgivare",
-        "description": "Upprätthåller en aktiv närvaro med bidrag till öppen källkod",
-        "date": "Pågående",
-        "category": "project"
-      }
     ]
   },
   "PortfolioAbout": {

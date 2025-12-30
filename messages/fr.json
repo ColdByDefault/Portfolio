@@ -226,10 +226,6 @@
     "philosophy": "Philosophie",
     "myDevelopmentPhilosophy": "Ma Philosophie de Développement",
     "currentFocus": "Focus Actuel",
-    "coreValues": "Valeurs Fondamentales",
-    "whatDrivesMe": "Ce qui me motive",
-    "achievementsTitle": "Réalisations",
-    "milestonesRecognition": "Étapes clés & Reconnaissance",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
       "title": "Développeur Full Stack Junior",
@@ -249,34 +245,6 @@
       "Modèles modernes de React et performance",
       "Bonnes pratiques TypeScript",
       "Expérience utilisateur et accessibilité"
-    ],
-    "values": [
-      "Le travail acharné et la discipline finissent toujours par payer",
-      "Le code doit être propre, maintenable et accessible",
-      "Apprendre à travers la documentation et l'expérimentation",
-      "Contribuer à un web plus propre et plus ouvert",
-      "Collaboration et partage des connaissances",
-      "Conception et développement centrés sur l'utilisateur"
-    ],
-    "achievements": [
-      {
-        "title": "Stagiaire en développement logiciel",
-        "description": "Création de solutions numériques sur mesure et d'applications alimentées par l'IA chez Avarno GmbH",
-        "date": "2024",
-        "category": "travail"
-      },
-      {
-        "title": "Site Portfolio v4",
-        "description": "Portfolio moderne et réactif construit avec Next.js 15 et TypeScript",
-        "date": "2024",
-        "category": "projet"
-      },
-      {
-        "title": "Contributeur actif GitHub",
-        "description": "Maintenir une présence active avec des contributions open source",
-        "date": "En cours",
-        "category": "projet"
-      }
     ]
   },
   "PortfolioAbout": {
