@@ -496,7 +496,7 @@ export const performanceMetrics: PerformanceMetric[] = [
       "Responsive breakpoint optimization",
       "Mobile Core Web Vitals < targets",
     ],
-    score: 60,
+    score: 80,
   },
   {
     icon: Shield,
