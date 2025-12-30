@@ -59,15 +59,15 @@ export default function Footer() {
         </div>
         <div className="border-t border-gray-200 dark:border-gray-800 py-4">
           <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0">
-            <div className="text-xs text-gray-500 dark:text-gray-400 sm:flex-1">
-              <div className="flex flex-col text-center sm:text-left">
+            <div className="flex space-x-6 sm:flex-1">
+              <Links links={socialLinks} className="flex space-x-6" />
+            </div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">
+              <div className="flex flex-col text-center sm:text-right">
                 <span>
                   {currentYear} ColdByDefault&#174;. All rights reserved.
                 </span>
               </div>
-            </div>
-            <div className="flex space-x-6 sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2">
-              <Links links={socialLinks} className="flex space-x-6" />
             </div>
           </div>
         </div>
