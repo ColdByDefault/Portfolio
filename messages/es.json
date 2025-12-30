@@ -24,7 +24,11 @@
   },
   "Navigation": {
     "home": "Inicio",
+    "services": "Servicios",
+    "work": "Trabajos",
     "about": "Sobre mí",
+    "blog": "Blog",
+    "bookCall": "Reservar Llamada",
     "aboutSite": "Sobre el Sitio",
     "projects": "Proyectos",
     "mcp": "MCP",

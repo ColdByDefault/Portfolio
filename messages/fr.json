@@ -24,7 +24,11 @@
   },
   "Navigation": {
     "home": "Accueil",
+    "services": "Services",
+    "work": "Travaux",
     "about": "À propos",
+    "blog": "Blog",
+    "bookCall": "Réserver un Appel",
     "aboutSite": "À propos du site",
     "projects": "Projets",
     "mcp": "MCP",

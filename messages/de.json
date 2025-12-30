@@ -24,7 +24,11 @@
   },
   "Navigation": {
     "home": "Startseite",
+    "services": "Leistungen",
+    "work": "Arbeiten",
     "about": "Über mich",
+    "blog": "Blog",
+    "bookCall": "Gespräch buchen",
     "aboutSite": "Über die Seite",
     "projects": "Projekte",
     "mcp": "MCP",

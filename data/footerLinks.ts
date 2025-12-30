@@ -15,32 +15,25 @@ export interface LinkItem {
 export const legalLinks: LinkItem[] = [
   { href: "/impressum", label: "Impressum" },
   { href: "/privacy", label: "Privacy" },
+];
+
+export const footerNavLinks: LinkItem[][] = [
+  [
+    { href: "/services", label: "Services" },
+    { href: "/projects", label: "Work" },
+    { href: "/about", label: "About" },
+    { href: "/blog", label: "Blog" },
+  ],
+];
+
+export const developerLinks: LinkItem[] = [
+  { href: "/about-portfolio", label: "About This Site" },
+  { href: "/library", label: "Library" },
   {
     href: "https://docs.coldbydefault.com/",
     label: "Documentation",
     isExternal: true,
   },
-];
-
-export const footerNavLinks: LinkItem[][] = [
-  [
-    { href: "/media", label: "Media" },
-    { href: "/about", label: "About Me" },
-    { href: "/about-portfolio", label: "About Portfolio" },
-    { href: "/blog", label: "Blogs" },
-  ],
-];
-
-export const resourceLinks: LinkItem[][] = [
-  [
-    { href: "https://nextjs.org", label: "Next.js", isExternal: true },
-    {
-      href: "https://modelcontextprotocol.io",
-      label: "MCP",
-      isExternal: true,
-    },
-    { href: "https://vercel.com/", label: "Vercel", isExternal: true },
-  ],
 ];
 
 export const socialLinks: LinkItem[] = [

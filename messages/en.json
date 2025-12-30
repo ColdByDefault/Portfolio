@@ -24,7 +24,11 @@
   },
   "Navigation": {
     "home": "Home",
+    "services": "Services",
+    "work": "Work",
     "about": "About",
+    "blog": "Blog",
+    "bookCall": "Book a Call",
     "aboutSite": "About Site",
     "projects": "Projects",
     "mcp": "MCP",

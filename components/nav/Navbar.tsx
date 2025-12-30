@@ -10,6 +10,7 @@ import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import {
   useNavItems,
+  useBookingCTA,
   DesktopNavigation,
   DesktopControls,
   MobileControls,
@@ -20,6 +21,7 @@ import {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const navItems = useNavItems();
+  const bookingCTA = useBookingCTA();
 
   // CSS classes for navigation links
   const lightLink = "text-gray-500 hover:text-gray-900";
@@ -47,13 +49,16 @@ export default function Navbar() {
           />
 
           {/* Desktop Controls */}
-          <DesktopControls />
+          <DesktopControls bookingCTA={bookingCTA} />
         </div>
 
         {/* Mobile Menu */}
         <div className="flex lg:hidden items-center space-x-2 px-4">
           {/* Mobile Controls */}
-          <MobileControls onMenuToggle={handleMobileMenuToggle} />
+          <MobileControls
+            onMenuToggle={handleMobileMenuToggle}
+            bookingCTA={bookingCTA}
+          />
 
           {/* Mobile Menu Trigger */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -73,6 +78,7 @@ export default function Navbar() {
             <MobileNavigation
               navItems={navItems}
               onLinkClick={handleMobileLinkClick}
+              bookingCTA={bookingCTA}
             />
           </Sheet>
         </div>

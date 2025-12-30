@@ -24,7 +24,11 @@
   },
   "Navigation": {
     "home": "Hem",
+    "services": "Tjänster",
+    "work": "Arbeten",
     "about": "Om mig",
+    "blog": "Blogg",
+    "bookCall": "Boka Samtal",
     "aboutSite": "Om sajten",
     "projects": "Projekt",
     "mcp": "MCP",
