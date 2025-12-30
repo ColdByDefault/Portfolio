@@ -5,29 +5,20 @@
 import { Links } from "@/components/footer";
 import {
   legalLinks,
-  resourceLinks,
+  developerLinks,
   socialLinks,
   footerNavLinks,
 } from "@/data/footerLinks";
+import { SiVercel } from "react-icons/si";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="w-full bg-background/95 backdrop-blur border-t min-h-50">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 py-6">
-          <div className="space-y-3">
-            <h3 className="text-xs font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
-              Legal
-            </h3>
-            <ul className="space-y-2">
-              {legalLinks.map((link, index) => (
-                <li key={index}>
-                  <Links links={[link]} />
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
           <div className="space-y-3">
             <h3 className="text-xs font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
               Navigation
@@ -46,41 +37,76 @@ export default function Footer() {
           </div>
           <div className="space-y-3">
             <h3 className="text-xs font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
-              Resources
+              For Developers
             </h3>
-            <div className="grid grid-cols-1 gap-4">
-              {resourceLinks.map((columnLinks, columnIndex) => (
-                <ul key={columnIndex} className="space-y-2">
-                  {columnLinks.map((link, linkIndex) => (
-                    <li key={linkIndex}>
-                      <Links links={[link]} />
-                    </li>
-                  ))}
-                </ul>
+            <ul className="space-y-2">
+              {developerLinks.map((link, index) => (
+                <li key={index}>
+                  <Links links={[link]} />
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
-        </div>{" "}
+          <div className="space-y-3">
+            <h3 className="text-xs font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
+              Legal
+            </h3>
+            <ul className="space-y-2">
+              {legalLinks.map((link, index) => (
+                <li key={index}>
+                  <Links links={[link]} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
         <div className="border-t border-gray-200 dark:border-gray-800 py-4">
           <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0">
+            <div className="flex space-x-6 sm:flex-1">
+              <Links links={socialLinks} className="flex space-x-6" />
+            </div>
+            {/* Powered By Section */}
+            <div className="flex items-center gap-4 sm:flex-1 justify-center">
+              <span className="text-xs text-gray-400 dark:text-gray-500">
+                Powered by
+              </span>
+              <div className="flex items-center gap-3">
+                <Link
+                  href="https://vercel.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-gray-400 hover:text-foreground transition-colors"
+                  aria-label="Vercel"
+                >
+                  <SiVercel className="h-4 w-4" />
+                  <span className="text-xs font-medium">Vercel</span>
+                </Link>
+                <Link
+                  href="https://neon.tech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 opacity-60 hover:opacity-100 transition-opacity"
+                  aria-label="Neon Database"
+                >
+                  <Image
+                    src="/assets/icons/neon.png"
+                    alt="Neon"
+                    width={16}
+                    height={16}
+                    className="h-4 w-4"
+                  />
+                  <span className="text-xs font-medium text-gray-400 hover:text-[#00E599]">
+                    Neon
+                  </span>
+                </Link>
+              </div>
+            </div>
             <div className="text-xs text-gray-500 dark:text-gray-400 sm:flex-1">
-              <div className="flex flex-col text-center sm:text-left">
+              <div className="flex flex-col text-center sm:text-right">
                 <span>
                   {currentYear} ColdByDefault&#174;. All rights reserved.
                 </span>
-                <span className="text-xs text-gray-300 dark:text-gray-500">
-                  {" "}
-                  The journey was sparked in Stockholm, 2021.
-                </span>
               </div>
-            </div>
-            <div className="flex space-x-6 sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2">
-              <Links links={socialLinks} className="flex space-x-6" />
-            </div>
-            <div className="flex-1 flex justify-end items-center gap-2">
-              <span className="text-xs text-gray-500 dark:text-gray-400">
-                madridista since 2007
-              </span>
             </div>
           </div>
         </div>

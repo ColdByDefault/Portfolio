@@ -24,7 +24,11 @@
   },
   "Navigation": {
     "home": "Home",
+    "services": "Services",
+    "work": "Work",
     "about": "About",
+    "blog": "Blog",
+    "bookCall": "Book a Call",
     "aboutSite": "About Site",
     "projects": "Projects",
     "mcp": "MCP",
@@ -79,6 +83,30 @@
       "backend": "Backend & Database",
       "devops": "DevOps & Deployment",
       "docsDesign": "Documentation & Design"
+    }
+  },
+  "Capabilities": {
+    "title": "What I Deliver",
+    "subtitle": "Modern technology, translated into real business outcomes.",
+    "launch": {
+      "title": "Launch Fast",
+      "headline": "Go live in 4-8 weeks",
+      "description": "From idea to production-ready application. No months of waiting — get to market before your competitors."
+    },
+    "scale": {
+      "title": "Scale Seamlessly",
+      "headline": "Handle 10x growth automatically",
+      "description": "Enterprise infrastructure that grows with you. Your app handles traffic spikes without breaking a sweat."
+    },
+    "security": {
+      "title": "Enterprise Security",
+      "headline": "Bank-level data protection",
+      "description": "Secure authentication, encrypted data, and industry best practices. Your users' data stays safe."
+    },
+    "global": {
+      "title": "Go Global",
+      "headline": "Ready for 5+ languages",
+      "description": "Built-in internationalization for European and global markets. Expand without rebuilding."
     }
   },
   "Certifications": {
@@ -222,10 +250,6 @@
     "philosophy": "Philosophy",
     "myDevelopmentPhilosophy": "My Development Philosophy",
     "currentFocus": "Current Focus",
-    "coreValues": "Core Values",
-    "whatDrivesMe": "What Drives Me",
-    "achievementsTitle": "Achievements",
-    "milestonesRecognition": "Milestones & Recognition",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
       "title": "Full Stack Junior Developer",
@@ -245,34 +269,6 @@
       "Modern React patterns and performance",
       "TypeScript best practices",
       "User experience and accessibility"
-    ],
-    "values": [
-      "Hard work and discipline always pay off",
-      "Code should be clean, maintainable, and accessible",
-      "Learning through documentation and experimentation",
-      "Contributing to a cleaner, more open web",
-      "Collaboration and knowledge sharing",
-      "User-centered design and development"
-    ],
-    "achievements": [
-      {
-        "title": "Software Development Intern",
-        "description": "Building bespoke digital solutions and AI-powered applications at Avarno GmbH",
-        "date": "2024",
-        "category": "work"
-      },
-      {
-        "title": "Portfolio Website v4",
-        "description": "Modern, responsive portfolio built with Next.js 15 and TypeScript",
-        "date": "2024",
-        "category": "project"
-      },
-      {
-        "title": "Active GitHub Contributor",
-        "description": "Maintaining an active presence with open-source contributions",
-        "date": "Ongoing",
-        "category": "project"
-      }
     ]
   },
   "PortfolioAbout": {
@@ -341,6 +337,105 @@
     },
     "accessibility": {
       "sendMessage": "Send message"
+    }
+  },
+  "Services": {
+    "hero": {
+      "title": "Services That Deliver Results",
+      "subtitle": "From idea to launch — web applications, automation, and AI solutions built for business impact."
+    },
+    "packages": {
+      "cta": "Book a Free Call",
+      "mvp": {
+        "name": "MVP Launch",
+        "headline": "Launch in 4-8 Weeks",
+        "description": "Full-stack web applications that help you validate ideas fast and get to market before the competition.",
+        "pricing": "Starting at €3,000",
+        "timeline": "4-8 weeks",
+        "features": {
+          "fullStack": "Full-stack web application",
+          "responsive": "Responsive design for all devices",
+          "database": "Data-driven with secure database",
+          "auth": "User authentication & management",
+          "deployment": "Production deployment on Vercel",
+          "support": "30 days post-launch support"
+        }
+      },
+      "automation": {
+        "name": "Workflow Automation",
+        "headline": "Reduce Manual Work by 80%",
+        "description": "Streamline repetitive processes and integrate your tools. Scale operations without hiring.",
+        "pricing": "Starting at €2,000",
+        "timeline": "2-4 weeks",
+        "features": {
+          "analysis": "Workflow analysis & mapping",
+          "integration": "Tool & API integrations",
+          "workflows": "Automated workflows & triggers",
+          "documentation": "Full documentation",
+          "training": "Team training session",
+          "support": "30 days support included"
+        }
+      },
+      "ai": {
+        "name": "AI Solutions",
+        "headline": "AI That Works for You",
+        "description": "Internal assistants, chatbots, and knowledge systems. Practical AI solutions, not hype.",
+        "pricing": "Starting at €4,000",
+        "timeline": "4-6 weeks",
+        "features": {
+          "chatbot": "Custom AI chatbot or assistant",
+          "rag": "Knowledge base / RAG system",
+          "integration": "Integration with your tools",
+          "training": "AI model fine-tuning",
+          "maintenance": "Ongoing maintenance plan",
+          "scaling": "Built to scale with usage"
+        }
+      }
+    },
+    "process": {
+      "title": "How It Works",
+      "subtitle": "A clear, predictable process from first call to launch.",
+      "discovery": {
+        "title": "Discovery Call",
+        "description": "We discuss your goals, challenges, and timeline. No commitment, just clarity."
+      },
+      "strategy": {
+        "title": "Strategy & Scope",
+        "description": "You receive a clear proposal with scope, timeline, and fixed pricing. No surprises."
+      },
+      "development": {
+        "title": "Development",
+        "description": "Regular updates and demos. You always know where things stand."
+      },
+      "support": {
+        "title": "Launch & Support",
+        "description": "Smooth handover with documentation, training, and ongoing support."
+      }
+    },
+    "trust": {
+      "title": "Why Clients Choose Me",
+      "subtitle": "Modern technology, delivered with clarity and reliability.",
+      "dynamic": {
+        "title": "Data-Driven Applications",
+        "description": "Not static templates — real applications with databases, APIs, and dynamic content that grows with your business."
+      },
+      "scalable": {
+        "title": "Built to Scale",
+        "description": "Enterprise-grade hosting on Vercel with serverless architecture. Your app handles growth automatically."
+      },
+      "reliable": {
+        "title": "Reliable & Secure",
+        "description": "Clean code, proper testing, and security best practices. No technical debt, no surprises."
+      },
+      "integrated": {
+        "title": "Seamless Integrations",
+        "description": "Connect with your existing tools — CRMs, payment systems, analytics, and more."
+      }
+    },
+    "cta": {
+      "title": "Ready to Start?",
+      "subtitle": "Book a free 15-minute discovery call. No commitment, just a conversation about your project.",
+      "button": "Book Your Free Call"
     }
   }
 }

@@ -3,4 +3,4 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
-export { default as Technologies } from "./Technologies";
+export { default as Capabilities } from "./Capabilities";

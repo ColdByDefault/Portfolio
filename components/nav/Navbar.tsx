@@ -10,6 +10,7 @@ import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import {
   useNavItems,
+  useBookingCTA,
   DesktopNavigation,
   DesktopControls,
   MobileControls,
@@ -20,6 +21,7 @@ import {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const navItems = useNavItems();
+  const bookingCTA = useBookingCTA();
 
   // CSS classes for navigation links
   const lightLink = "text-gray-500 hover:text-gray-900";
@@ -31,13 +33,15 @@ export default function Navbar() {
 
   return (
     <nav
-      className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex justify-center"
+      className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 flex justify-center"
       role="navigation"
       aria-label="Main navigation"
     >
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center justify-between w-full">
-          <BrandLogo />
+          <div className="flex-1">
+            <BrandLogo />
+          </div>
 
           {/* Desktop Navigation */}
           <DesktopNavigation
@@ -47,13 +51,18 @@ export default function Navbar() {
           />
 
           {/* Desktop Controls */}
-          <DesktopControls />
+          <div className="flex-1 flex justify-end">
+            <DesktopControls bookingCTA={bookingCTA} />
+          </div>
         </div>
 
         {/* Mobile Menu */}
         <div className="flex lg:hidden items-center space-x-2 px-4">
           {/* Mobile Controls */}
-          <MobileControls onMenuToggle={handleMobileMenuToggle} />
+          <MobileControls
+            onMenuToggle={handleMobileMenuToggle}
+            bookingCTA={bookingCTA}
+          />
 
           {/* Mobile Menu Trigger */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -73,6 +82,7 @@ export default function Navbar() {
             <MobileNavigation
               navItems={navItems}
               onLinkClick={handleMobileLinkClick}
+              bookingCTA={bookingCTA}
             />
           </Sheet>
         </div>
