@@ -270,31 +270,33 @@
     "comingSoonDescription": "Les recommandations et critiques de livres seront bientôt disponibles ici."
   },
   "About": {
+    "badge": "Disponible pour Projets",
     "aboutMe": "À propos de moi",
     "getInTouch": "Me Contacter",
     "downloadCV": "Télécharger CV",
-    "philosophy": "Philosophie",
-    "myDevelopmentPhilosophy": "Ma Philosophie de Développement",
+    "philosophy": "Mon Approche",
+    "myApproach": "Comment je Travaille Avec les Clients",
+    "whatIDeliver": "Ce Que Vous Obtenez en Travaillant Avec Moi",
     "currentFocus": "Focus Actuel",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Développeur Full Stack Junior",
-      "currentPosition": "Stagiaire",
-      "company": "Avarno GmbH",
+      "title": "Je développe des applications web rapides et évolutives qui aident les entreprises à croître",
+      "currentPosition": "Développeur Freelance",
+      "company": "",
       "location": "Allemagne",
       "experience": "3+ ans"
     },
-    "mainStory": "Je suis actuellement stagiaire chez Avarno GmbH, où j'ai conçu aussi bien des solutions numériques sur mesure que des applications alimentées par l'IA. Je me spécialise dans Next.js, React, JavaScript, HTML/CSS et je maintiens une présence active sur GitHub. Face à de nouveaux défis, je plonge directement dans la documentation et j'expérimente jusqu'à maîtriser les outils. Animé par une passion pour un web plus propre et plus ouvert, je contribue à des projets open source et vise à simplifier les expériences utilisateurs en éliminant les publicités et paywalls inutiles. Mon objectif est de devenir un expert full-stack — en particulier dans Next.js, les intégrations LLM et le développement web de bout en bout. Je crois que le travail acharné et la discipline finissent toujours par payer, et j'apporte cette rigueur à chaque projet, petit ou grand.",
+    "mainStory": "J'aide les PME et agences à lancer des MVPs web plus rapidement, à automatiser les flux de travail répétitifs et à intégrer des assistants IA qui économisent des heures de travail manuel. Mes clients voient généralement des résultats en 4-8 semaines — pas des mois. Que vous ayez besoin d'un portail client, d'un outil interne ou d'un moyen d'optimiser les processus de votre équipe, je livre des solutions fiables, maintenables et conçues pour évoluer avec votre entreprise.",
     "sections": {
-      "philosophy": "Je crois en l'écriture d'un code qui fonctionne, mais qui soit aussi maintenable, évolutif et accessible. Mon approche combine l'excellence technique avec des principes de conception centrés sur l'utilisateur. Je suis passionné par la création d'expériences web rapides, intuitives et sans complexité inutile."
+      "philosophy": "Je crois en une communication claire, des délais transparents et la livraison exacte de ce qui a été promis. Pas de jargon technique, pas de dérive du périmètre — juste un développement fiable avec des mises à jour régulières pour que vous sachiez toujours où en est votre projet. Chaque solution est construite avec vos objectifs commerciaux en tête, pas seulement les exigences techniques."
     },
     "currentFocusItems": [
-      "Next.js - modèles avancés et optimisation",
-      "Intégrations LLM et applications alimentées par l'IA",
-      "Développement d'applications web de bout en bout",
-      "Modèles modernes de React et performance",
-      "Bonnes pratiques TypeScript",
-      "Expérience utilisateur et accessibilité"
+      "MVPs web livrés en 4-8 semaines",
+      "Automatisation des flux qui économise des heures par semaine",
+      "Assistants IA pour les processus internes",
+      "Scores de performance 90+ garantis",
+      "Communication claire et processus transparent",
+      "Support et maintenance à long terme"
     ]
   },
   "PortfolioAbout": {
