@@ -192,11 +192,13 @@ function ProcessStepCard({
         <div className="flex-1 pb-8 min-w-0">
           <div className="flex items-center gap-2 mb-2">
             {IconComponent && (
-              <IconComponent className="h-5 w-5 text-muted-foreground shrink-0" />
+              <IconComponent className="h-5 w-5 text-black dark:text-muted-foreground shrink-0" />
             )}
             <h3 className="text-lg font-semibold">{t(step.titleKey)}</h3>
           </div>
-          <p className="text-muted-foreground">{t(step.descriptionKey)}</p>
+          <p className="text-black dark:text-muted-foreground">
+            {t(step.descriptionKey)}
+          </p>
         </div>
       </div>
     </motion.div>
@@ -268,12 +270,11 @@ export default function ServicesPage() {
               >
                 {t("hero.title")}
               </motion.h1>
-              <motion.p
-                variants={fadeInUp}
-                className="text-xl text-muted-foreground max-w-3xl mx-auto"
-              >
-                {t("hero.subtitle")}
-              </motion.p>
+              <motion.div variants={fadeInUp}>
+                <p className="text-l text-black dark:text-muted-foreground max-w-3xl mx-auto bg-background/70 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
+                  {t("hero.subtitle")}
+                </p>
+              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -296,7 +297,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Process Section */}
-        <section className="py-16 px-4 lg:px-8 bg-muted/30">
+        <section className="py-16 px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial="hidden"
@@ -308,20 +309,22 @@ export default function ServicesPage() {
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   {t("process.title")}
                 </h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-l text-black dark:text-muted-foreground max-w-2xl mx-auto bg-background/70 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
                   {t("process.subtitle")}
                 </p>
               </motion.div>
-              <div className="flex flex-col items-center space-y-2">
-                {processSteps.map((step, index) => (
-                  <ProcessStepCard
-                    key={step.step}
-                    step={step}
-                    t={t}
-                    isLast={index === processSteps.length - 1}
-                  />
-                ))}
-              </div>
+              <Card className="p-6 md:p-8">
+                <div className="flex flex-col items-center space-y-2">
+                  {processSteps.map((step, index) => (
+                    <ProcessStepCard
+                      key={step.step}
+                      step={step}
+                      t={t}
+                      isLast={index === processSteps.length - 1}
+                    />
+                  ))}
+                </div>
+              </Card>
             </motion.div>
           </div>
         </section>
@@ -339,7 +342,7 @@ export default function ServicesPage() {
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   {t("trust.title")}
                 </h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-l text-black dark:text-muted-foreground max-w-2xl mx-auto bg-background/70 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
                   {t("trust.subtitle")}
                 </p>
               </motion.div>
@@ -361,7 +364,7 @@ export default function ServicesPage() {
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerChildren}
             >
-              <Card className="bg-muted/30 border-muted">
+              <Card>
                 <CardContent className="py-12 text-center space-y-6">
                   <motion.h2
                     variants={fadeInUp}
