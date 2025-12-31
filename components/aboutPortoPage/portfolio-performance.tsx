@@ -45,7 +45,7 @@ export function PerformanceMetrics() {
             <ul className="text-sm space-y-2">
               {metric.items.map((item, itemIndex) => (
                 <li key={itemIndex} className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-muted-foreground">{item}</span>
                 </li>
               ))}

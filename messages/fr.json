@@ -138,7 +138,7 @@
       "aiMl": "IA/ML"
     },
     "descriptions": {
-      "portfolioWebsite": "Un site portfolio moderne et réactif construit avec Next.js 15, incluant un mode sombre/clair, des animations fluides avec Framer Motion et une performance optimisée. Inclut TypeScript pour la sécurité des types et Tailwind CSS pour le style.",
+      "portfolioWebsite": "Un site portfolio moderne et réactif construit avec Next.js 16, incluant un mode sombre/clair, des animations fluides avec Framer Motion et une performance optimisée. Inclut TypeScript pour la sécurité des types et Tailwind CSS pour le style.",
       "berichHub": "Plateforme d'apprentissage numérique full-stack avec authentification utilisateur, pages de profil et fonctionnalités de blog. Intégration IA pour un apprentissage personnalisé. Complètement gratuit et open source. 4 langues supportées : anglais, allemand, espagnol, suédois.",
       "llmAgent": "Chatbot IA local basé sur Ollama, personnalisable pour utiliser n'importe quel modèle LLM, n'importe quel modèle d'Embedding, 2 options pour la base vectorielle : Postgres local ou DataStax Astra. Peut lire des pages web et répondre aux questions basées sur leur contenu. D'autres fonctionnalités arrivent... Open source.",
       "subsApi": "API pour gérer les abonnements utilisateurs, incluant la facturation, la gestion des factures et le traitement des paiements. Construit avec Next.js et intégré avec Stripe pour des paiements sécurisés."

@@ -138,7 +138,7 @@
       "aiMl": "KI/ML"
     },
     "descriptions": {
-      "portfolioWebsite": "Eine moderne, responsive Portfolio-Website, erstellt mit Next.js 15, mit Dark/Light-Theme-Umschalter, sanften Animationen durch Framer Motion und optimierter Performance. Enthält TypeScript für Typsicherheit und Tailwind CSS für das Styling.",
+      "portfolioWebsite": "Eine moderne, responsive Portfolio-Website, erstellt mit Next.js 16, mit Dark/Light-Theme-Umschalter, sanften Animationen durch Framer Motion und optimierter Performance. Enthält TypeScript für Typsicherheit und Tailwind CSS für das Styling.",
       "berichHub": "Full-Stack-Lernplattform mit Benutzerauthentifizierung, Profilseiten und Blog-Funktionen. KI-Integration für personalisiertes Lernen. Völlig kostenlos und Open-Source. Unterstützt 4 verschiedene Sprachen: Englisch, Deutsch, Spanisch, Schwedisch.",
       "llmAgent": "Lokaler ollama-basierter KI-Chatbot, anpassbar für jedes LLM-Modell, jedes Embed-Modell, mit 2 Optionen für Vector DB: lokales Postgres oder DataStax Astra. Kann Webseiten lesen und Fragen basierend auf deren Inhalt beantworten. Mehr kommt bald... Open Source.",
       "subsApi": "API für die Verwaltung von Benutzerabonnements, einschließlich Funktionen für Abrechnung, Rechnungsstellung und Zahlungsabwicklung. Erstellt mit Next.js und integriert mit Stripe für sichere Zahlungen."

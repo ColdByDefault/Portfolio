@@ -32,7 +32,7 @@ const nextjsFeatures: FeatureItem[] = [
     icon: Server,
     title: "Server Components & App Router",
     description:
-      "Next.js 15.5.1 with React 19.1.1 server components for optimal performance",
+      "Next.js 16.5.1 with React 19.1.1 server components for optimal performance",
     features: [
       "Zero-bundle server components",
       "Automatic static optimization",
@@ -155,7 +155,7 @@ export function PortfolioFeatures() {
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-bold">Technical Excellence</h2>
         <p className="text-muted-foreground">
-          Advanced Next.js 15 implementation showcasing modern web development
+          Advanced Next.js 16 implementation showcasing modern web development
           practices
         </p>
       </div>
@@ -198,7 +198,7 @@ export function PortfolioFeatures() {
               <div className="space-y-2">
                 {feature.features.map((feat, featIndex) => (
                   <div key={featIndex} className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 shrink-0" />
                     <span className="text-sm text-muted-foreground leading-relaxed">
                       {feat}
                     </span>
