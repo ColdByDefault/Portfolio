@@ -8,7 +8,8 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
+import { PackageCard } from "@/components/services";
 import { Background } from "@/components/visuals/motion-background";
 import {
   servicePackages,
@@ -16,16 +17,9 @@ import {
   trustSignals,
   servicesPageData,
 } from "@/data/servicesData";
-import type {
-  ServicePackage,
-  ProcessStep,
-  TrustSignal,
-} from "@/types/services";
+import type { ProcessStep, TrustSignal } from "@/types/services";
 import { motion } from "framer-motion";
 import {
-  Rocket,
-  Cog,
-  Brain,
   MessageSquare,
   Target,
   Code,
@@ -34,19 +28,14 @@ import {
   TrendingUp,
   Shield,
   Plug,
-  Check,
   ArrowRight,
   Calendar,
-  Clock,
 } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 // Icon mapping for dynamic rendering
 const iconMap: Record<string, React.ElementType> = {
-  Rocket,
-  Cog,
-  Brain,
   MessageSquare,
   Target,
   Code,
@@ -72,97 +61,6 @@ const staggerChildren = {
     },
   },
 };
-
-/**
- * Package Card Component
- */
-function PackageCard({
-  pkg,
-  t,
-}: {
-  pkg: ServicePackage;
-  t: ReturnType<typeof useTranslations>;
-}) {
-  const IconComponent = iconMap[pkg.icon];
-
-  return (
-    <motion.div variants={fadeInUp}>
-      <Card
-        className={`h-full relative overflow-hidden transition-all duration-300 hover:shadow-lg ${
-          pkg.highlighted
-            ? "border-sky-500/50 bg-linear-to-b from-sky-500/5 to-transparent"
-            : "hover:border-muted-foreground/30"
-        }`}
-      >
-        {pkg.highlighted && (
-          <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-sky-500 to-sky-600" />
-        )}
-        <CardHeader className="space-y-4">
-          <div className="flex items-center gap-3">
-            {IconComponent && (
-              <div
-                className={`p-2 rounded-lg ${
-                  pkg.highlighted ? "bg-sky-500/10 text-sky-500" : "bg-muted"
-                }`}
-              >
-                <IconComponent className="h-5 w-5" />
-              </div>
-            )}
-            <div>
-              <h3 className="text-xl font-semibold">{t(pkg.nameKey)}</h3>
-            </div>
-          </div>
-          <p className="text-2xl font-bold text-sky-500">
-            {t(pkg.headlineKey)}
-          </p>
-          <p className="text-muted-foreground">{t(pkg.descriptionKey)}</p>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          {/* Pricing & Timeline */}
-          <div className="flex items-center justify-between pb-4 border-b">
-            <div>
-              <p className="text-2xl font-bold">{t(pkg.pricingKey)}</p>
-            </div>
-            <div className="flex items-center gap-1 text-sm text-muted-foreground">
-              <Clock className="h-4 w-4" />
-              <span>{t(pkg.timelineKey)}</span>
-            </div>
-          </div>
-
-          {/* Features List */}
-          <ul className="space-y-3">
-            {pkg.features.map((feature, index) => (
-              <li key={index} className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
-                <span className="text-sm">{t(feature.textKey)}</span>
-              </li>
-            ))}
-          </ul>
-
-          {/* CTA Button */}
-          <Button
-            asChild
-            className={`w-full ${
-              pkg.highlighted
-                ? "bg-sky-600 hover:bg-sky-700"
-                : "variant-outline"
-            }`}
-            variant={pkg.highlighted ? "default" : "outline"}
-          >
-            <Link
-              href={servicesPageData.bookingLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Calendar className="h-4 w-4 mr-2" />
-              {t(pkg.ctaKey)}
-            </Link>
-          </Button>
-        </CardContent>
-      </Card>
-    </motion.div>
-  );
-}
 
 /**
  * Process Step Component
@@ -192,11 +90,13 @@ function ProcessStepCard({
         <div className="flex-1 pb-8 min-w-0">
           <div className="flex items-center gap-2 mb-2">
             {IconComponent && (
-              <IconComponent className="h-5 w-5 text-muted-foreground shrink-0" />
+              <IconComponent className="h-5 w-5 text-black dark:text-muted-foreground shrink-0" />
             )}
             <h3 className="text-lg font-semibold">{t(step.titleKey)}</h3>
           </div>
-          <p className="text-muted-foreground">{t(step.descriptionKey)}</p>
+          <p className="text-black dark:text-muted-foreground">
+            {t(step.descriptionKey)}
+          </p>
         </div>
       </div>
     </motion.div>
@@ -217,7 +117,7 @@ function TrustCard({
 
   return (
     <motion.div variants={fadeInUp}>
-      <Card className="h-full hover:border-muted-foreground/30 transition-colors">
+      <Card className="h-full hover:border-muted-foreground/30 transition-colors bg-background/80 backdrop-blur-sm border-border/50">
         <CardContent className="pt-6">
           <div className="flex items-start gap-4">
             {IconComponent && (
@@ -268,12 +168,11 @@ export default function ServicesPage() {
               >
                 {t("hero.title")}
               </motion.h1>
-              <motion.p
-                variants={fadeInUp}
-                className="text-xl text-muted-foreground max-w-3xl mx-auto"
-              >
-                {t("hero.subtitle")}
-              </motion.p>
+              <motion.div variants={fadeInUp}>
+                <p className="text-l text-black dark:text-muted-foreground max-w-3xl mx-auto bg-background/70 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
+                  {t("hero.subtitle")}
+                </p>
+              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -289,14 +188,14 @@ export default function ServicesPage() {
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {servicePackages.map((pkg) => (
-                <PackageCard key={pkg.id} pkg={pkg} t={t} />
+                <PackageCard key={pkg.id} pkg={pkg} />
               ))}
             </motion.div>
           </div>
         </section>
 
         {/* Process Section */}
-        <section className="py-16 px-4 lg:px-8 bg-muted/30">
+        <section className="py-16 px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial="hidden"
@@ -308,20 +207,22 @@ export default function ServicesPage() {
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   {t("process.title")}
                 </h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-l text-black dark:text-muted-foreground max-w-2xl mx-auto bg-background/70 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
                   {t("process.subtitle")}
                 </p>
               </motion.div>
-              <div className="flex flex-col items-center space-y-2">
-                {processSteps.map((step, index) => (
-                  <ProcessStepCard
-                    key={step.step}
-                    step={step}
-                    t={t}
-                    isLast={index === processSteps.length - 1}
-                  />
-                ))}
-              </div>
+              <Card className="p-6 md:p-8 bg-background/80 backdrop-blur-sm border-border/50 shadow-lg">
+                <div className="flex flex-col items-center space-y-2">
+                  {processSteps.map((step, index) => (
+                    <ProcessStepCard
+                      key={step.step}
+                      step={step}
+                      t={t}
+                      isLast={index === processSteps.length - 1}
+                    />
+                  ))}
+                </div>
+              </Card>
             </motion.div>
           </div>
         </section>
@@ -339,7 +240,7 @@ export default function ServicesPage() {
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   {t("trust.title")}
                 </h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-l text-black dark:text-muted-foreground max-w-2xl mx-auto bg-background/70 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
                   {t("trust.subtitle")}
                 </p>
               </motion.div>
@@ -361,7 +262,7 @@ export default function ServicesPage() {
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerChildren}
             >
-              <Card className="bg-muted/30 border-muted">
+              <Card className="bg-background/80 backdrop-blur-sm border-border/50 shadow-lg">
                 <CardContent className="py-12 text-center space-y-6">
                   <motion.h2
                     variants={fadeInUp}

@@ -82,7 +82,7 @@ const LoadingSkeleton = ({
   progress: number;
   progressLabel: string;
 }) => (
-  <Card className="w-full">
+  <Card className="w-full bg-background/80 backdrop-blur-sm border-border/50 shadow-lg">
     <CardHeader className="pb-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -125,7 +125,7 @@ const ErrorDisplay = ({
   error: string;
   onRetry: () => void;
 }) => (
-  <Card className="w-full">
+  <Card className="w-full bg-background/80 backdrop-blur-sm border-border/50 shadow-lg">
     <CardContent className="flex flex-col items-center justify-center py-12">
       <div className="text-center space-y-4">
         <div className="text-destructive text-lg">⚠️</div>
@@ -239,7 +239,7 @@ export default function PageSpeedInsights({
 
   if (!data) {
     return (
-      <Card className="w-full">
+      <Card className="w-full bg-background/80 backdrop-blur-sm border-border/50 shadow-lg">
         <CardContent className="flex items-center justify-center py-12">
           <div className="text-center space-y-2">
             <div className="text-muted-foreground text-lg">📊</div>
@@ -253,7 +253,7 @@ export default function PageSpeedInsights({
   const cacheInfo = getCacheStatusInfo(cacheStatus);
 
   return (
-    <Card className="w-full">
+    <Card className="w-full bg-background/80 backdrop-blur-sm border-border/50 shadow-lg">
       <CardHeader className="pb-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <CardTitle className="text-xl flex gap-2 items-center">

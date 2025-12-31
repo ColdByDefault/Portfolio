@@ -36,7 +36,7 @@ export function ArchitectureDiagram() {
             key={index}
             className={`flex items-center gap-4 ${node.color} rounded-lg p-4 border transition-all hover:shadow-sm`}
           >
-            <node.icon className="w-6 h-6 flex-shrink-0" />
+            <node.icon className="w-6 h-6 shrink-0" />
             <div className="flex-1 min-w-0">
               <h4 className="font-medium truncate">{node.title}</h4>
               <p className="text-sm opacity-80 line-clamp-2">{node.subtitle}</p>
@@ -177,7 +177,7 @@ export function ArchitectureDiagram() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Layers className="w-6 h-6" />
-          Next.js 15 Application Architecture
+          Next.js 16 Application Architecture
         </CardTitle>
         <CardDescription>
           Comprehensive architecture showcasing App Router, route groups, server
@@ -201,7 +201,7 @@ export function ArchitectureDiagram() {
           "Application Layer",
           Code2,
           applicationNodes,
-          "Next.js 15 App Router with advanced routing patterns, server components, and component architecture"
+          "Next.js 16 App Router with advanced routing patterns, server components, and component architecture"
         )}
 
         <ArrowDown className="w-6 h-6 text-muted-foreground mx-auto" />

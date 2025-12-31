@@ -1,7 +1,10 @@
 {
   "Home": {
     "WebsitePerformance": "Website-Performance",
-    "companiesContributing": "Unternehmen, bei denen ich arbeite / Projekte, zu denen ich beitrage:"
+    "companiesContributing": "Unternehmen, bei denen ich arbeite / Projekte, zu denen ich beitrage:",
+    "services": {
+      "title": "Leistungen & Pakete"
+    }
   },
   "Hero": {
     "availableForCollaboration": "Verfügbar für Zusammenarbeit",
@@ -38,7 +41,10 @@
     "navigation": "Navigation",
     "impressum": "Impressum",
     "privacy": "Datenschutz",
-    "legal": "Rechtliches"
+    "legal": "Rechtliches",
+    "contact": "Kontakt",
+    "open": "Öffnen",
+    "language": "Sprache"
   },
   "Contact": {
     "getInTouch": "Lassen Sie uns verbinden",
@@ -132,7 +138,7 @@
       "aiMl": "KI/ML"
     },
     "descriptions": {
-      "portfolioWebsite": "Eine moderne, responsive Portfolio-Website, erstellt mit Next.js 15, mit Dark/Light-Theme-Umschalter, sanften Animationen durch Framer Motion und optimierter Performance. Enthält TypeScript für Typsicherheit und Tailwind CSS für das Styling.",
+      "portfolioWebsite": "Eine moderne, responsive Portfolio-Website, erstellt mit Next.js 16, mit Dark/Light-Theme-Umschalter, sanften Animationen durch Framer Motion und optimierter Performance. Enthält TypeScript für Typsicherheit und Tailwind CSS für das Styling.",
       "berichHub": "Full-Stack-Lernplattform mit Benutzerauthentifizierung, Profilseiten und Blog-Funktionen. KI-Integration für personalisiertes Lernen. Völlig kostenlos und Open-Source. Unterstützt 4 verschiedene Sprachen: Englisch, Deutsch, Spanisch, Schwedisch.",
       "llmAgent": "Lokaler ollama-basierter KI-Chatbot, anpassbar für jedes LLM-Modell, jedes Embed-Modell, mit 2 Optionen für Vector DB: lokales Postgres oder DataStax Astra. Kann Webseiten lesen und Fragen basierend auf deren Inhalt beantworten. Mehr kommt bald... Open Source.",
       "subsApi": "API für die Verwaltung von Benutzerabonnements, einschließlich Funktionen für Abrechnung, Rechnungsstellung und Zahlungsabwicklung. Erstellt mit Next.js und integriert mit Stripe für sichere Zahlungen."
@@ -270,31 +276,33 @@
     "comingSoonDescription": "Buchempfehlungen und Rezensionen werden hier bald verfügbar sein."
   },
   "About": {
+    "badge": "Verfügbar für Projekte",
     "aboutMe": "Über mich",
     "getInTouch": "Kontakt aufnehmen",
     "downloadCV": "Lebenslauf herunterladen",
-    "philosophy": "Philosophie",
-    "myDevelopmentPhilosophy": "Meine Entwicklungsphilosophie",
+    "philosophy": "Mein Ansatz",
+    "myApproach": "Wie ich mit Kunden arbeite",
+    "whatIDeliver": "Was Sie bekommen, wenn Sie mit mir arbeiten",
     "currentFocus": "Aktueller Fokus",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Junior Full-Stack-Entwickler",
-      "currentPosition": "Praktikant",
-      "company": "Avarno GmbH",
+      "title": "Ich entwickle schnelle, skalierbare Webanwendungen, die Unternehmen wachsen lassen",
+      "currentPosition": "Freiberuflicher Entwickler",
+      "company": "",
       "location": "Deutschland",
       "experience": "3+ Jahre"
     },
-    "mainStory": "Ich bin derzeit Praktikant bei Avarno GmbH, wo ich alles von maßgeschneiderten digitalen Lösungen bis hin zu KI-gestützten Anwendungen entwickelt habe. Ich spezialisiere mich auf Next.js, React, JavaScript, HTML/CSS und pflege eine aktive Präsenz auf GitHub. Wenn ich neue Herausforderungen angehe, tauche ich direkt in die Dokumentation ein und experimentiere, bis ich die Tools beherrsche. Getrieben von der Leidenschaft für ein saubereres, offeneres Web trage ich zu Open-Source-Projekten bei und möchte Benutzererfahrungen ohne unnötige Werbung und Paywalls optimieren. Mein Ziel ist es, ein Full-Stack-Experte zu werden – insbesondere in Next.js, LLM-Integrationen und End-to-End-Webentwicklung. Ich glaube, dass harte Arbeit und Disziplin sich immer auszahlen, und ich bringe diesen Fokus in jedes Projekt ein, groß oder klein.",
+    "mainStory": "Ich helfe KMUs und Agenturen, Web-MVPs schneller zu launchen, wiederkehrende Arbeitsabläufe zu automatisieren und KI-Assistenten zu integrieren, die Stunden manueller Arbeit einsparen. Meine Kunden sehen typischerweise Ergebnisse innerhalb von 4-8 Wochen – nicht Monaten. Ob Sie ein Kundenportal, ein internes Tool oder eine Möglichkeit zur Optimierung Ihrer Teamprozesse benötigen – ich liefere zuverlässige, wartbare Lösungen, die mit Ihrem Unternehmen skalieren.",
     "sections": {
-      "philosophy": "Ich glaube daran, Code zu schreiben, der nicht nur funktioniert, sondern auch wartbar, skalierbar und zugänglich ist. Mein Ansatz kombiniert technische Exzellenz mit benutzerzentrierten Designprinzipien. Ich bin leidenschaftlich daran interessiert, Web-Erfahrungen zu schaffen, die schnell, intuitiv und frei von unnötiger Komplexität sind."
+      "philosophy": "Ich glaube an klare Kommunikation, transparente Zeitpläne und die Lieferung dessen, was versprochen wurde. Kein Fachjargon, kein Scope Creep – nur zuverlässige Entwicklung mit regelmäßigen Updates, damit Sie immer wissen, wo Ihr Projekt steht. Jede Lösung wird mit Ihren Geschäftszielen im Blick entwickelt, nicht nur mit technischen Anforderungen."
     },
     "currentFocusItems": [
-      "Fortgeschrittene Next.js-Muster und Optimierung",
-      "LLM-Integrationen und KI-gestützte Anwendungen",
-      "End-to-End-Webentwicklung",
-      "Moderne React-Muster und Performance",
-      "TypeScript Best Practices",
-      "Benutzererfahrung und Barrierefreiheit"
+      "Web-MVPs in 4-8 Wochen geliefert",
+      "Workflow-Automatisierung, die Stunden pro Woche spart",
+      "KI-Assistenten für interne Prozesse",
+      "Garantierte 90+ Performance-Scores",
+      "Klare Kommunikation & transparenter Prozess",
+      "Langfristiger Support & Wartung"
     ]
   },
   "PortfolioAbout": {

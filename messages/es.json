@@ -1,7 +1,10 @@
 {
   "Home": {
     "WebsitePerformance": "Rendimiento del sitio web",
-    "companiesContributing": "Empresas donde trabajo / Proyectos a los que contribuyo:"
+    "companiesContributing": "Empresas donde trabajo / Proyectos a los que contribuyo:",
+    "services": {
+      "title": "Servicios y Paquetes"
+    }
   },
   "Hero": {
     "availableForCollaboration": "Disponible para colaborar",
@@ -38,7 +41,10 @@
     "navigation": "Navegación",
     "impressum": "Aviso legal",
     "privacy": "Privacidad",
-    "legal": "Legal"
+    "legal": "Legal",
+    "contact": "Contacto",
+    "open": "Abrir",
+    "language": "Idioma"
   },
   "Contact": {
     "getInTouch": "Conectemos",
@@ -132,7 +138,7 @@
       "aiMl": "IA/ML"
     },
     "descriptions": {
-      "portfolioWebsite": "Un portafolio moderno y responsivo construido con Next.js 15, con alternancia de tema oscuro/claro, animaciones fluidas con Framer Motion y rendimiento optimizado. Incluye TypeScript para seguridad de tipos y Tailwind CSS para estilos.",
+      "portfolioWebsite": "Un portafolio moderno y responsivo construido con Next.js 16, con alternancia de tema oscuro/claro, animaciones fluidas con Framer Motion y rendimiento optimizado. Incluye TypeScript para seguridad de tipos y Tailwind CSS para estilos.",
       "berichHub": "Plataforma de aprendizaje digital full-stack con autenticación de usuarios, páginas de perfil y funcionalidades de blog. Integración de IA para aprendizaje personalizado. Completamente gratuita y de código abierto. Soporta 4 idiomas: inglés, alemán, español y sueco.",
       "llmAgent": "Chatbot de IA local basado en ollama, personalizable para usar cualquier modelo LLM y cualquier modelo de embeddings, con 2 opciones de base de datos vectorial: Postgres local o DataStax Astra. Puede leer páginas web y responder preguntas basadas en el contenido. Próximamente habrá más... Código abierto.",
       "subsApi": "API para gestionar suscripciones de usuarios, incluyendo funciones de facturación, emisión de facturas y procesamiento de pagos. Construida con Next.js e integrada con Stripe para pagos seguros."
@@ -270,31 +276,33 @@
     "comingSoonDescription": "Las recomendaciones y reseñas de libros estarán disponibles aquí pronto."
   },
   "About": {
+    "badge": "Disponible para Proyectos",
     "aboutMe": "Sobre mí",
     "getInTouch": "Contacto",
     "downloadCV": "Descargar CV",
-    "philosophy": "Filosofía",
-    "myDevelopmentPhilosophy": "Mi filosofía de desarrollo",
+    "philosophy": "Mi Enfoque",
+    "myApproach": "Cómo Trabajo Con Clientes",
+    "whatIDeliver": "Lo Que Obtiene al Trabajar Conmigo",
     "currentFocus": "Enfoque actual",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Desarrollador Junior Full Stack",
-      "currentPosition": "Practicante",
-      "company": "Avarno GmbH",
+      "title": "Desarrollo aplicaciones web rápidas y escalables que ayudan a las empresas a crecer",
+      "currentPosition": "Desarrollador Freelance",
+      "company": "",
       "location": "Alemania",
       "experience": "3+ años"
     },
-    "mainStory": "Actualmente soy practicante en Avarno GmbH, donde he desarrollado desde soluciones digitales a medida hasta aplicaciones impulsadas por IA. Me especializo en Next.js, React, JavaScript, HTML/CSS y mantengo una presencia activa en GitHub. Al enfrentar nuevos desafíos, me sumerjo directamente en la documentación y experimento hasta dominar las herramientas. Impulsado por la pasión por una web más limpia y abierta, contribuyo a proyectos de código abierto y busco optimizar experiencias de usuario libres de anuncios innecesarios y muros de pago. Mi objetivo es convertirme en un experto full-stack, especialmente en Next.js, integraciones con LLM y desarrollo de aplicaciones web de extremo a extremo. Creo que el trabajo duro y la disciplina siempre rinden frutos, y aplico ese enfoque en cada proyecto, grande o pequeño.",
+    "mainStory": "Ayudo a PYMEs y agencias a lanzar MVPs web más rápido, automatizar flujos de trabajo repetitivos e integrar asistentes de IA que ahorran horas de trabajo manual. Mis clientes normalmente ven resultados en 4-8 semanas, no meses. Ya sea que necesite un portal de clientes, una herramienta interna o una forma de optimizar los procesos de su equipo, entrego soluciones confiables, mantenibles y construidas para escalar con su negocio.",
     "sections": {
-      "philosophy": "Creo en escribir código que no solo funcione, sino que también sea mantenible, escalable y accesible. Mi enfoque combina la excelencia técnica con principios de diseño centrados en el usuario. Me apasiona crear experiencias web rápidas, intuitivas y libres de complejidad innecesaria."
+      "philosophy": "Creo en la comunicación clara, plazos transparentes y entregar exactamente lo prometido. Sin jerga técnica, sin alcance creep — solo desarrollo confiable con actualizaciones regulares para que siempre sepa dónde está su proyecto. Cada solución se construye con sus objetivos comerciales en mente, no solo requisitos técnicos."
     },
     "currentFocusItems": [
-      "Patrones avanzados y optimización de Next.js",
-      "Integraciones con LLM y aplicaciones impulsadas por IA",
-      "Desarrollo de aplicaciones web de extremo a extremo",
-      "Patrones modernos de React y rendimiento",
-      "Mejores prácticas con TypeScript",
-      "Experiencia de usuario y accesibilidad"
+      "MVPs web entregados en 4-8 semanas",
+      "Automatización de flujos que ahorra horas semanalmente",
+      "Asistentes de IA para procesos internos",
+      "Puntuaciones de rendimiento 90+ garantizadas",
+      "Comunicación clara y proceso transparente",
+      "Soporte y mantenimiento a largo plazo"
     ]
   },
   "PortfolioAbout": {

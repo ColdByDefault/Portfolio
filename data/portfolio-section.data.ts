@@ -50,7 +50,7 @@ export const infrastructureNodes: ArchitectureNode[] = [
 export const applicationNodes: ArchitectureNode[] = [
   {
     icon: Code,
-    title: "App Router (Next.js 15.5.1)",
+    title: "App Router (Next.js 16)",
     subtitle: "File-based routing + Server Components + Edge Runtime",
     color: "bg-green-500/10 text-green-600",
   },
@@ -108,9 +108,9 @@ export const techStacks: TechStackItem[] = [
     icon: Code,
     title: "Frontend Development",
     description:
-      "Modern reactive user interfaces with Next.js 15.5.1 and React 19.1.1, featuring server components and edge runtime optimization.",
+      "Modern reactive user interfaces with Next.js 16 and React 19.1.1, featuring server components and edge runtime optimization.",
     technologies: [
-      "Next.js 15.5.1",
+      "Next.js 16",
       "React 19.1.1",
       "TypeScript 5.x",
       "Server Components",
@@ -472,7 +472,7 @@ export const performanceMetrics: PerformanceMetric[] = [
     icon: Zap,
     title: "Build Optimization",
     description:
-      "Advanced build optimization with Next.js 15.5.1 features, edge runtime, and intelligent code splitting strategies.",
+      "Advanced build optimization with Next.js 16 features, edge runtime, and intelligent code splitting strategies.",
     items: [
       "Server Components optimization",
       "Tree shaking & dead code elimination",

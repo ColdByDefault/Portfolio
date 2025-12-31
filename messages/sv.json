@@ -1,7 +1,10 @@
 {
   "Home": {
     "WebsitePerformance": "Webbplatsens prestanda",
-    "companiesContributing": "Företag där jag arbetar / Projekt jag bidrar till:"
+    "companiesContributing": "Företag där jag arbetar / Projekt jag bidrar till:",
+    "services": {
+      "title": "Tjänster & Paket"
+    }
   },
   "Hero": {
     "availableForCollaboration": "Tillgänglig för samarbete",
@@ -38,7 +41,10 @@
     "navigation": "Navigation",
     "impressum": "Juridisk information",
     "privacy": "Integritet",
-    "legal": "Juridisk"
+    "legal": "Juridisk",
+    "contact": "Kontakt",
+    "open": "Öppna",
+    "language": "Språk"
   },
   "Contact": {
     "getInTouch": "Låt oss koppla samman",
@@ -132,7 +138,7 @@
       "aiMl": "AI/ML"
     },
     "descriptions": {
-      "portfolioWebsite": "En modern, responsiv portfoliosajt byggd med Next.js 15, med växling mellan mörkt/ljust tema, mjuka animationer med Framer Motion och optimerad prestanda. Inkluderar TypeScript för typsäkerhet och Tailwind CSS för styling.",
+      "portfolioWebsite": "En modern, responsiv portfoliosajt byggd med Next.js 16, med växling mellan mörkt/ljust tema, mjuka animationer med Framer Motion och optimerad prestanda. Inkluderar TypeScript för typsäkerhet och Tailwind CSS för styling.",
       "berichHub": "Fullstack digital lärplattform med användarautentisering, profilsidor och bloggfunktioner. AI-integration för personligt lärande. Helt gratis och öppen källkod. Stöd för 4 språk: engelska, tyska, spanska och svenska.",
       "llmAgent": "AI-chatbot baserad på lokal Ollama, anpassningsbar för att använda vilken LLM-modell som helst, valfri embedding-modell samt två alternativ för vektordatabas: lokal Postgres eller DataStax Astra. Kan läsa webbsidor och svara på frågor baserat på innehållet. Mer kommer snart... Öppen källkod.",
       "subsApi": "API för att hantera användarprenumerationer, inklusive fakturering och betalningshantering. Byggt med Next.js och integrerat med Stripe för säkra betalningar."
@@ -270,31 +276,33 @@
     "comingSoonDescription": "Bokrekommendationer och recensioner kommer att finnas tillgängliga här snart."
   },
   "About": {
+    "badge": "Tillgänglig för Projekt",
     "aboutMe": "Om mig",
     "getInTouch": "Kontakta mig",
     "downloadCV": "Ladda ner CV",
-    "philosophy": "Filosofi",
-    "myDevelopmentPhilosophy": "Min utvecklingsfilosofi",
+    "philosophy": "Mitt Tillvägagångssätt",
+    "myApproach": "Hur Jag Arbetar Med Kunder",
+    "whatIDeliver": "Vad Du Får När Du Arbetar Med Mig",
     "currentFocus": "Nuvarande fokus",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Junior Fullstackutvecklare",
-      "currentPosition": "Praktikant",
-      "company": "Avarno GmbH",
+      "title": "Jag bygger snabba, skalbara webbapplikationer som hjälper företag att växa",
+      "currentPosition": "Frilansutvecklare",
+      "company": "",
       "location": "Tyskland",
       "experience": "3+ år"
     },
-    "mainStory": "Jag är för närvarande praktikant på Avarno GmbH, där jag har utvecklat allt från skräddarsydda digitala lösningar till AI-drivna applikationer. Jag specialiserar mig på Next.js, React, JavaScript, HTML/CSS och är aktiv på GitHub. När jag tar mig an nya utmaningar dyker jag direkt ner i dokumentationen och experimenterar tills jag har bemästrat verktygen. Drivkraften är en passion för en renare och mer öppen webb – därför bidrar jag till open source-projekt och strävar efter att förbättra användarupplevelser utan onödiga annonser och betalväggar. Mitt mål är att bli en fullstackexpert, särskilt inom Next.js, LLM-integrationer och end-to-end webbutveckling. Jag tror att hårt arbete och disciplin alltid lönar sig, och det förhållningssättet tar jag med mig i varje projekt, stort som litet.",
+    "mainStory": "Jag hjälper små och medelstora företag och byråer att lansera webb-MVPs snabbare, automatisera repetitiva arbetsflöden och integrera AI-assistenter som sparar timmar av manuellt arbete. Mina kunder ser vanligtvis resultat inom 4-8 veckor — inte månader. Oavsett om du behöver en kundportal, ett internt verktyg eller ett sätt att effektivisera ditt teams processer, levererar jag pålitliga, underhållbara lösningar byggda för att skala med din verksamhet.",
     "sections": {
-      "philosophy": "Jag tror på att skriva kod som inte bara fungerar, utan som också är underhållbar, skalbar och tillgänglig. Mitt arbetssätt kombinerar teknisk skicklighet med användarcentrerade designprinciper. Jag brinner för att skapa webbupplevelser som är snabba, intuitiva och fria från onödig komplexitet."
+      "philosophy": "Jag tror på tydlig kommunikation, transparenta tidsramar och att leverera exakt det som utlovats. Ingen teknisk jargong, ingen scope creep — bara pålitlig utveckling med regelbundna uppdateringar så att du alltid vet var ditt projekt står. Varje lösning byggs med dina affärsmål i åtanke, inte bara tekniska krav."
     },
     "currentFocusItems": [
-      "Avancerade mönster och optimering i Next.js",
-      "LLM-integrationer och AI-drivna applikationer",
-      "End-to-end webbutveckling",
-      "Moderna React-mönster och prestanda",
-      "Bästa praxis i TypeScript",
-      "Användarupplevelse och tillgänglighet"
+      "Webb-MVPs levererade på 4-8 veckor",
+      "Arbetsflödesautomation som sparar timmar varje vecka",
+      "AI-assistenter för interna processer",
+      "Garanterade 90+ prestandapoäng",
+      "Tydlig kommunikation & transparent process",
+      "Långsiktigt stöd & underhåll"
     ]
   },
   "PortfolioAbout": {

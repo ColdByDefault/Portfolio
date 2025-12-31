@@ -1,7 +1,10 @@
 {
   "Home": {
     "WebsitePerformance": "Website Performance",
-    "companiesContributing": "Companies I'm working at / Projects I'm contributing to:"
+    "companiesContributing": "Companies I'm working at / Projects I'm contributing to:",
+    "services": {
+      "title": "Services & Packages"
+    }
   },
   "Hero": {
     "availableForCollaboration": "Available for collaboration",
@@ -38,7 +41,10 @@
     "navigation": "Navigation",
     "impressum": "Impressum",
     "privacy": "Privacy",
-    "legal": "Legal"
+    "legal": "Legal",
+    "contact": "Contact",
+    "open": "Open",
+    "language": "Language"
   },
   "Contact": {
     "getInTouch": "Let's Connect",
@@ -132,7 +138,7 @@
       "aiMl": "AI/ML"
     },
     "descriptions": {
-      "portfolioWebsite": "A modern, responsive portfolio website built with Next.js 15, featuring dark/light theme toggle, smooth animations with Framer Motion, and optimized performance. Includes TypeScript for type safety and Tailwind CSS for styling.",
+      "portfolioWebsite": "A modern, responsive portfolio website built with Next.js 16, featuring dark/light theme toggle, smooth animations with Framer Motion, and optimized performance. Includes TypeScript for type safety and Tailwind CSS for styling.",
       "berichHub": "Full-stack digital learning platform with user authentication, Profile pages, and Blog features. AI integration for personalized learning. Completely free and open-source. 4 different languages supported: English, German, Spanish, Swedish.",
       "llmAgent": "Local ollama-based AI chatbot, customizable to use any LLM model, any Embed model, 2 Options for Vector DB; local postgres or DataStax Astra. Can read web pages, and answer questions based on the content. More coming soon.. Open source.",
       "subsApi": "API for managing user subscriptions, including features for billing, invoicing, and payment processing. Built with Next.js and integrated with Stripe for secure payments."
@@ -270,31 +276,33 @@
     "comingSoonDescription": "Book recommendations and reviews will be available here soon."
   },
   "About": {
+    "badge": "Available for Projects",
     "aboutMe": "About Me",
     "getInTouch": "Get In Touch",
     "downloadCV": "Download CV",
-    "philosophy": "Philosophy",
-    "myDevelopmentPhilosophy": "My Development Philosophy",
+    "philosophy": "My Approach",
+    "myApproach": "How I Work With Clients",
+    "whatIDeliver": "What You Get Working With Me",
     "currentFocus": "Current Focus",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Full Stack Junior Developer",
-      "currentPosition": "Intern",
-      "company": "Avarno GmbH",
+      "title": "I build fast, scalable web applications that help businesses grow",
+      "currentPosition": "Freelance Developer",
+      "company": "",
       "location": "Germany",
       "experience": "3+ years"
     },
-    "mainStory": "I'm currently an intern at Avarno GmbH, where I've built everything from bespoke digital solutions to AI-powered applications. I specialize in Next.js, React, JavaScript, HTML/CSS and maintain an active presence on GitHub. When tackling new challenges, I dive straight into the docs and experiment until I've mastered the tools. Driven by a passion for a cleaner, more open web, I contribute to open-source projects and aim to streamline user experiences free of unnecessary ads and paywalls. My goal is to grow into a full-stack expert—particularly in Next.js, LLM integrations, and end-to-end web application development. I believe hard work and discipline always pay off, and I bring that focus to every project, big or small.",
+    "mainStory": "I help SMEs and agencies launch web MVPs faster, automate repetitive workflows, and integrate AI assistants that save hours of manual work. My clients typically see results within 4-8 weeks — not months. Whether you need a customer portal, an internal tool, or a way to streamline your team's processes, I deliver solutions that are reliable, maintainable, and built to scale with your business.",
     "sections": {
-      "philosophy": "I believe in writing code that not only works but is maintainable, scalable, and accessible. My approach combines technical excellence with user-centered design principles. I'm passionate about creating web experiences that are fast, intuitive, and free from unnecessary complexity."
+      "philosophy": "I believe in clear communication, transparent timelines, and delivering exactly what was promised. No technical jargon, no scope creep — just reliable development with regular updates so you always know where your project stands. Every solution is built with your business goals in mind, not just technical requirements."
     },
     "currentFocusItems": [
-      "Next.js advanced patterns and optimization",
-      "LLM integrations and AI-powered applications",
-      "End-to-end web application development",
-      "Modern React patterns and performance",
-      "TypeScript best practices",
-      "User experience and accessibility"
+      "Web MVPs delivered in 4-8 weeks",
+      "Workflow automation that saves hours weekly",
+      "AI assistants for internal processes",
+      "Guaranteed 90+ performance scores",
+      "Clear communication & transparent process",
+      "Long-term support & maintenance"
     ]
   },
   "PortfolioAbout": {

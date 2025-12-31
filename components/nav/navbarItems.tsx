@@ -165,14 +165,14 @@ export function DesktopControls({ bookingCTA }: DesktopControlsProps) {
       >
         <Button
           variant="default"
-          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs xl:text-sm px-3 xl:px-4 py-1.5 xl:py-2 h-auto cursor-pointer transition-colors duration-300"
+          className="inline-flex items-center border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs xl:text-sm px-3 xl:px-4 py-1.5 xl:py-2 h-auto cursor-pointer transition-colors duration-300"
         >
           <BookingIcon
-            className="h-3 w-3 xl:h-4 xl:w-4 mr-1 xl:mr-2"
+            className="h-3 w-3 xl:h-4 xl:w-4 shrink-0"
             aria-hidden={true}
           />
-          <span className="hidden xl:inline">{bookingCTA.label}</span>
-          <span className="xl:hidden">Book</span>
+          <span className="hidden xl:inline ml-2">{bookingCTA.label}</span>
+          <span className="xl:hidden ml-1">Book</span>
         </Button>
       </Link>
     </div>
@@ -186,18 +186,7 @@ export function MobileControls({
   const BookingIcon = bookingCTA.icon;
   return (
     <div className="flex lg:hidden items-center space-x-1 sm:space-x-2 px-2 sm:px-4">
-      <ContactSheet>
-        <Button
-          variant="ghost"
-          size="icon"
-          aria-label="Open contact information"
-          className="cursor-pointer hover:text-sky-600 transition-colors duration-300 h-8 w-8"
-        >
-          <Contact className="h-4 w-4" aria-hidden={true} />
-        </Button>
-      </ContactSheet>
       <ModeToggle />
-      <LanguageSwitcher />
       <Link
         href="https://calendly.com/abo-ayash-yazan/intro-call"
         target="_blank"
@@ -207,10 +196,10 @@ export function MobileControls({
         <Button
           size="sm"
           variant="outline"
-          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-2 sm:px-3 py-1 h-7 sm:h-8 cursor-pointer transition-colors duration-300"
+          className="inline-flex items-center border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-2 sm:px-3 py-1 h-7 sm:h-8 cursor-pointer transition-colors duration-300"
         >
-          <BookingIcon className="h-3 w-3 sm:mr-1" aria-hidden={true} />
-          <span className="hidden sm:inline">Book</span>
+          <BookingIcon className="h-3 w-3 shrink-0" aria-hidden={true} />
+          <span className="hidden sm:inline ml-1">Book</span>
         </Button>
       </Link>
     </div>
@@ -264,6 +253,15 @@ export function MobileNavigation({
             </Link>
           );
         })}
+
+        {/* Mobile-only controls */}
+        <div className="pt-4 border-t">
+          <div className="flex items-center justify-between p-3 rounded-lg hover:bg-accent transition-colors">
+            <span className="text-sm font-medium">{t("language")}</span>
+            <LanguageSwitcher />
+          </div>
+        </div>
+
         {/* CTA Button */}
         <div className="pt-4 border-t">
           <Link

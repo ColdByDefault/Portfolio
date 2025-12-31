@@ -59,7 +59,7 @@ function Hero() {
                 </h2>
               </div>
             </div>
-            <p className="text-md text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            <p className="text-md text-muted-foreground max-w-2xl mx-auto leading-relaxed bg-background/80 backdrop-blur-sm rounded-lg px-4 py-3">
               {t("description")}
             </p>
             <div className="flex flex-col sm:flex-row gap-2 items-center justify-center">
@@ -74,11 +74,7 @@ function Hero() {
                   {t("bookFreeCall")}
                 </a>
               </Button>
-              <Button
-                variant="outline"
-                asChild
-                className="gap-2 cursor-pointer hover:bg-primary/10"
-              >
+              <Button asChild className="gap-2 cursor-pointer">
                 <Link href="/about" className="flex items-center gap-2">
                   <ExternalLink className="h-3 w-3" aria-hidden="true" />
                   {t("learnMoreAboutMe")}

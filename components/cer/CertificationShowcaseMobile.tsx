@@ -41,7 +41,7 @@ export function CertificationShowcaseMobile({
     return (
       <Card
         key={cert.id}
-        className="shadow-md overflow-hidden relative transition-all duration-300 ease-in-out hover:shadow-lg"
+        className="bg-background/80 backdrop-blur-sm border-border/50 shadow-lg overflow-hidden relative transition-all duration-300 ease-in-out hover:shadow-xl"
       >
         <div
           className="p-5 cursor-pointer flex items-center justify-between active:bg-gray-50 dark:active:bg-gray-800 transition-colors duration-150"
@@ -133,7 +133,7 @@ export function CertificationShowcaseMobile({
     return (
       <Card
         key={cert.id}
-        className="shadow-md overflow-hidden relative transition-all duration-300 ease-in-out hover:shadow-lg"
+        className="bg-background/80 backdrop-blur-sm border-border/50 shadow-lg overflow-hidden relative transition-all duration-300 ease-in-out hover:shadow-xl"
       >
         <div
           className="p-4 cursor-pointer flex items-center justify-between active:bg-gray-50 dark:active:bg-gray-800 transition-colors duration-150"
