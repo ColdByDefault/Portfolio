@@ -191,42 +191,6 @@ export default function ContactSheet({
             </div>
           </div>
           <Separator />
-          {/* Quick Links */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-              {t("quickLinks")}
-            </h3>
-            <div className="grid grid-cols-2 gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                className="h-9 cursor-pointer"
-                onClick={() =>
-                  handleSocialClick(
-                    "https://github.com/ColdByDefault",
-                    "GitHub"
-                  )
-                }
-              >
-                <FaGithub className="h-4 w-4 mr-1" />
-                GitHub
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                className="h-9 cursor-pointer"
-                onClick={() =>
-                  handleSocialClick(
-                    "https://www.linkedin.com/in/yazan-a-a-465b44312/",
-                    "LinkedIn"
-                  )
-                }
-              >
-                <FaLinkedin className="h-4 w-4 mr-1" />
-                LinkedIn
-              </Button>
-            </div>
-          </div>
         </div>
       </SheetContent>
     </Sheet>

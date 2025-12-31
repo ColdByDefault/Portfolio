@@ -71,7 +71,7 @@ function CapabilityCard({
 
   return (
     <motion.div variants={fadeInUp}>
-      <Card className="h-full bg-card/50 backdrop-blur-sm border hover:shadow-lg hover:border-muted-foreground/30 transition-all duration-300">
+      <Card className="h-full bg-background/80 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl hover:border-muted-foreground/30 transition-all duration-300">
         <CardContent className="pt-6 space-y-4">
           <div className="flex items-start gap-4">
             {IconComponent && (
@@ -88,7 +88,7 @@ function CapabilityCard({
               </p>
             </div>
           </div>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-sm text-foreground/80 dark:text-white/90 leading-relaxed">
             {t(capability.descriptionKey)}
           </p>
           {/* Tech Icons - subtle indicators */}
@@ -99,7 +99,7 @@ function CapabilityCard({
                 return TechIcon ? (
                   <TechIcon
                     key={iconName}
-                    className="h-4 w-4 text-muted-foreground/50 hover:text-muted-foreground transition-colors"
+                    className="h-4 w-4 text-foreground/50 dark:text-white/70 hover:text-foreground dark:hover:text-white transition-colors"
                     aria-hidden="true"
                   />
                 ) : null;

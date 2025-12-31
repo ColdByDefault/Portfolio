@@ -7,10 +7,6 @@ import React from "react";
 import Image from "next/image";
 import { Card, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
-import {
-  getCardHoverClasses,
-  getOverlayStyles,
-} from "@/components/visuals/card-animations";
 import { ImageZoomDialog } from "@/components/visuals";
 import type { CertificationShowcaseLogic } from "@/components/cer/CertificationShowcase.logic";
 
@@ -39,16 +35,10 @@ export function CertificationShowcaseDesktop({
   const tDescriptions = useTranslations("Certifications.descriptions");
 
   const renderDesktopCard = (cert: Certification) => {
-    const isCurrentCardHovered = logic.hoveredCard === cert.id;
-
     return (
       <Card
         key={cert.id}
-        className={`px-3 py-4 h-full flex flex-col ${getCardHoverClasses(
-          isCurrentCardHovered
-        )}`}
-        onMouseEnter={() => logic.setHoveredCard(cert.id)}
-        onMouseLeave={() => logic.setHoveredCard(null)}
+        className="px-3 py-4 h-full flex flex-col bg-background/80 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl transition-all duration-300"
       >
         <CardTitle className="mb-3">
           <h3 className="text-lg font-semibold text-center min-h-12 flex items-center justify-center">
@@ -79,13 +69,6 @@ export function CertificationShowcaseDesktop({
             {tDescriptions(cert.descriptionKey)}
           </p>
         </div>
-        <div
-          className={`
-            absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none
-            ${isCurrentCardHovered ? "opacity-100" : "opacity-0"}
-          `}
-          style={getOverlayStyles(isCurrentCardHovered)}
-        />
       </Card>
     );
   };

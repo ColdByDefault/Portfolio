@@ -6,6 +6,8 @@
 import { Hero } from "@/components/hero";
 import { useTranslations } from "next-intl";
 import { CompanyBanner } from "@/components/companies";
+import { PackageCard } from "@/components/services";
+import { servicePackages } from "@/data/servicesData";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { LoadingSkeleton } from "@/components/visuals";
@@ -82,6 +84,20 @@ export default function Home() {
           <Suspense fallback={<LoadingSkeleton />}>
             <Capabilities />
           </Suspense>
+
+          {/* Service Packages Section */}
+          <section className="py-16 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-light text-center mb-8 text-black dark:text-white">
+                {t("services.title")}
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {servicePackages.map((pkg) => (
+                  <PackageCard key={pkg.id} pkg={pkg} />
+                ))}
+              </div>
+            </div>
+          </section>
 
           <Suspense fallback={<LoadingSkeleton />}>
             <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />

@@ -1,7 +1,10 @@
 {
   "Home": {
     "WebsitePerformance": "Website Performance",
-    "companiesContributing": "Companies I'm working at / Projects I'm contributing to:"
+    "companiesContributing": "Companies I'm working at / Projects I'm contributing to:",
+    "services": {
+      "title": "Services & Packages"
+    }
   },
   "Hero": {
     "availableForCollaboration": "Available for collaboration",
@@ -38,7 +41,10 @@
     "navigation": "Navigation",
     "impressum": "Impressum",
     "privacy": "Privacy",
-    "legal": "Legal"
+    "legal": "Legal",
+    "contact": "Contact",
+    "open": "Open",
+    "language": "Language"
   },
   "Contact": {
     "getInTouch": "Let's Connect",

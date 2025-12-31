@@ -1,7 +1,10 @@
 {
   "Home": {
     "WebsitePerformance": "Webbplatsens prestanda",
-    "companiesContributing": "Företag där jag arbetar / Projekt jag bidrar till:"
+    "companiesContributing": "Företag där jag arbetar / Projekt jag bidrar till:",
+    "services": {
+      "title": "Tjänster & Paket"
+    }
   },
   "Hero": {
     "availableForCollaboration": "Tillgänglig för samarbete",
@@ -38,7 +41,10 @@
     "navigation": "Navigation",
     "impressum": "Juridisk information",
     "privacy": "Integritet",
-    "legal": "Juridisk"
+    "legal": "Juridisk",
+    "contact": "Kontakt",
+    "open": "Öppna",
+    "language": "Språk"
   },
   "Contact": {
     "getInTouch": "Låt oss koppla samman",
