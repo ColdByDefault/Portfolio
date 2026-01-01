@@ -1,6 +1,6 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V5.2.8
+# ColdByDefault Portfolio · V5.3.3
 
 Modern, secure, high‑performance developer portfolio built with Next.js 16, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
@@ -44,6 +44,7 @@ latest >= 4
 14. Roadmap
 15. License & Intellectual Property
 16. Contact
+17. Special Thanks
 
 ---
 
@@ -462,6 +463,32 @@ Email: contact@coldbydefault.com
 Linktree: https://linktr.ee/ColdByDefault  
 For professional or security inquiries, reach out via the official channels listed above.
 _P.S. If you find any bugs, they're not bugs - they're undocumented features!_
+
+---
+
+## 17. Special Thanks
+
+<div align="center">
+
+A heartfelt thank you to the amazing companies that provide free tiers and support for developers. Your generosity enables independent developers and open-source projects to thrive.
+
+<br />
+
+<a href="https://vercel.com">
+  <img src="public/assets/icons/vercel.png" alt="Vercel" height="40" />
+</a>
+
+**[Vercel](https://vercel.com)** — For providing exceptional hosting, edge network, and deployment infrastructure that powers this portfolio with zero-config deployments and blazing-fast performance.
+
+<br />
+
+<a href="https://neon.tech">
+  <img src="public/assets/icons/neon.png" alt="Neon" height="40" />
+</a>
+
+**[Neon](https://neon.tech)** — For offering a serverless PostgreSQL database with generous free tier, enabling scalable and reliable data storage without infrastructure overhead.
+
+</div>
 
 ---
 

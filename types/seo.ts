@@ -81,6 +81,10 @@ export interface MediaSectionContent {
     en: PageContent;
     de: PageContent;
   };
+  services: {
+    en: PageContent;
+    de: PageContent;
+  };
 }
 
 export type LegalPageType = "privacy" | "impressum" | "terms";
@@ -89,4 +93,5 @@ export type MediaSectionType =
   | "about"
   | "blog"
   | "projects"
-  | "library";
+  | "library"
+  | "services";

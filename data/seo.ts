@@ -16,7 +16,10 @@ const COMMON_TECH_KEYWORDS = [
   "React",
   "Next.js",
   "Node.js",
-  "Python",
+  "AI",
+  "Automation",
+  "RAG Systems",
+  "MVP development",
   "TypeScript",
   "JavaScript",
 ];
@@ -26,7 +29,9 @@ const COMMON_ROLE_KEYWORDS_EN = [
   "Web Developer",
   "Frontend Developer",
   "Backend Developer",
-  "Software Engineer",
+  "AI Automation Developer",
+  "RAG Systems Developer",
+  "MVP development",
 ];
 
 const COMMON_ROLE_KEYWORDS_DE = [
@@ -34,7 +39,8 @@ const COMMON_ROLE_KEYWORDS_DE = [
   "Web Entwickler",
   "Frontend Entwickler",
   "Backend Entwickler",
-  "Software Ingenieur",
+  "AI Automatisierungsentwickler",
+  "RAG Systementwickler",
 ];
 
 const COMMON_CONCEPTS_EN = [
@@ -44,6 +50,9 @@ const COMMON_CONCEPTS_EN = [
   "API Development",
   "Responsive Design",
   "Modern Web Technologies",
+  "AI and Automation",
+  "RAG Systems",
+  "MVP Development",
 ];
 
 const COMMON_CONCEPTS_DE = [
@@ -53,13 +62,16 @@ const COMMON_CONCEPTS_DE = [
   "API Entwicklung",
   "Responsive Design",
   "Moderne Webtechnologien",
+  "AI und Automatisierung",
+  "RAG Systeme",
+  "MVP Entwicklung",
 ];
 
 // Base configuration with shared values to reduce duplication
 export const BASE_CONFIG = {
-  author: "Yazan Abo-Ayash (ColdByDefault)",
+  author: "Yazan Abo-Ayash (ColdByDefault™)",
   siteUrl: "https://www.coldbydefault.com",
-  siteName: "ColdByDefault Portfolio",
+  siteName: "Yazan Abo-Ayash Portfolio © ColdByDefault™",
   twitter: {
     handle: "@ColdByDefault",
     cardType: "summary_large_image" as TwitterCardType,
@@ -77,7 +89,10 @@ export const BASE_CONFIG = {
       "JavaScript",
       "Express.js",
       "PostgreSQL",
-      "MySQL",
+      "AI",
+      "Automation",
+      "RAG Systems",
+      "MVP development",
       "Docker",
       "Git",
       "Tailwind CSS",
@@ -87,9 +102,9 @@ export const BASE_CONFIG = {
 
 // English SEO Configuration
 export const seoConfigEN: SEOConfig = {
-  title: "Yazan Abo-Ayash | Full Stack Developer Portfolio - ColdByDefault",
+  title: "Yazan Abo-Ayash | Full Stack Developer Portfolio - ColdByDefault™",
   description:
-    "Junior Full Stack Developer. Specialized in React, Next.js, Node.js, Python, and modern web technologies. Experienced in creating responsive web applications and RESTful APIs.",
+    "Full Stack Developer. Specialized in Next.js and modern web technologies, AI and automations, RAG Systems, MVP development.",
   keywords: [
     ...COMMON_ROLE_KEYWORDS_EN,
     ...COMMON_TECH_KEYWORDS.map((tech) => `${tech} Developer`),
@@ -102,32 +117,35 @@ export const seoConfigEN: SEOConfig = {
   openGraph: {
     title: "Yazan Abo-Ayash | Full Stack Developer Portfolio",
     description:
-      "Junior Full Stack Developer specializing in modern web technologies",
+      "Full Stack Developer specializing in modern web technologies, AI and automations, RAG Systems, MVP development.",
     type: "website",
     image: "/og-image-en.jpg",
-    imageAlt: "ColdByDefault Portfolio - Full Stack Developer",
+    imageAlt: "ColdByDefault™ Portfolio - Full Stack Developer",
   },
   structured: {
     ...BASE_CONFIG.structured,
-    jobTitle: "Full Stack Junior Developer",
+    jobTitle: "Full Stack Developer",
     description:
-      "Computer Science Student and Full Stack Developer specializing in React, Next.js, Node.js, and Python",
+      "Full Stack Developer specializing in Next.js, AI and automations, RAG Systems, MVP development.",
     location: "Germany",
   },
 };
 
 // German SEO Configuration
 export const seoConfigDE: SEOConfig = {
-  title: "Yazan Abo-Ayash | Full Stack Entwickler Portfolio - ColdByDefault",
+  title: "Yazan Abo-Ayash | Full Stack Entwickler Portfolio - ColdByDefault™",
   description:
-    "Full Stack Junior Entwickler & Informatik Student. Spezialisiert auf React, Next.js, Node.js, Python und moderne Webtechnologien. Erfahren in der Entwicklung responsiver Webanwendungen und RESTful APIs.",
+    "Full Stack Entwickler, spezialisiert auf Next.js und moderne Webtechnologien, AI und Automatisierungen, RAG Systeme, MVP Entwicklung.",
   keywords: [
     ...COMMON_ROLE_KEYWORDS_DE,
     ...COMMON_TECH_KEYWORDS.map((tech) => `${tech} Entwickler`),
-    "Informatik Student",
+    "Informatik",
     "Webentwicklung Deutschland",
     "Programmierer",
     "Softwareentwickler",
+    "AI Entwickler",
+    "Automatisierungsentwickler",
+    "MVP Entwicklung",
     ...COMMON_CONCEPTS_DE,
   ],
   ...BASE_CONFIG,
@@ -136,16 +154,16 @@ export const seoConfigDE: SEOConfig = {
   openGraph: {
     title: "Yazan Abo-Ayash | Full Stack Entwickler Portfolio",
     description:
-      "Full Stack Junior Entwickler & Informatik Student spezialisiert auf moderne Webtechnologien",
+      "Full Stack Entwickler, spezialisiert auf Next.js und moderne Webtechnologien, AI und Automatisierungen, RAG Systeme, MVP Entwicklung.",
     type: "website",
     image: "/og-image-de.jpg",
-    imageAlt: "ColdByDefault Portfolio - Full Stack Entwickler",
+    imageAlt: "ColdByDefault™ Portfolio - Full Stack Entwickler",
   },
   structured: {
     ...BASE_CONFIG.structured,
-    jobTitle: "Full Stack Junior Entwickler",
+    jobTitle: "Full Stack Entwickler",
     description:
-      "Informatik Student und Full Stack Entwickler spezialisiert auf React, Next.js, Node.js und Python",
+      "Full Stack Entwickler, spezialisiert auf Next.js und moderne Webtechnologien, AI und Automatisierungen, RAG Systeme, MVP Entwicklung.",
     location: "Deutschland",
   },
 };
@@ -383,6 +401,42 @@ export const mediaSectionContent: MediaSectionContent = {
         "Webentwicklung",
       ],
       path: "/library",
+    },
+  },
+  services: {
+    en: {
+      title: "Services - MVP Development, AI & Automation Solutions",
+      description:
+        "Professional web development services including MVP launch packages, AI chatbot integration, RAG systems, and workflow automation. Clear pricing, reliable delivery.",
+      keywords: [
+        "web development services",
+        "MVP development",
+        "AI integration",
+        "chatbot development",
+        "RAG systems",
+        "workflow automation",
+        "full stack developer for hire",
+        "freelance developer",
+        "startup development",
+      ],
+      path: "/services",
+    },
+    de: {
+      title: "Dienstleistungen - MVP Entwicklung, AI & Automatisierung",
+      description:
+        "Professionelle Webentwicklungs-Dienstleistungen einschließlich MVP-Pakete, AI-Chatbot-Integration, RAG-Systeme und Workflow-Automatisierung. Klare Preise, zuverlässige Lieferung.",
+      keywords: [
+        "Webentwicklung Dienstleistungen",
+        "MVP Entwicklung",
+        "AI Integration",
+        "Chatbot Entwicklung",
+        "RAG Systeme",
+        "Workflow Automatisierung",
+        "Full Stack Entwickler beauftragen",
+        "Freelance Entwickler",
+        "Startup Entwicklung",
+      ],
+      path: "/services",
     },
   },
 };

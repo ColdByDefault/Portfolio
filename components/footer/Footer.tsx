@@ -104,7 +104,7 @@ export default function Footer() {
             <div className="text-xs text-gray-500 dark:text-gray-400 sm:flex-1">
               <div className="flex flex-col text-center sm:text-right">
                 <span>
-                  {currentYear} ColdByDefault&#174;. All rights reserved.
+                  {currentYear} Yazan Abo-Ayash&#174;. All rights reserved.
                 </span>
               </div>
             </div>
