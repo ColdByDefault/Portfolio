@@ -16,8 +16,8 @@ export const useCaseProjects: UseCaseProject[] = [
       { name: "Groq AI (Whisper)" },
       { name: "Notion API" },
     ],
-    demoLink: "https://demo.example.com/meeting-intelligence",
-    githubLink: "https://github.com/example/meeting-intelligence",
+    demoLink: "",
+    githubLink: "",
     implementationAreasKey: "Usecases.projects.project-1.implementationAreas",
   },
 ];
