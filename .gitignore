@@ -38,6 +38,8 @@ next-env.d.ts
 # instructions
 portfolio.latest.instructions.md
 portfolio.check.instructions.md
+freelancer.instructions.md
+freelancer.instructions.md
 /lib/generated/prisma
 # Private Notes
 notes.md
