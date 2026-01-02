@@ -8,32 +8,53 @@ import {
   Code2,
   Sparkles,
   Package,
-  Zap,
-  Cloud,
   Server,
-  Layout,
   Blocks,
-  FileCode,
   type LucideIcon,
 } from "lucide-react";
+// React Icons
+import {
+  RiNextjsFill,
+  RiReactjsFill,
+  RiVuejsFill,
+  RiJavascriptFill,
+} from "react-icons/ri";
+import {
+  SiTypescript,
+  SiTailwindcss,
+  SiNotion,
+  SiVercel,
+  SiSupabase,
+  SiPostgresql,
+  SiMongodb,
+  SiPrisma,
+  SiStripe,
+} from "react-icons/si";
+// You can also use other icon libraries:
+// import { IconName } from "@heroicons/react/24/outline";
+// import { IconName } from "@tabler/icons-react";
+// import { IconName } from "react-feather";
 
 interface TechStackGridProps {
   techStack: TechStack[];
 }
 
-function getTechIcon(name: string): LucideIcon {
-  const iconMap: Record<string, LucideIcon> = {
-    // Databases
-    Supabase: Database,
-    PostgreSQL: Database,
+// Support multiple icon types
+type IconComponent = LucideIcon | React.ComponentType<{ className?: string }>;
+
+function getTechIcon(name: string): IconComponent {
+  const iconMap: Record<string, IconComponent> = {
+    // Databases - Using Simple Icons for better brand representation
+    Supabase: SiSupabase,
+    PostgreSQL: SiPostgresql,
     Neon: Database,
     MySQL: Database,
-    MongoDB: Database,
+    MongoDB: SiMongodb,
 
-    // Frameworks
-    "Next.js": Code2,
-    React: Code2,
-    Vue: Code2,
+    // Frameworks - Using React Icons for better brand representation
+    "Next.js": RiNextjsFill,
+    React: RiReactjsFill,
+    Vue: RiVuejsFill,
     Nuxt: Code2,
 
     // AI/ML
@@ -44,18 +65,18 @@ function getTechIcon(name: string): LucideIcon {
     "Groq AI (Whisper)": Sparkles,
 
     // Tools
-    TypeScript: FileCode,
-    JavaScript: FileCode,
-    "Tailwind CSS": Layout,
+    TypeScript: SiTypescript,
+    JavaScript: RiJavascriptFill,
+    "Tailwind CSS": SiTailwindcss,
     "shadcn/ui": Blocks,
-    "Notion API": Package,
+    "Notion API": SiNotion,
 
     // Backend/Services
     "Node.js": Server,
-    Vercel: Cloud,
-    Stripe: Zap,
+    Vercel: SiVercel,
+    Stripe: SiStripe,
     tRPC: Server,
-    Prisma: Package,
+    Prisma: SiPrisma,
     Drizzle: Package,
   };
 
