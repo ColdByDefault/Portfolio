@@ -1,3 +1,7 @@
+/**
+ * @author ColdByDefault
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
+ */
 "use client";
 
 import { useState } from "react";
@@ -6,6 +10,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 interface ScreenshotGalleryProps {
   screenshots: string[];
@@ -30,6 +35,7 @@ export function ScreenshotGallery({
     <div className="space-y-3">
       {/* Main screenshot */}
       <Dialog>
+        <DialogTitle className="sr-only">{projectTitle} Screenshot</DialogTitle>
         <DialogTrigger asChild>
           <div className="relative aspect-video overflow-hidden rounded-lg border bg-muted cursor-pointer group">
             <Image

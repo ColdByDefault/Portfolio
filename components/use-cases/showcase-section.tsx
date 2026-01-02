@@ -1,3 +1,7 @@
+/**
+ * @author ColdByDefault
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
+ */
 "use client";
 
 import { useTranslations } from "next-intl";
@@ -19,9 +23,14 @@ export function ShowcaseSection() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-wrap justify-center gap-6">
           {useCaseProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <div
+              key={project.id}
+              className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+            >
+              <ProjectCard project={project} />
+            </div>
           ))}
         </div>
       </div>

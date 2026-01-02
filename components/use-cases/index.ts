@@ -1,3 +1,7 @@
+/**
+ * @author ColdByDefault
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
+ */
 export { ShowcaseSection } from "./showcase-section";
 export { ProjectCard } from "./project-card";
 export { ScreenshotGallery } from "./screenshot-gallery";
