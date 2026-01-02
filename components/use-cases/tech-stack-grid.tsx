@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import type { TechStack } from "@/types/use-cases";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -38,12 +41,14 @@ function getTechIcon(name: string): LucideIcon {
     Anthropic: Sparkles,
     "Vercel AI SDK": Sparkles,
     "AI SDK": Sparkles,
+    "Groq AI (Whisper)": Sparkles,
 
     // Tools
     TypeScript: FileCode,
     JavaScript: FileCode,
     "Tailwind CSS": Layout,
     "shadcn/ui": Blocks,
+    "Notion API": Package,
 
     // Backend/Services
     "Node.js": Server,
@@ -58,9 +63,11 @@ function getTechIcon(name: string): LucideIcon {
 }
 
 export function TechStackGrid({ techStack }: TechStackGridProps) {
+  const t = useTranslations("Usecases");
+
   return (
     <div className="space-y-2">
-      <h4 className="text-sm font-medium text-muted-foreground">Tech Stack</h4>
+      <h4 className="text-sm font-medium text-muted-foreground">{t("techStackLabel")}</h4>
       <div className="flex flex-wrap gap-2">
         {techStack.map((tech) => {
           const Icon = getTechIcon(tech.name);

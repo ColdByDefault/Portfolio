@@ -4,11 +4,11 @@ export interface TechStack {
 
 export interface UseCaseProject {
   id: string;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   screenshots: string[]; // 1-4 images
   techStack: TechStack[];
   demoLink?: string;
   githubLink?: string;
-  implementationAreas: string[];
+  implementationAreasKey: string;
 }

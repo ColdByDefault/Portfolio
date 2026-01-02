@@ -471,5 +471,21 @@
       "subtitle": "Boka ett gratis 15-minuters upptäcktssamtal. Inget åtagande, bara ett samtal om ditt projekt.",
       "button": "Boka Gratis Konsultation"
     }
+  },
+  "Usecases": {
+    "title": "Användningsfall",
+    "subtitle": "Utforska min samling av produktionsklara projekt. Varje projekt visar moderna utvecklingsmetoder och verkliga tillämpningar.",
+    "techStackLabel": "Teknisk Stack",
+    "useCasesLabel": "Användningsfall",
+    "liveDemoButton": "Live Demo",
+    "viewCodeButton": "Visa Kod",
+    "projects": {
+      "project-1": {
+        "title": "Meeting Intelligence",
+        "description": "AI-drivet system för mötesanalys och dokumentation. Transkriberar, sammanfattar och extraherar automatiskt åtgärdspunkter från möten med sömlös Notion-integration för organiserad arbetsflödeshantering.",
+        "techStack": "Groq AI (Whisper), LLM-analys, Notion-integration, Next.js",
+        "implementationAreas": "Företag & Verksamhet, Professionella Tjänster, Distansarbete, Personlig Produktivitet"
+      }
+    }
   }
 }

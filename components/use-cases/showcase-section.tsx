@@ -1,17 +1,21 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { useCaseProjects } from "@/data/use-cases";
 import { ProjectCard } from "./project-card";
 
 export function ShowcaseSection() {
+  const t = useTranslations("Usecases");
+
   return (
     <section className="w-full py-12 md:py-16 lg:py-20">
       <div className="container px-4 md:px-6">
         <div className="space-y-4 text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-balance">
-            Project Showcase TRANSLATE
+            {t("title")}
           </h2>
           <p className="mx-auto max-w-175 text-muted-foreground md:text-xl text-pretty">
-            Explore our collection of production-ready projects. Each showcases
-            modern development practices and real-world applications.
+            {t("subtitle")}
           </p>
         </div>
 

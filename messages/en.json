@@ -471,5 +471,21 @@
       "subtitle": "Book a free 15-minute discovery call. No commitment, just a conversation about your project.",
       "button": "Book Your Free Call"
     }
+  },
+  "Usecases": {
+    "title": "Use-Cases",
+    "subtitle": "Explore my collection of production-ready projects. Each showcases modern development practices and real-world applications.",
+    "techStackLabel": "Tech Stack",
+    "useCasesLabel": "Use Cases",
+    "liveDemoButton": "Live Demo",
+    "viewCodeButton": "View Code",
+    "projects": {
+      "project-1": {
+        "title": "Meeting Intelligence",
+        "description": "AI-powered meeting analysis and documentation system. Automatically transcribe, summarize, and extract action items from meetings with seamless Notion integration for organized workflow management.",
+        "techStack": "Groq AI (Whisper), LLM Analysis, Notion Integration, Next.js",
+        "implementationAreas": "Business & Corporate, Professional Services, Remote Work, Personal Productivity"
+      }
+    }
   }
 }

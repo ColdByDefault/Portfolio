@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import type { UseCaseProject } from "@/types/use-cases";
 import {
   Card,
@@ -18,26 +21,28 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const t = useTranslations();
+
   return (
     <Card className="flex flex-col h-full">
       <CardHeader>
-        <CardTitle className="text-balance">{project.title}</CardTitle>
+        <CardTitle className="text-balance">{t(project.titleKey)}</CardTitle>
         <CardDescription className="text-pretty">
-          {project.description}
+          {t(project.descriptionKey)}
         </CardDescription>
       </CardHeader>
 
       <CardContent className="space-y-6 flex-1">
         <ScreenshotGallery
           screenshots={project.screenshots}
-          projectTitle={project.title}
+          projectTitle={t(project.titleKey)}
         />
 
         <Separator />
 
         <TechStackGrid techStack={project.techStack} />
 
-        <ImplementationAreas areas={project.implementationAreas} />
+        <ImplementationAreas implementationAreasKey={project.implementationAreasKey} />
       </CardContent>
 
       <CardFooter>
