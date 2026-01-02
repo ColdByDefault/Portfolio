@@ -7,7 +7,7 @@ export const certifications = [
   {
     id: 1,
     title: "Python PCEP",
-    image: "/assets/cer1.png",
+    image: "/assets/cer/cer1.png",
     issuer: "Python Institute",
     description:
       "Earned the PCEP (Python Certified Entry-Level Programmer) certification, demonstrating foundational knowledge of Python programming.",
@@ -17,7 +17,7 @@ export const certifications = [
   {
     id: 2,
     title: "KI KOMPETENZ SCHULUNG",
-    image: "/assets/cer4.png",
+    image: "/assets/cer/cer4.png",
     issuer: "AI training Institute",
     description: "KI KOMPETENZ SCHULUNG GEMÄSS ARTIKEL 4 EU AI ACT",
     descriptionKey: "kiKompetenzSchulung",
@@ -26,7 +26,7 @@ export const certifications = [
   {
     id: 3,
     title: "Meta Frontend Development",
-    image: "/assets/cer3.png",
+    image: "/assets/cer/cer3.png",
     issuer: "Meta (via Coursera)",
     description:
       'Completed the "Introduction to Frontend Development" course, gaining foundational skills in HTML, CSS.',

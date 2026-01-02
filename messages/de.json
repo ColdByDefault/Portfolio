@@ -471,5 +471,21 @@
       "subtitle": "Buchen Sie ein kostenloses 15-Minuten-Erstgespräch. Keine Verpflichtung, nur ein Gespräch über Ihr Projekt.",
       "button": "Kostenloses Gespräch buchen"
     }
+  },
+  "Usecases": {
+    "title": "Anwendungsfälle",
+    "subtitle": "Entdecken Sie meine Sammlung produktionsbereiter Projekte. Jedes zeigt moderne Entwicklungspraktiken und reale Anwendungen.",
+    "techStackLabel": "Tech-Stack",
+    "useCasesLabel": "Anwendungsfälle",
+    "liveDemoButton": "Live-Demo",
+    "viewCodeButton": "Code anzeigen",
+    "projects": {
+      "project-1": {
+        "title": "Meeting Intelligence",
+        "description": "KI-gestütztes Meeting-Analyse- und Dokumentationssystem. Automatische Transkription, Zusammenfassung und Extraktion von Action Items aus Meetings mit nahtloser Notion-Integration für organisiertes Workflow-Management.",
+        "techStack": "Groq AI (Whisper), LLM-Analyse, Notion-Integration, Next.js",
+        "implementationAreas": "Geschäftswesen, Professionelle Dienstleistungen, Remote-Arbeit, Persönliche Produktivität"
+      }
+    }
   }
 }

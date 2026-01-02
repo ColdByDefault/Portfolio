@@ -471,5 +471,21 @@
       "subtitle": "Réservez un appel découverte gratuit de 15 minutes. Sans engagement, juste une conversation sur votre projet.",
       "button": "Réserver une Consultation Gratuite"
     }
+  },
+  "Usecases": {
+    "title": "Cas d'Usage",
+    "subtitle": "Explorez ma collection de projets prêts pour la production. Chacun présente des pratiques de développement modernes et des applications du monde réel.",
+    "techStackLabel": "Stack Technique",
+    "useCasesLabel": "Cas d'Usage",
+    "liveDemoButton": "Démo en Direct",
+    "viewCodeButton": "Voir le Code",
+    "projects": {
+      "project-1": {
+        "title": "Meeting Intelligence",
+        "description": "Système d'analyse et de documentation de réunions alimenté par l'IA. Transcrit, résume et extrait automatiquement les éléments d'action des réunions avec intégration transparente Notion pour une gestion organisée du flux de travail.",
+        "techStack": "IA Groq (Whisper), Analyse LLM, Intégration Notion, Next.js",
+        "implementationAreas": "Affaires et Entreprises, Services Professionnels, Télétravail, Productivité Personnelle"
+      }
+    }
   }
 }
