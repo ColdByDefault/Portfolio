@@ -20,7 +20,7 @@ v3
 
 [![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/beb9337a-f033-4377-9e03-26f96c36a41a.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/beb9337a-f033-4377-9e03-26f96c36a41a)
 
-latest >= 4
+latest >= 5
 
 [![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/76e31353-a33c-4db5-9263-8ede3103f951.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/76e31353-a33c-4db5-9263-8ede3103f951)
 
@@ -40,11 +40,10 @@ latest >= 4
 10. GitHub Actions & Automation
 11. Privacy & Data Handling
 12. Development (Local Setup)
-13. Quality & Tooling
-14. Roadmap
-15. License & Intellectual Property
-16. Contact
-17. Special Thanks
+13. Roadmap
+14. License & Intellectual Property
+15. Contact
+16. Special Thanks
 
 ---
 
@@ -58,38 +57,38 @@ This portfolio serves as a professional showcase of engineering capability: perf
 
 Core:
 
-- Next.js 16 (App Router, Server Components, Turbopack, Edge runtime where applicable)
-- React 19.2.3, TypeScript 5.x (strict mode)
-- Tailwind CSS 4.1.12 + PostCSS
-- shadcn/ui (accessible primitives)
-- Embla Carousel 8.6.0 (modern carousel with autoplay)
-- Framer Motion 12.23.12 (animation system)
-- next-intl 4.6 (runtime + server i18n)
-- Zod 4.x (runtime schema validation)
-- Vercel Hosting & Edge Network
-- Vercel CRON Jobs (Automated Background Tasks & refresh Data)
+* Next.js 16 (App Router, Server Components, Turbopack, Edge runtime where applicable)
+* React 19.2.3, TypeScript 5.x (strict mode)
+* Tailwind CSS 4.1.12 + PostCSS
+* shadcn/ui (accessible primitives)
+* Embla Carousel 8.6.0 (modern carousel with autoplay)
+* Framer Motion 12.23.12 (animation system)
+* next-intl 4.6 (runtime + server i18n)
+* Zod 4.x (runtime schema validation)
+* Vercel Hosting & Edge Network
+* Vercel CRON Jobs (Automated Background Tasks & refresh Data)
 
 Development & Quality:
 
-- ESLint 9.x (flat config system, TypeScript-ESLint 8.41.0 integration)
-- Strict type checking with zero `any` tolerance
-- Enhanced import/export linting and validation
-- Comprehensive type coverage for all API interfaces (`AdminStats`, `GitHubData`, `PageSpeedMetrics`)
-- Discriminated unions for locale handling and error states
-- TypeDoc for comprehensive documentation generation
+* ESLint 9.x (flat config system, TypeScript-ESLint 8.41.0 integration)
+* Strict type checking with zero `any` tolerance
+* Enhanced import/export linting and validation
+* Comprehensive type coverage for all API interfaces (`AdminStats`, `GitHubData`, `PageSpeedMetrics`)
+* Discriminated unions for locale handling and error states
+* TypeDoc for comprehensive documentation generation
 
 Supporting & Utilities:
 
-- Custom hooks (device, language, theming)
-- CSP + HTTP security headers configuration
-- Lightweight internal rate limiting & request sanitation
-- Structured SEO config & JSON-LD generators
-- Zod schema validation for type-safe runtime validation
-- Prisma ORM for type-safe database operations
-- Neon PostgreSQL for scalable data storage
-- Dynamic browser language detection & auto-switching
-- Advanced middleware for locale routing & redirections
-- Dynamic sitemap & robots.txt generation
+* Custom hooks (device, language, theming)
+* CSP + HTTP security headers configuration
+* Lightweight internal rate limiting & request sanitation
+* Structured SEO config & JSON-LD generators
+* Zod schema validation for type-safe runtime validation
+* Prisma ORM for type-safe database operations
+* Neon PostgreSQL for scalable data storage
+* Dynamic browser language detection & auto-switching
+* Advanced middleware for locale routing & redirections
+* Dynamic sitemap & robots.txt generation
 
 ---
 
@@ -97,49 +96,49 @@ Supporting & Utilities:
 
 User Experience & UI:
 
-- Responsive, mobile‑first adaptive layout
-- Theme switching (light/dark) with persistence
-- Enhanced carousel showcases with autoplay (Embla Carousel 8.6.0)
-- Animated hero, project & certification showcases
-- Cookie consent banner & localized content (EN / DE / ES / SV / FR)
-- Improved accessibility with ARIA support and keyboard navigation
-- Browser language auto-detection with intelligent locale switching
-- Advanced middleware for seamless locale routing
-- Enhanced general styling & visual improvements
+* Responsive, mobile‑first adaptive layout
+* Theme switching (light/dark) with persistence
+* Enhanced carousel showcases with autoplay (Embla Carousel 8.6.0)
+* Animated hero, project & certification showcases
+* Cookie consent banner & localized content (EN / DE / ES / SV / FR)
+* Improved accessibility with ARIA support and keyboard navigation
+* Browser language auto-detection with intelligent locale switching
+* Advanced middleware for seamless locale routing
+* Enhanced general styling & visual improvements
 
 Content & Data:
 
-- Dynamic project, technology, and certification data modules
-- Real‑time GitHub MCP repository & profile fetch (sanitized & cached)
-- Google PageSpeed Insights integration for performance transparency
-- Enhanced type-safe API interfaces for all data endpoints
-- Blog system with dynamic content management and filtering
-- CRUD admin dashboard for comprehensive blog management
-- Interactive chatbot system for visitor engagement
-- Enhanced blog styling with error handling & fallbacks
-- New dedicated pages: /media & /library for content showcase
-- Dynamic sitemap & robots.txt generation for improved SEO
-- Prisma ORM integration for efficient database operations
+* Dynamic project, technology, and certification data modules
+* Real‑time GitHub MCP repository & profile fetch (sanitized & cached)
+* Google PageSpeed Insights integration for performance transparency
+* Enhanced type-safe API interfaces for all data endpoints
+* Blog system with dynamic content management and filtering
+* CRUD admin dashboard for comprehensive blog management
+* Interactive chatbot system for visitor engagement
+* Enhanced blog styling with error handling & fallbacks
+* New dedicated pages: /media & /library for content showcase
+* Dynamic sitemap & robots.txt generation for improved SEO
+* Prisma ORM integration for efficient database operations
 
 Engineering & Quality:
 
-- Modular component architecture (segmented domains: hero, github, projects, tech, seo, ui primitives)
-- ESLint 9.x flat config with strict TypeScript integration
-- Enhanced type safety and performance optimizations
-- Zero-tolerance policy for `any` types across the codebase
-- Centralized & locale‑aware SEO handling (`SEOHead`, dynamic OG tags, canonical + `hreflang`)
-- Schema.org structured data generation (Person, Breadcrumbs)
-- 100/100 Lighthouse SEO score target (validated Sep 2025)
-- No hydration warnings / zero console errors goal
-- Comprehensive TypeScript coverage (SEO config types, i18n message surfaces, rate limiting utilities)
+* Modular component architecture (segmented domains: hero, github, projects, tech, seo, ui primitives)
+* ESLint 9.x flat config with strict TypeScript integration
+* Enhanced type safety and performance optimizations
+* Zero-tolerance policy for `any` types across the codebase
+* Centralized & locale‑aware SEO handling (`SEOHead`, dynamic OG tags, canonical + `hreflang`)
+* Schema.org structured data generation (Person, Breadcrumbs)
+* 100/100 Lighthouse SEO score target (validated Sep 2025)
+* No hydration warnings / zero console errors goal
+* Comprehensive TypeScript coverage (SEO config types, i18n message surfaces, rate limiting utilities)
 
 Security & Privacy (summary):
 
-- Hardened headers, CSP, origin isolation mindset
-- Input & error sanitization on API boundaries
-- Zero hard‑coded credentials; environment isolation
-- Rate limiting to mitigate abuse vectors
-- Reinforced type safety to narrow attack surface (literal unions for locales & metadata)
+* Hardened headers, CSP, origin isolation mindset
+* Input & error sanitization on API boundaries
+* Zero hard‑coded credentials; environment isolation
+* Rate limiting to mitigate abuse vectors
+* Reinforced type safety to narrow attack surface (literal unions for locales & metadata)
 
 ---
 
@@ -147,12 +146,12 @@ Security & Privacy (summary):
 
 Runtime locale negotiation with graceful fallbacks:
 
-- Framework: `next-intl` (server aware, streaming compatible)
-- Supported locales: `en`, `de`, `es`, `sv`, `fr`
-- Browser Language Detection: Automatic detection & intelligent switching
-- Advanced Middleware: Seamless locale routing with proper redirections
-- Selection Order: Browser preference → Default `en`
-- Message Bundles: JSON under `messages/` (typed access enhancements on roadmap)
+* Framework: `next-intl` (server aware, streaming compatible)
+* Supported locales: `en`, `de`, `es`, `sv`, `fr`
+* Browser Language Detection: Automatic detection & intelligent switching
+* Advanced Middleware: Seamless locale routing with proper redirections
+* Selection Order: Browser preference → Default `en`
+* Message Bundles: JSON under `messages/` (typed access enhancements on roadmap)
 
 ---
 
@@ -160,16 +159,16 @@ Runtime locale negotiation with graceful fallbacks:
 
 Advanced multi‑locale SEO system delivering consistent structured metadata:
 
-- Config‑driven locale specific SEO objects
-- Open Graph & Twitter card variants per locale (images, titles, descriptions)
-- JSON-LD generation for Person + BreadcrumbList
-- Canonical + alternate `hreflang` tags
-- Keyword curation & skill taxonomy powering `knowsAbout`
-- Dynamic sitemap.xml generation with automatic locale & page discovery
-- Dynamic robots.txt with proper crawling directives
-- Enhanced SEO improvements across all pages & components
-- CSP‑compatible (no unsafe inline script proliferation)
-- Verified 100/100 Lighthouse SEO score (Sep 2025) & 100 PageSpeed Insights SEO metric
+* Config‑driven locale specific SEO objects
+* Open Graph & Twitter card variants per locale (images, titles, descriptions)
+* JSON-LD generation for Person + BreadcrumbList
+* Canonical + alternate `hreflang` tags
+* Keyword curation & skill taxonomy powering `knowsAbout`
+* Dynamic sitemap.xml generation with automatic locale & page discovery
+* Dynamic robots.txt with proper crawling directives
+* Enhanced SEO improvements across all pages & components
+* CSP‑compatible (no unsafe inline script proliferation)
+* Verified 100/100 Lighthouse SEO score (Sep 2025) & 100 PageSpeed Insights SEO metric
 
 ---
 
@@ -177,10 +176,10 @@ Advanced multi‑locale SEO system delivering consistent structured metadata:
 
 Focus Areas:
 
-- First Meaningful Paint minimization via streaming & selective client components
-- Efficient image delivery (static assets + modern formats where suitable)
-- Reduced JavaScript footprint (edge/server rendering bias)
-- Accessible semantic structure (landmarks, labels, focus states)
+* First Meaningful Paint minimization via streaming & selective client components
+* Efficient image delivery (static assets + modern formats where suitable)
+* Reduced JavaScript footprint (edge/server rendering bias)
+* Accessible semantic structure (landmarks, labels, focus states)
 
 ---
 
@@ -188,18 +187,18 @@ Focus Areas:
 
 High‑level structure:
 
-- `app/` — Next.js routing (App Router, layouts, localized paths)
-- `components/` — Domain + UI abstraction layers (hero, github, ui primitives, accessibility focus)
-- `data/` — Structured static metadata (projects, certifications, tech)
-- `lib/` — Cross‑cutting utilities (security, SEO, rate limiting / monitoring)
-- `hooks/` — Custom React hooks (language, mobile detection, client gating)
-- `public/` — Static assets (images, logos, sitemap, robots)
+* `app/` — Next.js routing (App Router, layouts, localized paths)
+* `components/` — Domain + UI abstraction layers (hero, github, ui primitives, accessibility focus)
+* `data/` — Structured static metadata (projects, certifications, tech)
+* `lib/` — Cross‑cutting utilities (security, SEO, rate limiting / monitoring)
+* `hooks/` — Custom React hooks (language, mobile detection, client gating)
+* `public/` — Static assets (images, logos, sitemap, robots)
 
 Design Principles:
 
-- Separation of concerns (data vs presentation)
-- Minimal surface area for API routes
-- Immutable, typed content modules
+* Separation of concerns (data vs presentation)
+* Minimal surface area for API routes
+* Immutable, typed content modules
 
 ---
 
@@ -207,22 +206,22 @@ Design Principles:
 
 Comprehensive API endpoints with security-first design:
 
-| Endpoint         | Purpose                                           | Notes                             |
-| ---------------- | ------------------------------------------------- | --------------------------------- |
-| `/api/about`     | Returns profile / about metadata                  | Static + typed                    |
-| `/api/blog`      | Blog content management and retrieval             | Prisma + Zod                      |
-| `/api/github`    | Fetches GitHub profile + repos (filtered)         | Tokenized (env)                   |
-| `/api/pagespeed` | Surfaces PageSpeed metrics                        | Enhanced caching + error handling |
-| `/api/chatbot`   | Interactive AI chatbot (Reem) for visitor queries | Gemini + Groq fallback            |
-| `/api/admin`     | Administrative operations for content             | Secured endpoints                 |
+| Endpoint         | Purpose                                           | Notes                             |
+| --- | --- | --- |
+| `/api/about`     | Returns profile / about metadata                   | Static + typed                     |
+| `/api/blog`       | Blog content management and retrieval             | Prisma + Zod                       |
+| `/api/github`     | Fetches GitHub profile + repos (filtered)         | Tokenized (env)                   |
+| `/api/pagespeed` | Surfaces PageSpeed metrics                         | Enhanced caching + error handling |
+| `/api/chatbot`   | Interactive AI chatbot (Reem) for visitor queries | Gemini + Groq fallback             |
+| `/api/admin`     | Administrative operations for content             | Secured endpoints                 |
 
 Controls:
 
-- Input validation & schema constraints with Zod
-- Standardized error envelopes (no internal leakage)
-- Rate limiting (per IP windowed)
-- Type-safe database operations via Prisma ORM
-- Enhanced security headers and CSP compliance
+* Input validation & schema constraints with Zod
+* Standardized error envelopes (no internal leakage)
+* Rate limiting (per IP windowed)
+* Type-safe database operations via Prisma ORM
+* Enhanced security headers and CSP compliance
 
 ---
 
@@ -242,11 +241,11 @@ Implemented Layers (expanded in 4.11.15):
 
 Security Posture Snapshot:
 
-- Critical: 0
-- High: 0
-- Medium: 0
-- Low/Informational: Monitored
-- Automated Scanning: Active (CodeQL + Dependency Review)
+* Critical: 0
+* High: 0
+* Medium: 0
+* Low/Informational: Monitored
+* Automated Scanning: Active (CodeQL + Dependency Review)
 
 ---
 
@@ -256,43 +255,43 @@ Automated security and quality workflows ensuring code integrity and vulnerabili
 
 **CodeQL Advanced Security Scanning:**
 
-- **Triggers**: Push to main, pull requests, scheduled weekly
-- **Languages**: Actions, JavaScript/TypeScript, Python
-- **Purpose**: Static analysis for security vulnerabilities, code quality issues, and potential attack vectors
-- **Advanced Features**: Multi-language matrix analysis, configurable query packs, integration with GitHub Security tab
+* **Triggers**: Push to main, pull requests, scheduled weekly
+* **Languages**: Actions, JavaScript/TypeScript, Python
+* **Purpose**: Static analysis for security vulnerabilities, code quality issues, and potential attack vectors
+* **Advanced Features**: Multi-language matrix analysis, configurable query packs, integration with GitHub Security tab
 
 **Dependency Review:**
 
-- **Triggers**: Pull requests to main branch
-- **Purpose**: Scans dependency changes for known vulnerabilities and license compliance
-- **Features**: Blocks PRs with vulnerable dependencies, provides detailed security reports in PR comments
-- **Integration**: Automated comments on pull requests with dependency security analysis
+* **Triggers**: Pull requests to main branch
+* **Purpose**: Scans dependency changes for known vulnerabilities and license compliance
+* **Features**: Blocks PRs with vulnerable dependencies, provides detailed security reports in PR comments
+* **Integration**: Automated comments on pull requests with dependency security analysis
 
 **Vercel CRON Jobs & Automation:**
 
-- **PageSpeed Data Refresh**: Automated background refresh every 12 hours (`0 */12 * * *`)
-- **Endpoint**: `/api/pagespeed/refresh` with extended 5-minute execution timeout
-- **Purpose**: Keeps PageSpeed Insights data current without user-initiated requests
-- **Caching Strategy**: 12-hour cache with 24-hour stale-while-revalidate for optimal performance
-- **Vercel Redirections**: Advanced URL redirections & routing optimizations
-- **Automated Background Tasks**: Comprehensive automation for data freshness & performance
-- **Integration**: Seamless background updates maintaining data freshness for performance transparency
+* **PageSpeed Data Refresh**: Automated background refresh every 12 hours (`0 */12 * * *`)
+* **Endpoint**: `/api/pagespeed/refresh` with extended 5-minute execution timeout
+* **Purpose**: Keeps PageSpeed Insights data current without user-initiated requests
+* **Caching Strategy**: 12-hour cache with 24-hour stale-while-revalidate for optimal performance
+* **Vercel Redirections**: Advanced URL redirections & routing optimizations
+* **Automated Background Tasks**: Comprehensive automation for data freshness & performance
+* **Integration**: Seamless background updates maintaining data freshness for performance transparency
 
 **Documentation & Quality Automation:**
 
-- **TypeDoc Generation**: Automated documentation generation covering components, app, types, hooks, data, and more
-- **Live Documentation**: Available at https://docs.coldbydefault.com/ with comprehensive API and component documentation
-- **Command Integration**: `docs` script for comprehensive TypeDoc documentation pipeline
-- **Coverage**: Expands across all major project directories with TypeScript configuration integration
-- **Quality Gates**: Enhanced ESLint flat config system with TypeScript-ESLint integration
+* **TypeDoc Generation**: Automated documentation generation covering components, app, types, hooks, data, and more
+* **Live Documentation**: Available at [https://docs.coldbydefault.com/](https://docs.coldbydefault.com/) with comprehensive API and component documentation
+* **Command Integration**: `docs` script for comprehensive TypeDoc documentation pipeline
+* **Coverage**: Expands across all major project directories with TypeScript configuration integration
+* **Quality Gates**: Enhanced ESLint flat config system with TypeScript-ESLint integration
 
 ---
 
 ## 11. Privacy & Data Handling
 
-- No invasive tracking; minimal analytical surface.
-- Cookie consent banner gating non‑essential storage.
-- No third‑party ad or profiling scripts.
+* No invasive tracking; minimal analytical surface.
+* Cookie consent banner gating non‑essential storage.
+* No third‑party ad or profiling scripts.
 
 ---
 
@@ -307,51 +306,11 @@ Install & Run:
 ```bash
 pnpm install
 pnpm dev
+
 ```
 
 Open http://localhost:3000
 
-Build:
-
-```bash
-pnpm build
-pnpm start
-```
-
-**Quality Assurance:**
-
-```bash
-# Run ESLint 9.x with flat config
-pnpm lint
-
-# Auto-fix linting issues
-pnpm lint:fix
-
-# Check for dependency updates
-pnpm test-dep
-
-# Generate comprehensive TypeDoc documentation
-pnpm docs
-```
-
-**Database Management:**
-
-```bash
-# Generate Prisma client
-pnpm db:generate
-
-# Deploy migrations
-pnpm db:migrate
-
-# Push schema changes
-pnpm db:push
-
-# Seed database with initial data
-pnpm db:seed
-
-# Reset database with fresh seed
-pnpm db:reset
-```
 
 **Prisma ORM 7 Notes:**
 
@@ -364,84 +323,28 @@ import type { Prisma } from "@/lib/generated/prisma/client";
 
 // ❌ Old import (Prisma 6 and below)
 import { PrismaClient } from "@/lib/generated/prisma";
+
 ```
 
-**Blog System & Content Management:**
-
-- Prisma ORM provides type-safe database operations with PostgreSQL
-- Zod schema validation ensures runtime type safety for all API inputs
-- Neon PostgreSQL offers scalable, managed database infrastructure
-- Blog content is dynamically managed through secure admin APIs
-- Full CRUD operations with proper validation and error handling
-
 ---
 
-## 13. Quality & Tooling
-
-**Development Workflow:**
-
-- Complete migration to ESLint flat config system (`eslint.config.mts`)
-- TypeScript-ESLint with enhanced rule configuration
-- Custom rule configuration for UI components vs. application code
-- Enhanced import resolution and React hooks linting
-- Zero-tolerance policy for `@typescript-eslint/no-explicit-any`
-
-**Documentation & Type Safety:**
-
-- TypeDoc for comprehensive documentation generation
-- Covers components, app, types, hooks, data, i18n, lib, and more
-- Automated documentation pipeline with `docs` script integration
-- Enhanced type coverage across all project domains
-- Zod runtime validation ensuring type safety at API boundaries
-
-**UI Component Architecture:**
-
-- Carousel component system using Embla Carousel with autoplay
-- Improved component composition patterns with Radix UI primitives
-- Better separation of concerns (data vs presentation layers)
-- Enhanced accessibility focus states & ARIA coverage
-- Framer Motion integration for advanced animations
-
-**Development Experience:**
-
-- Enhanced ESLint rules for consistent code patterns
-- Improved error boundaries and type-safe error handling
-- Better debugging capabilities with structured logging
-- Performance monitoring with enhanced PageSpeed integration
-- Prisma ORM with comprehensive database tooling
-- Advanced middleware system for locale routing and redirections
-
----
-
-## 14. Roadmap
-
-**Completed Features:**
-
-- ✅ Upgraded to Next.js 16 with Turbopack and React 19.2.3
-- ✅ Upgraded to Prisma ORM 7 with driver adapters and ESM support
-- ✅ Enhanced PageSpeed API with improved caching, error handling, and circuit breaker
-- ✅ AI Chatbot with Groq (Llama 3.3 70B) fallback for Gemini quota limits
-- ✅ TypeDoc documentation system implementation
-- ✅ Enhanced CodeQL security scanning across multiple languages
-- ✅ Automated dependency review workflows
-- ✅ Interactive chatbot system (Reem AI Assistant) integration
-- ✅ Comprehensive admin dashboard with CRUD operations
+## 13. Roadmap
 
 **Planned Enhancements:**
 
-- Expand localization (additional languages beyond 5; automated missing key detection)
-- Further edge caching tuning & RUM instrumentation (privacy‑preserving)
-- Enhanced visual regression / accessibility automation
-- Add selective metrics dashboard (anonymized)
-- Structured data expansion (Projects, Certifications)
-- Advanced chatbot capabilities with memory and context awareness
-- Enhanced performance monitoring and optimization tools
+* Expand localization (additional languages beyond 5; automated missing key detection)
+* Further edge caching tuning & RUM instrumentation (privacy‑preserving)
+* Enhanced visual regression / accessibility automation
+* Add selective metrics dashboard (anonymized)
+* Structured data expansion (Projects, Certifications)
+* Advanced chatbot capabilities with memory and context awareness
+* Enhanced performance monitoring and optimization tools
 
 ---
 
 ## 15. License & Intellectual Property
 
-Copyright © 2025 ColdByDefault. All rights reserved.
+Copyright © 2026 ColdByDefault. All rights reserved.
 
 This repository is provided exclusively for viewing professional capability.
 
@@ -459,7 +362,6 @@ Refer to `LICENSE` & `COPYRIGHT` files for formal wording.
 
 Portfolio: https://www.coldbydefault.com
 Documentation: https://docs.coldbydefault.com/
-Email: contact@coldbydefault.com
 Linktree: https://linktr.ee/ColdByDefault  
 For professional or security inquiries, reach out via the official channels listed above.
 _P.S. If you find any bugs, they're not bugs - they're undocumented features!_

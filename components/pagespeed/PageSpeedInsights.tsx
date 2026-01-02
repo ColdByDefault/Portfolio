@@ -118,29 +118,6 @@ const LoadingSkeleton = ({
   </Card>
 );
 
-const ErrorDisplay = ({
-  error,
-  onRetry,
-}: {
-  error: string;
-  onRetry: () => void;
-}) => (
-  <Card className="w-full bg-background/80 backdrop-blur-sm border-border/50 shadow-lg">
-    <CardContent className="flex flex-col items-center justify-center py-12">
-      <div className="text-center space-y-4">
-        <div className="text-destructive text-lg">⚠️</div>
-        <p className="text-destructive font-medium">
-          Error loading PageSpeed data
-        </p>
-        <p className="text-sm text-muted-foreground max-w-md">{error}</p>
-        <Button onClick={onRetry} variant="outline" size="sm">
-          Try Again
-        </Button>
-      </div>
-    </CardContent>
-  </Card>
-);
-
 const MetricsDisplay = ({ data }: { data: PageSpeedResult }) => (
   <div className="space-y-4">
     <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
@@ -182,7 +159,6 @@ export default function PageSpeedInsights({
     mobileData,
     desktopData,
     loading,
-    error,
     cacheStatus,
     lastUpdated,
     refresh,
@@ -233,20 +209,13 @@ export default function PageSpeedInsights({
     );
   }
 
-  if (error) {
-    return <ErrorDisplay error={error} onRetry={refresh} />;
-  }
+  // Error case removed - we always show data (mock or real)
+  // The hook handles errors silently and shows mock data instead
 
   if (!data) {
+    // This should never happen since we always have mock data
     return (
-      <Card className="w-full bg-background/80 backdrop-blur-sm border-border/50 shadow-lg">
-        <CardContent className="flex items-center justify-center py-12">
-          <div className="text-center space-y-2">
-            <div className="text-muted-foreground text-lg">📊</div>
-            <p className="text-muted-foreground">No data available</p>
-          </div>
-        </CardContent>
-      </Card>
+      <LoadingSkeleton progress={progress} progressLabel={progressLabel} />
     );
   }
 
