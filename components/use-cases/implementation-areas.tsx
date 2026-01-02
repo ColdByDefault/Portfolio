@@ -8,10 +8,12 @@ interface ImplementationAreasProps {
   implementationAreasKey: string;
 }
 
-export function ImplementationAreas({ implementationAreasKey }: ImplementationAreasProps) {
+export function ImplementationAreas({
+  implementationAreasKey,
+}: ImplementationAreasProps) {
   const t = useTranslations("Usecases");
   const tData = useTranslations();
-  
+
   // Get the implementation areas text and split by comma
   const areasText = tData(implementationAreasKey);
   const areas = areasText.split(", ").map((area: string) => area.trim());

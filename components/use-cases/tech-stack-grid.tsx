@@ -67,7 +67,9 @@ export function TechStackGrid({ techStack }: TechStackGridProps) {
 
   return (
     <div className="space-y-2">
-      <h4 className="text-sm font-medium text-muted-foreground">{t("techStackLabel")}</h4>
+      <h4 className="text-sm font-medium text-muted-foreground">
+        {t("techStackLabel")}
+      </h4>
       <div className="flex flex-wrap gap-2">
         {techStack.map((tech) => {
           const Icon = getTechIcon(tech.name);

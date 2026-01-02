@@ -42,7 +42,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
         <TechStackGrid techStack={project.techStack} />
 
-        <ImplementationAreas implementationAreasKey={project.implementationAreasKey} />
+        <ImplementationAreas
+          implementationAreasKey={project.implementationAreasKey}
+        />
       </CardContent>
 
       <CardFooter>
