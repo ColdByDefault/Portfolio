@@ -11,6 +11,7 @@ import { servicePackages } from "@/data/servicesData";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { LoadingSkeleton } from "@/components/visuals";
+import { ShowcaseSection } from "@/components/use-cases";
 
 // Dynamically import heavy components with loading states
 const Capabilities = dynamic(
@@ -96,6 +97,13 @@ export default function Home() {
                   <PackageCard key={pkg.id} pkg={pkg} />
                 ))}
               </div>
+            </div>
+          </section>
+
+          {/* Project Showcase Section */}
+          <section className="py-12 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              <ShowcaseSection />
             </div>
           </section>
 
