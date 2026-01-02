@@ -4,13 +4,11 @@
  */
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { DialogTitle } from "@radix-ui/react-dialog";
 
 interface ScreenshotGalleryProps {
   screenshots: string[];
@@ -22,68 +20,142 @@ export function ScreenshotGallery({
   projectTitle,
 }: ScreenshotGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? screenshots.length - 1 : prev - 1));
-  };
+  }, [screenshots.length]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setCurrentIndex((prev) => (prev === screenshots.length - 1 ? 0 : prev + 1));
-  };
+  }, [screenshots.length]);
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  const handleOpen = useCallback(() => {
+    setIsOpen(true);
+  }, []);
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleClose();
+      if (e.key === "ArrowLeft") goToPrevious();
+      if (e.key === "ArrowRight") goToNext();
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [isOpen, handleClose, goToPrevious, goToNext]);
 
   return (
     <div className="space-y-3">
-      {/* Main screenshot */}
-      <Dialog>
-        <DialogTitle className="sr-only">{projectTitle} Screenshot</DialogTitle>
-        <DialogTrigger asChild>
-          <div className="relative aspect-video overflow-hidden rounded-lg border bg-muted cursor-pointer group">
+      {/* Main screenshot - clickable thumbnail */}
+      <div
+        className="relative aspect-video overflow-hidden rounded-lg border bg-muted cursor-zoom-in group"
+        onClick={handleOpen}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === "Enter" && handleOpen()}
+        aria-label={`Open ${projectTitle} screenshot in fullscreen`}
+      >
+        <Image
+          src={screenshots[currentIndex] || "/placeholder.svg"}
+          alt={`${projectTitle} screenshot ${currentIndex + 1}`}
+          fill
+          className="object-cover transition-transform group-hover:scale-105"
+        />
+      </div>
+
+      {/* Fullscreen overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm h-full"
+          onClick={handleClose}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${projectTitle} screenshot viewer`}
+        >
+          {/* Close button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute top-4 right-4 z-50 text-white hover:bg-white/20 rounded-full"
+            onClick={handleClose}
+            aria-label="Close"
+          >
+            <X className="h-6 w-6" />
+          </Button>
+
+          {/* Navigation arrows - fixed position */}
+          {screenshots.length > 1 && (
+            <>
+              <Button
+                variant="secondary"
+                size="icon"
+                className="absolute left-6 top-1/2 -translate-y-1/2 z-50 opacity-80 hover:opacity-100"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToPrevious();
+                }}
+                aria-label="Previous screenshot"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </Button>
+              <Button
+                variant="secondary"
+                size="icon"
+                className="absolute right-6 top-1/2 -translate-y-1/2 z-50 opacity-80 hover:opacity-100"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToNext();
+                }}
+                aria-label="Next screenshot"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </Button>
+            </>
+          )}
+
+          {/* Image container - stop propagation so clicking image doesn't close */}
+          <div
+            className="relative flex items-center justify-center p-8"
+            onClick={(e) => e.stopPropagation()}
+          >
             <Image
               src={screenshots[currentIndex] || "/placeholder.svg"}
               alt={`${projectTitle} screenshot ${currentIndex + 1}`}
-              fill
-              className="object-cover transition-transform group-hover:scale-105"
+              width={1200}
+              height={800}
+              className="max-w-[65vw] max-h-[75vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
+              priority
             />
-          </div>
-        </DialogTrigger>
-        <DialogContent className="max-w-5xl p-0">
-          <div className="relative aspect-video">
-            <Image
-              src={screenshots[currentIndex] || "/placeholder.svg"}
-              alt={`${projectTitle} screenshot ${currentIndex + 1}`}
-              fill
-              className="object-contain"
-            />
+
+            {/* Image counter */}
             {screenshots.length > 1 && (
-              <>
-                <Button
-                  variant="secondary"
-                  size="icon"
-                  className="absolute left-4 top-1/2 -translate-y-1/2"
-                  onClick={goToPrevious}
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="secondary"
-                  size="icon"
-                  className="absolute right-4 top-1/2 -translate-y-1/2"
-                  onClick={goToNext}
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </Button>
-              </>
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
+                {currentIndex + 1} / {screenshots.length}
+              </div>
             )}
           </div>
-        </DialogContent>
-      </Dialog>
+        </div>
+      )}
 
       {/* Thumbnail navigation - only show if multiple screenshots */}
       {screenshots.length > 1 && (
         <div className="flex gap-2 overflow-x-auto pb-2">
           {screenshots.map((screenshot, index) => (
             <button
-              key={index}
+              key={`screenshot-thumb-${index}`}
               onClick={() => setCurrentIndex(index)}
               className={cn(
                 "relative shrink-0 h-16 w-24 overflow-hidden rounded border-2 transition-all",
