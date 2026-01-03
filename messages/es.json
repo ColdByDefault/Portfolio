@@ -9,7 +9,7 @@
   "Hero": {
     "availableForCollaboration": "Disponible para colaborar",
     "fullStackDeveloper": "Automatización & MVPs Web con IA",
-    "description": "Ayudo a PyMEs y agencias a optimizar sus procesos digitales mediante automatización de flujos de trabajo, asistentes internos de IA y MVPs web pragmáticos — menos trabajo manual, más eficiencia.",
+    "description": "Ayudo a Pymes y agencias a ahorrar tiempo automatizando flujos de trabajo, configurando asistentes de IA internos y creando herramientas web prácticas para lanzar ideas rápido. Menos trabajo manual, más eficiencia. Colaboración directa y ejecución integral.",
     "bookFreeCall": "Reserva una Llamada Gratis de 15 Min",
     "learnMoreAboutMe": "Conoce más sobre mí",
     "moreAboutMe": "Más sobre mí en"
@@ -92,27 +92,27 @@
     }
   },
   "Capabilities": {
-    "title": "Lo Que Entrego",
-    "subtitle": "Tecnología moderna, traducida en resultados de negocio reales.",
+    "title": "Lo que ofrezco",
+    "subtitle": "Tecnología práctica que resuelve problemas reales de negocio.",
     "launch": {
-      "title": "Lanza Rápido",
-      "headline": "En producción en 4-8 semanas",
-      "description": "De la idea a la aplicación lista para producción. Sin meses de espera — llega al mercado antes que tu competencia."
+      "title": "Lanzamiento",
+      "headline": "Resultados tangibles en pocas semanas",
+      "description": "Nos centramos en lo esencial para que tengas un producto funcional cuanto antes. Valida tu idea rápidamente sin esperar meses."
     },
     "scale": {
-      "title": "Escala sin Problemas",
-      "headline": "Maneja 10x crecimiento automáticamente",
-      "description": "Infraestructura empresarial que crece contigo. Tu app maneja picos de tráfico sin despeinarse."
+      "title": "Escalabilidad",
+      "headline": "Construido sobre una base sólida",
+      "description": "Uso sistemas en la nube fiables que se mantienen rápidos y estables aunque ganes más clientes. No hace falta reconstruir solo porque creces."
     },
     "security": {
-      "title": "Seguridad Empresarial",
-      "headline": "Protección de datos nivel bancario",
-      "description": "Autenticación segura, datos encriptados y mejores prácticas de la industria. Los datos de tus usuarios están seguros."
+      "title": "Seguridad",
+      "headline": "Seguridad de datos bien hecha",
+      "description": "Cifrado estándar e inicios de sesión seguros para mantener tus datos (y los de tus clientes) protegidos y privados."
     },
-    "global": {
-      "title": "Expande Globalmente",
-      "headline": "Listo para 5+ idiomas",
-      "description": "Internacionalización integrada para mercados europeos y globales. Expande sin reconstruir."
+    "performance": {
+      "title": "Rendimiento",
+      "headline": "Rápido y listo para buscadores",
+      "description": "Tu sitio carga al instante y está estructurado para que Google lo entienda. La velocidad significa usuarios más felices y mejor visibilidad."
     }
   },
   "Certifications": {
@@ -379,50 +379,65 @@
       "subtitle": "De la idea al lanzamiento — aplicaciones web, automatización y soluciones de IA para impacto empresarial real."
     },
     "packages": {
-      "cta": "Reservar Consulta Gratuita",
+      "cta": "Reservar llamada gratuita",
       "mvp": {
         "name": "Lanzamiento MVP",
-        "headline": "Lanza en 4-8 Semanas",
-        "description": "Aplicaciones web full-stack que te ayudan a validar ideas rápidamente y llegar al mercado antes que la competencia.",
+        "headline": "Validación y Lanzamiento Rápido",
+        "description": "Digitalice procesos manuales con aplicaciones web a medida. Desarrollo software adaptado a sus flujos de trabajo específicos, permitiéndole gestionar más clientes de forma eficiente y segura.",
         "pricing": "Desde 3.000 €",
         "timeline": "4-8 semanas",
         "features": {
-          "fullStack": "Aplicación web full-stack",
-          "responsive": "Diseño responsivo para todos los dispositivos",
-          "database": "Basado en datos con base de datos segura",
-          "auth": "Autenticación y gestión de usuarios",
-          "deployment": "Despliegue en producción en Vercel",
-          "support": "30 días de soporte post-lanzamiento"
+          "fullStack": "Aplicación web Full-stack",
+          "responsive": "Diseño adaptable a móviles",
+          "database": "Configuración de base de datos segura",
+          "auth": "Inicio de sesión y cuentas",
+          "deployment": "Puesta en producción",
+          "support": "Incluye 2 semanas de prueba post-lanzamiento"
         }
       },
       "automation": {
-        "name": "Automatización de Flujos",
-        "headline": "Reduce el Trabajo Manual en un 80%",
-        "description": "Optimiza procesos repetitivos e integra tus herramientas. Escala sin contratar más personal.",
+        "name": "Automatización",
+        "headline": "Operaciones Optimizadas",
+        "description": "Conecte sus herramientas actuales (CRM, Email, Hojas de cálculo) para un flujo de datos sin interrupciones. Implemento sistemas automatizados que manejan tareas repetitivas y aseguran la precisión de los datos.",
         "pricing": "Desde 2.000 €",
         "timeline": "2-4 semanas",
         "features": {
-          "analysis": "Análisis y mapeo de flujos de trabajo",
-          "integration": "Integraciones de herramientas y APIs",
-          "workflows": "Flujos de trabajo y triggers automatizados",
-          "documentation": "Documentación completa",
-          "training": "Capacitación del equipo",
-          "support": "30 días de soporte incluidos"
+          "analysis": "Auditoría de procesos y estrategia",
+          "integration": "Conexión de API y herramientas",
+          "workflows": "Lógica y configuración de disparadores",
+          "documentation": "Documentación técnica",
+          "training": "Entrega del sistema e incorporación",
+          "support": "Incluye 2 semanas de prueba post-lanzamiento"
         }
       },
       "ai": {
-        "name": "Soluciones de IA",
-        "headline": "IA que Trabaja para Ti",
-        "description": "Asistentes internos, chatbots y sistemas de conocimiento. IA práctica, sin exageraciones.",
+        "name": "IA Interna",
+        "headline": "Acceso Inteligente al Conocimiento",
+        "description": "Acceda al conocimiento de su empresa al instante. Conecto asistentes de IA seguros a sus documentos, permitiendo a su equipo obtener respuestas precisas basadas en sus datos internos.",
         "pricing": "Desde 4.000 €",
         "timeline": "4-6 semanas",
         "features": {
-          "chatbot": "Chatbot o asistente de IA personalizado",
-          "rag": "Base de conocimiento / sistema RAG",
-          "integration": "Integración con tus herramientas",
-          "training": "Ajuste fino del modelo de IA",
-          "maintenance": "Plan de mantenimiento continuo",
-          "scaling": "Escalable con el uso"
+          "chatbot": "Asistente de IA personalizado",
+          "rag": "Conexión a sus datos específicos",
+          "integration": "Integración en sus herramientas actuales",
+          "security": "Configuración de privacidad de datos",
+          "training": "Entrega del sistema e incorporación",
+          "support": "Incluye 2 semanas de prueba post-lanzamiento"
+        }
+      },
+      "custom": {
+        "name": "Proyecto a Medida",
+        "headline": "Ingeniería Personalizada",
+        "description": "Para proyectos con requisitos únicos o alcance complejo. Definimos una hoja de ruta específica para construir exactamente lo que su negocio necesita.",
+        "pricing": "Presupuesto personalizado",
+        "timeline": "Flexible",
+        "features": {
+          "scoping": "Taller de requisitos",
+          "roadmap": "Plan de proyecto a medida",
+          "development": "Entrega basada en hitos",
+          "flexibility": "Agnóstico a la tecnología",
+          "handover": "Entrega completa del código fuente",
+          "support": "Incluye 2 semanas de prueba post-lanzamiento"
         }
       }
     },
@@ -481,10 +496,10 @@
     "viewCodeButton": "Ver Código",
     "projects": {
       "project-1": {
-        "title": "Meeting Intelligence",
-        "description": "Sistema de análisis y documentación de reuniones potenciado por IA. Transcribe, resume y extrae elementos de acción automáticamente de las reuniones con integración perfecta a Notion para gestión organizada del flujo de trabajo.",
-        "techStack": "IA de Groq (Whisper), Análisis LLM, Integración con Notion, Next.js",
-        "implementationAreas": "Negocios y Corporativo, Servicios Profesionales, Trabajo Remoto, Productividad Personal"
+        "title": "Automatización de Voz a Notion",
+        "description": "Problema: Las ideas valiosas y las tareas pendientes a menudo se pierden en largas grabaciones de audio o notas desordenadas. \n\nSolución: Este SaaS transforma cualquier nota de voz o grabación de reunión en una página de Notion estructurada. En menos de 30 segundos, entrega una transcripción completa, un resumen claro, una lista de tareas y un análisis de sentimiento, automatizando por completo el trabajo administrativo post-reunión.",
+        "techStack": "Procesamiento de voz IA, Análisis de sentimiento, API de Notion, Next.js",
+        "implementationAreas": "Operaciones de agencia, Gestión de clientes, Soporte ejecutivo"
       }
     }
   }
