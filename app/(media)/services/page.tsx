@@ -7,7 +7,6 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CTAButton } from "@/components/ui/cta-button";
 import { PackageCard } from "@/components/services";
@@ -16,7 +15,6 @@ import {
   servicePackages,
   processSteps,
   trustSignals,
-  servicesPageData,
 } from "@/data/servicesData";
 import type { ProcessStep, TrustSignal } from "@/types/services";
 import { motion } from "framer-motion";

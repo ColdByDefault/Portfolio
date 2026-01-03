@@ -7,7 +7,6 @@
 "use client";
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { CTAButton } from "@/components/ui/cta-button";
 import type { ServicePackage } from "@/types/services";
 import { motion } from "framer-motion";
 import { Rocket, Cog, Brain, Check, Clock } from "lucide-react";
@@ -77,13 +76,6 @@ export function PackageCard({ pkg }: PackageCardProps) {
               </li>
             ))}
           </ul>
-
-          {/* CTA Button */}
-          <CTAButton
-            label={t(pkg.ctaKey)}
-            variant="outline"
-            className="w-full"
-          />
         </CardContent>
       </Card>
     </motion.div>
