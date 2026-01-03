@@ -40,25 +40,12 @@ export function PackageCard({ pkg }: PackageCardProps) {
   const IconComponent = iconMap[pkg.icon];
 
   return (
-    <motion.div variants={fadeInUp}>
-      <Card
-        className={`h-full relative overflow-hidden transition-all duration-300 hover:shadow-lg bg-background/80 backdrop-blur-sm border-border/50 ${
-          pkg.highlighted
-            ? "border-sky-500/50 bg-linear-to-b from-sky-500/5 to-transparent"
-            : "hover:border-muted-foreground/30"
-        }`}
-      >
-        {pkg.highlighted && (
-          <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-sky-500 to-sky-600" />
-        )}
+    <motion.div variants={fadeInUp} className="max-w-sm mx-6xl">
+      <Card className="h-full relative overflow-hidden transition-all duration-300 hover:shadow-lg bg-background/80 backdrop-blur-sm border-border/50 hover:border-muted-foreground/30">
         <CardHeader className="space-y-4">
           <div className="flex items-center gap-3">
             {IconComponent && (
-              <div
-                className={`p-2 rounded-lg ${
-                  pkg.highlighted ? "bg-sky-500/10 text-sky-500" : "bg-muted"
-                }`}
-              >
+              <div className="p-2 rounded-lg bg-muted">
                 <IconComponent className="h-5 w-5" />
               </div>
             )}
@@ -94,15 +81,7 @@ export function PackageCard({ pkg }: PackageCardProps) {
           </ul>
 
           {/* CTA Button */}
-          <Button
-            asChild
-            className={`w-full ${
-              pkg.highlighted
-                ? "bg-sky-600 hover:bg-sky-700"
-                : "variant-outline"
-            }`}
-            variant={pkg.highlighted ? "default" : "outline"}
-          >
+          <Button asChild className="w-full" variant="outline">
             <Link
               href={servicesPageData.bookingLink}
               target="_blank"

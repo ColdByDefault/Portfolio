@@ -88,11 +88,11 @@ export default function Home() {
 
           {/* Service Packages Section */}
           <section className="py-16 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-light text-center mb-8 text-black dark:text-white">
+            <div className="max-w-8xl mx-auto">
+              <h2 className="lg:text-4xl text-xl font-medium text-center mb-8 text-black dark:text-white">
                 {t("services.title")}
               </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
                 {servicePackages.map((pkg) => (
                   <PackageCard key={pkg.id} pkg={pkg} />
                 ))}

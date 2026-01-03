@@ -179,13 +179,13 @@ export default function ServicesPage() {
 
         {/* Packages Section - ON TOP as per user requirement */}
         <section className="py-16 px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-8xl mx-auto">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerChildren}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2"
             >
               {servicePackages.map((pkg) => (
                 <PackageCard key={pkg.id} pkg={pkg} />

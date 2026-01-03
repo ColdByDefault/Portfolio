@@ -23,7 +23,6 @@ export const servicePackages: readonly ServicePackage[] = [
     pricingKey: "packages.mvp.pricing",
     timelineKey: "packages.mvp.timeline",
     icon: "Rocket",
-    highlighted: false,
     ctaKey: "packages.cta",
     features: [
       { textKey: "packages.mvp.features.fullStack", included: true },
@@ -42,7 +41,6 @@ export const servicePackages: readonly ServicePackage[] = [
     pricingKey: "packages.automation.pricing",
     timelineKey: "packages.automation.timeline",
     icon: "Cog",
-    highlighted: true,
     ctaKey: "packages.cta",
     features: [
       { textKey: "packages.automation.features.analysis", included: true },
@@ -61,7 +59,6 @@ export const servicePackages: readonly ServicePackage[] = [
     pricingKey: "packages.ai.pricing",
     timelineKey: "packages.ai.timeline",
     icon: "Brain",
-    highlighted: false,
     ctaKey: "packages.cta",
     features: [
       { textKey: "packages.ai.features.chatbot", included: true },
@@ -80,7 +77,6 @@ export const servicePackages: readonly ServicePackage[] = [
     pricingKey: "packages.custom.pricing",
     timelineKey: "packages.custom.timeline",
     icon: "Settings",
-    highlighted: false,
     ctaKey: "packages.cta",
     features: [
       { textKey: "packages.custom.features.scoping", included: true },
