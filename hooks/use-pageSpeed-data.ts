@@ -30,9 +30,9 @@ const createMockData = (
   url,
   strategy,
   metrics: {
-    performance: strategy === "desktop" ? 100 : 97,
-    accessibility: 100,
-    bestPractices: 100,
+    performance: strategy === "desktop" ? 91 : 94,
+    accessibility: 93,
+    bestPractices: 98,
     seo: 100,
   },
 });

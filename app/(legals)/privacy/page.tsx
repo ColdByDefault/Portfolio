@@ -87,11 +87,11 @@ export default async function Privacy() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               {t("dataProcessing.description")}
             </p>
-            <div className="bg-blue-50 dark:bg-blue-950/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
-              <p className="text-sm font-medium text-blue-900 dark:text-blue-100 mb-2">
+            <div className="p-4 rounded-lg border">
+              <p className="text-sm font-medium mb-2">
                 {t("dataProcessing.vercelTitle")}
               </p>
-              <p className="text-sm text-blue-800 dark:text-blue-200">
+              <p className="text-sm">
                 {t("dataProcessing.vercelDescription")}
               </p>
             </div>
@@ -109,19 +109,19 @@ export default async function Privacy() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               {t("chatbot.description")}
             </p>
-            <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-lg border border-amber-200 dark:border-amber-800">
-              <p className="text-sm font-medium text-amber-900 dark:text-amber-100 mb-2">
+            <div className="p-4 rounded-lg border">
+              <p className="text-sm font-medium mb-2">
                 {t("chatbot.geminiTitle")}
               </p>
-              <p className="text-sm text-amber-800 dark:text-amber-200">
+              <p className="text-sm">
                 {t("chatbot.geminiDescription")}
               </p>
             </div>
-            <div className="bg-green-50 dark:bg-green-950/20 p-4 rounded-lg border border-green-200 dark:border-green-800">
-              <p className="text-sm font-medium text-green-900 dark:text-green-100 mb-2">
+            <div className="p-4 rounded-lg border">
+              <p className="text-sm font-medium mb-2">
                 {t("chatbot.temporaryTitle")}
               </p>
-              <p className="text-sm text-green-800 dark:text-green-200">
+              <p className="text-sm">
                 {t("chatbot.temporaryDescription")}
               </p>
             </div>
@@ -139,11 +139,11 @@ export default async function Privacy() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               {t("booking.description")}
             </p>
-            <div className="bg-purple-50 dark:bg-purple-950/20 p-4 rounded-lg border border-purple-200 dark:border-purple-800">
-              <p className="text-sm font-medium text-purple-900 dark:text-purple-100 mb-2">
+            <div className="p-4 rounded-lg border">
+              <p className="text-sm font-medium mb-2">
                 {t("booking.calendlyTitle")}
               </p>
-              <p className="text-sm text-purple-800 dark:text-purple-200">
+              <p className="text-sm">
                 {t("booking.calendlyDescription")}
               </p>
             </div>
