@@ -92,7 +92,7 @@ export default function Home() {
               <h2 className="lg:text-4xl text-xl font-medium text-center mb-8 text-black dark:text-white">
                 {t("services.title")}
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
+              <div className="flex flex-wrap justify-center gap-6">
                 {servicePackages.map((pkg) => (
                   <PackageCard key={pkg.id} pkg={pkg} />
                 ))}

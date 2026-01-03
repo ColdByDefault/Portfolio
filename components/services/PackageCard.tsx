@@ -6,13 +6,11 @@
 
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { servicesPageData } from "@/data/servicesData";
+import { CTAButton } from "@/components/ui/cta-button";
 import type { ServicePackage } from "@/types/services";
 import { motion } from "framer-motion";
-import { Rocket, Cog, Brain, Check, Calendar, Clock } from "lucide-react";
-import Link from "next/link";
+import { Rocket, Cog, Brain, Check, Clock } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 /** Icon mapping for dynamic rendering */
@@ -40,7 +38,7 @@ export function PackageCard({ pkg }: PackageCardProps) {
   const IconComponent = iconMap[pkg.icon];
 
   return (
-    <motion.div variants={fadeInUp} className="max-w-sm mx-6xl">
+    <motion.div variants={fadeInUp} className="w-full max-w-sm">
       <Card className="h-full relative overflow-hidden transition-all duration-300 hover:shadow-lg bg-background/80 backdrop-blur-sm border-border/50 hover:border-muted-foreground/30">
         <CardHeader className="space-y-4">
           <div className="flex items-center gap-3">
@@ -81,16 +79,11 @@ export function PackageCard({ pkg }: PackageCardProps) {
           </ul>
 
           {/* CTA Button */}
-          <Button asChild className="w-full" variant="outline">
-            <Link
-              href={servicesPageData.bookingLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Calendar className="h-4 w-4 mr-2" />
-              {t(pkg.ctaKey)}
-            </Link>
-          </Button>
+          <CTAButton
+            label={t(pkg.ctaKey)}
+            variant="outline"
+            className="w-full"
+          />
         </CardContent>
       </Card>
     </motion.div>

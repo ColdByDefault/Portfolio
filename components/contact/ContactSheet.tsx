@@ -16,7 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { MessageSquare, Calendar } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import {
   FaGithub,
   FaLinkedin,
@@ -25,7 +25,7 @@ import {
 } from "react-icons/fa6";
 import { socialLinks } from "@/data/footerLinks";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { CTAButton } from "@/components/ui/cta-button";
 
 interface ContactInfo {
   email: string;
@@ -85,21 +85,11 @@ export default function ContactSheet({
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
               {t("schedule")}
             </h3>
-            <Link
-              href="https://calendly.com/abo-ayash-yazan/intro-call"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Book a free consultation call"
-              className="block"
-            >
-              <Button
-                variant="default"
-                className="w-full border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-sm px-4 py-2 h-auto cursor-pointer transition-colors duration-300"
-              >
-                <Calendar className="h-4 w-4 mr-2" aria-hidden="true" />
-                {t("bookMeeting")}
-              </Button>
-            </Link>
+            <CTAButton
+              label={t("bookMeeting")}
+              variant="default"
+              className="w-full border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-sm px-4 py-2 h-auto cursor-pointer transition-colors duration-300"
+            />
           </div>
           <Separator />
           {/* Social Media Section */}

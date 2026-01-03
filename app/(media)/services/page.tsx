@@ -9,6 +9,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { CTAButton } from "@/components/ui/cta-button";
 import { PackageCard } from "@/components/services";
 import { Background } from "@/components/visuals/motion-background";
 import {
@@ -28,10 +29,7 @@ import {
   TrendingUp,
   Shield,
   Plug,
-  ArrowRight,
-  Calendar,
 } from "lucide-react";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 // Icon mapping for dynamic rendering
@@ -185,7 +183,7 @@ export default function ServicesPage() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerChildren}
-              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2"
+              className="flex flex-wrap justify-center gap-6"
             >
               {servicePackages.map((pkg) => (
                 <PackageCard key={pkg.id} pkg={pkg} />
@@ -277,21 +275,11 @@ export default function ServicesPage() {
                     {t("cta.subtitle")}
                   </motion.p>
                   <motion.div variants={fadeInUp}>
-                    <Button
-                      asChild
+                    <CTAButton
+                      label={t("cta.button")}
                       size="lg"
                       className="bg-sky-600 hover:bg-sky-700"
-                    >
-                      <Link
-                        href={servicesPageData.bookingLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Calendar className="h-5 w-5 mr-2" />
-                        {t("cta.button")}
-                        <ArrowRight className="h-5 w-5 ml-2" />
-                      </Link>
-                    </Button>
+                    />
                   </motion.div>
                 </CardContent>
               </Card>
