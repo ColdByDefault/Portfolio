@@ -9,7 +9,7 @@
   "Hero": {
     "availableForCollaboration": "Available for collaboration",
     "fullStackDeveloper": "Automation & AI-Powered Web MVPs",
-    "description": "I help SMEs and agencies streamline their digital processes through workflow automation, internal AI assistants, and pragmatic web MVPs — less manual work, more efficiency.",
+    "description": "I help SMEs and agencies save time by automating workflows, setting up internal AI assistants, and building practical web tools to launch ideas fast. Less manual work and more efficiency. Direct collaboration and end-to-end delivery.",
     "bookFreeCall": "Book a Free 15-Min Call",
     "learnMoreAboutMe": "Learn More About Me",
     "moreAboutMe": "More about me on"
@@ -93,26 +93,26 @@
   },
   "Capabilities": {
     "title": "What I Deliver",
-    "subtitle": "Modern technology, translated into real business outcomes.",
+    "subtitle": "Practical tech that solves actual business problems.",
     "launch": {
-      "title": "Launch Fast",
-      "headline": "Go live in 4-8 weeks",
-      "description": "From idea to production-ready application. No months of waiting — get to market before your competitors."
+      "title": "Launch",
+      "headline": "Start meaningful work in weeks",
+      "description": "We focus on the essentials to get a working product in your hands. Validate your concept quickly without waiting months."
     },
     "scale": {
-      "title": "Scale Seamlessly",
-      "headline": "Handle 10x growth automatically",
-      "description": "Enterprise infrastructure that grows with you. Your app handles traffic spikes without breaking a sweat."
+      "title": "Scale",
+      "headline": "Built on a solid foundation",
+      "description": "I use reliable cloud systems that stay fast and stable, even as you gain more customers. No need to rebuild just because you grow."
     },
     "security": {
-      "title": "Enterprise Security",
-      "headline": "Bank-level data protection",
-      "description": "Secure authentication, encrypted data, and industry best practices. Your users' data stays safe."
+      "title": "Security",
+      "headline": "Data security done right",
+      "description": "Standard encryption and secure logins to keep your (and your clients') data safe and private."
     },
-    "global": {
-      "title": "Go Global",
-      "headline": "Ready for 5+ languages",
-      "description": "Built-in internationalization for European and global markets. Expand without rebuilding."
+    "performance": {
+      "title": "Performance",
+      "headline": "Fast & Search-Ready",
+      "description": "Your site loads instantly and is structured so Google understands it. High speed means happier users and better visibility."
     }
   },
   "Certifications": {
@@ -342,7 +342,7 @@
   },
   "ChatBot": {
     "name": "Reem",
-    "pronunciation": "/riːm/",
+    "pronunciation": "/ri:m/",
     "subtitle": "Your AI portfolio assistant",
     "openAssistant": "Open Reem AI assistant",
     "closeChat": "Close chat",
@@ -382,47 +382,62 @@
       "cta": "Book a Free Call",
       "mvp": {
         "name": "MVP Launch",
-        "headline": "Launch in 4-8 Weeks",
-        "description": "Full-stack web applications that help you validate ideas fast and get to market before the competition.",
+        "headline": "Validate & Launch Fast",
+        "description": "Digitize manual processes with custom web applications. I build software tailored to your specific workflows, allowing you to handle more customers efficiently and securely.",
         "pricing": "Starting at €3,000",
         "timeline": "4-8 weeks",
         "features": {
           "fullStack": "Full-stack web application",
-          "responsive": "Responsive design for all devices",
-          "database": "Data-driven with secure database",
-          "auth": "User authentication & management",
-          "deployment": "Production deployment on Vercel",
-          "support": "30 days post-launch support"
+          "responsive": "Mobile-friendly design",
+          "database": "Secure database setup",
+          "auth": "User logins & accounts",
+          "deployment": "Production setup",
+          "support": "Includes 2-week post-launch testing"
         }
       },
       "automation": {
         "name": "Workflow Automation",
-        "headline": "Reduce Manual Work by 80%",
-        "description": "Streamline repetitive processes and integrate your tools. Scale operations without hiring.",
+        "headline": "Streamlined Operations",
+        "description": "Connect your existing tools (CRM, Email, Sheets) to ensure seamless data flow. I implement automated systems that handle repetitive tasks, ensuring data accuracy and saving team hours.",
         "pricing": "Starting at €2,000",
         "timeline": "2-4 weeks",
         "features": {
-          "analysis": "Workflow analysis & mapping",
-          "integration": "Tool & API integrations",
-          "workflows": "Automated workflows & triggers",
-          "documentation": "Full documentation",
-          "training": "Team training session",
-          "support": "30 days support included"
+          "analysis": "Process audit & strategy",
+          "integration": "API & Tool connection",
+          "workflows": "Logic & trigger setup",
+          "documentation": "How-to documentation",
+          "training": "System handover & walkthrough",
+          "support": "Includes 2-week post-launch testing"
         }
       },
       "ai": {
-        "name": "AI Solutions",
-        "headline": "AI That Works for You",
-        "description": "Internal assistants, chatbots, and knowledge systems. Practical AI solutions, not hype.",
+        "name": "Internal AI",
+        "headline": "Intelligent Knowledge Access",
+        "description": "Access your company knowledge instantly. I connect secure AI assistants to your documents (PDFs, Notion, Docs), enabling your team to retrieve accurate answers based on your internal data.",
         "pricing": "Starting at €4,000",
         "timeline": "4-6 weeks",
         "features": {
-          "chatbot": "Custom AI chatbot or assistant",
-          "rag": "Knowledge base / RAG system",
-          "integration": "Integration with your tools",
-          "training": "AI model fine-tuning",
-          "maintenance": "Ongoing maintenance plan",
-          "scaling": "Built to scale with usage"
+          "chatbot": "Custom AI Assistant",
+          "rag": "Connects to your specific data",
+          "integration": "Works within your current tools",
+          "security": "Data privacy setup",
+          "training": "System handover & walkthrough",
+          "support": "Includes 2-week post-launch testing"
+        }
+      },
+      "custom": {
+        "name": "Custom Project",
+        "headline": "Tailored Engineering",
+        "description": "For projects with unique requirements or complex scope. We together define a specific roadmap to build exactly what your business needs, independent of standard packages.",
+        "pricing": "Custom Quote",
+        "timeline": "Flexible",
+        "features": {
+          "scoping": "Requirement workshops",
+          "roadmap": "Tailored project roadmap",
+          "development": "Milestone-based delivery",
+          "flexibility": "Technology agnostic",
+          "handover": "Full source code handover",
+          "support": "Includes 2-week post-launch testing"
         }
       }
     },
@@ -481,10 +496,10 @@
     "viewCodeButton": "View Code",
     "projects": {
       "project-1": {
-        "title": "Meeting Intelligence",
-        "description": "AI-powered meeting analysis and documentation system. Automatically transcribe, summarize, and extract action items from meetings with seamless Notion integration for organized workflow management.",
-        "techStack": "Groq AI (Whisper), LLM Analysis, Notion Integration, Next.js",
-        "implementationAreas": "Business & Corporate, Professional Services, Remote Work, Personal Productivity"
+        "title": "Voice-to-Notion Automation",
+        "description": "Problem: Valuable ideas and to-dos often get lost in long audio recordings or messy notes. \n\nSolution: This SaaS transforms any voice memo or meeting recording into a structured Notion page. In under 30 seconds, it delivers a full transcript, a clear summary, a list of action items, and a sentiment check—completely automating your post-meeting admin work.",
+        "techStack": "AI Voice Processing, Sentiment Analysis, Notion API, Next.js",
+        "implementationAreas": "Agency Operations, Client Management, Executive Support"
       }
     }
   }

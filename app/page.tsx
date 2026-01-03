@@ -12,6 +12,7 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { LoadingSkeleton } from "@/components/visuals";
 import { ShowcaseSection } from "@/components/use-cases";
+import { CTAButton } from "@/components/ui/cta-button";
 
 // Dynamically import heavy components with loading states
 const Capabilities = dynamic(
@@ -58,6 +59,8 @@ const ClientBackground = dynamic(
 
 export default function Home() {
   const t = useTranslations("Home");
+  const tt = useTranslations("Services");
+
 
   return (
     <div>
@@ -88,14 +91,25 @@ export default function Home() {
 
           {/* Service Packages Section */}
           <section className="py-16 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-light text-center mb-8 text-black dark:text-white">
+            <div className="max-w-8xl mx-auto">
+              <h2 className="lg:text-4xl text-xl font-medium text-center mb-8 text-black dark:text-white">
                 {t("services.title")}
               </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="flex flex-wrap justify-center gap-6">
                 {servicePackages.map((pkg) => (
                   <PackageCard key={pkg.id} pkg={pkg} />
                 ))}
+              </div>
+              {/*  CTA */}
+              <div className="mt-10 flex flex-col items-center gap-1.5 justify-center
+              border max-w-xl mx-auto p-6 rounded-lg bg-background/70 backdrop-blur-sm">
+                <h2 className="font-bold">{tt("cta.title")}</h2>
+                <p className="text-gray-500">{tt("cta.subtitle")}</p>
+                <CTAButton
+                  label={tt("cta.button")}
+                  variant="default"
+                  className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-sm px-4 py-2 h-auto cursor-pointer transition-colors duration-300"
+                />
               </div>
             </div>
           </section>

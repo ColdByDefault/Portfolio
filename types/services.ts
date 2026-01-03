@@ -7,7 +7,7 @@
 /**
  * Service package tier/type
  */
-export type ServiceTier = "mvp" | "automation" | "ai";
+export type ServiceTier = "mvp" | "automation" | "ai" | "custom";
 
 /**
  * Individual feature/deliverable within a package
@@ -39,8 +39,6 @@ export interface ServicePackage {
   readonly icon: string;
   /** List of features included */
   readonly features: readonly ServiceFeature[];
-  /** Whether this package is highlighted/recommended */
-  readonly highlighted?: boolean;
   /** CTA button translation key */
   readonly ctaKey: string;
 }

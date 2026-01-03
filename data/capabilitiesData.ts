@@ -38,12 +38,12 @@ export const capabilities: readonly Capability[] = [
     techIcons: ["SiTypescript", "SiPrisma", "SiPostgresql"],
   },
   {
-    id: "global",
+    id: "performance",
     icon: "Globe",
-    titleKey: "global.title",
-    headlineKey: "global.headline",
-    descriptionKey: "global.description",
-    techIcons: ["SiNextdotjs", "SiReact"],
+    titleKey: "performance.title",
+    headlineKey: "performance.headline",
+    descriptionKey: "performance.description",
+    techIcons: ["SiNextdotjs", "SiReact","SiVercel"],
   },
 ] as const;
 

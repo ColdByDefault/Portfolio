@@ -9,7 +9,7 @@
   "Hero": {
     "availableForCollaboration": "Verfügbar für Zusammenarbeit",
     "fullStackDeveloper": "Automatisierung & KI-gestützte Web-MVPs",
-    "description": "Ich unterstütze KMUs und Agenturen bei der Optimierung digitaler Prozesse durch Workflow-Automatisierung, interne KI-Assistenten und pragmatische Web-MVPs — weniger manuelle Arbeit, mehr Effizienz.",
+    "description": "Ich helfe KMUs und Agenturen, Zeit zu sparen, indem ich Arbeitsabläufe automatisiere, interne KI-Assistenten einrichte und praktische Web-Tools entwickle, um Ideen schnell umzusetzen. Weniger manuelle Arbeit, mehr Effizienz. Direkte Zusammenarbeit und komplette Umsetzung.",
     "bookFreeCall": "Kostenloses 15-Min Gespräch buchen",
     "learnMoreAboutMe": "Mehr über mich erfahren",
     "moreAboutMe": "Mehr über mich auf"
@@ -93,26 +93,26 @@
   },
   "Capabilities": {
     "title": "Was ich liefere",
-    "subtitle": "Moderne Technologie, übersetzt in echte Geschäftsergebnisse.",
+    "subtitle": "Praktische Technologie, die echte Geschäftsprobleme löst.",
     "launch": {
-      "title": "Schnell starten",
-      "headline": "In 4-8 Wochen live",
-      "description": "Von der Idee zur produktionsreifen Anwendung. Kein monatelanges Warten — kommen Sie vor Ihren Wettbewerbern auf den Markt."
+      "title": "Launch",
+      "headline": "Erste Ergebnisse in wenigen Wochen",
+      "description": "Wir konzentrieren uns auf das Wesentliche, damit Sie schnell ein funktionierendes Produkt haben. Testen Sie Ihre Idee sofort, ohne monatelanges Warten."
     },
     "scale": {
-      "title": "Nahtlos skalieren",
-      "headline": "10x Wachstum automatisch bewältigen",
-      "description": "Enterprise-Infrastruktur, die mit Ihnen wächst. Ihre App bewältigt Traffic-Spitzen ohne Probleme."
+      "title": "Skalierung",
+      "headline": "Auf einem soliden Fundament gebaut",
+      "description": "Ich nutze zuverlässige Cloud-Systeme, die stabil bleiben, auch wenn Sie wachsen. Kein Neubau nötig, nur weil Sie mehr Kunden gewinnen."
     },
     "security": {
-      "title": "Enterprise-Sicherheit",
-      "headline": "Datenschutz auf Bankniveau",
-      "description": "Sichere Authentifizierung, verschlüsselte Daten und Branchenbest Practices. Die Daten Ihrer Nutzer bleiben sicher."
+      "title": "Sicherheit",
+      "headline": "Datensicherheit richtig gemacht",
+      "description": "Standardverschlüsselung und sichere Logins, um Ihre Daten (und die Ihrer Kunden) sicher und privat zu halten."
     },
-    "global": {
-      "title": "Global expandieren",
-      "headline": "Bereit für 5+ Sprachen",
-      "description": "Eingebaute Internationalisierung für europäische und globale Märkte. Expandieren ohne Neuentwicklung."
+    "performance": {
+      "title": "Performance",
+      "headline": "Schnell & bereit für Suchmaschinen",
+      "description": "Ihre Seite lädt sofort und ist so aufgebaut, dass Google sie versteht. Hohe Geschwindigkeit bedeutet zufriedenere Nutzer und bessere Sichtbarkeit."
     }
   },
   "Certifications": {
@@ -379,50 +379,65 @@
       "subtitle": "Von der Idee bis zum Launch — Webanwendungen, Automatisierung und KI-Lösungen für echten Business-Impact."
     },
     "packages": {
-      "cta": "Kostenloses Gespräch buchen",
+      "cta": "Kostenloses Erstgespräch buchen",
       "mvp": {
         "name": "MVP Launch",
-        "headline": "Launch in 4-8 Wochen",
-        "description": "Full-Stack-Webanwendungen, die Ihnen helfen, Ideen schnell zu validieren und vor der Konkurrenz auf den Markt zu kommen.",
+        "headline": "Schnelle Markteinführung",
+        "description": "Digitalisieren Sie manuelle Prozesse mit maßgeschneiderten Webanwendungen. Ich entwickle Software, die exakt auf Ihre Abläufe zugeschnitten ist, damit Sie Kunden effizienter und sicherer bedienen können.",
         "pricing": "Ab 3.000 €",
         "timeline": "4-8 Wochen",
         "features": {
-          "fullStack": "Full-Stack-Webanwendung",
-          "responsive": "Responsives Design für alle Geräte",
-          "database": "Datengetrieben mit sicherer Datenbank",
-          "auth": "Benutzerauthentifizierung & -verwaltung",
-          "deployment": "Produktions-Deployment auf Vercel",
-          "support": "30 Tage Support nach Launch"
+          "fullStack": "Full-Stack Webanwendung",
+          "responsive": "Mobilfreundliches Design",
+          "database": "Sicheres Datenbank-Setup",
+          "auth": "Benutzer-Logins & Konten",
+          "deployment": "Produktions-Setup",
+          "support": "Inklusive 2 Wochen Testphase"
         }
       },
       "automation": {
-        "name": "Workflow-Automatisierung",
-        "headline": "80% weniger manuelle Arbeit",
-        "description": "Optimieren Sie wiederkehrende Prozesse und integrieren Sie Ihre Tools. Skalieren Sie ohne zusätzliche Einstellungen.",
+        "name": "Workflow-Automation",
+        "headline": "Prozesse Optimieren",
+        "description": "Verbinden Sie Ihre bestehenden Tools (CRM, E-Mail, Tabellen) für einen nahtlosen Datenfluss. Ich implementiere automatisierte Systeme, die repetitive Aufgaben übernehmen und Datengenauigkeit sicherstellen.",
         "pricing": "Ab 2.000 €",
         "timeline": "2-4 Wochen",
         "features": {
-          "analysis": "Workflow-Analyse & Mapping",
-          "integration": "Tool- & API-Integrationen",
-          "workflows": "Automatisierte Workflows & Trigger",
-          "documentation": "Vollständige Dokumentation",
-          "training": "Team-Schulung",
-          "support": "30 Tage Support inklusive"
+          "analysis": "Prozess-Audit & Strategie",
+          "integration": "API- & Tool-Verbindung",
+          "workflows": "Logik- & Trigger-Setup",
+          "documentation": "Dokumentation",
+          "training": "Systemübergabe & Einweisung",
+          "support": "Inklusive 2 Wochen Testphase"
         }
       },
       "ai": {
-        "name": "KI-Lösungen",
-        "headline": "KI, die für Sie arbeitet",
-        "description": "Interne Assistenten, Chatbots und Wissenssysteme. Praktische KI-Lösungen, kein Hype.",
+        "name": "Interne AI",
+        "headline": "Intelligente Wissensnutzung",
+        "description": "Greifen Sie sofort auf Ihr Unternehmenswissen zu. Ich verbinde sichere KI-Assistenten mit Ihren Dokumenten, damit Ihr Team präzise Antworten direkt aus Ihren internen Daten erhält.",
         "pricing": "Ab 4.000 €",
         "timeline": "4-6 Wochen",
         "features": {
-          "chatbot": "Individueller KI-Chatbot oder Assistent",
-          "rag": "Wissensdatenbank / RAG-System",
-          "integration": "Integration mit Ihren Tools",
-          "training": "KI-Modell-Feinabstimmung",
-          "maintenance": "Laufender Wartungsplan",
-          "scaling": "Skalierbar mit der Nutzung"
+          "chatbot": "Eigener KI-Assistent",
+          "rag": "Verbindung zu Ihren Daten",
+          "integration": "Integration in Ihre Tools",
+          "security": "Datenschutz-Setup",
+          "training": "Systemübergabe & Einweisung",
+          "support": "Inklusive 2 Wochen Testphase"
+        }
+      },
+      "custom": {
+        "name": "Individuelles Projekt",
+        "headline": "Maßgeschneiderte Entwicklung",
+        "description": "Für Projekte mit speziellen Anforderungen oder komplexem Umfang. Wir gemeinsam definieren einen konkreten Fahrplan, um genau das zu bauen, was Ihr Unternehmen benötigt.",
+        "pricing": "Individuelles Angebot",
+        "timeline": "Flexibel",
+        "features": {
+          "scoping": "Anforderungs-Workshop",
+          "roadmap": "Maßgeschneiderter Projektplan",
+          "development": "Meilenstein-basierte Lieferung",
+          "flexibility": "Technologieunabhängig",
+          "handover": "Übergabe des Quellcodes",
+          "support": "Inklusive 2 Wochen Testphase"
         }
       }
     },
@@ -481,10 +496,10 @@
     "viewCodeButton": "Code anzeigen",
     "projects": {
       "project-1": {
-        "title": "Meeting Intelligence",
-        "description": "KI-gestütztes Meeting-Analyse- und Dokumentationssystem. Automatische Transkription, Zusammenfassung und Extraktion von Action Items aus Meetings mit nahtloser Notion-Integration für organisiertes Workflow-Management.",
-        "techStack": "Groq AI (Whisper), LLM-Analyse, Notion-Integration, Next.js",
-        "implementationAreas": "Geschäftswesen, Professionelle Dienstleistungen, Remote-Arbeit, Persönliche Produktivität"
+        "title": "Voice-to-Notion Automation",
+        "description": "Problem: Wertvolle Ideen und Aufgaben gehen oft in langen Audioaufnahmen oder unordentlichen Notizen verloren. \n\nLösung: Diese Anwendung verwandelt jedes Sprachmemo oder Meeting-Aufzeichnung in eine strukturierte Notion-Seite. In unter 30 Sekunden erhalten Sie ein Transkript, eine Zusammenfassung, eine To-Do-Liste und eine Stimmungsanalyse – die komplette Automatisierung Ihrer Nachbereitung.",
+        "techStack": "KI-Sprachverarbeitung, Stimmungsanalyse, Notion API, Next.js",
+        "implementationAreas": "Agenturabläufe, Kundenmanagement, Assistenzsysteme"
       }
     }
   }

@@ -9,7 +9,7 @@
   "Hero": {
     "availableForCollaboration": "Tillgänglig för samarbete",
     "fullStackDeveloper": "Automatisering & AI-drivna Webb-MVPs",
-    "description": "Jag hjälper små och medelstora företag och byråer att effektivisera sina digitala processer genom arbetsflödesautomatisering, interna AI-assistenter och pragmatiska webb-MVPs — mindre manuellt arbete, mer effektivitet.",
+    "description": "Jag hjälper småföretag och byråer att spara tid genom att automatisera arbetsflöden, sätta upp interna AI-assistenter och bygga praktiska webbverktyg för att snabbt lansera idéer. Mindre manuellt arbete, högre effektivitet. Direkt samarbete och helhetsleverans.",
     "bookFreeCall": "Boka ett Gratis 15-Min Samtal",
     "learnMoreAboutMe": "Läs mer om mig",
     "moreAboutMe": "Mer om mig på"
@@ -92,27 +92,27 @@
     }
   },
   "Capabilities": {
-    "title": "Vad Jag Levererar",
-    "subtitle": "Modern teknik, översatt till verkliga affärsresultat.",
+    "title": "Vad jag levererar",
+    "subtitle": "Praktisk teknik som löser verkliga affärsproblem.",
     "launch": {
-      "title": "Lansera Snabbt",
-      "headline": "Live på 4-8 veckor",
-      "description": "Från idé till produktionsklar applikation. Inga månaders väntan — nå marknaden före dina konkurrenter."
+      "title": "Lansering",
+      "headline": "Nå resultat inom några veckor",
+      "description": "Vi fokuserar på det viktigaste för att du ska få en fungerande produkt snabbt. Validera din idé direkt utan att vänta i månader."
     },
     "scale": {
-      "title": "Skala Sömlöst",
-      "headline": "Hantera 10x tillväxt automatiskt",
-      "description": "Enterprise-infrastruktur som växer med dig. Din app hanterar trafiktoppar utan ansträngning."
+      "title": "Skalning",
+      "headline": "Byggt på en stabil grund",
+      "description": "Jag använder pålitliga molnsystem som förblir snabba och stabila även när du växer. Du behöver inte bygga om bara för att du får fler kunder."
     },
     "security": {
-      "title": "Enterprise-Säkerhet",
-      "headline": "Dataskydd på banknivå",
-      "description": "Säker autentisering, krypterad data och branschens bästa praxis. Dina användares data förblir säker."
+      "title": "Säkerhet",
+      "headline": "Datasäkerhet på riktigt",
+      "description": "Standardkryptering och säkra inloggningar för att hålla din (och dina kunders) data säker och privat."
     },
-    "global": {
-      "title": "Expandera Globalt",
-      "headline": "Redo för 5+ språk",
-      "description": "Inbyggd internationalisering för europeiska och globala marknader. Expandera utan att bygga om."
+    "performance": {
+      "title": "Prestanda",
+      "headline": "Snabb och sökmotorvänlig",
+      "description": "Din sida laddar direkt och är byggd så att Google förstår den. Hög hastighet innebär nöjdare användare och bättre synlighet."
     }
   },
   "Certifications": {
@@ -379,50 +379,65 @@
       "subtitle": "Från idé till lansering — webbappar, automatisering och AI-lösningar för verklig affärsnytta."
     },
     "packages": {
-      "cta": "Boka Gratis Konsultation",
+      "cta": "Boka ett gratis samtal",
       "mvp": {
-        "name": "MVP-Lansering",
-        "headline": "Lansera på 4-8 Veckor",
-        "description": "Full-stack webbapplikationer som hjälper dig validera idéer snabbt och nå marknaden före konkurrenterna.",
+        "name": "MVP-lansering",
+        "headline": "Validera och lansera snabbt",
+        "description": "Digitalisera manuella processer med skräddarsydda webbapplikationer. Jag bygger mjukvara anpassad efter era specifika arbetsflöden, vilket gör att ni kan hantera fler kunder effektivt och säkert.",
         "pricing": "Från 3 000 €",
         "timeline": "4-8 veckor",
         "features": {
           "fullStack": "Full-stack webbapplikation",
-          "responsive": "Responsiv design för alla enheter",
-          "database": "Datadriven med säker databas",
-          "auth": "Användarautentisering och hantering",
-          "deployment": "Produktionsdriftsättning på Vercel",
-          "support": "30 dagars support efter lansering"
+          "responsive": "Mobilanpassad design",
+          "database": "Säker databasuppsättning",
+          "auth": "Användarinloggning & konton",
+          "deployment": "Produktionssättning",
+          "support": "Inkluderar 2 veckors testperiod"
         }
       },
       "automation": {
-        "name": "Arbetsflödesautomatisering",
-        "headline": "Minska Manuellt Arbete med 80%",
-        "description": "Effektivisera repetitiva processer och integrera dina verktyg. Skala utan att anställa fler.",
+        "name": "Workflow Automation",
+        "headline": "Effektivare verksamhet",
+        "description": "Koppla ihop era befintliga verktyg (CRM, E-post, Kalkylark) för ett sömlöst dataflöde. Jag implementerar automatiserade system som hanterar repetitiva uppgifter och säkerställer datakvalitet.",
         "pricing": "Från 2 000 €",
         "timeline": "2-4 veckor",
         "features": {
-          "analysis": "Arbetsflödesanalys och kartläggning",
-          "integration": "Verktygs- och API-integrationer",
-          "workflows": "Automatiserade arbetsflöden och triggers",
-          "documentation": "Fullständig dokumentation",
-          "training": "Teamutbildning",
-          "support": "30 dagars support inkluderat"
+          "analysis": "Processanalys & strategi",
+          "integration": "API- & verktygskopplingar",
+          "workflows": "Logik & triggers",
+          "documentation": "Dokumentation",
+          "training": "Systemöverlämning & introduktion",
+          "support": "Inkluderar 2 veckors testperiod"
         }
       },
       "ai": {
-        "name": "AI-Lösningar",
-        "headline": "AI som Arbetar för Dig",
-        "description": "Interna assistenter, chatbottar och kunskapssystem. Praktisk AI, ingen hype.",
+        "name": "Intern AI",
+        "headline": "Smart kunskapshantering",
+        "description": "Få direkt tillgång till företagets samlade kunskap. Jag kopplar säkra AI-assistenter till era dokument, vilket gör att teamet kan få exakta svar baserade på er interna data.",
         "pricing": "Från 4 000 €",
         "timeline": "4-6 veckor",
         "features": {
-          "chatbot": "Anpassad AI-chatbot eller assistent",
-          "rag": "Kunskapsbas / RAG-system",
-          "integration": "Integration med dina verktyg",
-          "training": "AI-modell finjustering",
-          "maintenance": "Löpande underhållsplan",
-          "scaling": "Skalbar med användning"
+          "chatbot": "Anpassad AI-assistent",
+          "rag": "Koppling till er data",
+          "integration": "Integration i nuvarande verktyg",
+          "security": "Dataskyddsinställningar",
+          "training": "Systemöverlämning & introduktion",
+          "support": "Inkluderar 2 veckors testperiod"
+        }
+      },
+      "custom": {
+        "name": "Skräddarsytt Projekt",
+        "headline": "Anpassad Utveckling",
+        "description": "För projekt med unika krav eller komplex omfattning. Vi tar fram en specifik färdplan för att bygga exakt det ert företag behöver, oberoende av standardpaket.",
+        "pricing": "Offert",
+        "timeline": "Flexibel",
+        "features": {
+          "scoping": "Kravspecifikations-workshop",
+          "roadmap": "Skräddarsydd projektplan",
+          "development": "Etappbaserad leverans",
+          "flexibility": "Teknologioberoende",
+          "handover": "Överlämning av källkod",
+          "support": "Inkluderar 2 veckors testperiod"
         }
       }
     },
@@ -481,10 +496,10 @@
     "viewCodeButton": "Visa Kod",
     "projects": {
       "project-1": {
-        "title": "Meeting Intelligence",
-        "description": "AI-drivet system för mötesanalys och dokumentation. Transkriberar, sammanfattar och extraherar automatiskt åtgärdspunkter från möten med sömlös Notion-integration för organiserad arbetsflödeshantering.",
-        "techStack": "Groq AI (Whisper), LLM-analys, Notion-integration, Next.js",
-        "implementationAreas": "Företag & Verksamhet, Professionella Tjänster, Distansarbete, Personlig Produktivitet"
+        "title": "Voice-to-Notion Automation",
+        "description": "Problem: Värdefulla idéer och uppgifter försvinner ofta i långa ljudinspelningar eller röriga anteckningar. \n\nLösning: Denna tjänst omvandlar röstmemon och mötesinspelningar till en strukturerad Notion-sida. På under 30 sekunder får du en transkribering, en tydlig sammanfattning, en att-göra-lista och en analys av tonläget – vilket helt automatiserar din administration efter mötet.",
+        "techStack": "AI-röstbehandling, Attitydanalys, Notion API, Next.js",
+        "implementationAreas": "Byråverksamhet, Kundhantering, Ledningsstöd"
       }
     }
   }

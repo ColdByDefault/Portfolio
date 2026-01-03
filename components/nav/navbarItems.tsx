@@ -19,6 +19,7 @@ import Link from "next/link";
 import LanguageSwitcher from "@/components/languages/language-switcher";
 import { ContactSheet } from "@/components/contact";
 import { useTranslations } from "next-intl";
+import { CTAButton } from "@/components/ui/cta-button";
 
 interface NavItem {
   name: string;
@@ -157,24 +158,20 @@ export function DesktopControls({ bookingCTA }: DesktopControlsProps) {
       <div className="border-r pr-1 xl:border-r-2 xl:pr-2">
         <LanguageSwitcher />
       </div>
-      <Link
-        href="https://calendly.com/abo-ayash-yazan/intro-call"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Book a free consultation call"
-      >
-        <Button
+      <div className="hidden xl:block">
+        <CTAButton
+          label={bookingCTA.label}
           variant="default"
-          className="inline-flex items-center border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs xl:text-sm px-3 xl:px-4 py-1.5 xl:py-2 h-auto cursor-pointer transition-colors duration-300"
-        >
-          <BookingIcon
-            className="h-3 w-3 xl:h-4 xl:w-4 shrink-0"
-            aria-hidden={true}
-          />
-          <span className="hidden xl:inline ml-2">{bookingCTA.label}</span>
-          <span className="xl:hidden ml-1">Book</span>
-        </Button>
-      </Link>
+          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-sm px-4 py-2 h-auto cursor-pointer transition-colors duration-300"
+        />
+      </div>
+      <div className="xl:hidden">
+        <CTAButton
+          label="Book"
+          variant="default"
+          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-3 py-1.5 h-auto cursor-pointer transition-colors duration-300"
+        />
+      </div>
     </div>
   );
 }
@@ -187,21 +184,23 @@ export function MobileControls({
   return (
     <div className="flex lg:hidden items-center space-x-1 sm:space-x-2 px-2 sm:px-4">
       <ModeToggle />
-      <Link
-        href="https://calendly.com/abo-ayash-yazan/intro-call"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Book a free consultation call"
-      >
-        <Button
+      <div className="hidden sm:block">
+        <CTAButton
+          label="Book"
           size="sm"
           variant="outline"
-          className="inline-flex items-center border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-2 sm:px-3 py-1 h-7 sm:h-8 cursor-pointer transition-colors duration-300"
-        >
-          <BookingIcon className="h-3 w-3 shrink-0" aria-hidden={true} />
-          <span className="hidden sm:inline ml-1">Book</span>
-        </Button>
-      </Link>
+          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-3 py-1 h-8 cursor-pointer transition-colors duration-300"
+        />
+      </div>
+      <div className="sm:hidden">
+        <CTAButton
+          label="Book"
+          size="sm"
+          variant="outline"
+          showIcon={false}
+          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-2 py-1 h-7 cursor-pointer transition-colors duration-300"
+        />
+      </div>
     </div>
   );
 }
@@ -264,21 +263,12 @@ export function MobileNavigation({
 
         {/* CTA Button */}
         <div className="pt-4 border-t">
-          <Link
-            href="https://calendly.com/abo-ayash-yazan/intro-call"
-            target="_blank"
-            rel="noopener noreferrer"
+          <CTAButton
+            label={bookingCTA.label}
+            variant="outline"
+            className="w-full border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 py-3 cursor-pointer transition-colors duration-300"
             onClick={onLinkClick}
-            aria-label="Book a free consultation call"
-          >
-            <Button
-              variant="outline"
-              className="w-full border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 py-3 cursor-pointer transition-colors duration-300"
-            >
-              <BookingIcon className="h-5 w-5 mr-2" aria-hidden={true} />
-              {bookingCTA.label}
-            </Button>
-          </Link>
+          />
         </div>
       </div>
     </SheetContent>

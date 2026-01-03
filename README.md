@@ -1,6 +1,6 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V5.3.3
+# ColdByDefault Portfolio · V5.3.6
 
 Modern, secure, high‑performance developer portfolio built with Next.js 16, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
@@ -9,20 +9,6 @@ Modern, secure, high‑performance developer portfolio built with Next.js 16, Ty
 **Live:** https://www.coldbydefault.com • **Docs:** https://docs.coldbydefault.com/ • **Stack:** Next.js 16 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.6 · Prisma ORM 7 · Neon PostgreSQL · Zod 4.x · ESLint 9.x · Vercel
 
 </div>
-
----
-
-v2
-
-[![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/dfbc172c-fd3e-46d8-a8b1-31aeec64a895.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/dfbc172c-fd3e-46d8-a8b1-31aeec64a895)
-
-v3
-
-[![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/beb9337a-f033-4377-9e03-26f96c36a41a.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/beb9337a-f033-4377-9e03-26f96c36a41a)
-
-latest >= 5
-
-[![wakatime](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/76e31353-a33c-4db5-9263-8ede3103f951.svg)](https://wakatime.com/badge/user/c4621892-41e0-4c29-a8bc-05597d124f63/project/76e31353-a33c-4db5-9263-8ede3103f951)
 
 ---
 
