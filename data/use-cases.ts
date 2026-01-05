@@ -35,17 +35,4 @@ export const useCaseProjects: UseCaseProject[] = [
     githubLink: "",
     implementationAreasKey: "Usecases.comingSoon",
   },
-  /*   {
-    id: "project-3",
-    titleKey: "Usecases.projects.project-2.title",
-    descriptionKey: "Usecases.projects.project-2.description",
-    screenshots: [
-      "/assets/use-cases/use-case2-1.png",
-      "/assets/use-cases/use-case2-2.png",
-    ],
-    techStack: [{ name: "Next.js" }, { name: "TypeScript" }],
-    demoLink: "https://coldbydefault.com/rio-calculator",
-    githubLink: "",
-    implementationAreasKey: "Usecases.projects.project-2.implementationAreas",
-  }, */
 ];
