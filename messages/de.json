@@ -497,9 +497,36 @@
     "projects": {
       "project-1": {
         "title": "Voice-to-Notion Automation",
-        "description": "Problem: Wertvolle Ideen und Aufgaben gehen oft in langen Audioaufnahmen oder unordentlichen Notizen verloren. \n\nLösung: Diese Anwendung verwandelt jedes Sprachmemo oder Meeting-Aufzeichnung in eine strukturierte Notion-Seite. In unter 30 Sekunden erhalten Sie ein Transkript, eine Zusammenfassung, eine To-Do-Liste und eine Stimmungsanalyse – die komplette Automatisierung Ihrer Nachbereitung.",
+        "description": "Wertvolle Ideen und Aufgaben gehen oft in langen Audioaufnahmen oder unordentlichen Notizen verloren? Diese Anwendung verwandelt jedes Sprachmemo oder Meeting-Aufzeichnung in eine strukturierte Notion-Seite. In unter 30 Sekunden erhalten Sie ein Transkript, eine Zusammenfassung, eine To-Do-Liste und eine Stimmungsanalyse – die komplette Automatisierung Ihrer Nachbereitung. Auf Kundeninfrastruktur bereitgestellt.",
         "techStack": "KI-Sprachverarbeitung, Stimmungsanalyse, Notion API, Next.js",
         "implementationAreas": "Agenturabläufe, Kundenmanagement, Assistenzsysteme"
+      },
+      "project-2": {
+        "title": "ROI-Rechner für Automatisierung",
+        "description": "Ein interaktives Tool, das Unternehmen hilft, die finanziellen Auswirkungen der Automatisierung manueller Arbeitsabläufe zu quantifizieren. Es berechnet jährliche Kosten, prognostizierte Einsparungen und den Amortisationszeitraum in Wochen und bietet eine klare Visualisierung der Kosten-Nutzen-Analyse.",
+        "techStack": "React, TypeScript, Tailwind CSS",
+        "implementationAreas": "Finanzanalyse, Geschäftsprozessautomatisierung, Kostenoptimierung"
+      }
+    }
+  },
+  "LiveTools": {
+    "rio": {
+      "title": "ROI-Rechner für Automatisierung",
+      "description": "Sehen Sie genau, wie viel Geld manuelle Aufgaben Ihr Unternehmen kosten.",
+      "inputs": {
+        "hoursPerWeek": "Zeitaufwand für Aufgabe (Stunden/Woche)",
+        "hourlyRate": "Stundensatz des Mitarbeiters",
+        "hourlyRateHint": "Inklusive Gehalt + Nebenkosten (Software, Büro usw.)",
+        "automationCost": "Geschätzte Investition für Automatisierung"
+      },
+      "results": {
+        "burnRateLabel": "Jährliche \"Verbrennungsrate\"",
+        "burnRateDesc": "Diesen Betrag verlieren Sie jedes Jahr durch manuelle Arbeit.",
+        "savingsLabel": "Prognostizierte Einsparung im 1. Jahr",
+        "roiTimelineLabel": "ROI-Zeitplan:",
+        "roiTimelineText": "Die Automatisierung amortisiert sich in nur <bold>{{weeks}} Wochen</bold>.",
+        "notProfitableTitle": "Noch nicht profitabel",
+        "notProfitableDesc": "Basierend auf diesen Zahlen ist manuelle Arbeit vorerst günstiger, es sei denn, Sie skalieren."
       }
     }
   }

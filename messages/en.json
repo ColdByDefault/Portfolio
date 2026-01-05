@@ -497,9 +497,36 @@
     "projects": {
       "project-1": {
         "title": "Voice-to-Notion Automation",
-        "description": "Problem: Valuable ideas and to-dos often get lost in long audio recordings or messy notes. \n\nSolution: This SaaS transforms any voice memo or meeting recording into a structured Notion page. In under 30 seconds, it delivers a full transcript, a clear summary, a list of action items, and a sentiment check—completely automating your post-meeting admin work.",
+        "description": "Valuable ideas and to-dos often get lost in long audio recordings or messy notes? This SaaS transforms any voice memo or meeting recording into a structured Notion page. In under 30 seconds, it delivers a full transcript, a clear summary, a list of action items, and a sentiment check—completely automating your post-meeting admin work. Deployed to client infrastructure.",
         "techStack": "AI Voice Processing, Sentiment Analysis, Notion API, Next.js",
         "implementationAreas": "Agency Operations, Client Management, Executive Support"
+      },
+      "project-2": {
+      "title": "Automation ROI Calculator",
+      "description": "An interactive tool designed to help businesses quantify the financial impact of automating manual workflows. It calculates annual burn rates, projected savings, and the break-even timeline in weeks, providing a clear visualization of cost-benefit analysis.",
+      "techStack": "React, TypeScript, Tailwind CSS",
+      "implementationAreas": "Financial Analysis, Business Process Automation, Cost Optimization"
+    }
+    }
+  },
+  "LiveTools": {
+    "rio": {
+      "title": "Automation ROI Calculator",
+      "description": "See exactly how much money manual tasks are costing your business.",
+      "inputs": {
+        "hoursPerWeek": "Time spent on task (Hours/Week)",
+        "hourlyRate": "Employee Hourly Cost",
+        "hourlyRateHint": "Include salary + overhead (software, office, etc.)",
+        "automationCost": "Estimated Automation Investment"
+      },
+      "results": {
+        "burnRateLabel": "Annual \"Burn Rate\"",
+        "burnRateDesc": "You lose this every year doing it manually.",
+        "savingsLabel": "Projected 1st Year Savings",
+        "roiTimelineLabel": "ROI Timeline:",
+        "roiTimelineText": "The automation pays for itself in just {weeks} weeks.",
+        "notProfitableTitle": "Not profitable yet",
+        "notProfitableDesc": "Based on these numbers, manual work might be cheaper for now unless you scale up."
       }
     }
   }

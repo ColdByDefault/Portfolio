@@ -497,9 +497,36 @@
     "projects": {
       "project-1": {
         "title": "Voice-to-Notion Automation",
-        "description": "Problem: Värdefulla idéer och uppgifter försvinner ofta i långa ljudinspelningar eller röriga anteckningar. \n\nLösning: Denna tjänst omvandlar röstmemon och mötesinspelningar till en strukturerad Notion-sida. På under 30 sekunder får du en transkribering, en tydlig sammanfattning, en att-göra-lista och en analys av tonläget – vilket helt automatiserar din administration efter mötet.",
+        "description": "Värdefulla idéer och uppgifter försvinner ofta i långa ljudinspelningar eller röriga anteckningar? Denna tjänst omvandlar röstmemon och mötesinspelningar till en strukturerad Notion-sida. På under 30 sekunder får du en transkribering, en tydlig sammanfattning, en att-göra-lista och en analys av tonläget – vilket helt automatiserar din administration efter mötet. Driftsatt på kundens infrastruktur.",
         "techStack": "AI-röstbehandling, Attitydanalys, Notion API, Next.js",
         "implementationAreas": "Byråverksamhet, Kundhantering, Ledningsstöd"
+      },
+      "project-2": {
+        "title": "ROI-kalkylator för automatisering",
+        "description": "Ett interaktivt verktyg utformat för att hjälpa företag att kvantifiera den ekonomiska effekten av att automatisera manuella arbetsflöden. Det beräknar årliga kostnader, beräknade besparingar och återbetalningstiden i veckor, vilket ger en tydlig visualisering av kostnads-nyttoanalysen.",
+        "techStack": "React, TypeScript, Tailwind CSS",
+        "implementationAreas": "Finansiell analys, Affärsprocessautomatisering, Kostnadsoptimering"
+      }
+    }
+  },
+  "LiveTools": {
+    "rio": {
+      "title": "ROI-kalkylator för automatisering",
+      "description": "Se exakt hur mycket pengar manuella uppgifter kostar ditt företag.",
+      "inputs": {
+        "hoursPerWeek": "Tid spenderad på uppgiften (Timmar/Vecka)",
+        "hourlyRate": "Anställds timkostnad",
+        "hourlyRateHint": "Inkludera lön + omkostnader (programvara, kontor, etc.)",
+        "automationCost": "Beräknad investering i automatisering"
+      },
+      "results": {
+        "burnRateLabel": "Årlig \"Burn Rate\"",
+        "burnRateDesc": "Du förlorar detta varje år genom att göra det manuellt.",
+        "savingsLabel": "Beräknad besparing år 1",
+        "roiTimelineLabel": "ROI-tidslinje:",
+        "roiTimelineText": "Automatiseringen betalar sig själv på bara <bold>{{weeks}} veckor</bold>.",
+        "notProfitableTitle": "Inte lönsamt än",
+        "notProfitableDesc": "Baserat på dessa siffror kan manuellt arbete vara billigare just nu om du inte skalar upp."
       }
     }
   }

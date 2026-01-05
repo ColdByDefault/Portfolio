@@ -497,9 +497,36 @@
     "projects": {
       "project-1": {
         "title": "Automatisation Voice-to-Notion",
-        "description": "Problème : Les idées précieuses et les tâches se perdent souvent dans de longs enregistrements audio ou des notes désordonnées. \n\nSolution : Ce SaaS transforme n'importe quel mémo vocal ou enregistrement de réunion en une page Notion structurée. En moins de 30 secondes, il génère une transcription, un résumé clair, une liste de tâches et une analyse de sentiment — automatisant entièrement votre travail administratif post-réunion.",
+        "description": "Les idées précieuses et les tâches se perdent souvent dans de longs enregistrements audio ou des notes désordonnées? Ce SaaS transforme n'importe quel mémo vocal ou enregistrement de réunion en une page Notion structurée. En moins de 30 secondes, il génère une transcription, un résumé clair, une liste de tâches et une analyse de sentiment — automatisant entièrement votre travail administratif post-réunion. Déployé sur l'infrastructure du client.",
         "techStack": "Traitement vocal IA, Analyse de sentiment, API Notion, Next.js",
         "implementationAreas": "Opérations d'agence, Gestion client, Support exécutif"
+      },
+      "project-2": {
+        "title": "Calculateur de ROI d'automatisation",
+        "description": "Un outil interactif conçu pour aider les entreprises à quantifier l'impact financier de l'automatisation des flux de travail manuels. Il calcule les coûts annuels, les économies projetées et le délai de retour sur investissement en semaines, offrant une visualisation claire de l'analyse coûts-avantages.",
+        "techStack": "React, TypeScript, Tailwind CSS",
+        "implementationAreas": "Analyse financière, Automatisation des processus métier, Optimisation des coûts"
+      }
+    }
+  },
+  "LiveTools": {
+    "rio": {
+      "title": "Calculateur de ROI d'automatisation",
+      "description": "Voyez exactement combien les tâches manuelles coûtent à votre entreprise.",
+      "inputs": {
+        "hoursPerWeek": "Temps passé sur la tâche (Heures/Semaine)",
+        "hourlyRate": "Coût horaire de l'employé",
+        "hourlyRateHint": "Inclure salaire + frais généraux (logiciels, bureau, etc.)",
+        "automationCost": "Investissement estimé pour l'automatisation"
+      },
+      "results": {
+        "burnRateLabel": "\"Taux de combustion\" annuel",
+        "burnRateDesc": "Vous perdez ce montant chaque année en le faisant manuellement.",
+        "savingsLabel": "Économies projetées la 1ère année",
+        "roiTimelineLabel": "Chronologie du ROI :",
+        "roiTimelineText": "L'automatisation est rentabilisée en seulement <bold>{{weeks}} semaines</bold>.",
+        "notProfitableTitle": "Pas encore rentable",
+        "notProfitableDesc": "D'après ces chiffres, le travail manuel pourrait être moins cher pour l'instant, sauf si vous passez à l'échelle supérieure."
       }
     }
   }
