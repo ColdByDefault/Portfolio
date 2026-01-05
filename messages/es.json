@@ -500,6 +500,33 @@
         "description": "Las ideas valiosas y las tareas pendientes a menudo se pierden en largas grabaciones de audio o notas desordenadas? Este SaaS transforma cualquier nota de voz o grabación de reunión en una página de Notion estructurada. En menos de 30 segundos, entrega una transcripción completa, un resumen claro, una lista de tareas y un análisis de sentimiento, automatizando por completo el trabajo administrativo post-reunión. Implementado en infraestructura del cliente.",
         "techStack": "Procesamiento de voz IA, Análisis de sentimiento, API de Notion, Next.js",
         "implementationAreas": "Operaciones de agencia, Gestión de clientes, Soporte ejecutivo"
+      },
+      "project-2": {
+        "title": "Calculadora de ROI de Automatización",
+        "description": "Una herramienta interactiva diseñada para ayudar a las empresas a cuantificar el impacto financiero de automatizar flujos de trabajo manuales. Calcula los costes anuales, los ahorros proyectados y el plazo de amortización en semanas, proporcionando una visualización clara del análisis coste-beneficio.",
+        "techStack": "React, TypeScript, Tailwind CSS",
+        "implementationAreas": "Análisis financiero, Automatización de procesos de negocio, Optimización de costes"
+      }
+    }
+  },
+  "LiveTools": {
+    "rio": {
+      "title": "Calculadora de ROI de Automatización",
+      "description": "Vea exactamente cuánto dinero le cuestan las tareas manuales a su negocio.",
+      "inputs": {
+        "hoursPerWeek": "Tiempo dedicado a la tarea (Horas/Semana)",
+        "hourlyRate": "Coste por hora del empleado",
+        "hourlyRateHint": "Incluye salario + gastos generales (software, oficina, etc.)",
+        "automationCost": "Inversión estimada en automatización"
+      },
+      "results": {
+        "burnRateLabel": "\"Tasa de quema\" anual",
+        "burnRateDesc": "Pierde esta cantidad cada año haciéndolo manualmente.",
+        "savingsLabel": "Ahorro proyectado del 1er año",
+        "roiTimelineLabel": "Cronograma del ROI:",
+        "roiTimelineText": "La automatización se amortiza en solo <bold>{{weeks}} semanas</bold>.",
+        "notProfitableTitle": "Aún no es rentable",
+        "notProfitableDesc": "Según estos números, el trabajo manual podría ser más barato por ahora a menos que escale."
       }
     }
   }

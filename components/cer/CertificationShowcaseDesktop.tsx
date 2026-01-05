@@ -28,7 +28,6 @@ interface CertificationShowcaseDesktopProps {
 
 export function CertificationShowcaseDesktop({
   certifications,
-  logic,
   className,
 }: CertificationShowcaseDesktopProps) {
   const t = useTranslations("Certifications");

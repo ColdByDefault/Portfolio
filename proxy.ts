@@ -1,5 +1,5 @@
 /**
- * Middleware for handling redirects and locale management
+ * Proxy (Middleware => deprecated) for handling redirects and locale management
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
@@ -131,6 +131,7 @@ export function proxy(request: NextRequest) {
     "/about",
     "/services",
     "/projects",
+    "/rio-calculator",
     "/blog",
     "/library",
     "/media",
