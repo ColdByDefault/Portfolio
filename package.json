@@ -1,6 +1,6 @@
 {
   "name": "coldbydefault-portfolio",
-  "version": "5.3.6",
+  "version": "5.3.8",
   "description": "Professional portfolio of Yazan Abo-Ayash (ColdByDefault™) - Full Stack Developer specializing in AI and automation, Next.js and modern web technologies.",
   "keywords": [
     "portfolio",
@@ -11,6 +11,7 @@
     "react-developer",
     "nodejs-developer",
     "python-developer",
+    "MCP",
     "web-development",
     "MVP development",
     "ai",
@@ -24,7 +25,7 @@
     "vercel",
     "modern-web-technologies"
   ],
-  "author": "Yazan Abo-Ayash (ColdByDefault™) <contact@coldbydefault.com>",
+  "author": "Yazan Abo-Ayash (ColdByDefault™)",
   "license": "Copyright 2026 Yazan Abo-Ayash. All Rights Reserved.",
   "private": true,
   "scripts": {
