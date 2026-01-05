@@ -11,6 +11,7 @@ import {
   Briefcase,
   FolderGit2,
   User,
+  Library,
   Contact,
   Calendar,
 } from "lucide-react";
@@ -73,6 +74,11 @@ export function useNavItems(): NavItem[] {
       name: t("about"),
       href: "/about",
       icon: User,
+    },
+    {
+      name: "Hub",
+      href: "/media",
+      icon: Library,
     },
   ];
 }
@@ -137,7 +143,6 @@ export function DesktopNavigation({
 }
 
 export function DesktopControls({ bookingCTA }: DesktopControlsProps) {
-  const BookingIcon = bookingCTA.icon;
   return (
     <div className="hidden lg:flex items-center gap-1 xl:gap-2 text-sm">
       <div className="border-r pr-1 xl:border-r-2 xl:pr-2">
@@ -178,9 +183,7 @@ export function DesktopControls({ bookingCTA }: DesktopControlsProps) {
 
 export function MobileControls({
   onMenuToggle: _onMenuToggle,
-  bookingCTA,
 }: MobileControlsProps) {
-  const BookingIcon = bookingCTA.icon;
   return (
     <div className="flex lg:hidden items-center space-x-1 sm:space-x-2 px-2 sm:px-4">
       <ModeToggle />
@@ -220,7 +223,6 @@ export function MobileNavigation({
   bookingCTA,
 }: MobileNavigationProps) {
   const t = useTranslations("Navigation");
-  const BookingIcon = bookingCTA.icon;
 
   return (
     <SheetContent

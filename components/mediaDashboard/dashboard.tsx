@@ -13,13 +13,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import {
-  FileText,
-  User,
-  FolderGit2,
-  BookOpen,
-  ExternalLink,
-} from "lucide-react";
+import { FileText, BookOpen, ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 interface NavigationCard {
@@ -42,18 +36,6 @@ export function MediaDashboard() {
       icon: FileText,
     },
     {
-      title: t("cards.about.title"),
-      description: t("cards.about.description"),
-      href: "/about",
-      icon: User,
-    },
-    {
-      title: t("cards.projects.title"),
-      description: t("cards.projects.description"),
-      href: "/#projects",
-      icon: FolderGit2,
-    },
-    {
       title: t("cards.library.title"),
       description: t("cards.library.description"),
       href: "/library",
@@ -65,7 +47,7 @@ export function MediaDashboard() {
       <div className="container mx-auto px-4 py-8 flex-1">
         {/* Header Section */}
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             {t("title")}
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -74,7 +56,7 @@ export function MediaDashboard() {
         </div>
 
         {/* Navigation Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {navigationCards.map((card) => {
             const Icon = card.icon;
             const isDisabled = card.isComingSoon;
@@ -86,15 +68,15 @@ export function MediaDashboard() {
             }) => {
               if (isDisabled) {
                 return (
-                  <Card className="relative overflow-hidden transition-all duration-300 hover:shadow-lg opacity-60 cursor-not-allowed">
+                  <Card className="h-full relative overflow-hidden transition-all duration-300 hover:shadow-lg opacity-60 cursor-not-allowed">
                     {children}
                   </Card>
                 );
               }
 
               return (
-                <Link href={card.href} className="block group">
-                  <Card className="relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 group-hover:border-primary/50">
+                <Link href={card.href} className="block group h-full">
+                  <Card className="h-full relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 group-hover:border-primary/50">
                     {children}
                   </Card>
                 </Link>

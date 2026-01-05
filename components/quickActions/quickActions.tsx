@@ -143,7 +143,7 @@ export function QuickActions() {
 
     // Default actions for other routes
     return [
-      { href: "/media", icon: Home, label: t("allMedia"), variant: "default" },
+      { href: "/media", icon: Home, label: t("allMedia"), variant: "outline" },
       {
         href: "/blog",
         icon: FileText,
