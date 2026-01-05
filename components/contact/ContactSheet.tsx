@@ -16,7 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, Mails } from "lucide-react";
 import {
   FaGithub,
   FaLinkedin,
@@ -90,6 +90,14 @@ export default function ContactSheet({
               variant="default"
               className="w-full border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-sm px-4 py-2 h-auto cursor-pointer transition-colors duration-300"
             />
+          </div>
+          <Separator />
+          {/* Email Section */}
+          <div className="flex gap-2 items-center">
+            <Mails className="h-4 w-4 shrink-0" />
+            <h3 className="text-sm font-light text-muted-foreground tracking-wide">
+              service@yazan-abo-ayash.de
+            </h3>
           </div>
           <Separator />
           {/* Social Media Section */}
