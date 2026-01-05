@@ -502,12 +502,14 @@
         "implementationAreas": "Agency Operations, Client Management, Executive Support"
       },
       "project-2": {
-      "title": "Automation ROI Calculator",
-      "description": "An interactive tool designed to help businesses quantify the financial impact of automating manual workflows. It calculates annual burn rates, projected savings, and the break-even timeline in weeks, providing a clear visualization of cost-benefit analysis.",
-      "techStack": "React, TypeScript, Tailwind CSS",
-      "implementationAreas": "Financial Analysis, Business Process Automation, Cost Optimization"
-    }
-    }
+        "title": "Automation ROI Calculator",
+        "description": "An interactive tool designed to help businesses quantify the financial impact of automating manual workflows. It calculates annual burn rates, projected savings, and the break-even timeline in weeks, providing a clear visualization of cost-benefit analysis.",
+        "description2":"Calculate automation savings and ROI.",
+        "techStack": "React, TypeScript, Tailwind CSS",
+        "implementationAreas": "Financial Analysis, Business Process Automation, Cost Optimization"
+      }
+    },
+    "comingSoon": "More use-cases coming soon..."
   },
   "LiveTools": {
     "rio": {

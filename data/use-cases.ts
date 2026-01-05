@@ -27,6 +27,16 @@ export const useCaseProjects: UseCaseProject[] = [
   },
   {
     id: "project-2",
+    titleKey: "Usecases.comingSoon",
+    descriptionKey: "Usecases.comingSoon",
+    screenshots: ["/default.png", "/default.png"],
+    techStack: [{ name: "Coming Soon" }],
+    demoLink: "",
+    githubLink: "",
+    implementationAreasKey: "Usecases.comingSoon",
+  },
+  /*   {
+    id: "project-3",
     titleKey: "Usecases.projects.project-2.title",
     descriptionKey: "Usecases.projects.project-2.description",
     screenshots: [
@@ -37,5 +47,5 @@ export const useCaseProjects: UseCaseProject[] = [
     demoLink: "https://coldbydefault.com/rio-calculator",
     githubLink: "",
     implementationAreasKey: "Usecases.projects.project-2.implementationAreas",
-  },
+  }, */
 ];

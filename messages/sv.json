@@ -498,6 +498,7 @@
       "project-1": {
         "title": "Voice-to-Notion Automation",
         "description": "Värdefulla idéer och uppgifter försvinner ofta i långa ljudinspelningar eller röriga anteckningar? Denna tjänst omvandlar röstmemon och mötesinspelningar till en strukturerad Notion-sida. På under 30 sekunder får du en transkribering, en tydlig sammanfattning, en att-göra-lista och en analys av tonläget – vilket helt automatiserar din administration efter mötet. Driftsatt på kundens infrastruktur.",
+        "description2": "Beräkna besparingar och ROI.",
         "techStack": "AI-röstbehandling, Attitydanalys, Notion API, Next.js",
         "implementationAreas": "Byråverksamhet, Kundhantering, Ledningsstöd"
       },
@@ -507,7 +508,8 @@
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Finansiell analys, Affärsprocessautomatisering, Kostnadsoptimering"
       }
-    }
+    },
+    "comingSoon": "Fler användningsfall kommer snart..."
   },
   "LiveTools": {
     "rio": {

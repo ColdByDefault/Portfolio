@@ -7,9 +7,12 @@
 import { useTranslations } from "next-intl";
 import { useCaseProjects } from "@/data/use-cases";
 import { ProjectCard } from "./project-card";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 export function ShowcaseSection() {
   const t = useTranslations("Usecases");
+  const tt = useTranslations("Usecases.projects.project-2");
 
   return (
     <section className="w-full py-12 md:py-16 lg:py-20">
@@ -20,6 +23,20 @@ export function ShowcaseSection() {
           </h2>
           <p className="mx-auto max-w-175 text-muted-foreground md:text-xl text-pretty">
             {t("subtitle")}
+          </p>
+        </div>
+
+        <div className="flex flex-col items-center justify-center gap-4 mb-12">
+          <Link href="/rio-calculator" target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="default"
+              className="gap-2 cursor-pointer hover:scale-105 transition-transform"
+            >
+              {tt("title")}
+            </Button>
+          </Link>
+          <p className="text-center text-muted-foreground max-w-md font-semibold">
+            {tt("description2")}
           </p>
         </div>
 
