@@ -497,7 +497,7 @@
     "projects": {
       "project-1": {
         "title": "Voice-to-Notion Automation",
-        "description": "Problem: Valuable ideas and to-dos often get lost in long audio recordings or messy notes. \n\nSolution: This SaaS transforms any voice memo or meeting recording into a structured Notion page. In under 30 seconds, it delivers a full transcript, a clear summary, a list of action items, and a sentiment check—completely automating your post-meeting admin work.",
+        "description": "Valuable ideas and to-dos often get lost in long audio recordings or messy notes? This SaaS transforms any voice memo or meeting recording into a structured Notion page. In under 30 seconds, it delivers a full transcript, a clear summary, a list of action items, and a sentiment check—completely automating your post-meeting admin work. Deployed to client infrastructure.",
         "techStack": "AI Voice Processing, Sentiment Analysis, Notion API, Next.js",
         "implementationAreas": "Agency Operations, Client Management, Executive Support"
       }
