@@ -51,7 +51,7 @@ export default function AboutPage() {
                     {t("badge")}
                   </Badge>
                   <h1
-                    className={`bg-linear-to-r text-transparent flex justify-center text-3xl sm:text-3xl md:text-4xl lg:text-5xl
+                    className={`bg-linear-to-r text-transparent flex text-3xl sm:text-3xl md:text-4xl lg:text-5xl
                             ${light} bg-clip-text font-extrabold
                           dark:from-gray-900 dark:to-gray-200`}
                   >
