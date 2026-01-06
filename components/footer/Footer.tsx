@@ -10,6 +10,7 @@ import {
   footerNavLinks,
 } from "@/data/footerLinks";
 import { SiVercel } from "react-icons/si";
+import { Mails } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -62,8 +63,12 @@ export default function Footer() {
         </div>
         <div className="border-t border-gray-200 dark:border-gray-800 py-4">
           <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0">
-            <div className="flex space-x-6 sm:flex-1">
+            <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-6 sm:flex-1">
               <Links links={socialLinks} className="flex space-x-6" />
+              <div className="flex gap-2 items-center text-xs text-gray-500 dark:text-gray-400">
+                <Mails className="h-3 w-3 shrink-0" />
+                <span>service@yazan-abo-ayash.de</span>
+              </div>
             </div>
             {/* Powered By Section */}
             <div className="flex items-center gap-4 sm:flex-1 justify-center">

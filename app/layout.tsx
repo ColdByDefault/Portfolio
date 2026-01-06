@@ -114,6 +114,9 @@ export default async function RootLayout({
         <meta name="author" content={seoConfigEN.author} />
         <meta name="keywords" content={seoConfigEN.keywords.join(", ")} />
 
+        {/* Disable browser auto-translation */}
+        <meta name="google" content="notranslate" />
+
         {/* Security Headers */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
         <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />

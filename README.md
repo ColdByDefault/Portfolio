@@ -345,10 +345,10 @@ Refer to `LICENSE` & `COPYRIGHT` files for formal wording.
 ---
 
 ## 16. Contact
-
+Services: service@yazan-abo-ayash.de
+Support: support@yazan-abo-ayash.de
 Portfolio: https://www.coldbydefault.com
-Documentation: https://docs.coldbydefault.com/
-Linktree: https://linktr.ee/ColdByDefault  
+Documentation: https://docs.coldbydefault.com/ 
 For professional or security inquiries, reach out via the official channels listed above.
 _P.S. If you find any bugs, they're not bugs - they're undocumented features!_
 

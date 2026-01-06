@@ -504,10 +504,12 @@
       "project-2": {
         "title": "ROI-kalkylator för automatisering",
         "description": "Ett interaktivt verktyg utformat för att hjälpa företag att kvantifiera den ekonomiska effekten av att automatisera manuella arbetsflöden. Det beräknar årliga kostnader, beräknade besparingar och återbetalningstiden i veckor, vilket ger en tydlig visualisering av kostnads-nyttoanalysen.",
+        "description2": "Beräkna automatiseringsbesparingar och ROI.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Finansiell analys, Affärsprocessautomatisering, Kostnadsoptimering"
       }
-    }
+    },
+    "comingSoon": "Fler användningsfall kommer snart..."
   },
   "LiveTools": {
     "rio": {

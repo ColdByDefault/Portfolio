@@ -103,6 +103,8 @@ const BrowserTranslationNotice = ({
 
   const supportedLocales = ["en", "de", "es", "fr", "sv"];
   const isUnsupportedBrowser = !supportedLocales.includes(browserLang);
+  const browserLangDisplay =
+    browserLang === "unknown" ? "UNKNOWN" : browserLang.toUpperCase();
 
   return (
     <div
@@ -118,12 +120,10 @@ const BrowserTranslationNotice = ({
             {isUnsupportedBrowser ? (
               <>
                 <span className="sm:hidden">
-                  Browser: {browserLang.toUpperCase()} (unsupported). Using
-                  English.
+                  Browser: {browserLangDisplay} (unsupported). Using English.
                 </span>
                 <span className="hidden sm:inline">
-                  Browser: {browserLang.toUpperCase()} (not supported). Using
-                  English.
+                  Browser: {browserLangDisplay} (not supported). Using English.
                 </span>
               </>
             ) : (
@@ -144,7 +144,7 @@ const BrowserTranslationNotice = ({
               size="sm"
               variant="outline"
               onClick={scrollToLanguageSwitcher}
-              className="text-xs h-6 px-2 flex-shrink-0"
+              className="text-xs h-6 px-2 shrink-0"
             >
               <Languages className="h-3 w-3 mr-1" />
               <span className="sm:hidden">Lang</span>
@@ -164,7 +164,7 @@ const BrowserTranslationNotice = ({
           size="sm"
           variant="ghost"
           onClick={handleDismiss}
-          className="h-11 w-11 p-0 text-muted-foreground/70 hover:text-foreground flex-shrink-0"
+          className="h-11 w-11 p-0 text-muted-foreground/70 hover:text-foreground shrink-0"
           aria-label="Dismiss browser translation notice"
         >
           <X className="h-3 w-3" />

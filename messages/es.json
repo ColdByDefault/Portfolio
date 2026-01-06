@@ -504,10 +504,12 @@
       "project-2": {
         "title": "Calculadora de ROI de Automatización",
         "description": "Una herramienta interactiva diseñada para ayudar a las empresas a cuantificar el impacto financiero de automatizar flujos de trabajo manuales. Calcula los costes anuales, los ahorros proyectados y el plazo de amortización en semanas, proporcionando una visualización clara del análisis coste-beneficio.",
+        "description2": "Calcule ahorros y ROI de automatización.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Análisis financiero, Automatización de procesos de negocio, Optimización de costes"
       }
-    }
+    },
+    "comingSoon": "Más casos de uso próximamente..."
   },
   "LiveTools": {
     "rio": {

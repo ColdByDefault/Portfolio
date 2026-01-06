@@ -25,7 +25,7 @@
     "vercel",
     "modern-web-technologies"
   ],
-  "author": "Yazan Abo-Ayash (ColdByDefault™)",
+  "author": "Yazan Abo-Ayash (ColdByDefault™) <service@yazan-abo-ayash.de>",
   "license": "Copyright 2026 Yazan Abo-Ayash. All Rights Reserved.",
   "private": true,
   "scripts": {

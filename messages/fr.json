@@ -504,10 +504,12 @@
       "project-2": {
         "title": "Calculateur de ROI d'automatisation",
         "description": "Un outil interactif conçu pour aider les entreprises à quantifier l'impact financier de l'automatisation des flux de travail manuels. Il calcule les coûts annuels, les économies projetées et le délai de retour sur investissement en semaines, offrant une visualisation claire de l'analyse coûts-avantages.",
+        "description2": "Calculez les économies et ROI d'automatisation.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Analyse financière, Automatisation des processus métier, Optimisation des coûts"
       }
-    }
+    },
+    "comingSoon": "Plus de cas d'usage bientôt..."
   },
   "LiveTools": {
     "rio": {
