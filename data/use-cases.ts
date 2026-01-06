@@ -29,7 +29,7 @@ export const useCaseProjects: UseCaseProject[] = [
     id: "project-2",
     titleKey: "Usecases.comingSoon",
     descriptionKey: "Usecases.comingSoon",
-    screenshots: ["/default.png", "/default.png"],
+    screenshots: ["/assets/use-cases/default.png"],
     techStack: [{ name: "Coming Soon" }],
     demoLink: "",
     githubLink: "",
