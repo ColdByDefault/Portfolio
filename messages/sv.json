@@ -498,13 +498,13 @@
       "project-1": {
         "title": "Voice-to-Notion Automation",
         "description": "Värdefulla idéer och uppgifter försvinner ofta i långa ljudinspelningar eller röriga anteckningar? Denna tjänst omvandlar röstmemon och mötesinspelningar till en strukturerad Notion-sida. På under 30 sekunder får du en transkribering, en tydlig sammanfattning, en att-göra-lista och en analys av tonläget – vilket helt automatiserar din administration efter mötet. Driftsatt på kundens infrastruktur.",
-        "description2": "Beräkna besparingar och ROI.",
         "techStack": "AI-röstbehandling, Attitydanalys, Notion API, Next.js",
         "implementationAreas": "Byråverksamhet, Kundhantering, Ledningsstöd"
       },
       "project-2": {
         "title": "ROI-kalkylator för automatisering",
         "description": "Ett interaktivt verktyg utformat för att hjälpa företag att kvantifiera den ekonomiska effekten av att automatisera manuella arbetsflöden. Det beräknar årliga kostnader, beräknade besparingar och återbetalningstiden i veckor, vilket ger en tydlig visualisering av kostnads-nyttoanalysen.",
+        "description2": "Beräkna automatiseringsbesparingar och ROI.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Finansiell analys, Affärsprocessautomatisering, Kostnadsoptimering"
       }

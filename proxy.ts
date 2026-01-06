@@ -15,16 +15,26 @@ const supportedLocales = ["en", "de", "es", "fr", "sv"];
  * Sets cookie to prevent browser translation interference
  */
 function handleLocaleDetection(request: NextRequest): NextResponse | null {
+  // Get Accept-Language header first
+  const acceptLanguage = request.headers.get("accept-language");
+
   // Check if locale cookie already exists
   const existingLocale = request.cookies.get(
     "PORTFOLIOVERSIONLATEST_LOCALE"
   )?.value;
-  if (existingLocale && supportedLocales.includes(existingLocale)) {
-    return null; // Cookie already set, continue normally
+  const existingBrowserLang = request.cookies.get(
+    "PORTFOLIOVERSIONLATEST_BROWSER_LANG"
+  )?.value;
+
+  // If both cookies exist and locale is valid, continue normally
+  if (
+    existingLocale &&
+    supportedLocales.includes(existingLocale) &&
+    existingBrowserLang
+  ) {
+    return null;
   }
 
-  // Get Accept-Language header
-  const acceptLanguage = request.headers.get("accept-language");
   if (!acceptLanguage) {
     // No language preference, set default and continue
     const response = NextResponse.next();
