@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-toggle";
 import Link from "next/link";
+import Image from "next/image";
 import LanguageSwitcher from "@/components/languages/language-switcher";
 import { ContactSheet } from "@/components/contact";
 import { useTranslations } from "next-intl";
@@ -282,10 +283,25 @@ export function BrandLogo() {
     <div className="flex items-center">
       <Link
         href="/"
-        className="text-sm tracking-tight pl-4"
+        className="pl-4 flex items-center"
         aria-label="ColdByDefault - Home"
       >
-        ColdByDefault<sup className="text-[0.5em] align-super">™</sup>
+        <Image
+          src="/logoLight.png"
+          alt="ColdByDefault"
+          width={120}
+          height={40}
+          priority
+          className="h-8 w-auto dark:hidden"
+        />
+        <Image
+          src="/logoDark.png"
+          alt="ColdByDefault"
+          width={120}
+          height={40}
+          priority
+          className="h-8 w-auto hidden dark:block"
+        />
       </Link>
     </div>
   );
