@@ -143,22 +143,6 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-
-  // Handle locale redirects natively in Next.js
-  async redirects() {
-    return [
-      {
-        source: "/de/:path*",
-        destination: "/:path*",
-        permanent: true,
-      },
-      {
-        source: "/de",
-        destination: "/",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 const withNextIntl = createNextIntlPlugin();

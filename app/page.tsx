@@ -14,7 +14,6 @@ import { LoadingSkeleton } from "@/components/visuals";
 import { ShowcaseSection } from "@/components/use-cases";
 import { CTAButton } from "@/components/ui/cta-button";
 
-
 // Dynamically import heavy components with loading states
 const Capabilities = dynamic(
   () =>
@@ -85,12 +84,24 @@ export default function Home() {
       <div className="relative" id="main-content">
         {/* Content Container */}
         <div className="relative z-10">
-          <Suspense fallback={<LoadingSkeleton />}>
+          <Suspense
+            fallback={
+              <div className="min-h-100">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
             <Capabilities />
           </Suspense>
 
           {/* Service Packages Section */}
-          <Suspense fallback={<LoadingSkeleton />}>
+          <Suspense
+            fallback={
+              <div className="min-h-150">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
             <section className="py-16 px-4 sm:px-6 lg:px-8">
               <div className="max-w-8xl mx-auto">
                 <h2 className="lg:text-4xl text-xl font-medium text-center mb-8 text-black dark:text-white">
@@ -119,7 +130,13 @@ export default function Home() {
           </Suspense>
 
           {/* Project Showcase Section */}
-          <Suspense fallback={<LoadingSkeleton />}>
+          <Suspense
+            fallback={
+              <div className="min-h-125">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
             <section className="py-12 px-4 sm:px-6 lg:px-8">
               <div className="max-w-7xl mx-auto">
                 <ShowcaseSection />
@@ -127,11 +144,23 @@ export default function Home() {
             </section>
           </Suspense>
 
-          <Suspense fallback={<LoadingSkeleton />}>
+          <Suspense
+            fallback={
+              <div className="min-h-100">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
             <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
-          <Suspense fallback={<LoadingSkeleton />}>
+          <Suspense
+            fallback={
+              <div className="min-h-150">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
             <div className="py-12 px-4 sm:px-6 lg:px-8">
               <div className="max-w-4xl mx-auto">
                 <h2 className="text-3xl font-light text-center mb-8 text-black dark:text-white">
@@ -146,9 +175,7 @@ export default function Home() {
             </div>
           </Suspense>
 
-          <Suspense fallback={<LoadingSkeleton />}>
-
-          </Suspense>
+          <Suspense fallback={<LoadingSkeleton />}></Suspense>
         </div>
       </div>
     </div>
