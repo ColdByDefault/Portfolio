@@ -505,6 +505,7 @@
       "project-2": {
         "title": "ROI-Rechner für Automatisierung",
         "description": "Ein interaktives Tool, das Unternehmen hilft, die finanziellen Auswirkungen der Automatisierung manueller Arbeitsabläufe zu quantifizieren. Es berechnet jährliche Kosten, prognostizierte Einsparungen und den Amortisationszeitraum in Wochen und bietet eine klare Visualisierung der Kosten-Nutzen-Analyse.",
+        "description2": "Automatisierungs-Ersparnisse und ROI berechnen.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Finanzanalyse, Geschäftsprozessautomatisierung, Kostenoptimierung"
       }
