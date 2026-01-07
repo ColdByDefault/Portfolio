@@ -2,7 +2,7 @@
  * Blog API Functions
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import type { Blog, BlogListQuery, BlogListResponse } from "@/types/hubs/blogs";
 import { prisma } from "@/lib/configs/prisma";

@@ -1,9 +1,7 @@
 /**
- * Capabilities Section Static Data
- * Business-outcome focused (per freelancer.instructions)
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import type { Capability, CapabilitiesData } from "@/types/main/capabilities";
 

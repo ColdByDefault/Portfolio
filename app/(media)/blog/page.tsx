@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import { BlogPageClient } from "@/components/blog";
 import { getBlogs } from "@/lib/hubs/blogs";

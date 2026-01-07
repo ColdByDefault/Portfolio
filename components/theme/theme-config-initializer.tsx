@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 // OLD CONFIG - Commented out to prevent crashes when NEXT_PUBLIC_THEME_SIGNATURE_KEY

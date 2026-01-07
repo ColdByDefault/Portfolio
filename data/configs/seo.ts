@@ -2,7 +2,7 @@
  * SEO configuration data and static objects
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import type { TwitterCardType } from "@/types/configs/metadata";
 import type {

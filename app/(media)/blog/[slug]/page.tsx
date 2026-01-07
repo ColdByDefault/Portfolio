@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import { notFound } from "next/navigation";
 import { BlogView, BlogBreadcrumb } from "@/components/blog";

@@ -2,7 +2,7 @@
  * Blog System Types
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 // Core Blog Types
 export interface Blog {

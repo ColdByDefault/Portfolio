@@ -2,7 +2,7 @@
  * API Interface Types
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 export interface ApiResponse<T = unknown> {
   success?: boolean;

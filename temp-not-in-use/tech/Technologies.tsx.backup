@@ -9,7 +9,8 @@
  * - Complex hover state with animated overlays
  * - Technologies.logic helper functions
  * - More elaborate accessibility features
- */
+*/
+
 "use client";
 
 import { motion } from "framer-motion";

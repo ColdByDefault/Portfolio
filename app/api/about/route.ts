@@ -5,7 +5,7 @@
 
 import { NextResponse } from "next/server";
 import { aboutData } from "@/data/main/aboutData";
-import aboutProfile from "@/data/aboutProfile.json";
+import aboutProfile from "@/data/main/aboutProfile.json";
 
 export function GET() {
   try {

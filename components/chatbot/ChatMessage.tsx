@@ -2,7 +2,7 @@
  * ChatMessage Component - Individual message display
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 "use client";
 

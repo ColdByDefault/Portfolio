@@ -2,7 +2,7 @@
  * Reem AI Sales Assistant System Prompt Configuration
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 /**
  * Sales-focused system prompt for Reem - Yazan's AI portfolio assistant

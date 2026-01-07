@@ -2,7 +2,7 @@
  * Blog Query Service
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import { prisma } from "@/lib/configs/prisma";
 import type { Prisma } from "@/lib/generated/prisma/client";

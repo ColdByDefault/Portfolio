@@ -3,7 +3,7 @@
  * Automatically generates sitemap with all static and dynamic routes
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import type { MetadataRoute } from "next";
 import { getBlogs } from "@/lib/hubs/blogs";

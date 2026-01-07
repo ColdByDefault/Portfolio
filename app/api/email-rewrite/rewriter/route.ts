@@ -2,7 +2,7 @@
  * Email Rewriter API Route with Groq AI Integration
  * @author ColdByDefault
  * @copyright 2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
@@ -23,6 +23,7 @@ import {
 
 // Environment configuration
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
+const GROQ_MODEL = process.env.GROQ_MODEL || "openai/gpt-oss-120b";
 const REWRITER_ENABLED = process.env.REWRITER_ENABLED !== "false"; // Default to true
 
 // Validation schema with security checks
@@ -75,7 +76,7 @@ async function callGroqAPI(
         Authorization: `Bearer ${GROQ_API_KEY}`,
       },
       body: JSON.stringify({
-        model: "openai/gpt-oss-120b",
+        model: GROQ_MODEL,
         messages: messages,
         temperature: 0.7,
         max_tokens: 1000,

@@ -1,3 +1,7 @@
+/**
+ * @author ColdByDefault
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
+ */
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -44,3 +48,4 @@ export function EmailResult({ result }: EmailResultProps) {
     </Card>
   );
 }
+

@@ -8,7 +8,8 @@
  * - Simpler animation (fade + slide up)
  * - Nested subcategory cards
  * - Cleaner, more minimal code (~114 lines vs ~207)
- */
+*/
+
 "use client";
 
 import { motion } from "framer-motion";

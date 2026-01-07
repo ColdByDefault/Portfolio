@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 // Visual effects and loading components
 export { default as LoadingScreen } from "./LoadingScreen";

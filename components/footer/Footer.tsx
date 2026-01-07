@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 import { Links } from "@/components/footer";
 import {
   legalLinks,
@@ -109,7 +110,7 @@ export default function Footer() {
             <div className="text-xs text-gray-500 dark:text-gray-400 sm:flex-1">
               <div className="flex flex-col text-center sm:text-right">
                 <span>
-                  {currentYear} Yazan Abo-Ayash&#174;. All rights reserved.
+                  2024-{currentYear} Yazan Abo-Ayash&#174;. All rights reserved.
                 </span>
               </div>
             </div>

@@ -1,4 +1,7 @@
-// Server-side rate limiting logic using in-memory store
+/**
+ * @author ColdByDefault
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
+*/
 
 import { MAX_USES_PER_IP } from "@/data/live-tools/email-rewriter";
 

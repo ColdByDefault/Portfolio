@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 import type { UseCaseProject } from "@/types/hubs/use-cases";
 
 export const useCaseProjects: UseCaseProject[] = [

@@ -1,4 +1,7 @@
-// Static data and constants
+/**
+ * @author ColdByDefault
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
+*/
 
 import type { ToneOption } from "@/types/live-tools/email-rewriter";
 
@@ -20,8 +23,9 @@ export const TONE_OPTIONS: ToneOption[] = [
   },
 ];
 
-export const MAX_USES_PER_IP = 2;
-export const MAX_EMAIL_LENGTH = 1000;
+export const MAX_USES_PER_IP = 10; // Increased for both features
+export const MAX_EMAIL_LENGTH = 2000;
+export const MAX_CONTEXT_LENGTH = 3000; // For RAG context
 
 export const TONE_PROMPTS: Record<string, string> = {
   professional: `Rewrite the following email in a professional, formal business tone. 
@@ -40,3 +44,29 @@ export const TONE_PROMPTS: Record<string, string> = {
     - Use confident language without being aggressive
     - Keep the core message intact`,
 };
+
+export const ANALYZE_PROMPT = `You are an email analyst. Analyze the incoming email and provide:
+
+1. A brief summary (2-3 sentences)
+2. The overall sentiment (positive, neutral, negative, or urgent)
+3. Key points that need to be addressed (as bullet points)
+4. TWO different response options with different tones
+
+Respond in the following JSON format ONLY (no markdown, no extra text):
+{
+  "summary": "Brief summary here",
+  "sentiment": "positive|neutral|negative|urgent",
+  "keyPoints": ["point 1", "point 2", "point 3"],
+  "responseOptions": [
+    {
+      "id": "1",
+      "tone": "Friendly & Accommodating",
+      "content": "Full email response here..."
+    },
+    {
+      "id": "2", 
+      "tone": "Professional & Direct",
+      "content": "Full email response here..."
+    }
+  ]
+}`;

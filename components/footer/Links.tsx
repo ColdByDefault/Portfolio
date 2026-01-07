@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { FaGithub, FaSquareXTwitter } from "react-icons/fa6";

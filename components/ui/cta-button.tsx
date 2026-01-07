@@ -2,7 +2,7 @@
  * Reusable CTA Button Component
  * @author ColdByDefault
  * @copyright 2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 "use client";
 

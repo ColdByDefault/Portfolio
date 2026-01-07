@@ -2,7 +2,7 @@
  * Media Dashboard Layout - Layout for the main media dashboard page
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";

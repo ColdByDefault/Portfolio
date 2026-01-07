@@ -1,4 +1,7 @@
-// API route to check remaining uses
+/**
+ * @author ColdByDefault
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
+ */
 
 import { headers } from "next/headers";
 import { getRemainingUses } from "@/lib/live-tools/rewriter-rate-limit";

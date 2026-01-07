@@ -2,7 +2,7 @@
  * GitHub API Type Definitions
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 export interface GitHubUser {
   login: string;

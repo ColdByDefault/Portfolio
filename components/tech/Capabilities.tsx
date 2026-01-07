@@ -1,9 +1,8 @@
 /**
- * Capabilities Section - Business outcome focused
- * Replaces tech-focused Technologies section per freelancer.instructions
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import { motion } from "framer-motion";

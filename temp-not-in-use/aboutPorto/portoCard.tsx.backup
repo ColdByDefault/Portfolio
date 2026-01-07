@@ -1,7 +1,9 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
+
 /** This component has types and data in portoCard.utils.ts 
  * NOT as other components in @/types @/data 
 */

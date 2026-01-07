@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 import { NextRequest, NextResponse } from "next/server";
 import type {
   PageSpeedResult,

@@ -2,7 +2,7 @@
  * Services Page Type Definitions
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
- */
+*/
 
 /**
  * Service package tier/type

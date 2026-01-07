@@ -2,7 +2,7 @@
  * Services Page Static Data
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import type {
   ServicePackage,

@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { projects, projectCategories } from "@/data/hubs/projectsData";

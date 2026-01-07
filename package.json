@@ -1,6 +1,6 @@
 {
   "name": "coldbydefault-portfolio",
-  "version": "5.3.8",
+  "version": "5.3.12",
   "description": "Professional portfolio of Yazan Abo-Ayash (ColdByDefault™) - Full Stack Developer specializing in AI and automation, Next.js and modern web technologies.",
   "keywords": [
     "portfolio",
@@ -52,6 +52,7 @@
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "^7.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.14",
+    "@radix-ui/react-collapsible": "^1.1.12",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-hover-card": "^1.1.14",
     "@radix-ui/react-label": "^2.1.7",

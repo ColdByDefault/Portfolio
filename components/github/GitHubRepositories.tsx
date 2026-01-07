@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -76,9 +77,9 @@ export default function GitHubRepositories({
             Recent Repositories
           </h3>
           {isExpanded ? (
-            <ChevronUp className="w-5 h-5 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors flex-shrink-0" />
+            <ChevronUp className="w-5 h-5 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors shrink-0" />
           ) : (
-            <ChevronDown className="w-5 h-5 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors flex-shrink-0" />
+            <ChevronDown className="w-5 h-5 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors shrink-0" />
           )}
         </div>
       </div>

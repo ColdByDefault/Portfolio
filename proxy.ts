@@ -2,7 +2,7 @@
  * Proxy (Middleware => deprecated) for handling redirects and locale management
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";

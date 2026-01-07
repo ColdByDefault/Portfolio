@@ -1,4 +1,8 @@
-// SPDX-License-Identifier: LicenseRef-BRH-1.0
+/**
+ * @author ColdByDefault
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
+*/
+
 import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/headers";
 import type { LocaleModule } from "@/types/configs/i18n";

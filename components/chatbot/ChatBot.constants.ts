@@ -2,7 +2,7 @@
  * ChatBot Constants and Configuration
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 export const CHATBOT_CONFIG = {
   // UI Constants

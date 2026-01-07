@@ -2,7 +2,8 @@
  * Blog Breadcrumb Navigation Component
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import React from "react";
@@ -74,7 +75,7 @@ export function BlogBreadcrumb({ blog, className }: BlogBreadcrumbProps) {
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
                   <BreadcrumbPage
-                    className="max-w-[200px] truncate"
+                    className="max-w-50 truncate"
                     title={blog.title}
                   >
                     {blog.title}
