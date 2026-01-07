@@ -507,6 +507,12 @@
         "description2": "Automatisierungs-Ersparnisse und ROI berechnen.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Finanzanalyse, Geschäftsprozessautomatisierung, Kostenoptimierung"
+      },
+      "project-3": {
+        "title": "KI E-Mail-Automatisierung (Demo)",
+        "description": "Eine interaktive Demo, die RAG zur E-Mail-Analyse nutzt und verschiedene Antwortoptionen sowie Tonfall-Anpassungen bietet. Veranschaulicht einen Prozess, der in der Praxis vollautomatisch läuft.",
+        "techStack": "React, Groq API, RAG",
+        "implementationAreas": "E-Mail-Automatisierung, NLP, Inhaltsgenerierung"
       }
     },
     "comingSoon": "Weitere Anwendungsfälle bald verfügbar..."

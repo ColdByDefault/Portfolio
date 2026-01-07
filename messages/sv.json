@@ -507,6 +507,12 @@
         "description2": "Beräkna automatiseringsbesparingar och ROI.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Finansiell analys, Affärsprocessautomatisering, Kostnadsoptimering"
+      },
+      "project-3": {
+        "title": "AI-demo för e-postautomatisering",
+        "description": "En interaktiv demo som använder RAG för e-postanalys, med svarsalternativ och omskrivning baserad på tonläge. Visar en process som i produktion körs helt automatiskt.",
+        "techStack": "React, Groq API, RAG",
+        "implementationAreas": "E-postautomatisering, NLP, Innehållsgenerering"
       }
     },
     "comingSoon": "Fler användningsfall kommer snart..."

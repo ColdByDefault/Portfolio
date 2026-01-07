@@ -507,6 +507,12 @@
         "description2": "Calculez les économies et ROI d'automatisation.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Analyse financière, Automatisation des processus métier, Optimisation des coûts"
+      },
+      "project-3": {
+        "title": "Démo d'Automatisation E-mail IA",
+        "description": "Une démo interactive utilisant RAG pour analyser les e-mails, offrant des choix de réponses et une réécriture par ton. Illustre un processus entièrement autonome en production.",
+        "techStack": "React, Groq API, RAG",
+        "implementationAreas": "Automatisation d'e-mails, NLP, Génération de contenu"
       }
     },
     "comingSoon": "Plus de cas d'usage bientôt..."

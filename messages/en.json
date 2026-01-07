@@ -504,9 +504,15 @@
       "project-2": {
         "title": "Automation ROI Calculator",
         "description": "An interactive tool designed to help businesses quantify the financial impact of automating manual workflows. It calculates annual burn rates, projected savings, and the break-even timeline in weeks, providing a clear visualization of cost-benefit analysis.",
-        "description2":"Calculate automation savings and ROI.",
+        "description2": "Calculate automation savings and ROI.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Financial Analysis, Business Process Automation, Cost Optimization"
+      },
+      "project-3": {
+        "title": "AI Email Automation Demo",
+        "description": "An interactive demo using RAG to analyze emails, offering selectable answer options and tone-based rewriting. Illustrates a workflow that runs fully autonomously in production environments.",
+        "techStack": "React, Groq API, RAG",
+        "implementationAreas": "Email Automation, NLP, Content Generation"
       }
     },
     "comingSoon": "More use-cases coming soon..."
