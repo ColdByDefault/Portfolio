@@ -26,8 +26,23 @@ export function ShowcaseSection() {
           </p>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-4 mb-12">
-          <Link href="/rio-calculator" target="_blank" rel="noopener noreferrer">
+        <div className="flex flex-wrap justify-center gap-6">
+          {useCaseProjects.map((project) => (
+            <div
+              key={project.id}
+              className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+            >
+              <ProjectCard project={project} />
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-col items-center justify-center gap-4 mt-12">
+          <Link
+            href="/rio-calculator"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button
               variant="default"
               className="gap-2 cursor-pointer hover:scale-105 transition-transform"
@@ -40,16 +55,6 @@ export function ShowcaseSection() {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6">
-          {useCaseProjects.map((project) => (
-            <div
-              key={project.id}
-              className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
-            >
-              <ProjectCard project={project} />
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );
