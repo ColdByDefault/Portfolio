@@ -2,7 +2,7 @@
  * Proxy (Middleware => deprecated) for handling redirects and locale management
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
@@ -34,7 +34,7 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
   if (!acceptLanguage) {
     // No language preference, set default and continue
     const response = NextResponse.next();
-    response.cookies.set("PORTFOLIOVERSIONLATEST_LOCALE", "en", {
+    response.cookies.set("PORTFOLIOVERSIONLATEST_LOCALE", "de", {
       path: "/",
       maxAge: 60 * 60 * 24 * 365, // 1 year
       sameSite: "lax",
@@ -63,8 +63,8 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
     .sort((a, b) => b.quality - a.quality);
 
   // Find the best matching supported locale
-  let detectedLocale = "en"; // default
-  let browserLang = "en";
+  let detectedLocale = "de"; // default
+  let browserLang = "de";
 
   for (const lang of languages) {
     const langCode = lang.code.split("-")[0]; // Extract main language code

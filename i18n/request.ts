@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/headers";
@@ -16,7 +16,7 @@ export default getRequestConfig(async () => {
   const locale =
     localeCookie && supportedLocales.includes(localeCookie)
       ? localeCookie
-      : "en";
+      : "de";
 
   const localeModule = (await import(
     `../messages/${locale}.json`
