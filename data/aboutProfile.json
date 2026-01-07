@@ -1,33 +1,48 @@
 {
   "meta": {
-    "version": "1.0.0",
-    "lastUpdated": "2025-01-05",
+    "version": "5.3.8",
+    "lastUpdated": "2026-01-07",
     "author": "Yazan Abo-Ayash",
     "description": "Comprehensive about data structure for portfolio website"
   },
   "profile": {
     "name": "Yazan Abo-Ayash",
-    "title": "Full Stack Junior Developer",
+    "title": "Full Stack Developer & AI Integration Specialist",
     "currentRole": {
-      "position": "Software Development Intern",
-      "company": "Avarno GmbH",
-      "duration": "2025 - Present",
+      "position": "Freelance Developer",
+      "company": "",
+      "duration": "2024 - Present",
       "responsibilities": [
-        "Built bespoke digital solutions and AI-powered applications",
-        "Implemented modern web technologies",
-        "Collaborated on scalable architecture projects"
+        "Building fast, scalable web MVPs delivered in 4-8 weeks",
+        "Automating workflows and integrating AI assistants for SMEs and agencies",
+        "Delivering internal AI assistants, RAG systems, and workflow automation solutions",
+        "Ensuring 90+ performance scores on all web applications"
       ]
     },
     "experience": "3+ years",
     "location": "Germany",
-    "availability": "Open for collaboration"
+    "availability": "Available for projects",
+    "education": {
+      "degree": "Fachinformatiker Anwendungsentwicklung",
+      "type": "Ausbildung",
+      "status": "In Progress",
+      "focus": "Application Development"
+    },
+    "previousExperience": [
+      {
+        "position": "Software Development Intern",
+        "company": "Avarno GmbH",
+        "duration": "2025",
+        "type": "Internship"
+      }
+    ]
   },
   "skills": {
     "frontend": [
       {
         "name": "Next.js",
         "level": "Intermediate",
-        "yearsOfExperience": 2
+        "yearsOfExperience": 1.5
       },
       {
         "name": "React",
@@ -37,17 +52,17 @@
       {
         "name": "TypeScript",
         "level": "Intermediate",
-        "yearsOfExperience": 1.5
+        "yearsOfExperience": 2
       },
       {
         "name": "JavaScript",
-        "level": "Intermediate",
-        "yearsOfExperience": 2
+        "level": "Advanced",
+        "yearsOfExperience": 2.5
       },
       {
         "name": "HTML/CSS",
         "level": "Advanced",
-        "yearsOfExperience": 2.5
+        "yearsOfExperience": 3
       },
       {
         "name": "Tailwind CSS",
@@ -59,24 +74,84 @@
       {
         "name": "Node.js",
         "level": "Intermediate",
-        "yearsOfExperience": 1.5
+        "yearsOfExperience": 2
       },
       {
         "name": "API Development",
         "level": "Intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "PostgreSQL",
+        "level": "Intermediate",
+        "yearsOfExperience": 1.5
+      },
+      {
+        "name": "Prisma ORM",
+        "level": "Intermediate",
         "yearsOfExperience": 1.5
       }
     ],
+    "ai": {
+      "conversational": [
+        {
+          "name": "AI Chatbots",
+          "level": "Intermediate",
+          "yearsOfExperience": 1,
+          "description": "Building conversational AI assistants for customer support and internal tools"
+        },
+        {
+          "name": "LLM Integration",
+          "level": "Intermediate",
+          "yearsOfExperience": 1,
+          "description": "Integrating OpenAI, Anthropic, and other LLM APIs"
+        }
+      ],
+      "rag": [
+        {
+          "name": "RAG Systems",
+          "level": "Intermediate",
+          "yearsOfExperience": 1,
+          "description": "Retrieval-Augmented Generation systems for knowledge bases and documentation"
+        },
+        {
+          "name": "Vector Databases",
+          "level": "Basic",
+          "yearsOfExperience": 0.5,
+          "description": "Working with embeddings and semantic search"
+        }
+      ],
+      "automation": [
+        {
+          "name": "Workflow Automation",
+          "level": "Intermediate",
+          "yearsOfExperience": 1.5,
+          "description": "Automating repetitive business processes with AI-powered workflows"
+        },
+        {
+          "name": "AI Agents",
+          "level": "Intermediate",
+          "yearsOfExperience": 1,
+          "description": "Building autonomous AI agents for task automation and decision-making"
+        },
+        {
+          "name": "Model Context Protocol",
+          "level": "Basic",
+          "yearsOfExperience": 0.5,
+          "description": "Implementing MCP servers for AI tool integration"
+        }
+      ]
+    },
     "tools": [
       {
         "name": "Git",
         "level": "Advanced",
-        "yearsOfExperience": 2
+        "yearsOfExperience": 2.5
       },
       {
         "name": "GitHub",
         "level": "Advanced",
-        "yearsOfExperience": 2
+        "yearsOfExperience": 2.5
       },
       {
         "name": "VS Code",
@@ -87,38 +162,44 @@
         "name": "Figma",
         "level": "Basic",
         "yearsOfExperience": 1
+      },
+      {
+        "name": "Docker",
+        "level": "Basic",
+        "yearsOfExperience": 1
       }
     ]
   },
   "philosophy": {
     "coreBeliefs": [
-      "Hard work and discipline always pay off",
-      "Code should be clean, maintainable, and accessible",
-      "Learning through documentation and experimentation",
-      "Contributing to a cleaner, more open web"
+      "Clear communication and transparent timelines",
+      "Deliver exactly what was promised - no technical jargon, no scope creep",
+      "Code should be clean, maintainable, and built to scale",
+      "Every solution is built with business goals in mind, not just technical requirements"
     ],
-    "approach": "Dive straight into documentation and experiment until mastery is achieved",
-    "focus": "User-centered design and streamlined experiences"
+    "approach": "Reliable development with regular updates so you always know where your project stands",
+    "focus": "Fast delivery, workflow automation, and AI integration that saves time"
   },
   "currentFocus": [
-    "Next.js advanced patterns and optimization",
-    "LLM integrations and AI-powered applications",
-    "End-to-end web application development",
-    "Modern React patterns and performance",
-    "TypeScript best practices",
-    "User experience and accessibility"
+    "Web MVPs delivered in 4-8 weeks",
+    "Workflow automation that saves hours weekly",
+    "AI assistants for internal processes (conversational AI, RAG systems)",
+    "AI workflow automations and autonomous agents",
+    "Guaranteed 90+ performance scores",
+    "Clear communication & transparent process",
+    "Long-term support & maintenance"
   ],
   "goals": {
     "shortTerm": [
-      "Master LLM integrations",
-      "Advance TypeScript expertise",
-      "Improve accessibility knowledge"
+      "Master AI conversational systems and RAG implementations",
+      "Build more workflow automation solutions",
+      "Complete Fachinformatiker Anwendungsentwicklung Ausbildung"
     ],
     "longTerm": [
-      "Become a full-stack expert specializing in Next.js ecosystem",
-      "Build applications that prioritize user experience",
-      "Contribute significantly to open-source projects",
-      "Advance sustainable and accessible web development practices"
+      "Become a full-stack expert specializing in AI-powered web applications",
+      "Help 100+ businesses automate their workflows and save time",
+      "Build a sustainable freelance business focused on quality and client success",
+      "Contribute significantly to open-source AI and automation tools"
     ]
   },
   "interests": [
