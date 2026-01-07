@@ -13,7 +13,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Bot, CircleAlert, Sparkles } from "lucide-react";
 import { useChatBot } from "@/components/chatbot";
-import type { ChatBotUIProps, ChatMessage } from "@/types/chatbot";
+import type { ChatBotUIProps, ChatMessage } from "@/types/configs/chatbot";
 import {
   ChatHeader,
   ChatMessage as ChatMessageComponent,

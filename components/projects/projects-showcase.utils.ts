@@ -4,12 +4,12 @@
  */
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { projects, projectCategories } from "@/data/projectsData";
+import { projects, projectCategories } from "@/data/hubs/projectsData";
 import type {
   UseProjectLogicReturn,
   UseProjectsFilterReturn,
   Project,
-} from "@/types/projects";
+} from "@/types/hubs/projects";
 
 /**
  * Custom hook for handling project card logic

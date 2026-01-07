@@ -4,7 +4,7 @@
  */
 
 import { NextResponse } from "next/server";
-import { aboutData } from "@/data/aboutData";
+import { aboutData } from "@/data/main/aboutData";
 import aboutProfile from "@/data/aboutProfile.json";
 
 export function GET() {

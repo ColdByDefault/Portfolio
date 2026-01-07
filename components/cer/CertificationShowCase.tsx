@@ -4,7 +4,7 @@
  */
 "use client";
 
-import { certifications } from "@/data/certificationsData";
+import { certifications } from "@/data/main/certificationsData";
 import {
   CertificationShowcaseDesktop,
   CertificationShowcaseMobile,

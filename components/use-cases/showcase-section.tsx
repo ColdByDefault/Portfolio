@@ -5,7 +5,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useCaseProjects } from "@/data/use-cases";
+import { useCaseProjects } from "@/data/hubs/use-cases";
 import { ProjectCard } from "./project-card";
 import Link from "next/link";
 import { Button } from "../ui/button";

@@ -15,9 +15,12 @@ import type {
   ChatBotRateLimit,
   ChatBotConfig,
   ChatMessage,
-} from "@/types/chatbot";
+} from "@/types/configs/chatbot";
 import { sanitizeChatInput, isChatSpam } from "@/lib/security";
-import { REEM_SYSTEM_PROMPT, REEM_CONFIG } from "@/data/chatbot-system-prompt";
+import {
+  REEM_SYSTEM_PROMPT,
+  REEM_CONFIG,
+} from "@/data/live-tools/chatbot-system-prompt";
 
 // Environment configuration with validation
 const GEMINI_API_KEY = process.env.GEMINI_KEY;

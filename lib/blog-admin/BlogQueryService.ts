@@ -4,7 +4,7 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/lib/configs/prisma";
 import type { Prisma } from "@/lib/generated/prisma/client";
 import type {
   Blog,
@@ -12,8 +12,8 @@ import type {
   UpdateBlogRequest,
   BlogListQuery,
   BlogListResponse,
-} from "@/types/blogs";
-import type { BlogAdminStats, BlogActivityItem } from "@/types/admin";
+} from "@/types/hubs/blogs";
+import type { BlogAdminStats, BlogActivityItem } from "@/types/main/admin";
 import { sanitizeInput } from "@/lib/security";
 import { BlogUtilityService } from "@/lib/blog-admin/BlogUtilityService";
 

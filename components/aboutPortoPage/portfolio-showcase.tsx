@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FileCode, ChevronRight } from "lucide-react";
-import { codeExamples } from "@/data/portfolio-section.data";
+import { codeExamples } from "@/data/hubs/portfolio-section.data";
 
 export function CodeExamples() {
   return (

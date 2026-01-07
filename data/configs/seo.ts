@@ -4,12 +4,12 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
-import type { TwitterCardType } from "@/types/metadata";
+import type { TwitterCardType } from "@/types/configs/metadata";
 import type {
   SEOConfig,
   LegalPageContent,
   MediaSectionContent,
-} from "@/types/seo";
+} from "@/types/configs/seo";
 
 // Common keywords to reduce duplication
 const COMMON_TECH_KEYWORDS = [

@@ -13,7 +13,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 
 import { CheckCircle } from "lucide-react";
-import { performanceMetrics } from "@/data/portfolio-section.data";
+import { performanceMetrics } from "@/data/hubs/portfolio-section.data";
 
 export function PerformanceMetrics() {
   return (

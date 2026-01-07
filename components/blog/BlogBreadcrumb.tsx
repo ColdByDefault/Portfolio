@@ -17,7 +17,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { SquareLibrary } from "lucide-react";
-import type { Blog } from "@/types/blogs";
+import type { Blog } from "@/types/hubs/blogs";
 
 interface BlogBreadcrumbProps {
   /**

@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import type { Blog } from "@/types/blogs";
+import type { Blog } from "@/types/hubs/blogs";
 
 export interface BlogFormData {
   title: string;

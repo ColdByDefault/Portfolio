@@ -3,16 +3,13 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 import { MediaCards } from "@/components/library";
-import { booksData } from "@/data/libraryData";
+import { booksData } from "@/data/hubs/libraryData";
 
 export function BooksShelf() {
-
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <h2 className="text-2xl font-bold tracking-tight">
-          Books
-        </h2>
+        <h2 className="text-2xl font-bold tracking-tight">Books</h2>
       </div>
       <MediaCards
         items={booksData}

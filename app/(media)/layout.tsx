@@ -6,7 +6,7 @@
 
 import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
-import { generateMediaSectionSEO } from "@/lib/seo";
+import { generateMediaSectionSEO } from "@/lib/configs/seo";
 import { QuickActions } from "@/components/quickActions";
 import { Background } from "@/components/visuals";
 

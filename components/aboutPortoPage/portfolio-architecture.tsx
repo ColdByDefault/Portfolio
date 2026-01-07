@@ -14,8 +14,8 @@ import {
   dataNodes,
   routeStructure,
   componentStructure,
-} from "@/data/portfolio-section.data";
-import type { ArchitectureNode } from "@/types/portfolio-section.types";
+} from "@/data/hubs/portfolio-section.data";
+import type { ArchitectureNode } from "@/types/hubs/portfolio-section.types";
 
 export function ArchitectureDiagram() {
   const renderArchitectureLayer = (

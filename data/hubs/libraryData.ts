@@ -2,7 +2,7 @@
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
-import type { Book, Movie, Series, Game, Podcast } from "@/types/library";
+import type { Book, Movie, Series, Game, Podcast } from "@/types/hubs/library";
 
 export const booksData: Book[] = [
   {

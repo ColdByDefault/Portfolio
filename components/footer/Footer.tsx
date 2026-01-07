@@ -8,7 +8,7 @@ import {
   developerLinks,
   socialLinks,
   footerNavLinks,
-} from "@/data/footerLinks";
+} from "@/data/main/footerLinks";
 import { SiVercel } from "react-icons/si";
 import { Mails } from "lucide-react";
 import Link from "next/link";

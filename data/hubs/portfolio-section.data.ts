@@ -28,7 +28,7 @@ import type {
   WorkflowStep,
   CodeExample,
   PerformanceMetric,
-} from "@/types/portfolio-section.types";
+} from "@/types/hubs/portfolio-section.types";
 
 // Infrastructure Layer
 export const infrastructureNodes: ArchitectureNode[] = [

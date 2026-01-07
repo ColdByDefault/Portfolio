@@ -4,8 +4,8 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
-import type { CreateBlogRequest, UpdateBlogRequest } from "@/types/blogs";
-import { BLOG_CONSTANTS } from "@/types/blogs";
+import type { CreateBlogRequest, UpdateBlogRequest } from "@/types/hubs/blogs";
+import { BLOG_CONSTANTS } from "@/types/hubs/blogs";
 import { RateLimiter } from "@/lib/security";
 
 // Rate limiter for admin operations

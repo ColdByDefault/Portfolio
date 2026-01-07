@@ -7,7 +7,7 @@
 
 import { useState } from "react";
 import { BlogsList, LanguageFilter, BlogBreadcrumb } from "@/components/blog";
-import type { Blog, BlogLanguage } from "@/types/blogs";
+import type { Blog, BlogLanguage } from "@/types/hubs/blogs";
 
 interface BlogApiResponse {
   blogs: Blog[];

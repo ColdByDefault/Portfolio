@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 
-import { techStacks } from "@/data/portfolio-section.data";
+import { techStacks } from "@/data/hubs/portfolio-section.data";
 
 export function TechStackGrid() {
   return (

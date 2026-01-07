@@ -3,10 +3,9 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 import { MediaCards } from "@/components/library";
-import { moviesData, seriesData, gamesData } from "@/data/libraryData";
+import { moviesData, seriesData, gamesData } from "@/data/hubs/libraryData";
 
 export function OthersShelf() {
-
   // Combine all non-book media
   const otherMedia = [...moviesData, ...seriesData, ...gamesData];
 

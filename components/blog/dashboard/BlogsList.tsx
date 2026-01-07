@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Edit, Trash2, Eye, EyeOff, Star, StarOff } from "lucide-react";
-import type { Blog, BlogListResponse } from "@/types/blogs";
+import type { Blog, BlogListResponse } from "@/types/hubs/blogs";
 
 interface BlogsListProps {
   blogs: Blog[];
@@ -63,10 +63,7 @@ export function BlogsList({
         ) : (
           <div className="space-y-4">
             {blogs.map((blog) => (
-              <div
-                key={blog.id}
-                className="border rounded-lg p-4"
-              >
+              <div key={blog.id} className="border rounded-lg p-4">
                 <div className="flex items-start justify-between">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-2">

@@ -7,7 +7,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import type { ServicePackage } from "@/types/services";
+import type { ServicePackage } from "@/types/hubs/services";
 import { motion } from "framer-motion";
 import { Rocket, Cog, Brain, Check, Clock } from "lucide-react";
 import { useTranslations } from "next-intl";

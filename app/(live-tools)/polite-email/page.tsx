@@ -2,14 +2,12 @@
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
-"use client";
+import { EmailRewriter } from "@/components/live-tools/polite-email/email-rewriter";
 
-
-
-export default function PoliteEmailPage() {
+export default function Page() {
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-      
-    </div>
+    <main className="min-h-screen bg-background px-4 py-12">
+      <EmailRewriter />
+    </main>
   );
 }

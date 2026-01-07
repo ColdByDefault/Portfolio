@@ -16,7 +16,7 @@ import {
   getCardHoverClasses,
   getOverlayStyles,
 } from "@/components/visuals/card-animations";
-import type { GitHubProfile, GitHubStats } from "@/types/github";
+import type { GitHubProfile, GitHubStats } from "@/types/configs/github";
 
 interface GitHubProfileProps {
   profile: GitHubProfile;

@@ -1,8 +1,11 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */ 
-import type { CalculatorInputs, ROIMetrics } from "@/types/live-tools";
+ */
+import type {
+  CalculatorInputs,
+  ROIMetrics,
+} from "@/types/live-tools/live-tools";
 
 export const calculateROI = (inputs: CalculatorInputs): ROIMetrics => {
   const { hoursPerWeek, hourlyRate, automationCost } = inputs;

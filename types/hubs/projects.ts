@@ -3,7 +3,7 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
-import type { Project } from "@/data/projectsData";
+import type { Project } from "@/data/hubs/projectsData";
 
 export interface ProjectsShowcaseProps {
   className?: string;

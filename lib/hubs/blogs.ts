@@ -4,8 +4,8 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
-import type { Blog, BlogListQuery, BlogListResponse } from "@/types/blogs";
-import { prisma } from "@/lib/prisma";
+import type { Blog, BlogListQuery, BlogListResponse } from "@/types/hubs/blogs";
+import { prisma } from "@/lib/configs/prisma";
 import type { Prisma } from "@/lib/generated/prisma/client";
 import { sanitizeInput } from "@/lib/security";
 

@@ -11,12 +11,12 @@ import type {
   BlogAdminResponse,
   BlogAdminAction,
   ApiErrorResponse,
-} from "@/types/admin";
+} from "@/types/main/admin";
 import type {
   CreateBlogRequest,
   UpdateBlogRequest,
   BlogListQuery,
-} from "@/types/blogs";
+} from "@/types/hubs/blogs";
 import {
   getBlogAdminStats,
   getAdminBlogs,
@@ -28,7 +28,7 @@ import {
   getAdminCategories,
   getAdminTags,
   type AdminContext,
-} from "@/lib/blog-admin";
+} from "@/lib/blog-admin/blog-admin";
 
 // Enhanced authentication
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;

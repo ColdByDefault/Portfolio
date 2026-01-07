@@ -17,7 +17,7 @@ import type {
   GitHubStats,
   GitHubActivity,
   GitHubApiResponse,
-} from "@/types/github";
+} from "@/types/configs/github";
 
 // Rate limiter instance
 const rateLimiter = new RateLimiter(60000, 10);
@@ -52,7 +52,7 @@ class GitHubDataFetcher {
     try {
       const response = await fetch(`${this.baseUrl}/users/${this.username}`, {
         headers: this.headers,
-        next: { revalidate: 3600 }, 
+        next: { revalidate: 3600 },
       });
 
       if (!response.ok) {

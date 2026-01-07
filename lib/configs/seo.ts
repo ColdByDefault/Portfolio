@@ -4,14 +4,18 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
-import type { Blog, BlogSEO, BlogStructuredData } from "@/types/blogs";
-import type { SEOConfig, LegalPageType, MediaSectionType } from "@/types/seo";
+import type { Blog, BlogSEO, BlogStructuredData } from "@/types/hubs/blogs";
+import type {
+  SEOConfig,
+  LegalPageType,
+  MediaSectionType,
+} from "@/types/configs/seo";
 import {
   seoConfigEN,
   seoConfigDE,
   legalPageContent,
   mediaSectionContent,
-} from "@/data/seo";
+} from "@/data/configs/seo";
 
 // Re-export configurations for backward compatibility
 export { seoConfigEN, seoConfigDE };

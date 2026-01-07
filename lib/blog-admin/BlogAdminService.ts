@@ -10,8 +10,8 @@ import type {
   UpdateBlogRequest,
   BlogListQuery,
   BlogListResponse,
-} from "@/types/blogs";
-import type { BlogAdminStats } from "@/types/admin";
+} from "@/types/hubs/blogs";
+import type { BlogAdminStats } from "@/types/main/admin";
 import { RateLimiter } from "@/lib/security";
 import {
   BlogValidationService,

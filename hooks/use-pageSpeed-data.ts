@@ -5,7 +5,10 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import type { PageSpeedResult, PageSpeedApiResponse } from "@/types/pagespeed";
+import type {
+  PageSpeedResult,
+  PageSpeedApiResponse,
+} from "@/types/configs/pagespeed";
 
 interface UsePageSpeedDataProps {
   url: string;

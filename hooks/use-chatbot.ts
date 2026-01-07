@@ -11,7 +11,7 @@ import type {
   ChatMessage,
   ChatBotResponse,
   ChatBotApiError,
-} from "@/types/chatbot";
+} from "@/types/configs/chatbot";
 
 interface UseChatBotReturn {
   messages: ChatMessage[];

@@ -10,7 +10,7 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
 import { Bot, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
-import type { ChatMessage as ChatMessageType } from "@/types/chatbot";
+import type { ChatMessage as ChatMessageType } from "@/types/configs/chatbot";
 import {
   CHATBOT_CONFIG,
   CHATBOT_STYLES,

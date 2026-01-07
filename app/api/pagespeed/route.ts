@@ -9,7 +9,7 @@ import type {
   PageSpeedMetrics,
   PageSpeedResult,
   PageSpeedApiRawResponse,
-} from "@/types/pagespeed";
+} from "@/types/configs/pagespeed";
 
 // Zod schema for SSRF protection
 const pageSpeedRequestSchema = z.object({

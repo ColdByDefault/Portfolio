@@ -4,12 +4,12 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/lib/configs/prisma";
 import type {
   BlogCredit,
   CreateBlogRequest,
   UpdateBlogRequest,
-} from "@/types/blogs";
+} from "@/types/hubs/blogs";
 import { sanitizeInput, sanitizeErrorMessage } from "@/lib/security";
 
 export class BlogUtilityService {

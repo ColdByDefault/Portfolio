@@ -4,7 +4,7 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
-import type { TwitterCardType } from "@/types/metadata";
+import type { TwitterCardType } from "@/types/configs/metadata";
 
 export interface SEOConfig {
   title: string;

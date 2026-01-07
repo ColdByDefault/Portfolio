@@ -9,8 +9,8 @@ import type {
   BlogAdminStats,
   BlogAdminResponse,
   ApiErrorResponse,
-} from "@/types/admin";
-import type { Blog, BlogListResponse } from "@/types/blogs";
+} from "@/types/main/admin";
+import type { Blog, BlogListResponse } from "@/types/hubs/blogs";
 import type { BlogFormData } from "@/components/blog/dashboard";
 
 const initialFormData: BlogFormData = {

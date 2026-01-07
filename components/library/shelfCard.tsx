@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import type { MediaCardsProps, MediaItem } from "@/types/library";
+import type { MediaCardsProps, MediaItem } from "@/types/hubs/library";
 
 const getMediaIcon = (type: MediaItem["type"]) => {
   const iconProps = { className: "h-5 w-5" };

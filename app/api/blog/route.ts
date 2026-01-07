@@ -5,9 +5,8 @@
 
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { getBlogs } from "@/lib/blogs";
-import type { BlogListQuery, BlogLanguage } from "@/types/blogs";
-
+import { getBlogs } from "@/lib/hubs/blogs";
+import type { BlogListQuery, BlogLanguage } from "@/types/hubs/blogs";
 
 export async function GET(request: NextRequest) {
   try {

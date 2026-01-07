@@ -7,7 +7,7 @@ import { Hero } from "@/components/hero";
 import { useTranslations } from "next-intl";
 import { CompanyBanner } from "@/components/companies";
 import { PackageCard } from "@/components/services";
-import { servicePackages } from "@/data/servicesData";
+import { servicePackages } from "@/data/hubs/servicesData";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { LoadingSkeleton } from "@/components/visuals";

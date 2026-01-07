@@ -9,7 +9,7 @@ import type {
   ProcessStep,
   TrustSignal,
   ServicesPageData,
-} from "@/types/services";
+} from "@/types/hubs/services";
 
 /**
  * Service packages with translation keys

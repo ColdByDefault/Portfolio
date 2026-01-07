@@ -18,4 +18,4 @@ export type {
   Podcast,
   MediaCardsProps,
   MediaShelfProps,
-} from "@/types/library";
+} from "@/types/hubs/library";

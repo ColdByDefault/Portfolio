@@ -16,7 +16,7 @@ import {
   getCardHoverClasses,
   getOverlayStyles,
 } from "@/components/visuals/card-animations";
-import type { GitHubRepositoriesProps } from "@/types/github";
+import type { GitHubRepositoriesProps } from "@/types/configs/github";
 
 const LanguageColors: Record<string, string> = {
   JavaScript: "#f1e05a",

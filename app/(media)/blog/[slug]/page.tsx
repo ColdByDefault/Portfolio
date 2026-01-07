@@ -5,7 +5,7 @@
 
 import { notFound } from "next/navigation";
 import { BlogView, BlogBreadcrumb } from "@/components/blog";
-import { getBlogBySlug } from "@/lib/blogs";
+import { getBlogBySlug } from "@/lib/hubs/blogs";
 
 interface BlogPageProps {
   params: Promise<{

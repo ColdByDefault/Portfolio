@@ -5,7 +5,7 @@
  * @copyright 2025 ColdByDefault. All Rights Reserved.
  */
 
-import type { Capability, CapabilitiesData } from "@/types/capabilities";
+import type { Capability, CapabilitiesData } from "@/types/main/capabilities";
 
 /**
  * Capabilities with business outcome focus
@@ -43,7 +43,7 @@ export const capabilities: readonly Capability[] = [
     titleKey: "performance.title",
     headlineKey: "performance.headline",
     descriptionKey: "performance.description",
-    techIcons: ["SiNextdotjs", "SiReact","SiVercel"],
+    techIcons: ["SiNextdotjs", "SiReact", "SiVercel"],
   },
 ] as const;
 
