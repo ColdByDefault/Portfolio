@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -38,7 +38,13 @@ export function ShowcaseSection() {
           ))}
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-4 mt-12">
+        <div
+          className="mt-10 flex flex-col items-center gap-1.5 justify-center
+          border max-w-xl mx-auto p-6 rounded-lg bg-background/70 backdrop-blur-sm"
+        >
+          <p className="text-center text-muted-foreground max-w-md font-semibold pb-2">
+            {tt("description2")}
+          </p>
           <Link
             href="/rio-calculator"
             target="_blank"
@@ -51,11 +57,7 @@ export function ShowcaseSection() {
               {tt("title")}
             </Button>
           </Link>
-          <p className="text-center text-muted-foreground max-w-md font-semibold">
-            {tt("description2")}
-          </p>
         </div>
-
       </div>
     </section>
   );
