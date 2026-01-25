@@ -497,7 +497,7 @@
     "projects": {
       "project-1": {
         "title": "Automatisation Voice-to-Notion",
-        "description": "Les idées précieuses et les tâches se perdent souvent dans de longs enregistrements audio ou des notes désordonnées? Ce SaaS transforme n'importe quel mémo vocal ou enregistrement de réunion en une page Notion structurée. En moins de 30 secondes, il génère une transcription, un résumé clair, une liste de tâches et une analyse de sentiment — automatisant entièrement votre travail administratif post-réunion. Déployé sur l'infrastructure du client.",
+        "description": "Transforme les mémos vocaux et enregistrements de réunions en pages Notion structurées avec transcriptions, résumés et tâches. Automatise le travail post-réunion en moins de 30 secondes.",
         "techStack": "Traitement vocal IA, Analyse de sentiment, API Notion, Next.js",
         "implementationAreas": "Opérations d'agence, Gestion client, Support exécutif"
       },

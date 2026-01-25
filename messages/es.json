@@ -497,7 +497,7 @@
     "projects": {
       "project-1": {
         "title": "Automatización de Voz a Notion",
-        "description": "Las ideas valiosas y las tareas pendientes a menudo se pierden en largas grabaciones de audio o notas desordenadas? Este SaaS transforma cualquier nota de voz o grabación de reunión en una página de Notion estructurada. En menos de 30 segundos, entrega una transcripción completa, un resumen claro, una lista de tareas y un análisis de sentimiento, automatizando por completo el trabajo administrativo post-reunión. Implementado en infraestructura del cliente.",
+        "description": "Transforma notas de voz y grabaciones de reuniones en páginas de Notion estructuradas con transcripciones, resúmenes y tareas. Automatiza el trabajo post-reunión en menos de 30 segundos.",
         "techStack": "Procesamiento de voz IA, Análisis de sentimiento, API de Notion, Next.js",
         "implementationAreas": "Operaciones de agencia, Gestión de clientes, Soporte ejecutivo"
       },

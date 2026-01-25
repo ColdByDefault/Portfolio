@@ -497,7 +497,7 @@
     "projects": {
       "project-1": {
         "title": "Voice-to-Notion Automation",
-        "description": "Wertvolle Ideen und Aufgaben gehen oft in langen Audioaufnahmen oder unordentlichen Notizen verloren? Diese Anwendung verwandelt jedes Sprachmemo oder Meeting-Aufzeichnung in eine strukturierte Notion-Seite. In unter 30 Sekunden erhalten Sie ein Transkript, eine Zusammenfassung, eine To-Do-Liste und eine Stimmungsanalyse – die komplette Automatisierung Ihrer Nachbereitung. Auf Kundeninfrastruktur bereitgestellt.",
+        "description": "Verwandelt Sprachmemos und Meeting-Aufzeichnungen in strukturierte Notion-Seiten mit Transkripten, Zusammenfassungen und Aufgaben. Automatisiert die Nachbereitung in unter 30 Sekunden.",
         "techStack": "KI-Sprachverarbeitung, Stimmungsanalyse, Notion API, Next.js",
         "implementationAreas": "Agenturabläufe, Kundenmanagement, Assistenzsysteme"
       },
