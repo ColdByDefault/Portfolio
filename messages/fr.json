@@ -536,6 +536,20 @@
         "notProfitableTitle": "Pas encore rentable",
         "notProfitableDesc": "D'après ces chiffres, le travail manuel pourrait être moins cher pour l'instant, sauf si vous passez à l'échelle supérieure."
       }
+    },
+    "rewriter": {
+      "title": "Analyse d'e-mail",
+      "summary": "Résumé",
+      "keyPoints": "Points clés",
+      "chooseResponse": "Choisir une réponse",
+      "selected": "Sélectionné",
+      "copied": "Copié",
+      "copy": "Copier",
+      "contextInput": {
+        "title": "Contexte personnalisé (RAG)",
+        "infoText": "Ajoutez un contexte personnalisé que l'IA utilisera lors de l'analyse ou de la réécriture d'e-mails. Cela peut inclure les politiques de l'entreprise, les directives de communication, les détails du projet ou toute information pertinente.",
+        "placeholder": "Exemple : La politique de notre entreprise est de répondre sous 24 heures. Nous offrons une garantie de remboursement de 30 jours. La date limite du projet est le 15 mars..."
+      }
     }
   }
 }

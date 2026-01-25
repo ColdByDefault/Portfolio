@@ -536,6 +536,20 @@
         "notProfitableTitle": "Aún no es rentable",
         "notProfitableDesc": "Según estos números, el trabajo manual podría ser más barato por ahora a menos que escale."
       }
+    },
+    "rewriter": {
+      "title": "Análisis de correo electrónico",
+      "summary": "Resumen",
+      "keyPoints": "Puntos clave",
+      "chooseResponse": "Elegir una respuesta",
+      "selected": "Seleccionado",
+      "copied": "Copiado",
+      "copy": "Copiar",
+      "contextInput": {
+        "title": "Contexto personalizado (RAG)",
+        "infoText": "Añade contexto personalizado que la IA utilizará al analizar o reescribir correos electrónicos. Esto podría incluir políticas de la empresa, guías de comunicación, detalles del proyecto o cualquier información de fondo relevante.",
+        "placeholder": "Ejemplo: Nuestra política de empresa es responder en 24 horas. Ofrecemos una garantía de devolución de 30 días. La fecha límite del proyecto es el 15 de marzo..."
+      }
     }
   }
 }

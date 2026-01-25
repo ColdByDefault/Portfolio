@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface ContextInputProps {
   value: string;
@@ -22,6 +23,7 @@ interface ContextInputProps {
 
 export function ContextInput({ value, onChange, disabled }: ContextInputProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations("LiveTools.rewriter.contextInput");
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="space-y-2">
@@ -29,7 +31,7 @@ export function ContextInput({ value, onChange, disabled }: ContextInputProps) {
         <CollapsibleTrigger asChild>
           <Button variant="ghost" size="sm" className="gap-2 p-0 h-auto">
             <Database className="h-4 w-4" />
-            <span className="text-sm font-medium">Custom Context (RAG)</span>
+            <span className="text-sm font-medium">{t("title")}</span>
             <span className="text-xs text-muted-foreground">
               {isOpen ? "−" : "+"}
             </span>
@@ -39,14 +41,10 @@ export function ContextInput({ value, onChange, disabled }: ContextInputProps) {
       <CollapsibleContent className="space-y-2">
         <div className="flex items-start gap-2 rounded-md bg-muted/50 p-3 text-xs text-muted-foreground">
           <Info className="h-4 w-4 mt-0.5 shrink-0" />
-          <p>
-            Add custom context that the AI will use when analyzing or rewriting
-            emails. This could include company policies, communication
-            guidelines, project details, or any relevant background information.
-          </p>
+          <p>{t("infoText")}</p>
         </div>
         <Textarea
-          placeholder="Example: Our company policy is to respond within 24 hours. We offer 30-day money-back guarantees. The project deadline is March 15th..."
+          placeholder={t("placeholder")}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           disabled={disabled}

@@ -536,6 +536,20 @@
         "notProfitableTitle": "Noch nicht profitabel",
         "notProfitableDesc": "Basierend auf diesen Zahlen ist manuelle Arbeit vorerst günstiger, es sei denn, Sie skalieren."
       }
+    },
+    "rewriter": {
+      "title": "E-Mail-Analyse",
+      "summary": "Zusammenfassung",
+      "keyPoints": "Kernpunkte",
+      "chooseResponse": "Antwort wählen",
+      "selected": "Ausgewählt",
+      "copied": "Kopiert",
+      "copy": "Kopieren",
+      "contextInput": {
+        "title": "Benutzerdefinierter Kontext (RAG)",
+        "infoText": "Fügen Sie benutzerdefinierten Kontext hinzu, den die KI beim Analysieren oder Umschreiben von E-Mails verwendet. Dies kann Unternehmensrichtlinien, Kommunikationsleitfäden, Projektdetails oder andere relevante Hintergrundinformationen umfassen.",
+        "placeholder": "Beispiel: Unsere Unternehmensrichtlinie sieht eine Antwort innerhalb von 24 Stunden vor. Wir bieten eine 30-tägige Geld-zurück-Garantie. Die Projektfrist ist der 15. März..."
+      }
     }
   }
 }

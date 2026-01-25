@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check, Copy, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import type { ResponseOption } from "@/types/live-tools/email-rewriter";
+import { useTranslations } from "next-intl";
 
 interface AnalysisResultProps {
   summary: string;
@@ -34,6 +35,8 @@ export function AnalysisResult({
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
+  const t = useTranslations("LiveTools.rewriter");
+
   const handleCopy = async (content: string, id: string) => {
     await navigator.clipboard.writeText(content);
     setCopiedId(id);
@@ -48,7 +51,7 @@ export function AnalysisResult({
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <CardTitle className="text-base font-medium">
-              Email Analysis
+              {t("title")}
             </CardTitle>
             <Badge variant="outline" className={sentimentColors[sentiment]}>
               {sentiment.charAt(0).toUpperCase() + sentiment.slice(1)}
@@ -57,12 +60,12 @@ export function AnalysisResult({
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <h4 className="text-sm font-medium mb-1">Summary</h4>
+            <h4 className="text-sm font-medium mb-1">{t("summary")}</h4>
             <p className="text-sm text-muted-foreground">{summary}</p>
           </div>
           {keyPoints.length > 0 && (
             <div>
-              <h4 className="text-sm font-medium mb-2">Key Points</h4>
+              <h4 className="text-sm font-medium mb-2">{t("keyPoints")}</h4>
               <ul className="space-y-1">
                 {keyPoints.map((point, index) => (
                   <li
@@ -81,7 +84,7 @@ export function AnalysisResult({
 
       {/* Response Options */}
       <div className="space-y-3">
-        <h3 className="text-sm font-medium">Choose a Response</h3>
+        <h3 className="text-sm font-medium">{t("chooseResponse")}</h3>
         {responseOptions.map((option) => (
           <Card
             key={option.id}
@@ -99,7 +102,7 @@ export function AnalysisResult({
                 </Badge>
                 {selectedId === option.id && (
                   <Badge variant="default" className="text-xs">
-                    Selected
+                    {t("selected")}
                   </Badge>
                 )}
               </div>
@@ -117,7 +120,7 @@ export function AnalysisResult({
                 ) : (
                   <Copy className="h-4 w-4" />
                 )}
-                {copiedId === option.id ? "Copied" : "Copy"}
+                {copiedId === option.id ? t("copied") : t("copy")}
               </Button>
             </CardHeader>
             <CardContent>

@@ -536,6 +536,20 @@
         "notProfitableTitle": "Not profitable yet",
         "notProfitableDesc": "Based on these numbers, manual work might be cheaper for now unless you scale up."
       }
+    },
+    "rewriter": {
+      "title": "Email Analysis",
+      "summary": "Summary",
+      "keyPoints": "Key Points",
+      "chooseResponse": "Choose a Response",
+      "selected": "Selected",
+      "copied": "Copied",
+      "copy": "Copy",
+      "contextInput": {
+        "title": "Custom Context (RAG)",
+        "infoText": "Add custom context that the AI will use when analyzing or rewriting emails. This could include company policies, communication guidelines, project details, or any relevant background information.",
+        "placeholder": "Example: Our company policy is to respond within 24 hours. We offer 30-day money-back guarantees. The project deadline is March 15th..."
+      }
     }
   }
 }
