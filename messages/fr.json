@@ -497,7 +497,7 @@
     "projects": {
       "project-1": {
         "title": "Automatisation Voice-to-Notion",
-        "description": "Les idées précieuses et les tâches se perdent souvent dans de longs enregistrements audio ou des notes désordonnées? Ce SaaS transforme n'importe quel mémo vocal ou enregistrement de réunion en une page Notion structurée. En moins de 30 secondes, il génère une transcription, un résumé clair, une liste de tâches et une analyse de sentiment — automatisant entièrement votre travail administratif post-réunion. Déployé sur l'infrastructure du client.",
+        "description": "Transforme les mémos vocaux et enregistrements de réunions en pages Notion structurées avec transcriptions, résumés et tâches. Automatise le travail post-réunion en moins de 30 secondes.",
         "techStack": "Traitement vocal IA, Analyse de sentiment, API Notion, Next.js",
         "implementationAreas": "Opérations d'agence, Gestion client, Support exécutif"
       },
@@ -507,6 +507,12 @@
         "description2": "Calculez les économies et ROI d'automatisation.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Analyse financière, Automatisation des processus métier, Optimisation des coûts"
+      },
+      "project-3": {
+        "title": "Démo d'Automatisation E-mail IA",
+        "description": "Une démo interactive utilisant RAG pour analyser les e-mails, offrant des choix de réponses et une réécriture par ton. Illustre un processus entièrement autonome en production.",
+        "techStack": "React, Groq API, RAG",
+        "implementationAreas": "Automatisation d'e-mails, NLP, Génération de contenu"
       }
     },
     "comingSoon": "Plus de cas d'usage bientôt..."
@@ -529,6 +535,20 @@
         "roiTimelineText": "L'automatisation est rentabilisée en seulement <bold>{{weeks}} semaines</bold>.",
         "notProfitableTitle": "Pas encore rentable",
         "notProfitableDesc": "D'après ces chiffres, le travail manuel pourrait être moins cher pour l'instant, sauf si vous passez à l'échelle supérieure."
+      }
+    },
+    "rewriter": {
+      "title": "Analyse d'e-mail",
+      "summary": "Résumé",
+      "keyPoints": "Points clés",
+      "chooseResponse": "Choisir une réponse",
+      "selected": "Sélectionné",
+      "copied": "Copié",
+      "copy": "Copier",
+      "contextInput": {
+        "title": "Contexte personnalisé (RAG)",
+        "infoText": "Ajoutez un contexte personnalisé que l'IA utilisera lors de l'analyse ou de la réécriture d'e-mails. Cela peut inclure les politiques de l'entreprise, les directives de communication, les détails du projet ou toute information pertinente.",
+        "placeholder": "Exemple : La politique de notre entreprise est de répondre sous 24 heures. Nous offrons une garantie de remboursement de 30 jours. La date limite du projet est le 15 mars..."
       }
     }
   }

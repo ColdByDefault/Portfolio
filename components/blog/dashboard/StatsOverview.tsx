@@ -1,13 +1,14 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Globe, Calendar, TrendingUp, Star } from "lucide-react";
-import type { BlogAdminStats } from "@/types/admin";
+import type { BlogAdminStats } from "@/types/main/admin";
 
 interface StatsOverviewProps {
   stats: BlogAdminStats;

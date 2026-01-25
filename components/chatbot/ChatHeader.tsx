@@ -2,7 +2,7 @@
  * ChatHeader Component - Chat window header with title and controls
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 "use client";
 
@@ -29,7 +29,7 @@ export const ChatHeader = React.memo(function ChatHeader({
 
   return (
     <CardHeader
-      className={`flex flex-row items-center justify-between space-y-0 pb-2 px-4 ${CHATBOT_STYLES.HEADER_BORDER} flex-shrink-0 ${className}`}
+      className={`flex flex-row items-center justify-between space-y-0 pb-2 px-4 ${CHATBOT_STYLES.HEADER_BORDER} shrink-0 ${className}`}
       role="banner"
     >
       <div className="flex items-center gap-3">

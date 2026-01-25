@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import { motion, useInView } from "framer-motion";
@@ -22,7 +23,10 @@ import {
   getCardHoverClasses,
   getOverlayStyles,
 } from "@/components/visuals/card-animations";
-import type { ProjectsShowcaseProps, ProjectCardProps } from "@/types/projects";
+import type {
+  ProjectsShowcaseProps,
+  ProjectCardProps,
+} from "@/types/hubs/projects";
 import {
   useProjectLogic,
   useProjectsFilter,
@@ -69,7 +73,7 @@ const ProjectCard = ({ project, index: _index }: ProjectCardProps) => {
         onMouseLeave={onMouseLeave}
       >
         {isFeaturedProject(project) && (
-          <div className="absolute top-0 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium px-3 py-1 text-center z-1">
+          <div className="absolute top-0 w-full bg-linear-to-r from-blue-500 to-purple-600 text-white text-xs font-medium px-3 py-1 text-center z-1">
             {t("featuredProject")}
           </div>
         )}{" "}
@@ -231,7 +235,7 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
       ref={sectionRef}
       aria-labelledby="projects-heading"
     >
-      <Card className="max-w-7xl mx-auto !border-0 bg-transparent dark:bg-transparent shadow-none">
+      <Card className="max-w-7xl mx-auto border-0! bg-transparent dark:bg-transparent shadow-none">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}

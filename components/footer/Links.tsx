@@ -1,12 +1,13 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { FaGithub, FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin, FaInstagramSquare, FaSpotify } from "react-icons/fa";
-import type { LinkItem } from "@/data/footerLinks";
+import type { LinkItem } from "@/data/main/footerLinks";
 
 interface LinksProps {
   links: LinkItem[];

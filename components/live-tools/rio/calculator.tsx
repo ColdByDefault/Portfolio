@@ -1,12 +1,12 @@
-"use client";
-
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
+"use client";
 import type React from "react";
 import { useState, useMemo } from "react";
-import type { CalculatorInputs } from "@/types/live-tools";
+import type { CalculatorInputs } from "@/types/live-tools/live-tools";
 import { calculateROI, formatCurrency } from "@/components/live-tools/rio";
 import { CTAButton } from "@/components/ui/cta-button";
 import { useTranslations } from "next-intl";

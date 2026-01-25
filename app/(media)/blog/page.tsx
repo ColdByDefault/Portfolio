@@ -1,10 +1,10 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import { BlogPageClient } from "@/components/blog";
-import { getBlogs } from "@/lib/blogs";
+import { getBlogs } from "@/lib/hubs/blogs";
 
 export default async function BlogsPage() {
   let blogs: Awaited<ReturnType<typeof getBlogs>>["blogs"] = [];

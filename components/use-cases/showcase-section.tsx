@@ -2,10 +2,11 @@
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
+
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useCaseProjects } from "@/data/use-cases";
+import { useCaseProjects } from "@/data/hubs/use-cases";
 import { ProjectCard } from "./project-card";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -26,20 +27,6 @@ export function ShowcaseSection() {
           </p>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-4 mb-12">
-          <Link href="/rio-calculator" target="_blank" rel="noopener noreferrer">
-            <Button
-              variant="default"
-              className="gap-2 cursor-pointer hover:scale-105 transition-transform"
-            >
-              {tt("title")}
-            </Button>
-          </Link>
-          <p className="text-center text-muted-foreground max-w-md font-semibold">
-            {tt("description2")}
-          </p>
-        </div>
-
         <div className="flex flex-wrap justify-center gap-6">
           {useCaseProjects.map((project) => (
             <div
@@ -49,6 +36,27 @@ export function ShowcaseSection() {
               <ProjectCard project={project} />
             </div>
           ))}
+        </div>
+
+        <div
+          className="mt-10 flex flex-col items-center gap-1.5 justify-center
+          border max-w-xl mx-auto p-6 rounded-lg bg-background/70 backdrop-blur-sm"
+        >
+          <p className="text-center text-muted-foreground max-w-md font-semibold pb-2">
+            {tt("description2")}
+          </p>
+          <Link
+            href="/rio-calculator"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button
+              variant="default"
+              className="gap-2 cursor-pointer hover:scale-105 transition-transform"
+            >
+              {tt("title")}
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

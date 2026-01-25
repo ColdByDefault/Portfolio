@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import {
   Card,
@@ -13,7 +13,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 
 import { CheckCircle } from "lucide-react";
-import { performanceMetrics } from "@/data/portfolio-section.data";
+import { performanceMetrics } from "@/data/hubs/portfolio-section.data";
 
 export function PerformanceMetrics() {
   return (

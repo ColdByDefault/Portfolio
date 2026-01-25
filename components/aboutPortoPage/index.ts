@@ -2,7 +2,7 @@
  * About Portfolio Page Components Barrel Exports
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 export { ArchitectureDiagram } from "./portfolio-architecture";
 export { PortfolioFeatures } from "./portfolio-features";

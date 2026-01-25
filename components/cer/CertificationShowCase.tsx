@@ -1,10 +1,11 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
-import { certifications } from "@/data/certificationsData";
+import { certifications } from "@/data/main/certificationsData";
 import {
   CertificationShowcaseDesktop,
   CertificationShowcaseMobile,

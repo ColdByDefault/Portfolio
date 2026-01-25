@@ -497,7 +497,7 @@
     "projects": {
       "project-1": {
         "title": "Voice-to-Notion Automation",
-        "description": "Värdefulla idéer och uppgifter försvinner ofta i långa ljudinspelningar eller röriga anteckningar? Denna tjänst omvandlar röstmemon och mötesinspelningar till en strukturerad Notion-sida. På under 30 sekunder får du en transkribering, en tydlig sammanfattning, en att-göra-lista och en analys av tonläget – vilket helt automatiserar din administration efter mötet. Driftsatt på kundens infrastruktur.",
+        "description": "Omvandlar röstmemon och mötesinspelningar till strukturerade Notion-sidor med transkriptioner, sammanfattningar och uppgifter. Automatiserar administration efter mötet på under 30 sekunder.",
         "techStack": "AI-röstbehandling, Attitydanalys, Notion API, Next.js",
         "implementationAreas": "Byråverksamhet, Kundhantering, Ledningsstöd"
       },
@@ -507,6 +507,12 @@
         "description2": "Beräkna automatiseringsbesparingar och ROI.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Finansiell analys, Affärsprocessautomatisering, Kostnadsoptimering"
+      },
+      "project-3": {
+        "title": "AI-demo för e-postautomatisering",
+        "description": "En interaktiv demo som använder RAG för e-postanalys, med svarsalternativ och omskrivning baserad på tonläge. Visar en process som i produktion körs helt automatiskt.",
+        "techStack": "React, Groq API, RAG",
+        "implementationAreas": "E-postautomatisering, NLP, Innehållsgenerering"
       }
     },
     "comingSoon": "Fler användningsfall kommer snart..."
@@ -529,6 +535,20 @@
         "roiTimelineText": "Automatiseringen betalar sig själv på bara <bold>{{weeks}} veckor</bold>.",
         "notProfitableTitle": "Inte lönsamt än",
         "notProfitableDesc": "Baserat på dessa siffror kan manuellt arbete vara billigare just nu om du inte skalar upp."
+      }
+    },
+    "rewriter": {
+      "title": "E-postanalys",
+      "summary": "Sammanfattning",
+      "keyPoints": "Huvudpunkter",
+      "chooseResponse": "Välj ett svar",
+      "selected": "Vald",
+      "copied": "Kopierad",
+      "copy": "Kopiera",
+      "contextInput": {
+        "title": "Anpassat sammanhang (RAG)",
+        "infoText": "Lägg till anpassat sammanhang som AI:n kommer att använda när den analyserar eller skriver om e-postmeddelanden. Detta kan inkludera företagspolicyer, riktlinjer för kommunikation, projektdetaljer eller annan relevant bakgrundsinformation.",
+        "placeholder": "Exempel: Vår företagspolicy är att svara inom 24 timmar. Vi erbjuder 30 dagars öppet köp. Projektets deadline är den 15 mars..."
       }
     }
   }

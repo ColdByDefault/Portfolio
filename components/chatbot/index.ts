@@ -2,7 +2,7 @@
  * ChatBot Components Barrel Exports
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 export { default as ChatBot } from "./ChatBot";
 export { ChatHeader } from "./ChatHeader";

@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,7 +17,7 @@ import {
   getCardHoverClasses,
   getOverlayStyles,
 } from "@/components/visuals/card-animations";
-import type { GitHubProfile, GitHubStats } from "@/types/github";
+import type { GitHubProfile, GitHubStats } from "@/types/configs/github";
 
 interface GitHubProfileProps {
   profile: GitHubProfile;

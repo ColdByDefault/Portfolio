@@ -2,7 +2,7 @@
  * Database Seed Script
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import "dotenv/config";
 import { PrismaClient } from "../lib/generated/prisma/client";

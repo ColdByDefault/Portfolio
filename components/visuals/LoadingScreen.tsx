@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 import React, { useEffect, useState, useSyncExternalStore } from "react";
 import "@/styles/glitchEffect.css";

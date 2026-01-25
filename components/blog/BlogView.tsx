@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import React, { useState } from "react";
@@ -9,8 +10,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Calendar, Clock, Eye, Languages } from "lucide-react";
-import type { Blog } from "@/types/blogs";
-import { BLOG_LANGUAGE_NAMES } from "@/types/blogs";
+import type { Blog } from "@/types/hubs/blogs";
+import { BLOG_LANGUAGE_NAMES } from "@/types/hubs/blogs";
 import { LanguageBadge } from "@/components/blog";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";

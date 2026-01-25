@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 export { StatsOverview } from "./StatsOverview";
 export { BlogFilters } from "./BlogFilters";

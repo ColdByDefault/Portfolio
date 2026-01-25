@@ -497,16 +497,22 @@
     "projects": {
       "project-1": {
         "title": "Voice-to-Notion Automation",
-        "description": "Valuable ideas and to-dos often get lost in long audio recordings or messy notes? This SaaS transforms any voice memo or meeting recording into a structured Notion page. In under 30 seconds, it delivers a full transcript, a clear summary, a list of action items, and a sentiment check—completely automating your post-meeting admin work. Deployed to client infrastructure.",
+        "description": "Transforms voice memos and meeting recordings into structured Notion pages with transcripts, summaries, and action items. Automates post-meeting admin work in under 30 seconds.",
         "techStack": "AI Voice Processing, Sentiment Analysis, Notion API, Next.js",
         "implementationAreas": "Agency Operations, Client Management, Executive Support"
       },
       "project-2": {
         "title": "Automation ROI Calculator",
         "description": "An interactive tool designed to help businesses quantify the financial impact of automating manual workflows. It calculates annual burn rates, projected savings, and the break-even timeline in weeks, providing a clear visualization of cost-benefit analysis.",
-        "description2":"Calculate automation savings and ROI.",
+        "description2": "Calculate automation savings and ROI.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Financial Analysis, Business Process Automation, Cost Optimization"
+      },
+      "project-3": {
+        "title": "AI Email Automation Demo",
+        "description": "An interactive demo using RAG to analyze emails, offering selectable answer options and tone-based rewriting. Illustrates a workflow that runs fully autonomously in production environments.",
+        "techStack": "React, Groq API, RAG",
+        "implementationAreas": "Email Automation, NLP, Content Generation"
       }
     },
     "comingSoon": "More use-cases coming soon..."
@@ -529,6 +535,20 @@
         "roiTimelineText": "The automation pays for itself in just {weeks} weeks.",
         "notProfitableTitle": "Not profitable yet",
         "notProfitableDesc": "Based on these numbers, manual work might be cheaper for now unless you scale up."
+      }
+    },
+    "rewriter": {
+      "title": "Email Analysis",
+      "summary": "Summary",
+      "keyPoints": "Key Points",
+      "chooseResponse": "Choose a Response",
+      "selected": "Selected",
+      "copied": "Copied",
+      "copy": "Copy",
+      "contextInput": {
+        "title": "Custom Context (RAG)",
+        "infoText": "Add custom context that the AI will use when analyzing or rewriting emails. This could include company policies, communication guidelines, project details, or any relevant background information.",
+        "placeholder": "Example: Our company policy is to respond within 24 hours. We offer 30-day money-back guarantees. The project deadline is March 15th..."
       }
     }
   }

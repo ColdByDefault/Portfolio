@@ -2,7 +2,7 @@
  * Professional Floating ChatBot Component
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 "use client";
 
@@ -13,7 +13,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Bot, CircleAlert, Sparkles } from "lucide-react";
 import { useChatBot } from "@/components/chatbot";
-import type { ChatBotUIProps, ChatMessage } from "@/types/chatbot";
+import type { ChatBotUIProps, ChatMessage } from "@/types/configs/chatbot";
 import {
   ChatHeader,
   ChatMessage as ChatMessageComponent,
@@ -155,7 +155,7 @@ export function ChatBot({
         </Button>
       ) : (
         <Card
-          className={`${CHATBOT_CONFIG.RESPONSIVE_WIDTH_CLASSES} min-h-[24rem] sm:min-h-[28rem] max-h-[28rem] sm:max-h-[32rem] ${CHATBOT_STYLES.CARD_SHADOW} ${CHATBOT_STYLES.CARD_BORDER} flex flex-col`}
+          className={`${CHATBOT_CONFIG.RESPONSIVE_WIDTH_CLASSES} min-h-96 sm:min-h-112 max-h-112 sm:max-h-128 ${CHATBOT_STYLES.CARD_SHADOW} ${CHATBOT_STYLES.CARD_BORDER} flex flex-col`}
           role="dialog"
           aria-labelledby="chatbot-title"
           aria-describedby="chatbot-subtitle"
@@ -165,7 +165,7 @@ export function ChatBot({
 
           <CardContent className="p-0 flex flex-col flex-1 min-h-0">
             <div
-              className={`flex-1 p-3 sm:p-4 min-h-0 max-h-[16rem] sm:max-h-[20rem] overflow-y-auto ${CHATBOT_STYLES.SCROLLBAR}`}
+              className={`flex-1 p-3 sm:p-4 min-h-0 max-h-64 sm:max-h-80 overflow-y-auto ${CHATBOT_STYLES.SCROLLBAR}`}
               role="log"
               aria-live="polite"
               aria-label="Chat conversation"
@@ -216,7 +216,7 @@ export function ChatBot({
                   >
                     <div className="bg-destructive/10 border border-destructive/20 text-destructive px-4 py-3 rounded-lg text-sm flex items-center gap-2 max-w-xs">
                       <CircleAlert
-                        className="w-4 h-4 flex-shrink-0"
+                        className="w-4 h-4 shrink-0"
                         aria-hidden="true"
                       />
                       <span>{error}</span>

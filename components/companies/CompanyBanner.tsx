@@ -1,14 +1,14 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 "use client";
 
 import React from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { companiesData, type CompanyLogo } from "@/data/companiesData";
+import { companiesData, type CompanyLogo } from "@/data/main/companiesData";
 import Link from "next/link";
 
 interface CompanyBannerProps {

@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 "use client";
 
@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Background } from "@/components/visuals/motion-background";
 import { GitHubShowcase } from "@/components/github";
-import type { AboutTranslations } from "@/types/i18n";
+import type { AboutTranslations } from "@/types/configs/i18n";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";

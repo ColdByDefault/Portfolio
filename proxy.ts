@@ -12,33 +12,29 @@ const supportedLocales = ["en", "de", "es", "fr", "sv"];
 
 /**
  * Handle automatic locale detection based on browser language
- * Sets cookie to prevent browser translation interference
+ * Sets PORTFOLIOVERSIONLATEST_LOCALE for i18n and PORTFOLIOVERSIONLATEST_BROWSER_LANG for UI hints
+ *
+ * Note: PORTFOLIOVERSIONLATEST_BROWSER_LANG is informational only (used by language-switcher
+ * and browser-translation-notice components). It should NOT gate the locale detection bypass.
  */
 function handleLocaleDetection(request: NextRequest): NextResponse | null {
-  // Get Accept-Language header first
-  const acceptLanguage = request.headers.get("accept-language");
-
-  // Check if locale cookie already exists
+  // Check if locale cookie already exists - this is the only required check
   const existingLocale = request.cookies.get(
     "PORTFOLIOVERSIONLATEST_LOCALE"
   )?.value;
-  const existingBrowserLang = request.cookies.get(
-    "PORTFOLIOVERSIONLATEST_BROWSER_LANG"
-  )?.value;
 
-  // If both cookies exist and locale is valid, continue normally
-  if (
-    existingLocale &&
-    supportedLocales.includes(existingLocale) &&
-    existingBrowserLang
-  ) {
+  // If user already has a valid locale preference, respect it
+  if (existingLocale && supportedLocales.includes(existingLocale)) {
     return null;
   }
+
+  // Get Accept-Language header for first-time visitors
+  const acceptLanguage = request.headers.get("accept-language");
 
   if (!acceptLanguage) {
     // No language preference, set default and continue
     const response = NextResponse.next();
-    response.cookies.set("PORTFOLIOVERSIONLATEST_LOCALE", "en", {
+    response.cookies.set("PORTFOLIOVERSIONLATEST_LOCALE", "de", {
       path: "/",
       maxAge: 60 * 60 * 24 * 365, // 1 year
       sameSite: "lax",
@@ -67,8 +63,8 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
     .sort((a, b) => b.quality - a.quality);
 
   // Find the best matching supported locale
-  let detectedLocale = "en"; // default
-  let browserLang = "en";
+  let detectedLocale = "de"; // default
+  let browserLang = "de";
 
   for (const lang of languages) {
     const langCode = lang.code.split("-")[0]; // Extract main language code
@@ -142,6 +138,7 @@ export function proxy(request: NextRequest) {
     "/services",
     "/projects",
     "/rio-calculator",
+    "/polite-email",
     "/blog",
     "/library",
     "/media",

@@ -2,7 +2,7 @@
  * Services Page
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
- */
+*/
 
 "use client";
 
@@ -15,8 +15,8 @@ import {
   servicePackages,
   processSteps,
   trustSignals,
-} from "@/data/servicesData";
-import type { ProcessStep, TrustSignal } from "@/types/services";
+} from "@/data/hubs/servicesData";
+import type { ProcessStep, TrustSignal } from "@/types/hubs/services";
 import { motion } from "framer-motion";
 import {
   MessageSquare,

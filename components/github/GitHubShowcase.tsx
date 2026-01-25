@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
@@ -17,7 +18,7 @@ import {
 import { FaGithub, FaTerminal } from "react-icons/fa";
 import GitHubProfile from "@/components/github/GitHubProfile";
 import GitHubRepositories from "@/components/github/GitHubRepositories";
-import type { GitHubData, GitHubApiResponse } from "@/types/github";
+import type { GitHubData, GitHubApiResponse } from "@/types/configs/github";
 import {
   Drawer,
   DrawerContent,

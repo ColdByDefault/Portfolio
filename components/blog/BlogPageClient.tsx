@@ -2,12 +2,13 @@
  * Client-side Blog Page with Language Filtering
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import { useState } from "react";
 import { BlogsList, LanguageFilter, BlogBreadcrumb } from "@/components/blog";
-import type { Blog, BlogLanguage } from "@/types/blogs";
+import type { Blog, BlogLanguage } from "@/types/hubs/blogs";
 
 interface BlogApiResponse {
   blogs: Blog[];
@@ -80,7 +81,7 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
         </div>
 
         <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             Blogs
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

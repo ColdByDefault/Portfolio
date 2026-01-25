@@ -1,15 +1,14 @@
 /**
- * Capabilities Section - Business outcome focused
- * Replaces tech-focused Technologies section per freelancer.instructions
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { capabilities } from "@/data/capabilitiesData";
-import type { Capability } from "@/types/capabilities";
+import { capabilities } from "@/data/main/capabilitiesData";
+import type { Capability } from "@/types/main/capabilities";
 import { Rocket, TrendingUp, Shield, Globe } from "lucide-react";
 import {
   SiNextdotjs,

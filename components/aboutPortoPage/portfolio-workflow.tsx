@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import {
   Card,
@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card";
 
 import { ArrowRight, Workflow } from "lucide-react";
-import { workflowSteps } from "@/data/portfolio-section.data";
+import { workflowSteps } from "@/data/hubs/portfolio-section.data";
 
 export function WorkflowDiagram() {
   return (

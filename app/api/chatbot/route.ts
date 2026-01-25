@@ -15,13 +15,17 @@ import type {
   ChatBotRateLimit,
   ChatBotConfig,
   ChatMessage,
-} from "@/types/chatbot";
+} from "@/types/configs/chatbot";
 import { sanitizeChatInput, isChatSpam } from "@/lib/security";
-import { REEM_SYSTEM_PROMPT, REEM_CONFIG } from "@/data/chatbot-system-prompt";
+import {
+  REEM_SYSTEM_PROMPT,
+  REEM_CONFIG,
+} from "@/data/main/chatbot-system-prompt";
 
 // Environment configuration with validation
 const GEMINI_API_KEY = process.env.GEMINI_KEY;
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
+const GROQ_MODEL = process.env.GROQ_MODEL || "openai/gpt-oss-120b";
 const CHATBOT_ENABLED = process.env.CHATBOT_ENABLED === "true";
 
 const chatbotConfig: ChatBotConfig = {
@@ -201,7 +205,7 @@ async function callGroqAPI(
         Authorization: `Bearer ${GROQ_API_KEY}`,
       },
       body: JSON.stringify({
-        model: "openai/gpt-oss-120b",
+        model: GROQ_MODEL,
         messages: groqMessages,
         temperature: 0.7,
         max_tokens: 1024,

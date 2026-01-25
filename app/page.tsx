@@ -1,13 +1,14 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 import { Hero } from "@/components/hero";
 import { useTranslations } from "next-intl";
 import { CompanyBanner } from "@/components/companies";
 import { PackageCard } from "@/components/services";
-import { servicePackages } from "@/data/servicesData";
+import { servicePackages } from "@/data/hubs/servicesData";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { LoadingSkeleton } from "@/components/visuals";
@@ -115,7 +116,7 @@ export default function Home() {
                 {/*  CTA */}
                 <div
                   className="mt-10 flex flex-col items-center gap-1.5 justify-center
-              border max-w-xl mx-auto p-6 rounded-lg bg-background/70 backdrop-blur-sm"
+                  border max-w-xl mx-auto p-6 rounded-lg bg-background/70 backdrop-blur-sm"
                 >
                   <h2 className="font-bold">{tt("cta.title")}</h2>
                   <p className="text-gray-500">{tt("cta.subtitle")}</p>

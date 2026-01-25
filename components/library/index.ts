@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 // Library components exports
 export { BooksShelf } from "./booksShelf";
@@ -18,4 +18,4 @@ export type {
   Podcast,
   MediaCardsProps,
   MediaShelfProps,
-} from "@/types/library";
+} from "@/types/hubs/library";

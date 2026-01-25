@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import { Badge } from "@/components/ui/badge";
 import {
@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 
-import { techStacks } from "@/data/portfolio-section.data";
+import { techStacks } from "@/data/hubs/portfolio-section.data";
 
 export function TechStackGrid() {
   return (

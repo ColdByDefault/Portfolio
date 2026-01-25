@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import { Card, CardTitle, CardContent } from "@/components/ui/card";
@@ -19,7 +20,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import type { MediaCardsProps, MediaItem } from "@/types/library";
+import type { MediaCardsProps, MediaItem } from "@/types/hubs/library";
 
 const getMediaIcon = (type: MediaItem["type"]) => {
   const iconProps = { className: "h-5 w-5" };
@@ -127,10 +128,10 @@ function MediaCard({
     >
       <CardContent className="px-2 flex flex-col gap-2 border h-full p-3">
         {/* TOP SECTION: Header (Icon, Title, Author) - 1/4 */}
-        <div className="flex-shrink-0 space-y-1">
+        <div className="shrink-0 space-y-1">
           {/* Icon and Title */}
           <div className="flex items-center gap-2">
-            <div className="flex-shrink-0 p-1 rounded bg-primary/10 text-primary">
+            <div className="shrink-0 p-1 rounded bg-primary/10 text-primary">
               {getMediaIcon(item.type)}
             </div>
             <div className="flex-1 min-w-0">
@@ -139,7 +140,7 @@ function MediaCard({
               </CardTitle>
             </div>
             {itemUrl && (
-              <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+              <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
             )}
           </div>
 
@@ -185,7 +186,7 @@ function MediaCard({
         </div>
 
         {/* BOTTOM SECTION: Details, Year, and Extra Info - 1/4 */}
-        <div className="flex-shrink-0 space-y-1">
+        <div className="shrink-0 space-y-1">
           {/* Primary Details Row */}
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <div className="flex items-center gap-1">
@@ -267,7 +268,7 @@ export function MediaCards({
         )}
       >
         <Card className="border-dashed border-2 border-muted-foreground/25 h-full">
-          <CardContent className="p-3 h-full flex flex-col items-center justify-center text-center min-h-[150px]">
+          <CardContent className="p-3 h-full flex flex-col items-center justify-center text-center min-h-37.5">
             <BookOpen className="h-6 w-6 text-muted-foreground/50 mb-2" />
             <CardTitle className="text-sm text-muted-foreground mb-1">
               {emptyStateTitle}

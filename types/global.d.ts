@@ -4,7 +4,7 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  *
  * Global type declarations for CSS imports and other module types
- */
+*/
 
 // CSS module declarations
 declare module "*.css" {

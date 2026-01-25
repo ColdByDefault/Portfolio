@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { z } from "zod";
@@ -9,7 +10,7 @@ import type {
   PageSpeedMetrics,
   PageSpeedResult,
   PageSpeedApiRawResponse,
-} from "@/types/pagespeed";
+} from "@/types/configs/pagespeed";
 
 // Zod schema for SSRF protection
 const pageSpeedRequestSchema = z.object({
@@ -257,6 +258,25 @@ async function fetchPageSpeedData(
 
 export async function GET(request: NextRequest) {
   try {
+    // Skip PageSpeed API calls in development
+    if (process.env.NODE_ENV !== "production") {
+      return NextResponse.json(
+        {
+          url: "https://www.coldbydefault.com",
+          strategy: "mobile",
+          metrics: {
+            performance: 0,
+            accessibility: 0,
+            bestPractices: 0,
+            seo: 0,
+          },
+          disabled: true,
+          message: "PageSpeed API is disabled in development mode",
+        },
+        { status: 200 }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
 
     // Parse and validate request parameters with Zod

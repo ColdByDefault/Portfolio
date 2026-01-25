@@ -3,15 +3,14 @@
  * Automatically generates sitemap with all static and dynamic routes
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import type { MetadataRoute } from "next";
-import { getBlogs } from "@/lib/blogs";
+import { getBlogs } from "@/lib/hubs/blogs";
 
 const baseUrl = "https://www.coldbydefault.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,

@@ -1,11 +1,12 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import { useTranslations } from "next-intl";
-import type { TechStack } from "@/types/use-cases";
+import type { TechStack } from "@/types/hubs/use-cases";
 import { Badge } from "@/components/ui/badge";
 import {
   Database,

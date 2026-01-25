@@ -2,7 +2,7 @@
  * ChatInput Component - Message input form with validation
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 "use client";
 
@@ -64,7 +64,7 @@ export const ChatInput = React.memo(
 
     return (
       <div
-        className={`p-2 sm:p-3 bg-muted/20 flex-shrink-0 ${className}`}
+        className={`p-2 sm:p-3 bg-muted/20 shrink-0 ${className}`}
         role="form"
       >
         <form

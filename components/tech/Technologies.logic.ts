@@ -1,9 +1,9 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
-import { techGroups } from "@/data/tech";
+import { techGroups } from "@/data/main/tech";
 import type { KeyboardEvent } from "react";
 
 /**

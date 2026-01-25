@@ -2,10 +2,14 @@
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
+
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import type { PageSpeedResult, PageSpeedApiResponse } from "@/types/pagespeed";
+import type {
+  PageSpeedResult,
+  PageSpeedApiResponse,
+} from "@/types/configs/pagespeed";
 
 interface UsePageSpeedDataProps {
   url: string;
@@ -25,7 +29,7 @@ interface UsePageSpeedDataReturn {
 // Fallback mock data - shown immediately while real data loads
 const createMockData = (
   strategy: "mobile" | "desktop",
-  url: string
+  url: string,
 ): PageSpeedResult => ({
   url,
   strategy,
@@ -43,10 +47,10 @@ export function usePageSpeedData({
 }: UsePageSpeedDataProps): UsePageSpeedDataReturn {
   // Initialize with mock data immediately - users see data right away
   const [mobileData, setMobileData] = useState<PageSpeedResult | null>(() =>
-    createMockData("mobile", url)
+    createMockData("mobile", url),
   );
   const [desktopData, setDesktopData] = useState<PageSpeedResult | null>(() =>
-    createMockData("desktop", url)
+    createMockData("desktop", url),
   );
   // Start with loading=false since we have mock data
   const [loading] = useState(false);
@@ -56,20 +60,21 @@ export function usePageSpeedData({
     "fresh" | "updating" | "updated" | null
   >("fresh");
   const [lastUpdated, setLastUpdated] = useState<string | null>(() =>
-    new Date().toISOString()
+    new Date().toISOString(),
   );
 
   // Track if we've fetched real data
   const hasRealData = useRef({ mobile: false, desktop: false });
+  const isDevModeDisabled = useRef(false); // Track if API is disabled in dev
   const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const fetchFnRef = useRef<((forceRefresh?: boolean) => Promise<void>) | null>(
-    null
+    null,
   );
 
   const fetchStrategy = useCallback(
     async (
       strategy: "mobile" | "desktop",
-      forceRefresh = false
+      forceRefresh = false,
     ): Promise<boolean> => {
       try {
         const queryParams = new URLSearchParams({
@@ -86,7 +91,7 @@ export function usePageSpeedData({
           {
             headers: { "X-Client-ID": "pagespeed-component" },
             signal: AbortSignal.timeout(50000),
-          }
+          },
         );
 
         // Extract and simplify cache status
@@ -100,16 +105,35 @@ export function usePageSpeedData({
         if (!response.ok) {
           // Silently fail - keep showing mock/cached data
           console.warn(
-            `PageSpeed API returned ${response.status} for ${strategy}`
+            `PageSpeed API returned ${response.status} for ${strategy}`,
           );
           return false;
         }
 
         const result = (await response.json()) as PageSpeedApiResponse;
 
-        if (!result?.metrics) {
-          // Invalid data - keep showing mock/cached data
-          console.warn(`Invalid PageSpeed data for ${strategy}`);
+        // Check if API is disabled (dev mode) or data is invalid
+        if (!result?.metrics || (result as any).disabled) {
+          // Keep showing mock data in dev mode
+          console.warn(
+            `PageSpeed API ${(result as any).disabled ? "disabled in dev mode" : "returned invalid data"} for ${strategy}`,
+          );
+          // Mark as disabled to prevent infinite retries
+          if ((result as any).disabled) {
+            isDevModeDisabled.current = true;
+            // Mark as having "data" (mock) so we don't retry
+            hasRealData.current.mobile = true;
+            hasRealData.current.desktop = true;
+          }
+          return false;
+        }
+
+        // Check if metrics are all zeros (invalid real data)
+        const hasValidMetrics = Object.values(result.metrics).some(
+          (value) => value > 0,
+        );
+        if (!hasValidMetrics) {
+          console.warn(`PageSpeed returned zero metrics for ${strategy}`);
           return false;
         }
 
@@ -140,13 +164,18 @@ export function usePageSpeedData({
         return false;
       }
     },
-    [url]
+    [url],
   );
 
   // Fetch data with silent background retry on failure
   const fetchAllDataWithRetry = useCallback(
     async (forceRefresh = false): Promise<void> => {
       if (!url) return;
+
+      // Skip fetching if API is disabled in dev mode (unless force refresh)
+      if (isDevModeDisabled.current && !forceRefresh) {
+        return;
+      }
 
       setCacheStatus("updating");
 
@@ -159,11 +188,12 @@ export function usePageSpeedData({
           needsRetry = !mobileSuccess && !desktopSuccess;
         }
 
-        // Schedule silent retry if needed (only if we don't have real data yet)
+        // Schedule silent retry if needed (only if we don't have real data yet and API is not disabled)
         if (
           needsRetry &&
           !hasRealData.current.mobile &&
-          !hasRealData.current.desktop
+          !hasRealData.current.desktop &&
+          !isDevModeDisabled.current
         ) {
           if (retryTimeoutRef.current) {
             clearTimeout(retryTimeoutRef.current);
@@ -178,7 +208,7 @@ export function usePageSpeedData({
         console.warn("Failed to fetch PageSpeed data:", fetchError);
       }
     },
-    [url, showBothStrategies, fetchStrategy]
+    [url, showBothStrategies, fetchStrategy],
   );
 
   // Keep the ref updated with the latest function

@@ -1,7 +1,11 @@
-// SPDX-License-Identifier: LicenseRef-BRH-1.0
+/**
+ * @author ColdByDefault
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
+ */
+
 import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/headers";
-import type { LocaleModule } from "@/types/i18n";
+import type { LocaleModule } from "@/types/configs/i18n";
 
 export default getRequestConfig(async () => {
   const cookieStore = await cookies();
@@ -12,7 +16,7 @@ export default getRequestConfig(async () => {
   const locale =
     localeCookie && supportedLocales.includes(localeCookie)
       ? localeCookie
-      : "en";
+      : "de";
 
   const localeModule = (await import(
     `../messages/${locale}.json`

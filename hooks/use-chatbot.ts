@@ -2,7 +2,7 @@
  * ChatBot Custom Hook - Manages state and API communication
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 "use client";
 
@@ -11,7 +11,7 @@ import type {
   ChatMessage,
   ChatBotResponse,
   ChatBotApiError,
-} from "@/types/chatbot";
+} from "@/types/configs/chatbot";
 
 interface UseChatBotReturn {
   messages: ChatMessage[];

@@ -2,13 +2,17 @@
  * Language Filter Component for Blog Posts
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { LanguageBadge } from "@/components/blog";
-import { SUPPORTED_BLOG_LANGUAGES, type BlogLanguage } from "@/types/blogs";
+import {
+  SUPPORTED_BLOG_LANGUAGES,
+  type BlogLanguage,
+} from "@/types/hubs/blogs";
 
 interface LanguageFilterProps {
   selectedLanguage?: BlogLanguage | "all";

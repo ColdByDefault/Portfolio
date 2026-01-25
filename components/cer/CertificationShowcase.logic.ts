@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";

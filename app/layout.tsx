@@ -11,7 +11,8 @@
  *
  *
  * @see @link https://www.coldbydefault.com for the live website.
- */
+*/
+
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -24,7 +25,7 @@ import { CookiesBanner } from "@/components/cookies";
 import { BrowserTranslationNotice } from "@/components/languages";
 import { ChatBot } from "@/components/chatbot";
 import { NoSSR } from "@/components/NoSSR";
-import { seoConfigEN, generateStructuredData } from "@/lib/seo";
+import { seoConfigEN, generateStructuredData } from "@/lib/configs/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Urbanist } from "next/font/google";

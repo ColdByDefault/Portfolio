@@ -1,14 +1,14 @@
 /**
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
- */
+*/
 
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { getBlogBySlug } from "@/lib/blogs";
+import { getBlogBySlug } from "@/lib/hubs/blogs";
 import { RateLimiter } from "@/lib/security";
-import { generateBlogSEO } from "@/lib/seo";
+import { generateBlogSEO } from "@/lib/configs/seo";
 
 // Rate limiter for blog slug endpoint
 const rateLimiter = new RateLimiter(60000, 30); // 30 requests per minute

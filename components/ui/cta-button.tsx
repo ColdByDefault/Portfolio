@@ -2,14 +2,14 @@
  * Reusable CTA Button Component
  * @author ColdByDefault
  * @copyright 2026 ColdByDefault. All Rights Reserved.
- */
+*/
 
 "use client";
 
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 import Link from "next/link";
-import { servicesPageData } from "@/data/servicesData";
+import { servicesPageData } from "@/data/hubs/servicesData";
 import type { VariantProps } from "class-variance-authority";
 import type { buttonVariants } from "@/components/ui/button";
 

@@ -1,11 +1,12 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import { useTranslations } from "next-intl";
-import type { UseCaseProject } from "@/types/use-cases";
+import type { UseCaseProject } from "@/types/hubs/use-cases";
 import {
   Card,
   CardContent,

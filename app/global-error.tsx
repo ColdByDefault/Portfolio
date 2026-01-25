@@ -1,4 +1,8 @@
-// SPDX-License-Identifier: LicenseRef-BRH-1.0
+/**
+ * @author ColdByDefault
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
+*/
+
 "use client";
 
 import { useEffect } from "react";

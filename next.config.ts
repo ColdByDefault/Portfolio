@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
 
+  // Prisma 7 compatibility - bundle Prisma for serverless/edge
+  serverExternalPackages: [],
+  outputFileTracingIncludes: {
+    "/api/**/*": ["./node_modules/@prisma/client/**/*"],
+    "/app/**/*": ["./node_modules/@prisma/client/**/*"],
+  },
+
   // Image optimization with modern formats
   images: {
     // Optimize image quality based on device capabilities
@@ -32,6 +39,10 @@ const nextConfig: NextConfig = {
 
   // Experimental features for better performance
   experimental: {
+    // WebAssembly support for Prisma 7 query compiler
+    serverActions: {
+      bodySizeLimit: "2mb",
+    },
     optimizePackageImports: [
       "lucide-react",
       "react-icons",
@@ -40,6 +51,18 @@ const nextConfig: NextConfig = {
       "@radix-ui/react-hover-card",
       "@radix-ui/react-tooltip",
     ],
+  },
+
+  // Webpack configuration for Prisma WASM modules
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.experiments = {
+        ...config.experiments,
+        asyncWebAssembly: true,
+        layers: true,
+      };
+    }
+    return config;
   },
   async headers() {
     return [

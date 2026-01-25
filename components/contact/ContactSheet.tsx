@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import React from "react";
@@ -23,7 +24,7 @@ import {
   FaSquareInstagram,
   FaSquareXTwitter,
 } from "react-icons/fa6";
-import { socialLinks } from "@/data/footerLinks";
+import { socialLinks } from "@/data/main/footerLinks";
 import { useTranslations } from "next-intl";
 import { CTAButton } from "@/components/ui/cta-button";
 

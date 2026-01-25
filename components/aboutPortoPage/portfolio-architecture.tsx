@@ -1,3 +1,8 @@
+/**
+ * @author ColdByDefault
+ * @copyright  2026 ColdByDefault. All Rights Reserved.
+*/ 
+
 import React from "react";
 import {
   Card,
@@ -14,8 +19,8 @@ import {
   dataNodes,
   routeStructure,
   componentStructure,
-} from "@/data/portfolio-section.data";
-import type { ArchitectureNode } from "@/types/portfolio-section.types";
+} from "@/data/hubs/portfolio-section.data";
+import type { ArchitectureNode } from "@/types/hubs/portfolio-section.types";
 
 export function ArchitectureDiagram() {
   const renderArchitectureLayer = (

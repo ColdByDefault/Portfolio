@@ -497,7 +497,7 @@
     "projects": {
       "project-1": {
         "title": "Voice-to-Notion Automation",
-        "description": "Wertvolle Ideen und Aufgaben gehen oft in langen Audioaufnahmen oder unordentlichen Notizen verloren? Diese Anwendung verwandelt jedes Sprachmemo oder Meeting-Aufzeichnung in eine strukturierte Notion-Seite. In unter 30 Sekunden erhalten Sie ein Transkript, eine Zusammenfassung, eine To-Do-Liste und eine Stimmungsanalyse – die komplette Automatisierung Ihrer Nachbereitung. Auf Kundeninfrastruktur bereitgestellt.",
+        "description": "Verwandelt Sprachmemos und Meeting-Aufzeichnungen in strukturierte Notion-Seiten mit Transkripten, Zusammenfassungen und Aufgaben. Automatisiert die Nachbereitung in unter 30 Sekunden.",
         "techStack": "KI-Sprachverarbeitung, Stimmungsanalyse, Notion API, Next.js",
         "implementationAreas": "Agenturabläufe, Kundenmanagement, Assistenzsysteme"
       },
@@ -507,6 +507,12 @@
         "description2": "Automatisierungs-Ersparnisse und ROI berechnen.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Finanzanalyse, Geschäftsprozessautomatisierung, Kostenoptimierung"
+      },
+      "project-3": {
+        "title": "KI E-Mail-Automatisierung (Demo)",
+        "description": "Eine interaktive Demo, die RAG zur E-Mail-Analyse nutzt und verschiedene Antwortoptionen sowie Tonfall-Anpassungen bietet. Veranschaulicht einen Prozess, der in der Praxis vollautomatisch läuft.",
+        "techStack": "React, Groq API, RAG",
+        "implementationAreas": "E-Mail-Automatisierung, NLP, Inhaltsgenerierung"
       }
     },
     "comingSoon": "Weitere Anwendungsfälle bald verfügbar..."
@@ -529,6 +535,20 @@
         "roiTimelineText": "Die Automatisierung amortisiert sich in nur <bold>{{weeks}} Wochen</bold>.",
         "notProfitableTitle": "Noch nicht profitabel",
         "notProfitableDesc": "Basierend auf diesen Zahlen ist manuelle Arbeit vorerst günstiger, es sei denn, Sie skalieren."
+      }
+    },
+    "rewriter": {
+      "title": "E-Mail-Analyse",
+      "summary": "Zusammenfassung",
+      "keyPoints": "Kernpunkte",
+      "chooseResponse": "Antwort wählen",
+      "selected": "Ausgewählt",
+      "copied": "Kopiert",
+      "copy": "Kopieren",
+      "contextInput": {
+        "title": "Benutzerdefinierter Kontext (RAG)",
+        "infoText": "Fügen Sie benutzerdefinierten Kontext hinzu, den die KI beim Analysieren oder Umschreiben von E-Mails verwendet. Dies kann Unternehmensrichtlinien, Kommunikationsleitfäden, Projektdetails oder andere relevante Hintergrundinformationen umfassen.",
+        "placeholder": "Beispiel: Unsere Unternehmensrichtlinie sieht eine Antwort innerhalb von 24 Stunden vor. Wir bieten eine 30-tägige Geld-zurück-Garantie. Die Projektfrist ist der 15. März..."
       }
     }
   }

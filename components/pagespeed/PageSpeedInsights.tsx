@@ -1,7 +1,8 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -23,7 +24,7 @@ import { HiDevicePhoneMobile } from "react-icons/hi2";
 import type {
   PageSpeedResult,
   PageSpeedInsightsProps,
-} from "@/types/pagespeed";
+} from "@/types/configs/pagespeed";
 import { usePageSpeedData } from "@/hooks/use-pageSpeed-data";
 
 const getScoreBadgeColor = (score: number): string => {

@@ -1,9 +1,13 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
- */
+*/
+
 import { NextRequest, NextResponse } from "next/server";
-import type { PageSpeedResult, PageSpeedMetrics } from "@/types/pagespeed";
+import type {
+  PageSpeedResult,
+  PageSpeedMetrics,
+} from "@/types/configs/pagespeed";
 
 interface RefreshResult {
   strategy: "mobile" | "desktop";
