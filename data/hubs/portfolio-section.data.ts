@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 import {
   Code,
@@ -80,7 +80,7 @@ export const dataNodes: ArchitectureNode[] = [
   {
     icon: Target,
     title: "API Routes Structure",
-    subtitle: "RESTful Endpoints + GitHub API + PageSpeed API",
+    subtitle: "RESTful Endpoints + GitHub API",
     color: "bg-orange-500/10 text-orange-600",
   },
   {
@@ -334,46 +334,6 @@ export function CertificationShowcaseMobile({
   );
 }`,
   },
-  {
-    title: "API Data Hook",
-    language: "TypeScript",
-    code: `// Data fetching with caching and error handling
-export function usePageSpeedData({
-  url,
-  showBothStrategies = true,
-}: UsePageSpeedDataProps): UsePageSpeedDataReturn {
-  const [mobileData, setMobileData] = useState<PageSpeedResult | null>(null);
-  const [desktopData, setDesktopData] = useState<PageSpeedResult | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [cacheStatus, setCacheStatus] = useState<
-    "fresh" | "updating" | "updated" | null
-  >(null);
-
-  const fetchStrategy = useCallback(async (
-    strategy: "mobile" | "desktop",
-    forceRefresh = false
-  ): Promise<void> => {
-    try {
-      const queryParams = new URLSearchParams({ url, strategy });
-      if (forceRefresh) queryParams.append("refresh", "true");
-      
-      const response = await fetch(\`/api/pagespeed?\${queryParams}\`);
-      const result = await response.json();
-      
-      if (strategy === "mobile") {
-        setMobileData(result);
-      } else {
-        setDesktopData(result);
-      }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
-    }
-  }, [url]);
-
-  return { mobileData, desktopData, loading, error, cacheStatus, refresh };
-}`,
-  },
 ];
 
 // Route Structure Details
@@ -415,7 +375,6 @@ export const routeStructure = {
     "api/blog/*",
     "api/chatbot/*",
     "api/github/*",
-    "api/pagespeed/*",
   ],
 };
 
@@ -436,7 +395,7 @@ export const componentStructure = {
     {
       folder: "hooks/",
       description: "Global reusable hooks",
-      examples: ["use-mobile.ts", "use-language.ts", "use-pageSpeed-data.ts"],
+      examples: ["use-mobile.ts", "use-language.ts"],
     },
     {
       folder: "lib/",
