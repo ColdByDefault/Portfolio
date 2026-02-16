@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 import { Hero } from "@/components/hero";
@@ -22,7 +22,7 @@ const Capabilities = dynamic(
   {
     loading: () => <LoadingSkeleton />,
     ssr: false,
-  }
+  },
 );
 
 const CertificationShowcase = dynamic(
@@ -33,18 +33,7 @@ const CertificationShowcase = dynamic(
   {
     loading: () => <LoadingSkeleton />,
     ssr: false,
-  }
-);
-
-const PageSpeedInsights = dynamic(
-  () =>
-    import("@/components/pagespeed").then((mod) => ({
-      default: mod.PageSpeedInsights,
-    })),
-  {
-    loading: () => <LoadingSkeleton />,
-    ssr: false,
-  }
+  },
 );
 
 const ClientBackground = dynamic(
@@ -55,7 +44,7 @@ const ClientBackground = dynamic(
   {
     loading: () => null,
     ssr: false,
-  }
+  },
 );
 
 export default function Home() {
@@ -153,27 +142,6 @@ export default function Home() {
             }
           >
             <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
-          </Suspense>
-
-          <Suspense
-            fallback={
-              <div className="min-h-150">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <div className="py-12 px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-light text-center mb-8 text-black dark:text-white">
-                  Website Performance
-                </h2>
-                <PageSpeedInsights
-                  url="https://www.coldbydefault.com"
-                  showRefreshButton={true}
-                  showBothStrategies={true}
-                />
-              </div>
-            </div>
           </Suspense>
 
           <Suspense fallback={<LoadingSkeleton />}></Suspense>

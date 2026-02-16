@@ -1,9 +1,0 @@
-/**
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
-
-export { default as PortoCard } from "./portoCard";
-export { default } from "./portoCard";
-export * from "./portoCard.utils";
-export * from "./PortoCardComponents";

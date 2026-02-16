@@ -119,6 +119,9 @@
     "title": "Mes Certifications",
     "issuedBy": "Délivré par :",
     "date": "Date :",
+    "issuers": {
+      "ihkRheinNeckar": "IHK Rhein-Neckar (Chambre de Commerce et d'Industrie Allemande)"
+    },
     "descriptions": {
       "pythonPcep": "Obtention de la certification PCEP (Python Certified Entry-Level Programmer), démontrant des connaissances fondamentales en programmation Python.",
       "udemyPythonBootcamp": "Complété « 100 Days of Code - The Complete Python Pro Bootcamp », maîtrisant Python du niveau débutant à avancé.",
@@ -126,7 +129,8 @@
       "udemyHtmlCss": "Complété le cours, apprenant les bases du HTML et du CSS pour construire et déployer un site web.",
       "gitGithubBootcamp": "Complété un cours complet sur Git et GitHub, couvrant le contrôle de version, le branching et les flux de collaboration.",
       "fullStackWebDev": "Cours de développement web Frontend et Backend, couvrant HTML, CSS, JavaScript, Node.js et React.",
-      "kiKompetenzSchulung": "Formation aux compétences en IA selon l'Article 4 de la loi européenne sur l'IA, couvrant l'utilisation responsable de l'IA et la conformité."
+      "kiKompetenzSchulung": "Formation aux compétences en IA selon l'Article 4 de la loi européenne sur l'IA, couvrant l'utilisation responsable de l'IA et la conformité.",
+      "computerScienceExpert": "Expert en Informatique, Domaine : Développement Logiciel et IA, selon le § 37 de la loi allemande sur la formation professionnelle (BBiG)."
     }
   },
   "Projects": {
@@ -222,8 +226,8 @@
     "chatbot": {
       "title": "Service de Chatbot IA",
       "description": "Ce site web inclut un chatbot IA pour l'assistance interactive et l'information.",
-      "geminiTitle": "Intégration de l'API Groq",
-      "geminiDescription": "Le chatbot est alimenté par Groq. En utilisant le chatbot, vous acceptez les conditions d'utilisation et la politique de confidentialité de Groq. Les requêtes de chat sont traitées via l'API Groq.",
+      "apiTitle": "Intégration de l'API Groq",
+      "apiDescription": "Le chatbot est alimenté par Groq. En utilisant le chatbot, vous acceptez les conditions d'utilisation et la politique de confidentialité de Groq. Les requêtes de chat sont traitées via l'API Groq.",
       "temporaryTitle": "Aucun Stockage de Données",
       "temporaryDescription": "Je ne sauvegarde aucune conversation, historique ou information personnelle. Toutes les données de chat sont stockées exclusivement dans votre navigateur (stockage web) et restent entièrement sous votre contrôle."
     },

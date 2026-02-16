@@ -34,7 +34,7 @@ const analyzeRequestSchema = z.object({
     .string()
     .max(
       MAX_CONTEXT_LENGTH,
-      `Context must be under ${MAX_CONTEXT_LENGTH} characters`
+      `Context must be under ${MAX_CONTEXT_LENGTH} characters`,
     )
     .optional()
     .transform((val) => (val ? sanitizeChatInput(val) : undefined)),
@@ -50,7 +50,7 @@ function getClientIP(request: NextRequest): string {
 async function callGroqAPI(
   email: string,
   systemPrompt: string,
-  context?: string
+  context?: string,
 ): Promise<string> {
   if (!GROQ_API_KEY) {
     throw new Error("Groq API key not configured");
@@ -85,7 +85,7 @@ async function callGroqAPI(
         top_p: 1,
         stream: false,
       }),
-    }
+    },
   );
 
   if (!response.ok) {
@@ -95,7 +95,7 @@ async function callGroqAPI(
     throw new Error(
       `Groq API error: ${response.status} - ${
         errorData.error?.message || "Unknown error"
-      }`
+      }`,
     );
   }
 
@@ -115,7 +115,7 @@ export async function POST(request: NextRequest) {
     if (!REWRITER_ENABLED) {
       return NextResponse.json(
         { error: "Email analyzer service is currently disabled" },
-        { status: 503 }
+        { status: 503 },
       );
     }
 
@@ -123,7 +123,7 @@ export async function POST(request: NextRequest) {
       console.error("GROQ_API_KEY not configured");
       return NextResponse.json(
         { error: "Service configuration error" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -136,7 +136,7 @@ export async function POST(request: NextRequest) {
           error: "Rate limit exceeded. Please try again later.",
           remaining: 0,
         },
-        { status: 429 }
+        { status: 429 },
       );
     }
 
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
     if (!body) {
       return NextResponse.json(
         { error: "Invalid request body" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -155,7 +155,7 @@ export async function POST(request: NextRequest) {
       const firstError = validationResult.error.issues[0];
       return NextResponse.json(
         { error: firstError?.message || "Invalid request data" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -176,7 +176,7 @@ export async function POST(request: NextRequest) {
       console.error("Failed to parse AI response:", rawResponse);
       return NextResponse.json(
         { error: "Failed to parse AI response" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -192,8 +192,10 @@ export async function POST(request: NextRequest) {
         status: 200,
         headers: {
           "X-RateLimit-Remaining": remaining.toString(),
+          "X-Content-Type-Options": "nosniff",
+          "Cache-Control": "no-store, no-cache, must-revalidate",
         },
-      }
+      },
     );
   } catch (error) {
     console.error("Email analyze error:", error);
@@ -204,10 +206,23 @@ export async function POST(request: NextRequest) {
         {
           error: "AI service temporarily unavailable. Please try again later.",
         },
-        { status: 503 }
+        {
+          status: 503,
+          headers: {
+            "X-Content-Type-Options": "nosniff",
+          },
+        },
       );
     }
 
-    return NextResponse.json({ error: sanitizedError }, { status: 500 });
+    return NextResponse.json(
+      { error: sanitizedError },
+      {
+        status: 500,
+        headers: {
+          "X-Content-Type-Options": "nosniff",
+        },
+      },
+    );
   }
 }

@@ -198,7 +198,7 @@ Comprehensive API endpoints with security-first design:
 | `/api/blog`       | Blog content management and retrieval             | Prisma + Zod                       |
 | `/api/github`     | Fetches GitHub profile + repos (filtered)         | Tokenized (env)                   |
 | `/api/pagespeed` | Surfaces PageSpeed metrics                         | Enhanced caching + error handling |
-| `/api/chatbot`   | Interactive AI chatbot (Reem) for visitor queries | Gemini + Groq fallback             |
+| `/api/chatbot`   | Interactive AI chatbot (Reem) for visitor queries |  Groq API                         |
 | `/api/admin`     | Administrative operations for content             | Secured endpoints                 |
 
 Controls:
@@ -345,8 +345,6 @@ Refer to `LICENSE` & `COPYRIGHT` files for formal wording.
 ---
 
 ## 16. Contact
-Services: service@yazan-abo-ayash.de
-Support: support@yazan-abo-ayash.de
 Portfolio: https://www.coldbydefault.com
 Documentation: https://docs.coldbydefault.com/ 
 For professional or security inquiries, reach out via the official channels listed above.

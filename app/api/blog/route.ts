@@ -1,14 +1,41 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { getBlogs } from "@/lib/hubs/blogs";
 import type { BlogListQuery, BlogLanguage } from "@/types/hubs/blogs";
+import { RateLimiter } from "@/lib/security";
+
+// Rate limiter instance: 30 requests per minute
+const rateLimiter = new RateLimiter(60000, 30);
+
+function getClientIP(request: NextRequest): string {
+  const forwarded = request.headers.get("x-forwarded-for");
+  const realIp = request.headers.get("x-real-ip");
+  const cfConnectingIp = request.headers.get("cf-connecting-ip");
+  return cfConnectingIp || realIp || forwarded?.split(",")[0] || "127.0.0.1";
+}
 
 export async function GET(request: NextRequest) {
+  // Rate limiting check
+  const clientIP = getClientIP(request);
+  if (!rateLimiter.isAllowed(clientIP)) {
+    return NextResponse.json(
+      { error: "Too many requests" },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": "60",
+          "X-RateLimit-Limit": "30",
+          "X-RateLimit-Remaining": "0",
+        },
+      },
+    );
+  }
+
   try {
     const { searchParams } = new URL(request.url);
 
@@ -32,26 +59,23 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(result, {
       headers: {
-        "Cache-Control": "no-cache",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET",
-        "Access-Control-Allow-Headers": "Content-Type",
+        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+        "X-Content-Type-Options": "nosniff",
+        "X-Robots-Tag": "noindex, nofollow",
       },
     });
   } catch (error) {
     console.error("Error fetching blogs:", error);
     return NextResponse.json(
       {
-        error: "Internal server error",
-        message: error instanceof Error ? error.message : "Unknown error",
-        stack:
-          process.env.NODE_ENV === "development"
-            ? error instanceof Error
-              ? error.stack
-              : undefined
-            : undefined,
+        error: "Failed to fetch blogs",
       },
-      { status: 500 }
+      {
+        status: 500,
+        headers: {
+          "X-Content-Type-Options": "nosniff",
+        },
+      },
     );
   }
 }

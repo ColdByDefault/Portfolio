@@ -1,9 +1,20 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 export const certifications = [
+  {
+    id: 4,
+    title: "Computer Science Expert",
+    image: "/default.png",
+    issuer: "IHK Rhein-Neckar (German Chamber of Commerce and Industry)",
+    issuerKey: "ihkRheinNeckar",
+    description:
+      "Subject Area: Software Development and AI, as per § 37 German Vocational Training Act (BBiG).",
+    descriptionKey: "computerScienceExpert",
+    date: "2026",
+  },
   {
     id: 1,
     title: "Python PCEP",
