@@ -228,8 +228,8 @@
       "description": "Denna webbplats inkluderar en AI-chatbot för interaktiv assistans och information.",
       "apiTitle": "Groq API Integration",
       "apiDescription": "Chatboten drivs av Groq. Genom att använda chatboten accepterar du Groqs användarvillkor och integritetspolicy. Chattförfrågningar bearbetas via Groq API.",
-      "temporaryTitle": "Ingen Datalagring",
-      "temporaryDescription": "Jag sparar inga chattkonversationer, historik eller personlig information. All chattdata lagras exklusivt i din webbläsare (webblagring) och förblir helt under din kontroll."
+      "temporaryTitle": "Valfri Datalagring (Med Samtycke)",
+      "temporaryDescription": "Med ditt uttryckliga samtycke kan chattkonversationer sparas för kvalitetsförbättring och analysändamål. Detta inkluderar: chattmeddelanden, tidsstämplar, anonymiserad IP-adress och allmän plats (land/stad). Du kan återkalla ditt samtycke när som helst. Utan samtycke förblir all chattdata enbart i din webbläsare."
     },
     "booking": {
       "title": "Bokningstjänst",
@@ -375,6 +375,12 @@
     },
     "accessibility": {
       "sendMessage": "Skicka meddelande"
+    },
+    "consent": {
+      "title": "Integritet & Datainsamling",
+      "description": "Jag sparar chattkonversationer i förbättringssyfte. Alla GDPR-regler för EU- och EES-användare tillämpas fullt ut. Du kan avböja och chatta privat.",
+      "accept": "Acceptera & Fortsätt",
+      "decline": "Avböj"
     }
   },
   "Services": {

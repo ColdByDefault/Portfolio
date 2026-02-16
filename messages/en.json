@@ -228,8 +228,8 @@
       "description": "This website includes an AI chatbot for interactive assistance and information.",
       "apiTitle": "Groq API Integration",
       "apiDescription": "The chatbot is powered by Groq. By using the chatbot, you accept Groq's terms of service and privacy policy. Chat requests are processed via the Groq API.",
-      "temporaryTitle": "No Data Storage",
-      "temporaryDescription": "I do not save any chat conversations, history, or personal information. All chat data is stored exclusively in your browser (web storage) and remains entirely under your control."
+      "temporaryTitle": "Optional Data Storage (With Consent)",
+      "temporaryDescription": "With your explicit consent, I may store chat conversations for quality improvement and analytics purposes. This includes: chat messages, timestamps, anonymized IP address, and general location (country/city). You can withdraw consent at any time. Without consent, all chat data remains in your browser only."
     },
     "booking": {
       "title": "Booking Service",
@@ -375,6 +375,12 @@
     },
     "accessibility": {
       "sendMessage": "Send message"
+    },
+    "consent": {
+      "title": "Privacy & Data Collection",
+      "description": "I save chat conversations for improvement purposes. All GDPR rules for EU and EEA users are fully applied. You can decline and chat privately.",
+      "accept": "Accept & Continue",
+      "decline": "Decline"
     }
   },
   "Services": {

@@ -228,8 +228,8 @@
       "description": "Diese Website enthält einen KI-Chatbot für interaktive Unterstützung und Informationen.",
       "apiTitle": "Groq API Integration",
       "apiDescription": "Der Chatbot wird von Groq betrieben. Durch die Nutzung des Chatbots akzeptieren Sie die Nutzungsbedingungen und Datenschutzrichtlinien von Groq. Chat-Anfragen werden über die Groq API verarbeitet.",
-      "temporaryTitle": "Keine Datenspeicherung",
-      "temporaryDescription": "Ich speichere keine Chat-Gespräche, Verläufe oder persönlichen Informationen. Alle Chat-Daten werden ausschließlich in Ihrem Browser (Web-Storage) gespeichert und verbleiben vollständig unter Ihrer Kontrolle."
+      "temporaryTitle": "Optionale Datenspeicherung (mit Einwilligung)",
+      "temporaryDescription": "Mit Ihrer ausdrücklichen Einwilligung können Chat-Gespräche zur Qualitätsverbesserung und Analyse gespeichert werden. Dies umfasst: Chat-Nachrichten, Zeitstempel, anonymisierte IP-Adresse und allgemeinen Standort (Land/Stadt). Sie können Ihre Einwilligung jederzeit widerrufen. Ohne Einwilligung verbleiben alle Chat-Daten ausschließlich in Ihrem Browser."
     },
     "booking": {
       "title": "Buchungsservice",
@@ -375,6 +375,12 @@
     },
     "accessibility": {
       "sendMessage": "Nachricht senden"
+    },
+    "consent": {
+      "title": "Datenschutz & Datenerfassung",
+      "description": "Ich speichere Chat-Gespräche zu Verbesserungszwecken. Alle DSGVO-Regeln für EU- und EWR-Nutzer werden vollständig angewendet. Sie können ablehnen und privat chatten.",
+      "accept": "Akzeptieren & Fortfahren",
+      "decline": "Ablehnen"
     }
   },
   "Services": {

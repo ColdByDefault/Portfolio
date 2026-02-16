@@ -123,3 +123,60 @@ model BlogTagRelation {
   @@unique([blogId, tagId])
   @@map("blog_tag_relations")
 }
+
+// Chatbot Models
+model ChatSession {
+  id                String          @id // session_timestamp_randomhex format
+  ipAddress         String?         // Client IP (anonymized if needed)
+  ipCountry         String?         // Country from IP (e.g., "US", "DE")
+  ipCity            String?         // City from IP (optional, for analytics)
+  userAgent         String?         // Browser/device info
+  language          String?         // User's language preference
+  
+  // Session tracking
+  startedAt         DateTime        @default(now())
+  lastActivityAt    DateTime        @updatedAt
+  endedAt           DateTime?       // When session explicitly ended
+  isActive          Boolean         @default(true)
+  
+  // User consent & privacy
+  consentGiven      Boolean         @default(false) // GDPR/privacy consent
+  consentTimestamp  DateTime?       // When consent was given
+  
+  // Session metadata
+  totalMessages     Int             @default(0)
+  
+  // Relations
+  messages          ChatMessage[]
+
+  @@map("chat_sessions")
+  @@index([ipAddress])
+  @@index([startedAt])
+  @@index([ipCountry])
+  @@index([isActive])
+}
+
+model ChatMessage {
+  id                String          @id // msg_timestamp_randomhex format
+  sessionId         String
+  
+  // Message content
+  role              String          // "user" or "assistant"
+  content           String          // The actual message (use @db.Text for large content)
+  
+  // Message metadata
+  timestamp         DateTime        @default(now())
+  status            String?         // "sending", "sent", "error"
+  
+  // Context (optional)
+  pageContext       String?         // What page user was on
+  errorDetails      String?         // If status is error
+  
+  // Relations
+  session           ChatSession     @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("chat_messages")
+  @@index([sessionId])
+  @@index([timestamp])
+  @@index([role])
+}

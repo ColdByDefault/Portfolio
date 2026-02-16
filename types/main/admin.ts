@@ -2,7 +2,7 @@
  * Admin Interface Types
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 export interface AdminStats {
   totalSubmissions: number;
@@ -89,7 +89,8 @@ export interface BlogAdminAction {
     | "publish"
     | "unpublish"
     | "feature"
-    | "unfeature";
+    | "unfeature"
+    | "logout";
   blogId?: string;
   data?: unknown;
 }

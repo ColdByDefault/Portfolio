@@ -12,6 +12,7 @@ import {
 import { SiVercel } from "react-icons/si";
 import Link from "next/link";
 import Image from "next/image";
+import VersionDisplay from "@/components/VersionDisplay";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -61,7 +62,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-200 dark:border-gray-800 py-4">
-          <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0">
+          <div className="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0 gap-4">
             {/* Powered By Section */}
             <div className="flex items-center gap-4 sm:flex-1 justify-center sm:justify-start">
               <span className="text-xs text-gray-400 dark:text-gray-500">
@@ -98,6 +99,16 @@ export default function Footer() {
                 </Link>
               </div>
             </div>
+
+            {/* Version Section */}
+            <div className="flex items-center justify-center sm:flex-1">
+              <VersionDisplay
+                prefix="v"
+                className="text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-foreground transition-colors"
+              />
+            </div>
+
+            {/* Copyright Section */}
             <div className="text-xs text-gray-500 dark:text-gray-400 sm:flex-1">
               <div className="flex flex-col text-center sm:text-right">
                 <span>

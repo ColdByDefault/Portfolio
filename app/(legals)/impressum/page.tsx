@@ -99,7 +99,7 @@ export default async function Impressum() {
             <p className="text-sm text-muted-foreground">
               {t("vat.description")}
             </p>
-            <p className="text-sm font-medium mt-2">{t("vat.value")}</p>
+            <p className="text-sm font-medium mt-2">{t("vat.value")} Will be provided soon</p>
           </CardContent>
         </Card>
 

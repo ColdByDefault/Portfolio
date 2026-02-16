@@ -11,7 +11,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Bot, CircleAlert, Sparkles } from "lucide-react";
+import { Bot, CircleAlert, Shield, Sparkles } from "lucide-react";
 import { useChatBot } from "@/components/chatbot";
 import type { ChatBotUIProps, ChatMessage } from "@/types/configs/chatbot";
 import {
@@ -40,7 +40,20 @@ export function ChatBot({
   const chatInputRef = useRef<HTMLInputElement>(null);
   const t = useTranslations("ChatBot");
 
-  const { messages, isLoading, error, sendMessage, clearError } = useChatBot();
+  const {
+    messages,
+    isLoading,
+    error,
+    consentGiven,
+    sendMessage,
+    clearError,
+    setConsent,
+  } = useChatBot();
+  const [consentDismissed, setConsentDismissed] = useState(false);
+
+  // Derive consent banner visibility from state (no effect needed)
+  const showConsentBanner =
+    isOpen && !consentGiven && !consentDismissed && messages.length === 0;
 
   // Show ChatBot button after configured delay
   useEffect(() => {
@@ -115,6 +128,16 @@ export function ChatBot({
     }, 100);
   };
 
+  const handleAcceptConsent = () => {
+    setConsent(true);
+    setConsentDismissed(true);
+  };
+
+  const handleDeclineConsent = () => {
+    setConsent(false);
+    setConsentDismissed(true);
+  };
+
   const handleSendMessage = async (message: string) => {
     try {
       await sendMessage(message);
@@ -162,7 +185,48 @@ export function ChatBot({
         >
           <ChatHeader onClose={handleCloseChat} />
 
-          <CardContent className="p-0 flex flex-col flex-1 min-h-0">
+          {/* Consent Banner */}
+          {showConsentBanner && (
+            <div className="p-4 border-b border-border/50">
+              <div className="flex items-start space-x-3">
+                <div className="shrink-0">
+                  <Shield className="h-5 w-5 text-primary" aria-hidden="true" />
+                </div>
+                <div className="flex-1 space-y-3">
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">
+                      {t("consent.title")}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                      {t("consent.description")}
+                    </p>
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <Button
+                      size="sm"
+                      onClick={handleAcceptConsent}
+                      className="flex-1 text-xs"
+                    >
+                      {t("consent.accept")}
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={handleDeclineConsent}
+                      className="flex-1 text-xs"
+                    >
+                      {t("consent.decline")}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <CardContent className="p-0 flex flex-col flex-1 min-h-0 relative">
+            {showConsentBanner && (
+              <div className="absolute inset-0 z-10 backdrop-blur-sm bg-background/30 pointer-events-none" />
+            )}
             <div
               className={`flex-1 p-3 sm:p-4 min-h-0 max-h-64 sm:max-h-80 overflow-y-auto ${CHATBOT_STYLES.SCROLLBAR}`}
               role="log"

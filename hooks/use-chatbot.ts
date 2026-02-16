@@ -19,9 +19,11 @@ interface UseChatBotReturn {
   isLoading: boolean;
   isConnected: boolean;
   error: string | null;
+  consentGiven: boolean;
   sendMessage: (content: string) => Promise<void>;
   clearError: () => void;
   clearMessages: () => void;
+  setConsent: (consent: boolean) => void;
 }
 
 export function useChatBot(): UseChatBotReturn {
@@ -29,11 +31,13 @@ export function useChatBot(): UseChatBotReturn {
   const [isLoading, setIsLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [consentGiven, setConsentGiven] = useState(false);
   const sessionIdRef = useRef<string | null>(null);
 
   // Storage keys for persistence
   const STORAGE_KEY_MESSAGES = "chatbot_messages";
   const STORAGE_KEY_SESSION = "chatbot_session";
+  const STORAGE_KEY_CONSENT = "chatbot_consent";
 
   // Load messages from localStorage on component mount
   useEffect(() => {
@@ -41,6 +45,7 @@ export function useChatBot(): UseChatBotReturn {
       try {
         const savedMessages = localStorage.getItem(STORAGE_KEY_MESSAGES);
         const savedSession = localStorage.getItem(STORAGE_KEY_SESSION);
+        const savedConsent = localStorage.getItem(STORAGE_KEY_CONSENT);
 
         if (savedMessages) {
           const parsedMessages = JSON.parse(savedMessages) as ChatMessage[];
@@ -57,10 +62,15 @@ export function useChatBot(): UseChatBotReturn {
         if (savedSession) {
           sessionIdRef.current = savedSession;
         }
+
+        if (savedConsent === "true") {
+          setConsentGiven(true);
+        }
       } catch {
         // Clear corrupted data silently
         localStorage.removeItem(STORAGE_KEY_MESSAGES);
         localStorage.removeItem(STORAGE_KEY_SESSION);
+        localStorage.removeItem(STORAGE_KEY_CONSENT);
       }
     }
   }, []);
@@ -122,6 +132,19 @@ export function useChatBot(): UseChatBotReturn {
     if (typeof window !== "undefined") {
       localStorage.removeItem(STORAGE_KEY_MESSAGES);
       localStorage.removeItem(STORAGE_KEY_SESSION);
+      localStorage.removeItem(STORAGE_KEY_CONSENT);
+    }
+  }, []);
+
+  const setConsent = useCallback((consent: boolean) => {
+    setConsentGiven(consent);
+    // Save consent to localStorage
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.setItem(STORAGE_KEY_CONSENT, String(consent));
+      } catch {
+        // Storage quota exceeded or disabled - fail silently
+      }
     }
   }, []);
 
@@ -156,7 +179,12 @@ export function useChatBot(): UseChatBotReturn {
                 : undefined,
             userAgent:
               typeof window !== "undefined" ? navigator.userAgent : undefined,
+            language:
+              typeof window !== "undefined"
+                ? navigator.language || undefined
+                : undefined,
           },
+          consentGiven, // Include consent status
         };
 
         const response = await fetch("/api/chatbot", {
@@ -268,7 +296,7 @@ export function useChatBot(): UseChatBotReturn {
         setIsLoading(false);
       }
     },
-    [isLoading],
+    [isLoading, consentGiven],
   );
 
   return {
@@ -276,8 +304,10 @@ export function useChatBot(): UseChatBotReturn {
     isLoading,
     isConnected,
     error,
+    consentGiven,
     sendMessage,
     clearError,
     clearMessages,
+    setConsent,
   };
 }
