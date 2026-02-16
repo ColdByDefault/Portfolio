@@ -20,16 +20,8 @@ export default function AdminBlockedPage() {
         </CardHeader>
         <CardContent className="space-y-4 text-center">
           <p className="text-gray-700">
-            Too many failed authentication attempts detected.
+            Nuh you ain&apos;t support to be doing this... NOW BANNNN!.
           </p>
-          <p className="text-sm text-gray-600">
-            Your IP has been temporarily blocked for security reasons.
-            <br />
-            <strong>Please try again after 15 minutes.</strong>
-          </p>
-          <div className="mt-6 pt-4 border-t text-xs text-gray-500">
-            If you believe this is an error, please contact the administrator.
-          </div>
         </CardContent>
       </Card>
     </div>

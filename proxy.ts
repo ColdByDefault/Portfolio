@@ -10,10 +10,10 @@ import type { NextRequest } from "next/server";
 // Supported locales
 const supportedLocales = ["en", "de", "es", "fr", "sv"];
 
-// Admin security: Track failed authentication attempts
+
 const failedAttempts = new Map<string, number>();
-const blockedIPs = new Map<string, number>(); // IP -> unblock timestamp
-const BLOCK_DURATION = 15 * 60 * 1000; // 15 minutes
+const blockedIPs = new Map<string, number>();
+const BLOCK_DURATION = 15 * 60 * 1000; 
 const MAX_ATTEMPTS = 2;
 
 // Session validation: Store valid sessions with metadata
@@ -56,10 +56,7 @@ function recordFailedAttempt(ip: string): void {
   }
 }
 
-/**
- * Cryptographically validate admin session
- * Prevents session hijacking and cookie spoofing attacks
- */
+
 function hasValidAdminSession(request: NextRequest): boolean {
   const sessionCookie = request.cookies.get("PORTFOLIO_ADMIN_SESSION");
   if (!sessionCookie?.value) return false;
@@ -77,23 +74,18 @@ function hasValidAdminSession(request: NextRequest): boolean {
     return false;
   }
 
-  // Verify IP hasn't changed (basic session binding)
+
   const currentIP = getClientIP(request);
   if (sessionData.ip !== currentIP) {
     validSessions.delete(sessionId);
     return false;
   }
 
-  // Session is valid
   return true;
 }
 
-/**
- * Create a new cryptographically signed session
- * Called from API route after successful authentication
- */
+
 export function createAdminSession(ip: string): string {
-  // Generate secure random session ID
   const randomBytes = new Uint8Array(32);
   crypto.getRandomValues(randomBytes);
   const sessionId = Array.from(randomBytes)
@@ -103,7 +95,6 @@ export function createAdminSession(ip: string): string {
   const now = Date.now();
   const expiresAt = now + SESSION_DURATION;
 
-  // Create session signature for integrity
   const signature = `${sessionId}:${ip}:${expiresAt}`;
 
   const sessionData: SessionData = {
@@ -115,7 +106,6 @@ export function createAdminSession(ip: string): string {
 
   validSessions.set(sessionId, sessionData);
 
-  // Cleanup expired sessions periodically
   if (validSessions.size % 10 === 0) {
     cleanupExpiredSessions();
   }
@@ -123,16 +113,11 @@ export function createAdminSession(ip: string): string {
   return sessionId;
 }
 
-/**
- * Invalidate a session (logout)
- */
+
 export function invalidateAdminSession(sessionId: string): void {
   validSessions.delete(sessionId);
 }
 
-/**
- * Clean up expired sessions to prevent memory leaks
- */
 function cleanupExpiredSessions(): void {
   const now = Date.now();
   for (const [sessionId, data] of validSessions.entries()) {

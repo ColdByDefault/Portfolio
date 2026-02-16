@@ -60,7 +60,6 @@ function getClientIP(request: NextRequest): string {
 
 function isAuthorized(request: NextRequest): boolean {
   if (!ADMIN_TOKEN) {
-    // Security: Don't log sensitive information about environment configuration
     return false;
   }
 
@@ -73,7 +72,6 @@ function isAuthorized(request: NextRequest): boolean {
     ? authHeader.substring(7)
     : authHeader;
 
-  // Use constant-time comparison to prevent timing attacks
   if (token.length !== ADMIN_TOKEN.length) {
     return false;
   }
@@ -88,9 +86,6 @@ function isAuthorized(request: NextRequest): boolean {
   return isEqual;
 }
 
-/**
- * Create admin context for blog operations
- */
 function createAdminContext(request: NextRequest): AdminContext {
   return {
     clientIP: getClientIP(request),
@@ -99,9 +94,7 @@ function createAdminContext(request: NextRequest): AdminContext {
   };
 }
 
-/**
- * Set secure admin session cookie after successful auth
- */
+
 function setAdminSessionCookie(response: NextResponse, clientIP: string): void {
   // Create cryptographically secure session
   const sessionId = createAdminSession(clientIP);
@@ -110,14 +103,11 @@ function setAdminSessionCookie(response: NextResponse, clientIP: string): void {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
-    maxAge: 60 * 60 * 8, // 8 hours
+    maxAge: 60 * 60 * 8, 
     path: "/",
   });
 }
 
-/**
- * Clear admin session cookie
- */
 function clearAdminSessionCookie(
   response: NextResponse,
   request: NextRequest,
