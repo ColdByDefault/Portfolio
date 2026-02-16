@@ -1,12 +1,17 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V5.3.18
+# ColdByDefault Portfolio · V6.0.1
 
 Modern, secure, high‑performance developer portfolio built with Next.js 16, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
 <img width="990" height="174" alt="Screenshot 2025-08-31 111906" src="https://github.com/user-attachments/assets/2a863d38-e178-42ee-85a9-75010601fb2b" />
 
-**Live:** https://www.coldbydefault.com • **Docs:** https://docs.coldbydefault.com/ • **Stack:** Next.js 16 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui · Embla Carousel · Framer Motion 12.x · next-intl 4.6 · Prisma ORM 7 · Neon PostgreSQL · Zod 4.x · ESLint 9.x · Vercel
+- **Live:** https://www.coldbydefault.com 
+- **Docs:** https://docs.coldbydefault.com/ 
+- **Stack:** 
+  - Next.js 16 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui 
+  - Embla Carousel · Framer Motion 12.x · next-intl 4.6 · Prisma ORM 7 
+  - Neon PostgreSQL · Zod 4.x · ESLint 9.x · Vercel
 
 </div>
 
@@ -217,13 +222,11 @@ Last internal assessment: 2025‑09 (latest iteration) — no known unresolved c
 
 Implemented Layers (expanded in 4.11.15):
 
-1. Transport & Headers: HSTS, CSP, X-Content-Type-Options, X-Frame-Options (deny), Referrer-Policy, Permissions-Policy.
-2. Application: Sanitized inputs, explicit error redaction, avoidance of `eval` / dangerous DOM sinks, reinforced type gates (locale / SEO literal unions) reducing unchecked paths.
-3. Operational: Secrets confined to environment variables; repository free of credentials.
-4. Abuse Mitigation: IP‑scoped rate limiting on sensitive endpoints with enhanced Zod validation.
-5. Dependency Hygiene: Routine audit (npm audit) — zero known CVEs at last scan; periodic verification of transitive packages relevant to security headers & i18n.
-6. Automated Security: CodeQL Advanced Security Scanning for JavaScript, TypeScript, and Python with multi-language matrix analysis.
-7. Dependency Security: Automated dependency review workflows blocking vulnerable dependencies in pull requests.
+1. Transport & Headers: HSTS, CSP, X-Content-Type-Options, X-Frame-Options (deny), Referrer-Policy, Permissions-Policy..
+2. Abuse Mitigation..
+3. Dependency Hygiene: Routine audit (npm audit) — zero known CVEs at last scan; periodic verification of transitive packages relevant to security headers & i18n.
+4. Automated Security: CodeQL Advanced Security Scanning for JavaScript, TypeScript, and Python with multi-language matrix analysis.
+5. Dependency Security: Automated dependency review workflows blocking vulnerable dependencies in pull requests.
 
 Security Posture Snapshot:
 
@@ -295,40 +298,9 @@ pnpm dev
 
 ```
 
-Open http://localhost:3000
-
-
-**Prisma ORM 7 Notes:**
-
-Prisma 7 introduces a new client generation structure. The generated client exports are now in `client.ts`:
-
-```typescript
-// ✅ Correct import for Prisma 7
-import { PrismaClient } from "@/lib/generated/prisma/client";
-import type { Prisma } from "@/lib/generated/prisma/client";
-
-// ❌ Old import (Prisma 6 and below)
-import { PrismaClient } from "@/lib/generated/prisma";
-
-```
-
 ---
 
-## 13. Roadmap
-
-**Planned Enhancements:**
-
-* Expand localization (additional languages beyond 5; automated missing key detection)
-* Further edge caching tuning & RUM instrumentation (privacy‑preserving)
-* Enhanced visual regression / accessibility automation
-* Add selective metrics dashboard (anonymized)
-* Structured data expansion (Projects, Certifications)
-* Advanced chatbot capabilities with memory and context awareness
-* Enhanced performance monitoring and optimization tools
-
----
-
-## 15. License & Intellectual Property
+## 13. License & Intellectual Property
 
 Copyright © 2026 ColdByDefault. All rights reserved.
 
@@ -344,15 +316,17 @@ Refer to `LICENSE` & `COPYRIGHT` files for formal wording.
 
 ---
 
-## 16. Contact
+## 14. Contact
 Portfolio: https://www.coldbydefault.com
+
 Documentation: https://docs.coldbydefault.com/ 
+
 For professional or security inquiries, reach out via the official channels listed above.
 _P.S. If you find any bugs, they're not bugs - they're undocumented features!_
 
 ---
 
-## 17. Special Thanks
+## 15. Special Thanks
 
 <div align="center">
 
