@@ -222,8 +222,8 @@
     "chatbot": {
       "title": "AI Chatbot Service",
       "description": "This website includes an AI chatbot for interactive assistance and information.",
-      "geminiTitle": "Groq API Integration",
-      "geminiDescription": "The chatbot is powered by Groq. By using the chatbot, you accept Groq's terms of service and privacy policy. Chat requests are processed via the Groq API.",
+      "apiTitle": "Groq API Integration",
+      "apiDescription": "The chatbot is powered by Groq. By using the chatbot, you accept Groq's terms of service and privacy policy. Chat requests are processed via the Groq API.",
       "temporaryTitle": "No Data Storage",
       "temporaryDescription": "I do not save any chat conversations, history, or personal information. All chat data is stored exclusively in your browser (web storage) and remains entirely under your control."
     },

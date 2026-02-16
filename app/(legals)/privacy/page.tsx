@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -92,9 +92,7 @@ export default async function Privacy() {
               <p className="text-sm font-medium mb-2">
                 {t("dataProcessing.vercelTitle")}
               </p>
-              <p className="text-sm">
-                {t("dataProcessing.vercelDescription")}
-              </p>
+              <p className="text-sm">{t("dataProcessing.vercelDescription")}</p>
             </div>
           </CardContent>
         </Card>
@@ -112,19 +110,15 @@ export default async function Privacy() {
             </p>
             <div className="p-4 rounded-lg border">
               <p className="text-sm font-medium mb-2">
-                {t("chatbot.geminiTitle")}
+                {t("chatbot.apiTitle")}
               </p>
-              <p className="text-sm">
-                {t("chatbot.geminiDescription")}
-              </p>
+              <p className="text-sm">{t("chatbot.apiDescription")}</p>
             </div>
             <div className="p-4 rounded-lg border">
               <p className="text-sm font-medium mb-2">
                 {t("chatbot.temporaryTitle")}
               </p>
-              <p className="text-sm">
-                {t("chatbot.temporaryDescription")}
-              </p>
+              <p className="text-sm">{t("chatbot.temporaryDescription")}</p>
             </div>
           </CardContent>
         </Card>
@@ -144,9 +138,7 @@ export default async function Privacy() {
               <p className="text-sm font-medium mb-2">
                 {t("booking.calendlyTitle")}
               </p>
-              <p className="text-sm">
-                {t("booking.calendlyDescription")}
-              </p>
+              <p className="text-sm">{t("booking.calendlyDescription")}</p>
             </div>
           </CardContent>
         </Card>

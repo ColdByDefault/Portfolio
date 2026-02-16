@@ -222,8 +222,8 @@
     "chatbot": {
       "title": "AI Chatbot-tjänst",
       "description": "Denna webbplats inkluderar en AI-chatbot för interaktiv assistans och information.",
-      "geminiTitle": "Groq API Integration",
-      "geminiDescription": "Chatboten drivs av Groq. Genom att använda chatboten accepterar du Groqs användarvillkor och integritetspolicy. Chattförfrågningar bearbetas via Groq API.",
+      "apiTitle": "Groq API Integration",
+      "apiDescription": "Chatboten drivs av Groq. Genom att använda chatboten accepterar du Groqs användarvillkor och integritetspolicy. Chattförfrågningar bearbetas via Groq API.",
       "temporaryTitle": "Ingen Datalagring",
       "temporaryDescription": "Jag sparar inga chattkonversationer, historik eller personlig information. All chattdata lagras exklusivt i din webbläsare (webblagring) och förblir helt under din kontroll."
     },

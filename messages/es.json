@@ -222,8 +222,8 @@
     "chatbot": {
       "title": "Servicio de Chatbot IA",
       "description": "Este sitio web incluye un chatbot de IA para asistencia interactiva e información.",
-      "geminiTitle": "Integración de Groq API",
-      "geminiDescription": "El chatbot funciona con Groq. Al usar el chatbot, aceptas los términos de servicio y la política de privacidad de Groq. Las solicitudes del chat se procesan a través de la API de Groq.",
+      "apiTitle": "Integración de Groq API",
+      "apiDescription": "El chatbot funciona con Groq. Al usar el chatbot, aceptas los términos de servicio y la política de privacidad de Groq. Las solicitudes del chat se procesan a través de la API de Groq.",
       "temporaryTitle": "Sin Almacenamiento de Datos",
       "temporaryDescription": "No guardo ninguna conversación, historial o información personal. Todos los datos del chat se almacenan exclusivamente en tu navegador (almacenamiento web) y permanecen completamente bajo tu control."
     },

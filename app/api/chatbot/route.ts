@@ -30,23 +30,23 @@ const CHATBOT_ENABLED = process.env.CHATBOT_ENABLED === "true";
 const chatbotConfig: ChatBotConfig = {
   maxMessagesPerSession: parseInt(
     process.env.CHATBOT_MAX_MESSAGES_PER_SESSION || "20",
-    10
+    10,
   ),
   maxMessageLength: parseInt(
     process.env.CHATBOT_MAX_MESSAGE_LENGTH || "1000",
-    10
+    10,
   ),
   rateLimitPerMinute: parseInt(
     process.env.CHATBOT_RATE_LIMIT_PER_MINUTE || "10",
-    10
+    10,
   ),
   rateLimitPerHour: parseInt(
     process.env.CHATBOT_RATE_LIMIT_PER_HOUR || "50",
-    10
+    10,
   ),
   sessionTimeoutMs: parseInt(
     process.env.CHATBOT_SESSION_TIMEOUT_MS || "1800000",
-    10
+    10,
   ),
   systemPrompt: REEM_SYSTEM_PROMPT,
 };
@@ -144,7 +144,7 @@ function getRateLimitInfo(clientIP: string): {
 
   const minuteRemaining = Math.max(
     0,
-    chatbotConfig.rateLimitPerMinute - limit.minute.count
+    chatbotConfig.rateLimitPerMinute - limit.minute.count,
   );
   const nextMinuteReset = limit.minute.windowStart + 60000;
 
@@ -158,7 +158,7 @@ function cleanupSessions(): void {
   const now = Date.now();
   for (const [sessionId, messages] of sessions.entries()) {
     const lastActivity = Math.max(
-      ...messages.map((m) => m.timestamp.getTime())
+      ...messages.map((m) => m.timestamp.getTime()),
     );
     if (now - lastActivity > chatbotConfig.sessionTimeoutMs) {
       sessions.delete(sessionId);
@@ -179,7 +179,7 @@ function cleanupRateLimits(): void {
 // Groq API primary implementation
 async function callGroqAPI(
   messages: ChatMessage[],
-  systemPrompt: string
+  systemPrompt: string,
 ): Promise<string> {
   if (!GROQ_API_KEY) {
     throw new Error("Groq API key not configured");
@@ -209,7 +209,7 @@ async function callGroqAPI(
         temperature: 0.7,
         max_tokens: 1024,
       }),
-    }
+    },
   );
 
   if (!response.ok) {
@@ -219,7 +219,7 @@ async function callGroqAPI(
     throw new Error(
       `Groq API error: ${response.status} - ${
         errorData.error?.message || "Unknown error"
-      }`
+      }`,
     );
   }
 
@@ -234,11 +234,9 @@ async function callGroqAPI(
   return data.choices[0].message.content;
 }
 
-
-
 // API Routes
 export async function POST(
-  request: NextRequest
+  request: NextRequest,
 ): Promise<NextResponse<ChatBotResponse | ChatBotApiError>> {
   // Check if chatbot is enabled
   if (!CHATBOT_ENABLED) {
@@ -247,7 +245,7 @@ export async function POST(
         error: "ChatBot service is currently unavailable",
         code: "SERVICE_UNAVAILABLE",
       },
-      { status: 503 }
+      { status: 503 },
     );
   }
 
@@ -262,7 +260,7 @@ export async function POST(
         code: "RATE_LIMIT_EXCEEDED",
         details: rateLimitInfo,
       },
-      { status: 429 }
+      { status: 429 },
     );
   }
 
@@ -275,7 +273,7 @@ export async function POST(
           error: "Content-Type must be application/json",
           code: "INVALID_INPUT",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -296,7 +294,7 @@ export async function POST(
               : "Invalid request body",
           code: "INVALID_INPUT",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -313,7 +311,7 @@ export async function POST(
           error: `Maximum ${chatbotConfig.maxMessagesPerSession} messages per session exceeded`,
           code: "INVALID_INPUT",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -392,7 +390,7 @@ export async function POST(
           headers: {
             "Retry-After": String(Math.ceil(retrySeconds || 60)),
           },
-        }
+        },
       );
     }
 
@@ -404,7 +402,7 @@ export async function POST(
             : "Internal server error",
         code: "SERVICE_UNAVAILABLE",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
