@@ -195,12 +195,10 @@ export function ChatBot({
                 <div className="flex-1 space-y-3">
                   <div>
                     <p className="text-sm font-semibold text-foreground">
-                      Privacy & Data Collection
+                      {t("consent.title")}
                     </p>
                     <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                      I save chat conversations for improvement purposes. All
-                      <span className="text-red-400 font-bold"> GDPR</span> rules for EU and EEA users are fully
-                      applied. You can decline and chat privately.
+                      {t("consent.description")}
                     </p>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-2">
@@ -209,7 +207,7 @@ export function ChatBot({
                       onClick={handleAcceptConsent}
                       className="flex-1 text-xs"
                     >
-                      Accept & Continue
+                      {t("consent.accept")}
                     </Button>
                     <Button
                       size="sm"
@@ -217,7 +215,7 @@ export function ChatBot({
                       onClick={handleDeclineConsent}
                       className="flex-1 text-xs"
                     >
-                      Decline
+                      {t("consent.decline")}
                     </Button>
                   </div>
                 </div>

@@ -375,6 +375,12 @@
     },
     "accessibility": {
       "sendMessage": "Send message"
+    },
+    "consent": {
+      "title": "Privacy & Data Collection",
+      "description": "I save chat conversations for improvement purposes. All GDPR rules for EU and EEA users are fully applied. You can decline and chat privately.",
+      "accept": "Accept & Continue",
+      "decline": "Decline"
     }
   },
   "Services": {

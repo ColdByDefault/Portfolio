@@ -375,6 +375,12 @@
     },
     "accessibility": {
       "sendMessage": "Nachricht senden"
+    },
+    "consent": {
+      "title": "Datenschutz & Datenerfassung",
+      "description": "Ich speichere Chat-Gespräche zu Verbesserungszwecken. Alle DSGVO-Regeln für EU- und EWR-Nutzer werden vollständig angewendet. Sie können ablehnen und privat chatten.",
+      "accept": "Akzeptieren & Fortfahren",
+      "decline": "Ablehnen"
     }
   },
   "Services": {

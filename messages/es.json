@@ -375,6 +375,12 @@
     },
     "accessibility": {
       "sendMessage": "Enviar mensaje"
+    },
+    "consent": {
+      "title": "Privacidad y Recopilación de Datos",
+      "description": "Guardo las conversaciones del chat con fines de mejora. Se aplican todas las normas del RGPD para usuarios de la UE y el EEE. Puedes rechazar y chatear de forma privada.",
+      "accept": "Aceptar y Continuar",
+      "decline": "Rechazar"
     }
   },
   "Services": {

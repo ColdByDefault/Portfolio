@@ -375,6 +375,12 @@
     },
     "accessibility": {
       "sendMessage": "Skicka meddelande"
+    },
+    "consent": {
+      "title": "Integritet & Datainsamling",
+      "description": "Jag sparar chattkonversationer i förbättringssyfte. Alla GDPR-regler för EU- och EES-användare tillämpas fullt ut. Du kan avböja och chatta privat.",
+      "accept": "Acceptera & Fortsätt",
+      "decline": "Avböj"
     }
   },
   "Services": {
