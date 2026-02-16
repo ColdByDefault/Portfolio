@@ -99,11 +99,13 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
+              // TODO: Remove 'unsafe-inline' and 'unsafe-eval' by implementing CSP nonces for Next.js
+              // Current limitation: Required for Next.js runtime and Vercel Analytics
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://va.vercel-scripts.com",
               "style-src 'self' 'unsafe-inline'", // Allow inline styles for Tailwind and components
               "img-src 'self' data: blob: https://avatars.githubusercontent.com https://github.com",
               "font-src 'self' data:",
-              "connect-src 'self' https://api.github.com https://www.googleapis.com https://generativelanguage.googleapis.com https://vercel.live https://vitals.vercel-analytics.com",
+              "connect-src 'self' https://api.github.com https://www.googleapis.com https://generativelanguage.googleapis.com https://vercel.live https://vitals.vercel-analytics.com https://api.groq.com",
               "frame-src 'none'",
               "object-src 'none'",
               "base-uri 'self'",

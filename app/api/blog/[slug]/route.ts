@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
@@ -25,7 +25,7 @@ const blogSlugSchema = z.object({
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: { params: Promise<{ slug: string }> },
 ) {
   try {
     // Rate limiting check
@@ -40,8 +40,9 @@ export async function GET(
           status: 429,
           headers: {
             "Retry-After": "60",
+            "X-Content-Type-Options": "nosniff",
           },
-        }
+        },
       );
     }
 
@@ -55,7 +56,12 @@ export async function GET(
           error: "Invalid blog slug",
           details: parseResult.error.issues.map((issue) => issue.message),
         },
-        { status: 400 }
+        {
+          status: 400,
+          headers: {
+            "X-Content-Type-Options": "nosniff",
+          },
+        },
       );
     }
 
@@ -63,7 +69,15 @@ export async function GET(
     const blog = await getBlogBySlug(slug);
 
     if (!blog) {
-      return NextResponse.json({ error: "Blog not found" }, { status: 404 });
+      return NextResponse.json(
+        { error: "Blog not found" },
+        {
+          status: 404,
+          headers: {
+            "X-Content-Type-Options": "nosniff",
+          },
+        },
+      );
     }
 
     // Generate SEO metadata for the blog
@@ -87,14 +101,20 @@ export async function GET(
       {
         headers: {
           "Cache-Control": "public, max-age=600, stale-while-revalidate=1200", // 10 min cache, 20 min stale
+          "X-Content-Type-Options": "nosniff",
         },
-      }
+      },
     );
   } catch (error) {
     console.error("Error fetching blog:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
+      { error: "Failed to fetch blog" },
+      {
+        status: 500,
+        headers: {
+          "X-Content-Type-Options": "nosniff",
+        },
+      },
     );
   }
 }

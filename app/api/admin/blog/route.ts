@@ -2,7 +2,7 @@
  * Blog Admin API Route
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
@@ -59,7 +59,7 @@ function getClientIP(request: NextRequest): string {
 
 function isAuthorized(request: NextRequest): boolean {
   if (!ADMIN_TOKEN) {
-    console.error("ADMIN_TOKEN environment variable not set");
+    // Security: Don't log sensitive information about environment configuration
     return false;
   }
 
@@ -188,7 +188,7 @@ const updateBlogSchema = z.object({
 });
 
 export async function GET(
-  request: NextRequest
+  request: NextRequest,
 ): Promise<NextResponse<BlogAdminResponse | ApiErrorResponse>> {
   if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -218,7 +218,7 @@ export async function GET(
         const page = parseInt(searchParams.get("page") || "1", 10);
         const limit = Math.min(
           parseInt(searchParams.get("limit") || "20", 10),
-          50
+          50,
         );
         const search = searchParams.get("search") || undefined;
         const language = searchParams.get("language") || undefined;
@@ -226,14 +226,14 @@ export async function GET(
           searchParams.get("published") === "true"
             ? true
             : searchParams.get("published") === "false"
-            ? false
-            : undefined;
+              ? false
+              : undefined;
         const featured =
           searchParams.get("featured") === "true"
             ? true
             : searchParams.get("featured") === "false"
-            ? false
-            : undefined;
+              ? false
+              : undefined;
 
         const queryParams: Partial<BlogListQuery> = {
           page,
@@ -248,7 +248,7 @@ export async function GET(
 
         const result = await getAdminBlogs(
           context,
-          queryParams as BlogListQuery
+          queryParams as BlogListQuery,
         );
 
         return NextResponse.json({ success: true, data: result });
@@ -258,7 +258,7 @@ export async function GET(
         if (!blogId) {
           return NextResponse.json(
             { error: "Blog ID is required" },
-            { status: 400 }
+            { status: 400 },
           );
         }
 
@@ -266,7 +266,7 @@ export async function GET(
         if (!blog) {
           return NextResponse.json(
             { error: "Blog not found" },
-            { status: 404 }
+            { status: 404 },
           );
         }
 
@@ -304,7 +304,7 @@ export async function GET(
 }
 
 export async function POST(
-  request: NextRequest
+  request: NextRequest,
 ): Promise<NextResponse<BlogAdminResponse | ApiErrorResponse>> {
   if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -324,7 +324,7 @@ export async function POST(
     if (!contentType?.includes("application/json")) {
       return NextResponse.json(
         { error: "Content-Type must be application/json" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -334,7 +334,7 @@ export async function POST(
     } catch {
       return NextResponse.json(
         { error: "Invalid JSON in request body" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -349,13 +349,13 @@ export async function POST(
               error: "Validation failed",
               details: parseResult.error.issues.map((issue) => issue.message),
             },
-            { status: 400 }
+            { status: 400 },
           );
         }
 
         const blog = await createBlog(
           context,
-          parseResult.data as CreateBlogRequest
+          parseResult.data as CreateBlogRequest,
         );
 
         return NextResponse.json({
@@ -369,7 +369,7 @@ export async function POST(
         if (!blogId) {
           return NextResponse.json(
             { error: "Blog ID is required for update" },
-            { status: 400 }
+            { status: 400 },
           );
         }
 
@@ -379,17 +379,18 @@ export async function POST(
             {
               error: "Validation failed",
               details: parseResult.error.issues.map(
-                (issue: ZodIssue) => `${issue.path.join(".")}: ${issue.message}`
+                (issue: ZodIssue) =>
+                  `${issue.path.join(".")}: ${issue.message}`,
               ),
             },
-            { status: 400 }
+            { status: 400 },
           );
         }
 
         const blog = await updateBlog(
           context,
           blogId,
-          parseResult.data as UpdateBlogRequest
+          parseResult.data as UpdateBlogRequest,
         );
 
         return NextResponse.json({
@@ -403,7 +404,7 @@ export async function POST(
         if (!blogId) {
           return NextResponse.json(
             { error: "Blog ID is required for deletion" },
-            { status: 400 }
+            { status: 400 },
           );
         }
 
@@ -419,7 +420,7 @@ export async function POST(
         if (!blogId) {
           return NextResponse.json(
             { error: "Blog ID is required" },
-            { status: 400 }
+            { status: 400 },
           );
         }
 
@@ -438,7 +439,7 @@ export async function POST(
         if (!blogId) {
           return NextResponse.json(
             { error: "Blog ID is required" },
-            { status: 400 }
+            { status: 400 },
           );
         }
 
@@ -456,7 +457,7 @@ export async function POST(
         if (!blogId) {
           return NextResponse.json(
             { error: "Blog ID is required" },
-            { status: 400 }
+            { status: 400 },
           );
         }
 
@@ -473,7 +474,7 @@ export async function POST(
         if (!blogId) {
           return NextResponse.json(
             { error: "Blog ID is required" },
-            { status: 400 }
+            { status: 400 },
           );
         }
 

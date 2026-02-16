@@ -13,5 +13,13 @@ export async function GET() {
 
   const remaining = getRemainingUses(ip);
 
-  return Response.json({ remaining });
+  return Response.json(
+    { remaining },
+    {
+      headers: {
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "no-store, no-cache, must-revalidate",
+      },
+    },
+  );
 }

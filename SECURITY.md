@@ -1,21 +1,38 @@
 # Security Policy
 
+## Overview
+
+This security policy outlines how we handle security vulnerabilities and the security measures implemented in this portfolio project.
+
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+Currently supported versions with security updates:
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.0.x   | :white_check_mark: |
-| 4.0.x   | :white_check_mark: |
-| 3.0.x   | :white_check_mark: |
-| < 2.0   | :x:                |
+| Version | Supported          | Notes                           |
+| ------- | ------------------ | ------------------------------- |
+| Latest  | :white_check_mark: | Active development and security |
+| < 3.0   | :x:                | Legacy versions not supported   |
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+If you discover a security vulnerability, please follow these steps:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+### Where to Report
+
+**Email**: See Contact Information. 
+
+## Security Audit History
+
+| Date       | Type           | Status | Notes                         |
+| ---------- | -------------- | ------ | ----------------------------- |
+| 2026-02-16 | Internal Audit | ✅     | Security improvements applied |
+
+## Additional Resources
+
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+- [Next.js Security](https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy)
+- [Prisma Security](https://www.prisma.io/docs/guides/database/advanced-database-tasks/sql-injection)
+
+---
+
+**Copyright © 2026 ColdByDefault. All Rights Reserved.**
