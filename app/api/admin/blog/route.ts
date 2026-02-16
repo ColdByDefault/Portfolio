@@ -29,6 +29,7 @@ import {
   getAdminTags,
   type AdminContext,
 } from "@/lib/blog-admin/blog-admin";
+import { createAdminSession, invalidateAdminSession } from "@/proxy";
 
 // Enhanced authentication
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
@@ -96,6 +97,36 @@ function createAdminContext(request: NextRequest): AdminContext {
     isAuthenticated: isAuthorized(request),
     userAgent: request.headers.get("user-agent") || undefined,
   };
+}
+
+/**
+ * Set secure admin session cookie after successful auth
+ */
+function setAdminSessionCookie(response: NextResponse, clientIP: string): void {
+  // Create cryptographically secure session
+  const sessionId = createAdminSession(clientIP);
+
+  response.cookies.set("PORTFOLIO_ADMIN_SESSION", sessionId, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+    maxAge: 60 * 60 * 8, // 8 hours
+    path: "/",
+  });
+}
+
+/**
+ * Clear admin session cookie
+ */
+function clearAdminSessionCookie(
+  response: NextResponse,
+  request: NextRequest,
+): void {
+  const sessionCookie = request.cookies.get("PORTFOLIO_ADMIN_SESSION");
+  if (sessionCookie?.value) {
+    invalidateAdminSession(sessionCookie.value);
+  }
+  response.cookies.delete("PORTFOLIO_ADMIN_SESSION");
 }
 
 // Validation schemas
@@ -211,7 +242,14 @@ export async function GET(
     switch (action) {
       case "stats": {
         const stats = await getBlogAdminStats(context);
-        return NextResponse.json({ success: true, data: stats });
+        const response = NextResponse.json({ success: true, data: stats });
+
+        // Set session cookie on successful authentication
+        if (!request.cookies.get("PORTFOLIO_ADMIN_SESSION")) {
+          setAdminSessionCookie(response, clientIP);
+        }
+
+        return response;
       }
 
       case "list": {
@@ -485,6 +523,15 @@ export async function POST(
           data: blog,
           message: "Blog unfeatured successfully",
         });
+      }
+
+      case "logout": {
+        const response = NextResponse.json({
+          success: true,
+          message: "Logged out successfully",
+        });
+        clearAdminSessionCookie(response, request);
+        return response;
       }
 
       default:
