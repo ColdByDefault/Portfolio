@@ -228,8 +228,8 @@
       "description": "Este sitio web incluye un chatbot de IA para asistencia interactiva e información.",
       "apiTitle": "Integración de Groq API",
       "apiDescription": "El chatbot funciona con Groq. Al usar el chatbot, aceptas los términos de servicio y la política de privacidad de Groq. Las solicitudes del chat se procesan a través de la API de Groq.",
-      "temporaryTitle": "Sin Almacenamiento de Datos",
-      "temporaryDescription": "No guardo ninguna conversación, historial o información personal. Todos los datos del chat se almacenan exclusivamente en tu navegador (almacenamiento web) y permanecen completamente bajo tu control."
+      "temporaryTitle": "Almacenamiento Opcional de Datos (Con Consentimiento)",
+      "temporaryDescription": "Con tu consentimiento explícito, podemos almacenar las conversaciones del chat para mejorar la calidad y con fines analíticos. Esto incluye: mensajes del chat, marcas de tiempo, dirección IP anonimizada y ubicación general (país/ciudad). Puedes retirar tu consentimiento en cualquier momento. Sin consentimiento, todos los datos del chat permanecen solo en tu navegador."
     },
     "booking": {
       "title": "Servicio de Reservas",

@@ -40,7 +40,16 @@ export function ChatBot({
   const chatInputRef = useRef<HTMLInputElement>(null);
   const t = useTranslations("ChatBot");
 
-  const { messages, isLoading, error, sendMessage, clearError } = useChatBot();
+  const {
+    messages,
+    isLoading,
+    error,
+    consentGiven,
+    sendMessage,
+    clearError,
+    setConsent,
+  } = useChatBot();
+  const [showConsentBanner, setShowConsentBanner] = useState(false);
 
   // Show ChatBot button after configured delay
   useEffect(() => {
@@ -50,6 +59,13 @@ export function ChatBot({
 
     return () => clearTimeout(timer);
   }, []);
+
+  // Show consent banner on first chat open (if consent not given)
+  useEffect(() => {
+    if (isOpen && !consentGiven && messages.length === 0) {
+      setShowConsentBanner(true);
+    }
+  }, [isOpen, consentGiven, messages.length]);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -115,6 +131,16 @@ export function ChatBot({
     }, 100);
   };
 
+  const handleAcceptConsent = () => {
+    setConsent(true);
+    setShowConsentBanner(false);
+  };
+
+  const handleDeclineConsent = () => {
+    setConsent(false);
+    setShowConsentBanner(false);
+  };
+
   const handleSendMessage = async (message: string) => {
     try {
       await sendMessage(message);
@@ -161,6 +187,45 @@ export function ChatBot({
           aria-modal="false"
         >
           <ChatHeader onClose={handleCloseChat} />
+
+          {/* Consent Banner */}
+          {showConsentBanner && (
+            <div className="p-4 bg-blue-50 dark:bg-blue-950/20 border-b border-blue-200 dark:border-blue-800">
+              <div className="space-y-3">
+                <div className="flex items-start gap-2">
+                  <CircleAlert className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+                  <div className="flex-1 space-y-2">
+                    <p className="text-sm font-medium text-blue-900 dark:text-blue-100">
+                      Privacy & Data Collection
+                    </p>
+                    <p className="text-xs text-blue-800 dark:text-blue-200 leading-relaxed">
+                      Help us improve! With your consent, we&apos;ll save chat logs
+                      (messages, timestamps, anonymized IP, and general
+                      location) for quality improvement. You can decline and
+                      chat privately.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button
+                    size="sm"
+                    onClick={handleAcceptConsent}
+                    className="flex-1 bg-blue-600 hover:bg-blue-700"
+                  >
+                    Accept & Continue
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={handleDeclineConsent}
+                    className="flex-1"
+                  >
+                    Decline
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
 
           <CardContent className="p-0 flex flex-col flex-1 min-h-0">
             <div

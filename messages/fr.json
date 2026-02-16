@@ -228,8 +228,8 @@
       "description": "Ce site web inclut un chatbot IA pour l'assistance interactive et l'information.",
       "apiTitle": "Intégration de l'API Groq",
       "apiDescription": "Le chatbot est alimenté par Groq. En utilisant le chatbot, vous acceptez les conditions d'utilisation et la politique de confidentialité de Groq. Les requêtes de chat sont traitées via l'API Groq.",
-      "temporaryTitle": "Aucun Stockage de Données",
-      "temporaryDescription": "Je ne sauvegarde aucune conversation, historique ou information personnelle. Toutes les données de chat sont stockées exclusivement dans votre navigateur (stockage web) et restent entièrement sous votre contrôle."
+      "temporaryTitle": "Stockage Optionnel des Données (Avec Consentement)",
+      "temporaryDescription": "Avec votre consentement explicite, les conversations du chat peuvent être enregistrées à des fins d'amélioration de la qualité et d'analyse. Cela inclut : les messages du chat, les horodatages, l'adresse IP anonymisée et la localisation générale (pays/ville). Vous pouvez retirer votre consentement à tout moment. Sans consentement, toutes les données du chat restent uniquement dans votre navigateur."
     },
     "booking": {
       "title": "Service de Réservation",

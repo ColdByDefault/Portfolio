@@ -10,10 +10,9 @@ import type { NextRequest } from "next/server";
 // Supported locales
 const supportedLocales = ["en", "de", "es", "fr", "sv"];
 
-
 const failedAttempts = new Map<string, number>();
 const blockedIPs = new Map<string, number>();
-const BLOCK_DURATION = 15 * 60 * 1000; 
+const BLOCK_DURATION = 15 * 60 * 1000;
 const MAX_ATTEMPTS = 2;
 
 // Session validation: Store valid sessions with metadata
@@ -56,7 +55,6 @@ function recordFailedAttempt(ip: string): void {
   }
 }
 
-
 function hasValidAdminSession(request: NextRequest): boolean {
   const sessionCookie = request.cookies.get("PORTFOLIO_ADMIN_SESSION");
   if (!sessionCookie?.value) return false;
@@ -74,7 +72,6 @@ function hasValidAdminSession(request: NextRequest): boolean {
     return false;
   }
 
-
   const currentIP = getClientIP(request);
   if (sessionData.ip !== currentIP) {
     validSessions.delete(sessionId);
@@ -83,7 +80,6 @@ function hasValidAdminSession(request: NextRequest): boolean {
 
   return true;
 }
-
 
 export function createAdminSession(ip: string): string {
   const randomBytes = new Uint8Array(32);
@@ -112,7 +108,6 @@ export function createAdminSession(ip: string): string {
 
   return sessionId;
 }
-
 
 export function invalidateAdminSession(sessionId: string): void {
   validSessions.delete(sessionId);
@@ -215,9 +210,14 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
 
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+  const isDev = process.env.NODE_ENV === "development";
 
-  // Admin route protection - Minimal server-side security
-  if (pathname.startsWith("/admin") && !pathname.startsWith("/admin/blocked")) {
+  // Admin route protection - Minimal server-side security (disabled in dev)
+  if (
+    pathname.startsWith("/admin") &&
+    !pathname.startsWith("/admin/blocked") &&
+    !isDev
+  ) {
     const clientIP = getClientIP(request);
 
     // Check if IP is blocked
