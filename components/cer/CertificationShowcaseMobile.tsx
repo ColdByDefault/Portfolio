@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 import React from "react";
 import Image from "next/image";
@@ -15,6 +15,7 @@ interface Certification {
   readonly id: number;
   readonly title: string;
   readonly issuer: string;
+  readonly issuerKey?: string;
   readonly date: string;
   readonly description: string;
   readonly descriptionKey: string;
@@ -34,6 +35,7 @@ export function CertificationShowcaseMobile({
 }: CertificationShowcaseMobileProps) {
   const t = useTranslations("Certifications");
   const tDescriptions = useTranslations("Certifications.descriptions");
+  const tIssuers = useTranslations("Certifications.issuers");
 
   const renderTabletCard = (cert: Certification) => {
     const isExpanded = logic.expandedCards.has(cert.id);
@@ -68,7 +70,8 @@ export function CertificationShowcaseMobile({
             <div className="min-w-0">
               <h3 className="text-lg font-semibold truncate">{cert.title}</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 truncate">
-                {cert.issuer} • {cert.date}
+                {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer} •{" "}
+                {cert.date}
               </p>
             </div>
           </div>
@@ -105,7 +108,7 @@ export function CertificationShowcaseMobile({
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-medium">{t("issuedBy")}</span>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
-                    {cert.issuer}
+                    {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
@@ -160,7 +163,8 @@ export function CertificationShowcaseMobile({
             <div className="min-w-0">
               <h3 className="text-base font-semibold truncate">{cert.title}</h3>
               <p className="text-xs text-gray-600 dark:text-gray-400 truncate">
-                {cert.issuer} • {cert.date}
+                {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer} •{" "}
+                {cert.date}
               </p>
             </div>
           </div>
@@ -197,7 +201,7 @@ export function CertificationShowcaseMobile({
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-medium">{t("issuedBy")}</span>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
-                    {cert.issuer}
+                    {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">

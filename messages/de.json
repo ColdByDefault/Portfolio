@@ -119,6 +119,9 @@
     "title": "Meine Zertifikate",
     "issuedBy": "Ausgestellt von:",
     "date": "Datum:",
+    "issuers": {
+      "ihkRheinNeckar": "IHK Rhein-Neckar (Industrie- und Handelskammer)"
+    },
     "descriptions": {
       "pythonPcep": "Die PCEP (Python Certified Entry-Level Programmer) Zertifizierung erhalten, die grundlegende Kenntnisse der Python-Programmierung nachweist.",
       "udemyPythonBootcamp": "Den Kurs \"100 Days of Code - The Complete Python Pro Bootcamp\" abgeschlossen und Python vom Anfänger- bis zum Fortgeschrittenenniveau gemeistert.",
@@ -126,7 +129,8 @@
       "udemyHtmlCss": "Den Kurs abgeschlossen und die Grundlagen von HTML und CSS gelernt, um eine Website zu erstellen und zu veröffentlichen.",
       "gitGithubBootcamp": "Einen umfassenden Git- und GitHub-Kurs abgeschlossen, der Versionskontrolle, Branching und Kollaborations-Workflows abdeckt.",
       "fullStackWebDev": "Frontend- und Backend-Webentwicklungskurs, der HTML, CSS, JavaScript, Node.js und React abdeckt.",
-      "kiKompetenzSchulung": "KI-Kompetenzschulung gemäß Artikel 4 des EU AI Acts, die verantwortungsvollen KI-Einsatz und Compliance behandelt."
+      "kiKompetenzSchulung": "KI-Kompetenzschulung gemäß Artikel 4 des EU AI Acts, die verantwortungsvollen KI-Einsatz und Compliance behandelt.",
+      "computerScienceExpert": "Fachinformatiker, Fachrichtung: Anwendungsentwicklung, Einsatzgebiet: KI, gemäß § 37 Berufsbildungsgesetz (BBiG)."
     }
   },
   "Projects": {

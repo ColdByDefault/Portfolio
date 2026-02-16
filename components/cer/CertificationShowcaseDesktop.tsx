@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 import React from "react";
 import Image from "next/image";
@@ -14,6 +14,7 @@ interface Certification {
   readonly id: number;
   readonly title: string;
   readonly issuer: string;
+  readonly issuerKey?: string;
   readonly date: string;
   readonly description: string;
   readonly descriptionKey: string;
@@ -32,6 +33,7 @@ export function CertificationShowcaseDesktop({
 }: CertificationShowcaseDesktopProps) {
   const t = useTranslations("Certifications");
   const tDescriptions = useTranslations("Certifications.descriptions");
+  const tIssuers = useTranslations("Certifications.issuers");
 
   const renderDesktopCard = (cert: Certification) => {
     return (
@@ -59,7 +61,8 @@ export function CertificationShowcaseDesktop({
         </div>
         <div className="flex-1 space-y-2">
           <p className="text-sm">
-            {t("issuedBy")} {cert.issuer}
+            {t("issuedBy")}{" "}
+            {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer}
           </p>
           <p className="text-sm text-gray-600 dark:text-gray-400">
             {t("date")} {cert.date}

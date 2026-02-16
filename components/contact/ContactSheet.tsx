@@ -174,6 +174,12 @@ export default function ContactSheet({
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
+                <span className="text-muted-foreground">Position:</span>
+                <Badge variant="outline" className="text-xs">
+                  Botgenossen GmbH
+                </Badge>
+              </div>
+              <div className="flex items-center justify-between">
                 <span className="text-muted-foreground">{t("training")}:</span>
                 <Badge variant="secondary" className="text-xs">
                   Graduated from GFN
