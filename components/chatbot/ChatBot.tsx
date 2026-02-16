@@ -11,7 +11,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Bot, CircleAlert, Sparkles } from "lucide-react";
+import { Bot, CircleAlert, Shield, Sparkles } from "lucide-react";
 import { useChatBot } from "@/components/chatbot";
 import type { ChatBotUIProps, ChatMessage } from "@/types/configs/chatbot";
 import {
@@ -49,7 +49,11 @@ export function ChatBot({
     clearError,
     setConsent,
   } = useChatBot();
-  const [showConsentBanner, setShowConsentBanner] = useState(false);
+  const [consentDismissed, setConsentDismissed] = useState(false);
+
+  // Derive consent banner visibility from state (no effect needed)
+  const showConsentBanner =
+    isOpen && !consentGiven && !consentDismissed && messages.length === 0;
 
   // Show ChatBot button after configured delay
   useEffect(() => {
@@ -59,13 +63,6 @@ export function ChatBot({
 
     return () => clearTimeout(timer);
   }, []);
-
-  // Show consent banner on first chat open (if consent not given)
-  useEffect(() => {
-    if (isOpen && !consentGiven && messages.length === 0) {
-      setShowConsentBanner(true);
-    }
-  }, [isOpen, consentGiven, messages.length]);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -133,12 +130,12 @@ export function ChatBot({
 
   const handleAcceptConsent = () => {
     setConsent(true);
-    setShowConsentBanner(false);
+    setConsentDismissed(true);
   };
 
   const handleDeclineConsent = () => {
     setConsent(false);
-    setShowConsentBanner(false);
+    setConsentDismissed(true);
   };
 
   const handleSendMessage = async (message: string) => {
@@ -190,44 +187,49 @@ export function ChatBot({
 
           {/* Consent Banner */}
           {showConsentBanner && (
-            <div className="p-4 bg-blue-50 dark:bg-blue-950/20 border-b border-blue-200 dark:border-blue-800">
-              <div className="space-y-3">
-                <div className="flex items-start gap-2">
-                  <CircleAlert className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-                  <div className="flex-1 space-y-2">
-                    <p className="text-sm font-medium text-blue-900 dark:text-blue-100">
+            <div className="p-4 border-b border-border/50">
+              <div className="flex items-start space-x-3">
+                <div className="shrink-0">
+                  <Shield className="h-5 w-5 text-primary" aria-hidden="true" />
+                </div>
+                <div className="flex-1 space-y-3">
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">
                       Privacy & Data Collection
                     </p>
-                    <p className="text-xs text-blue-800 dark:text-blue-200 leading-relaxed">
-                      Help us improve! With your consent, we&apos;ll save chat logs
-                      (messages, timestamps, anonymized IP, and general
+                    <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                      Help us improve! With your consent, we&apos;ll save chat
+                      logs (messages, timestamps, anonymized IP, and general
                       location) for quality improvement. You can decline and
                       chat privately.
                     </p>
                   </div>
-                </div>
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    onClick={handleAcceptConsent}
-                    className="flex-1 bg-blue-600 hover:bg-blue-700"
-                  >
-                    Accept & Continue
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={handleDeclineConsent}
-                    className="flex-1"
-                  >
-                    Decline
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <Button
+                      size="sm"
+                      onClick={handleAcceptConsent}
+                      className="flex-1 text-xs"
+                    >
+                      Accept & Continue
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={handleDeclineConsent}
+                      className="flex-1 text-xs"
+                    >
+                      Decline
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
           )}
 
-          <CardContent className="p-0 flex flex-col flex-1 min-h-0">
+          <CardContent className="p-0 flex flex-col flex-1 min-h-0 relative">
+            {showConsentBanner && (
+              <div className="absolute inset-0 z-10 backdrop-blur-sm bg-background/30 pointer-events-none" />
+            )}
             <div
               className={`flex-1 p-3 sm:p-4 min-h-0 max-h-64 sm:max-h-80 overflow-y-auto ${CHATBOT_STYLES.SCROLLBAR}`}
               role="log"
