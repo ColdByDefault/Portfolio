@@ -2,7 +2,7 @@
  * ChatBot Custom Hook - Manages state and API communication
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -12,6 +12,7 @@ import type {
   ChatBotResponse,
   ChatBotApiError,
 } from "@/types/configs/chatbot";
+import { CHATBOT_FALLBACK_MESSAGES } from "@/components/chatbot/ChatBot.constants";
 
 interface UseChatBotReturn {
   messages: ChatMessage[];
@@ -48,7 +49,7 @@ export function useChatBot(): UseChatBotReturn {
             (msg) => ({
               ...msg,
               timestamp: new Date(msg.timestamp),
-            })
+            }),
           );
           setMessages(messagesWithDates);
         }
@@ -56,9 +57,8 @@ export function useChatBot(): UseChatBotReturn {
         if (savedSession) {
           sessionIdRef.current = savedSession;
         }
-      } catch (error) {
-        console.error("Failed to load chat history from localStorage:", error);
-        // Clear corrupted data
+      } catch {
+        // Clear corrupted data silently
         localStorage.removeItem(STORAGE_KEY_MESSAGES);
         localStorage.removeItem(STORAGE_KEY_SESSION);
       }
@@ -70,8 +70,8 @@ export function useChatBot(): UseChatBotReturn {
     if (typeof window !== "undefined" && messages.length > 0) {
       try {
         localStorage.setItem(STORAGE_KEY_MESSAGES, JSON.stringify(messages));
-      } catch (error) {
-        console.error("Failed to save chat history to localStorage:", error);
+      } catch {
+        // Storage quota exceeded or disabled - fail silently
       }
     }
   }, [messages]);
@@ -81,8 +81,8 @@ export function useChatBot(): UseChatBotReturn {
     if (typeof window !== "undefined" && sessionIdRef.current) {
       try {
         localStorage.setItem(STORAGE_KEY_SESSION, sessionIdRef.current);
-      } catch (error) {
-        console.error("Failed to save session ID to localStorage:", error);
+      } catch {
+        // Storage quota exceeded or disabled - fail silently
       }
     }
   }, []);
@@ -174,8 +174,8 @@ export function useChatBot(): UseChatBotReturn {
         // Update user message status
         setMessages((prev) =>
           prev.map((msg) =>
-            msg.id === userMessage.id ? { ...msg, status: "sent" } : msg
-          )
+            msg.id === userMessage.id ? { ...msg, status: "sent" } : msg,
+          ),
         );
 
         if (!response.ok || !("success" in data) || !data.success) {
@@ -185,7 +185,7 @@ export function useChatBot(): UseChatBotReturn {
           if (errorData.code === "QUOTA_EXCEEDED" && errorData.retryAfter) {
             const retrySeconds = Math.ceil(errorData.retryAfter);
             throw new Error(
-              `Reem is taking a short break. Please try again in ${retrySeconds} seconds.`
+              `Reem is taking a short break. Please try again in ${retrySeconds} seconds.`,
             );
           }
 
@@ -203,8 +203,8 @@ export function useChatBot(): UseChatBotReturn {
         if (typeof window !== "undefined") {
           try {
             localStorage.setItem(STORAGE_KEY_SESSION, data.data.sessionId);
-          } catch (error) {
-            console.error("Failed to save session ID to localStorage:", error);
+          } catch {
+            // Storage quota exceeded or disabled - fail silently
           }
         }
 
@@ -222,32 +222,53 @@ export function useChatBot(): UseChatBotReturn {
 
         setIsConnected(true);
       } catch (err) {
-        console.error("ChatBot error:", err);
-
         // Update user message status to error
         setMessages((prev) =>
           prev.map((msg) =>
-            msg.id === userMessage.id ? { ...msg, status: "error" } : msg
-          )
+            msg.id === userMessage.id ? { ...msg, status: "error" } : msg,
+          ),
         );
 
-        // Set error message
-        const errorMessage =
-          err instanceof Error ? err.message : "Failed to send message";
-        setError(errorMessage);
+        // Determine appropriate fallback message
+        let errorMessage = CHATBOT_FALLBACK_MESSAGES.GENERIC_ERROR;
 
-        // Check if it's a connection issue
-        if (
-          errorMessage.includes("fetch") ||
-          errorMessage.includes("network")
-        ) {
-          setIsConnected(false);
+        if (err instanceof Error) {
+          const errMsg = err.message.toLowerCase();
+
+          if (
+            errMsg.includes("network") ||
+            errMsg.includes("fetch") ||
+            errMsg.includes("connection")
+          ) {
+            errorMessage = CHATBOT_FALLBACK_MESSAGES.NETWORK_ERROR;
+            setIsConnected(false);
+          } else if (
+            errMsg.includes("quota") ||
+            errMsg.includes("rate limit") ||
+            errMsg.includes("too many")
+          ) {
+            errorMessage = CHATBOT_FALLBACK_MESSAGES.RATE_LIMIT_ERROR;
+          } else if (errMsg.includes("taking a short break")) {
+            errorMessage = CHATBOT_FALLBACK_MESSAGES.QUOTA_EXCEEDED;
+          } else if (errMsg.includes("timeout")) {
+            errorMessage = CHATBOT_FALLBACK_MESSAGES.TIMEOUT_ERROR;
+          } else if (
+            errMsg.includes("validation") ||
+            errMsg.includes("invalid")
+          ) {
+            errorMessage = CHATBOT_FALLBACK_MESSAGES.VALIDATION_ERROR;
+          } else if (err.message && !errMsg.includes("failed to send")) {
+            // Use the original error message if it's user-friendly
+            errorMessage = err.message;
+          }
         }
+
+        setError(errorMessage);
       } finally {
         setIsLoading(false);
       }
     },
-    [isLoading]
+    [isLoading],
   );
 
   return {

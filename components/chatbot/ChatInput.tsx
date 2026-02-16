@@ -2,7 +2,7 @@
  * ChatInput Component - Message input form with validation
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -27,7 +27,7 @@ export interface ChatInputProps {
 export const ChatInput = React.memo(
   React.forwardRef<HTMLInputElement, ChatInputProps>(function ChatInput(
     { onSendMessage, isLoading, disabled = false, className = "" },
-    ref
+    ref,
   ) {
     const [inputValue, setInputValue] = useState("");
     const t = useTranslations("ChatBot");
@@ -48,9 +48,8 @@ export const ChatInput = React.memo(
 
       try {
         await onSendMessage(sanitizedMessage);
-      } catch (err) {
+      } catch {
         // Error is handled by the parent component
-        console.error("Failed to send message:", err);
       }
     };
 
@@ -69,7 +68,7 @@ export const ChatInput = React.memo(
       >
         <form
           onSubmit={(e) => {
-            handleSubmit(e).catch(console.error);
+            void handleSubmit(e);
           }}
           className="flex gap-2 sm:gap-3"
           aria-label="Send message to assistant"
@@ -120,5 +119,5 @@ export const ChatInput = React.memo(
         </form>
       </div>
     );
-  })
+  }),
 );

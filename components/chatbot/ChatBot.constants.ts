@@ -2,7 +2,7 @@
  * ChatBot Constants and Configuration
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 export const CHATBOT_CONFIG = {
   // UI Constants
@@ -143,8 +143,29 @@ export const CHATBOT_TRANSLATION_KEYS = {
   INPUT_PLACEHOLDER: "input.placeholder",
   INPUT_CHARACTER_LIMIT: "input.characterLimit",
 
+  // Errors
+  ERROR_GENERIC: "errors.generic",
+  ERROR_NETWORK: "errors.network",
+  ERROR_RATE_LIMIT: "errors.rateLimit",
+
   // Accessibility
   ACCESSIBILITY_SEND_MESSAGE: "accessibility.sendMessage",
+};
+
+// Fallback messages (used when translations are not available)
+export const CHATBOT_FALLBACK_MESSAGES = {
+  GENERIC_ERROR:
+    "I'm having trouble responding right now. Please try again in a moment.",
+  NETWORK_ERROR:
+    "I can't reach the server at the moment. Please check your internet connection and try again.",
+  RATE_LIMIT_ERROR:
+    "I'm receiving too many requests. Please wait a moment before sending another message.",
+  QUOTA_EXCEEDED:
+    "I'm taking a short break. Please try again in a few moments.",
+  SERVER_ERROR: "Something went wrong on my end. Please try again later.",
+  VALIDATION_ERROR:
+    "I couldn't process your message. Please try rephrasing it.",
+  TIMEOUT_ERROR: "The request is taking too long. Please try again.",
 };
 
 // Type exports for better type safety

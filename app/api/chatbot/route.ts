@@ -372,8 +372,6 @@ export async function POST(
       rateLimitInfo,
     });
   } catch (error) {
-    console.error("ChatBot API error:", error);
-
     // Check for quota exceeded error
     if (error instanceof Error && error.message.startsWith("QUOTA_EXCEEDED:")) {
       const [, retryAfter, message] = error.message.split(":");

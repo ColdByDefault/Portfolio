@@ -2,7 +2,7 @@
  * Professional Floating ChatBot Component
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -34,7 +34,7 @@ export function ChatBot({
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [bottomOffset, setBottomOffset] = useState(
-    CHATBOT_CONFIG.DEFAULT_BOTTOM_OFFSET
+    CHATBOT_CONFIG.DEFAULT_BOTTOM_OFFSET,
   );
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatInputRef = useRef<HTMLInputElement>(null);
@@ -118,9 +118,8 @@ export function ChatBot({
   const handleSendMessage = async (message: string) => {
     try {
       await sendMessage(message);
-    } catch (err) {
-      // Error is handled by the hook
-      console.error("Failed to send message:", err);
+    } catch {
+      // Error is handled by the hook and displayed to user
     }
   };
 
