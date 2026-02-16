@@ -198,10 +198,9 @@ export function ChatBot({
                       Privacy & Data Collection
                     </p>
                     <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                      Help us improve! With your consent, we&apos;ll save chat
-                      logs (messages, timestamps, anonymized IP, and general
-                      location) for quality improvement. You can decline and
-                      chat privately.
+                      I save chat conversations for improvement purposes. All
+                      <span className="text-red-400 font-bold"> GDPR</span> rules for EU and EEA users are fully
+                      applied. You can decline and chat privately.
                     </p>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-2">

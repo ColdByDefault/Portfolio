@@ -244,7 +244,7 @@ async function callGroqAPI(
 }
 
 /**
- * Log chat session and messages to database (if logging is enabled)
+ * Log chat session and messages to database (if logging is enabled AND user consented)
  */
 async function logChatToDB(
   sessionId: string,
@@ -259,16 +259,15 @@ async function logChatToDB(
 
   const hasConsent = requestBody.consentGiven || false;
 
+  // GDPR Compliance: If user declined consent, don't save ANY data
+  if (!hasConsent) {
+    return; // No logging without consent - ephemeral chat only
+  }
+
   try {
-    // Only collect IP/geo/user agent data if user consented
-    const ipToStore = hasConsent
-      ? shouldAnonymizeIP()
-        ? anonymizeIP(clientIP)
-        : clientIP
-      : null;
-    const geoInfo = hasConsent
-      ? await getGeoIPInfo(clientIP)
-      : { country: undefined, city: undefined };
+    // User consented - collect data with privacy protections
+    const ipToStore = shouldAnonymizeIP() ? anonymizeIP(clientIP) : clientIP;
+    const geoInfo = await getGeoIPInfo(clientIP);
 
     // Check if session exists
     const existingSession = await prisma.chatSession.findUnique({
@@ -281,12 +280,12 @@ async function logChatToDB(
         data: {
           id: sessionId,
           ipAddress: ipToStore,
-          ipCountry: hasConsent ? geoInfo.country || null : null,
-          ipCity: hasConsent ? geoInfo.city || null : null,
-          userAgent: hasConsent ? requestBody.context?.userAgent || null : null,
-          language: hasConsent ? requestBody.context?.language || null : null,
-          consentGiven: hasConsent,
-          consentTimestamp: hasConsent ? new Date() : null,
+          ipCountry: geoInfo.country || null,
+          ipCity: geoInfo.city || null,
+          userAgent: requestBody.context?.userAgent || null,
+          language: requestBody.context?.language || null,
+          consentGiven: true,
+          consentTimestamp: new Date(),
           totalMessages: 2, // User + assistant message
         },
       });
@@ -297,17 +296,16 @@ async function logChatToDB(
         data: {
           lastActivityAt: new Date(),
           totalMessages: existingSession.totalMessages + 2,
-          // Update consent if provided
-          ...(hasConsent &&
-            !existingSession.consentGiven && {
-              consentGiven: true,
-              consentTimestamp: new Date(),
-            }),
+          // Update consent if not already recorded
+          ...(!existingSession.consentGiven && {
+            consentGiven: true,
+            consentTimestamp: new Date(),
+          }),
         },
       });
     }
 
-    // Log both messages (chat content only — no page context if no consent)
+    // Log both messages with full context
     await prisma.chatMessage.createMany({
       data: [
         {
@@ -317,7 +315,7 @@ async function logChatToDB(
           content: userMessage.content,
           timestamp: userMessage.timestamp,
           status: userMessage.status || null,
-          pageContext: hasConsent ? requestBody.context?.page || null : null,
+          pageContext: requestBody.context?.page || null,
           errorDetails: null,
         },
         {
@@ -327,7 +325,7 @@ async function logChatToDB(
           content: assistantMessage.content,
           timestamp: assistantMessage.timestamp,
           status: assistantMessage.status || null,
-          pageContext: hasConsent ? requestBody.context?.page || null : null,
+          pageContext: requestBody.context?.page || null,
           errorDetails: null,
         },
       ],
