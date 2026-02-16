@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -293,7 +293,9 @@ export function BrandLogo() {
           width={120}
           height={40}
           priority
-          className="h-8 w-auto dark:hidden"
+          unoptimized
+          className="h-8 w-auto dark:hidden object-contain"
+          style={{ mixBlendMode: "normal" }}
         />
         <Image
           src="/logoDark.png"
@@ -301,7 +303,9 @@ export function BrandLogo() {
           width={120}
           height={40}
           priority
-          className="h-8 w-auto hidden dark:block"
+          unoptimized
+          className="h-8 w-auto hidden dark:block object-contain"
+          style={{ mixBlendMode: "normal" }}
         />
       </Link>
     </div>
