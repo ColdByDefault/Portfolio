@@ -27,7 +27,9 @@ export async function getGeoIPInfo(
     ip.startsWith("10.") ||
     (ip.startsWith("172.") &&
       (() => {
-        const secondOctet = parseInt(ip.split(".")[1], 10);
+        const octet = ip.split(".")[1];
+        if (!octet) return false;
+        const secondOctet = parseInt(octet, 10);
         return secondOctet >= 16 && secondOctet <= 31;
       })());
 
