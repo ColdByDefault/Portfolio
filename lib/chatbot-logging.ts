@@ -42,7 +42,7 @@ export async function getGeoIPInfo(
   try {
     // Using ip-api.com - free tier allows 45 requests/minute
     const response = await fetch(
-      `http://ip-api.com/json/${ip}?fields=country,city,timezone,status,message`,
+      `https://ip-api.com/json/${ip}?fields=country,city,timezone,status,message`,
       {
         method: "GET",
         headers: {

@@ -2,7 +2,7 @@
  * Package Card Component
  * @author ColdByDefault
  * @copyright 2025 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -27,12 +27,14 @@ const fadeInUp = {
 
 interface PackageCardProps {
   readonly pkg: ServicePackage;
+  readonly variant?: "compact" | "detailed";
 }
 
 /**
  * Displays a service package card with pricing, features, and CTA
+ * @param variant - "compact" for homepage preview, "detailed" for full information (default)
  */
-export function PackageCard({ pkg }: PackageCardProps) {
+export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
   const t = useTranslations("Services");
   const IconComponent = iconMap[pkg.icon];
 
@@ -53,29 +55,41 @@ export function PackageCard({ pkg }: PackageCardProps) {
           <p className="text-2xl font-bold text-sky-500">
             {t(pkg.headlineKey)}
           </p>
-          <p className="text-muted-foreground">{t(pkg.descriptionKey)}</p>
+          {variant === "detailed" && (
+            <p className="text-muted-foreground">{t(pkg.descriptionKey)}</p>
+          )}
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Pricing & Timeline */}
-          <div className="flex items-center justify-between pb-4 border-b">
-            <div>
-              <p className="text-2xl font-bold">{t(pkg.pricingKey)}</p>
+          {variant === "detailed" && (
+            <div className="flex items-center justify-between pb-4 border-b">
+              <div>
+                <p className="text-2xl font-bold">{t(pkg.pricingKey)}</p>
+              </div>
+              <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                <Clock className="h-4 w-4" />
+                <span>{t(pkg.timelineKey)}</span>
+              </div>
             </div>
-            <div className="flex items-center gap-1 text-sm text-muted-foreground">
-              <Clock className="h-4 w-4" />
-              <span>{t(pkg.timelineKey)}</span>
-            </div>
-          </div>
+          )}
 
           {/* Features List */}
           <ul className="space-y-3">
-            {pkg.features.map((feature, index) => (
+            {(variant === "compact"
+              ? pkg.features.slice(0, 3)
+              : pkg.features
+            ).map((feature, index) => (
               <li key={index} className="flex items-start gap-2">
                 <Check className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
                 <span className="text-sm">{t(feature.textKey)}</span>
               </li>
             ))}
           </ul>
+          {variant === "compact" && pkg.features.length > 3 && (
+            <p className="text-xs text-muted-foreground text-center pt-2">
+              +{pkg.features.length - 3} more features
+            </p>
+          )}
         </CardContent>
       </Card>
     </motion.div>
