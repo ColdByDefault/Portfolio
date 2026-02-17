@@ -23,6 +23,7 @@
 }
 
 /* Animation classes for seamless scrolling */
+/* Base animations - Desktop (1024px+) */
 .animate-scroll {
   animation: scroll-seamless 60s linear infinite;
 }
@@ -49,6 +50,90 @@
 
 .animate-scroll-fast.animate-reverse {
   animation: scroll-reverse-seamless 30s linear infinite;
+}
+
+/* Tablet (768px - 1023px) - Slightly faster to compensate for smaller width */
+@media (max-width: 1023px) {
+  .animate-scroll {
+    animation-duration: 45s;
+  }
+
+  .animate-scroll-slow {
+    animation-duration: 70s;
+  }
+
+  .animate-scroll-fast {
+    animation-duration: 22s;
+  }
+
+  .animate-reverse,
+  .animate-scroll.animate-reverse {
+    animation-duration: 45s;
+  }
+
+  .animate-scroll-slow.animate-reverse {
+    animation-duration: 70s;
+  }
+
+  .animate-scroll-fast.animate-reverse {
+    animation-duration: 22s;
+  }
+}
+
+/* Mobile (640px - 767px) - Faster to maintain visual speed */
+@media (max-width: 767px) {
+  .animate-scroll {
+    animation-duration: 35s;
+  }
+
+  .animate-scroll-slow {
+    animation-duration: 55s;
+  }
+
+  .animate-scroll-fast {
+    animation-duration: 18s;
+  }
+
+  .animate-reverse,
+  .animate-scroll.animate-reverse {
+    animation-duration: 35s;
+  }
+
+  .animate-scroll-slow.animate-reverse {
+    animation-duration: 55s;
+  }
+
+  .animate-scroll-fast.animate-reverse {
+    animation-duration: 18s;
+  }
+}
+
+/* Small Mobile (< 640px) - Even faster for tiny screens */
+@media (max-width: 639px) {
+  .animate-scroll {
+    animation-duration: 28s;
+  }
+
+  .animate-scroll-slow {
+    animation-duration: 45s;
+  }
+
+  .animate-scroll-fast {
+    animation-duration: 14s;
+  }
+
+  .animate-reverse,
+  .animate-scroll.animate-reverse {
+    animation-duration: 28s;
+  }
+
+  .animate-scroll-slow.animate-reverse {
+    animation-duration: 45s;
+  }
+
+  .animate-scroll-fast.animate-reverse {
+    animation-duration: 14s;
+  }
 }
 
 /* Only apply hover pause on devices that support hover */
