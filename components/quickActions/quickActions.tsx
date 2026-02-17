@@ -6,7 +6,7 @@
 
 "use client";
 
-import { Home, FileText, User, FolderOpen, BookOpen } from "lucide-react";
+import { Home, FileText, User, FolderOpen} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -29,21 +29,11 @@ export function QuickActions() {
   const pathname = usePathname();
   const t = useTranslations("QuickActions");
 
-  // Don't show on /media or /services routes
-  if (pathname.startsWith("/media") || pathname.startsWith("/services")) {
-    return null;
-  }
 
   // Define actions based on current route
   const getActionsForRoute = (): QuickAction[] => {
     if (pathname.startsWith("/about-portfolio")) {
       return [
-        {
-          href: "/media",
-          icon: Home,
-          label: t("allMedia"),
-          variant: "default",
-        },
         {
           href: "/projects",
           icon: FolderOpen,
@@ -68,12 +58,6 @@ export function QuickActions() {
     if (pathname.startsWith("/about")) {
       return [
         {
-          href: "/media",
-          icon: Home,
-          label: t("allMedia"),
-          variant: "default",
-        },
-        {
           href: "/about-portfolio",
           icon: User,
           label: t("portfolioDocs"),
@@ -97,16 +81,10 @@ export function QuickActions() {
     if (pathname.startsWith("/blog")) {
       return [
         {
-          href: "/media",
+          href: "/blog",
           icon: Home,
           label: t("allMedia"),
           variant: "default",
-        },
-        {
-          href: "/library",
-          icon: BookOpen,
-          label: t("library"),
-          variant: "outline",
         },
         { href: "/about", icon: User, label: t("aboutMe"), variant: "outline" },
         {
@@ -118,29 +96,6 @@ export function QuickActions() {
       ];
     }
 
-    if (pathname.startsWith("/library")) {
-      return [
-        {
-          href: "/media",
-          icon: Home,
-          label: t("allMedia"),
-          variant: "default",
-        },
-        {
-          href: "/blog",
-          icon: FileText,
-          label: t("latestBlog"),
-          variant: "outline",
-        },
-        { href: "/about", icon: User, label: t("aboutMe"), variant: "outline" },
-        {
-          href: "/about-portfolio",
-          icon: User,
-          label: t("portfolioDocs"),
-          variant: "outline",
-        },
-      ];
-    }
 
     // Default actions for other routes
     return [

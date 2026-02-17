@@ -78,8 +78,8 @@ export function useNavItems(): NavItem[] {
       icon: User,
     },
     {
-      name: "Hub",
-      href: "/media",
+      name: "Blogs",
+      href: "/blog",
       icon: Library,
     },
   ];

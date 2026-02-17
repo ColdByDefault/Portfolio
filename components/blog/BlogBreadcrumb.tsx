@@ -39,16 +39,16 @@ export function BlogBreadcrumb({ blog, className }: BlogBreadcrumbProps) {
   return (
     <Breadcrumb className={className}>
       <BreadcrumbList>
-        {/* Media */}
+        {/* Blogs */}
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
             <Link
-              href="/media"
+              href="/blog"
               className="flex items-center gap-1.5"
               aria-label="Go to home page"
             >
               <SquareLibrary className="h-4 w-4" />
-              Media
+              Blogs
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
@@ -62,14 +62,6 @@ export function BlogBreadcrumb({ blog, className }: BlogBreadcrumbProps) {
           </BreadcrumbItem>
         ) : (
           <>
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link href="/blog" aria-label="Go to all blogs">
-                  Blogs
-                </Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-
             {isBlogPost && (
               <>
                 <BreadcrumbSeparator />
