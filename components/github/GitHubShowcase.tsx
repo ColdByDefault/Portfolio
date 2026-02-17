@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -156,12 +156,12 @@ export default function GitHubShowcase({ className }: { className?: string }) {
 
   return (
     <section
-      className={`flex flex-col items-center px-4 max-w-6xl mx-auto space-y-6 mt-12 ${className}`}
+      className={`flex flex-col items-center px-4 max-w-6xl mx-auto space-y-6 mt-4 ${className}`}
       id="github"
     >
       {/* Section Header */}
       <div className="flex flex-col items-center space-y-2 text-center">
-        <h2 className="text-3xl font-light text-black dark:text-white py-12">
+        <h2 className="text-3xl font-light text-black dark:text-white py-6">
           GitHub Activity
         </h2>
         <Drawer>
