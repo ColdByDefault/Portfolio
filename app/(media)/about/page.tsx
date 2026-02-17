@@ -6,21 +6,21 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
+//import { Card, CardContent } from "@/components/ui/card";
 import { Background } from "@/components/visuals/motion-background";
-import { GitHubShowcase } from "@/components/github";
 import type { AboutTranslations } from "@/types/configs/i18n";
 import Image from "next/image";
-import { motion } from "framer-motion";
+//import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 // Animation variants
-const fadeInUp = {
+/* const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
-};
+}; */
 
-const staggerChildren = {
+/* const staggerChildren = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -28,7 +28,7 @@ const staggerChildren = {
       staggerChildren: 0.1,
     },
   },
-};
+}; */
 
 export default function AboutPage() {
   const t = useTranslations("About");
@@ -42,7 +42,7 @@ export default function AboutPage() {
       <Background />
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="pt-32 pb-20 px-4 lg:px-8">
+        <section className="pt-12 pb-20 px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <Card className="p-8 lg:p-12 bg-background/80 backdrop-blur-sm border-border/50 shadow-lg">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -95,7 +95,7 @@ export default function AboutPage() {
         </section>
 
         {/* Philosophy Section */}
-        <section className="py-20 px-4 lg:px-8">
+        {/* <section className="py-20 px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <Card className="p-10 bg-background/80 backdrop-blur-sm border-border/50 shadow-lg">
               <motion.div
@@ -119,7 +119,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* What I Deliver Section */}
+ 
         <section className="py-20 px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -151,14 +151,7 @@ export default function AboutPage() {
               </div>
             </motion.div>
           </div>
-        </section>
-
-        {/* GitHub Showcase Section */}
-        <section className="py-20 px-4 lg:px-8" id="github">
-          <div className="max-w-6xl mx-auto">
-            <GitHubShowcase />
-          </div>
-        </section>
+        </section> */}
       </div>
     </div>
   );

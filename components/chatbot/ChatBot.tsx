@@ -225,10 +225,10 @@ export function ChatBot({
 
           <CardContent className="p-0 flex flex-col flex-1 min-h-0 relative">
             {showConsentBanner && (
-              <div className="absolute inset-0 z-10 backdrop-blur-sm bg-background/30 pointer-events-none" />
+              <div className="absolute inset-0 z-10 backdrop-blur-sm bg-background/30" />
             )}
             <div
-              className={`flex-1 p-3 sm:p-4 min-h-0 max-h-64 sm:max-h-80 overflow-y-auto ${CHATBOT_STYLES.SCROLLBAR}`}
+              className={`flex-1 p-3 sm:p-4 min-h-0 max-h-64 sm:max-h-80 ${showConsentBanner ? "overflow-hidden" : "overflow-y-auto"} ${CHATBOT_STYLES.SCROLLBAR}`}
               role="log"
               aria-live="polite"
               aria-label="Chat conversation"

@@ -28,7 +28,6 @@ export const footerNavLinks: LinkItem[][] = [
 
 export const developerLinks: LinkItem[] = [
   { href: "/about-portfolio", label: "About This Site" },
-  { href: "/library", label: "Library" },
   {
     href: "https://docs.coldbydefault.com/",
     label: "Documentation",

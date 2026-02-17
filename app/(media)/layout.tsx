@@ -7,7 +7,6 @@
 import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { generateMediaSectionSEO } from "@/lib/configs/seo";
-import { QuickActions } from "@/components/quickActions";
 import { Background } from "@/components/visuals";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -23,7 +22,6 @@ export default function MediaGroupLayout({
 }) {
   return (
     <div className="min-h-screen">
-      <QuickActions />
       {children}
       <Background />
     </div>

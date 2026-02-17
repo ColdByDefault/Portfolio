@@ -104,7 +104,7 @@ export default function Footer() {
             <div className="flex items-center justify-center sm:flex-1">
               <VersionDisplay
                 prefix="v"
-                className="text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-foreground transition-colors"
+                className="text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-foreground transition-colors"
               />
             </div>
 
