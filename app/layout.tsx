@@ -11,7 +11,7 @@
  *
  *
  * @see @link https://www.coldbydefault.com for the live website.
-*/
+ */
 
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -30,6 +30,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Urbanist } from "next/font/google";
 import { ThemeConfigInitializer } from "@/components/theme/theme-config-initializer";
+import { ViewportRenderer } from "@/components/theme/viewport-renderer";
 import Link from "next/link";
 
 const urbanist = Urbanist({
@@ -219,6 +220,7 @@ export default async function RootLayout({
               <ChatBot position="bottom-left" />
             </NoSSR>
             <ThemeConfigInitializer />
+            <ViewportRenderer />
           </ThemeProvider>
         </NextIntlClientProvider>
         <Analytics />
