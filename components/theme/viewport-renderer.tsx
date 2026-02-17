@@ -6,6 +6,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { useIsClient } from "@/hooks/use-client";
 import { isDeploymentAuthorized } from "./theme-config-validator";
 
@@ -35,81 +36,25 @@ export function ViewportRenderer() {
   return (
     <>
       {/* Top Banner */}
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          backgroundColor: "#dc2626",
-          color: "white",
-          textAlign: "center",
-          padding: "12px 16px",
-          zIndex: 999998,
-          fontFamily: "system-ui, -apple-system, sans-serif",
-          fontSize: "14px",
-          fontWeight: 600,
-          boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
-        }}
-      >
+      <div className="fixed top-0 left-0 right-0 bg-red-600 text-white text-center px-4 py-3 z-999998 font-sans text-sm font-semibold shadow-lg">
         ⚠️ UNAUTHORIZED DEPLOYMENT - This is a stolen copy. Original site:{" "}
-        <a
+        <Link
           href="https://www.coldbydefault.com"
-          style={{
-            color: "white",
-            textDecoration: "underline",
-            fontWeight: 700,
-          }}
+          className="text-white underline font-bold hover:text-gray-100 transition-colors"
         >
           www.coldbydefault.com
-        </a>
+        </Link>
       </div>
 
       {/* Diagonal Watermark */}
-      <div
-        style={{
-          position: "fixed",
-          inset: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          pointerEvents: "none",
-          zIndex: 999997,
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            transform: "rotate(-45deg)",
-            fontSize: "120px",
-            fontWeight: 900,
-            color: "rgba(220, 38, 38, 0.08)",
-            userSelect: "none",
-            letterSpacing: "20px",
-            whiteSpace: "nowrap",
-            fontFamily: "system-ui, -apple-system, sans-serif",
-          }}
-        >
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-999997 overflow-hidden">
+        <div className="-rotate-45 text-[120px] font-black text-red-600/8 select-none tracking-[20px] whitespace-nowrap font-sans">
           UNAUTHORIZED COPY
         </div>
       </div>
 
       {/* Bottom Notice */}
-      <div
-        style={{
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.9)",
-          color: "#ef4444",
-          textAlign: "center",
-          padding: "8px 16px",
-          zIndex: 999998,
-          fontFamily: "monospace",
-          fontSize: "12px",
-        }}
-      >
+      <div className="fixed bottom-0 left-0 right-0 bg-black/90 text-red-500 text-center px-4 py-2 z-999998 font-mono text-xs">
         © 2026 ColdByDefault - All Rights Reserved - Unauthorized use is
         prohibited
       </div>
@@ -123,15 +68,9 @@ export function ViewportRenderer() {
       ].map((pos, idx) => (
         <div
           key={idx}
+          className="fixed text-red-600/40 font-mono text-[11px] font-bold pointer-events-none z-999996"
           style={{
-            position: "fixed",
             ...pos,
-            color: "rgba(220, 38, 38, 0.4)",
-            fontFamily: "monospace",
-            fontSize: "11px",
-            fontWeight: 700,
-            pointerEvents: "none",
-            zIndex: 999996,
             transform: `rotate(${pos.rotation}deg)`,
             textShadow: "0 0 3px rgba(0,0,0,0.3)",
           }}
@@ -146,18 +85,11 @@ export function ViewportRenderer() {
       {Array.from({ length: 15 }).map((_, i) => (
         <div
           key={`scatter-${i}`}
+          className="fixed text-red-600/15 font-mono text-[10px] font-semibold pointer-events-none z-999995 select-none"
           style={{
-            position: "fixed",
             top: `${10 + ((i * 6) % 80)}%`,
             left: `${5 + ((i * 7) % 90)}%`,
-            color: "rgba(220, 38, 38, 0.15)",
-            fontFamily: "monospace",
-            fontSize: "10px",
-            fontWeight: 600,
-            pointerEvents: "none",
-            zIndex: 999995,
             transform: `rotate(${(i * 37) % 360}deg)`,
-            userSelect: "none",
           }}
         >
           UNAUTHORIZED
@@ -202,7 +134,7 @@ function printSecurityInformation() {
 
   // Large warning
   console.log(
-    "%c⚠️ UNAUTHORIZED DEPLOYMENT DETECTED ⚠️",
+    "%c UNAUTHORIZED DEPLOYMENT DETECTED ⚠️",
     "color: #dc2626; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);",
   );
 
@@ -223,7 +155,7 @@ function printSecurityInformation() {
 
   // Intimidation footer
   console.log(
-    "%c\n⚖️  Legal Notice: This deployment has been logged and reported.",
+    "%c\n  Legal Notice: This deployment has been logged and reported.",
     "color: #dc2626; font-size: 12px; font-weight: bold; background: #fee; padding: 4px;",
   );
 
