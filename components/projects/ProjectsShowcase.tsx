@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -50,7 +50,7 @@ const ProjectCard = ({ project, index: _index }: ProjectCardProps) => {
   // Business logic hooks
   const { handleCopyCloneLink, copied } = useProjectLogic();
   const { isTruncated, descriptionRef } = useTruncationDetection(
-    project.description
+    project.description,
   );
 
   // Event handlers (UI coordination only)
@@ -120,7 +120,7 @@ const ProjectCard = ({ project, index: _index }: ProjectCardProps) => {
               <Badge
                 variant={project.license.variant || "default"}
                 className={`text-xs font-medium ${getLicenseBadgeClasses(
-                  project.license.type
+                  project.license.type,
                 )}`}
               >
                 {getLicenseEmoji(project.license.type)}{" "}
@@ -130,15 +130,17 @@ const ProjectCard = ({ project, index: _index }: ProjectCardProps) => {
           )}
 
           {/* Technologies */}
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech) => (
-              <motion.div
-                key={tech}
-                className="px-2 py-1 bg-secondary/50 rounded text-xs font-medium  cursor-default"
-              >
-                {tech}
-              </motion.div>
-            ))}
+          <div className="h-20 overflow-y-auto overflow-x-hidden">
+            <div className="flex flex-wrap gap-2">
+              {project.technologies.map((tech) => (
+                <motion.div
+                  key={tech}
+                  className="px-2 py-1 bg-secondary/50 rounded text-xs font-medium cursor-default"
+                >
+                  {tech}
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           {/* Clone Command */}

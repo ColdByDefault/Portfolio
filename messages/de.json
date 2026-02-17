@@ -9,7 +9,7 @@
   "Hero": {
     "availableForCollaboration": "Verfügbar für Zusammenarbeit",
     "fullStackDeveloper": "Automatisierung & KI-gestützte Web-MVPs",
-    "description": "Ich helfe KMUs und Agenturen, Zeit zu sparen, indem ich Arbeitsabläufe automatisiere, interne KI-Assistenten einrichte und praktische Web-Tools entwickle, um Ideen schnell umzusetzen. Weniger manuelle Arbeit, mehr Effizienz. Direkte Zusammenarbeit und komplette Umsetzung.",
+    "description": "Automatisierungslösungen, interne KI-Assistenten und MVP-Entwicklung. End-to-End-Webapplikationen, vom Konzept bis zur Bereitstellung—praktische Tools, die Zeit sparen und Effizienz steigern.",
     "bookFreeCall": "Kostenloses 15-Min Gespräch buchen",
     "learnMoreAboutMe": "Mehr über mich erfahren",
     "moreAboutMe": "Mehr über mich auf"
@@ -145,7 +145,9 @@
       "portfolioWebsite": "Eine moderne, responsive Portfolio-Website, erstellt mit Next.js 16, mit Dark/Light-Theme-Umschalter, sanften Animationen durch Framer Motion und optimierter Performance. Enthält TypeScript für Typsicherheit und Tailwind CSS für das Styling.",
       "berichHub": "Full-Stack-Lernplattform mit Benutzerauthentifizierung, Profilseiten und Blog-Funktionen. KI-Integration für personalisiertes Lernen. Völlig kostenlos und Open-Source. Unterstützt 4 verschiedene Sprachen: Englisch, Deutsch, Spanisch, Schwedisch.",
       "llmAgent": "Lokaler ollama-basierter KI-Chatbot, anpassbar für jedes LLM-Modell, jedes Embed-Modell, mit 2 Optionen für Vector DB: lokales Postgres oder DataStax Astra. Kann Webseiten lesen und Fragen basierend auf deren Inhalt beantworten. Mehr kommt bald... Open Source.",
-      "subsApi": "API für die Verwaltung von Benutzerabonnements, einschließlich Funktionen für Abrechnung, Rechnungsstellung und Zahlungsabwicklung. Erstellt mit Next.js und integriert mit Stripe für sichere Zahlungen."
+      "subsApi": "API für die Verwaltung von Benutzerabonnements, einschließlich Funktionen für Abrechnung, Rechnungsstellung und Zahlungsabwicklung. Erstellt mit Next.js und integriert mit Stripe für sichere Zahlungen.",
+      "voiceToNotion": "Wandelt Sprachmemos und Meeting-Aufzeichnungen in strukturierte Notion-Seiten mit Transkripten, Zusammenfassungen und Aktionspunkten um. Automatisiert die Nachbearbeitung von Meetings in unter 30 Sekunden.",
+      "aiEmailAutomation": "Eine interaktive Demo mit RAG zur E-Mail-Analyse, die auswählbare Antwortoptionen und tonbasierte Umformulierung bietet. Veranschaulicht einen Workflow, der in Produktionsumgebungen vollständig autonom läuft."
     },
     "seeMoreOnGitHub": "Weitere Projekte auf GitHub...",
     "cloneRepository": "Repository klonen",
@@ -494,7 +496,8 @@
     "cta": {
       "title": "Bereit loszulegen?",
       "subtitle": "Buchen Sie ein kostenloses 15-Minuten-Erstgespräch. Keine Verpflichtung, nur ein Gespräch über Ihr Projekt.",
-      "button": "Kostenloses Gespräch buchen"
+      "button": "Kostenloses Gespräch buchen",
+      "viewAllLink": "Alle Dienstleistungen, Pakete & Preise ansehen"
     }
   },
   "Usecases": {

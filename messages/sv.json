@@ -9,7 +9,7 @@
   "Hero": {
     "availableForCollaboration": "Tillgänglig för samarbete",
     "fullStackDeveloper": "Automatisering & AI-drivna Webb-MVPs",
-    "description": "Jag hjälper småföretag och byråer att spara tid genom att automatisera arbetsflöden, sätta upp interna AI-assistenter och bygga praktiska webbverktyg för att snabbt lansera idéer. Mindre manuellt arbete, högre effektivitet. Direkt samarbete och helhetsleverans.",
+    "description": "Automatiseringslösningar, interna AI-assistenter och MVP-utveckling. Levererar webbapplikationer från början till slut, från koncept till lansering—bygger praktiska verktyg som sparar tid och driver effektivitet.",
     "bookFreeCall": "Boka ett Gratis 15-Min Samtal",
     "learnMoreAboutMe": "Läs mer om mig",
     "moreAboutMe": "Mer om mig på"
@@ -145,7 +145,9 @@
       "portfolioWebsite": "En modern, responsiv portfoliosajt byggd med Next.js 16, med växling mellan mörkt/ljust tema, mjuka animationer med Framer Motion och optimerad prestanda. Inkluderar TypeScript för typsäkerhet och Tailwind CSS för styling.",
       "berichHub": "Fullstack digital lärplattform med användarautentisering, profilsidor och bloggfunktioner. AI-integration för personligt lärande. Helt gratis och öppen källkod. Stöd för 4 språk: engelska, tyska, spanska och svenska.",
       "llmAgent": "AI-chatbot baserad på lokal Ollama, anpassningsbar för att använda vilken LLM-modell som helst, valfri embedding-modell samt två alternativ för vektordatabas: lokal Postgres eller DataStax Astra. Kan läsa webbsidor och svara på frågor baserat på innehållet. Mer kommer snart... Öppen källkod.",
-      "subsApi": "API för att hantera användarprenumerationer, inklusive fakturering och betalningshantering. Byggt med Next.js och integrerat med Stripe för säkra betalningar."
+      "subsApi": "API för att hantera användarprenumerationer, inklusive fakturering och betalningshantering. Byggt med Next.js och integrerat med Stripe för säkra betalningar.",
+      "voiceToNotion": "Omvandlar röstmemon och mötesinspelningar till strukturerade Notion-sidor med transkriptioner, sammanfattningar och åtgärdspunkter. Automatiserar administrativt arbete efter möten på under 30 sekunder.",
+      "aiEmailAutomation": "En interaktiv demo som använder RAG för att analysera e-post och erbjuder valbara svarsalternativ och tonbaserad omskrivning. Illustrerar ett arbetsflöde som körs helt autonomt i produktionsmiljöer."
     },
     "seeMoreOnGitHub": "se mer på GitHub...",
     "cloneRepository": "Klona repository",
@@ -494,7 +496,8 @@
     "cta": {
       "title": "Redo att Börja?",
       "subtitle": "Boka ett gratis 15-minuters upptäcktssamtal. Inget åtagande, bara ett samtal om ditt projekt.",
-      "button": "Boka Gratis Konsultation"
+      "button": "Boka Gratis Konsultation",
+      "viewAllLink": "Visa Alla Tjänster, Paket & Priser"
     }
   },
   "Usecases": {

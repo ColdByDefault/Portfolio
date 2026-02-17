@@ -14,7 +14,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: ["/", "/about", "/blog", "/library", "/media", "/impressum"],
-        disallow: ["/admin/", "/api/", "/admin/blog", "/private/"],
+        disallow: [
+          "/admin/",
+          "/api/",
+          "/admin/blog",
+          "/admin/chatbot",
+          "/private/",
+        ],
         crawlDelay: 1,
       },
       {

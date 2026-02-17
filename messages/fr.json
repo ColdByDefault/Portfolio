@@ -9,7 +9,7 @@
   "Hero": {
     "availableForCollaboration": "Disponible pour collaboration",
     "fullStackDeveloper": "Automatisation & MVPs Web propulsés par l'IA",
-    "description": "J'aide les PME et les agences à gagner du temps en automatisant les flux de travail, en configurant des assistants IA internes et en créant des outils web pratiques pour lancer des idées rapidement. Moins de travail manuel, plus d'efficacité. Collaboration directe et réalisation de A à Z.",
+    "description": "Solutions d'automatisation, assistants IA internes et développement de MVP. Livraison d'applications web de bout en bout, du concept au déploiement—création d'outils pratiques qui font gagner du temps et améliorent l'efficacité.",
     "bookFreeCall": "Réserver un Appel Gratuit de 15 Min",
     "learnMoreAboutMe": "En savoir plus sur moi",
     "moreAboutMe": "Plus sur moi sur"
@@ -145,7 +145,9 @@
       "portfolioWebsite": "Un site portfolio moderne et réactif construit avec Next.js 16, incluant un mode sombre/clair, des animations fluides avec Framer Motion et une performance optimisée. Inclut TypeScript pour la sécurité des types et Tailwind CSS pour le style.",
       "berichHub": "Plateforme d'apprentissage numérique full-stack avec authentification utilisateur, pages de profil et fonctionnalités de blog. Intégration IA pour un apprentissage personnalisé. Complètement gratuit et open source. 4 langues supportées : anglais, allemand, espagnol, suédois.",
       "llmAgent": "Chatbot IA local basé sur Ollama, personnalisable pour utiliser n'importe quel modèle LLM, n'importe quel modèle d'Embedding, 2 options pour la base vectorielle : Postgres local ou DataStax Astra. Peut lire des pages web et répondre aux questions basées sur leur contenu. D'autres fonctionnalités arrivent... Open source.",
-      "subsApi": "API pour gérer les abonnements utilisateurs, incluant la facturation, la gestion des factures et le traitement des paiements. Construit avec Next.js et intégré avec Stripe pour des paiements sécurisés."
+      "subsApi": "API pour gérer les abonnements utilisateurs, incluant la facturation, la gestion des factures et le traitement des paiements. Construit avec Next.js et intégré avec Stripe pour des paiements sécurisés.",
+      "voiceToNotion": "Transforme les mémos vocaux et les enregistrements de réunions en pages Notion structurées avec transcriptions, résumés et points d'action. Automatise le travail administratif post-réunion en moins de 30 secondes.",
+      "aiEmailAutomation": "Une démonstration interactive utilisant RAG pour analyser les e-mails, offrant des options de réponse sélectionnables et une réécriture basée sur le ton. Illustre un flux de travail qui fonctionne de manière totalement autonome dans les environnements de production."
     },
     "seeMoreOnGitHub": "voir plus sur GitHub...",
     "cloneRepository": "Cloner le dépôt",
@@ -494,7 +496,8 @@
     "cta": {
       "title": "Prêt à Commencer ?",
       "subtitle": "Réservez un appel découverte gratuit de 15 minutes. Sans engagement, juste une conversation sur votre projet.",
-      "button": "Réserver une Consultation Gratuite"
+      "button": "Réserver une Consultation Gratuite",
+      "viewAllLink": "Voir Tous les Services, Forfaits & Tarifs"
     }
   },
   "Usecases": {

@@ -9,7 +9,7 @@
   "Hero": {
     "availableForCollaboration": "Available for collaboration",
     "fullStackDeveloper": "Automation & AI-Powered Web MVPs",
-    "description": "I help SMEs and agencies save time by automating workflows, setting up internal AI assistants, and building practical web tools to launch ideas fast. Less manual work and more efficiency. Direct collaboration and end-to-end delivery.",
+    "description": "Automation solutions, internal AI assistants, and MVP development. Delivering end-to-end web applications, From concept to deployment—building practical tools that save time and drive efficiency.",
     "bookFreeCall": "Book a Free 15-Min Call",
     "learnMoreAboutMe": "Learn More About Me",
     "moreAboutMe": "More about me on"
@@ -145,7 +145,9 @@
       "portfolioWebsite": "A modern, responsive portfolio website built with Next.js 16, featuring dark/light theme toggle, smooth animations with Framer Motion, and optimized performance. Includes TypeScript for type safety and Tailwind CSS for styling.",
       "berichHub": "Full-stack digital learning platform with user authentication, Profile pages, and Blog features. AI integration for personalized learning. Completely free and open-source. 4 different languages supported: English, German, Spanish, Swedish.",
       "llmAgent": "Local ollama-based AI chatbot, customizable to use any LLM model, any Embed model, 2 Options for Vector DB; local postgres or DataStax Astra. Can read web pages, and answer questions based on the content. More coming soon.. Open source.",
-      "subsApi": "API for managing user subscriptions, including features for billing, invoicing, and payment processing. Built with Next.js and integrated with Stripe for secure payments."
+      "subsApi": "API for managing user subscriptions, including features for billing, invoicing, and payment processing. Built with Next.js and integrated with Stripe for secure payments.",
+      "voiceToNotion": "Transforms voice memos and meeting recordings into structured Notion pages with transcripts, summaries, and action items. Automates post-meeting admin work in under 30 seconds.",
+      "aiEmailAutomation": "An interactive demo using RAG to analyze emails, offering selectable answer options and tone-based rewriting. Illustrates a workflow that runs fully autonomously in production environments."
     },
     "seeMoreOnGitHub": "see more on GitHub...",
     "cloneRepository": "Clone Repository",
@@ -494,7 +496,8 @@
     "cta": {
       "title": "Ready to Start?",
       "subtitle": "Book a free 15-minute discovery call. No commitment, just a conversation about your project.",
-      "button": "Book Your Free Call"
+      "button": "Book Your Free Call",
+      "viewAllLink": "View All Services, Packages & Pricing"
     }
   },
   "Usecases": {
