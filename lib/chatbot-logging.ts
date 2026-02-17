@@ -16,13 +16,22 @@ export async function getGeoIPInfo(
   ip: string,
 ): Promise<GeoIPInfo | Record<string, undefined>> {
   // Don't lookup localhost or private IPs
-  if (
+  // Check for private IP ranges per RFC 1918:
+  // - 10.0.0.0/8 (10.0.0.0 to 10.255.255.255)
+  // - 172.16.0.0/12 (172.16.0.0 to 172.31.255.255)
+  // - 192.168.0.0/16 (192.168.0.0 to 192.168.255.255)
+  const isPrivateIP =
     ip === "127.0.0.1" ||
     ip === "::1" ||
     ip.startsWith("192.168.") ||
     ip.startsWith("10.") ||
-    ip.startsWith("172.")
-  ) {
+    (ip.startsWith("172.") &&
+      (() => {
+        const secondOctet = parseInt(ip.split(".")[1], 10);
+        return secondOctet >= 16 && secondOctet <= 31;
+      })());
+
+  if (isPrivateIP) {
     return {
       country: "LOCAL",
       city: "Local",
@@ -81,9 +90,35 @@ export async function getGeoIPInfo(
  */
 export function anonymizeIP(ip: string): string {
   if (ip.includes(":")) {
-    // IPv6 - remove last 4 groups
-    const parts = ip.split(":");
-    return parts.slice(0, -4).join(":") + "::0";
+    // IPv6 - Keep first 64 bits (4 groups), zero out last 64 bits
+    // Properly handle compressed notation (::)
+
+    try {
+      // Expand compressed IPv6 addresses
+      let expanded = ip;
+      if (ip.includes("::")) {
+        const sides = ip.split("::");
+        const leftGroups = sides[0] ? sides[0].split(":") : [];
+        const rightGroups = sides[1] ? sides[1].split(":") : [];
+        const missingGroups = 8 - leftGroups.length - rightGroups.length;
+        const middleGroups = Array(missingGroups).fill("0");
+        expanded = [...leftGroups, ...middleGroups, ...rightGroups].join(":");
+      }
+
+      // Split into groups and take first 4 (network prefix)
+      const groups = expanded.split(":");
+      if (groups.length >= 4) {
+        // Keep first 4 groups, zero out the rest
+        const networkPrefix = groups.slice(0, 4).join(":");
+        return `${networkPrefix}::`;
+      }
+
+      // Fallback for malformed addresses
+      return ip;
+    } catch {
+      // If parsing fails, return as-is
+      return ip;
+    }
   } else {
     // IPv4 - remove last octet
     const parts = ip.split(".");
