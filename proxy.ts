@@ -127,7 +127,7 @@ function cleanupExpiredSessions(): void {
  * Sets PORTFOLIOVERSIONLATEST_LOCALE for i18n and PORTFOLIOVERSIONLATEST_BROWSER_LANG for UI hints
  *
  * Note: PORTFOLIOVERSIONLATEST_BROWSER_LANG is informational only (used by language-switcher
- * and browser-translation-notice components). It should NOT gate the locale detection bypass.
+ * and locale-auto-detect components). It should NOT gate the locale detection bypass.
  */
 function handleLocaleDetection(request: NextRequest): NextResponse | null {
   // Check if locale cookie already exists - this is the only required check
@@ -144,7 +144,9 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
   const acceptLanguage = request.headers.get("accept-language");
 
   if (!acceptLanguage) {
-    // No language preference, set default and continue
+    // No Accept-Language header (privacy mode / stripped by browser)
+    // Fallback to default "de". Client-side LocaleAutoDetect component
+    // will correct this using navigator.language if needed.
     const response = NextResponse.next();
     response.cookies.set("PORTFOLIOVERSIONLATEST_LOCALE", "de", {
       path: "/",

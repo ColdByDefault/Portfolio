@@ -22,7 +22,7 @@ import { ThemeProvider } from "@/components/theme/theme-provider";
 import { Navbar } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { CookiesBanner } from "@/components/cookies";
-import { BrowserTranslationNotice } from "@/components/languages";
+import { LocaleAutoDetect } from "@/components/languages";
 import { ChatBot } from "@/components/chatbot";
 import { NoSSR } from "@/components/NoSSR";
 import { seoConfigEN, generateStructuredData } from "@/lib/configs/seo";
@@ -215,7 +215,7 @@ export default async function RootLayout({
             </main>
             <Footer />
             <CookiesBanner />
-            <BrowserTranslationNotice />
+            <LocaleAutoDetect />
             <NoSSR>
               <ChatBot position="bottom-left" />
             </NoSSR>

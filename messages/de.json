@@ -4,6 +4,23 @@
     "companiesContributing": "Unternehmen, bei denen ich arbeite / Projekte, zu denen ich beitrage:",
     "services": {
       "title": "Leistungen & Pakete"
+    },
+    "speedInsight": {
+      "title": "Live PageSpeed-Ergebnisse",
+      "subtitle": "Echtzeit Google Lighthouse-Bewertungen für diese Website",
+      "desktop": "Desktop",
+      "mobile": "Mobil",
+      "performance": "Leistung",
+      "accessibility": "Barrierefreiheit",
+      "bestPractices": "Best Practices",
+      "seo": "SEO",
+      "loading": "Website-Leistung wird analysiert...",
+      "error": "PageSpeed-Daten konnten nicht geladen werden",
+      "retry": "Erneut versuchen",
+      "poweredBy": "Bereitgestellt von Google PageSpeed Insights",
+      "lastUpdated": "Zuletzt aktualisiert",
+      "liveLabel": "Live",
+      "analyzingPortfolio": "Ergebnisse für coldbydefault.com"
     }
   },
   "Hero": {
@@ -564,5 +581,25 @@
         "placeholder": "Beispiel: Unsere Unternehmensrichtlinie sieht eine Antwort innerhalb von 24 Stunden vor. Wir bieten eine 30-tägige Geld-zurück-Garantie. Die Projektfrist ist der 15. März..."
       }
     }
+  },
+  "localeDetect": {
+    "title": "Sprache erkannt",
+    "browserLanguage": "Browsersprache",
+    "browser": "Browser",
+    "switchedTo": "gewechselt zu",
+    "matched": "übereinstimmend",
+    "notSupported": "nicht unterstützt",
+    "using": "verwende",
+    "serverDetected": "Serverseitig erkannt"
+  },
+  "CookieBanner": {
+    "title": "Wir schätzen Ihre Privatsphäre",
+    "description": "Ich backe meine eigenen Cookies! Theme-Einstellungen werden lokal in Ihrem Browser gespeichert. Ich verwende Vercel Analytics und Speed Insights zur Leistungsüberwachung, die datenschutzfreundlich sind und keine personenbezogenen Daten erfassen.",
+    "learnMore": "Mehr über die Datenschutzrichtlinie erfahren",
+    "learnMoreAriaLabel": "Mehr über die Datenschutzrichtlinie und Cookie-Nutzung erfahren",
+    "acceptAll": "Alle Cookies akzeptieren",
+    "essentialOnly": "Nur essenzielle",
+    "declineAnalytics": "Analyse ablehnen",
+    "close": "Schließen"
   }
 }

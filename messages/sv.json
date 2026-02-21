@@ -4,6 +4,23 @@
     "companiesContributing": "Företag där jag arbetar / Projekt jag bidrar till:",
     "services": {
       "title": "Tjänster & Paket"
+    },
+    "speedInsight": {
+      "title": "Live PageSpeed-resultat",
+      "subtitle": "Google Lighthouse-poäng i realtid för denna webbplats",
+      "desktop": "Dator",
+      "mobile": "Mobil",
+      "performance": "Prestanda",
+      "accessibility": "Tillgänglighet",
+      "bestPractices": "Bästa praxis",
+      "seo": "SEO",
+      "loading": "Analyserar webbplatsens prestanda...",
+      "error": "Kunde inte ladda PageSpeed-data",
+      "retry": "Försök igen",
+      "poweredBy": "Drivs av Google PageSpeed Insights",
+      "lastUpdated": "Senast uppdaterad",
+      "liveLabel": "Live",
+      "analyzingPortfolio": "Resultat för coldbydefault.com"
     }
   },
   "Hero": {
@@ -564,5 +581,25 @@
         "placeholder": "Exempel: Vår företagspolicy är att svara inom 24 timmar. Vi erbjuder 30 dagars öppet köp. Projektets deadline är den 15 mars..."
       }
     }
+  },
+  "localeDetect": {
+    "title": "Språk identifierat",
+    "browserLanguage": "Webbläsarspråk",
+    "browser": "Webbläsare",
+    "switchedTo": "bytt till",
+    "matched": "matchade",
+    "notSupported": "stöds ej",
+    "using": "använder",
+    "serverDetected": "Identifierat på serversidan"
+  },
+  "CookieBanner": {
+    "title": "Vi värdesätter din integritet",
+    "description": "Jag bakar mina egna kakor! Temainställningar lagras lokalt i din webbläsare. Jag använder Vercel Analytics och Speed Insights för att övervaka prestanda, som är integritetsvänaliga och inte spårar personuppgifter.",
+    "learnMore": "Läs mer om integritetspolicyn",
+    "learnMoreAriaLabel": "Läs mer om integritetspolicyn och användning av cookies",
+    "acceptAll": "Acceptera alla cookies",
+    "essentialOnly": "Endast nödvändiga",
+    "declineAnalytics": "Avvisa analys",
+    "close": "Stäng"
   }
 }

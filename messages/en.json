@@ -4,6 +4,23 @@
     "companiesContributing": "Companies I'm working at / Projects I'm contributing to:",
     "services": {
       "title": "Services & Packages"
+    },
+    "speedInsight": {
+      "title": "Live PageSpeed Insights",
+      "subtitle": "Real-time Google Lighthouse scores for this website",
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "performance": "Performance",
+      "accessibility": "Accessibility",
+      "bestPractices": "Best Practices",
+      "seo": "SEO",
+      "loading": "Analyzing website performance...",
+      "error": "Unable to load PageSpeed data",
+      "retry": "Retry",
+      "poweredBy": "Powered by Google PageSpeed Insights",
+      "lastUpdated": "Last updated",
+      "liveLabel": "Live",
+      "analyzingPortfolio": "Scores for coldbydefault.com"
     }
   },
   "Hero": {
@@ -564,5 +581,25 @@
         "placeholder": "Example: Our company policy is to respond within 24 hours. We offer 30-day money-back guarantees. The project deadline is March 15th..."
       }
     }
+  },
+  "localeDetect": {
+    "title": "Language Detected",
+    "browserLanguage": "Browser language",
+    "browser": "Browser",
+    "switchedTo": "switched to",
+    "matched": "matched",
+    "notSupported": "not supported",
+    "using": "using",
+    "serverDetected": "Server-side detected"
+  },
+  "CookieBanner": {
+    "title": "We value your privacy",
+    "description": "I bake my own cookies! Theme preferences are stored locally in your browser. I use Vercel Analytics and Speed Insights to monitor performance, which are privacy-friendly and do not track personal data.",
+    "learnMore": "Learn more about privacy policy",
+    "learnMoreAriaLabel": "Learn more about privacy policy and cookie usage",
+    "acceptAll": "Accept All Cookies",
+    "essentialOnly": "Essential Only",
+    "declineAnalytics": "Decline Analytics",
+    "close": "close"
   }
 }

@@ -4,6 +4,23 @@
     "companiesContributing": "Empresas donde trabajo / Proyectos a los que contribuyo:",
     "services": {
       "title": "Servicios y Paquetes"
+    },
+    "speedInsight": {
+      "title": "PageSpeed Insights en vivo",
+      "subtitle": "Puntuaciones de Google Lighthouse en tiempo real para este sitio web",
+      "desktop": "Escritorio",
+      "mobile": "Móvil",
+      "performance": "Rendimiento",
+      "accessibility": "Accesibilidad",
+      "bestPractices": "Mejores prácticas",
+      "seo": "SEO",
+      "loading": "Analizando el rendimiento del sitio web...",
+      "error": "No se pudieron cargar los datos de PageSpeed",
+      "retry": "Reintentar",
+      "poweredBy": "Impulsado por Google PageSpeed Insights",
+      "lastUpdated": "Última actualización",
+      "liveLabel": "En vivo",
+      "analyzingPortfolio": "Puntuaciones de coldbydefault.com"
     }
   },
   "Hero": {
@@ -564,5 +581,25 @@
         "placeholder": "Ejemplo: Nuestra política de empresa es responder en 24 horas. Ofrecemos una garantía de devolución de 30 días. La fecha límite del proyecto es el 15 de marzo..."
       }
     }
+  },
+  "localeDetect": {
+    "title": "Idioma detectado",
+    "browserLanguage": "Idioma del navegador",
+    "browser": "Navegador",
+    "switchedTo": "cambiado a",
+    "matched": "coincide",
+    "notSupported": "no soportado",
+    "using": "usando",
+    "serverDetected": "Detectado del servidor"
+  },
+  "CookieBanner": {
+    "title": "Valoramos tu privacidad",
+    "description": "¡Hago mis propias cookies! Las preferencias de tema se almacenan localmente en tu navegador. Uso Vercel Analytics y Speed Insights para supervisar el rendimiento, que son respetuosos con la privacidad y no rastrean datos personales.",
+    "learnMore": "Más información sobre la política de privacidad",
+    "learnMoreAriaLabel": "Más información sobre la política de privacidad y el uso de cookies",
+    "acceptAll": "Aceptar todas las cookies",
+    "essentialOnly": "Solo esenciales",
+    "declineAnalytics": "Rechazar análisis",
+    "close": "Cerrar"
   }
 }
