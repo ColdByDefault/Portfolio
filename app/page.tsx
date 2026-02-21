@@ -48,6 +48,17 @@ const ClientBackground = dynamic(
   },
 );
 
+const SpeedInsight = dynamic(
+  () =>
+    import("@/components/speed-insight").then((mod) => ({
+      default: mod.SpeedInsight,
+    })),
+  {
+    loading: () => <LoadingSkeleton />,
+    ssr: false,
+  },
+);
+
 export default function Home() {
   const t = useTranslations("Home");
   const tt = useTranslations("Services");
@@ -75,6 +86,17 @@ export default function Home() {
       <div className="relative" id="main-content">
         {/* Content Container */}
         <div className="relative z-10">
+          {/* PageSpeed Insights Section */}
+          <Suspense
+            fallback={
+              <div className="min-h-80">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
+            <SpeedInsight className="py-12 px-4 sm:px-6 lg:px-8" />
+          </Suspense>
+
           <Suspense
             fallback={
               <div className="min-h-100">

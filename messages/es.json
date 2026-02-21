@@ -4,6 +4,23 @@
     "companiesContributing": "Empresas donde trabajo / Proyectos a los que contribuyo:",
     "services": {
       "title": "Servicios y Paquetes"
+    },
+    "speedInsight": {
+      "title": "PageSpeed Insights en vivo",
+      "subtitle": "Puntuaciones de Google Lighthouse en tiempo real para este sitio web",
+      "desktop": "Escritorio",
+      "mobile": "Móvil",
+      "performance": "Rendimiento",
+      "accessibility": "Accesibilidad",
+      "bestPractices": "Mejores prácticas",
+      "seo": "SEO",
+      "loading": "Analizando el rendimiento del sitio web...",
+      "error": "No se pudieron cargar los datos de PageSpeed",
+      "retry": "Reintentar",
+      "poweredBy": "Impulsado por Google PageSpeed Insights",
+      "lastUpdated": "Última actualización",
+      "liveLabel": "En vivo",
+      "analyzingPortfolio": "Puntuaciones de coldbydefault.com"
     }
   },
   "Hero": {

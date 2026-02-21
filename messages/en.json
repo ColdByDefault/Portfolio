@@ -4,6 +4,23 @@
     "companiesContributing": "Companies I'm working at / Projects I'm contributing to:",
     "services": {
       "title": "Services & Packages"
+    },
+    "speedInsight": {
+      "title": "Live PageSpeed Insights",
+      "subtitle": "Real-time Google Lighthouse scores for this website",
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "performance": "Performance",
+      "accessibility": "Accessibility",
+      "bestPractices": "Best Practices",
+      "seo": "SEO",
+      "loading": "Analyzing website performance...",
+      "error": "Unable to load PageSpeed data",
+      "retry": "Retry",
+      "poweredBy": "Powered by Google PageSpeed Insights",
+      "lastUpdated": "Last updated",
+      "liveLabel": "Live",
+      "analyzingPortfolio": "Scores for coldbydefault.com"
     }
   },
   "Hero": {

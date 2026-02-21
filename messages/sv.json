@@ -4,6 +4,23 @@
     "companiesContributing": "Företag där jag arbetar / Projekt jag bidrar till:",
     "services": {
       "title": "Tjänster & Paket"
+    },
+    "speedInsight": {
+      "title": "Live PageSpeed-resultat",
+      "subtitle": "Google Lighthouse-poäng i realtid för denna webbplats",
+      "desktop": "Dator",
+      "mobile": "Mobil",
+      "performance": "Prestanda",
+      "accessibility": "Tillgänglighet",
+      "bestPractices": "Bästa praxis",
+      "seo": "SEO",
+      "loading": "Analyserar webbplatsens prestanda...",
+      "error": "Kunde inte ladda PageSpeed-data",
+      "retry": "Försök igen",
+      "poweredBy": "Drivs av Google PageSpeed Insights",
+      "lastUpdated": "Senast uppdaterad",
+      "liveLabel": "Live",
+      "analyzingPortfolio": "Resultat för coldbydefault.com"
     }
   },
   "Hero": {

@@ -4,6 +4,23 @@
     "companiesContributing": "Entreprises où je travaille / Projets auxquels je contribue :",
     "services": {
       "title": "Services & Offres"
+    },
+    "speedInsight": {
+      "title": "PageSpeed Insights en direct",
+      "subtitle": "Scores Google Lighthouse en temps réel pour ce site web",
+      "desktop": "Bureau",
+      "mobile": "Mobile",
+      "performance": "Performance",
+      "accessibility": "Accessibilité",
+      "bestPractices": "Bonnes pratiques",
+      "seo": "SEO",
+      "loading": "Analyse des performances du site web...",
+      "error": "Impossible de charger les données PageSpeed",
+      "retry": "Réessayer",
+      "poweredBy": "Propulsé par Google PageSpeed Insights",
+      "lastUpdated": "Dernière mise à jour",
+      "liveLabel": "En direct",
+      "analyzingPortfolio": "Scores de coldbydefault.com"
     }
   },
   "Hero": {
