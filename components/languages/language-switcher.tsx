@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -48,11 +48,13 @@ function getInitialLocale(): string {
 
 function getInitialBrowserLang(): string {
   const cookieBrowserLang = getCookie("PORTFOLIOVERSIONLATEST_BROWSER_LANG");
-  if (cookieBrowserLang) return cookieBrowserLang;
+  // Prefer navigator.language over cookie if cookie is "unknown" (server couldn't detect)
+  if (cookieBrowserLang && cookieBrowserLang !== "unknown")
+    return cookieBrowserLang;
   if (typeof navigator !== "undefined") {
-    return navigator.language.slice(0, 2);
+    return navigator.language.slice(0, 2).toLowerCase();
   }
-  return "en";
+  return cookieBrowserLang ?? "en";
 }
 
 const LanguageSwitcher = () => {
@@ -62,13 +64,13 @@ const LanguageSwitcher = () => {
   const initialLocale = useSyncExternalStore(
     emptySubscribe,
     getInitialLocale,
-    () => "en"
+    () => "en",
   );
 
   const initialBrowserLang = useSyncExternalStore(
     emptySubscribe,
     getInitialBrowserLang,
-    () => "en"
+    () => "en",
   );
 
   // State for user-changed values

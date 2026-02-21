@@ -581,5 +581,15 @@
         "placeholder": "Beispiel: Unsere Unternehmensrichtlinie sieht eine Antwort innerhalb von 24 Stunden vor. Wir bieten eine 30-tägige Geld-zurück-Garantie. Die Projektfrist ist der 15. März..."
       }
     }
+  },
+  "localeDetect": {
+    "title": "Sprache erkannt",
+    "browserLanguage": "Browsersprache",
+    "browser": "Browser",
+    "switchedTo": "gewechselt zu",
+    "matched": "übereinstimmend",
+    "notSupported": "nicht unterstützt",
+    "using": "verwende",
+    "serverDetected": "Serverseitig erkannt"
   }
 }

@@ -581,5 +581,15 @@
         "placeholder": "Exempel: Vår företagspolicy är att svara inom 24 timmar. Vi erbjuder 30 dagars öppet köp. Projektets deadline är den 15 mars..."
       }
     }
+  },
+  "localeDetect": {
+    "title": "Språk identifierat",
+    "browserLanguage": "Webbläsarspråk",
+    "browser": "Webbläsare",
+    "switchedTo": "bytt till",
+    "matched": "matchade",
+    "notSupported": "stöds ej",
+    "using": "använder",
+    "serverDetected": "Identifierat på serversidan"
   }
 }

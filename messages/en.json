@@ -581,5 +581,15 @@
         "placeholder": "Example: Our company policy is to respond within 24 hours. We offer 30-day money-back guarantees. The project deadline is March 15th..."
       }
     }
+  },
+  "localeDetect": {
+    "title": "Language Detected",
+    "browserLanguage": "Browser language",
+    "browser": "Browser",
+    "switchedTo": "switched to",
+    "matched": "matched",
+    "notSupported": "not supported",
+    "using": "using",
+    "serverDetected": "Server-side detected"
   }
 }

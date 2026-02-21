@@ -581,5 +581,15 @@
         "placeholder": "Ejemplo: Nuestra política de empresa es responder en 24 horas. Ofrecemos una garantía de devolución de 30 días. La fecha límite del proyecto es el 15 de marzo..."
       }
     }
+  },
+  "localeDetect": {
+    "title": "Idioma detectado",
+    "browserLanguage": "Idioma del navegador",
+    "browser": "Navegador",
+    "switchedTo": "cambiado a",
+    "matched": "coincide",
+    "notSupported": "no soportado",
+    "using": "usando",
+    "serverDetected": "Detectado del servidor"
   }
 }
