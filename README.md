@@ -6,12 +6,12 @@ Modern, secure, high‑performance developer portfolio built with Next.js 16, Ty
 
 <img width="990" height="174" alt="Screenshot 2025-08-31 111906" src="https://github.com/user-attachments/assets/2a863d38-e178-42ee-85a9-75010601fb2b" />
 
-- **Live:** https://www.coldbydefault.com 
-- **Docs:** https://docs.coldbydefault.com/ 
-- **Stack:** 
-  - Next.js 16 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui 
-  - Embla Carousel · Framer Motion 12.x · next-intl 4.6 · Prisma ORM 7 
-  - Neon PostgreSQL · Zod 4.x · ESLint 9.x · Vercel
+1. **Live:** https://www.coldbydefault.com 
+2. **Docs:** https://docs.coldbydefault.com/ 
+3. **Stack:** 
+- Next.js 16 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui 
+- Embla Carousel · Framer Motion 12.x · next-intl 4.6 · Prisma ORM 7 
+- Neon PostgreSQL · Zod 4.x · ESLint 9.x · Vercel
 
 </div>
 
