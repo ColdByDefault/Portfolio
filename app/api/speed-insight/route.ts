@@ -52,6 +52,7 @@ function parseResult(
 /** Fetch PageSpeed data for a given strategy */
 async function fetchPageSpeed(
   strategy: "mobile" | "desktop",
+  forceRefresh = false,
 ): Promise<SpeedInsightResult> {
   const params = new URLSearchParams({
     url: TARGET_URL,
@@ -72,7 +73,9 @@ async function fetchPageSpeed(
     headers: {
       Referer: TARGET_URL,
     },
-    next: { revalidate: 3600 }, // Cache for 1 hour
+    ...(forceRefresh
+      ? { cache: "no-store" as const }
+      : { next: { revalidate: 3600 } }), // Cache for 1 hour unless force refresh
   });
 
   if (!response.ok) {
@@ -86,11 +89,14 @@ async function fetchPageSpeed(
   return parseResult(data, strategy);
 }
 
-export async function GET(): Promise<NextResponse> {
+export async function GET(request: Request): Promise<NextResponse> {
+  const { searchParams } = new URL(request.url);
+  const forceRefresh = searchParams.has("refresh");
+
   try {
     const [desktop, mobile] = await Promise.all([
-      fetchPageSpeed("desktop"),
-      fetchPageSpeed("mobile"),
+      fetchPageSpeed("desktop", forceRefresh),
+      fetchPageSpeed("mobile", forceRefresh),
     ]);
 
     const body: SpeedInsightApiResponse = { desktop, mobile };

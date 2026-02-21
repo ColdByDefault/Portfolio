@@ -22,3 +22,6 @@ export const SPEED_INSIGHT_API = "/api/speed-insight" as const;
 
 /** Cache duration in milliseconds (matches API revalidate: 1 hour) */
 export const CACHE_DURATION_MS = 3_600_000 as const;
+
+/** Minimum cooldown between manual refreshes (2 minutes) */
+export const REFRESH_COOLDOWN_MS = 120_000 as const;

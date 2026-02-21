@@ -107,7 +107,8 @@ function StrategySkeleton() {
 
 export default function SpeedInsight({ className }: { className?: string }) {
   const t = useTranslations("Home.speedInsight");
-  const { desktop, mobile, loading, error, refetch } = useSpeedInsight();
+  const { desktop, mobile, loading, error, refetch, cooldownRemaining } =
+    useSpeedInsight();
 
   return (
     <section className={className} aria-label={t("title")}>
@@ -193,8 +194,15 @@ export default function SpeedInsight({ className }: { className?: string }) {
                   variant="ghost"
                   size="icon"
                   onClick={() => void refetch()}
-                  disabled={loading}
-                  aria-label={t("retry")}
+                  disabled={loading || cooldownRemaining > 0}
+                  aria-label={
+                    cooldownRemaining > 0
+                      ? `${t("retry")} (${cooldownRemaining}s)`
+                      : t("retry")
+                  }
+                  title={
+                    cooldownRemaining > 0 ? `${cooldownRemaining}s` : undefined
+                  }
                   className="h-8 w-8"
                 >
                   <RefreshCw

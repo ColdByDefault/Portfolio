@@ -8,7 +8,11 @@ import type {
   SpeedInsightApiResponse,
   SpeedInsightResult,
 } from "@/types/configs/speed-insight";
-import { SPEED_INSIGHT_API, CACHE_DURATION_MS } from "./SpeedInsight.constants";
+import {
+  SPEED_INSIGHT_API,
+  CACHE_DURATION_MS,
+  REFRESH_COOLDOWN_MS,
+} from "./SpeedInsight.constants";
 
 /** State shape for the SpeedInsight hook */
 interface SpeedInsightState {
@@ -21,6 +25,8 @@ interface SpeedInsightState {
 /** Return type for the useSpeedInsight hook */
 interface UseSpeedInsightReturn extends SpeedInsightState {
   refetch: () => Promise<void>;
+  /** Seconds remaining until next refresh is allowed (0 = ready) */
+  cooldownRemaining: number;
 }
 
 /** Cached response to avoid redundant API calls */
@@ -45,6 +51,9 @@ export function useSpeedInsight(): UseSpeedInsightReturn {
   });
 
   const abortRef = useRef<AbortController | null>(null);
+  const lastRefreshRef = useRef<number>(0);
+  const [cooldownRemaining, setCooldownRemaining] = useState(0);
+  const cooldownTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const fetchData = useCallback(async (force = false): Promise<void> => {
     // Return cached data if valid and not forced
@@ -66,8 +75,13 @@ export function useSpeedInsight(): UseSpeedInsightReturn {
     setState((prev) => ({ ...prev, loading: true, error: null }));
 
     try {
-      const response = await fetch(SPEED_INSIGHT_API, {
+      const url = force
+        ? `${SPEED_INSIGHT_API}?refresh=${Date.now()}`
+        : SPEED_INSIGHT_API;
+
+      const response = await fetch(url, {
         signal: controller.signal,
+        cache: force ? "no-cache" : "default",
       });
 
       if (!response.ok) {
@@ -102,6 +116,26 @@ export function useSpeedInsight(): UseSpeedInsightReturn {
   }, []);
 
   const refetch = useCallback(async (): Promise<void> => {
+    const elapsed = Date.now() - lastRefreshRef.current;
+    if (elapsed < REFRESH_COOLDOWN_MS) return;
+
+    lastRefreshRef.current = Date.now();
+    setCooldownRemaining(Math.ceil(REFRESH_COOLDOWN_MS / 1000));
+
+    // Start countdown timer
+    if (cooldownTimerRef.current) clearInterval(cooldownTimerRef.current);
+    cooldownTimerRef.current = setInterval(() => {
+      const remaining = Math.ceil(
+        (REFRESH_COOLDOWN_MS - (Date.now() - lastRefreshRef.current)) / 1000,
+      );
+      if (remaining <= 0) {
+        setCooldownRemaining(0);
+        if (cooldownTimerRef.current) clearInterval(cooldownTimerRef.current);
+      } else {
+        setCooldownRemaining(remaining);
+      }
+    }, 1000);
+
     await fetchData(true);
   }, [fetchData]);
 
@@ -110,8 +144,9 @@ export function useSpeedInsight(): UseSpeedInsightReturn {
 
     return () => {
       abortRef.current?.abort();
+      if (cooldownTimerRef.current) clearInterval(cooldownTimerRef.current);
     };
   }, [fetchData]);
 
-  return { ...state, refetch };
+  return { ...state, refetch, cooldownRemaining };
 }
