@@ -591,5 +591,15 @@
     "notSupported": "nicht unterstützt",
     "using": "verwende",
     "serverDetected": "Serverseitig erkannt"
+  },
+  "CookieBanner": {
+    "title": "Wir schätzen Ihre Privatsphäre",
+    "description": "Ich backe meine eigenen Cookies! Theme-Einstellungen werden lokal in Ihrem Browser gespeichert. Ich verwende Vercel Analytics und Speed Insights zur Leistungsüberwachung, die datenschutzfreundlich sind und keine personenbezogenen Daten erfassen.",
+    "learnMore": "Mehr über die Datenschutzrichtlinie erfahren",
+    "learnMoreAriaLabel": "Mehr über die Datenschutzrichtlinie und Cookie-Nutzung erfahren",
+    "acceptAll": "Alle Cookies akzeptieren",
+    "essentialOnly": "Nur essenzielle",
+    "declineAnalytics": "Analyse ablehnen",
+    "close": "Schließen"
   }
 }

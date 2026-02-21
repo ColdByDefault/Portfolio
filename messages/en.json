@@ -591,5 +591,15 @@
     "notSupported": "not supported",
     "using": "using",
     "serverDetected": "Server-side detected"
+  },
+  "CookieBanner": {
+    "title": "We value your privacy",
+    "description": "I bake my own cookies! Theme preferences are stored locally in your browser. I use Vercel Analytics and Speed Insights to monitor performance, which are privacy-friendly and do not track personal data.",
+    "learnMore": "Learn more about privacy policy",
+    "learnMoreAriaLabel": "Learn more about privacy policy and cookie usage",
+    "acceptAll": "Accept All Cookies",
+    "essentialOnly": "Essential Only",
+    "declineAnalytics": "Decline Analytics",
+    "close": "close"
   }
 }

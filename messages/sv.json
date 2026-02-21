@@ -591,5 +591,15 @@
     "notSupported": "stöds ej",
     "using": "använder",
     "serverDetected": "Identifierat på serversidan"
+  },
+  "CookieBanner": {
+    "title": "Vi värdesätter din integritet",
+    "description": "Jag bakar mina egna kakor! Temainställningar lagras lokalt i din webbläsare. Jag använder Vercel Analytics och Speed Insights för att övervaka prestanda, som är integritetsvänaliga och inte spårar personuppgifter.",
+    "learnMore": "Läs mer om integritetspolicyn",
+    "learnMoreAriaLabel": "Läs mer om integritetspolicyn och användning av cookies",
+    "acceptAll": "Acceptera alla cookies",
+    "essentialOnly": "Endast nödvändiga",
+    "declineAnalytics": "Avvisa analys",
+    "close": "Stäng"
   }
 }

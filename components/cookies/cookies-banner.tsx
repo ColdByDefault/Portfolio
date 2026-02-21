@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -15,15 +15,17 @@ import {
 import { Button } from "@/components/ui/button";
 import { X, Cookie } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 const emptySubscribe = () => () => {};
 
 export function CookiesBanner() {
   const [isVisible, setIsVisible] = useState(false);
+  const t = useTranslations("CookieBanner");
   const mounted = useSyncExternalStore(
     emptySubscribe,
     () => true,
-    () => false
+    () => false,
   );
 
   useEffect(() => {
@@ -69,7 +71,7 @@ export function CookiesBanner() {
       className={cn(
         "fixed bottom-4 left-4 right-4 md:left-6 md:right-6 z-10",
         "animate-in slide-in-from-bottom-5 duration-500",
-        "max-w-md md:max-w-lg lg:max-w-xl ml-auto"
+        "max-w-md md:max-w-lg lg:max-w-xl ml-auto",
       )}
     >
       <Card className="border-2 shadow-lg">
@@ -80,7 +82,7 @@ export function CookiesBanner() {
           onClick={handleClose}
         >
           <X className="h-4 w-4" />
-          <span className="sr-only">close</span>
+          <span className="sr-only">{t("close")}</span>
         </Button>
 
         <CardContent className="p-6">
@@ -91,20 +93,17 @@ export function CookiesBanner() {
             <div className="flex-1 space-y-3">
               <div>
                 <CardTitle className="text-sm font-semibold text-gray-900 dark:text-white">
-                  We value your privacy
+                  {t("title")}
                 </CardTitle>
                 <CardDescription className="text-xs text-gray-600 dark:text-gray-300 mt-1">
-                  I bake my own cookies! Theme preferences are stored locally in
-                  your browser. I use Vercel Analytics and Speed Insights to
-                  monitor performance, which are privacy-friendly and do not
-                  track personal data.{" "}
+                  {t("description")}{" "}
                   <a
                     href="/privacy"
                     className="text-primary hover:underline"
                     onClick={handleClose}
-                    aria-label="Learn more about privacy policy and cookie usage"
+                    aria-label={t("learnMoreAriaLabel")}
                   >
-                    Learn more about privacy policy
+                    {t("learnMore")}
                   </a>
                 </CardDescription>
               </div>
@@ -116,7 +115,7 @@ export function CookiesBanner() {
                     size="sm"
                     className="flex-1 text-xs"
                   >
-                    Accept All Cookies
+                    {t("acceptAll")}
                   </Button>
                   <Button
                     onClick={handleDecline}
@@ -124,7 +123,7 @@ export function CookiesBanner() {
                     size="sm"
                     className="flex-1 text-xs"
                   >
-                    Essential Only
+                    {t("essentialOnly")}
                   </Button>
                 </div>
                 <Button
@@ -133,7 +132,7 @@ export function CookiesBanner() {
                   size="sm"
                   className="text-xs text-muted-foreground hover:text-foreground"
                 >
-                  Decline Analytics
+                  {t("declineAnalytics")}
                 </Button>
               </div>
             </div>

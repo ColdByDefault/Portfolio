@@ -591,5 +591,15 @@
     "notSupported": "no soportado",
     "using": "usando",
     "serverDetected": "Detectado del servidor"
+  },
+  "CookieBanner": {
+    "title": "Valoramos tu privacidad",
+    "description": "¡Hago mis propias cookies! Las preferencias de tema se almacenan localmente en tu navegador. Uso Vercel Analytics y Speed Insights para supervisar el rendimiento, que son respetuosos con la privacidad y no rastrean datos personales.",
+    "learnMore": "Más información sobre la política de privacidad",
+    "learnMoreAriaLabel": "Más información sobre la política de privacidad y el uso de cookies",
+    "acceptAll": "Aceptar todas las cookies",
+    "essentialOnly": "Solo esenciales",
+    "declineAnalytics": "Rechazar análisis",
+    "close": "Cerrar"
   }
 }
