@@ -46,19 +46,18 @@ function ScoreRing({ category }: { category: SpeedInsightScore }) {
   const offset = getOffset(category.score);
 
   return (
-    <div className="flex flex-col items-center gap-1.5">
-      <div className="relative" style={{ width: RING.size, height: RING.size }}>
+    <div className="flex flex-col items-center gap-1">
+      <div className="relative w-9 h-9">
         <svg
-          width={RING.size}
-          height={RING.size}
-          className="-rotate-90"
+          viewBox="0 0 60 60"
+          className="w-full h-full -rotate-90"
           aria-label={`${category.label}: ${category.score}%`}
           role="img"
         >
           {/* Background ring */}
           <circle
-            cx={RING.size / 2}
-            cy={RING.size / 2}
+            cx={30}
+            cy={30}
             r={RING.radius}
             fill="none"
             strokeWidth={RING.strokeWidth}
@@ -66,8 +65,8 @@ function ScoreRing({ category }: { category: SpeedInsightScore }) {
           />
           {/* Score ring */}
           <circle
-            cx={RING.size / 2}
-            cy={RING.size / 2}
+            cx={30}
+            cy={30}
             r={RING.radius}
             fill="none"
             strokeWidth={RING.strokeWidth}
@@ -79,13 +78,13 @@ function ScoreRing({ category }: { category: SpeedInsightScore }) {
         </svg>
         {/* Score number */}
         <span
-          className={`absolute inset-0 flex items-center justify-center text-sm font-bold ${category.color}`}
+          className={`absolute inset-0 flex items-center justify-center text-[10px] font-bold ${category.color}`}
           aria-hidden="true"
         >
           {category.score}
         </span>
       </div>
-      <span className="text-xs text-muted-foreground text-center font-medium max-w-20 leading-tight">
+      <span className="text-[10px] sm:text-xs text-muted-foreground text-center font-medium max-w-18 leading-tight">
         {category.label}
       </span>
     </div>
@@ -95,14 +94,11 @@ function ScoreRing({ category }: { category: SpeedInsightScore }) {
 /** Loading skeleton for a strategy tab */
 function StrategySkeleton() {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 justify-items-center py-3">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 justify-items-center py-3">
       {Array.from({ length: 4 }).map((_, i) => (
-        <div key={i} className="flex flex-col items-center gap-1.5">
-          <Skeleton
-            className="rounded-full"
-            style={{ width: RING.size, height: RING.size }}
-          />
-          <Skeleton className="h-3 w-16" />
+        <div key={i} className="flex flex-col items-center gap-1">
+          <Skeleton className="rounded-full w-9 h-9" />
+          <Skeleton className="h-2.5 sm:h-3 w-12 sm:w-16" />
         </div>
       ))}
     </div>
@@ -119,15 +115,15 @@ export default function SpeedInsight({ className }: { className?: string }) {
         <CardHeader className="pb-3">
           {/* Header row */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                <SiGoogle className="h-5 w-5 text-primary" />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-primary/10 shrink-0">
+                <SiGoogle className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
               </div>
               <div>
-                <CardTitle className="text-lg sm:text-xl">
+                <CardTitle className="text-base sm:text-lg md:text-xl">
                   {t("title")}
                 </CardTitle>
-                <CardDescription className="text-xs sm:text-sm">
+                <CardDescription className="text-[11px] sm:text-sm">
                   {t("subtitle")}
                 </CardDescription>
               </div>
@@ -137,11 +133,11 @@ export default function SpeedInsight({ className }: { className?: string }) {
             {!error && !loading && (
               <Badge
                 variant="outline"
-                className="gap-1.5 border-green-500/30 bg-green-500/5 text-green-600 dark:text-green-400"
+                className="gap-1 sm:gap-1.5 text-[10px] sm:text-xs px-1.5 sm:px-2.5 border-green-500/30 bg-green-500/5 text-green-600 dark:text-green-400 shrink-0"
               >
-                <span className="relative flex h-2 w-2">
+                <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                  <span className="relative inline-flex h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-green-500" />
                 </span>
                 {t("liveLabel")}
               </Badge>
@@ -176,13 +172,19 @@ export default function SpeedInsight({ className }: { className?: string }) {
           {!error && (
             <Tabs defaultValue="desktop" className="w-full">
               <div className="flex items-center justify-between mb-2">
-                <TabsList>
-                  <TabsTrigger value="desktop" className="gap-1.5">
-                    <Monitor className="w-4 h-4" />
+                <TabsList className="h-8 sm:h-10">
+                  <TabsTrigger
+                    value="desktop"
+                    className="gap-1 sm:gap-1.5 text-xs sm:text-sm px-2 sm:px-3 cursor-pointer"
+                  >
+                    <Monitor className="w-3 h-3 sm:w-4 sm:h-4" />
                     {t("desktop")}
                   </TabsTrigger>
-                  <TabsTrigger value="mobile" className="gap-1.5">
-                    <Smartphone className="w-4 h-4" />
+                  <TabsTrigger
+                    value="mobile"
+                    className="gap-1 sm:gap-1.5 text-xs sm:text-sm px-2 sm:px-3 cursor-pointer"
+                  >
+                    <Smartphone className="w-3 h-3 sm:w-4 sm:h-4" />
                     {t("mobile")}
                   </TabsTrigger>
                 </TabsList>
@@ -205,7 +207,7 @@ export default function SpeedInsight({ className }: { className?: string }) {
                 {loading ? (
                   <StrategySkeleton />
                 ) : desktop ? (
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 justify-items-center py-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 justify-items-center py-3">
                     {desktop.categories.map((cat) => (
                       <ScoreRing key={cat.label} category={cat} />
                     ))}
@@ -217,7 +219,7 @@ export default function SpeedInsight({ className }: { className?: string }) {
                 {loading ? (
                   <StrategySkeleton />
                 ) : mobile ? (
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 justify-items-center py-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 justify-items-center py-3">
                     {mobile.categories.map((cat) => (
                       <ScoreRing key={cat.label} category={cat} />
                     ))}
@@ -228,14 +230,14 @@ export default function SpeedInsight({ className }: { className?: string }) {
           )}
 
           {/* Footer */}
-          <div className="flex items-center justify-between pt-3 border-t mt-2">
-            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <SiGoogle className="h-3 w-3" />
-              <span>{t("poweredBy")}</span>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-1 pt-3 border-t mt-2">
+            <div className="flex items-center gap-1 text-[10px] sm:text-xs text-muted-foreground">
+              <SiGoogle className="h-2.5 w-2.5 sm:h-3 sm:w-3 shrink-0" />
+              <span className="truncate">{t("poweredBy")}</span>
             </div>
             {desktop?.fetchedAt && (
-              <span className="text-xs text-muted-foreground">
-                {t("lastUpdated")}:{" "}
+              <span className="text-[10px] sm:text-xs text-muted-foreground whitespace-nowrap">
+                <span className="hidden sm:inline">{t("lastUpdated")}: </span>
                 {new Date(desktop.fetchedAt).toLocaleTimeString()}
               </span>
             )}
