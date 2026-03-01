@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -19,6 +19,7 @@ import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
+import "highlight.js/styles/github-dark.css";
 
 interface BlogViewProps {
   blog: Blog;
@@ -27,7 +28,7 @@ interface BlogViewProps {
 
 export function BlogView({ blog, className }: BlogViewProps) {
   const [imageSrc, setImageSrc] = useState(
-    blog.featuredImage || "/assets/blogs/blogsFallback.png"
+    blog.featuredImage || "/assets/blogs/blogsFallback.png",
   );
   const [imageError, setImageError] = useState(false);
 

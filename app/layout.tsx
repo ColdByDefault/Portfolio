@@ -177,15 +177,6 @@ export default async function RootLayout({
           href="https://generativelanguage.googleapis.com"
         />
 
-        {/* Preload critical assets */}
-        <link
-          rel="preload"
-          href="/profileDark.jpg"
-          as="image"
-          type="image/jpeg"
-          fetchPriority="high"
-        />
-
         {/* Structured Data */}
         <script
           type="application/ld+json"

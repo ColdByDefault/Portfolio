@@ -1,0 +1,58 @@
+/**
+ * @author ColdByDefault
+ * @copyright 2026 ColdByDefault. All Rights Reserved.
+ */
+
+"use client";
+
+import { useTranslations } from "next-intl";
+import { CompanyBanner } from "@/components/companies";
+import { PackageCard } from "@/components/services";
+import { servicePackages } from "@/data/hubs/servicesData";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
+/** Translated hero banner text + company banner */
+export function HeroBannerSection() {
+  const t = useTranslations("Home");
+  return (
+    <>
+      <span className="text-sm font-medium text-center text-black dark:text-white">
+        {t("companiesContributing")}
+      </span>
+      <CompanyBanner />
+    </>
+  );
+}
+
+/** Translated services section */
+export function ServicesSection() {
+  const t = useTranslations("Home");
+  const tt = useTranslations("Services");
+
+  return (
+    <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-8xl mx-auto">
+        <h2 className="lg:text-4xl text-xl font-medium text-center mb-8 text-black dark:text-white">
+          {t("services.title")}
+        </h2>
+        <div className="flex justify-center mt-10">
+          <Link
+            href="/services"
+            className="inline-flex items-center z-50 gap-2 px-6 py-3 rounded-lg border border-black bg-black 
+            text-white dark:border-white dark:bg-white dark:text-black hover:bg-gray-800 
+            dark:hover:bg-gray-200 transition-all duration-300 font-medium text-sm group"
+          >
+            {tt("cta.viewAllLink")}
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
+        <div className="flex flex-wrap justify-center gap-6 mt-10">
+          {servicePackages.map((pkg) => (
+            <PackageCard key={pkg.id} pkg={pkg} variant="compact" />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
