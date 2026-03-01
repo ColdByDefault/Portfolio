@@ -14,7 +14,7 @@ export interface Project {
   featured: boolean;
   category: string;
   license?: {
-    type: "copyright" | "open-source" | "fully-open";
+    type: "copyright" | "open-source" | "fully-open" | "mit";
     text: string;
     variant?: "default" | "secondary" | "destructive" | "outline";
   };
@@ -23,7 +23,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Portfolio Website v5",
+    title: "Portfolio Website v6",
     description: "portfolioWebsite",
     technologies: [
       "Next.js",
@@ -95,6 +95,38 @@ export const projects: Project[] = [
       type: "copyright",
       text: "copyright",
       variant: "destructive",
+    },
+  },
+  {
+    id: 5,
+    title: "Next.Js SEO optimization Package",
+    description: "nextJsSeoOptimization",
+    image: "",
+    technologies: ["Next.js", "TypeScript", "npm", "SEO"],
+    githubUrl: "https://github.com/ColdByDefault/nextseo-lite",
+    liveUrl: "",
+    featured: true,
+    category: "aiMl",
+    license: {
+      type: "mit",
+      text: "MIT License",
+      variant: "secondary",
+    },
+  },
+  {
+    id: 6,
+    title: "AI Email Automation Demo",
+    description: "aiEmailAutomation",
+    image: "",
+    technologies: ["Next.js", "TypeScript", "BetterAuth", "Customizable Auth"],
+    githubUrl: "https://github.com/ColdByDefault/ready-to-use-auth",
+    liveUrl: "",
+    featured: true,
+    category: "aiMl",
+    license: {
+      type: "mit",
+      text: "MIT License",
+      variant: "secondary",
     },
   },
 ];

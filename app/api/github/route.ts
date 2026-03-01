@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
@@ -17,6 +17,7 @@ import type {
   GitHubRepo,
   GitHubStats,
   GitHubActivity,
+  GitHubHighlight,
   GitHubApiResponse,
 } from "@/types/configs/github";
 
@@ -60,7 +61,7 @@ class GitHubDataFetcher {
         const errorText = await response.text();
         console.error("Profile fetch error:", response.status, errorText);
         throw new Error(
-          `Failed to fetch profile: ${response.status} ${response.statusText} - ${errorText}`
+          `Failed to fetch profile: ${response.status} ${response.statusText} - ${errorText}`,
         );
       }
 
@@ -78,7 +79,7 @@ class GitHubDataFetcher {
       {
         headers: this.headers,
         next: { revalidate: 1800 }, // Cache for 30 minutes
-      }
+      },
     );
 
     if (!response.ok) {
@@ -102,7 +103,7 @@ class GitHubDataFetcher {
           updated_at: repo.updated_at,
           topics: repo.topics || [],
           homepage: repo.homepage || "",
-        })
+        }),
       );
 
     return formattedRepos.slice(0, limit);
@@ -115,12 +116,12 @@ class GitHubDataFetcher {
       {
         headers: this.headers,
         next: { revalidate: 3600 },
-      }
+      },
     );
 
     if (!ownedReposResponse.ok) {
       throw new Error(
-        `Failed to fetch owned repos for stats: ${ownedReposResponse.statusText}`
+        `Failed to fetch owned repos for stats: ${ownedReposResponse.statusText}`,
       );
     }
 
@@ -132,12 +133,12 @@ class GitHubDataFetcher {
     const totalStars = ownedRepos.reduce(
       (sum: number, repo: GitHubRepository) =>
         sum + (repo.stargazers_count || 0),
-      0
+      0,
     );
 
     const totalForks = ownedRepos.reduce(
       (sum: number, repo: GitHubRepository) => sum + (repo.forks_count || 0),
-      0
+      0,
     );
 
     const languages: Record<string, number> = {};
@@ -171,7 +172,7 @@ class GitHubDataFetcher {
       {
         headers: this.headers,
         next: { revalidate: 900 }, // Cache for 15 minutes
-      }
+      },
     );
 
     if (!response.ok) {
@@ -185,8 +186,31 @@ class GitHubDataFetcher {
         repo: event.repo?.name || "",
         created_at: event.created_at,
         action: this.formatEventAction(event),
-      })
+      }),
     );
+  }
+
+  buildHighlights(
+    profile: GitHubProfile,
+    _stats: GitHubStats,
+  ): GitHubHighlight[] {
+    const highlights: GitHubHighlight[] = [];
+
+    highlights.push({
+      label: "Developer Program Member",
+      value: "Developer Program Member",
+      icon: "💻",
+      link: "https://docs.github.com/en/integrations/concepts/github-developer-program",
+    });
+
+    const createdYear = new Date(profile.created_at).getFullYear();
+    highlights.push({
+      label: "Member Since",
+      value: String(createdYear),
+      icon: "📅",
+    });
+
+    return highlights;
   }
 
   private formatEventAction(event: GitHubEvent): string {
@@ -246,7 +270,7 @@ export async function GET(request: NextRequest) {
           "Referrer-Policy": "strict-origin-when-cross-origin",
           "Retry-After": "60",
         },
-      }
+      },
     );
   }
 
@@ -278,11 +302,14 @@ export async function GET(request: NextRequest) {
           fetcher.fetchRecentActivity(),
         ]);
 
+        const highlights = fetcher.buildHighlights(profile, stats);
+
         data = {
           profile,
           repositories: repos,
           stats,
           activity,
+          highlights,
           lastUpdated: new Date().toISOString(),
         };
         break;

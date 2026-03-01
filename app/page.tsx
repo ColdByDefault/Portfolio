@@ -48,6 +48,17 @@ const ClientBackground = dynamic(
   },
 );
 
+const GitHubShowcase = dynamic(
+  () =>
+    import("@/components/github").then((mod) => ({
+      default: mod.GitHubShowcase,
+    })),
+  {
+    loading: () => <LoadingSkeleton />,
+    ssr: false,
+  },
+);
+
 const SpeedInsight = dynamic(
   () =>
     import("@/components/speed-insight").then((mod) => ({
@@ -163,6 +174,21 @@ export default function Home() {
             }
           >
             <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
+          </Suspense>
+
+          {/* GitHub Showcase Section */}
+          <Suspense
+            fallback={
+              <div className="min-h-100">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
+            <section className="py-12 px-4 sm:px-6 lg:px-8" id="github">
+              <div className="max-w-6xl mx-auto">
+                <GitHubShowcase />
+              </div>
+            </section>
           </Suspense>
 
           <Suspense fallback={<LoadingSkeleton />}></Suspense>

@@ -58,6 +58,7 @@ export default function GitHubShowcase({ className }: { className?: string }) {
           repositories: data.repositories,
           stats: data.stats,
           activity: data.activity,
+          highlights: data.highlights ?? [],
           lastUpdated: data.lastUpdated,
         };
         setGithubData(validatedData);
@@ -249,7 +250,11 @@ export default function GitHubShowcase({ className }: { className?: string }) {
 
       {/* Profile Section */}
       <div className="w-full">
-        <GitHubProfile profile={githubData.profile} stats={githubData.stats} />
+        <GitHubProfile
+          profile={githubData.profile}
+          stats={githubData.stats}
+          highlights={githubData.highlights}
+        />
       </div>
 
       {/* Repositories Section */}

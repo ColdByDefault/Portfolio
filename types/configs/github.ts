@@ -2,7 +2,7 @@
  * GitHub API Type Definitions
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 export interface GitHubUser {
   login: string;
@@ -84,6 +84,7 @@ export interface GitHubData {
   repositories: GitHubRepo[];
   stats: GitHubStats;
   activity: GitHubActivity[];
+  highlights: GitHubHighlight[];
   lastUpdated: string;
 }
 
@@ -326,10 +327,27 @@ export interface GitHubActivity {
   action: string;
 }
 
+/** Manual GitHub achievement badge (e.g. Pull Shark, YOLO) */
+export interface GitHubAchievement {
+  name: string;
+  icon: string;
+  description: string;
+  tier?: "bronze" | "silver" | "gold";
+}
+
+/** Auto-computed highlight derived from API stats */
+export interface GitHubHighlight {
+  label: string;
+  value: string;
+  icon: string;
+  link?: string;
+}
+
 export interface GitHubApiResponse {
   profile?: GitHubProfile;
   repositories?: GitHubRepo[];
   stats?: GitHubStats;
   activity?: GitHubActivity[];
+  highlights?: GitHubHighlight[];
   lastUpdated?: string;
 }

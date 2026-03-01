@@ -29,7 +29,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const t = useTranslations();
 
   return (
-    <Card className="flex flex-col h-full">
+    <Card className="flex flex-col h-full bg-background/80 backdrop-blur-sm">
       <CardHeader>
         <CardTitle className="text-balance">{t(project.titleKey)}</CardTitle>
         <CardDescription className="text-pretty">
