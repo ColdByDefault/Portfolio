@@ -175,7 +175,8 @@
     "licenses": {
       "copyright": "All Rights Reserved",
       "openSource": "Modified MIT License",
-      "fullyOpen": "Fully Open Source"
+      "fullyOpen": "Fully Open Source",
+      "mit": "MIT License"
     }
   },
   "Impressum": {
