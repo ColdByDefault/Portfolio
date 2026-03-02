@@ -164,7 +164,9 @@
       "llmAgent": "Chatbot de IA local basado en ollama, personalizable para usar cualquier modelo LLM y cualquier modelo de embeddings, con 2 opciones de base de datos vectorial: Postgres local o DataStax Astra. Puede leer páginas web y responder preguntas basadas en el contenido. Próximamente habrá más... Código abierto.",
       "subsApi": "API para gestionar suscripciones de usuarios, incluyendo funciones de facturación, emisión de facturas y procesamiento de pagos. Construida con Next.js e integrada con Stripe para pagos seguros.",
       "voiceToNotion": "Transforma notas de voz y grabaciones de reuniones en páginas estructuradas de Notion con transcripciones, resúmenes y elementos de acción. Automatiza el trabajo administrativo post-reunión en menos de 30 segundos.",
-      "aiEmailAutomation": "Una demostración interactiva que utiliza RAG para analizar correos electrónicos, ofreciendo opciones de respuesta seleccionables y reescritura basada en tono. Ilustra un flujo de trabajo que funciona completamente de forma autónoma en entornos de producción."
+      "aiEmailAutomation": "Una demostración interactiva que utiliza RAG para analizar correos electrónicos, ofreciendo opciones de respuesta seleccionables y reescritura basada en tono. Ilustra un flujo de trabajo que funciona completamente de forma autónoma en entornos de producción.",
+      "nextJsSeoOptimization": "Un paquete ligero y fácil de usar para la optimización SEO en aplicaciones Next.js. Proporciona utilidades para meta tags, Open Graph, Twitter Cards y datos estructurados con configuración mínima.",
+      "customizableBetterAuth": "Una solución de autenticación lista para usar y totalmente personalizable construida con Better Auth y Next.js. Soporta múltiples proveedores de autenticación y se integra fácilmente en cualquier proyecto."
     },
     "seeMoreOnGitHub": "ver más en GitHub...",
     "cloneRepository": "Clonar repositorio",
