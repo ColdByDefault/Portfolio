@@ -55,39 +55,40 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
       ref={cardRef}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      className="group max-w-sm mx-auto w-full h-full"
+      className="group w-full h-full"
     >
       <Card
         className={`${getCardHoverClasses(isHovered)} h-full flex flex-col overflow-hidden`}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        {isFeaturedProject(project) && (
-          <div className="w-full bg-linear-to-r from-blue-500 to-purple-600 text-white text-xs font-medium px-3 py-1 text-center shrink-0">
-            {t("featuredProject")}
-          </div>
-        )}
-        <CardHeader className="py-2 relative z-1">
-          <div className="flex items-start justify-between gap-2">
-            <CardTitle className="text-base font-semibold group-hover:text-primary transition-colors">
+        {/* Featured banner – always h-6, filled or empty to keep layout stable */}
+        <div className="h-6 shrink-0">
+          {isFeaturedProject(project) && (
+            <div className="h-full w-full bg-linear-to-r from-blue-500 to-purple-600 text-white text-xs font-medium flex items-center justify-center">
+              {t("featuredProject")}
+            </div>
+          )}
+        </div>
+
+        {/* Title + Category – min-h-12 absorbs 1 or 2-line titles without shifting sections below */}
+        <CardHeader className="px-4 pt-3 pb-2 shrink-0">
+          <div className="flex items-start justify-between gap-2 min-h-12">
+            <CardTitle className="text-sm font-semibold line-clamp-2 leading-snug group-hover:text-primary transition-colors flex-1">
               {project.title}
             </CardTitle>
-            <Badge variant="secondary" className="text-xs">
+            <Badge variant="secondary" className="text-xs shrink-0 mt-0.5">
               {tCategories(project.category)}
             </Badge>
           </div>
         </CardHeader>
-        <CardContent className="space-y-2 py-2 grow flex flex-col relative z-1">
-          <div className="shrink-0 h-18 overflow-hidden">
+
+        <CardContent className="flex-1 flex flex-col px-4 pt-0 pb-2 gap-2 relative z-1">
+          {/* Description – fixed 3-line height */}
+          <div className="h-16 overflow-hidden shrink-0">
             <p
               ref={descriptionRef}
               className="text-xs text-muted-foreground leading-relaxed line-clamp-3"
-              style={{
-                display: "-webkit-box",
-                WebkitLineClamp: 3,
-                WebkitBoxOrient: "vertical",
-                overflow: "hidden",
-              }}
             >
               {tDescriptions(project.description)}
               {isTruncated && (
@@ -104,37 +105,36 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
             </p>
           </div>
 
-          {/* License Badge */}
-          {project.license && (
-            <div className="flex justify-start shrink-0">
+          {/* License – fixed h-7, renders empty space when no license so tech tags stay aligned */}
+          <div className="h-7 flex items-center shrink-0">
+            {project.license && (
               <Badge
                 variant={project.license.variant || "default"}
-                className={`text-xs font-medium ${getLicenseBadgeClasses(
-                  project.license.type,
-                )}`}
+                className={`text-xs font-medium ${getLicenseBadgeClasses(project.license.type)}`}
               >
                 {getLicenseEmoji(project.license.type)}{" "}
                 {tLicenses(project.license.text)}
               </Badge>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Technologies */}
-          <div className="h-12 overflow-y-auto overflow-x-hidden shrink-0">
+          {/* Technologies – fills remaining space, scrollable */}
+          <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-10">
             <div className="flex flex-wrap gap-1">
               {project.technologies.map((tech) => (
-                <motion.div
+                <span
                   key={tech}
-                  className="px-2 py-0.5 bg-secondary/50 rounded text-xs font-medium cursor-default"
+                  className="px-2 py-0.5 bg-secondary/50 rounded text-xs font-medium"
                 >
                   {tech}
-                </motion.div>
+                </span>
               ))}
             </div>
           </div>
         </CardContent>
-        <CardFooter className="relative z-1 py-2 mt-auto">
-          {/* Action Buttons */}
+
+        {/* Footer – fixed at bottom */}
+        <CardFooter className="relative z-1 px-4 py-3 shrink-0">
           <div className="flex flex-wrap gap-2 w-full">
             {project.githubUrl && (
               <Button
@@ -193,6 +193,7 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
             )}
           </div>
         </CardFooter>
+
         <div
           className={`
             absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none

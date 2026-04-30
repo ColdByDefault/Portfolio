@@ -35,7 +35,7 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/ColdByDefault/portfolio",
     liveUrl: "https://coldbydefault.com",
-    featured: true,
+    featured: false,
     category: "webDevelopment",
     license: {
       type: "copyright",
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     image: "/assets/use-cases/use-case1-1.png",
     technologies: ["Next.js", "TypeScript", "Groq AI (Whisper)", "Notion API"],
     githubUrl: "https://github.com/ColdByDefault/meeting-intelligence",
-    featured: true,
+    featured: false,
     category: "aiMl",
     license: {
       type: "copyright",
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     technologies: ["Next.js", "TypeScript", "Groq AI", "RAG"],
     githubUrl: "",
     liveUrl: "https://coldbydefault.com/polite-email",
-    featured: true,
+    featured: false,
     category: "aiMl",
     license: {
       type: "copyright",
@@ -105,7 +105,7 @@ export const projects: Project[] = [
     technologies: ["Next.js", "TypeScript", "npm package", "SEO", "JSON-LD"],
     githubUrl: "https://github.com/ColdByDefault/next-seo-lite",
     npmUrl: "https://www.npmjs.com/package/@coldbydefault/next-seo-lite",
-    featured: true,
+    featured: false,
     category: "fullStack",
     license: {
       type: "mit",
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     technologies: ["Next.js", "TypeScript", "BetterAuth", "Customizable Auth"],
     githubUrl: "https://github.com/ColdByDefault/ready-to-use-auth",
     liveUrl: "",
-    featured: true,
+    featured: false,
     category: "fullStack",
     license: {
       type: "mit",
