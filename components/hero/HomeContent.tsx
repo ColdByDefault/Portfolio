@@ -54,6 +54,17 @@ const GitHubShowcase = dynamic(
   },
 );
 
+const ProjectsHomeShowcase = dynamic(
+  () =>
+    import("@/components/projects").then((mod) => ({
+      default: mod.ProjectsHomeShowcase,
+    })),
+  {
+    loading: () => <LoadingSkeleton />,
+    ssr: false,
+  },
+);
+
 const SpeedInsight = dynamic(
   () =>
     import("@/components/speed-insight").then((mod) => ({
@@ -97,6 +108,7 @@ export default function HomeContent() {
             <SpeedInsight className="py-12 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
+          {/* Project Showcase Section */}
           <Suspense
             fallback={
               <div className="min-h-100">
@@ -104,7 +116,17 @@ export default function HomeContent() {
               </div>
             }
           >
-            <Capabilities />
+            <ProjectsHomeShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
+          </Suspense>
+
+          <Suspense
+            fallback={
+              <div className="min-h-100">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
+            <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
           {/* Service Packages Section */}
@@ -118,7 +140,6 @@ export default function HomeContent() {
             <ServicesSection />
           </Suspense>
 
-          {/* Project Showcase Section */}
           <Suspense
             fallback={
               <div className="min-h-125">
@@ -131,16 +152,6 @@ export default function HomeContent() {
                 <ShowcaseSection />
               </div>
             </section>
-          </Suspense>
-
-          <Suspense
-            fallback={
-              <div className="min-h-100">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
           {/* GitHub Showcase Section */}
@@ -156,6 +167,16 @@ export default function HomeContent() {
                 <GitHubShowcase />
               </div>
             </section>
+          </Suspense>
+
+          <Suspense
+            fallback={
+              <div className="min-h-100">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
+            <Capabilities />
           </Suspense>
 
           <Suspense fallback={<LoadingSkeleton />}></Suspense>

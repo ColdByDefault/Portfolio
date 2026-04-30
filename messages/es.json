@@ -165,12 +165,23 @@
       "subsApi": "API para gestionar suscripciones de usuarios, incluyendo funciones de facturación, emisión de facturas y procesamiento de pagos. Construida con Next.js e integrada con Stripe para pagos seguros.",
       "voiceToNotion": "Transforma notas de voz y grabaciones de reuniones en páginas estructuradas de Notion con transcripciones, resúmenes y elementos de acción. Automatiza el trabajo administrativo post-reunión en menos de 30 segundos.",
       "aiEmailAutomation": "Una demostración interactiva que utiliza RAG para analizar correos electrónicos, ofreciendo opciones de respuesta seleccionables y reescritura basada en tono. Ilustra un flujo de trabajo que funciona completamente de forma autónoma en entornos de producción.",
-      "nextJsSeoOptimization": "Un paquete ligero y fácil de usar para la optimización SEO en aplicaciones Next.js. Proporciona utilidades para meta tags, Open Graph, Twitter Cards y datos estructurados con configuración mínima.",
-      "customizableBetterAuth": "Una solución de autenticación lista para usar y totalmente personalizable construida con Better Auth y Next.js. Soporta múltiples proveedores de autenticación y se integra fácilmente en cualquier proyecto."
+      "nextJsSeoOptimization": "Un asistente SEO ligero y sin dependencias de runtime para el App Router de Next.js. Convierte props simples en un objeto Metadata completo — OpenGraph, Twitter Cards, URLs canónicas, alternativas hreflang y datos estructurados JSON-LD. Publicado en npm como @coldbydefault/next-seo-lite.",
+      "customizableBetterAuth": "Una solución de autenticación lista para usar y totalmente personalizable construida con Better Auth y Next.js. Soporta múltiples proveedores de autenticación y se integra fácilmente en cualquier proyecto.",
+      "princeps": "Espacio de trabajo de IA privado que actúa como secretaría ejecutiva personal. Incluye un asistente de chat IA con base de conocimiento RAG, gestión de tareas, contactos, reuniones, decisiones, objetivos y notificaciones proactivas — todo almacenado en una única base de datos PostgreSQL con pgvector."
     },
     "seeMoreOnGitHub": "ver más en GitHub...",
+    "viewAllProjects": "Ver todos los proyectos",
+    "featuredCollab": "Colaboración destacada",
+    "botgenossen": {
+      "title": "Ciudad de Büttelborn — Avatar IA para el alcalde",
+      "description": "Parte del equipo de Botgenossen que construyó el avatar de IA interactivo multilingüe para el Bürgermeister de Büttelborn, una ciudad en Alemania. El avatar habla con los ciudadanos en varios idiomas, responde preguntas sobre los servicios municipales y representa digitalmente al alcalde en el sitio web oficial de la ciudad.",
+      "role": "Desarrollo de Avatar IA",
+      "company": "Botgenossen",
+      "live": "En vivo"
+    },
     "cloneRepository": "Clonar repositorio",
     "code": "Código",
+    "npmPackage": "npm",
     "liveDemo": "Demo en vivo",
     "featuredProject": "Proyecto destacado",
     "noProjectsFound": "No se encontraron proyectos en esta categoría.",
@@ -178,7 +189,8 @@
       "copyright": "Todos los derechos reservados",
       "openSource": "Licencia MIT modificada",
       "fullyOpen": "Completamente de código abierto",
-      "mit": "Licencia MIT"
+      "mit": "Licencia MIT",
+      "agpl": "Licencia AGPL-3.0"
     }
   },
   "Impressum": {

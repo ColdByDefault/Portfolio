@@ -1,0 +1,27 @@
+# CODEOWNERS
+
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+#
+
+# Each line is a file pattern followed by one or more owners.
+
+# The last matching pattern takes precedence.
+
+# Default owner for everything in the repo
+
+-       @ColdByDefault
+
+# Core configuration
+
+package.json @ColdByDefault
+next.config.ts @ColdByDefault
+tsconfig.json @ColdByDefault
+prisma/schema.prisma @ColdByDefault
+
+# Security-sensitive paths
+
+lib/security.ts @ColdByDefault
+app/api/** @ColdByDefault
+prisma/** @ColdByDefault
+.github/\*\* @ColdByDefault

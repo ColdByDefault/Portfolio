@@ -3,11 +3,7 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
-import React from "react";
-import Image from "next/image";
-import { Card, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
-import { ImageZoomDialog } from "@/components/visuals";
 import type { CertificationShowcaseLogic } from "@/components/cer/CertificationShowcase.logic";
 
 interface Certification {
@@ -35,56 +31,37 @@ export function CertificationShowcaseDesktop({
   const tDescriptions = useTranslations("Certifications.descriptions");
   const tIssuers = useTranslations("Certifications.issuers");
 
-  const renderDesktopCard = (cert: Certification) => {
-    return (
-      <Card
-        key={cert.id}
-        className="px-3 py-4 h-full flex flex-col bg-background/80 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl transition-all duration-300"
-      >
-        <CardTitle className="mb-3">
-          <h3 className="text-lg font-semibold text-center min-h-12 flex items-center justify-center">
-            {cert.title}
-          </h3>
-        </CardTitle>
-        <div className="flex w-full justify-center items-center pt-2 mb-4">
-          <ImageZoomDialog src={cert.image} alt={cert.title} title={cert.title}>
-            <Image
-              src={cert.image}
-              alt={cert.title}
-              width={400}
-              height={280}
-              className="object-cover rounded-md w-full max-w-100 h-70"
-              style={{ width: "100%", maxWidth: "400px", height: "280px" }}
-              priority={cert.id <= 4}
-            />
-          </ImageZoomDialog>
-        </div>
-        <div className="flex-1 space-y-2">
-          <p className="text-sm">
-            {t("issuedBy")}{" "}
-            {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer}
-          </p>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            {t("date")} {cert.date}
-          </p>
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-            {tDescriptions(cert.descriptionKey)}
-          </p>
-        </div>
-      </Card>
-    );
-  };
-
   return (
     <section className={className} id="cert">
-      <Card className="max-w-7xl mx-auto bg-transparent dark:bg-transparent shadow-none border-0!">
-        <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8 text-black dark:text-white">
-          {t("title")}
-        </CardTitle>
-        <div className="z-40 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
-          {certifications.map((cert) => renderDesktopCard(cert))}
-        </div>
-      </Card>
+      <h2 className="text-3xl font-light sm:text-4xl text-center mb-12 text-black dark:text-white">
+        {t("title")}
+      </h2>
+      <div className="max-w-6xl mx-auto grid grid-cols-2 gap-x-16 gap-y-12">
+        {certifications.map((cert, index) => (
+          <div
+            key={cert.id}
+            className="bg-background/80 backdrop-blur-sm rounded-xl border border-border/50 shadow-lg hover:shadow-xl hover:border-muted-foreground/30 transition-all duration-300 overflow-hidden group"
+          >
+            <div className="pl-5 border-l-2 border-foreground/20 group-hover:border-foreground/60 transition-colors duration-300 p-6">
+              <span className="text-5xl font-bold text-foreground/8 select-none leading-none block mb-3">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3 className="text-xl font-semibold mb-1 text-foreground">
+                {cert.title}
+              </h3>
+              <p className="text-sm text-muted-foreground mb-1">
+                {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer}
+              </p>
+              <p className="text-xs text-muted-foreground/60 mb-3 font-mono">
+                {cert.date}
+              </p>
+              <p className="text-sm text-foreground/75 leading-relaxed">
+                {tDescriptions(cert.descriptionKey)}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

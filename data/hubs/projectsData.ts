@@ -11,10 +11,11 @@ export interface Project {
   technologies: string[];
   githubUrl: string;
   liveUrl?: string;
+  npmUrl?: string;
   featured: boolean;
   category: string;
   license?: {
-    type: "copyright" | "open-source" | "fully-open" | "mit";
+    type: "copyright" | "open-source" | "fully-open" | "mit" | "agpl";
     text: string;
     variant?: "default" | "secondary" | "destructive" | "outline";
   };
@@ -34,7 +35,8 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/ColdByDefault/portfolio",
     liveUrl: "https://coldbydefault.com",
-    featured: true,
+    image: "/assets/projects/alltracks.png",
+    featured: false,
     category: "webDevelopment",
     license: {
       type: "copyright",
@@ -57,8 +59,8 @@ export const projects: Project[] = [
       "next-internationalization",
     ],
     githubUrl: "https://github.com/coldbydefault/berichhub",
-    liveUrl: "https://berich-hub.vercel.app/",
     featured: false,
+    image: "/assets/projects/berich.png",
     category: "fullStack",
     license: {
       type: "open-source",
@@ -70,10 +72,10 @@ export const projects: Project[] = [
     id: 3,
     title: "Voice-to-Notion Automation",
     description: "voiceToNotion",
-    image: "/assets/use-cases/use-case1-1.png",
+    image: "/assets/projects/meeting.png",
     technologies: ["Next.js", "TypeScript", "Groq AI (Whisper)", "Notion API"],
     githubUrl: "https://github.com/ColdByDefault/meeting-intelligence",
-    featured: true,
+    featured: false,
     category: "aiMl",
     license: {
       type: "copyright",
@@ -85,11 +87,11 @@ export const projects: Project[] = [
     id: 4,
     title: "AI Email Automation Demo",
     description: "aiEmailAutomation",
-    image: "/assets/use-cases/use-case3-1.png",
+    image: "/assets/projects/email-ai.png",
     technologies: ["Next.js", "TypeScript", "Groq AI", "RAG"],
     githubUrl: "",
     liveUrl: "https://coldbydefault.com/polite-email",
-    featured: true,
+    featured: false,
     category: "aiMl",
     license: {
       type: "copyright",
@@ -99,13 +101,13 @@ export const projects: Project[] = [
   },
   {
     id: 5,
-    title: "Next.Js SEO optimization Package",
+    title: "next-seo-lite",
     description: "nextJsSeoOptimization",
-    image: "",
-    technologies: ["Next.js", "TypeScript", "npm", "SEO"],
-    githubUrl: "https://github.com/ColdByDefault/nextseo-lite",
-    liveUrl: "",
-    featured: true,
+    image: "/assets/projects/next-seo.png",
+    technologies: ["Next.js", "TypeScript", "npm package", "SEO", "JSON-LD"],
+    githubUrl: "https://github.com/ColdByDefault/next-seo-lite",
+    npmUrl: "https://www.npmjs.com/package/@coldbydefault/next-seo-lite",
+    featured: false,
     category: "fullStack",
     license: {
       type: "mit",
@@ -117,15 +119,40 @@ export const projects: Project[] = [
     id: 6,
     title: "Customizable Better-Auth Demo",
     description: "customizableBetterAuth",
-    image: "",
+    image: "/assets/projects/auth.png",
     technologies: ["Next.js", "TypeScript", "BetterAuth", "Customizable Auth"],
     githubUrl: "https://github.com/ColdByDefault/ready-to-use-auth",
     liveUrl: "",
-    featured: true,
+    featured: false,
     category: "fullStack",
     license: {
       type: "mit",
       text: "mit",
+      variant: "secondary",
+    },
+  },
+  {
+    id: 7,
+    title: "Princeps",
+    description: "princeps",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "pgvector",
+      "Prisma",
+      "Better Auth",
+      "Stripe",
+      "Ollama",
+      "Docker",
+    ],
+    githubUrl: "https://github.com/ColdByDefault/princeps",
+    image: "/assets/projects/princeps.png",
+    featured: true,
+    category: "aiMl",
+    license: {
+      type: "agpl",
+      text: "agpl",
       variant: "secondary",
     },
   },

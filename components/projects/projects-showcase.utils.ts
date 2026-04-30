@@ -12,6 +12,23 @@ import type {
 } from "@/types/hubs/projects";
 
 /**
+ * Derives the GitHub social preview (OG) image URL from a repo URL.
+ * Returns null when githubUrl is empty.
+ */
+export function getGithubOgImage(githubUrl: string): string | null {
+  if (!githubUrl) return null;
+  try {
+    const { pathname } = new URL(githubUrl);
+    // pathname = "/OWNER/REPO" — strip leading slash
+    const path = pathname.replace(/^\//, "").replace(/\.git$/, "");
+    if (!path || !path.includes("/")) return null;
+    return `https://opengraph.githubassets.com/1/${path}`;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Custom hook for handling project card logic
  */
 export function useProjectLogic(): UseProjectLogicReturn {
@@ -112,6 +129,7 @@ export function getLicenseBadgeClasses(licenseType?: string): string {
       return "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800";
     case "gpl":
     case "copyleft":
+    case "agpl":
       return "bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-900/20 dark:text-purple-400 dark:border-purple-800";
     case "apache":
       return "bg-orange-100 text-orange-800 border-orange-200 dark:bg-orange-900/20 dark:text-orange-400 dark:border-orange-800";
@@ -137,6 +155,7 @@ export function getLicenseEmoji(licenseType?: string): string {
       return "🔵";
     case "gpl":
     case "copyleft":
+    case "agpl":
       return "🔒";
     case "apache":
       return "🦅";

@@ -165,12 +165,23 @@
       "subsApi": "API für die Verwaltung von Benutzerabonnements, einschließlich Funktionen für Abrechnung, Rechnungsstellung und Zahlungsabwicklung. Erstellt mit Next.js und integriert mit Stripe für sichere Zahlungen.",
       "voiceToNotion": "Wandelt Sprachmemos und Meeting-Aufzeichnungen in strukturierte Notion-Seiten mit Transkripten, Zusammenfassungen und Aktionspunkten um. Automatisiert die Nachbearbeitung von Meetings in unter 30 Sekunden.",
       "aiEmailAutomation": "Eine interaktive Demo mit RAG zur E-Mail-Analyse, die auswählbare Antwortoptionen und tonbasierte Umformulierung bietet. Veranschaulicht einen Workflow, der in Produktionsumgebungen vollständig autonom läuft.",
-      "nextJsSeoOptimization": "Ein leichtgewichtiges, einfach zu verwendendes SEO-Optimierungspaket für Next.js-Anwendungen. Bietet Werkzeuge für Meta-Tags, Open Graph, Twitter Cards und strukturierte Daten mit minimaler Konfiguration.",
-      "customizableBetterAuth": "Eine sofort einsetzbare, vollständig anpassbare Authentifizierungslösung mit Better Auth und Next.js. Unterstützt mehrere Authentifizierungsanbieter und lässt sich einfach in jedes Projekt integrieren."
+      "nextJsSeoOptimization": "Ein leichtgewichtiges SEO-Hilfspaket ohne Laufzeitabhängigkeiten für den Next.js App Router. Wandelt einfache Props in ein vollständiges Metadata-Objekt um — OpenGraph, Twitter Cards, kanonische URLs, hreflang-Alternativen und JSON-LD-strukturierte Daten. Veröffentlicht auf npm als @coldbydefault/next-seo-lite.",
+      "customizableBetterAuth": "Eine sofort einsetzbare, vollständig anpassbare Authentifizierungslösung mit Better Auth und Next.js. Unterstützt mehrere Authentifizierungsanbieter und lässt sich einfach in jedes Projekt integrieren.",
+      "princeps": "Privater KI-Arbeitsbereich als persönliches Exekutivsekretariat. Enthält einen KI-Chat-Assistenten mit RAG-Wissensdatenbank, Aufgabenverwaltung, Kontakte, Meetings, Entscheidungen, Ziele und proaktive Benachrichtigungen — alles gespeichert in einer einzigen PostgreSQL-Datenbank mit pgvector."
     },
     "seeMoreOnGitHub": "Weitere Projekte auf GitHub...",
+    "viewAllProjects": "Alle Projekte ansehen",
+    "featuredCollab": "Vorgestellte Zusammenarbeit",
+    "botgenossen": {
+      "title": "Stadt Büttleborn — KI-Avatar für den Bürgermeister",
+      "description": "Teil des Teams bei Botgenossen, das den mehrsprachigen interaktiven KI-Avatar für den Bürgermeister von Büttleborn entwickelt hat. Der Avatar spricht mit Bürgerinnen und Bürgern in mehreren Sprachen, beantwortet Fragen zu Stadtdienstleistungen und repräsentiert den Bürgermeister digital auf der offiziellen Stadtwebsite.",
+      "role": "KI-Avatar-Entwicklung",
+      "company": "Botgenossen",
+      "live": "Live"
+    },
     "cloneRepository": "Repository klonen",
     "code": "Code",
+    "npmPackage": "npm",
     "liveDemo": "Live Demo",
     "featuredProject": "Ausgewähltes Projekt",
     "noProjectsFound": "Keine Projekte in dieser Kategorie gefunden.",
@@ -178,7 +189,8 @@
       "copyright": "Alle Rechte vorbehalten",
       "openSource": "Modifizierte MIT-Lizenz",
       "fullyOpen": "Vollständig Open Source",
-      "mit": "MIT-Lizenz"
+      "mit": "MIT-Lizenz",
+      "agpl": "AGPL-3.0-Lizenz"
     }
   },
   "Impressum": {

@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -45,14 +45,14 @@ export function CompanyBanner({
   const animationClass = cn(
     speedMap[speed],
     directionMap[direction],
-    pauseOnHover && "hover:pause"
+    pauseOnHover && "hover:pause",
   );
 
   return (
     <div
       className={cn(
         "company-banner-container bg-black/60 dark:bg-black/80",
-        className
+        className,
       )}
     >
       <div className={cn("flex", animationClass)}>
@@ -89,8 +89,7 @@ function CompanyLogoItem({
           <Image
             src={company.logo!}
             alt={`${company.name} logo`}
-            width={40}
-            height={40}
+            fill
             className="object-contain"
             sizes="40px"
             loading="lazy"
@@ -167,8 +166,7 @@ export function CompanyBannerMinimal({
                   <Image
                     src={company.logo!}
                     alt={`${company.name} logo`}
-                    width={40}
-                    height={40}
+                    fill
                     className="object-contain"
                     sizes="40px"
                     loading="lazy"
