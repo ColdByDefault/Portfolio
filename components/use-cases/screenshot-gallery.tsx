@@ -6,6 +6,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
@@ -78,79 +79,81 @@ export function ScreenshotGallery({
         />
       </div>
 
-      {/* Fullscreen overlay */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm h-full"
-          onClick={handleClose}
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${projectTitle} screenshot viewer`}
-        >
-          {/* Close button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute top-4 right-4 z-50 text-white hover:bg-white/20 rounded-full"
-            onClick={handleClose}
-            aria-label="Close"
-          >
-            <X className="h-6 w-6" />
-          </Button>
-
-          {/* Navigation arrows - fixed position */}
-          {screenshots.length > 1 && (
-            <>
-              <Button
-                variant="secondary"
-                size="icon"
-                className="absolute left-6 top-1/2 -translate-y-1/2 z-50 opacity-80 hover:opacity-100"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  goToPrevious();
-                }}
-                aria-label="Previous screenshot"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </Button>
-              <Button
-                variant="secondary"
-                size="icon"
-                className="absolute right-6 top-1/2 -translate-y-1/2 z-50 opacity-80 hover:opacity-100"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  goToNext();
-                }}
-                aria-label="Next screenshot"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </Button>
-            </>
-          )}
-
-          {/* Image container - stop propagation so clicking image doesn't close */}
+      {/* Fullscreen overlay — rendered via portal so fixed positioning is always relative to viewport */}
+      {isOpen &&
+        createPortal(
           <div
-            className="relative flex items-center justify-center p-8"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            onClick={handleClose}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${projectTitle} screenshot viewer`}
           >
-            <Image
-              src={screenshots[currentIndex] || "/placeholder.svg"}
-              alt={`${projectTitle} screenshot ${currentIndex + 1}`}
-              width={1200}
-              height={800}
-              className="max-w-[65vw] max-h-[75vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
-              priority
-            />
+            {/* Close button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute top-4 right-4 z-50 text-white hover:bg-white/20 rounded-full"
+              onClick={handleClose}
+              aria-label="Close"
+            >
+              <X className="h-6 w-6" />
+            </Button>
 
-            {/* Image counter */}
+            {/* Navigation arrows - fixed position */}
             {screenshots.length > 1 && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
-                {currentIndex + 1} / {screenshots.length}
-              </div>
+              <>
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="absolute left-6 top-1/2 -translate-y-1/2 z-50 opacity-80 hover:opacity-100"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goToPrevious();
+                  }}
+                  aria-label="Previous screenshot"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="absolute right-6 top-1/2 -translate-y-1/2 z-50 opacity-80 hover:opacity-100"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goToNext();
+                  }}
+                  aria-label="Next screenshot"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </Button>
+              </>
             )}
-          </div>
-        </div>
-      )}
+
+            {/* Image container - stop propagation so clicking image doesn't close */}
+            <div
+              className="relative flex items-center justify-center p-8"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={screenshots[currentIndex] || "/placeholder.svg"}
+                alt={`${projectTitle} screenshot ${currentIndex + 1}`}
+                width={1200}
+                height={800}
+                className="max-w-[65vw] max-h-[75vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
+                priority
+              />
+
+              {/* Image counter */}
+              {screenshots.length > 1 && (
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
+                  {currentIndex + 1} / {screenshots.length}
+                </div>
+              )}
+            </div>
+          </div>,
+          document.body,
+        )}
 
       {/* Thumbnail navigation - only show if multiple screenshots */}
       {screenshots.length > 1 && (
