@@ -12,6 +12,23 @@ import type {
 } from "@/types/hubs/projects";
 
 /**
+ * Derives the GitHub social preview (OG) image URL from a repo URL.
+ * Returns null when githubUrl is empty.
+ */
+export function getGithubOgImage(githubUrl: string): string | null {
+  if (!githubUrl) return null;
+  try {
+    const { pathname } = new URL(githubUrl);
+    // pathname = "/OWNER/REPO" — strip leading slash
+    const path = pathname.replace(/^\//, "").replace(/\.git$/, "");
+    if (!path || !path.includes("/")) return null;
+    return `https://opengraph.githubassets.com/1/${path}`;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Custom hook for handling project card logic
  */
 export function useProjectLogic(): UseProjectLogicReturn {

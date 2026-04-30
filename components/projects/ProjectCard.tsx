@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
 import { SiNpm } from "react-icons/si";
 import Link from "next/link";
@@ -62,29 +63,35 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        {/* Featured banner – always h-6, filled or empty to keep layout stable */}
-        <div className="h-6 shrink-0">
-          {isFeaturedProject(project) && (
-            <div className="h-full w-full bg-linear-to-r from-blue-500 to-purple-600 text-white text-xs font-medium flex items-center justify-center">
-              {t("featuredProject")}
-            </div>
-          )}
-        </div>
+        {/* Top accent line — gradient for featured, subtle for the rest */}
+        <div
+          className={`h-0.5 shrink-0 ${
+            isFeaturedProject(project)
+              ? "bg-linear-to-r from-blue-500 to-purple-600"
+              : "bg-border"
+          }`}
+        />
 
-        {/* Title + Category – min-h-12 absorbs 1 or 2-line titles without shifting sections below */}
         <CardHeader className="px-4 pt-3 pb-2 shrink-0">
-          <div className="flex items-start justify-between gap-2 min-h-12">
-            <CardTitle className="text-sm font-semibold line-clamp-2 leading-snug group-hover:text-primary transition-colors flex-1">
-              {project.title}
-            </CardTitle>
-            <Badge variant="secondary" className="text-xs shrink-0 mt-0.5">
+          {/* Meta row: category badge + featured badge (only when featured) */}
+          <div className="flex items-center gap-2 mb-2">
+            <Badge variant="secondary" className="text-xs">
               {tCategories(project.category)}
             </Badge>
+            {isFeaturedProject(project) && (
+              <Badge className="text-xs">{t("featuredProject")}</Badge>
+            )}
+          </div>
+          {/* Title — fixed h-10 so 1-line and 2-line titles occupy the same space */}
+          <div className="h-14 overflow-hidden">
+            <CardTitle className="text-base lg:text-xl md:text-base font-bold line-clamp-2 leading-snug group-hover:text-primary transition-colors">
+              {project.title}
+            </CardTitle>
           </div>
         </CardHeader>
 
-        <CardContent className="flex-1 flex flex-col px-4 pt-0 pb-2 gap-2 relative z-1">
-          {/* Description – fixed 3-line height */}
+        <CardContent className="flex-1 flex flex-col px-4 pt-0 pb-2 relative z-1">
+          {/* Description — fixed 3-line height */}
           <div className="h-16 overflow-hidden shrink-0">
             <p
               ref={descriptionRef}
@@ -105,8 +112,10 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
             </p>
           </div>
 
-          {/* License – fixed h-7, renders empty space when no license so tech tags stay aligned */}
-          <div className="h-7 flex items-center shrink-0">
+          <Separator className="my-3 shrink-0" />
+
+          {/* License — fixed h-7, empty slot keeps tech tags aligned when no license */}
+          <div className="h-7 flex items-center shrink-0 mb-2">
             {project.license && (
               <Badge
                 variant={project.license.variant || "default"}
@@ -118,8 +127,13 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
             )}
           </div>
 
-          {/* Technologies – fills remaining space, scrollable */}
-          <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-10">
+          {/* Stack label */}
+          <p className="text-[10px] uppercase tracking-widest font-medium text-muted-foreground/50 mb-1.5 shrink-0">
+            Stack
+          </p>
+
+          {/* Tech tags — fills remaining space, scrollable */}
+          <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-8">
             <div className="flex flex-wrap gap-1">
               {project.technologies.map((tech) => (
                 <span
@@ -133,7 +147,8 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
           </div>
         </CardContent>
 
-        {/* Footer – fixed at bottom */}
+        <Separator className="shrink-0" />
+
         <CardFooter className="relative z-1 px-4 py-3 shrink-0">
           <div className="flex flex-wrap gap-2 w-full">
             {project.githubUrl && (
