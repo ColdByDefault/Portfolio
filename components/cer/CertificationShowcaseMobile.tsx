@@ -4,11 +4,9 @@
  */
 
 import React from "react";
-import Image from "next/image";
 import { Card, CardTitle } from "@/components/ui/card";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { ImageZoomDialog } from "@/components/visuals";
 import type { CertificationShowcaseLogic } from "@/components/cer/CertificationShowcase.logic";
 
 interface Certification {
@@ -50,23 +48,6 @@ export function CertificationShowcaseMobile({
           onClick={() => logic.toggleCard(cert.id)}
         >
           <div className="flex items-center gap-4">
-            <div className="shrink-0">
-              <ImageZoomDialog
-                src={cert.image}
-                alt={cert.title}
-                title={cert.title}
-              >
-                <Image
-                  src={cert.image}
-                  alt={cert.title}
-                  width={80}
-                  height={80}
-                  className="object-cover rounded-md"
-                  style={{ width: "auto", height: "auto" }}
-                  priority={cert.id <= 3}
-                />
-              </ImageZoomDialog>
-            </div>
             <div className="min-w-0">
               <h3 className="text-lg font-semibold truncate">{cert.title}</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 truncate">
@@ -87,23 +68,6 @@ export function CertificationShowcaseMobile({
         {isExpanded && (
           <div className="px-5 pb-5 border-t border-gray-200 dark:border-gray-700 animate-in slide-in-from-top-2 duration-300">
             <div className="pt-4 space-y-4">
-              <div className="flex justify-center">
-                <ImageZoomDialog
-                  src={cert.image}
-                  alt={cert.title}
-                  title={cert.title}
-                >
-                  <Image
-                    src={cert.image}
-                    alt={cert.title}
-                    width={280}
-                    height={240}
-                    className="object-cover rounded-md"
-                    style={{ width: "auto", height: "auto" }}
-                    priority={cert.id <= 3}
-                  />
-                </ImageZoomDialog>
-              </div>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-medium">{t("issuedBy")}</span>
@@ -143,23 +107,6 @@ export function CertificationShowcaseMobile({
           onClick={() => logic.toggleCard(cert.id)}
         >
           <div className="flex items-center gap-3">
-            <div className="shrink-0">
-              <ImageZoomDialog
-                src={cert.image}
-                alt={cert.title}
-                title={cert.title}
-              >
-                <Image
-                  src={cert.image}
-                  alt={cert.title}
-                  width={60}
-                  height={60}
-                  className="object-cover rounded-md"
-                  style={{ width: "auto", height: "auto" }}
-                  priority={cert.id <= 3}
-                />
-              </ImageZoomDialog>
-            </div>
             <div className="min-w-0">
               <h3 className="text-base font-semibold truncate">{cert.title}</h3>
               <p className="text-xs text-gray-600 dark:text-gray-400 truncate">
@@ -180,23 +127,6 @@ export function CertificationShowcaseMobile({
         {isExpanded && (
           <div className="px-4 pb-4 border-t border-gray-200 dark:border-gray-700 animate-in slide-in-from-top-2 duration-300">
             <div className="pt-4 space-y-3">
-              <div className="flex justify-center">
-                <ImageZoomDialog
-                  src={cert.image}
-                  alt={cert.title}
-                  title={cert.title}
-                >
-                  <Image
-                    src={cert.image}
-                    alt={cert.title}
-                    width={240}
-                    height={200}
-                    className="object-cover rounded-md"
-                    style={{ width: "auto", height: "auto" }}
-                    priority={cert.id <= 3}
-                  />
-                </ImageZoomDialog>
-              </div>
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-medium">{t("issuedBy")}</span>

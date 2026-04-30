@@ -177,12 +177,10 @@ export default async function RootLayout({
           href="https://generativelanguage.googleapis.com"
         />
 
-        {/* Structured Data */}
+        {/* Structured Data - JSON-LD for SEO rich snippets */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
       <body className={`${urbanist.variable} flex flex-col min-h-screen`}>
@@ -199,6 +197,7 @@ export default async function RootLayout({
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
+            scriptProps={{ type: "application/json" }}
           >
             <Navbar />
             <main className="flex-1" id="main-content">

@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -74,6 +74,7 @@ export function ScreenshotGallery({
           alt={`${projectTitle} screenshot ${currentIndex + 1}`}
           fill
           className="object-cover transition-transform group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
 
@@ -162,7 +163,7 @@ export function ScreenshotGallery({
                 "relative shrink-0 h-16 w-24 overflow-hidden rounded border-2 transition-all",
                 currentIndex === index
                   ? "border-primary ring-2 ring-primary/20"
-                  : "border-border hover:border-primary/50"
+                  : "border-border hover:border-primary/50",
               )}
             >
               <Image
@@ -170,6 +171,7 @@ export function ScreenshotGallery({
                 alt={`Thumbnail ${index + 1}`}
                 fill
                 className="object-cover"
+                sizes="96px"
               />
             </button>
           ))}

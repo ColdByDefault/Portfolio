@@ -3,11 +3,8 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
-import React from "react";
-import Image from "next/image";
 import { Card, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
-import { ImageZoomDialog } from "@/components/visuals";
 import type { CertificationShowcaseLogic } from "@/components/cer/CertificationShowcase.logic";
 
 interface Certification {
@@ -46,19 +43,6 @@ export function CertificationShowcaseDesktop({
             {cert.title}
           </h3>
         </CardTitle>
-        <div className="flex w-full justify-center items-center pt-2 mb-4">
-          <ImageZoomDialog src={cert.image} alt={cert.title} title={cert.title}>
-            <Image
-              src={cert.image}
-              alt={cert.title}
-              width={400}
-              height={280}
-              className="object-cover rounded-md w-full max-w-100 h-70"
-              style={{ width: "100%", maxWidth: "400px", height: "280px" }}
-              priority={cert.id <= 4}
-            />
-          </ImageZoomDialog>
-        </div>
         <div className="flex-1 space-y-2">
           <p className="text-sm">
             {t("issuedBy")}{" "}
