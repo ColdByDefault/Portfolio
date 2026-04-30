@@ -170,6 +170,7 @@
       "princeps": "Privat AI-arbetsyta som fungerar som ett personligt exekutivt sekretariat. Innehåller en AI-chattassistent med RAG-kunskapsbas, uppgiftshantering, kontakter, möten, beslut, mål och proaktiva aviseringar — allt lagrat i en enda PostgreSQL-databas med pgvector."
     },
     "seeMoreOnGitHub": "se mer på GitHub...",
+    "viewAllProjects": "Visa alla projekt",
     "cloneRepository": "Klona repository",
     "code": "Kod",
     "npmPackage": "npm",

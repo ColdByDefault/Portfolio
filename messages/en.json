@@ -170,6 +170,7 @@
       "princeps": "Private AI workspace that acts as a personal executive secretariat. Features an AI chat assistant with RAG knowledge base, task management, contacts, meetings, decisions, goals, and proactive nudges — all backed by a single PostgreSQL database with pgvector."
     },
     "seeMoreOnGitHub": "see more on GitHub...",
+    "viewAllProjects": "View all projects",
     "cloneRepository": "Clone Repository",
     "code": "Code",
     "npmPackage": "npm",

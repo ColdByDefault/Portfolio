@@ -3,9 +3,6 @@
  * @copyright  2026 ColdByDefault. All Rights Reserved.
  */
 
-import React from "react";
-import { Card, CardTitle } from "@/components/ui/card";
-import { ChevronDown, ChevronUp } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { CertificationShowcaseLogic } from "@/components/cer/CertificationShowcase.logic";
 
@@ -28,159 +25,43 @@ interface CertificationShowcaseMobileProps {
 
 export function CertificationShowcaseMobile({
   certifications,
-  logic,
   className,
 }: CertificationShowcaseMobileProps) {
   const t = useTranslations("Certifications");
   const tDescriptions = useTranslations("Certifications.descriptions");
   const tIssuers = useTranslations("Certifications.issuers");
 
-  const renderTabletCard = (cert: Certification) => {
-    const isExpanded = logic.expandedCards.has(cert.id);
-
-    return (
-      <Card
-        key={cert.id}
-        className="bg-background/80 backdrop-blur-sm border-border/50 shadow-lg overflow-hidden relative transition-all duration-300 ease-in-out hover:shadow-xl"
-      >
-        <div
-          className="p-5 cursor-pointer flex items-center justify-between active:bg-gray-50 dark:active:bg-gray-800 transition-colors duration-150"
-          onClick={() => logic.toggleCard(cert.id)}
-        >
-          <div className="flex items-center gap-4">
-            <div className="min-w-0">
-              <h3 className="text-lg font-semibold truncate">{cert.title}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 truncate">
-                {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer} •{" "}
-                {cert.date}
-              </p>
-            </div>
-          </div>
-          <div className="shrink-0 ml-3">
-            {isExpanded ? (
-              <ChevronUp className="w-6 h-6 text-gray-400 transition-transform duration-300" />
-            ) : (
-              <ChevronDown className="w-6 h-6 text-gray-400 transition-transform duration-300" />
-            )}
-          </div>
-        </div>
-
-        {isExpanded && (
-          <div className="px-5 pb-5 border-t border-gray-200 dark:border-gray-700 animate-in slide-in-from-top-2 duration-300">
-            <div className="pt-4 space-y-4">
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">{t("issuedBy")}</span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400">
-                    {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer}
-                  </span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">{t("date")}</span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400">
-                    {cert.date}
-                  </span>
-                </div>
-                <div className="pt-2">
-                  <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    {tDescriptions(cert.descriptionKey)}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </Card>
-    );
-  };
-
-  const renderMobileCard = (cert: Certification) => {
-    const isExpanded = logic.expandedCards.has(cert.id);
-
-    return (
-      <Card
-        key={cert.id}
-        className="bg-background/80 backdrop-blur-sm border-border/50 shadow-lg overflow-hidden relative transition-all duration-300 ease-in-out hover:shadow-xl"
-      >
-        <div
-          className="p-4 cursor-pointer flex items-center justify-between active:bg-gray-50 dark:active:bg-gray-800 transition-colors duration-150"
-          onClick={() => logic.toggleCard(cert.id)}
-        >
-          <div className="flex items-center gap-3">
-            <div className="min-w-0">
-              <h3 className="text-base font-semibold truncate">{cert.title}</h3>
-              <p className="text-xs text-gray-600 dark:text-gray-400 truncate">
-                {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer} •{" "}
-                {cert.date}
-              </p>
-            </div>
-          </div>
-          <div className="shrink-0 ml-2">
-            {isExpanded ? (
-              <ChevronUp className="w-5 h-5 text-gray-400 transition-transform duration-300" />
-            ) : (
-              <ChevronDown className="w-5 h-5 text-gray-400 transition-transform duration-300" />
-            )}
-          </div>
-        </div>
-
-        {isExpanded && (
-          <div className="px-4 pb-4 border-t border-gray-200 dark:border-gray-700 animate-in slide-in-from-top-2 duration-300">
-            <div className="pt-4 space-y-3">
-              <div className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">{t("issuedBy")}</span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400">
-                    {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer}
-                  </span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">{t("date")}</span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400">
-                    {cert.date}
-                  </span>
-                </div>
-                <div className="pt-2">
-                  <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    {tDescriptions(cert.descriptionKey)}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </Card>
-    );
-  };
-
-  const getContainerClasses = () => {
-    if (logic.isMobile) {
-      return "flex flex-col gap-4 px-2 sm:px-4";
-    } else if (logic.isTablet) {
-      return "flex flex-col gap-4 px-4";
-    }
-    return "flex flex-col gap-4 px-4"; // fallback
-  };
-
-  const renderCard = (cert: Certification) => {
-    if (logic.isMobile) {
-      return renderMobileCard(cert);
-    } else if (logic.isTablet) {
-      return renderTabletCard(cert);
-    }
-    return renderMobileCard(cert); // fallback
-  };
-
   return (
     <section className={className} id="cert">
-      <Card className="max-w-7xl mx-auto bg-transparent dark:bg-transparent shadow-none border-0!">
-        <CardTitle className="text-3xl font-light sm:text-4xl text-center mb-8 text-black dark:text-white">
-          {t("title")}
-        </CardTitle>
-        <div className={`z-40 ${getContainerClasses()}`}>
-          {certifications.map((cert) => renderCard(cert))}
-        </div>
-      </Card>
+      <h2 className="text-3xl font-light text-center mb-8 text-black dark:text-white">
+        {t("title")}
+      </h2>
+      <div className="flex flex-col gap-8 px-2 sm:px-4">
+        {certifications.map((cert, index) => (
+          <div
+            key={cert.id}
+            className="bg-background/80 backdrop-blur-sm rounded-xl border border-border/50 shadow-lg hover:shadow-xl hover:border-muted-foreground/30 transition-all duration-300 overflow-hidden group"
+          >
+            <div className="pl-4 border-l-2 border-foreground/20 group-hover:border-foreground/60 transition-colors duration-300 p-5">
+              <span className="text-4xl font-bold text-foreground/8 select-none leading-none block mb-2">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3 className="text-lg font-semibold mb-1 text-foreground">
+                {cert.title}
+              </h3>
+              <p className="text-sm text-muted-foreground mb-1">
+                {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer}
+              </p>
+              <p className="text-xs text-muted-foreground/60 mb-2 font-mono">
+                {cert.date}
+              </p>
+              <p className="text-sm text-foreground/75 leading-relaxed">
+                {tDescriptions(cert.descriptionKey)}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

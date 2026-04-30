@@ -170,6 +170,7 @@
       "princeps": "Privater KI-Arbeitsbereich als persönliches Exekutivsekretariat. Enthält einen KI-Chat-Assistenten mit RAG-Wissensdatenbank, Aufgabenverwaltung, Kontakte, Meetings, Entscheidungen, Ziele und proaktive Benachrichtigungen — alles gespeichert in einer einzigen PostgreSQL-Datenbank mit pgvector."
     },
     "seeMoreOnGitHub": "Weitere Projekte auf GitHub...",
+    "viewAllProjects": "Alle Projekte ansehen",
     "cloneRepository": "Repository klonen",
     "code": "Code",
     "npmPackage": "npm",

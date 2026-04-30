@@ -170,6 +170,7 @@
       "princeps": "Espacio de trabajo de IA privado que actúa como secretaría ejecutiva personal. Incluye un asistente de chat IA con base de conocimiento RAG, gestión de tareas, contactos, reuniones, decisiones, objetivos y notificaciones proactivas — todo almacenado en una única base de datos PostgreSQL con pgvector."
     },
     "seeMoreOnGitHub": "ver más en GitHub...",
+    "viewAllProjects": "Ver todos los proyectos",
     "cloneRepository": "Clonar repositorio",
     "code": "Código",
     "npmPackage": "npm",
