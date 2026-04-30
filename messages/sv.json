@@ -171,6 +171,14 @@
     },
     "seeMoreOnGitHub": "se mer på GitHub...",
     "viewAllProjects": "Visa alla projekt",
+    "featuredCollab": "Utmärkt samarbete",
+    "botgenossen": {
+      "title": "Staden Büttelborn — AI-avatar för borgmästaren",
+      "description": "Del av teamet på Botgenossen som byggde den flerspråkiga interaktiva AI-avataren för Bürgermeister i Büttelborn, en stad i Tyskland. Avataren talar med invånare på flera språk, svarar på frågor om stadens tjänster och repräsenterar borgmästaren digitalt på stadens officiella webbplats.",
+      "role": "AI-avatarutveckling",
+      "company": "Botgenossen",
+      "live": "Live"
+    },
     "cloneRepository": "Klona repository",
     "code": "Kod",
     "npmPackage": "npm",

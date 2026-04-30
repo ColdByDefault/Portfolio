@@ -108,42 +108,7 @@ export default function HomeContent() {
             <SpeedInsight className="py-12 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
-          <Suspense
-            fallback={
-              <div className="min-h-100">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <Capabilities />
-          </Suspense>
-
-          {/* Service Packages Section */}
-          <Suspense
-            fallback={
-              <div className="min-h-150">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <ServicesSection />
-          </Suspense>
-
           {/* Project Showcase Section */}
-          <Suspense
-            fallback={
-              <div className="min-h-125">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <section className="py-12 px-4 sm:px-6 lg:px-8">
-              <div className="max-w-7xl mx-auto">
-                <ShowcaseSection />
-              </div>
-            </section>
-          </Suspense>
-
           <Suspense
             fallback={
               <div className="min-h-100">
@@ -164,6 +129,31 @@ export default function HomeContent() {
             <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
+          {/* Service Packages Section */}
+          <Suspense
+            fallback={
+              <div className="min-h-150">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
+            <ServicesSection />
+          </Suspense>
+
+          <Suspense
+            fallback={
+              <div className="min-h-125">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
+            <section className="py-12 px-4 sm:px-6 lg:px-8">
+              <div className="max-w-7xl mx-auto">
+                <ShowcaseSection />
+              </div>
+            </section>
+          </Suspense>
+
           {/* GitHub Showcase Section */}
           <Suspense
             fallback={
@@ -177,6 +167,16 @@ export default function HomeContent() {
                 <GitHubShowcase />
               </div>
             </section>
+          </Suspense>
+
+          <Suspense
+            fallback={
+              <div className="min-h-100">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
+            <Capabilities />
           </Suspense>
 
           <Suspense fallback={<LoadingSkeleton />}></Suspense>

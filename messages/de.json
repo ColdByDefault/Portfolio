@@ -171,6 +171,14 @@
     },
     "seeMoreOnGitHub": "Weitere Projekte auf GitHub...",
     "viewAllProjects": "Alle Projekte ansehen",
+    "featuredCollab": "Vorgestellte Zusammenarbeit",
+    "botgenossen": {
+      "title": "Stadt Büttleborn — KI-Avatar für den Bürgermeister",
+      "description": "Teil des Teams bei Botgenossen, das den mehrsprachigen interaktiven KI-Avatar für den Bürgermeister von Büttleborn entwickelt hat. Der Avatar spricht mit Bürgerinnen und Bürgern in mehreren Sprachen, beantwortet Fragen zu Stadtdienstleistungen und repräsentiert den Bürgermeister digital auf der offiziellen Stadtwebsite.",
+      "role": "KI-Avatar-Entwicklung",
+      "company": "Botgenossen",
+      "live": "Live"
+    },
     "cloneRepository": "Repository klonen",
     "code": "Code",
     "npmPackage": "npm",

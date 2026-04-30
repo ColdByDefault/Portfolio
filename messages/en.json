@@ -171,6 +171,14 @@
     },
     "seeMoreOnGitHub": "see more on GitHub...",
     "viewAllProjects": "View all projects",
+    "featuredCollab": "Featured Collaboration",
+    "botgenossen": {
+      "title": "Büttleborn City — AI Avatar for the Mayor",
+      "description": "Part of the team at Botgenossen that built the multilingual interactive AI avatar for the Bürgermeister of Büttleborn, a city in Germany. The avatar speaks with citizens in multiple languages, answers questions about city services, and represents the mayor digitally on the official city website.",
+      "role": "AI Avatar Development",
+      "company": "Botgenossen",
+      "live": "Live"
+    },
     "cloneRepository": "Clone Repository",
     "code": "Code",
     "npmPackage": "npm",
