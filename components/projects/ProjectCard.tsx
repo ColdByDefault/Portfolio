@@ -25,6 +25,7 @@ import {
   getCardHoverClasses,
   getOverlayStyles,
 } from "@/components/visuals/card-animations";
+import { cn } from "@/lib/utils";
 import type { ProjectCardProps } from "@/types/hubs/projects";
 import {
   useTruncationDetection,
@@ -59,43 +60,53 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
       className="group w-full h-full"
     >
       <Card
-        className={`${getCardHoverClasses(isHovered)} h-full flex flex-col overflow-hidden`}
+        className={cn(
+          getCardHoverClasses(isHovered),
+          "h-full gap-0 overflow-hidden border-border/60 bg-background/80 py-0 shadow-sm backdrop-blur-sm",
+          "hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10",
+        )}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        {/* Top accent line — gradient for featured, subtle for the rest */}
+        {/* Top accent line - gradient for featured, subtle for the rest */}
         <div
-          className={`h-0.5 shrink-0 ${
+          className={`h-1 shrink-0 ${
             isFeaturedProject(project)
-              ? "bg-linear-to-r from-blue-500 to-purple-600"
-              : "bg-border"
+              ? "bg-linear-to-r from-sky-500 via-blue-500 to-violet-500"
+              : "bg-linear-to-r from-border via-muted-foreground/20 to-border"
           }`}
         />
 
-        <CardHeader className="px-4 pt-3 pb-2 shrink-0">
-          {/* Meta row: category badge + featured badge (only when featured) */}
-          <div className="flex items-center gap-2 mb-2">
-            <Badge variant="secondary" className="text-xs">
+        <CardHeader className="relative z-10 shrink-0 space-y-3 px-4 pt-4 pb-3">
+          {/* Meta row: category badge + featured badge */}
+          <div className="flex min-h-6 flex-wrap items-center gap-2">
+            <Badge
+              variant="secondary"
+              className="rounded-md border border-border/50 bg-muted/70 px-2 py-0.5 text-[11px] font-medium"
+            >
               {tCategories(project.category)}
             </Badge>
             {isFeaturedProject(project) && (
-              <Badge className="text-xs">{t("featuredProject")}</Badge>
+              <Badge className="rounded-md bg-primary px-2 py-0.5 text-[11px] font-semibold text-primary-foreground shadow-sm">
+                {t("featuredProject")}
+              </Badge>
             )}
           </div>
-          {/* Title — fixed h-10 so 1-line and 2-line titles occupy the same space */}
-          <div className="h-14 overflow-hidden">
-            <CardTitle className="text-base lg:text-xl md:text-base font-bold line-clamp-2 leading-snug group-hover:text-primary transition-colors">
+
+          {/* Title row */}
+          <div className="min-h-12 overflow-hidden">
+            <CardTitle className="line-clamp-2 text-lg font-semibold leading-tight tracking-normal text-foreground transition-colors group-hover:text-primary lg:text-xl">
               {project.title}
             </CardTitle>
           </div>
         </CardHeader>
 
-        <CardContent className="flex-1 flex flex-col px-4 pt-0 pb-2 relative z-1">
-          {/* Description — fixed 3-line height */}
-          <div className="h-16 overflow-hidden shrink-0">
+        <CardContent className="relative z-10 flex flex-1 flex-col px-4 pt-0 pb-3">
+          {/* Description - fixed 3-line height */}
+          <div className="min-h-16 shrink-0 overflow-hidden">
             <p
               ref={descriptionRef}
-              className="text-xs text-muted-foreground leading-relaxed line-clamp-3"
+              className="line-clamp-3 text-sm leading-relaxed text-muted-foreground"
             >
               {tDescriptions(project.description)}
               {isTruncated && (
@@ -112,14 +123,14 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
             </p>
           </div>
 
-          <Separator className="my-3 shrink-0" />
+          <Separator className="my-4 shrink-0 bg-border/60" />
 
-          {/* License — fixed h-7, empty slot keeps tech tags aligned when no license */}
-          <div className="h-7 flex items-center shrink-0 mb-2">
+          {/* License - fixed h-7, empty slot keeps tech tags aligned when no license */}
+          <div className="mb-3 flex h-7 shrink-0 items-center">
             {project.license && (
               <Badge
                 variant={project.license.variant || "default"}
-                className={`text-xs font-medium ${getLicenseBadgeClasses(project.license.type)}`}
+                className={`rounded-md px-2.5 py-1 text-[11px] font-medium ${getLicenseBadgeClasses(project.license.type)}`}
               >
                 {getLicenseEmoji(project.license.type)}{" "}
                 {tLicenses(project.license.text)}
@@ -128,17 +139,17 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
           </div>
 
           {/* Stack label */}
-          <p className="text-[10px] uppercase tracking-widest font-medium text-muted-foreground/50 mb-1.5 shrink-0">
+          <p className="mb-2 shrink-0 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/60">
             Stack
           </p>
 
-          {/* Tech tags — fills remaining space, scrollable */}
-          <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-8">
-            <div className="flex flex-wrap gap-1">
+          {/* Tech tags - fills remaining space, scrollable */}
+          <div className="min-h-10 flex-1 overflow-y-auto overflow-x-hidden pr-1">
+            <div className="flex flex-wrap gap-1.5">
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2 py-0.5 bg-secondary/50 rounded text-xs font-medium"
+                  className="rounded-md border border-border/50 bg-secondary/60 px-2 py-1 text-xs font-medium text-secondary-foreground/90 transition-colors group-hover:border-primary/20 group-hover:bg-primary/10"
                 >
                   {tech}
                 </span>
@@ -147,22 +158,22 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
           </div>
         </CardContent>
 
-        <Separator className="shrink-0" />
+        <Separator className="shrink-0 bg-border/60" />
 
-        <CardFooter className="relative z-1 px-4 py-3 shrink-0">
-          <div className="flex flex-wrap gap-2 w-full">
+        <CardFooter className="relative z-10 shrink-0 bg-muted/20 px-4 py-3">
+          <div className="flex w-full flex-wrap gap-2">
             {project.githubUrl && (
               <Button
                 variant="outline"
                 size="sm"
                 asChild
-                className="flex-1 cursor-pointer hover:bg-primary/10 relative z-1"
+                className="relative z-10 min-w-28 flex-1 cursor-pointer border-border/70 bg-background/70 hover:bg-primary/10"
               >
                 <Link
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 cursor-pointer text-center w-full"
+                  className="flex w-full items-center justify-center gap-2 truncate text-center"
                 >
                   <FiGithub className="h-4 w-4" />
                   {t("code")}
@@ -175,13 +186,13 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
                 variant="outline"
                 size="sm"
                 asChild
-                className="flex-1 cursor-pointer hover:bg-red-500/10 text-red-600 dark:text-red-400 border-red-300 dark:border-red-700 hover:border-red-500 relative z-1"
+                className="relative z-10 min-w-28 flex-1 cursor-pointer border-red-300 bg-background/70 text-red-600 hover:border-red-500 hover:bg-red-500/10 dark:border-red-700 dark:text-red-400"
               >
                 <Link
                   href={project.npmUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 cursor-pointer text-center w-full"
+                  className="flex w-full items-center justify-center gap-2 truncate text-center"
                 >
                   <SiNpm className="h-4 w-4" />
                   {t("npmPackage")}
@@ -193,13 +204,13 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
               <Button
                 size="sm"
                 asChild
-                className="flex-1 cursor-pointer hover:bg-primary/90 relative z-1"
+                className="relative z-10 min-w-28 flex-1 cursor-pointer shadow-sm hover:bg-primary/90"
               >
                 <Link
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 cursor-pointer text-center w-full"
+                  className="flex w-full items-center justify-center gap-2 truncate text-center"
                 >
                   <FiExternalLink className="h-4 w-4" />
                   {t("liveDemo")}
