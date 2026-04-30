@@ -11,10 +11,11 @@ export interface Project {
   technologies: string[];
   githubUrl: string;
   liveUrl?: string;
+  npmUrl?: string;
   featured: boolean;
   category: string;
   license?: {
-    type: "copyright" | "open-source" | "fully-open" | "mit";
+    type: "copyright" | "open-source" | "fully-open" | "mit" | "agpl";
     text: string;
     variant?: "default" | "secondary" | "destructive" | "outline";
   };
@@ -57,7 +58,6 @@ export const projects: Project[] = [
       "next-internationalization",
     ],
     githubUrl: "https://github.com/coldbydefault/berichhub",
-    liveUrl: "https://berich-hub.vercel.app/",
     featured: false,
     category: "fullStack",
     license: {
@@ -99,12 +99,12 @@ export const projects: Project[] = [
   },
   {
     id: 5,
-    title: "Next.Js SEO optimization Package",
+    title: "next-seo-lite",
     description: "nextJsSeoOptimization",
     image: "",
-    technologies: ["Next.js", "TypeScript", "npm", "SEO"],
-    githubUrl: "https://github.com/ColdByDefault/nextseo-lite",
-    liveUrl: "",
+    technologies: ["Next.js", "TypeScript", "npm package", "SEO", "JSON-LD"],
+    githubUrl: "https://github.com/ColdByDefault/next-seo-lite",
+    npmUrl: "https://www.npmjs.com/package/@coldbydefault/next-seo-lite",
     featured: true,
     category: "fullStack",
     license: {
@@ -126,6 +126,30 @@ export const projects: Project[] = [
     license: {
       type: "mit",
       text: "mit",
+      variant: "secondary",
+    },
+  },
+  {
+    id: 7,
+    title: "Princeps",
+    description: "princeps",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "pgvector",
+      "Prisma",
+      "Better Auth",
+      "Stripe",
+      "Ollama",
+      "Docker",
+    ],
+    githubUrl: "https://github.com/ColdByDefault/princeps",
+    featured: true,
+    category: "aiMl",
+    license: {
+      type: "agpl",
+      text: "agpl",
       variant: "secondary",
     },
   },

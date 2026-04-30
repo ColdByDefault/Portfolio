@@ -160,6 +160,13 @@ const LocaleAutoDetect = () => {
     return () => clearTimeout(timer);
   }, [isClient]);
 
+  // Step 3: Auto-dismiss after 7 seconds
+  useEffect(() => {
+    if (!showToast || exiting) return;
+    const autoDismiss = setTimeout(() => dismiss(), 7000);
+    return () => clearTimeout(autoDismiss);
+  }, [showToast, exiting, dismiss]);
+
   if (!showToast) return null;
 
   const langName = languageNames[toastData.switchedTo] ?? toastData.switchedTo;

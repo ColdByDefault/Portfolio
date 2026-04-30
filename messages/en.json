@@ -165,12 +165,14 @@
       "subsApi": "API for managing user subscriptions, including features for billing, invoicing, and payment processing. Built with Next.js and integrated with Stripe for secure payments.",
       "voiceToNotion": "Transforms voice memos and meeting recordings into structured Notion pages with transcripts, summaries, and action items. Automates post-meeting admin work in under 30 seconds.",
       "aiEmailAutomation": "An interactive demo using RAG to analyze emails, offering selectable answer options and tone-based rewriting. Illustrates a workflow that runs fully autonomously in production environments.",
-      "nextJsSeoOptimization": "A lightweight, easy-to-use SEO optimization package for Next.js applications. Provides utilities for meta tags, Open Graph, Twitter Cards, and structured data with minimal configuration.",
-      "customizableBetterAuth": "A ready-to-use, fully customizable authentication solution built with Better Auth and Next.js. Supports multiple auth providers and can be easily integrated into any project."
+      "nextJsSeoOptimization": "A lightweight, zero-dependency SEO helper for Next.js App Router. Turns simple props into a full Metadata object — OpenGraph, Twitter Cards, canonical URLs, hreflang alternates, and JSON-LD structured data. Published on npm as @coldbydefault/next-seo-lite.",
+      "customizableBetterAuth": "A ready-to-use, fully customizable authentication solution built with Better Auth and Next.js. Supports multiple auth providers and can be easily integrated into any project.",
+      "princeps": "Private AI workspace that acts as a personal executive secretariat. Features an AI chat assistant with RAG knowledge base, task management, contacts, meetings, decisions, goals, and proactive nudges — all backed by a single PostgreSQL database with pgvector."
     },
     "seeMoreOnGitHub": "see more on GitHub...",
     "cloneRepository": "Clone Repository",
     "code": "Code",
+    "npmPackage": "npm",
     "liveDemo": "Live Demo",
     "featuredProject": "Featured Project",
     "noProjectsFound": "No projects found in this category.",
@@ -178,7 +180,8 @@
       "copyright": "All Rights Reserved",
       "openSource": "Modified MIT License",
       "fullyOpen": "Fully Open Source",
-      "mit": "MIT License"
+      "mit": "MIT License",
+      "agpl": "AGPL-3.0 License"
     }
   },
   "Impressum": {
