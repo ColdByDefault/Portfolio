@@ -94,7 +94,7 @@ export default function HomeContent() {
       </div>
 
       {/* Main content section */}
-      <div className="relative" id="main-content">
+      <div className="relative" id="home-content">
         {/* Content Container */}
         <div className="relative z-10">
           {/* PageSpeed Insights Section */}
