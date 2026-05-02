@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 "use client";
 
@@ -105,7 +105,7 @@ export function useBlogAdmin() {
       }
       return defaultMessage;
     },
-    []
+    [],
   );
 
   // API functions
@@ -222,7 +222,8 @@ export function useBlogAdmin() {
         if (data.success) {
           setIsAuthenticated(true);
           setMessage("Authenticated successfully!");
-          await loadData();
+          setLastRefresh(new Date());
+          // Data loading is handled by useEffects that react to isAuthenticated
         }
       } else {
         const errorData = (await response
@@ -235,7 +236,7 @@ export function useBlogAdmin() {
     } finally {
       setLoading(false);
     }
-  }, [token, handleError, loadData, getErrorMessage]);
+  }, [token, handleError, getErrorMessage]);
 
   const handleKeyPress = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>): void => {
@@ -243,7 +244,7 @@ export function useBlogAdmin() {
         void authenticate();
       }
     },
-    [authenticate, loading]
+    [authenticate, loading],
   );
 
   // Form utilities
@@ -259,7 +260,7 @@ export function useBlogAdmin() {
 
   const handleFormChange = (
     field: keyof BlogFormData,
-    value: string | boolean
+    value: string | boolean,
   ) => {
     setFormData((prev) => {
       const newData = { ...prev, [field]: value };
@@ -275,7 +276,7 @@ export function useBlogAdmin() {
 
   const handleCreditsChange = (
     field: keyof NonNullable<BlogFormData["credits"]>,
-    value: string
+    value: string,
   ) => {
     setFormData((prev) => ({
       ...prev,
@@ -365,7 +366,7 @@ export function useBlogAdmin() {
 
         if (response.ok) {
           setMessage(
-            `Blog ${action === "create" ? "created" : "updated"} successfully!`
+            `Blog ${action === "create" ? "created" : "updated"} successfully!`,
           );
           setIsCreateDialogOpen(false);
           setFormData(initialFormData);
@@ -380,7 +381,7 @@ export function useBlogAdmin() {
       } catch (error) {
         handleError(
           error,
-          `Error ${action === "create" ? "creating" : "updating"} blog`
+          `Error ${action === "create" ? "creating" : "updating"} blog`,
         );
       } finally {
         setLoading(false);
@@ -395,7 +396,7 @@ export function useBlogAdmin() {
       loadData,
       getFormErrorMessage,
       validateForm,
-    ]
+    ],
   );
 
   const deleteBlog = useCallback(
@@ -432,13 +433,13 @@ export function useBlogAdmin() {
         setLoading(false);
       }
     },
-    [isAuthenticated, token, handleError, loadData, getErrorMessage]
+    [isAuthenticated, token, handleError, loadData, getErrorMessage],
   );
 
   const toggleBlogStatus = useCallback(
     async (
       blogId: string,
-      action: "publish" | "unpublish" | "feature" | "unfeature"
+      action: "publish" | "unpublish" | "feature" | "unfeature",
     ): Promise<void> => {
       if (!isAuthenticated || !token) return;
 
@@ -471,7 +472,7 @@ export function useBlogAdmin() {
         setLoading(false);
       }
     },
-    [isAuthenticated, token, handleError, loadData, getErrorMessage]
+    [isAuthenticated, token, handleError, loadData, getErrorMessage],
   );
 
   // Dialog handlers
@@ -521,6 +522,13 @@ export function useBlogAdmin() {
   };
 
   // Effects
+  useEffect(() => {
+    if (isAuthenticated && token) {
+      void loadStats();
+      void loadCategories();
+    }
+  }, [isAuthenticated, token, loadStats, loadCategories]);
+
   useEffect(() => {
     if (isAuthenticated && token) {
       void loadBlogs();
