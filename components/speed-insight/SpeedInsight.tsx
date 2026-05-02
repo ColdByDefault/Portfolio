@@ -119,7 +119,10 @@ export default function SpeedInsight({ className }: { className?: string }) {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 sm:gap-3">
               <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-primary/10 shrink-0">
-                <SiGoogle className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                <SiGoogle
+                  className="h-4 w-4 sm:h-5 sm:w-5 text-primary"
+                  aria-hidden="true"
+                />
               </div>
               <div>
                 <CardTitle className="text-base sm:text-lg md:text-xl">
@@ -241,7 +244,10 @@ export default function SpeedInsight({ className }: { className?: string }) {
           {/* Footer */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-1 pt-3 border-t mt-2">
             <div className="flex items-center gap-1 text-[10px] sm:text-xs text-muted-foreground">
-              <SiGoogle className="h-2.5 w-2.5 sm:h-3 sm:w-3 shrink-0" />
+              <SiGoogle
+                className="h-2.5 w-2.5 sm:h-3 sm:w-3 shrink-0"
+                aria-hidden="true"
+              />
               <span className="truncate">{t("poweredBy")}</span>
             </div>
             {desktop?.fetchedAt && (

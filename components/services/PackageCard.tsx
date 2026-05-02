@@ -45,7 +45,7 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
           <div className="flex items-center gap-3">
             {IconComponent && (
               <div className="p-2 rounded-lg bg-muted">
-                <IconComponent className="h-5 w-5" />
+                <IconComponent className="h-5 w-5" aria-hidden="true" />
               </div>
             )}
             <div>
@@ -67,7 +67,7 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
                 <p className="text-2xl font-bold">{t(pkg.pricingKey)}</p>
               </div>
               <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                <Clock className="h-4 w-4" />
+                <Clock className="h-4 w-4" aria-hidden="true" />
                 <span>{t(pkg.timelineKey)}</span>
               </div>
             </div>
@@ -80,7 +80,10 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
               : pkg.features
             ).map((feature, index) => (
               <li key={index} className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                <Check
+                  className="h-5 w-5 text-green-500 shrink-0 mt-0.5"
+                  aria-hidden="true"
+                />
                 <span className="text-sm">{t(feature.textKey)}</span>
               </li>
             ))}

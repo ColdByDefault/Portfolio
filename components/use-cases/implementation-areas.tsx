@@ -27,7 +27,7 @@ export function ImplementationAreas({
   return (
     <div className="space-y-2">
       <h4 className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-        <Lightbulb className="h-4 w-4" />
+        <Lightbulb className="h-4 w-4" aria-hidden="true" />
         {t("useCasesLabel")}
       </h4>
       <div className="flex flex-wrap gap-2">

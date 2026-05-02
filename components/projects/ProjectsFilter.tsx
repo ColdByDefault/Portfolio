@@ -9,6 +9,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
 
 interface ProjectsFilterProps {
   readonly categories: readonly string[];
@@ -38,7 +39,12 @@ export function ProjectsFilter({
           variant={selectedCategory === category ? "default" : "outline"}
           size="sm"
           onClick={() => onCategoryChange(category)}
-          className="transition-all duration-200 cursor-pointer hover:bg-primary/10"
+          className={cn(
+            "transition-all duration-200 cursor-pointer",
+            selectedCategory === category
+              ? "bg-foreground text-background hover:bg-foreground/90"
+              : "hover:bg-primary/10",
+          )}
         >
           {tCategories(category)}
         </Button>
