@@ -6,14 +6,12 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: process.env.ALLOWED_DEV_ORIGINS?.split(",") || [],
 
   // Performance optimizations
-  compress: true,
   poweredByHeader: false,
 
-  // Prisma 7 compatibility - bundle Prisma for serverless/edge
-  serverExternalPackages: [],
+  // Prisma 7 compatibility - include Prisma client in output tracing
   outputFileTracingIncludes: {
     "/api/**/*": ["./node_modules/@prisma/client/**/*"],
-    "/app/**/*": ["./node_modules/@prisma/client/**/*"],
+    "/**": ["./node_modules/@prisma/client/**/*"],
   },
 
   // Image optimization with modern formats
@@ -145,6 +143,34 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        // Admin API routes
+        source: "/api/admin/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-cache, no-store, must-revalidate",
+          },
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow, nosnippet, noarchive",
+          },
+        ],
+      },
+      {
+        // Email-rewrite routes contain per-user state — never cache publicly
+        source: "/api/email-rewrite/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-cache, no-store, must-revalidate",
+          },
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow, nosnippet, noarchive",
+          },
+        ],
+      },
+      {
         // Enhanced security for ChatBot API
         source: "/api/chatbot",
         headers: [
@@ -155,14 +181,6 @@ const nextConfig: NextConfig = {
           {
             key: "X-Robots-Tag",
             value: "noindex, nofollow, nosnippet, noarchive",
-          },
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "X-Frame-Options",
-            value: "DENY",
           },
         ],
       },
