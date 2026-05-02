@@ -22,11 +22,17 @@ module.exports = {
       ],
       settings: {
         budgetPath: "./lighthouse/budgets.json",
-        chromeFlags: "--no-sandbox --disable-dev-shm-usage",
+        blockedUrlPatterns: ["*/api/speed-insight*"],
+        chromeFlags: "--no-sandbox --disable-dev-shm-usage --disable-gpu",
         extraHeaders: JSON.stringify({
           "Accept-Language": "en-US,en;q=0.9",
         }),
-        onlyCategories: ["performance", "accessibility", "best-practices", "seo"],
+        onlyCategories: [
+          "performance",
+          "accessibility",
+          "best-practices",
+          "seo",
+        ],
       },
     },
     assert: {
