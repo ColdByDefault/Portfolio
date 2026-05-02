@@ -1,8 +1,8 @@
 /**
- * Media Route Group Layout - Layout for media section pages (about, blog, projects, library)
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
+ */
 
 import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";

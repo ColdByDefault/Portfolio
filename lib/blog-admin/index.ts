@@ -1,8 +1,8 @@
 /**
- * Blog Admin Services - Individual services for direct use
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
+ */
 
 // Individual services (for direct use if needed)
 export { BlogAdminService } from "./BlogAdminService";

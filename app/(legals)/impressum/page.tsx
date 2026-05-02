@@ -1,7 +1,8 @@
 /**
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
+ */
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -99,7 +100,9 @@ export default async function Impressum() {
             <p className="text-sm text-muted-foreground">
               {t("vat.description")}
             </p>
-            <p className="text-sm font-medium mt-2">{t("vat.value")} Will be provided soon</p>
+            <p className="text-sm font-medium mt-2">
+              {t("vat.value")} Will be provided soon
+            </p>
           </CardContent>
         </Card>
 
