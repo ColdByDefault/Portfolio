@@ -6,6 +6,7 @@
 
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { createHmac, timingSafeEqual } from "crypto";
 
 // Supported locales
 const supportedLocales = ["en", "de", "es", "fr", "sv"];
@@ -15,16 +16,14 @@ const blockedIPs = new Map<string, number>();
 const BLOCK_DURATION = 15 * 60 * 1000;
 const MAX_ATTEMPTS = 2;
 
-// Session validation: Store valid sessions with metadata
-interface SessionData {
-  createdAt: number;
-  expiresAt: number;
-  ip: string;
-  signature: string;
-}
-
-const validSessions = new Map<string, SessionData>();
+const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 const SESSION_DURATION = 8 * 60 * 60 * 1000; // 8 hours
+
+function signToken(payload: string): string {
+  return createHmac("sha256", ADMIN_TOKEN || "")
+    .update(payload)
+    .digest("hex");
+}
 
 function getClientIP(request: NextRequest): string {
   const forwarded = request.headers.get("x-forwarded-for");
@@ -56,70 +55,49 @@ function recordFailedAttempt(ip: string): void {
 }
 
 function hasValidAdminSession(request: NextRequest): boolean {
+  if (!ADMIN_TOKEN) return false;
+
   const sessionCookie = request.cookies.get("PORTFOLIO_ADMIN_SESSION");
   if (!sessionCookie?.value) return false;
 
-  const sessionId = sessionCookie.value;
-  const sessionData = validSessions.get(sessionId);
+  const parts = sessionCookie.value.split(".");
+  if (parts.length !== 3) return false;
 
-  if (!sessionData) return false;
+  const [sessionId, expiresAtStr, sig] = parts;
+  if (!sessionId || !expiresAtStr || !sig) return false;
 
-  const now = Date.now();
+  // Verify HMAC signature
+  const payload = `${sessionId}.${expiresAtStr}`;
+  const expectedSig = signToken(payload);
+  const sigBuf = Buffer.from(sig, "hex");
+  const expectedBuf = Buffer.from(expectedSig, "hex");
+  if (sigBuf.length !== expectedBuf.length) return false;
+  if (!timingSafeEqual(sigBuf, expectedBuf)) return false;
 
   // Check expiration
-  if (now > sessionData.expiresAt) {
-    validSessions.delete(sessionId);
-    return false;
-  }
-
-  const currentIP = getClientIP(request);
-  if (sessionData.ip !== currentIP) {
-    validSessions.delete(sessionId);
-    return false;
-  }
+  const expiresAt = parseInt(expiresAtStr, 10);
+  if (isNaN(expiresAt) || Date.now() > expiresAt) return false;
 
   return true;
 }
 
-export function createAdminSession(ip: string): string {
+export function createAdminSession(): string {
   const randomBytes = new Uint8Array(32);
   crypto.getRandomValues(randomBytes);
   const sessionId = Array.from(randomBytes)
     .map((b) => b.toString(16).padStart(2, "0"))
     .join("");
 
-  const now = Date.now();
-  const expiresAt = now + SESSION_DURATION;
+  const expiresAt = Date.now() + SESSION_DURATION;
+  const payload = `${sessionId}.${expiresAt}`;
+  const sig = signToken(payload);
 
-  const signature = `${sessionId}:${ip}:${expiresAt}`;
-
-  const sessionData: SessionData = {
-    createdAt: now,
-    expiresAt,
-    ip,
-    signature,
-  };
-
-  validSessions.set(sessionId, sessionData);
-
-  if (validSessions.size % 10 === 0) {
-    cleanupExpiredSessions();
-  }
-
-  return sessionId;
+  return `${payload}.${sig}`;
 }
 
-export function invalidateAdminSession(sessionId: string): void {
-  validSessions.delete(sessionId);
-}
-
-function cleanupExpiredSessions(): void {
-  const now = Date.now();
-  for (const [sessionId, data] of validSessions.entries()) {
-    if (now > data.expiresAt) {
-      validSessions.delete(sessionId);
-    }
-  }
+export function invalidateAdminSession(_sessionId: string): void {
+  // Stateless tokens cannot be server-side invalidated.
+  // Logout is handled by deleting the session cookie in the API route.
 }
 
 /**
