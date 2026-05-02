@@ -2,7 +2,7 @@
  * Blog API Functions
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 import type { Blog, BlogListQuery, BlogListResponse } from "@/types/hubs/blogs";
 import { prisma } from "@/lib/configs/prisma";
@@ -13,7 +13,7 @@ import { sanitizeInput } from "@/lib/security";
  * Get all published blogs
  */
 export async function getBlogs(
-  query?: BlogListQuery
+  query?: BlogListQuery,
 ): Promise<BlogListResponse> {
   const {
     page = 1,
@@ -128,6 +128,7 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
     const blog = await prisma.blog.findFirst({
       where: {
         slug: sanitizedSlug,
+        isPublished: true,
       },
       include: {
         category: true,

@@ -1,7 +1,7 @@
 /**
  * @author ColdByDefault
  * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ */
 
 import { BlogPageClient } from "@/components/blog";
 import { getBlogs } from "@/lib/hubs/blogs";
@@ -10,7 +10,7 @@ export default async function BlogsPage() {
   let blogs: Awaited<ReturnType<typeof getBlogs>>["blogs"] = [];
 
   try {
-    const result = await getBlogs();
+    const result = await getBlogs({ published: true });
     blogs = result.blogs;
   } catch (error) {
     console.error("Failed to load blogs:", error);
