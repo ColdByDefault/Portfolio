@@ -35,7 +35,9 @@ export function LanguageBadge({
 
   return (
     <Badge variant={variant} className={className} onClick={onClick}>
-      {showIcon && <Languages className={`${iconSize} mr-1`} />}
+      {showIcon && (
+        <Languages className={`${iconSize} mr-1`} aria-hidden="true" />
+      )}
       {languageName}
     </Badge>
   );

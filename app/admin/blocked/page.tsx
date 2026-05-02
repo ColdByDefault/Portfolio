@@ -13,14 +13,14 @@ export default function AdminBlockedPage() {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="mx-auto mb-4 w-16 h-16 rounded-full flex items-center justify-center">
-            <Shield className="w-8 h-8 text-red-600" />
+            <Shield className="w-8 h-8 text-destructive" aria-hidden="true" />
           </div>
-          <CardTitle className="text-2xl text-red-600">
+          <CardTitle className="text-2xl text-destructive">
             Access Blocked
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-center">
-          <p className="text-gray-700">
+          <p className="text-muted-foreground">
             Nuh you ain&apos;t support to be doing this... NOW BANNNN!.
           </p>
         </CardContent>

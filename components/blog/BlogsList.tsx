@@ -62,19 +62,19 @@ function BlogCard({ blog }: BlogCardProps) {
         )}
         <CardHeader>
           <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-            <Calendar className="h-4 w-4" />
+            <Calendar className="h-4 w-4" aria-hidden="true" />
             {blog.publishedAt
               ? new Date(blog.publishedAt).toLocaleDateString()
               : "Draft"}
             {blog.readingTime && (
               <>
-                <Clock className="h-4 w-4 ml-2" />
+                <Clock className="h-4 w-4 ml-2" aria-hidden="true" />
                 {blog.readingTime} min read
               </>
             )}
             {blog.language && (
               <>
-                <Languages className="h-4 w-4 ml-2" />
+                <Languages className="h-4 w-4 ml-2" aria-hidden="true" />
                 <span className="text-xs font-medium">
                   {BLOG_LANGUAGE_NAMES[
                     blog.language as keyof typeof BLOG_LANGUAGE_NAMES
@@ -93,7 +93,7 @@ function BlogCard({ blog }: BlogCardProps) {
         <CardContent>
           <div className="flex flex-wrap gap-2">
             {blog.isFeatured && (
-              <Badge style={{ backgroundColor: "#22c55e", color: "white" }}>
+              <Badge style={{ backgroundColor: "#15803d", color: "white" }}>
                 Featured
               </Badge>
             )}
