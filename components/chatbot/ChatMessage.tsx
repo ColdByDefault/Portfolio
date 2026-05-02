@@ -10,6 +10,8 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
 import { Bot, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { ChatMessage as ChatMessageType } from "@/types/configs/chatbot";
 import {
   CHATBOT_CONFIG,
@@ -25,6 +27,16 @@ export interface ChatMessageProps {
 // Security helper to limit message content length for display
 function sanitizeMessageForDisplay(content: string): string {
   return content.substring(0, CHATBOT_CONFIG.MESSAGE_DISPLAY_LIMIT);
+}
+
+function isSafeMarkdownHref(href: string | undefined): href is string {
+  if (!href) return false;
+
+  return (
+    href.startsWith("/") ||
+    href.startsWith("https://") ||
+    href.startsWith("mailto:")
+  );
 }
 
 export const ChatMessage = React.memo(function ChatMessage({
@@ -95,12 +107,60 @@ export const ChatMessage = React.memo(function ChatMessage({
           } text-sm leading-relaxed shadow-sm transition-all duration-200 group-hover:shadow-md ${
             isUser
               ? `${CHATBOT_STYLES.MESSAGE_USER_GRADIENT} text-primary-foreground ${CHATBOT_STYLES.MESSAGE_USER_CORNER}`
-              : `${CHATBOT_STYLES.MESSAGE_BORDER} ${CHATBOT_STYLES.MESSAGE_ASSISTANT_CORNER}`
+              : `${CHATBOT_STYLES.MESSAGE_BORDER} ${CHATBOT_STYLES.MESSAGE_ASSISTANT_CORNER} select-text [&_a]:text-blue-600 [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-blue-500 dark:[&_a]:text-blue-400 dark:[&_a:hover]:text-blue-300`
           }`}
           role="text"
           aria-describedby={isUser ? undefined : "assistant-message-info"}
         >
-          <span>{sanitizedContent}</span>
+          {isUser ? (
+            <span>{sanitizedContent}</span>
+          ) : (
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                a: ({ node: _node, href, children, ...props }) => {
+                  if (!isSafeMarkdownHref(href)) {
+                    return <span>{children}</span>;
+                  }
+
+                  const isExternal = href.startsWith("https://");
+
+                  return (
+                    <a
+                      {...props}
+                      href={href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="font-medium text-blue-600 underline underline-offset-4 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 break-words"
+                    >
+                      {children}
+                    </a>
+                  );
+                },
+                p: ({ node: _node, children }) => (
+                  <p className="mb-2 last:mb-0">{children}</p>
+                ),
+                ul: ({ node: _node, children }) => (
+                  <ul className="my-2 ml-4 list-disc space-y-1">
+                    {children}
+                  </ul>
+                ),
+                ol: ({ node: _node, children }) => (
+                  <ol className="my-2 ml-4 list-decimal space-y-1">
+                    {children}
+                  </ol>
+                ),
+                li: ({ node: _node, children }) => (
+                  <li className="pl-1">{children}</li>
+                ),
+                strong: ({ node: _node, children }) => (
+                  <strong className="font-semibold">{children}</strong>
+                ),
+              }}
+            >
+              {sanitizedContent}
+            </ReactMarkdown>
+          )}
         </div>
 
         {isUser && (

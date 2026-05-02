@@ -203,7 +203,7 @@ Comprehensive API endpoints with security-first design:
 | `/api/blog`       | Blog content management and retrieval             | Prisma + Zod                       |
 | `/api/github`     | Fetches GitHub profile + repos (filtered)         | Tokenized (env)                   |
 | `/api/pagespeed` | Surfaces PageSpeed metrics                         | Enhanced caching + error handling |
-| `/api/chatbot`   | Interactive AI chatbot (Reem) for visitor queries |  Groq API                         |
+| `/api/chatbot`   | Interactive AI chatbot (Reem) for visitor queries |  OpenAI Responses API              |
 | `/api/admin`     | Administrative operations for content             | Secured endpoints                 |
 
 Controls:

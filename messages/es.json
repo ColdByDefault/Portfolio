@@ -260,8 +260,8 @@
     "chatbot": {
       "title": "Servicio de Chatbot IA",
       "description": "Este sitio web incluye un chatbot de IA para asistencia interactiva e información.",
-      "apiTitle": "Integración de Groq API",
-      "apiDescription": "El chatbot funciona con Groq. Al usar el chatbot, aceptas los términos de servicio y la política de privacidad de Groq. Las solicitudes del chat se procesan a través de la API de Groq.",
+      "apiTitle": "Integración de OpenAI API",
+      "apiDescription": "El chatbot funciona con OpenAI. Al usar el chatbot, aceptas los términos de servicio y la política de privacidad de OpenAI. Las solicitudes del chat se procesan a través de la API de OpenAI.",
       "temporaryTitle": "Almacenamiento Opcional de Datos (Con Consentimiento)",
       "temporaryDescription": "Con tu consentimiento explícito, podemos almacenar las conversaciones del chat para mejorar la calidad y con fines analíticos. Esto incluye: mensajes del chat, marcas de tiempo, dirección IP anonimizada y ubicación general (país/ciudad). Puedes retirar tu consentimiento en cualquier momento. Sin consentimiento, todos los datos del chat permanecen solo en tu navegador."
     },
@@ -387,6 +387,14 @@
     "greeting": {
       "title": "¡Hola! Soy Reem 👋",
       "description": "Soy tu asistente de IA, estoy aquí para ayudarte a explorar el portafolio de Yazan y responder preguntas sobre sus proyectos, habilidades y experiencia."
+    },
+    "guidedActions": {
+      "label": "Opciones guiadas del portafolio",
+      "website": "Necesito un sitio web",
+      "automation": "Necesito automatización",
+      "projects": "Quiero ver proyectos",
+      "pricing": "Quiero precios",
+      "contact": "Quiero contactar a Yazan"
     },
     "typing": {
       "status": "Reem está escribiendo...",

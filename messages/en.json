@@ -260,8 +260,8 @@
     "chatbot": {
       "title": "AI Chatbot Service",
       "description": "This website includes an AI chatbot for interactive assistance and information.",
-      "apiTitle": "Groq API Integration",
-      "apiDescription": "The chatbot is powered by Groq. By using the chatbot, you accept Groq's terms of service and privacy policy. Chat requests are processed via the Groq API.",
+      "apiTitle": "OpenAI API Integration",
+      "apiDescription": "The chatbot is powered by OpenAI. By using the chatbot, you accept OpenAI's terms of service and privacy policy. Chat requests are processed via the OpenAI API.",
       "temporaryTitle": "Optional Data Storage (With Consent)",
       "temporaryDescription": "With your explicit consent, I may store chat conversations for quality improvement and analytics purposes. This includes: chat messages, timestamps, anonymized IP address, and general location (country/city). You can withdraw consent at any time. Without consent, all chat data remains in your browser only."
     },
@@ -387,6 +387,14 @@
     "greeting": {
       "title": "Hi! I'm Reem 👋",
       "description": "I'm your AI assistant, here to help you explore Yazan's portfolio and answer questions about his projects, skills, and experience."
+    },
+    "guidedActions": {
+      "label": "Guided portfolio options",
+      "website": "I need a website",
+      "automation": "I need automation",
+      "projects": "I want to see projects",
+      "pricing": "I want pricing",
+      "contact": "I want to contact Yazan"
     },
     "typing": {
       "status": "Reem is typing...",

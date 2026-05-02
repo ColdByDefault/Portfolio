@@ -260,8 +260,8 @@
     "chatbot": {
       "title": "KI-Chatbot-Service",
       "description": "Diese Website enthält einen KI-Chatbot für interaktive Unterstützung und Informationen.",
-      "apiTitle": "Groq API Integration",
-      "apiDescription": "Der Chatbot wird von Groq betrieben. Durch die Nutzung des Chatbots akzeptieren Sie die Nutzungsbedingungen und Datenschutzrichtlinien von Groq. Chat-Anfragen werden über die Groq API verarbeitet.",
+      "apiTitle": "OpenAI API Integration",
+      "apiDescription": "Der Chatbot wird von OpenAI betrieben. Durch die Nutzung des Chatbots akzeptieren Sie die Nutzungsbedingungen und Datenschutzrichtlinien von OpenAI. Chat-Anfragen werden über die OpenAI API verarbeitet.",
       "temporaryTitle": "Optionale Datenspeicherung (mit Einwilligung)",
       "temporaryDescription": "Mit Ihrer ausdrücklichen Einwilligung können Chat-Gespräche zur Qualitätsverbesserung und Analyse gespeichert werden. Dies umfasst: Chat-Nachrichten, Zeitstempel, anonymisierte IP-Adresse und allgemeinen Standort (Land/Stadt). Sie können Ihre Einwilligung jederzeit widerrufen. Ohne Einwilligung verbleiben alle Chat-Daten ausschließlich in Ihrem Browser."
     },
@@ -387,6 +387,14 @@
     "greeting": {
       "title": "Hallo! Ich bin Reem 👋",
       "description": "Ich bin Ihr KI-Assistent und helfe Ihnen dabei, Yazans Portfolio zu erkunden und Fragen zu seinen Projekten, Fähigkeiten und Erfahrungen zu beantworten."
+    },
+    "guidedActions": {
+      "label": "Geführte Portfolio-Optionen",
+      "website": "Ich brauche eine Website",
+      "automation": "Ich brauche Automatisierung",
+      "projects": "Ich möchte Projekte sehen",
+      "pricing": "Ich möchte Preise sehen",
+      "contact": "Ich möchte Yazan kontaktieren"
     },
     "typing": {
       "status": "Reem schreibt...",

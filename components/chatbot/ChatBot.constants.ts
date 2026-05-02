@@ -152,6 +152,14 @@ export const CHATBOT_TRANSLATION_KEYS = {
   ACCESSIBILITY_SEND_MESSAGE: "accessibility.sendMessage",
 };
 
+export const CHATBOT_GUIDED_ACTION_KEYS = [
+  "guidedActions.website",
+  "guidedActions.automation",
+  "guidedActions.projects",
+  "guidedActions.pricing",
+  "guidedActions.contact",
+] as const;
+
 // Fallback messages (used when translations are not available)
 export const CHATBOT_FALLBACK_MESSAGES = {
   GENERIC_ERROR:

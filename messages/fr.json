@@ -260,8 +260,8 @@
     "chatbot": {
       "title": "Service de Chatbot IA",
       "description": "Ce site web inclut un chatbot IA pour l'assistance interactive et l'information.",
-      "apiTitle": "Intégration de l'API Groq",
-      "apiDescription": "Le chatbot est alimenté par Groq. En utilisant le chatbot, vous acceptez les conditions d'utilisation et la politique de confidentialité de Groq. Les requêtes de chat sont traitées via l'API Groq.",
+      "apiTitle": "Intégration de l'API OpenAI",
+      "apiDescription": "Le chatbot est alimenté par OpenAI. En utilisant le chatbot, vous acceptez les conditions d'utilisation et la politique de confidentialité d'OpenAI. Les requêtes de chat sont traitées via l'API OpenAI.",
       "temporaryTitle": "Stockage Optionnel des Données (Avec Consentement)",
       "temporaryDescription": "Avec votre consentement explicite, les conversations du chat peuvent être enregistrées à des fins d'amélioration de la qualité et d'analyse. Cela inclut : les messages du chat, les horodatages, l'adresse IP anonymisée et la localisation générale (pays/ville). Vous pouvez retirer votre consentement à tout moment. Sans consentement, toutes les données du chat restent uniquement dans votre navigateur."
     },
@@ -387,6 +387,14 @@
     "greeting": {
       "title": "Salut ! Je suis Reem 👋",
       "description": "Je suis votre assistant IA, ici pour vous aider à explorer le portfolio de Yazan et répondre aux questions sur ses projets, compétences et expérience."
+    },
+    "guidedActions": {
+      "label": "Options guidées du portfolio",
+      "website": "J'ai besoin d'un site web",
+      "automation": "J'ai besoin d'automatisation",
+      "projects": "Je veux voir les projets",
+      "pricing": "Je veux les tarifs",
+      "contact": "Je veux contacter Yazan"
     },
     "typing": {
       "status": "Reem tape...",

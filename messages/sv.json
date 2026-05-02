@@ -260,8 +260,8 @@
     "chatbot": {
       "title": "AI Chatbot-tjänst",
       "description": "Denna webbplats inkluderar en AI-chatbot för interaktiv assistans och information.",
-      "apiTitle": "Groq API Integration",
-      "apiDescription": "Chatboten drivs av Groq. Genom att använda chatboten accepterar du Groqs användarvillkor och integritetspolicy. Chattförfrågningar bearbetas via Groq API.",
+      "apiTitle": "OpenAI API Integration",
+      "apiDescription": "Chatboten drivs av OpenAI. Genom att använda chatboten accepterar du OpenAIs användarvillkor och integritetspolicy. Chattförfrågningar bearbetas via OpenAI API.",
       "temporaryTitle": "Valfri Datalagring (Med Samtycke)",
       "temporaryDescription": "Med ditt uttryckliga samtycke kan chattkonversationer sparas för kvalitetsförbättring och analysändamål. Detta inkluderar: chattmeddelanden, tidsstämplar, anonymiserad IP-adress och allmän plats (land/stad). Du kan återkalla ditt samtycke när som helst. Utan samtycke förblir all chattdata enbart i din webbläsare."
     },
@@ -387,6 +387,14 @@
     "greeting": {
       "title": "Hej! Jag är Reem 👋",
       "description": "Jag är din AI-assistent, här för att hjälpa dig utforska Yazans portfölj och svara på frågor om hans projekt, färdigheter och erfarenhet."
+    },
+    "guidedActions": {
+      "label": "Guidade portföljval",
+      "website": "Jag behöver en webbplats",
+      "automation": "Jag behöver automatisering",
+      "projects": "Jag vill se projekt",
+      "pricing": "Jag vill se priser",
+      "contact": "Jag vill kontakta Yazan"
     },
     "typing": {
       "status": "Reem skriver...",
