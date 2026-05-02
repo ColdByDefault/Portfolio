@@ -62,7 +62,7 @@ public/assets/              Images, icons, use-case visuals
   agents/                   Custom VS Code Copilot agents
   instructions/             Auto-loaded instructions for .ts/.tsx files
   skills/                   On-demand skills (i18n-checker, portfolio-architecture)
-  workflows/                GitHub Actions (bump-version, codeql, dependency-review)
+  workflows/                GitHub Actions (bump-version, codeql, dependency-review, lighthouse-ci)
   copilot-instructions.md   VS Code Copilot always-on context
   CODEOWNERS                All files owned by @ColdByDefault
 ```
@@ -154,5 +154,6 @@ components/[Feature]/
 | `bump-version.yml`      | push to `main`       | Bumps patch version in `package.json` + `README.md`, tags release |
 | `codeql.yml`            | push / PR / schedule | CodeQL security analysis                                          |
 | `dependency-review.yml` | PR                   | Dependency vulnerability check                                    |
+| `lighthouse-ci.yml`     | push / PR / manual   | Lighthouse CI performance, accessibility, and resource budgets     |
 
 The bump workflow commits with `[skip ci]` to prevent loops.

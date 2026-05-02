@@ -256,6 +256,13 @@ Automated security and quality workflows ensuring code integrity and vulnerabili
 * **Features**: Blocks PRs with vulnerable dependencies, provides detailed security reports in PR comments
 * **Integration**: Automated comments on pull requests with dependency security analysis
 
+**Lighthouse CI Performance Budgets:**
+
+* **Triggers**: Pushes and pull requests to main branch, plus manual dispatch
+* **Purpose**: Fails regressions before deployment when Lighthouse scores, Core Web Vitals lab metrics, or resource budgets cross configured thresholds
+* **Budgets**: Performance score >= 0.80, accessibility score >= 0.95, LCP <= 2.5s, CLS <= 0.1, TBT <= 300ms, script <= 375 KiB, image <= 1,250 KiB, total page weight <= 2,000 KiB
+* **Reports**: Saved as GitHub Actions artifacts from local filesystem output; no public temporary Lighthouse upload required
+
 **Vercel CRON Jobs & Automation:**
 
 * **PageSpeed Data Refresh**: Automated background refresh every 12 hours (`0 */12 * * *`)
