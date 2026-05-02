@@ -1,34 +1,17 @@
 /**
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
+ */
 
 "use client";
 
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-//import { Card, CardContent } from "@/components/ui/card";
 import { Background } from "@/components/visuals/motion-background";
 import type { AboutTranslations } from "@/types/configs/i18n";
 import Image from "next/image";
-//import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-
-// Animation variants
-/* const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-}; */
-
-/* const staggerChildren = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}; */
 
 export default function AboutPage() {
   const t = useTranslations("About");
@@ -93,65 +76,6 @@ export default function AboutPage() {
             </Card>
           </div>
         </section>
-
-        {/* Philosophy Section */}
-        {/* <section className="py-20 px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <Card className="p-10 bg-background/80 backdrop-blur-sm border-border/50 shadow-lg">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={staggerChildren}
-                className="text-center space-y-6"
-              >
-                <Badge variant="outline" className="w-fit mx-auto">
-                  {t("philosophy")}
-                </Badge>
-                <h2 className="text-3xl md:text-4xl font-bold">
-                  {t("myApproach")}
-                </h2>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  {t("sections.philosophy")}
-                </p>
-              </motion.div>
-            </Card>
-          </div>
-        </section>
-
- 
-        <section className="py-20 px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={staggerChildren}
-              className="space-y-12"
-            >
-              <Card className="p-6 bg-background/80 backdrop-blur-sm border-border/50 shadow-lg text-center">
-                <motion.h2
-                  variants={fadeInUp}
-                  className="text-l md:text-xl font-bold"
-                >
-                  {t("whatIDeliver")}
-                </motion.h2>
-              </Card>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {getCurrentFocusItems().map((focus: string, index: number) => (
-                  <Card
-                    key={index}
-                    className="p-6 bg-background/80 backdrop-blur-sm border-border/50 shadow-md hover:shadow-lg transition-shadow"
-                  >
-                    <CardContent className="p-0">
-                      <p className="text-center font-light">{focus}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section> */}
       </div>
     </div>
   );

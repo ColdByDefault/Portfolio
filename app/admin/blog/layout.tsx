@@ -1,6 +1,7 @@
 /**
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
  */
 
 import type { Metadata } from "next";
@@ -8,7 +9,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog Admin - Portfolio",
   description: "Blog management dashboard",
-  robots: "noindex, nofollow", 
+  robots: "noindex, nofollow",
 };
 
 export default function AdminBlogLayout({

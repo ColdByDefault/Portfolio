@@ -1,8 +1,7 @@
 /**
- * Capabilities Section Type Definitions
- * Business-outcome focused capabilities (replaces tech-focused Technologies)
- * @author ColdByDefault
- * @copyright 2025 ColdByDefault. All Rights Reserved.
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
  */
 
 /**

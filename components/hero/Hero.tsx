@@ -1,7 +1,8 @@
 /**
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
+ */
 
 "use client";
 
@@ -16,10 +17,9 @@ function Hero() {
   const light = "from-black/90 to-gray-500";
 
   return (
-    <main
+    <section
       id="home2"
       className="w-full flex items-center justify-center scroll-mt-16"
-      role="main"
       aria-label="Hero section"
     >
       <div className="container px-4 md:px-6">
@@ -85,7 +85,7 @@ function Hero() {
           </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 }
 

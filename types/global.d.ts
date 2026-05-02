@@ -1,10 +1,8 @@
 /**
- * @file /types/global.d.ts
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
- *
- * Global type declarations for CSS imports and other module types
-*/
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
+ */
 
 // CSS module declarations
 declare module "*.css" {

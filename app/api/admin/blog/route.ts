@@ -1,7 +1,7 @@
 /**
- * Blog Admin API Route
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
  */
 
 import type { NextRequest } from "next/server";
@@ -94,16 +94,14 @@ function createAdminContext(request: NextRequest): AdminContext {
   };
 }
 
+function setAdminSessionCookie(response: NextResponse): void {
+  const sessionToken = createAdminSession();
 
-function setAdminSessionCookie(response: NextResponse, clientIP: string): void {
-  // Create cryptographically secure session
-  const sessionId = createAdminSession(clientIP);
-
-  response.cookies.set("PORTFOLIO_ADMIN_SESSION", sessionId, {
+  response.cookies.set("PORTFOLIO_ADMIN_SESSION", sessionToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
-    maxAge: 60 * 60 * 8, 
+    maxAge: 60 * 60 * 8,
     path: "/",
   });
 }
@@ -236,7 +234,7 @@ export async function GET(
 
         // Set session cookie on successful authentication
         if (!request.cookies.get("PORTFOLIO_ADMIN_SESSION")) {
-          setAdminSessionCookie(response, clientIP);
+          setAdminSessionCookie(response);
         }
 
         return response;

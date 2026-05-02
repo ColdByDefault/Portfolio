@@ -1,6 +1,7 @@
 /**
- * @author ColdByDefault
- * @copyright 2026 ColdByDefault. All Rights Reserved.
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
  */
 
 "use client";
@@ -94,7 +95,7 @@ export default function HomeContent() {
       </div>
 
       {/* Main content section */}
-      <div className="relative" id="main-content">
+      <div className="relative" id="home-content">
         {/* Content Container */}
         <div className="relative z-10">
           {/* PageSpeed Insights Section */}

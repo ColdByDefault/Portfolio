@@ -1,7 +1,8 @@
 /**
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
+ */
 
 import { Separator } from "@/components/ui/separator";
 import {
@@ -35,7 +36,6 @@ export default function PortfolioDocumentation() {
             TypeScript, and cloud infrastructure.
           </p>
         </div>
-
 
         {/* Technical Documentation Notice */}
         <div className="mb-16">

@@ -1,7 +1,9 @@
 /**
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
  */
+
 "use client";
 
 import React from "react";
@@ -126,7 +128,7 @@ export default function AdminBlogPage() {
           onDelete={(blogId: string) => void deleteBlog(blogId)}
           onToggleStatus={(
             blogId: string,
-            action: "publish" | "unpublish" | "feature" | "unfeature"
+            action: "publish" | "unpublish" | "feature" | "unfeature",
           ) => void toggleBlogStatus(blogId, action)}
           loading={loading}
         />

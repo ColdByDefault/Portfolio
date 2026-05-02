@@ -1,8 +1,8 @@
 /**
- * Dynamic Robots.txt Generation
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
+ */
 
 import type { MetadataRoute } from "next";
 
@@ -13,7 +13,18 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: ["/", "/about", "/blog", "/library", "/media", "/impressum"],
+        allow: [
+          "/",
+          "/about",
+          "/services",
+          "/projects",
+          "/blog",
+          "/about-portfolio",
+          "/rio-calculator",
+          "/polite-email",
+          "/privacy",
+          "/impressum",
+        ],
         disallow: [
           "/admin/",
           "/api/",

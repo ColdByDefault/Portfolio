@@ -1,7 +1,7 @@
 /**
- * ChatBot API Route with Groq AI Integration
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
  */
 
 import type { NextRequest } from "next/server";

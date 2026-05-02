@@ -1,8 +1,8 @@
 /**
- * Blog Validation Service
- * @author ColdByDefault
- * @copyright  2026 ColdByDefault. All Rights Reserved.
-*/
+ * @author © ColdByDefault
+ * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
+ * @version 6.x.x
+ */
 
 import type { CreateBlogRequest, UpdateBlogRequest } from "@/types/hubs/blogs";
 import { BLOG_CONSTANTS } from "@/types/hubs/blogs";
