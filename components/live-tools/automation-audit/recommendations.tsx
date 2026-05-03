@@ -54,7 +54,7 @@ export function Recommendations({
               className="p-4 rounded-lg border border-border bg-card/60 flex gap-3"
             >
               <Zap
-                className="h-4 w-4 text-primary mt-0.5 flex-shrink-0"
+                className="h-4 w-4 text-primary mt-0.5 shrink-0"
                 aria-hidden="true"
               />
               <div className="space-y-1 min-w-0">

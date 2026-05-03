@@ -61,7 +61,7 @@ export function QuestionStep({
             >
               <span className="flex items-center gap-3">
                 <span
-                  className={`flex-shrink-0 h-4 w-4 rounded-full border-2 transition-colors
+                  className={`shrink-0 h-4 w-4 rounded-full border-2 transition-colors
                     ${isSelected ? "border-primary bg-primary" : "border-muted-foreground"}`}
                   aria-hidden="true"
                 />
