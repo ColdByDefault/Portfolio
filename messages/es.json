@@ -625,5 +625,12 @@
     "essentialOnly": "Solo esenciales",
     "declineAnalytics": "Rechazar análisis",
     "close": "Cerrar"
+  },
+  "GlobalError": {
+    "title": "¡Algo salió mal!",
+    "description": "Se ha producido un error inesperado. Por favor, inténtalo de nuevo o vuelve a la página de inicio.",
+    "tryAgain": "Intentar de nuevo",
+    "goHome": "Ir al inicio",
+    "persist": "Si el problema persiste, ponte en contacto con nuestro equipo de soporte."
   }
 }

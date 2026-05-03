@@ -625,5 +625,12 @@
     "essentialOnly": "Nur essenzielle",
     "declineAnalytics": "Analyse ablehnen",
     "close": "Schließen"
+  },
+  "GlobalError": {
+    "title": "Etwas ist schiefgelaufen!",
+    "description": "Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es erneut oder kehren Sie zur Startseite zurück.",
+    "tryAgain": "Erneut versuchen",
+    "goHome": "Zur Startseite",
+    "persist": "Wenn das Problem weiterhin besteht, wenden Sie sich bitte an unser Support-Team."
   }
 }

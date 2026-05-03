@@ -625,5 +625,12 @@
     "essentialOnly": "Essential Only",
     "declineAnalytics": "Decline Analytics",
     "close": "close"
+  },
+  "GlobalError": {
+    "title": "Something went wrong!",
+    "description": "We encountered an unexpected error. Please try again or return to the home page.",
+    "tryAgain": "Try Again",
+    "goHome": "Go Home",
+    "persist": "If this problem persists, please contact our support team."
   }
 }

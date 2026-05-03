@@ -625,5 +625,12 @@
     "essentialOnly": "Essentiels uniquement",
     "declineAnalytics": "Refuser les analyses",
     "close": "Fermer"
+  },
+  "GlobalError": {
+    "title": "Une erreur s'est produite !",
+    "description": "Nous avons rencontré une erreur inattendue. Veuillez réessayer ou revenir à la page d'accueil.",
+    "tryAgain": "Réessayer",
+    "goHome": "Accueil",
+    "persist": "Si le problème persiste, veuillez contacter notre équipe d'assistance."
   }
 }

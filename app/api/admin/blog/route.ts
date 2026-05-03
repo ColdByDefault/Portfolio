@@ -323,9 +323,10 @@ export async function GET(
     }
   } catch (error) {
     console.error("Blog Admin API error:", error);
-    const errorMessage =
-      error instanceof Error ? error.message : "Internal server error";
-    return NextResponse.json({ error: errorMessage }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
   }
 }
 
@@ -527,8 +528,9 @@ export async function POST(
     }
   } catch (error) {
     console.error("Blog Admin API error:", error);
-    const errorMessage =
-      error instanceof Error ? error.message : "Internal server error";
-    return NextResponse.json({ error: errorMessage }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
   }
 }

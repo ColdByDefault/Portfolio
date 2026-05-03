@@ -625,5 +625,12 @@
     "essentialOnly": "Endast nödvändiga",
     "declineAnalytics": "Avvisa analys",
     "close": "Stäng"
+  },
+  "GlobalError": {
+    "title": "Något gick fel!",
+    "description": "Vi stötte på ett oväntat fel. Försök igen eller gå tillbaka till startsidan.",
+    "tryAgain": "Försök igen",
+    "goHome": "Gå hem",
+    "persist": "Om problemet kvarstår, kontakta vårt supportteam."
   }
 }
