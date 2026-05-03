@@ -22,6 +22,7 @@ export default function robots(): MetadataRoute.Robots {
           "/about-portfolio",
           "/rio-calculator",
           "/polite-email",
+          "/automation-audit",
           "/privacy",
           "/impressum",
         ],

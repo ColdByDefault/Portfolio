@@ -567,6 +567,12 @@
         "description": "Una demo interactiva que usa RAG para analizar correos, ofreciendo opciones de respuesta y reescritura por tono. Ilustra un proceso que funciona de forma totalmente autónoma en producción.",
         "techStack": "React, Groq API, RAG",
         "implementationAreas": "Automatización de correos, NLP, Generación de contenido"
+      },
+      "project-4": {
+        "title": "Auditoría de Preparación para la Automatización con IA",
+        "description": "Responde 8 preguntas sobre tu negocio y recibe una puntuación de preparación personalizada con recomendaciones generadas por IA para los 3 flujos de trabajo que deberías automatizar primero.",
+        "techStack": "Next.js, OpenAI, TypeScript",
+        "implementationAreas": "Automatización de procesos, Generación de leads, Consultoría"
       }
     },
     "comingSoon": "Más casos de uso próximamente..."
@@ -575,6 +581,7 @@
     "rio": {
       "title": "Calculadora de ROI de Automatización",
       "description": "Vea exactamente cuánto dinero le cuestan las tareas manuales a su negocio.",
+      "auditPromo": "¿No sabes qué automatizar primero? Haz la auditoría de preparación gratuita →",
       "inputs": {
         "hoursPerWeek": "Tiempo dedicado a la tarea (Horas/Semana)",
         "hourlyRate": "Coste por hora del empleado",
@@ -589,6 +596,93 @@
         "roiTimelineText": "La automatización se amortiza en solo <bold>{{weeks}} semanas</bold>.",
         "notProfitableTitle": "Aún no es rentable",
         "notProfitableDesc": "Según estos números, el trabajo manual podría ser más barato por ahora a menos que escale."
+      }
+    },
+    "audit": {
+      "title": "Auditoría de Preparación para la Automatización con IA",
+      "description": "Responde 8 preguntas rápidas y recibe una puntuación personalizada con recomendaciones a medida.",
+      "step": "Paso {current} de {total}",
+      "question": "Pregunta",
+      "next": "Siguiente",
+      "back": "Atrás",
+      "submit": "Obtener mi puntuación",
+      "loading": "Analizando tus respuestas...",
+      "scoreLabel": "Tu puntuación de preparación para la automatización",
+      "scoreBucket": {
+        "high": "Alta preparación",
+        "medium": "Buena base",
+        "low": "Fase inicial"
+      },
+      "scoreBucketDesc": {
+        "high": "Hay victorias rápidas disponibles — estás listo para automatizar.",
+        "medium": "Las automatizaciones enfocadas generarán un fuerte ROI para tu negocio.",
+        "low": "Empieza con 1–2 automatizaciones específicas para el mejor impacto inicial."
+      },
+      "topAutomations": "Automatizaciones recomendadas",
+      "timeSaved": "Tiempo ahorrado:",
+      "tool": "Herramienta:",
+      "retake": "Repetir auditoría",
+      "remaining": "{remaining} análisis disponibles hoy",
+      "limitReached": "Has usado todos tus análisis gratuitos por hoy. ¡Vuelve mañana!",
+      "errorGeneric": "Algo salió mal. Por favor, inténtalo de nuevo.",
+      "errorDisabled": "La herramienta de auditoría no está disponible temporalmente.",
+      "questions": {
+        "q1": {
+          "label": "¿Cuántas horas por semana dedica tu equipo a tareas manuales repetitivas?",
+          "a": "Menos de 2 horas",
+          "b": "2–5 horas",
+          "c": "5–10 horas",
+          "d": "Más de 10 horas"
+        },
+        "q2": {
+          "label": "¿Cuál es el tamaño de tu equipo?",
+          "a": "Solo",
+          "b": "2–5 personas",
+          "c": "6–20 personas",
+          "d": "Más de 20 personas"
+        },
+        "q3": {
+          "label": "¿Cuál es tu mayor cuello de botella operativo?",
+          "a": "Entrada de datos e informes",
+          "b": "Correo electrónico y comunicaciones",
+          "c": "Aprobaciones y flujos de trabajo",
+          "d": "Programación y coordinación"
+        },
+        "q4": {
+          "label": "¿Qué herramientas usa actualmente tu equipo?",
+          "a": "Principalmente hojas de cálculo y correo electrónico",
+          "b": "Algunas aplicaciones SaaS",
+          "c": "Múltiples aplicaciones SaaS conectadas",
+          "d": "Ya tenemos algo de automatización"
+        },
+        "q5": {
+          "label": "¿Con qué frecuencia ocurren errores por trabajo manual?",
+          "a": "Raramente",
+          "b": "Ocasionalmente",
+          "c": "Con frecuencia",
+          "d": "Muy a menudo — es un problema real"
+        },
+        "q6": {
+          "label": "¿En qué sector trabajas?",
+          "a": "Consultoría y agencias",
+          "b": "E-commerce y retail",
+          "c": "Tecnología y software",
+          "d": "Otro"
+        },
+        "q7": {
+          "label": "¿Cuál es tu presupuesto mensual para herramientas de automatización?",
+          "a": "Aún no estoy seguro",
+          "b": "Menos de 500 €/mes",
+          "c": "500–2.000 €/mes",
+          "d": "2.000 €+/mes"
+        },
+        "q8": {
+          "label": "¿Cuál es tu objetivo principal con la automatización?",
+          "a": "Ahorrar tiempo",
+          "b": "Reducir errores",
+          "c": "Escalar sin contratar",
+          "d": "Reducir costos operativos"
+        }
       }
     },
     "rewriter": {

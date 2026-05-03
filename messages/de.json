@@ -567,6 +567,12 @@
         "description": "Eine interaktive Demo, die RAG zur E-Mail-Analyse nutzt und verschiedene Antwortoptionen sowie Tonfall-Anpassungen bietet. Veranschaulicht einen Prozess, der in der Praxis vollautomatisch läuft.",
         "techStack": "React, Groq API, RAG",
         "implementationAreas": "E-Mail-Automatisierung, NLP, Inhaltsgenerierung"
+      },
+      "project-4": {
+        "title": "KI-Automatisierungsbereitschafts-Audit",
+        "description": "Beantworte 8 Fragen zu deinem Unternehmen und erhalte einen persönlichen Automatisierungsscore mit KI-generierten Empfehlungen für die 3 wichtigsten Prozesse, die du zuerst automatisieren solltest.",
+        "techStack": "Next.js, OpenAI, TypeScript",
+        "implementationAreas": "Geschäftsprozessautomatisierung, Lead-Generierung, Beratung"
       }
     },
     "comingSoon": "Weitere Anwendungsfälle bald verfügbar..."
@@ -575,6 +581,7 @@
     "rio": {
       "title": "ROI-Rechner für Automatisierung",
       "description": "Sehen Sie genau, wie viel Geld manuelle Aufgaben Ihr Unternehmen kosten.",
+      "auditPromo": "Unsicher, was du zuerst automatisieren sollst? Mach den kostenlosen Automatisierungs-Audit →",
       "inputs": {
         "hoursPerWeek": "Zeitaufwand für Aufgabe (Stunden/Woche)",
         "hourlyRate": "Stundensatz des Mitarbeiters",
@@ -589,6 +596,93 @@
         "roiTimelineText": "Die Automatisierung amortisiert sich in nur <bold>{{weeks}} Wochen</bold>.",
         "notProfitableTitle": "Noch nicht profitabel",
         "notProfitableDesc": "Basierend auf diesen Zahlen ist manuelle Arbeit vorerst günstiger, es sei denn, Sie skalieren."
+      }
+    },
+    "audit": {
+      "title": "KI-Automatisierungsbereitschafts-Audit",
+      "description": "Beantworte 8 kurze Fragen und erhalte deinen persönlichen Automatisierungsscore mit maßgeschneiderten Empfehlungen.",
+      "step": "Schritt {current} von {total}",
+      "question": "Frage",
+      "next": "Weiter",
+      "back": "Zurück",
+      "submit": "Meinen Score erhalten",
+      "loading": "Deine Antworten werden analysiert...",
+      "scoreLabel": "Dein Automatisierungsbereitschafts-Score",
+      "scoreBucket": {
+        "high": "Hohe Bereitschaft",
+        "medium": "Gute Grundlage",
+        "low": "Frühe Phase"
+      },
+      "scoreBucketDesc": {
+        "high": "Schnelle Gewinne sind möglich — du bist bereit für Automatisierung.",
+        "medium": "Gezielte Automatisierungen liefern einen starken ROI für dein Unternehmen.",
+        "low": "Starte mit 1–2 gezielten Automatisierungen für den besten Anfangseffekt."
+      },
+      "topAutomations": "Empfohlene Automatisierungen",
+      "timeSaved": "Gesparte Zeit:",
+      "tool": "Tool:",
+      "retake": "Audit wiederholen",
+      "remaining": "{remaining} Analysen heute noch verfügbar",
+      "limitReached": "Du hast alle kostenlosen Analysen für heute aufgebraucht. Komm morgen wieder!",
+      "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+      "errorDisabled": "Das Audit-Tool ist vorübergehend nicht verfügbar.",
+      "questions": {
+        "q1": {
+          "label": "Wie viele Stunden pro Woche verbringt dein Team mit sich wiederholenden manuellen Aufgaben?",
+          "a": "Weniger als 2 Stunden",
+          "b": "2–5 Stunden",
+          "c": "5–10 Stunden",
+          "d": "Mehr als 10 Stunden"
+        },
+        "q2": {
+          "label": "Wie groß ist dein Team?",
+          "a": "Solo",
+          "b": "2–5 Personen",
+          "c": "6–20 Personen",
+          "d": "Mehr als 20 Personen"
+        },
+        "q3": {
+          "label": "Was ist dein größter operativer Engpass?",
+          "a": "Dateneingabe & Berichterstattung",
+          "b": "E-Mail & Kommunikation",
+          "c": "Genehmigungen & Workflows",
+          "d": "Terminplanung & Koordination"
+        },
+        "q4": {
+          "label": "Welche Tools nutzt dein Team aktuell?",
+          "a": "Hauptsächlich Tabellenkalkulationen & E-Mail",
+          "b": "Einige SaaS-Apps",
+          "c": "Mehrere verbundene SaaS-Apps",
+          "d": "Wir haben bereits etwas Automatisierung"
+        },
+        "q5": {
+          "label": "Wie häufig treten Fehler durch manuelle Arbeit auf?",
+          "a": "Selten",
+          "b": "Gelegentlich",
+          "c": "Häufig",
+          "d": "Sehr oft — es ist ein echtes Problem"
+        },
+        "q6": {
+          "label": "In welcher Branche bist du tätig?",
+          "a": "Beratung & Agenturen",
+          "b": "E-Commerce & Einzelhandel",
+          "c": "Tech & Software",
+          "d": "Andere"
+        },
+        "q7": {
+          "label": "Wie hoch ist dein monatliches Budget für Automatisierungs-Tools?",
+          "a": "Noch nicht sicher",
+          "b": "Unter 500 €/Monat",
+          "c": "500–2.000 €/Monat",
+          "d": "2.000 €+/Monat"
+        },
+        "q8": {
+          "label": "Was ist dein primäres Ziel mit Automatisierung?",
+          "a": "Zeit sparen",
+          "b": "Fehler reduzieren",
+          "c": "Skalieren ohne Einstellungen",
+          "d": "Betriebskosten senken"
+        }
       }
     },
     "rewriter": {

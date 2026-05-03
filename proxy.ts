@@ -238,6 +238,7 @@ export function proxy(request: NextRequest) {
     "/projects",
     "/rio-calculator",
     "/polite-email",
+    "/automation-audit",
     "/blog",
     "/library",
     "/media",

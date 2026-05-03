@@ -5,8 +5,27 @@
  */
 
 import type { UseCaseProject } from "@/types/hubs/use-cases";
+import { Bot, Mic, Mail } from "lucide-react";
 
 export const useCaseProjects: UseCaseProject[] = [
+  {
+    id: "project-4",
+    titleKey: "Usecases.projects.project-4.title",
+    descriptionKey: "Usecases.projects.project-4.description",
+    screenshots: [
+      "/assets/use-cases/use-case4-1.png",
+      "/assets/use-cases/use-case4-2.png",
+    ],
+    techStack: [
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "OpenAI" },
+    ],
+    demoLink: "https://coldbydefault.com/automation-audit",
+    githubLink: "",
+    implementationAreasKey: "Usecases.projects.project-4.implementationAreas",
+    icon: Bot,
+  },
   {
     id: "project-1",
     titleKey: "Usecases.projects.project-1.title",
@@ -26,6 +45,7 @@ export const useCaseProjects: UseCaseProject[] = [
     demoLink: "",
     githubLink: "https://github.com/ColdByDefault/meeting-intelligence",
     implementationAreasKey: "Usecases.projects.project-1.implementationAreas",
+    icon: Mic,
   },
   {
     id: "project-3",
@@ -44,5 +64,6 @@ export const useCaseProjects: UseCaseProject[] = [
     demoLink: "https://coldbydefault.com/polite-email",
     githubLink: "",
     implementationAreasKey: "Usecases.projects.project-3.implementationAreas",
+    icon: Mail,
   },
 ];
