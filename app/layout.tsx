@@ -32,6 +32,7 @@ import { Urbanist } from "next/font/google";
 import { ThemeConfigInitializer } from "@/components/theme/theme-config-initializer";
 import { ViewportRenderer } from "@/components/theme/viewport-renderer";
 import Link from "next/link";
+import { MotionProvider } from "@/components/visuals/MotionProvider";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -199,18 +200,20 @@ export default async function RootLayout({
             disableTransitionOnChange
             scriptProps={{ type: "application/json" }}
           >
-            <Navbar />
-            <main className="flex-1" id="main-content">
-              {children}
-            </main>
-            <Footer />
-            <CookiesBanner />
-            <LocaleAutoDetect />
-            <NoSSR>
-              <ChatBot position="bottom-left" />
-            </NoSSR>
-            <ThemeConfigInitializer />
-            <ViewportRenderer />
+            <MotionProvider>
+              <Navbar />
+              <main className="flex-1" id="main-content">
+                {children}
+              </main>
+              <Footer />
+              <CookiesBanner />
+              <LocaleAutoDetect />
+              <NoSSR>
+                <ChatBot position="bottom-left" />
+              </NoSSR>
+              <ThemeConfigInitializer />
+              <ViewportRenderer />
+            </MotionProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
         <Analytics />

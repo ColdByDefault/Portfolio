@@ -4,6 +4,8 @@
  * @version 6.x.x
  */
 
+"use client";
+
 import { useState, useEffect, useCallback, useRef } from "react";
 import { projects, projectCategories } from "@/data/hubs/projectsData";
 import type {

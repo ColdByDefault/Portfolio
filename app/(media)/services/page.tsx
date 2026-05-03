@@ -6,18 +6,18 @@
 
 "use client";
 
+import dynamic from "next/dynamic";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { CTAButton } from "@/components/ui/cta-button";
 import { PackageCard } from "@/components/services";
-import { Background } from "@/components/visuals/motion-background";
 import {
   servicePackages,
   processSteps,
   trustSignals,
 } from "@/data/hubs/servicesData";
 import type { ProcessStep, TrustSignal } from "@/types/hubs/services";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   MessageSquare,
   Target,
@@ -29,6 +29,14 @@ import {
   Plug,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
+
+const Background = dynamic(
+  () =>
+    import("@/components/visuals/motion-background").then((mod) => ({
+      default: mod.Background,
+    })),
+  { loading: () => null, ssr: false },
+);
 
 // Icon mapping for dynamic rendering
 const iconMap: Record<string, React.ElementType> = {
@@ -42,16 +50,15 @@ const iconMap: Record<string, React.ElementType> = {
   Plug,
 };
 
-// Animation variants
+// Animation variants — no opacity in hidden so LCP element is never invisible
 const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
 const staggerChildren = {
-  hidden: { opacity: 0 },
+  hidden: {},
   visible: {
-    opacity: 1,
     transition: {
       staggerChildren: 0.1,
     },
@@ -73,7 +80,7 @@ function ProcessStepCard({
   const IconComponent = iconMap[step.icon];
 
   return (
-    <motion.div variants={fadeInUp} className="relative w-full max-w-xl">
+    <m.div variants={fadeInUp} className="relative w-full max-w-xl">
       <div className="flex items-start gap-4">
         <div className="flex flex-col items-center shrink-0">
           <div className="flex items-center justify-center w-12 h-12 rounded-full bg-sky-500/10 text-sky-500 font-bold text-lg">
@@ -95,13 +102,14 @@ function ProcessStepCard({
           </p>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
 /**
  * Trust Signal Card Component
  */
+
 function TrustCard({
   signal,
   t,
@@ -112,7 +120,7 @@ function TrustCard({
   const IconComponent = iconMap[signal.icon];
 
   return (
-    <motion.div variants={fadeInUp}>
+    <m.div variants={fadeInUp}>
       <Card className="h-full hover:border-muted-foreground/30 transition-colors bg-background/80 backdrop-blur-sm border-border/50">
         <CardContent className="pt-6">
           <div className="flex items-start gap-4">
@@ -130,7 +138,7 @@ function TrustCard({
           </div>
         </CardContent>
       </Card>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -147,36 +155,37 @@ export default function ServicesPage() {
         {/* Hero Section */}
         <section className="pt-32 pb-16 px-4 lg:px-8">
           <div className="max-w-6xl mx-auto text-center">
-            <motion.div
+            <m.div
               initial="hidden"
               animate="visible"
               variants={staggerChildren}
               className="space-y-6"
             >
-              <motion.div variants={fadeInUp}>
+              <m.div variants={fadeInUp}>
                 <Badge variant="outline" className="mb-4">
                   Services
                 </Badge>
-              </motion.div>
-              <motion.h1
+              </m.div>
+              <m.h1
                 variants={fadeInUp}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold"
               >
                 {t("hero.title")}
-              </motion.h1>
-              <motion.div variants={fadeInUp}>
+              </m.h1>
+              <m.div variants={fadeInUp}>
                 <p className="text-l text-black dark:text-muted-foreground max-w-3xl mx-auto bg-background/70 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
                   {t("hero.subtitle")}
                 </p>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           </div>
         </section>
 
         {/* Packages Section - ON TOP as per user requirement */}
         <section className="py-16 px-4 lg:px-8">
           <div className="max-w-8xl mx-auto">
-            <motion.div
+            <h2 className="sr-only">{t("packages.title")}</h2>
+            <m.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -186,27 +195,27 @@ export default function ServicesPage() {
               {servicePackages.map((pkg) => (
                 <PackageCard key={pkg.id} pkg={pkg} />
               ))}
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
         {/* Process Section */}
         <section className="py-16 px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <motion.div
+            <m.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerChildren}
             >
-              <motion.div variants={fadeInUp} className="text-center mb-12">
+              <m.div variants={fadeInUp} className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   {t("process.title")}
                 </h2>
                 <p className="text-l text-black dark:text-muted-foreground max-w-2xl mx-auto bg-background/70 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
                   {t("process.subtitle")}
                 </p>
-              </motion.div>
+              </m.div>
               <Card className="p-6 md:p-8 bg-background/80 backdrop-blur-sm border-border/50 shadow-lg">
                 <div className="flex flex-col items-center space-y-2">
                   {processSteps.map((step, index) => (
@@ -219,40 +228,40 @@ export default function ServicesPage() {
                   ))}
                 </div>
               </Card>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
         {/* Trust Signals Section */}
         <section className="py-16 px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <motion.div
+            <m.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerChildren}
             >
-              <motion.div variants={fadeInUp} className="text-center mb-12">
+              <m.div variants={fadeInUp} className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   {t("trust.title")}
                 </h2>
                 <p className="text-l text-black dark:text-muted-foreground max-w-2xl mx-auto bg-background/70 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
                   {t("trust.subtitle")}
                 </p>
-              </motion.div>
+              </m.div>
               <div className="grid md:grid-cols-2 gap-4">
                 {trustSignals.map((signal) => (
                   <TrustCard key={signal.id} signal={signal} t={t} />
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
         {/* Final CTA Section */}
         <section className="py-20 px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <motion.div
+            <m.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -260,28 +269,28 @@ export default function ServicesPage() {
             >
               <Card className="bg-background/80 backdrop-blur-sm border-border/50 shadow-lg">
                 <CardContent className="py-12 text-center space-y-6">
-                  <motion.h2
+                  <m.h2
                     variants={fadeInUp}
                     className="text-3xl md:text-4xl font-bold"
                   >
                     {t("cta.title")}
-                  </motion.h2>
-                  <motion.p
+                  </m.h2>
+                  <m.p
                     variants={fadeInUp}
                     className="text-muted-foreground max-w-xl mx-auto"
                   >
                     {t("cta.subtitle")}
-                  </motion.p>
-                  <motion.div variants={fadeInUp}>
+                  </m.p>
+                  <m.div variants={fadeInUp}>
                     <CTAButton
                       label={t("cta.button")}
                       size="lg"
-                      className="bg-sky-600 hover:bg-sky-700"
+                      className="bg-sky-600 hover:bg-sky-700 text-white"
                     />
-                  </motion.div>
+                  </m.div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </m.div>
           </div>
         </section>
       </div>

@@ -22,7 +22,7 @@ export default function Footer() {
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
           <div className="space-y-3">
-            <h3 className="text-xs font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
+            <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
               Navigation
             </h3>
             <div className="grid grid-cols-1 gap-4">
@@ -38,7 +38,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="space-y-3">
-            <h3 className="text-xs font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
+            <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
               For Developers
             </h3>
             <ul className="space-y-2">
@@ -50,7 +50,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="space-y-3">
-            <h3 className="text-xs font-semibold text-prime dark:text-gray-600 uppercase tracking-wider">
+            <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
               Legal
             </h3>
             <ul className="space-y-2">
@@ -66,9 +66,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0 gap-4">
             {/* Powered By Section */}
             <div className="flex items-center gap-4 sm:flex-1 justify-center sm:justify-start">
-              <span className="text-xs text-gray-400 dark:text-gray-500">
-                Powered by
-              </span>
+              <span className="text-xs text-muted-foreground">Powered by</span>
               <div className="flex items-center gap-3">
                 <Link
                   href="https://vercel.com"
@@ -84,19 +82,18 @@ export default function Footer() {
                   href="https://neon.tech"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 opacity-60 hover:opacity-100 transition-opacity"
-                  aria-label="Neon Database"
+                  className="flex items-center gap-1 text-gray-400 hover:text-[#00E599] transition-colors"
+                  aria-label="Neon"
                 >
                   <Image
                     src="/assets/icons/neon.png"
-                    alt="Neon"
+                    alt=""
                     width={16}
                     height={16}
                     className="h-4 w-4"
+                    aria-hidden="true"
                   />
-                  <span className="text-xs font-medium text-gray-400 hover:text-[#00E599]">
-                    Neon
-                  </span>
+                  <span className="text-xs font-medium">Neon</span>
                 </Link>
               </div>
             </div>

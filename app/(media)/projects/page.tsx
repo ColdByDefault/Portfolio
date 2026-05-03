@@ -4,7 +4,6 @@
  * @version 6.x.x
  */
 
-"use client";
 import { ProjectsShowcase } from "@/components/projects";
 
 export default function LibraryPage() {

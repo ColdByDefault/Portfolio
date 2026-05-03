@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { FaStar } from "react-icons/fa";
 import { GoRepoForked } from "react-icons/go";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -49,7 +49,7 @@ export default function GitHubRepositories({
     const now = new Date();
     const date = new Date(dateString);
     const diffInHours = Math.floor(
-      (now.getTime() - date.getTime()) / (1000 * 60 * 60)
+      (now.getTime() - date.getTime()) / (1000 * 60 * 60),
     );
 
     if (diffInHours < 1) return "Just now";
@@ -84,7 +84,7 @@ export default function GitHubRepositories({
           )}
         </div>
       </div>
-      <motion.div
+      <m.div
         initial={false}
         animate={{
           height: isExpanded ? "auto" : 0,
@@ -97,7 +97,7 @@ export default function GitHubRepositories({
           {repositories.slice(0, 3).map((repo, index) => {
             const isHovered = hoveredRepo === repo.name;
             return (
-              <motion.div
+              <m.div
                 key={repo.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -178,11 +178,11 @@ export default function GitHubRepositories({
                     style={getOverlayStyles(isHovered)}
                   />
                 </Card>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>
-      </motion.div>
+      </m.div>
     </div>
   );
 }

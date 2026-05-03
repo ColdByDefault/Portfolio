@@ -7,7 +7,7 @@
 import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { generateMediaSectionSEO } from "@/lib/configs/seo";
-import { Background } from "@/components/visuals";
+import { ClientBackground } from "@/components/visuals";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -23,7 +23,7 @@ export default function MediaGroupLayout({
   return (
     <div className="min-h-screen">
       {children}
-      <Background />
+      <ClientBackground />
     </div>
   );
 }

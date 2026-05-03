@@ -6,7 +6,15 @@
 
 "use client";
 
-import { Background } from "@/components/visuals";
+import dynamic from "next/dynamic";
+
+const Background = dynamic(
+  () =>
+    import("@/components/visuals/motion-background").then((mod) => ({
+      default: mod.Background,
+    })),
+  { loading: () => null, ssr: false },
+);
 
 export default function ClientBackground() {
   return <Background />;

@@ -8,7 +8,7 @@
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import type { ServicePackage } from "@/types/hubs/services";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Rocket, Cog, Brain, Check, Clock } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -39,7 +39,7 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
   const IconComponent = iconMap[pkg.icon];
 
   return (
-    <motion.div variants={fadeInUp} className="w-full max-w-sm">
+    <m.div variants={fadeInUp} className="w-full max-w-sm">
       <Card className="h-full relative overflow-hidden transition-all duration-300 hover:shadow-lg bg-background/80 backdrop-blur-sm border-border/50 hover:border-muted-foreground/30">
         <CardHeader className="space-y-4">
           <div className="flex items-center gap-3">
@@ -95,6 +95,6 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
           )}
         </CardContent>
       </Card>
-    </motion.div>
+    </m.div>
   );
 }
