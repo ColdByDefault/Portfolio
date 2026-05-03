@@ -78,8 +78,8 @@ const LocaleAutoDetect = () => {
   // Step 1: Fix locale if needed (runs once, survives refresh)
   useEffect(() => {
     if (!isClient) return;
-    // If we already fixed + showed, skip
-    if (sessionStorage.getItem("locale-detection-done") === "true") return;
+    // If we already fixed + showed in any tab/session, skip
+    if (localStorage.getItem("locale-detection-done") === "true") return;
 
     const browserLangCookie = getCookie("PORTFOLIOVERSIONLATEST_BROWSER_LANG");
     const currentLocale =
@@ -141,7 +141,7 @@ const LocaleAutoDetect = () => {
   // Step 2: Show toast (reads stored result, works after refresh too)
   useEffect(() => {
     if (!isClient) return;
-    if (sessionStorage.getItem("locale-detection-done") === "true") return;
+    if (localStorage.getItem("locale-detection-done") === "true") return;
 
     const stored = sessionStorage.getItem("locale-detection-result");
     if (!stored) return;
@@ -152,20 +152,43 @@ const LocaleAutoDetect = () => {
         setToastData(data);
         setShowToast(true);
         setExiting(false);
-        sessionStorage.setItem("locale-detection-done", "true");
+        localStorage.setItem("locale-detection-done", "true");
       } catch {
         // Invalid JSON, skip
       }
     }, TOAST_DELAY);
 
-    return () => clearTimeout(timer);
+    // Hide toast if another tab already dismissed it
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === "locale-detection-done" && e.newValue === "true") {
+        clearTimeout(timer);
+      }
+    };
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, [isClient]);
 
-  // Step 3: Auto-dismiss after 7 seconds
+  // Step 3: Auto-dismiss after 7 seconds + cross-tab dismiss
   useEffect(() => {
     if (!showToast || exiting) return;
     const autoDismiss = setTimeout(() => dismiss(), 7000);
-    return () => clearTimeout(autoDismiss);
+
+    // Dismiss in this tab when another tab sets the flag
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === "locale-detection-done" && e.newValue === "true") {
+        dismiss();
+      }
+    };
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      clearTimeout(autoDismiss);
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, [showToast, exiting, dismiss]);
 
   if (!showToast) return null;
