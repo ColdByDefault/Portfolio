@@ -30,8 +30,8 @@ import {
 import { prisma } from "@/lib/configs/prisma";
 
 // Environment configuration with validation
-const GROQ_API_KEY = process.env.GROQ_API_KEY;
-const GROQ_MODEL = process.env.GROQ_MODEL || "openai/gpt-oss-120b";
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const OPENAI_CHAT_MODEL = process.env.OPENAI_CHAT_MODEL;
 const CHATBOT_ENABLED = process.env.CHATBOT_ENABLED === "true";
 
 const chatbotConfig: ChatBotConfig = {
@@ -185,62 +185,105 @@ function cleanupRateLimits(): void {
   }
 }
 
-// Groq API primary implementation
-async function callGroqAPI(
+interface OpenAIResponseContent {
+  type?: string;
+  text?: string;
+}
+
+interface OpenAIResponseOutput {
+  type?: string;
+  role?: string;
+  content?: OpenAIResponseContent[];
+}
+
+interface OpenAIResponsePayload {
+  output_text?: string;
+  output?: OpenAIResponseOutput[];
+  error?: {
+    message?: string;
+  };
+}
+
+function extractOpenAIResponseText(data: OpenAIResponsePayload): string | null {
+  if (typeof data.output_text === "string" && data.output_text.trim()) {
+    return data.output_text.trim();
+  }
+
+  const outputText = data.output
+    ?.flatMap((item) => item.content ?? [])
+    .filter((content) => content.type === "output_text")
+    .map((content) => content.text)
+    .filter((text): text is string => typeof text === "string")
+    .join("\n")
+    .trim();
+
+  return outputText || null;
+}
+
+// OpenAI Responses API implementation
+async function callOpenAIAPI(
   messages: ChatMessage[],
   systemPrompt: string,
 ): Promise<string> {
-  if (!GROQ_API_KEY) {
-    throw new Error("Groq API key not configured");
+  if (!OPENAI_API_KEY) {
+    throw new Error("OpenAI API key not configured");
   }
 
-  const groqMessages = [
-    { role: "system" as const, content: systemPrompt },
-    ...messages
-      .filter((msg) => msg.role !== "system")
-      .map((msg) => ({
-        role: msg.role as "user" | "assistant",
-        content: msg.content,
-      })),
-  ];
+  if (!OPENAI_CHAT_MODEL) {
+    throw new Error("OpenAI chat model not configured");
+  }
 
-  const response = await fetch(
-    "https://api.groq.com/openai/v1/chat/completions",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${GROQ_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: GROQ_MODEL,
-        messages: groqMessages,
-        temperature: 0.7,
-        max_tokens: 1024,
-      }),
+  const openAIMessages = messages
+    .filter((msg) => msg.role !== "system")
+    .map((msg) => ({
+      role: msg.role as "user" | "assistant",
+      content: msg.content,
+    }));
+
+  const response = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${OPENAI_API_KEY}`,
     },
-  );
+    body: JSON.stringify({
+      model: OPENAI_CHAT_MODEL,
+      instructions: systemPrompt,
+      input: openAIMessages,
+      max_output_tokens: 1024,
+      store: false,
+      text: {
+        format: {
+          type: "text",
+        },
+      },
+    }),
+  });
 
   if (!response.ok) {
-    const errorData = (await response.json().catch(() => ({}))) as {
-      error?: { message?: string };
-    };
+    const errorData = (await response
+      .json()
+      .catch(() => ({}))) as OpenAIResponsePayload;
+    const message = errorData.error?.message || "Unknown error";
+
+    if (response.status === 429) {
+      const retryAfter = response.headers.get("retry-after") || "60";
+      throw new Error(`QUOTA_EXCEEDED:${retryAfter}:${message}`);
+    }
+
     throw new Error(
-      `Groq API error: ${response.status} - ${
-        errorData.error?.message || "Unknown error"
-      }`,
+      `OpenAI API error: ${response.status} - ${message}`,
     );
   }
 
-  const data = (await response.json()) as {
-    choices?: Array<{ message?: { content?: string } }>;
-  };
+  const data = (await response.json()) as OpenAIResponsePayload;
+  const responseText = extractOpenAIResponseText(data);
 
-  if (!data.choices?.[0]?.message?.content) {
-    throw new Error("Invalid response from Groq API");
+  if (!responseText) {
+    throw new Error("Invalid response from OpenAI API");
   }
 
-  return data.choices[0].message.content;
+  return responseText;
 }
 
 /**
@@ -435,11 +478,11 @@ export async function POST(
     // Modify system prompt for first message to include greeting instruction
     let systemPrompt = chatbotConfig.systemPrompt;
     if (isFirstMessage) {
-      systemPrompt += `\n\nIMPORTANT: This is the user's FIRST message in this conversation. You MUST start your response with a casual greeting like "What's up!" or "Hola!" or "How you doing!" followed by a brief introduction about yourself and what you can help with.`;
+      systemPrompt += `\n\nIMPORTANT: This is the user's first message in this conversation. Start warmly and briefly introduce yourself only if it helps. If the user picked a guided starter like website, automation, projects, pricing, or contact, route them directly and include the most relevant source links.`;
     }
 
-    // Call Groq AI
-    const aiResponse = await callGroqAPI(sessionMessages, systemPrompt);
+    // Call OpenAI
+    const aiResponse = await callOpenAIAPI(sessionMessages, systemPrompt);
 
     // Create assistant message
     const assistantMessage: ChatMessage = {

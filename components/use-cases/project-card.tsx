@@ -32,7 +32,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Card className="flex flex-col h-full bg-background/80 backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="text-balance">{t(project.titleKey)}</CardTitle>
+        <CardTitle className="flex items-center gap-2 text-balance">
+          {project.icon && (
+            <project.icon className="h-5 w-5 shrink-0 text-primary" />
+          )}
+          {t(project.titleKey)}
+        </CardTitle>
         <CardDescription className="text-pretty">
           {t(project.descriptionKey)}
         </CardDescription>

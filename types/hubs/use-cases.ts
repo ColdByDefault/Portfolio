@@ -4,6 +4,8 @@
  * @version 6.x.x
  */
 
+import type { ElementType } from "react";
+
 export interface TechStack {
   name: string;
 }
@@ -17,4 +19,5 @@ export interface UseCaseProject {
   demoLink?: string;
   githubLink?: string;
   implementationAreasKey: string;
+  icon?: ElementType<{ className?: string }>;
 }

@@ -6,7 +6,7 @@
 
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
@@ -34,9 +34,9 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
       aria-labelledby="projects-heading"
     >
       <Card className="max-w-7xl mx-auto border-0! bg-transparent dark:bg-transparent shadow-none">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        <m.div
+          initial={{ y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { y: 30 }}
           transition={{ duration: 0.6 }}
         >
           <CardTitle
@@ -47,7 +47,7 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
           >
             {t("title")}
           </CardTitle>
-        </motion.div>
+        </m.div>
 
         {/* Category Filter */}
         <ProjectsFilter
@@ -58,7 +58,7 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
         />
 
         {/* Projects Grid */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -67,17 +67,17 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
           {filteredProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
-        </motion.div>
+        </m.div>
 
         {/* Empty State */}
         {filteredProjects.length === 0 && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-center py-12"
           >
             <p className="text-muted-foreground">{t("noProjectsFound")}</p>
-          </motion.div>
+          </m.div>
         )}
       </Card>
     </section>

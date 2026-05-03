@@ -7,6 +7,8 @@
 import { BlogPageClient } from "@/components/blog";
 import { getBlogs } from "@/lib/hubs/blogs";
 
+export const revalidate = 60;
+
 export default async function BlogsPage() {
   let blogs: Awaited<ReturnType<typeof getBlogs>>["blogs"] = [];
 

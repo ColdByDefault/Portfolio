@@ -12,6 +12,7 @@ import { calculateROI, formatCurrency } from "@/components/live-tools/rio";
 import { CTAButton } from "@/components/ui/cta-button";
 import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/card";
+import Link from "next/link";
 
 const ROICalculator: React.FC = () => {
   const tt = useTranslations("Services");
@@ -189,6 +190,16 @@ const ROICalculator: React.FC = () => {
             )}
           </div>
         </div>
+      </div>
+
+      {/* Cross-link to Automation Audit */}
+      <div className="px-8 pb-6 pt-0 border-t border-border mt-2">
+        <Link
+          href="/automation-audit"
+          className="block text-center text-xs text-muted-foreground hover:text-primary transition-colors py-3"
+        >
+          {t("auditPromo")}
+        </Link>
       </div>
     </Card>
   );

@@ -6,7 +6,7 @@
 
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import {
   Card,
@@ -54,10 +54,10 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
   const onMouseLeave = () => setIsHovered(false);
 
   return (
-    <motion.div
+    <m.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      initial={{ y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { y: 50 }}
       className="group w-full h-full"
     >
       <Card
@@ -229,6 +229,6 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
           style={getOverlayStyles(isHovered)}
         />
       </Card>
-    </motion.div>
+    </m.div>
   );
 }

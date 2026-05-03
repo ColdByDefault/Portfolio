@@ -117,7 +117,7 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                   aria-label="Visit Büttleborn city website"
                 >
                   buettelborn.de
-                  <FiExternalLink className="w-3.5 h-3.5" />
+                  <FiExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
                 </Link>
               </div>
             </div>
@@ -154,7 +154,10 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
             <div className="pl-4 border-l-2 border-foreground/20 group-hover:border-foreground/60 transition-colors duration-300 p-5 flex flex-col flex-1">
               {/* Number + category */}
               <div className="flex items-center justify-between mb-3">
-                <span className="text-3xl font-bold text-foreground/8 select-none leading-none">
+                <span
+                  className="text-3xl font-bold text-foreground/45 select-none leading-none"
+                  aria-hidden="true"
+                >
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div className="flex items-center gap-2">
@@ -209,7 +212,7 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                     aria-label={`${project.title} GitHub`}
                     className="text-muted-foreground hover:text-foreground transition-colors duration-200"
                   >
-                    <FiGithub className="w-4 h-4" />
+                    <FiGithub className="w-4 h-4" aria-hidden="true" />
                   </Link>
                 )}
                 {project.liveUrl && (
@@ -220,7 +223,7 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                     aria-label={`${project.title} live demo`}
                     className="text-muted-foreground hover:text-foreground transition-colors duration-200"
                   >
-                    <FiExternalLink className="w-4 h-4" />
+                    <FiExternalLink className="w-4 h-4" aria-hidden="true" />
                   </Link>
                 )}
                 {project.npmUrl && (
@@ -231,7 +234,7 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                     aria-label={`${project.title} npm`}
                     className="text-muted-foreground hover:text-foreground transition-colors duration-200"
                   >
-                    <SiNpm className="w-4 h-4" />
+                    <SiNpm className="w-4 h-4" aria-hidden="true" />
                   </Link>
                 )}
               </div>
@@ -247,7 +250,7 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 border border-border/50 hover:border-muted-foreground/50 rounded-lg px-5 py-2.5"
         >
           {t("viewAllProjects")}
-          <FiExternalLink className="w-3.5 h-3.5" />
+          <FiExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
         </Link>
       </div>
     </section>

@@ -32,18 +32,28 @@ export function CookiesBanner() {
   useEffect(() => {
     if (!mounted) return;
 
-    // Check if user has already made a choice about cookies
+    // If this tab already has a stored decision, never show the banner
     const cookieConsent = localStorage.getItem("cookie-consent");
-    if (!cookieConsent) {
-      // Show banner after a short delay for better UX
-      const timer = setTimeout(() => {
-        setIsVisible(true);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
+    if (cookieConsent) return undefined;
 
-    // Explicitly return undefined when no cleanup is needed
-    return undefined;
+    // Show banner after a short delay for better UX
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 3000);
+
+    // Listen for decisions made in other tabs so they all hide simultaneously
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === "cookie-consent" && e.newValue) {
+        clearTimeout(timer);
+        setIsVisible(false);
+      }
+    };
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, [mounted]);
 
   const handleAccept = () => {

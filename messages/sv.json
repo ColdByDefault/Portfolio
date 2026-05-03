@@ -260,8 +260,8 @@
     "chatbot": {
       "title": "AI Chatbot-tjänst",
       "description": "Denna webbplats inkluderar en AI-chatbot för interaktiv assistans och information.",
-      "apiTitle": "Groq API Integration",
-      "apiDescription": "Chatboten drivs av Groq. Genom att använda chatboten accepterar du Groqs användarvillkor och integritetspolicy. Chattförfrågningar bearbetas via Groq API.",
+      "apiTitle": "OpenAI API Integration",
+      "apiDescription": "Chatboten drivs av OpenAI. Genom att använda chatboten accepterar du OpenAIs användarvillkor och integritetspolicy. Chattförfrågningar bearbetas via OpenAI API.",
       "temporaryTitle": "Valfri Datalagring (Med Samtycke)",
       "temporaryDescription": "Med ditt uttryckliga samtycke kan chattkonversationer sparas för kvalitetsförbättring och analysändamål. Detta inkluderar: chattmeddelanden, tidsstämplar, anonymiserad IP-adress och allmän plats (land/stad). Du kan återkalla ditt samtycke när som helst. Utan samtycke förblir all chattdata enbart i din webbläsare."
     },
@@ -388,6 +388,14 @@
       "title": "Hej! Jag är Reem 👋",
       "description": "Jag är din AI-assistent, här för att hjälpa dig utforska Yazans portfölj och svara på frågor om hans projekt, färdigheter och erfarenhet."
     },
+    "guidedActions": {
+      "label": "Guidade portföljval",
+      "website": "Jag behöver en webbplats",
+      "automation": "Jag behöver automatisering",
+      "projects": "Jag vill se projekt",
+      "pricing": "Jag vill se priser",
+      "contact": "Jag vill kontakta Yazan"
+    },
     "typing": {
       "status": "Reem skriver...",
       "thinking": "Tänker",
@@ -423,6 +431,7 @@
       "subtitle": "Från idé till lansering — webbappar, automatisering och AI-lösningar för verklig affärsnytta."
     },
     "packages": {
+      "title": "Tjänstepaket",
       "cta": "Boka ett gratis samtal",
       "mvp": {
         "name": "MVP-lansering",
@@ -558,6 +567,12 @@
         "description": "En interaktiv demo som använder RAG för e-postanalys, med svarsalternativ och omskrivning baserad på tonläge. Visar en process som i produktion körs helt automatiskt.",
         "techStack": "React, Groq API, RAG",
         "implementationAreas": "E-postautomatisering, NLP, Innehållsgenerering"
+      },
+      "project-4": {
+        "title": "AI-automationsmognadsaudit",
+        "description": "Svara på 8 frågor om ditt företag och få ett personligt automatiseringsbetyg med AI-genererade rekommendationer för de 3 arbetsflöden du bör automatisera först.",
+        "techStack": "Next.js, OpenAI, TypeScript",
+        "implementationAreas": "Affärsprocessautomatisering, Leadgenerering, Konsulting"
       }
     },
     "comingSoon": "Fler användningsfall kommer snart..."
@@ -566,6 +581,7 @@
     "rio": {
       "title": "ROI-kalkylator för automatisering",
       "description": "Se exakt hur mycket pengar manuella uppgifter kostar ditt företag.",
+      "auditPromo": "Vet du inte vad du ska automatisera först? Gör den gratis automationsauditen →",
       "inputs": {
         "hoursPerWeek": "Tid spenderad på uppgiften (Timmar/Vecka)",
         "hourlyRate": "Anställds timkostnad",
@@ -580,6 +596,93 @@
         "roiTimelineText": "Automatiseringen betalar sig själv på bara <bold>{{weeks}} veckor</bold>.",
         "notProfitableTitle": "Inte lönsamt än",
         "notProfitableDesc": "Baserat på dessa siffror kan manuellt arbete vara billigare just nu om du inte skalar upp."
+      }
+    },
+    "audit": {
+      "title": "AI-automationsmognadsaudit",
+      "description": "Svara på 8 snabba frågor och få ett personligt automatiseringsbetyg med skräddarsydda rekommendationer.",
+      "step": "Steg {current} av {total}",
+      "question": "Fråga",
+      "next": "Nästa",
+      "back": "Tillbaka",
+      "submit": "Hämta mitt betyg",
+      "loading": "Analyserar dina svar...",
+      "scoreLabel": "Ditt automatiseringsmognadbetyg",
+      "scoreBucket": {
+        "high": "Hög mognad",
+        "medium": "God grund",
+        "low": "Tidig fas"
+      },
+      "scoreBucketDesc": {
+        "high": "Snabba vinster finns tillgängliga — du är redo att automatisera.",
+        "medium": "Fokuserade automatiseringar ger stark ROI för ditt företag.",
+        "low": "Börja med 1–2 riktade automatiseringar för bästa initiala effekt."
+      },
+      "topAutomations": "Rekommenderade automatiseringar",
+      "timeSaved": "Sparad tid:",
+      "tool": "Verktyg:",
+      "retake": "Gör om audit",
+      "remaining": "{remaining} analyser kvar idag",
+      "limitReached": "Du har använt alla dina gratis analyser för idag. Kom tillbaka imorgon!",
+      "errorGeneric": "Något gick fel. Försök igen.",
+      "errorDisabled": "Auditverktyget är tillfälligt otillgängligt.",
+      "questions": {
+        "q1": {
+          "label": "Hur många timmar per vecka spenderar ditt team på repetitiva manuella uppgifter?",
+          "a": "Mindre än 2 timmar",
+          "b": "2–5 timmar",
+          "c": "5–10 timmar",
+          "d": "Mer än 10 timmar"
+        },
+        "q2": {
+          "label": "Hur stort är ditt team?",
+          "a": "Solo",
+          "b": "2–5 personer",
+          "c": "6–20 personer",
+          "d": "Mer än 20 personer"
+        },
+        "q3": {
+          "label": "Vad är din största operativa flaskhals?",
+          "a": "Datainmatning och rapportering",
+          "b": "E-post och kommunikation",
+          "c": "Godkännanden och arbetsflöden",
+          "d": "Schemaläggning och koordinering"
+        },
+        "q4": {
+          "label": "Vilka verktyg använder ditt team för närvarande?",
+          "a": "Mest kalkylblad och e-post",
+          "b": "Några SaaS-appar",
+          "c": "Flera anslutna SaaS-appar",
+          "d": "Vi har redan viss automatisering"
+        },
+        "q5": {
+          "label": "Hur ofta uppstår fel från manuellt arbete?",
+          "a": "Sällan",
+          "b": "Ibland",
+          "c": "Ofta",
+          "d": "Mycket ofta — det är ett verkligt problem"
+        },
+        "q6": {
+          "label": "Vilken bransch är du verksam i?",
+          "a": "Konsulting och byråer",
+          "b": "E-handel och detaljhandel",
+          "c": "Tech och mjukvara",
+          "d": "Annat"
+        },
+        "q7": {
+          "label": "Vad är din månadsbudget för automatiseringsverktyg?",
+          "a": "Inte säker än",
+          "b": "Under 500 €/månad",
+          "c": "500–2 000 €/månad",
+          "d": "2 000 €+/månad"
+        },
+        "q8": {
+          "label": "Vad är ditt primära mål med automatisering?",
+          "a": "Spara tid",
+          "b": "Minska fel",
+          "c": "Växa utan att anställa",
+          "d": "Sänka driftskostnader"
+        }
       }
     },
     "rewriter": {
@@ -616,5 +719,12 @@
     "essentialOnly": "Endast nödvändiga",
     "declineAnalytics": "Avvisa analys",
     "close": "Stäng"
+  },
+  "GlobalError": {
+    "title": "Något gick fel!",
+    "description": "Vi stötte på ett oväntat fel. Försök igen eller gå tillbaka till startsidan.",
+    "tryAgain": "Försök igen",
+    "goHome": "Gå hem",
+    "persist": "Om problemet kvarstår, kontakta vårt supportteam."
   }
 }

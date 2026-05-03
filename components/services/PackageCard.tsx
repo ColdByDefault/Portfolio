@@ -8,7 +8,7 @@
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import type { ServicePackage } from "@/types/hubs/services";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Rocket, Cog, Brain, Check, Clock } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -39,13 +39,13 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
   const IconComponent = iconMap[pkg.icon];
 
   return (
-    <motion.div variants={fadeInUp} className="w-full max-w-sm">
+    <m.div variants={fadeInUp} className="w-full max-w-sm">
       <Card className="h-full relative overflow-hidden transition-all duration-300 hover:shadow-lg bg-background/80 backdrop-blur-sm border-border/50 hover:border-muted-foreground/30">
         <CardHeader className="space-y-4">
           <div className="flex items-center gap-3">
             {IconComponent && (
               <div className="p-2 rounded-lg bg-muted">
-                <IconComponent className="h-5 w-5" />
+                <IconComponent className="h-5 w-5" aria-hidden="true" />
               </div>
             )}
             <div>
@@ -67,7 +67,7 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
                 <p className="text-2xl font-bold">{t(pkg.pricingKey)}</p>
               </div>
               <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                <Clock className="h-4 w-4" />
+                <Clock className="h-4 w-4" aria-hidden="true" />
                 <span>{t(pkg.timelineKey)}</span>
               </div>
             </div>
@@ -80,7 +80,10 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
               : pkg.features
             ).map((feature, index) => (
               <li key={index} className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                <Check
+                  className="h-5 w-5 text-green-500 shrink-0 mt-0.5"
+                  aria-hidden="true"
+                />
                 <span className="text-sm">{t(feature.textKey)}</span>
               </li>
             ))}
@@ -92,6 +95,6 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
           )}
         </CardContent>
       </Card>
-    </motion.div>
+    </m.div>
   );
 }

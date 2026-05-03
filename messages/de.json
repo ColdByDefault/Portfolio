@@ -260,8 +260,8 @@
     "chatbot": {
       "title": "KI-Chatbot-Service",
       "description": "Diese Website enthält einen KI-Chatbot für interaktive Unterstützung und Informationen.",
-      "apiTitle": "Groq API Integration",
-      "apiDescription": "Der Chatbot wird von Groq betrieben. Durch die Nutzung des Chatbots akzeptieren Sie die Nutzungsbedingungen und Datenschutzrichtlinien von Groq. Chat-Anfragen werden über die Groq API verarbeitet.",
+      "apiTitle": "OpenAI API Integration",
+      "apiDescription": "Der Chatbot wird von OpenAI betrieben. Durch die Nutzung des Chatbots akzeptieren Sie die Nutzungsbedingungen und Datenschutzrichtlinien von OpenAI. Chat-Anfragen werden über die OpenAI API verarbeitet.",
       "temporaryTitle": "Optionale Datenspeicherung (mit Einwilligung)",
       "temporaryDescription": "Mit Ihrer ausdrücklichen Einwilligung können Chat-Gespräche zur Qualitätsverbesserung und Analyse gespeichert werden. Dies umfasst: Chat-Nachrichten, Zeitstempel, anonymisierte IP-Adresse und allgemeinen Standort (Land/Stadt). Sie können Ihre Einwilligung jederzeit widerrufen. Ohne Einwilligung verbleiben alle Chat-Daten ausschließlich in Ihrem Browser."
     },
@@ -388,6 +388,14 @@
       "title": "Hallo! Ich bin Reem 👋",
       "description": "Ich bin Ihr KI-Assistent und helfe Ihnen dabei, Yazans Portfolio zu erkunden und Fragen zu seinen Projekten, Fähigkeiten und Erfahrungen zu beantworten."
     },
+    "guidedActions": {
+      "label": "Geführte Portfolio-Optionen",
+      "website": "Ich brauche eine Website",
+      "automation": "Ich brauche Automatisierung",
+      "projects": "Ich möchte Projekte sehen",
+      "pricing": "Ich möchte Preise sehen",
+      "contact": "Ich möchte Yazan kontaktieren"
+    },
     "typing": {
       "status": "Reem schreibt...",
       "thinking": "Denkt",
@@ -423,6 +431,7 @@
       "subtitle": "Von der Idee bis zum Launch — Webanwendungen, Automatisierung und KI-Lösungen für echten Business-Impact."
     },
     "packages": {
+      "title": "Servicepakete",
       "cta": "Kostenloses Erstgespräch buchen",
       "mvp": {
         "name": "MVP Launch",
@@ -558,6 +567,12 @@
         "description": "Eine interaktive Demo, die RAG zur E-Mail-Analyse nutzt und verschiedene Antwortoptionen sowie Tonfall-Anpassungen bietet. Veranschaulicht einen Prozess, der in der Praxis vollautomatisch läuft.",
         "techStack": "React, Groq API, RAG",
         "implementationAreas": "E-Mail-Automatisierung, NLP, Inhaltsgenerierung"
+      },
+      "project-4": {
+        "title": "KI-Automatisierungsbereitschafts-Audit",
+        "description": "Beantworte 8 Fragen zu deinem Unternehmen und erhalte einen persönlichen Automatisierungsscore mit KI-generierten Empfehlungen für die 3 wichtigsten Prozesse, die du zuerst automatisieren solltest.",
+        "techStack": "Next.js, OpenAI, TypeScript",
+        "implementationAreas": "Geschäftsprozessautomatisierung, Lead-Generierung, Beratung"
       }
     },
     "comingSoon": "Weitere Anwendungsfälle bald verfügbar..."
@@ -566,6 +581,7 @@
     "rio": {
       "title": "ROI-Rechner für Automatisierung",
       "description": "Sehen Sie genau, wie viel Geld manuelle Aufgaben Ihr Unternehmen kosten.",
+      "auditPromo": "Unsicher, was du zuerst automatisieren sollst? Mach den kostenlosen Automatisierungs-Audit →",
       "inputs": {
         "hoursPerWeek": "Zeitaufwand für Aufgabe (Stunden/Woche)",
         "hourlyRate": "Stundensatz des Mitarbeiters",
@@ -580,6 +596,93 @@
         "roiTimelineText": "Die Automatisierung amortisiert sich in nur <bold>{{weeks}} Wochen</bold>.",
         "notProfitableTitle": "Noch nicht profitabel",
         "notProfitableDesc": "Basierend auf diesen Zahlen ist manuelle Arbeit vorerst günstiger, es sei denn, Sie skalieren."
+      }
+    },
+    "audit": {
+      "title": "KI-Automatisierungsbereitschafts-Audit",
+      "description": "Beantworte 8 kurze Fragen und erhalte deinen persönlichen Automatisierungsscore mit maßgeschneiderten Empfehlungen.",
+      "step": "Schritt {current} von {total}",
+      "question": "Frage",
+      "next": "Weiter",
+      "back": "Zurück",
+      "submit": "Meinen Score erhalten",
+      "loading": "Deine Antworten werden analysiert...",
+      "scoreLabel": "Dein Automatisierungsbereitschafts-Score",
+      "scoreBucket": {
+        "high": "Hohe Bereitschaft",
+        "medium": "Gute Grundlage",
+        "low": "Frühe Phase"
+      },
+      "scoreBucketDesc": {
+        "high": "Schnelle Gewinne sind möglich — du bist bereit für Automatisierung.",
+        "medium": "Gezielte Automatisierungen liefern einen starken ROI für dein Unternehmen.",
+        "low": "Starte mit 1–2 gezielten Automatisierungen für den besten Anfangseffekt."
+      },
+      "topAutomations": "Empfohlene Automatisierungen",
+      "timeSaved": "Gesparte Zeit:",
+      "tool": "Tool:",
+      "retake": "Audit wiederholen",
+      "remaining": "{remaining} Analysen heute noch verfügbar",
+      "limitReached": "Du hast alle kostenlosen Analysen für heute aufgebraucht. Komm morgen wieder!",
+      "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+      "errorDisabled": "Das Audit-Tool ist vorübergehend nicht verfügbar.",
+      "questions": {
+        "q1": {
+          "label": "Wie viele Stunden pro Woche verbringt dein Team mit sich wiederholenden manuellen Aufgaben?",
+          "a": "Weniger als 2 Stunden",
+          "b": "2–5 Stunden",
+          "c": "5–10 Stunden",
+          "d": "Mehr als 10 Stunden"
+        },
+        "q2": {
+          "label": "Wie groß ist dein Team?",
+          "a": "Solo",
+          "b": "2–5 Personen",
+          "c": "6–20 Personen",
+          "d": "Mehr als 20 Personen"
+        },
+        "q3": {
+          "label": "Was ist dein größter operativer Engpass?",
+          "a": "Dateneingabe & Berichterstattung",
+          "b": "E-Mail & Kommunikation",
+          "c": "Genehmigungen & Workflows",
+          "d": "Terminplanung & Koordination"
+        },
+        "q4": {
+          "label": "Welche Tools nutzt dein Team aktuell?",
+          "a": "Hauptsächlich Tabellenkalkulationen & E-Mail",
+          "b": "Einige SaaS-Apps",
+          "c": "Mehrere verbundene SaaS-Apps",
+          "d": "Wir haben bereits etwas Automatisierung"
+        },
+        "q5": {
+          "label": "Wie häufig treten Fehler durch manuelle Arbeit auf?",
+          "a": "Selten",
+          "b": "Gelegentlich",
+          "c": "Häufig",
+          "d": "Sehr oft — es ist ein echtes Problem"
+        },
+        "q6": {
+          "label": "In welcher Branche bist du tätig?",
+          "a": "Beratung & Agenturen",
+          "b": "E-Commerce & Einzelhandel",
+          "c": "Tech & Software",
+          "d": "Andere"
+        },
+        "q7": {
+          "label": "Wie hoch ist dein monatliches Budget für Automatisierungs-Tools?",
+          "a": "Noch nicht sicher",
+          "b": "Unter 500 €/Monat",
+          "c": "500–2.000 €/Monat",
+          "d": "2.000 €+/Monat"
+        },
+        "q8": {
+          "label": "Was ist dein primäres Ziel mit Automatisierung?",
+          "a": "Zeit sparen",
+          "b": "Fehler reduzieren",
+          "c": "Skalieren ohne Einstellungen",
+          "d": "Betriebskosten senken"
+        }
       }
     },
     "rewriter": {
@@ -616,5 +719,12 @@
     "essentialOnly": "Nur essenzielle",
     "declineAnalytics": "Analyse ablehnen",
     "close": "Schließen"
+  },
+  "GlobalError": {
+    "title": "Etwas ist schiefgelaufen!",
+    "description": "Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es erneut oder kehren Sie zur Startseite zurück.",
+    "tryAgain": "Erneut versuchen",
+    "goHome": "Zur Startseite",
+    "persist": "Wenn das Problem weiterhin besteht, wenden Sie sich bitte an unser Support-Team."
   }
 }

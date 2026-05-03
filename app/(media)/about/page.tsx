@@ -6,12 +6,20 @@
 
 "use client";
 
+import dynamic from "next/dynamic";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Background } from "@/components/visuals/motion-background";
 import type { AboutTranslations } from "@/types/configs/i18n";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+
+const Background = dynamic(
+  () =>
+    import("@/components/visuals/motion-background").then((mod) => ({
+      default: mod.Background,
+    })),
+  { loading: () => null, ssr: false },
+);
 
 export default function AboutPage() {
   const t = useTranslations("About");

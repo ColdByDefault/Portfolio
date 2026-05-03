@@ -230,10 +230,6 @@ export function proxy(request: NextRequest) {
     failedAttempts.delete(clientIP);
   }
 
-  // Handle automatic locale detection for first-time visitors
-  const response = handleLocaleDetection(request);
-  if (response) return response;
-
   // Define valid routes to avoid redirecting legitimate paths
   const validRoutes = [
     "/",
@@ -242,6 +238,7 @@ export function proxy(request: NextRequest) {
     "/projects",
     "/rio-calculator",
     "/polite-email",
+    "/automation-audit",
     "/blog",
     "/library",
     "/media",
@@ -285,6 +282,10 @@ export function proxy(request: NextRequest) {
       });
     }
   }
+
+  // Handle automatic locale detection for first-time visitors
+  const response = handleLocaleDetection(request);
+  if (response) return response;
 
   return NextResponse.next();
 }

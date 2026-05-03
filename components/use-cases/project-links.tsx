@@ -25,7 +25,7 @@ export function ProjectLinks({ demoLink, githubLink }: ProjectLinksProps) {
       {demoLink && (
         <Button asChild className="flex-1 min-w-35">
           <a href={demoLink} target="_blank" rel="noopener noreferrer">
-            <ExternalLink className="h-4 w-4 mr-2" />
+            <ExternalLink className="h-4 w-4 mr-2" aria-hidden="true" />
             {t("liveDemoButton")}
           </a>
         </Button>
@@ -37,7 +37,7 @@ export function ProjectLinks({ demoLink, githubLink }: ProjectLinksProps) {
           className="flex-1 min-w-35 bg-transparent"
         >
           <a href={githubLink} target="_blank" rel="noopener noreferrer">
-            <Github className="h-4 w-4 mr-2" />
+            <Github className="h-4 w-4 mr-2" aria-hidden="true" />
             {t("viewCodeButton")}
           </a>
         </Button>

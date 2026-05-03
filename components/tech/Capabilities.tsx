@@ -6,7 +6,7 @@
 
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { capabilities } from "@/data/main/capabilitiesData";
 import type { Capability } from "@/types/main/capabilities";
@@ -70,7 +70,7 @@ function CapabilityCard({
   const IconComponent = iconMap[capability.icon];
 
   return (
-    <motion.div variants={fadeInUp}>
+    <m.div variants={fadeInUp}>
       <Card className="h-full bg-background/80 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl hover:border-muted-foreground/30 transition-all duration-300">
         <CardContent className="pt-6 space-y-4">
           <div className="flex items-start gap-4">
@@ -108,7 +108,7 @@ function CapabilityCard({
           )}
         </CardContent>
       </Card>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -125,7 +125,7 @@ export default function Capabilities() {
       aria-labelledby="capabilities-section-title"
       role="region"
     >
-      <motion.div
+      <m.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
@@ -133,7 +133,7 @@ export default function Capabilities() {
         className="space-y-12"
       >
         {/* Section Header */}
-        <motion.div variants={fadeInUp} className="text-center space-y-4">
+        <m.div variants={fadeInUp} className="text-center space-y-4">
           <h2
             id="capabilities-section-title"
             className="text-3xl sm:text-4xl lg:text-5xl font-bold"
@@ -143,18 +143,15 @@ export default function Capabilities() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {t("subtitle")}
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Capabilities Grid */}
-        <motion.div
-          variants={staggerChildren}
-          className="grid sm:grid-cols-2 gap-6"
-        >
+        <m.div variants={staggerChildren} className="grid sm:grid-cols-2 gap-6">
           {capabilities.map((capability) => (
             <CapabilityCard key={capability.id} capability={capability} t={t} />
           ))}
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }

@@ -10,6 +10,11 @@
 !.yarn/versions
 # testing
 /coverage
+/test-results
+/playwright-report
+/blob-report
+/.lighthouseci
+/lighthouse/reports
 # next.js
 /.next/
 /out/

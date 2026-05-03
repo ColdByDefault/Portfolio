@@ -260,8 +260,8 @@
     "chatbot": {
       "title": "AI Chatbot Service",
       "description": "This website includes an AI chatbot for interactive assistance and information.",
-      "apiTitle": "Groq API Integration",
-      "apiDescription": "The chatbot is powered by Groq. By using the chatbot, you accept Groq's terms of service and privacy policy. Chat requests are processed via the Groq API.",
+      "apiTitle": "OpenAI API Integration",
+      "apiDescription": "The chatbot is powered by OpenAI. By using the chatbot, you accept OpenAI's terms of service and privacy policy. Chat requests are processed via the OpenAI API.",
       "temporaryTitle": "Optional Data Storage (With Consent)",
       "temporaryDescription": "With your explicit consent, I may store chat conversations for quality improvement and analytics purposes. This includes: chat messages, timestamps, anonymized IP address, and general location (country/city). You can withdraw consent at any time. Without consent, all chat data remains in your browser only."
     },
@@ -388,6 +388,14 @@
       "title": "Hi! I'm Reem 👋",
       "description": "I'm your AI assistant, here to help you explore Yazan's portfolio and answer questions about his projects, skills, and experience."
     },
+    "guidedActions": {
+      "label": "Guided portfolio options",
+      "website": "I need a website",
+      "automation": "I need automation",
+      "projects": "I want to see projects",
+      "pricing": "I want pricing",
+      "contact": "I want to contact Yazan"
+    },
     "typing": {
       "status": "Reem is typing...",
       "thinking": "Thinking",
@@ -423,6 +431,7 @@
       "subtitle": "From idea to launch — web applications, automation, and AI solutions built for business impact."
     },
     "packages": {
+      "title": "Service Packages",
       "cta": "Book a Free Call",
       "mvp": {
         "name": "MVP Launch",
@@ -558,6 +567,12 @@
         "description": "An interactive demo using RAG to analyze emails, offering selectable answer options and tone-based rewriting. Illustrates a workflow that runs fully autonomously in production environments.",
         "techStack": "React, Groq API, RAG",
         "implementationAreas": "Email Automation, NLP, Content Generation"
+      },
+      "project-4": {
+        "title": "AI Automation Readiness Audit",
+        "description": "Answer 8 questions about your business and receive a personalised automation readiness score with AI-generated recommendations for the top 3 workflows to automate first.",
+        "techStack": "Next.js, OpenAI, TypeScript",
+        "implementationAreas": "Business Process Automation, Lead Generation, Consulting"
       }
     },
     "comingSoon": "More use-cases coming soon..."
@@ -566,6 +581,7 @@
     "rio": {
       "title": "Automation ROI Calculator",
       "description": "See exactly how much money manual tasks are costing your business.",
+      "auditPromo": "Unsure what to automate first? Take the free Automation Readiness Audit →",
       "inputs": {
         "hoursPerWeek": "Time spent on task (Hours/Week)",
         "hourlyRate": "Employee Hourly Cost",
@@ -580,6 +596,93 @@
         "roiTimelineText": "The automation pays for itself in just {weeks} weeks.",
         "notProfitableTitle": "Not profitable yet",
         "notProfitableDesc": "Based on these numbers, manual work might be cheaper for now unless you scale up."
+      }
+    },
+    "audit": {
+      "title": "AI Automation Readiness Audit",
+      "description": "Answer 8 quick questions and receive a personalised automation score with tailored recommendations.",
+      "step": "Step {current} of {total}",
+      "question": "Question",
+      "next": "Next",
+      "back": "Back",
+      "submit": "Get My Score",
+      "loading": "Analysing your answers...",
+      "scoreLabel": "Your Automation Readiness Score",
+      "scoreBucket": {
+        "high": "High Readiness",
+        "medium": "Good Foundation",
+        "low": "Early Stage"
+      },
+      "scoreBucketDesc": {
+        "high": "Quick wins are available — you are ready to automate.",
+        "medium": "Focused automations will deliver strong ROI for your business.",
+        "low": "Start with 1–2 targeted automations for the best initial impact."
+      },
+      "topAutomations": "Recommended Automations",
+      "timeSaved": "Time saved:",
+      "tool": "Tool:",
+      "retake": "Retake Audit",
+      "remaining": "{remaining} analyses remaining today",
+      "limitReached": "You have used all your free analyses for today. Come back tomorrow!",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "errorDisabled": "The audit tool is temporarily unavailable.",
+      "questions": {
+        "q1": {
+          "label": "How many hours per week does your team spend on repetitive manual tasks?",
+          "a": "Less than 2 hours",
+          "b": "2–5 hours",
+          "c": "5–10 hours",
+          "d": "More than 10 hours"
+        },
+        "q2": {
+          "label": "What is your team size?",
+          "a": "Solo",
+          "b": "2–5 people",
+          "c": "6–20 people",
+          "d": "More than 20 people"
+        },
+        "q3": {
+          "label": "What is your biggest operational bottleneck?",
+          "a": "Data entry & reporting",
+          "b": "Email & communications",
+          "c": "Approvals & workflows",
+          "d": "Scheduling & coordination"
+        },
+        "q4": {
+          "label": "What tools does your team currently use?",
+          "a": "Mostly spreadsheets & email",
+          "b": "A few SaaS apps",
+          "c": "Multiple connected SaaS apps",
+          "d": "We already have some automation"
+        },
+        "q5": {
+          "label": "How often do errors occur from manual work?",
+          "a": "Rarely",
+          "b": "Occasionally",
+          "c": "Frequently",
+          "d": "Very often — it is a real problem"
+        },
+        "q6": {
+          "label": "Which industry are you in?",
+          "a": "Consulting & agencies",
+          "b": "E-commerce & retail",
+          "c": "Tech & software",
+          "d": "Other"
+        },
+        "q7": {
+          "label": "What is your monthly budget comfort for automation tooling?",
+          "a": "Not sure yet",
+          "b": "Under €500 per month",
+          "c": "€500–€2,000 per month",
+          "d": "€2,000+ per month"
+        },
+        "q8": {
+          "label": "What is your primary goal with automation?",
+          "a": "Save time",
+          "b": "Reduce errors",
+          "c": "Scale without hiring",
+          "d": "Cut operational costs"
+        }
       }
     },
     "rewriter": {
@@ -616,5 +719,12 @@
     "essentialOnly": "Essential Only",
     "declineAnalytics": "Decline Analytics",
     "close": "close"
+  },
+  "GlobalError": {
+    "title": "Something went wrong!",
+    "description": "We encountered an unexpected error. Please try again or return to the home page.",
+    "tryAgain": "Try Again",
+    "goHome": "Go Home",
+    "persist": "If this problem persists, please contact our support team."
   }
 }

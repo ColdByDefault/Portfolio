@@ -107,7 +107,7 @@ export function TechStackGrid({ techStack }: TechStackGridProps) {
               variant="secondary"
               className="flex items-center gap-2 px-3 py-1.5"
             >
-              <Icon className="h-4 w-4" />
+              <Icon className="h-4 w-4" aria-hidden="true" />
               <span>{tech.name}</span>
             </Badge>
           );

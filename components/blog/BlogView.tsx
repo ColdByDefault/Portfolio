@@ -49,23 +49,23 @@ export function BlogView({ blog, className }: BlogViewProps) {
         <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
           {blog.publishedAt && (
             <div className="flex items-center gap-1">
-              <Calendar className="h-4 w-4" />
+              <Calendar className="h-4 w-4" aria-hidden="true" />
               {new Date(blog.publishedAt).toLocaleDateString()}
             </div>
           )}
           {blog.readingTime && (
             <div className="flex items-center gap-1">
-              <Clock className="h-4 w-4" />
+              <Clock className="h-4 w-4" aria-hidden="true" />
               {blog.readingTime} min read
             </div>
           )}
           <div className="flex items-center gap-1">
-            <Eye className="h-4 w-4" />
+            <Eye className="h-4 w-4" aria-hidden="true" />
             {blog.readCount} views
           </div>
           {blog.language && (
             <div className="flex items-center gap-1">
-              <Languages className="h-4 w-4" />
+              <Languages className="h-4 w-4" aria-hidden="true" />
               {BLOG_LANGUAGE_NAMES[
                 blog.language as keyof typeof BLOG_LANGUAGE_NAMES
               ] || blog.language.toUpperCase()}
@@ -76,7 +76,7 @@ export function BlogView({ blog, className }: BlogViewProps) {
         {/* Tags and Category */}
         <div className="flex flex-wrap gap-2 mb-6">
           {blog.isFeatured && (
-            <Badge style={{ backgroundColor: "#22c55e", color: "white" }}>
+            <Badge style={{ backgroundColor: "#15803d", color: "white" }}>
               Featured
             </Badge>
           )}

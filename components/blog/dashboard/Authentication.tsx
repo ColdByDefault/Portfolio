@@ -52,10 +52,14 @@ export function Authentication({
           )}
 
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label
+              className="block text-sm font-medium mb-2"
+              htmlFor="admin-token"
+            >
               Admin Token
             </label>
             <Input
+              id="admin-token"
               type="password"
               placeholder="Enter admin token"
               value={token}
