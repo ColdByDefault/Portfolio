@@ -547,8 +547,11 @@
     "techStackLabel": "Tech-Stack",
     "useCasesLabel": "Anwendungsfälle",
     "liveDemoButton": "Live-Demo",
-    "viewCodeButton": "Code anzeigen",
-    "projects": {
+    "viewCodeButton": "Code anzeigen",    "liveToolsShowcase": {
+      "description": "Probieren Sie diese interaktiven Tools aus, um das Automatisierungspotenzial Ihres Unternehmens zu erkunden:",
+      "auditButton": "KI-Automatisierungs-Audit",
+      "rioButton": "ROI-Rechner"
+    },    "projects": {
       "project-1": {
         "title": "Voice-to-Notion Automation",
         "description": "Verwandelt Sprachmemos und Meeting-Aufzeichnungen in strukturierte Notion-Seiten mit Transkripten, Zusammenfassungen und Aufgaben. Automatisiert die Nachbereitung in unter 30 Sekunden.",

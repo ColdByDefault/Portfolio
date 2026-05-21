@@ -547,8 +547,11 @@
     "techStackLabel": "Teknisk Stack",
     "useCasesLabel": "Användningsfall",
     "liveDemoButton": "Live Demo",
-    "viewCodeButton": "Visa Kod",
-    "projects": {
+    "viewCodeButton": "Visa Kod",    "liveToolsShowcase": {
+      "description": "Prova dessa interaktiva verktyg för att utforska automatiseringspotentialen för ditt företag:",
+      "auditButton": "AI-automatiseringsrevision",
+      "rioButton": "ROI-kalkylator"
+    },    "projects": {
       "project-1": {
         "title": "Voice-to-Notion Automation",
         "description": "Omvandlar röstmemon och mötesinspelningar till strukturerade Notion-sidor med transkriptioner, sammanfattningar och uppgifter. Automatiserar administration efter mötet på under 30 sekunder.",
