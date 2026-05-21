@@ -547,11 +547,13 @@
     "techStackLabel": "Stack Tecnológico",
     "useCasesLabel": "Casos de Uso",
     "liveDemoButton": "Demo en Vivo",
-    "viewCodeButton": "Ver Código",    "liveToolsShowcase": {
+    "viewCodeButton": "Ver Código",
+    "liveToolsShowcase": {
       "description": "Pruebe estas herramientas interactivas para explorar el potencial de automatización de su negocio:",
       "auditButton": "Auditoría de Automatización IA",
       "rioButton": "Calculadora de ROI"
-    },    "projects": {
+    },
+    "projects": {
       "project-1": {
         "title": "Automatización de Voz a Notion",
         "description": "Transforma notas de voz y grabaciones de reuniones en páginas de Notion estructuradas con transcripciones, resúmenes y tareas. Automatiza el trabajo post-reunión en menos de 30 segundos.",
